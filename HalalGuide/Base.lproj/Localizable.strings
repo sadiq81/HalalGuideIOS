@@ -1,0 +1,95 @@
+/* 
+Localizable.strings
+HalalGuide
+
+Created by Privat on 05/12/14.
+Copyright (c) 2014 Eazy It. All rights reserved.
+*/
+
+"afghan" = "Afghansk";
+"african"= "Afrikansk";
+"american" = "Amerikansk";
+"argentine" = "Argentinsk";
+"asian" = "Asiatisk";
+"belgian" = "Belgisk";
+"brazilian" = "Brasiliansk";
+"british" = "Engelsk";
+"buffet" = "Buffet";
+"burger" = "Burger";
+"bakery" = "Bager";
+"bagel" = "Bagel";
+"bubbleThea" = "Bubble thea";
+"butcher" = "Slagter";
+"cafe" = "Cafe";
+"caribbean" = "Caribisk";
+"cupcake" = "Cupkage";
+"candy" = "Slik";
+"chinese" = "Kinesisk";
+"danish" = "Dansk";
+"dessert" = "Dessert";
+"fish" = "Fisk";
+"fruit" = "Frugt";
+"fastfood" = "Fast food";
+"french" = "Fransk";
+"german" = "Tysk";
+"grill" = "Grill";
+"greek" = "Græsk";
+"iceCream" = "Is";
+"juice" = "Juice";
+"kiosk" = "Kiosk";
+"indian" = "Indisk";
+"indonesian" = "Indonesisk";
+"irish" = "Irsk";
+"italian" = "Italiensk";
+"iranian" = "Iransk";
+"japanese" = "Japansk";
+"kebab" = "Kebab";
+"korean" = "Koreansk";
+"kosher" = "Kosher";
+"lebanese" = "Libanesisk";
+"mediterranean" = "Middelhavs";
+"malaysian" = "Malaysisk";
+"moroccan" = "Marokansk";
+"mexican" = "Mexikansk";
+"nordic" = "Nordisk";
+"nepalese" = "Nepalesisk";
+"pastry" = "Kager";
+"pakistani" = "Pakistansk";
+"persian" = "Persisk";
+"pizza" = "Pizza";
+"portuguese" = "Portugesisk";
+"russian" = "Russisk";
+"seafood" = "Skaldyr";
+"salad" = "Salat";
+"sandwich" = "Sandwich";
+"spanish" = "Spansk";
+"steak" = "Steak";
+"soup" = "Suppe";
+"sushi" = "Sushi";
+"tapas" = "Tapas";
+"thai" = "Thai";
+"tibetan" = "Tibetansk";
+"turkish" = "Tyrkisk";
+"vegan" = "Vegetar";
+"vietnamese" = "Vietnamesisk";
+"wok" = "Wok";
+
+"ok" = "Ok";
+"couldnotcreateindb" = "Kunne ikke kontakte databasen";
+"couldnotuploadfile" = "Kunne ikke kontakte serveren";
+"addressdoesnotexists" = "Adressen findes ikke ";
+"error" = "Ukendt fejl";
+
+"awaiting" = "Venter godkendelse";
+"approved" = "Godkendt";
+"notapproved" = "Ikke godkendt";
+
+"none" = "Intet";
+"danish" ="Dansk";
+"arabic" = "Arabisk";
+"urdu" = "Urdu";
+"english" = "Engelsk";
+
+"dining" = "Spisesteder";
+"mosque" = "Moske";
+"shop" = "Handle";

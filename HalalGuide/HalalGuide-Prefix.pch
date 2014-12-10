@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  HalalGuide
+//
+//  Created by Privat on 13/11/14.
+//  Copyright (c) 2014 Eazy It. All rights reserved.
+//
+
+#ifndef HalalGuide_PrefixHeader_pch
+#define HalalGuide_PrefixHeader_pch
+
+#ifdef __OBJC__
+#import "Common.h"
+
+#endif
+
+#endif
