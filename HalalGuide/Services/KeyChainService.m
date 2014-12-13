@@ -3,7 +3,6 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
 #import "KeyChainService.h"
 #import "KeychainWrapper.h"
 #import <Parse/Parse.h>

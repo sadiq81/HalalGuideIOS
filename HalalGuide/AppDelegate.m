@@ -6,7 +6,18 @@
 //  Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
+
 #import "AppDelegate.h"
+#import "Location.h"
+#import "LocationService.h"
+#import "AFNetworkActivityIndicatorManager.h"
+#import "MZFormSheetBackgroundWindow.h"
+#import "IQKeyboardManager.h"
+#import "KeyChainService.h"
+#import "ErrorReporting.h"
+#import "PictureService.h"
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <ParseCrashReporting/ParseCrashReporting.h>
 
 @interface AppDelegate ()
 
@@ -14,10 +25,71 @@
 
 @implementation AppDelegate
 
+@synthesize locationManager;
+
+//TODO AppIcon
+//TODO AppDescription
+//TODO AppWebsite
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    //AFNetworking
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+
+    //Location Services
+    [self startStandardUpdates];
+
+    //Appearance
+    [[MZFormSheetBackgroundWindow appearance] setBackgroundBlurEffect:YES];
+    [[MZFormSheetBackgroundWindow appearance] setBlurRadius:5.0];
+    [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
+
+    //IQKeyboard
+    [IQKeyboardManager sharedManager].toolbarManageBehaviour = IQAutoToolbarByTag;
+
+    //[[LocationService instance] createDummyData];
+
+    //Load Credentials in Azure
+    //[KeyChainService instance];
+
+    //Configure Parse
+    [ParseCrashReporting enable]; //TODO Parse library 1.6.0 hangs when calling findObjectsInBackgroundWithBlock on all objects
+    //[Parse enableLocalDatastore];
+
+    [Parse setApplicationId:@"7CtuNVHBGEdqFlvUyn2PQCG9R04dwIOyPpIVr7NA" clientKey:@"CWDZXIOhNHvEcrRSRN9gyAJlSEU4nPLfRf3Np47T"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [PFFacebookUtils initializeFacebook];
+    [PFUser enableAutomaticUser];
+    PFACL *defaultACL = [PFACL ACL];
+    [defaultACL setPublicReadAccess:YES];
+    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:false];
+
     return YES;
+}
+
+- (void)startStandardUpdates {
+    // Create the location manager if this object does not
+    // already have one.
+    if (nil == locationManager)
+        locationManager = [[CLLocationManager alloc] init];
+
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    [locationManager requestWhenInUseAuthorization];
+    // Set a movement threshold for new events.
+    locationManager.distanceFilter = 500; // meters
+
+    [locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    // If it's a relatively recent event, turn off updates to save power.
+    CLLocation *currentLocation = [locations lastObject];
+    NSDate *eventDate = currentLocation.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kCLLocationManagerDidUpdateLocations object:self userInfo:@{kCurrentLocation : currentLocation}];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -35,13 +107,19 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+#pragma mark URL handling
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
 }
 
 #pragma mark - Core Data stack
@@ -70,9 +148,9 @@
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
-    
+
     // Create the coordinator and store
-    
+
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"HalalGuide.sqlite"];
     NSError *error = nil;
@@ -86,26 +164,25 @@
         error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
         // Replace this with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        [[ErrorReporting instance] reportError:error];
         abort();
     }
-    
+
     return _persistentStoreCoordinator;
 }
 
-
+// Returns the managed object context for the application.
+// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
 - (NSManagedObjectContext *)managedObjectContext {
-    // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
-    
+
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (!coordinator) {
-        return nil;
+    if (coordinator != nil) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
 }
 
@@ -118,7 +195,7 @@
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            [[ErrorReporting instance] reportError:error];
             abort();
         }
     }

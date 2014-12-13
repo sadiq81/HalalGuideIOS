@@ -7,15 +7,13 @@
 #import "Location.h"
 #import "DiningViewModel.h"
 
-
+//TODO Onboarding - How to dismiss
 @implementation CategoriesViewController {
 
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

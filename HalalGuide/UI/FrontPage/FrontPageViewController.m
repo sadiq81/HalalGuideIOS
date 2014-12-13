@@ -13,6 +13,7 @@
 
 }
 
+//TODO Onboarding - What does latest mean
 @synthesize latestUpdated, tableViewController, refreshControl;
 
 - (void)viewDidLoad {

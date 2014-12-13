@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
 #import "Location.h"
 #import "NSArray+LinqExtensions.h"
 #import "UIKit/UIImagePickerController.h"

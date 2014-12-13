@@ -11,6 +11,7 @@
 #import "BaseEntity.h"
 #import <MapKit/MapKit.h>
 
+//TODO Add multinational, ethiopian, arabic
 typedef enum DiningCategory : int16_t {
     DiningCategoryAfghan = 0, DiningCategoryAfrican = 1, DiningCategoryAmerican = 2, DiningCategoryArgentine = 3,
     DiningCategoryAsian = 4, DiningCategoryBelgian = 5, DiningCategoryBrazilian = 6, DiningCategoryBritish = 7,

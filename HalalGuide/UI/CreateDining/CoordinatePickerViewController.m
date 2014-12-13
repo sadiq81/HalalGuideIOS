@@ -14,6 +14,8 @@
 
 }
 
+//TODO Onboarding - Explain drag and drop
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 

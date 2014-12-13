@@ -12,7 +12,9 @@
 #import "DiningTableViewCell.h"
 #import "FrontPageViewModel.h"
 #import "DiningDetailViewModel.h"
+#import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 
+//TODO Search bar for string searching fx name.
 @implementation DiningViewController
 
 @synthesize tableViewController, refreshControl;
@@ -25,7 +27,7 @@
 }
 
 - (void)dealloc {
-    [DiningViewModel instance].delegate = nil;
+    [[DiningViewModel instance] reset];
 }
 
 
@@ -48,20 +50,31 @@
 - (void)reloadTable {
     [self.diningTableView reloadData];
     [self.refreshControl endRefreshing];
+    [self.bottomRefreshControl endRefreshing];
 }
 
 #pragma mark - TableView
 
 - (void)configureTableView {
     self.diningTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
     self.tableViewController = [[UITableViewController alloc] init];
-    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.tableViewController.tableView = self.diningTableView;
+
+    self.refreshControl = [UIRefreshControl new];
     [self.refreshControl handleControlEvents:UIControlEventValueChanged withBlock:^(id weakControl) {
+        [DiningViewModel instance].page = 0;
+        [[DiningViewModel instance] refreshLocations:false];
+    }];
+    self.tableViewController.refreshControl = self.refreshControl;
+
+    self.bottomRefreshControl = [UIRefreshControl new];
+    self.diningTableView.bottomRefreshControl = self.bottomRefreshControl;
+    [self.bottomRefreshControl handleControlEvents:UIControlEventValueChanged withBlock:^(id weakControl) {
+        [DiningViewModel instance].page++;
         [[DiningViewModel instance] refreshLocations:false];
     }];
 
-    self.tableViewController.tableView = self.diningTableView;
-    self.tableViewController.refreshControl = self.refreshControl;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

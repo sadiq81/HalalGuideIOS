@@ -16,5 +16,4 @@
 
 - (void)lastTenLocations:(PFArrayResultBlock)completion;
 
-- (void)createDummyData;
 @end

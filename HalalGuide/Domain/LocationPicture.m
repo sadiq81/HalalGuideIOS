@@ -12,7 +12,7 @@
 
 @implementation LocationPicture
 
-@dynamic creationStatus, picture, locationId, submitterId;
+@dynamic creationStatus, picture, height, width, locationId, submitterId;
 
 + (void)load {
     [self registerSubclass];

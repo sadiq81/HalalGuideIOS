@@ -18,15 +18,18 @@
 
 @interface DiningViewModel : BaseViewModel <CategoriesViewModel>
 
-@property(nonatomic, copy) NSArray *locations;
+@property(nonatomic, retain) NSMutableArray *locations;
 @property id <DiningViewModelDelegate> delegate;
 @property(nonatomic) int maximumDistance;
 @property(nonatomic) bool showNonHalal;
 @property(nonatomic) bool showAlcohol;
 @property(nonatomic) bool showPork;
+@property(nonatomic) int page;
 
 
 + (DiningViewModel *)instance;
+
+- (void)reset;
 
 - (void)refreshLocations:(BOOL)firstLoad;
 

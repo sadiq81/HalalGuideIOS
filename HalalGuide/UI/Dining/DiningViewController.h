@@ -15,5 +15,8 @@
 @property(strong, nonatomic) IBOutlet UITableView *diningTableView;
 @property(strong, nonatomic) UITableViewController *tableViewController;
 @property(strong, nonatomic) UIRefreshControl *refreshControl;
+@property(strong, nonatomic) UIRefreshControl *bottomRefreshControl;
+
+
 
 @end

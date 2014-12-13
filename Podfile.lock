@@ -22,11 +22,15 @@ PODS:
     - AFNetworking/NSURLSession
   - ALActionBlocks (1.0.3)
   - Bolts (1.1.3)
+  - CCBottomRefreshControl (0.3.0):
+    - ReactiveCocoa
+    - UIView+TKGeometry
   - DCKeyValueObjectMapping (1.4)
   - EDStarRating (1.1)
   - Facebook-iOS-SDK (3.21.1):
     - Bolts (~> 1.0)
   - HTAutocompleteTextField (1.3.1)
+  - iCarousel (1.8.1)
   - IQKeyboardManager (3.2.0.2)
   - LinqToObjectiveC (HEAD based on 2.0.0)
   - MZAppearance (1.1.3)
@@ -35,19 +39,29 @@ PODS:
     - MZFormSheetController/Core (= 2.3.6)
   - MZFormSheetController/Core (2.3.6):
     - MZAppearance (~> 1.1.3)
+  - ReactiveCocoa (2.3.1):
+    - ReactiveCocoa/UI (= 2.3.1)
+  - ReactiveCocoa/Core (2.3.1):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.3.1)
+  - ReactiveCocoa/UI (2.3.1):
+    - ReactiveCocoa/Core
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - SVProgressHUD (HEAD based on 1.1.1)
   - UIAlertController+Blocks (0.4)
+  - UIView+TKGeometry (0.2)
 
 DEPENDENCIES:
   - AFNetworking (= 2.5.0)
   - ALActionBlocks (= 1.0.3)
+  - CCBottomRefreshControl
   - DCKeyValueObjectMapping
   - EDStarRating
   - Facebook-iOS-SDK (~> 3.21)
   - HTAutocompleteTextField (= 1.3.1)
+  - iCarousel
   - IQKeyboardManager (= 3.2.0.2)
   - LinqToObjectiveC (HEAD)
   - MZFormSheetController (= 2.3.6)
@@ -59,16 +73,20 @@ SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   ALActionBlocks: 6a899107d2def997caae8de46d82c8fa2421987e
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  CCBottomRefreshControl: 0dd3b0d9d50a36586495d183a0662fb1d0025579
   DCKeyValueObjectMapping: c3561709f296ddffba7768a9d7ccf234307fd3c9
   EDStarRating: c7b87f9866be0ea29bb054964023b8eb3f18286c
   Facebook-iOS-SDK: 18c26e86ab25c17854a2ee2a8f60562099c6600f
   HTAutocompleteTextField: 1212d1d40c4e8d0ae6508be6faca738fb2919732
+  iCarousel: 5acab560f10dc13da2440c89f35a0ad278b5147d
   IQKeyboardManager: f30f3e98fa36ca1599042c9d0cea2fb4f4ac3df9
   LinqToObjectiveC: db2ceec81d45192ffe971bbd8e73ef0de614723c
   MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
   MZFormSheetController: a7dce224ce8bd9015abeabca8cb6cde0d49d3fe3
+  ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SVProgressHUD: 11ef69ab2582c097479e76905ea916470371fc58
   UIAlertController+Blocks: e9580fc6b1db86534c61c6822799753228a10bf2
+  UIView+TKGeometry: 60a88dcf2af8420175cb1c789a02d6254ebb89a7
 
 COCOAPODS: 0.35.0

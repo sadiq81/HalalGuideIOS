@@ -21,39 +21,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    __weak typeof(self) weakSelf = self;
+
     [self setUILabels];
 
     [self.distanceSlider handleControlEvents:UIControlEventValueChanged withBlock:^(UISlider *weakControl) {
-        int value = (int) weakControl.value;
-        weakControl.value = value;
-        if (value != 20) {
-            self.distanceLabel.text = [NSString stringWithFormat:@"%i km", value];
-        } else {
-            self.distanceLabel.text = @"Ubegrænset";
-        }
-
+        weakControl.value = [@(weakControl.value) intValue];
+        [self setDistanceLabelText];
     }];
 
     [self.reset handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
         [[DiningViewModel instance].categories removeAllObjects];
-        [self setUILabels];
+        [weakSelf setCountLabelText];
     }];
 
-    __weak typeof(self) weakSelf = self;
+
     [self.done setBlock:^(id weakSender) {
         [weakSelf dismissViewControllerAnimated:true completion:nil];
     }];
 }
 
 - (void)setUILabels {
-    int count = (int)[[DiningViewModel instance].categories count];
-    self.countLabel.text = [NSString stringWithFormat:@"%i", count];
+    [self setCountLabelText];
 
     self.porkSwitch.on = [DiningViewModel instance].showPork;
     self.alcoholSwitch.on = [DiningViewModel instance].showAlcohol;
     self.halalSwitch.on = [DiningViewModel instance].showNonHalal;
     self.distanceSlider.value = [DiningViewModel instance].maximumDistance;
-    self.distanceLabel.text = [NSString stringWithFormat:@"%i km", [DiningViewModel instance].maximumDistance];
+
+    [self setDistanceLabelText];
+}
+
+- (void)setCountLabelText {
+    int count = (int) [[DiningViewModel instance].categories count];
+    self.countLabel.text = [NSString stringWithFormat:@"%i", count];
+}
+
+- (void)setDistanceLabelText {
+    if (self.distanceSlider.value != 20) {
+        self.distanceLabel.text = [NSString stringWithFormat:@"%i km", (int) self.distanceSlider.value];
+    } else {
+        self.distanceLabel.text = @"Ubegrænset";
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -62,6 +71,7 @@
     [DiningViewModel instance].showNonHalal = self.halalSwitch.on;
     [DiningViewModel instance].maximumDistance = (int) self.distanceSlider.value;
 
+    [[DiningViewModel instance] reset];
     [[DiningViewModel instance] refreshLocations:true];
 }
 
@@ -82,7 +92,7 @@
         formSheet.cornerRadius = 8.0;
         formSheet.shouldDismissOnBackgroundViewTap = YES;
         formSheet.didDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
-            [self setUILabels];
+            [self setCountLabelText];
         };
     }
 }

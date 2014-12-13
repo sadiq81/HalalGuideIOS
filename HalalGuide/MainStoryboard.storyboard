@@ -109,7 +109,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Ckf-Qz-bhO" kind="push" identifier="DiningDetail" id="6HE-Ts-vYz"/>
+                                            <segue destination="JBd-9f-vCI" kind="push" identifier="DiningDetail" id="Dzf-BX-gdO"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="mosque" rowHeight="62" id="3pL-qF-Vxs" customClass="MosqueTableViewCell">
@@ -412,7 +412,7 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5 km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2jP-Rf-YsY">
-                                                <rect key="frame" x="166.00000007748605" y="19" width="140" height="21"/>
+                                                <rect key="frame" x="166" y="19" width="140" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
@@ -473,16 +473,16 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Navn" minimumFontSize="17" id="Geq-xg-rWm">
-                                                <rect key="frame" x="121.00000034314789" y="20" width="187" height="30"/>
+                                                <rect key="frame" x="121.00000016829547" y="20" width="187" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="0jE-H3-xoT" id="CTI-xP-9vN"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vej" minimumFontSize="17" id="LGW-5Q-Byj" customClass="HTAutocompleteTextField">
-                                                <rect key="frame" x="121" y="58" width="132" height="30"/>
+                                                <rect key="frame" x="120.9999993344148" y="58" width="132" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -707,157 +707,219 @@
             <point key="canvasLocation" x="2490" y="139"/>
         </scene>
         <!--Dining Detail View Controller-->
-        <scene sceneID="yjk-UI-jUq">
+        <scene sceneID="gGN-EE-K1U">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="Ckf-Qz-bhO" customClass="DiningDetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RHx-aP-mJ3">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="JBd-9f-vCI" customClass="DiningDetailViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" id="JUY-hp-AIS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" id="LvY-tW-Nj4">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" id="zYN-ka-HOH">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="2YK-Ee-Y2I">
-                                                <rect key="frame" x="16" y="90" width="163" height="17"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" tag="104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" id="0an-ly-X2Y" userLabel="pork" customClass="PorkImageView">
-                                                <rect key="frame" x="191" y="51" width="31" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="6"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" id="xtu-R2-TOF" userLabel="halal" customClass="HalalImageView">
-                                                <rect key="frame" x="271" y="51" width="31" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="205" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alkohol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U4D-kF-53U" customClass="AlcoholLabel">
-                                                <rect key="frame" x="228" y="88" width="39" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="206" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Halal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lxY-PQ-b43" customClass="HalalLabel">
-                                                <rect key="frame" x="271" y="88" width="31" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zqW-sX-bZT">
-                                                <rect key="frame" x="191" y="8" width="113" height="16"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m50-4F-0Le">
-                                                <rect key="frame" x="274" y="21" width="30" height="14"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Mxa-Rz-PfQ">
-                                                <rect key="frame" x="16" y="112" width="288" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Rapporter fejl">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cNq-Hq-M2d">
-                                                <rect key="frame" x="172" y="282" width="150" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Tilføj billede">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" id="uga-4B-ZXX" userLabel="images">
-                                                <rect key="frame" x="0.0" y="146" width="320" height="120"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" id="okn-Bw-IJz" userLabel="alcohol" customClass="AlcoholImageView">
-                                                <rect key="frame" x="232" y="51" width="31" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <view contentMode="scaleToFill" id="c5N-H1-aKq" customClass="EDStarRating">
-                                                <rect key="frame" x="16" y="62" width="163" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="204" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gris" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" id="goi-MO-a7H" customClass="PorkLabel">
-                                                <rect key="frame" x="191" y="88" width="31" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="201" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" id="vvh-dz-CSu">
-                                                <rect key="frame" x="16" y="8" width="163" height="16"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" tag="202" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address City" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" id="XJI-6r-5zw">
-                                                <rect key="frame" x="16" y="27" width="163" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="divider" id="cS3-Qt-Xwa">
-                                                <rect key="frame" x="0.0" y="105" width="320" height="15"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="divider" id="mYC-zL-lex">
-                                                <rect key="frame" x="0.0" y="274" width="320" height="15"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pn9-kl-5is">
-                                                <rect key="frame" x="0.0" y="282" width="150" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Tilføj anmeldelse">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="lhS-xz-cRY" kind="push" identifier="CreateReview" id="lgj-e5-fFF"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fhc-zk-Vlc">
+                            <size key="itemSize" width="320" height="89"/>
+                            <size key="headerReferenceSize" width="50" height="392"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReviewCell" id="2mL-0q-MJa" customClass="ReviewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="gL9-Ko-Bot">
+                                            <rect key="frame" x="46" y="8" width="100" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" id="Gza-tS-Krp" customClass="EDStarRating">
+                                            <rect key="frame" x="160.00000001254833" y="8" width="152" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vKB-gc-7l7">
+                                            <rect key="frame" x="8" y="34" width="304.00000001254836" height="47"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="TNE-kX-jCJ">
+                                            <rect key="frame" x="8" y="8" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="320" height="89"/>
+                                <connections>
+                                    <outlet property="profileImage" destination="TNE-kX-jCJ" id="O4C-ps-ASh"/>
+                                    <outlet property="rating" destination="Gza-tS-Krp" id="Ncw-4f-X0y"/>
+                                    <outlet property="review" destination="vKB-gc-7l7" id="1HZ-xT-FG1"/>
+                                    <outlet property="submitterName" destination="gL9-Ko-Bot" id="xD8-R7-8SW"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="placeholder" id="1lc-FR-JUP">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="0.0" height="0.0"/>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiningDetailTopView" id="VNW-EW-hvO" customClass="DiningDetailTopView">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="392"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <view tag="1" contentMode="scaleToFill" id="zYN-ka-HOH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="758"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="2YK-Ee-Y2I">
+                                            <rect key="frame" x="16" y="90" width="163" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="0an-ly-X2Y" userLabel="pork" customClass="PorkImageView">
+                                            <rect key="frame" x="191" y="51" width="31" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="6"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" tag="202" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xtu-R2-TOF" userLabel="halal" customClass="HalalImageView">
+                                            <rect key="frame" x="271" y="51" width="31" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="105" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alkohol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U4D-kF-53U" customClass="AlcoholLabel">
+                                            <rect key="frame" x="228" y="88" width="39" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="106" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Halal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lxY-PQ-b43" customClass="HalalLabel">
+                                            <rect key="frame" x="271" y="88" width="31" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zqW-sX-bZT">
+                                            <rect key="frame" x="191" y="8" width="113" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m50-4F-0Le">
+                                            <rect key="frame" x="274" y="21" width="30" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Mxa-Rz-PfQ">
+                                            <rect key="frame" x="16" y="112" width="288" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Rapporter fejl">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <view tag="401" contentMode="scaleToFill" id="uga-4B-ZXX" userLabel="images" customClass="iCarousel">
+                                            <rect key="frame" x="0.0" y="146" width="320" height="200"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" tag="201" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="okn-Bw-IJz" userLabel="alcohol" customClass="AlcoholImageView">
+                                            <rect key="frame" x="232" y="51" width="31" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gris" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" id="goi-MO-a7H" customClass="PorkLabel">
+                                            <rect key="frame" x="191" y="88" width="31" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" id="vvh-dz-CSu">
+                                            <rect key="frame" x="16" y="8" width="163" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address City" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" id="XJI-6r-5zw">
+                                            <rect key="frame" x="16" y="27" width="163" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="divider" id="cS3-Qt-Xwa">
+                                            <rect key="frame" x="0.0" y="105" width="320" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <button opaque="NO" tag="302" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cNq-Hq-M2d">
+                                            <rect key="frame" x="172" y="362" width="150" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Tilføj billede">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="divider" id="mYC-zL-lex">
+                                            <rect key="frame" x="0.0" y="354" width="320" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <button opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pn9-kl-5is">
+                                            <rect key="frame" x="0.0" y="362" width="150" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Tilføj anmeldelse">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="lhS-xz-cRY" kind="push" identifier="CreateReview" id="lgj-e5-fFF"/>
+                                            </connections>
+                                        </button>
+                                        <view tag="400" contentMode="scaleToFill" id="c5N-H1-aKq" customClass="EDStarRating">
+                                            <rect key="frame" x="16" y="62" width="163" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
+                            <connections>
+                                <outlet property="addPicture" destination="cNq-Hq-M2d" id="Du8-Tb-5Cd"/>
+                                <outlet property="addReview" destination="Pn9-kl-5is" id="N1k-V3-vNJ"/>
+                                <outlet property="address" destination="XJI-6r-5zw" id="tXc-9Z-lzI"/>
+                                <outlet property="alcoholImage" destination="okn-Bw-IJz" id="cLc-of-MN1"/>
+                                <outlet property="alcoholLabel" destination="U4D-kF-53U" id="32e-z2-anL"/>
+                                <outlet property="carousel" destination="uga-4B-ZXX" id="6BG-Zm-sed"/>
+                                <outlet property="category" destination="2YK-Ee-Y2I" id="BgT-kr-fn5"/>
+                                <outlet property="containerView" destination="zYN-ka-HOH" id="r4g-IG-GJV"/>
+                                <outlet property="distance" destination="zqW-sX-bZT" id="I3X-8N-Qhs"/>
+                                <outlet property="halalImage" destination="xtu-R2-TOF" id="nVX-HS-bIa"/>
+                                <outlet property="halalLabel" destination="lxY-PQ-b43" id="UOF-iy-J7M"/>
+                                <outlet property="name" destination="vvh-dz-CSu" id="Jy7-FS-Pia"/>
+                                <outlet property="porkImage" destination="0an-ly-X2Y" id="pzL-Ut-dJR"/>
+                                <outlet property="porkLabel" destination="goi-MO-a7H" id="3E4-aQ-RRS"/>
+                                <outlet property="rating" destination="c5N-H1-aKq" id="gBp-2y-7Te"/>
+                                <outlet property="report" destination="Mxa-Rz-PfQ" id="aB1-jV-svW"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="JBd-9f-vCI" id="pPa-nD-8mW"/>
+                            <outlet property="delegate" destination="JBd-9f-vCI" id="2eO-0v-L69"/>
+                        </connections>
+                    </collectionView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="sMa-Gj-Nqh"/>
-                    <connections>
-                        <outlet property="addPicture" destination="cNq-Hq-M2d" id="L2a-7N-QJK"/>
-                        <outlet property="addReview" destination="Pn9-kl-5is" id="AEH-Ww-ySU"/>
-                        <outlet property="address" destination="XJI-6r-5zw" id="55K-sf-Ub3"/>
-                        <outlet property="alcoholImage" destination="okn-Bw-IJz" id="Q6p-2S-yN9"/>
-                        <outlet property="alcoholLabel" destination="U4D-kF-53U" id="SYK-GK-1PD"/>
-                        <outlet property="category" destination="2YK-Ee-Y2I" id="Jx2-Iv-VS7"/>
-                        <outlet property="distance" destination="zqW-sX-bZT" id="f82-F3-hPP"/>
-                        <outlet property="halalImage" destination="xtu-R2-TOF" id="pN6-Yy-kY7"/>
-                        <outlet property="halalLabel" destination="lxY-PQ-b43" id="MSq-Hi-eqZ"/>
-                        <outlet property="name" destination="vvh-dz-CSu" id="2ze-dP-C1f"/>
-                        <outlet property="porkImage" destination="0an-ly-X2Y" id="xqF-2m-2gu"/>
-                        <outlet property="porkLabel" destination="goi-MO-a7H" id="eHV-Xm-7NO"/>
-                        <outlet property="rating" destination="c5N-H1-aKq" id="YgR-9s-dAb"/>
-                        <outlet property="report" destination="Mxa-Rz-PfQ" id="8Rl-FC-3Vc"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QHc-Dl-dJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <navigationItem key="navigationItem" id="ttq-cl-f0v"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EvO-fL-6TL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103" y="793"/>
+            <point key="canvasLocation" x="697" y="799"/>
         </scene>
         <!--Spisesteder-->
         <scene sceneID="NqT-7N-PKa">
@@ -948,7 +1010,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Ckf-Qz-bhO" kind="push" identifier="DiningDetail" id="b5P-2m-dam"/>
+                                            <segue destination="JBd-9f-vCI" kind="push" identifier="DiningDetail" id="SPP-c5-EFI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1092,8 +1154,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="b5P-2m-dam"/>
-        <segue reference="ZG9-AD-yQ5"/>
+        <segue reference="SPP-c5-EFI"/>
+        <segue reference="lgj-e5-fFF"/>
         <segue reference="0rB-JO-B8E"/>
     </inferredMetricsTieBreakers>
 </document>

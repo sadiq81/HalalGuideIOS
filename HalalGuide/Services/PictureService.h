@@ -18,6 +18,9 @@
 
 - (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion ;
 
+- (void)locationPicturesForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion;
+
 - (void)thumbnailForLocation:(Location*)location onCompletion:(PFArrayResultBlock)completion ;
+
 
 @end

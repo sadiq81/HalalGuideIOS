@@ -16,6 +16,8 @@
 
 @property (nonatomic, retain) NSNumber * creationStatus;
 @property (nonatomic, retain) PFFile * picture;
+@property (nonatomic) NSUInteger width;
+@property (nonatomic) NSUInteger height;
 @property (nonatomic, retain) NSString * locationId;
 @property (nonatomic, retain) NSString * submitterId;
 

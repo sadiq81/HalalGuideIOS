@@ -20,6 +20,9 @@
 #import "UIAlertController+Blocks.h"
 #import "CreateReviewViewModel.h"
 
+//TODO Opening hours
+//TODO Onboarding - Take picture
+
 @implementation CreateDiningViewController {
     IQKeyboardReturnKeyHandler *returnKeyHandler;
 }

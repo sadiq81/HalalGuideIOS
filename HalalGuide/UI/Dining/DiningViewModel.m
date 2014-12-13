@@ -15,7 +15,7 @@
 
 }
 
-@synthesize locations, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories;
+@synthesize locations, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories, page;
 
 + (DiningViewModel *)instance {
     static DiningViewModel *_instance = nil;
@@ -29,7 +29,10 @@
             _instance.showAlcohol = true;
             _instance.showNonHalal = true;
 
-            _instance.categories = [[NSMutableArray alloc] init];
+            _instance.categories = [NSMutableArray new];
+            _instance.locations = [NSMutableArray new];
+
+            _instance.page = 0;
 
         }
     }
@@ -39,12 +42,9 @@
 
 - (PFQuery *)query {
 
-
-#warning set creationStatus == 1 in production
-
     PFQuery *query = [PFQuery queryWithClassName:kLocationTableName];
-    [query whereKey:@"locationType" equalTo:@(0)];
-    [query whereKey:@"creationStatus" equalTo:@(0)];
+    [query whereKey:@"locationType" equalTo:@(LocationTypeDining)];
+    [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
 
     if (!self.showPork) {
         [query whereKey:@"pork" equalTo:@(self.showPork)];
@@ -66,7 +66,16 @@
         [query whereKey:@"categories" containedIn:self.categories];
     }
 
+    //Paging controls
+    query.limit = 20;
+    query.skip = self.page * 20;
+
     return query;
+}
+
+- (void)reset {
+    self.locations = [NSMutableArray new];
+    self.page = 0;
 }
 
 - (void)locationChanged:(NSNotification *)notification {
@@ -80,9 +89,9 @@
     }
 }
 
-- (void)refreshLocations:(BOOL) firstLoad {
+- (void)refreshLocations:(BOOL)firstLoad {
 
-    if (firstLoad){
+    if (firstLoad) {
         [SVProgressHUD showWithStatus:@"Henter" maskType:SVProgressHUDMaskTypeGradient];
     }
 
@@ -97,8 +106,13 @@
 
         } else {
 
-            self.locations = objects;
-            [self calculateDistances:self.locations sortByDistance:false];
+            if (self.page != 0){
+                [self.locations addObjectsFromArray:objects];
+            } else{
+                self.locations = [[NSMutableArray alloc] initWithArray:objects];
+            }
+
+            [self calculateDistances:self.locations sortByDistance:true];
         }
 
         if ([self.delegate respondsToSelector:@selector(reloadTable)]) {

@@ -16,3 +16,5 @@ pod 'UIAlertController+Blocks'
 pod 'EDStarRating'
 pod 'SVProgressHUD', :head
 pod 'Facebook-iOS-SDK', '~> 3.21'
+pod 'CCBottomRefreshControl'
+pod 'iCarousel'

@@ -7,51 +7,142 @@
 //
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
-#import <MapKit/MapKit.h>
-#import <SVProgressHUD/SVProgressHUD.h>
+#import <UIAlertController+Blocks/UIAlertController+Blocks.h>
+#import <ParseUI/ParseUI.h>
 #import "DiningDetailViewController.h"
-#import "DiningDetailViewModel.h"
-#import "HalalGuideNumberFormatter.h"
 #import "CreateReviewViewModel.h"
-#import "UIAlertController+Blocks.h"
+#import "Review.h"
 #import "CreateDiningViewModel.h"
+#import "DiningDetailTopView.h"
+#import "HalalGuideNumberFormatter.h"
+#import "LocationPicture.h"
+#import "ReviewCell.h"
 
+//TODO Onboarding - Tap for call/directions
 @implementation DiningDetailViewController {
-    UIImage *image;
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    __weak typeof(self) weakSelf = self;
-
-    [self.addPicture handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
-        [[DiningDetailViewModel instance] getPicture:weakSelf withDelegate:weakSelf];
-    }];
-
-    [self.report handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
-        [[DiningDetailViewModel instance] report:weakSelf];
-    }];
-
-    [self setupUIValues];
+    [DiningDetailViewModel instance].reviewDelegate = self;
+    [DiningDetailViewModel instance].pictureDelegate = self;
 }
 
-- (void)setupUIValues {
-    Location *loc = [DiningDetailViewModel instance].location;
-    self.name.text = loc.name;
-    self.address.text = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
-    [self.address addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
-    self.distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:loc.distance];
-    self.category.text = [loc categoriesString];
-    [self.porkImage configureViewForLocation:loc];
-    [self.alcoholImage configureViewForLocation:loc];
-    [self.halalImage configureViewForLocation:loc];
-    [self.porkLabel configureViewForLocation:loc];
-    [self.alcoholLabel configureViewForLocation:loc];
-    [self.halalLabel configureViewForLocation:loc];
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    [super prepareForSegue:segue sender:sender];
+    if ([segue.identifier isEqualToString:@"CreateReview"]) {
+        [CreateReviewViewModel instance].reviewedLocation = [DiningDetailViewModel instance].location;
+    }
 
 }
 
+#pragma mark - Mail composer
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+
+    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - ImagePicker
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+
+    [self.parentViewController dismissViewControllerAnimated:true completion:nil];
+
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+
+    //TODO Ugly hack, fix with TODO below
+    [CreateDiningViewModel instance].createdLocation = [DiningDetailViewModel instance].location;
+    [[CreateDiningViewModel instance] savePicture:image onCompletion:^(CreateEntityResult result) {
+        [CreateDiningViewModel instance].createdLocation = nil;
+        //TODO Error handling like CreateDiningViewController, share code somehow
+    }];
+}
+
+#pragma mark - CollectionView
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    NSInteger reviews = [[[DiningDetailViewModel instance] reviews] count];
+    if (reviews == 0) {
+        return 1;
+    } else {
+        return reviews;
+    }
+}
+
+- (void)reloadReviews {
+
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    UICollectionViewCell *cell;
+    if ([[[DiningDetailViewModel instance] reviews] count] > 0) {
+        Review *review = [[[DiningDetailViewModel instance] reviews] objectAtIndex:indexPath.item];
+        ReviewCell *reviewCell = (ReviewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kReviewCellIdentifer forIndexPath:indexPath];
+        reviewCell.submitterName.text = review.submitterId;
+
+        reviewCell.rating.rating = [review.rating floatValue];
+        reviewCell.rating.starImage = [UIImage imageNamed:@"starSmall"];
+        reviewCell.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
+
+        reviewCell.review.text = review.review;
+        cell = reviewCell;
+    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"placeholder" forIndexPath:indexPath];
+    }
+    return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+
+    UICollectionReusableView *reusableView = nil;
+
+    if (kind == UICollectionElementKindSectionHeader) {
+
+        //TODO Bad design
+        self.headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@ "DiningDetailTopView" forIndexPath:indexPath];
+
+        Location *loc = [DiningDetailViewModel instance].location;
+
+        self.headerView.carousel.type = iCarouselTypeCoverFlow2;
+        //headerView.carousel.delegate = self;
+        self.headerView.carousel.dataSource = self;
+
+        self.headerView.name.text = loc.name;
+        self.headerView.address.text = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
+        [self.headerView.address addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
+        self.headerView.distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:loc.distance];
+        self.headerView.category.text = [loc categoriesString];
+        [self.headerView.porkImage configureViewForLocation:loc];
+        [self.headerView.alcoholImage configureViewForLocation:loc];
+        [self.headerView.halalImage configureViewForLocation:loc];
+        [self.headerView.porkLabel configureViewForLocation:loc];
+        [self.headerView.alcoholLabel configureViewForLocation:loc];
+        [self.headerView.halalLabel configureViewForLocation:loc];
+
+        __weak typeof(self) weakSelf = self;
+        [self.headerView.addPicture handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
+            [[DiningDetailViewModel instance] getPicture:weakSelf withDelegate:weakSelf];
+        }];
+        [self.headerView.report handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
+            [[DiningDetailViewModel instance] report:weakSelf];
+        }];
+
+        reusableView = self.headerView;
+    }
+
+    return reusableView;
+}
+
+//TODO Select whether to call restaurant or open in maps
 - (void)openMaps:(UITapGestureRecognizer *)recognizer {
 
     [UIAlertController showAlertInViewController:self withTitle:@"Find vej" message:[NSString stringWithFormat:@"Vil du åbne Kort og få vist vejen til %@", [DiningDetailViewModel instance].location.name] cancelButtonTitle:@"Ellers tak" destructiveButtonTitle:nil otherButtonTitles:@[@"Ja tak"] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
@@ -75,34 +166,71 @@
     }];
 }
 
-#pragma mark - Navigation
+#pragma mark - CollectionView - Pictures
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [super prepareForSegue:segue sender:sender];
-    if ([segue.identifier isEqualToString:@"CreateReview"]) {
-        [CreateReviewViewModel instance].reviewedLocation = [DiningDetailViewModel instance].location;
+- (void)reloadCollectionView {
+
+    [self.headerView.carousel reloadData];
+
+}
+
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
+    return [[DiningDetailViewModel instance].locationPictures count];
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
+
+    PFImageView *temp;
+    LocationPicture *picture = [[DiningDetailViewModel instance] pictureForRow:index];
+
+    if (view == nil) {
+        view = temp = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
+        temp.contentMode = UIViewContentModeScaleAspectFit;
     }
+    //TODO Adjust frame so that portrait and landspace pictures are both max height
+    temp.image = [UIImage imageNamed:@"dining"];
+    temp.file = picture.picture;
+    [temp loadInBackground];
 
+    return view;
 }
 
-#pragma mark - ImagePicker
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissViewControllerAnimated:true completion:nil];
-    image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    //TODO Ugly hack, fix with TODO below
-    [CreateDiningViewModel instance].createdLocation = [DiningDetailViewModel instance].location;
-    [[CreateDiningViewModel instance] savePicture:image onCompletion:^(CreateEntityResult result) {
-        [CreateDiningViewModel instance].createdLocation = nil;
-        //TODO Error handling like CreateDiningViewController, share code somehow
-    }];
+- (void)reloadCollectionView:(NSUInteger)oldItemsCount insertNewItems:(NSUInteger)newItemsCount {
+
+    @try
+    {
+
+    [self.collectionView
+            performBatchUpdates:^{
+
+                NSMutableArray *arrayWithIndexPathsDelete = [NSMutableArray array];
+                NSMutableArray *arrayWithIndexPathsInsert = [NSMutableArray array];
+
+                //If empty we have a placeholder we need to remove
+                if (oldItemsCount == 0) {
+                    [arrayWithIndexPathsDelete addObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+                } else {
+                    for (int item = 0; item < oldItemsCount; item++) {
+                        [arrayWithIndexPathsDelete addObject:[NSIndexPath indexPathForRow:item inSection:0]];
+                    }
+                }
+
+                [self.collectionView deleteItemsAtIndexPaths:arrayWithIndexPathsDelete];
+
+                for (int i = 0; i < newItemsCount; i++) {
+                    [arrayWithIndexPathsInsert addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+                }
+
+                [self.collectionView insertItemsAtIndexPaths:arrayWithIndexPathsInsert];
+
+            } completion:nil];
+
+    }
+    @catch (NSException *except)
+    {
+        NSLog(@"DEBUG: failure to batch update.  %@", except.description);
+    }
 }
-
-#pragma mark - Mail composer
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 @end

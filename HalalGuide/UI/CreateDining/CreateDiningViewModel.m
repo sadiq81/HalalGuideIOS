@@ -193,6 +193,7 @@
         [SVProgressHUD dismiss];
 
         if (error) {
+            //TODO Error message incorrect since location is already saved
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(CreateEntityResultCouldNotUploadFile), nil) maskType:SVProgressHUDMaskTypeGradient];
             [[ErrorReporting instance] reportError:error];
             completion(CreateEntityResultCouldNotUploadFile);

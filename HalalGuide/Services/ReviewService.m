@@ -3,7 +3,6 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
 #import "ReviewService.h"
 #import "Location.h"
 
@@ -29,9 +28,10 @@
 
 - (void)reviewsForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion {
     PFQuery *query = [PFQuery queryWithClassName:kReviewTableName];
+    //query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    [query whereKey:@"creationStatus" equalTo:@(1)];
     [query whereKey:@"locationId" equalTo:location.objectId];
     [query findObjectsInBackgroundWithBlock:completion];
 }
-
 
 @end
