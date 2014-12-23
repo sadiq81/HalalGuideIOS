@@ -20,7 +20,7 @@
 
 @property(nonatomic, retain) NSMutableArray *locations;
 @property id <DiningViewModelDelegate> delegate;
-@property(nonatomic) int maximumDistance;
+@property(nonatomic) NSUInteger maximumDistance;
 @property(nonatomic) bool showNonHalal;
 @property(nonatomic) bool showAlcohol;
 @property(nonatomic) bool showPork;

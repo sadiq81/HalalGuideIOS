@@ -19,7 +19,7 @@
 }
 
 + (NSString *)parseClassName {
-    return @"LocationPicture";
+    return kLocationPictureTableName;
 }
 
 @end

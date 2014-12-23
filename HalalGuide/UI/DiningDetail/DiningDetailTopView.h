@@ -48,5 +48,6 @@
 @property(strong) IBOutlet UIButton *addPicture;
 @property(strong) IBOutlet iCarousel *carousel;
 @property(strong) IBOutlet UIView *containerView;
+@property (strong, nonatomic) IBOutlet UILabel *noPicturesLabel;
 
 @end

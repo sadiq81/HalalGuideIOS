@@ -38,6 +38,8 @@
 
 - (LocationPicture *)pictureForRow:(NSUInteger)row;
 
+- (NSNumber *)averageRating;
+
 - (void)report:(UIViewController *)viewController;
 
 @end

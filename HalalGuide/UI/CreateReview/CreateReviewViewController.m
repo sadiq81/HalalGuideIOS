@@ -32,7 +32,7 @@
     }];
 
     [self.save setBlock:^(id weakSender) {
-        [SVProgressHUD showWithStatus:@"Gemmer i skyen" maskType:SVProgressHUDMaskTypeGradient];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
 
         [[CreateReviewViewModel instance] saveEntity:weakSelf.review.text rating:(int) weakSelf.rating.rating onCompletion:^(CreateEntityResult result) {
 
@@ -44,7 +44,7 @@
                     return;
                 } else {
 
-                    [SVProgressHUD showSuccessWithStatus:@"Din anmeldelse er gemt"];
+                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"reviewSaved", nil)];
                     [weakSelf finished];
                 }
             });

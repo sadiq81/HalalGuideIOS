@@ -21,7 +21,6 @@
 #import "CreateReviewViewModel.h"
 
 //TODO Opening hours
-//TODO Onboarding - Take picture
 
 @implementation CreateDiningViewController {
     IQKeyboardReturnKeyHandler *returnKeyHandler;
@@ -116,7 +115,7 @@
 
     switch (result) {
         case CreateEntityResultAddressDoesNotExist: {
-            [UIAlertController showAlertInViewController:self withTitle:@"GPS punkt for adressen er upræcist, vil du selv vælge den på kortet?" message:nil cancelButtonTitle:@"Nej, jeg prøver en anden adresse" destructiveButtonTitle:nil otherButtonTitles:@[@"Ja tak, lad mig vælge på kort"] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+                [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"GPSNotPreciseEnough", nil) message:nil cancelButtonTitle:NSLocalizedString(@"no", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"yes", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
 
                 if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
                     [[CreateDiningViewModel instance] findAddressByDescription:weakSelf.road.text roadNumber:weakSelf.roadNumber.text postalCode:weakSelf.postalCode.text onCompletion:^{
@@ -128,7 +127,7 @@
             break;
         }
         case CreateEntityResultCouldNotCreateEntityInDatabase: {
-            [UIAlertController showAlertInViewController:self withTitle:@"Prøv igen" message:nil cancelButtonTitle:@"Nej" destructiveButtonTitle:nil otherButtonTitles:@[@"Ja"] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"couldnotcreateindb", nil) message:nil cancelButtonTitle:NSLocalizedString(@"no", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"yes", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
                 if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
                     [self.navigationController popViewControllerAnimated:true];
                 } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
@@ -140,7 +139,7 @@
             break;
         }
         case CreateEntityResultCouldNotUploadFile: {
-            [UIAlertController showAlertInViewController:self withTitle:@"Prøv igen" message:nil cancelButtonTitle:@"Nej" destructiveButtonTitle:nil otherButtonTitles:@[@"Ja"] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"couldnotuploadfile", nil) message:nil cancelButtonTitle:NSLocalizedString(@"no", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"yes", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
                 if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
                     [self.navigationController popViewControllerAnimated:true];
                 } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
@@ -152,7 +151,7 @@
             break;
         }
         case CreateEntityResultOk: {
-            [UIAlertController showAlertInViewController:self withTitle:@"OK" message:nil cancelButtonTitle:@"Færdig" destructiveButtonTitle:nil otherButtonTitles:@[@"Tilføj anmeldelse"] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"ok", nil) message:nil cancelButtonTitle:NSLocalizedString(@"done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"addReview", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
                 if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
                     [self.navigationController popViewControllerAnimated:true];
                 } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {

@@ -21,4 +21,6 @@
 @interface DiningDetailViewController : BaseCollectionViewController   <UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, DiningDetailReviewDelegate,iCarouselDataSource, iCarouselDelegate, DiningDetailPictureDelegate>
 
 @property (strong) DiningDetailTopView *headerView;
+
+- (void)openMaps:(UITapGestureRecognizer *)recognizer;
 @end

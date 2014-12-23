@@ -15,14 +15,14 @@
 
 - (void)configure:(Location *)location {
 
-    PFImageView *thumbNail = (PFImageView *) [self.contentView viewWithTag:101];
+    UIImageView *thumbNail = (UIImageView *) [self.contentView viewWithTag:101];
     thumbNail.image = [UIImage imageNamed:[self placeholderImageName]];
 
     [[PictureService instance] thumbnailForLocation:location onCompletion:^(NSArray *objects, NSError *error) {
-        if (objects != nil && [objects count] == 1){
+        if (objects != nil && [objects count] == 1) {
             LocationPicture *picture = [objects firstObject];
-            thumbNail.file = (PFFile *)picture.picture;
-            [thumbNail loadInBackground];
+            NSString *url = picture.picture.url;
+            [thumbNail sd_setImageWithURL:[[NSURL alloc] initWithString:url]];
         }
     }];
 

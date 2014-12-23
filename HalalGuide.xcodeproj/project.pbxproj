@@ -40,17 +40,22 @@
 		C596B0D9F593DF35F27ADC0C /* KeyChainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1C53625DF2818FA59EF /* KeyChainService.m */; };
 		C596B14BABF589FCAC939602 /* CreateDiningViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B21D6C38E6FAFD9C1FE1 /* CreateDiningViewModel.m */; };
 		C596B1B34978AF18E4D554AC /* UILabel+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B108D40A5F53EA841C5D /* UILabel+Extensions.m */; };
+		C596B1F5A5B4EA5CAF4E59A1 /* ProfileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B2FC8EC8496A380C0223 /* ProfileInfo.m */; };
 		C596B2078F8F1D549C4186A9 /* MosqueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BFB60717839658B16FF5 /* MosqueTableViewCell.m */; };
 		C596B28B3236C3D70724025F /* CreateReviewViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B2A4EE405E5B07E7107E /* CreateReviewViewModel.m */; };
 		C596B2A131DC27AC871E92BC /* ReviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B7CF65914898A7E6702F /* ReviewService.m */; };
 		C596B2E1351E1EAC7E9D30AF /* FrontPageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BA6A2FFAA13B82F58EBC /* FrontPageViewModel.m */; };
 		C596B365C831FAD6A86FE951 /* NSMutableString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B17ED43937F79A5759EE /* NSMutableString+Extensions.m */; };
+		C596B3E2D807AC9BF26E753F /* ProfileInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B03CCC893D655B457A29 /* ProfileInfoService.m */; };
 		C596B4189B61146F99B85856 /* LocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B395AB61E08F8F3A6463 /* LocationTableViewCell.m */; };
 		C596B42919399432C0B3AD9F /* HalalGuideImageViews.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B81ACA6EECA8A88D5DA0 /* HalalGuideImageViews.m */; };
 		C596B4478E3D17085F49445F /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B27002419226C56B97EB /* LocationService.m */; };
+		C596B49078BB7FEFC087204A /* HalalGuideDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B89248EE903E929F79B1 /* HalalGuideDateFormatter.m */; };
 		C596B4B48329DF5997D66820 /* DiningTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B89AA2BBE23BFF3CC6C4 /* DiningTableViewCell.m */; };
 		C596B4C2CE2BCCAD899D42B7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C596B05F356CDEA3499310EB /* MainStoryboard.storyboard */; };
 		C596B527D5161C611CF5524E /* NSLocale+iOS8.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BDEB471B1CAC691EE934 /* NSLocale+iOS8.m */; };
+		C596B6434DE318E0744ACB01 /* ReviewDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B492BF85F9FF0436DBD8 /* ReviewDetailViewModel.m */; };
+		C596B6AB3FEB0CCFBB49E279 /* HalalGuideOnboarding.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BBFB5C5F15D132E4FB8E /* HalalGuideOnboarding.m */; };
 		C596B6F2B07B666F6BE4742D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B4E9CC97591CF8CF04F8 /* main.m */; };
 		C596B7108E18D52D31CE8DB1 /* DiningDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B6A7A045EBA52A0DC9FA /* DiningDetailTopView.m */; };
 		C596B759B3AC1C91AB3CB4A9 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B0A96756F6C064E85396 /* KeychainWrapper.m */; };
@@ -65,6 +70,7 @@
 		C596B95FE3E0FB5A0B0AC9B8 /* HalalGuideLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BDF952304291A766A0B0 /* HalalGuideLabels.m */; };
 		C596B970F2A9B9367DD8F292 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B21B5A6B8B7A9AB721D7 /* NSString+Extensions.m */; };
 		C596B994E8D83F0CFCC43A4B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C596B6652B392F90E4C7F499 /* Images.xcassets */; };
+		C596B999CB7E7147FCB7A81F /* PFUser+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3120E0141D7705DB18A /* PFUser+Extension.m */; };
 		C596B9DC8D40EB2F77F50986 /* DiningDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE3B3A5B60189D1D1699 /* DiningDetailViewController.m */; };
 		C596BA33737001D3108C340F /* ShopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BA5A80257D3B9F034B78 /* ShopTableViewCell.m */; };
 		C596BA362EA74D49E1ADA97E /* CreateReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BB2A29C69C97018BE604 /* CreateReviewViewController.m */; };
@@ -72,11 +78,13 @@
 		C596BAC431971EE457E2AC67 /* AddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B9236BE5EB90B765FFA9 /* AddressService.m */; };
 		C596BAC926A22C2B286BC14F /* PictureService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B5C2EFA65F106D065A85 /* PictureService.m */; };
 		C596BADDA4BE97A94610CE1F /* UIImage+Transformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B75CA653650DB3D05A03 /* UIImage+Transformation.m */; };
+		C596BCDFB902FAF18D51A1AB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC841F23A6433FB59C83 /* SettingsViewController.m */; };
 		C596BD96EFEBDDC2BA7E3281 /* HalalGuideSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3738DE751A198964235 /* HalalGuideSettings.m */; };
 		C596BDC0C328C004265F89E0 /* DiningDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B781676517BC117FF418 /* DiningDetailViewModel.m */; };
 		C596BDCD9AA05B4831467552 /* BaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC7A9C8BDF58ABC8FB72 /* BaseCollectionViewController.m */; };
 		C596BDF45FFD32F85D11DB23 /* ErrorReporting.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BA06D0C7BB36204E5D3D /* ErrorReporting.m */; };
 		C596BE2155B2EC68340FF870 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B75C6536409252A6F0EA /* AppDelegate.m */; };
+		C596BE22F26B79E7CBB7BB10 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B73877CA533CA6591101 /* ReviewDetailViewController.m */; };
 		C596BE3F86C6A8EB1EFA87EB /* CoordinatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BF9581A8E814E1A7FCED /* CoordinatePickerViewController.m */; };
 		C596BE80D7EB2528F3711E98 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B301F910FB26DFD041FD /* BaseViewModel.m */; };
 		C596BF2062C7A1A6BF71D84A /* HalalGuideNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B24BA9AE85B76AA003C0 /* HalalGuideNumberFormatter.m */; };
@@ -137,13 +145,16 @@
 		C596B009EEE9275A43EF3CB6 /* DiningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningViewController.m; sourceTree = "<group>"; };
 		C596B02C31F0A3EAC5021006 /* CreateReviewViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReviewViewModel.h; sourceTree = "<group>"; };
 		C596B03AB92D97D71B333FB4 /* DiningTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningTableViewCell.h; sourceTree = "<group>"; };
+		C596B03CCC893D655B457A29 /* ProfileInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileInfoService.m; sourceTree = "<group>"; };
 		C596B046E18BFB1A22B12FAA /* DiningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningViewController.h; sourceTree = "<group>"; };
 		C596B05F356CDEA3499310EB /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = HalalGuide/MainStoryboard.storyboard; sourceTree = SOURCE_ROOT; };
 		C596B0A96756F6C064E85396 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = SOURCE_ROOT; };
 		C596B0B6E24F835EE6935E48 /* FrontPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontPageViewController.h; sourceTree = "<group>"; };
+		C596B0CAC46D5333388FB1F7 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
 		C596B10671F66BE5CA315DA1 /* FilterDiningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterDiningViewController.m; sourceTree = "<group>"; };
 		C596B108D40A5F53EA841C5D /* UILabel+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extensions.m"; sourceTree = SOURCE_ROOT; };
 		C596B10C7FAB88D80A2501EA /* DiningDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningDetailViewController.h; sourceTree = "<group>"; };
+		C596B11428DF21ABD2A7916F /* ReviewDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewModel.h; sourceTree = "<group>"; };
 		C596B17E0755B3E673311E25 /* AddressService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressService.h; sourceTree = "<group>"; };
 		C596B17ED43937F79A5759EE /* NSMutableString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Extensions.m"; sourceTree = SOURCE_ROOT; };
 		C596B1C53625DF2818FA59EF /* KeyChainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainService.m; sourceTree = "<group>"; };
@@ -155,12 +166,15 @@
 		C596B2A4EE405E5B07E7107E /* CreateReviewViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReviewViewModel.m; sourceTree = "<group>"; };
 		C596B2C7AD9F3D1C8A088F01 /* DiningDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningDetailViewModel.h; sourceTree = "<group>"; };
 		C596B2DDF0DC07043FC6C9D6 /* CreateDiningViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateDiningViewModel.h; sourceTree = "<group>"; };
+		C596B2FC8EC8496A380C0223 /* ProfileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileInfo.m; sourceTree = "<group>"; };
 		C596B301F910FB26DFD041FD /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
+		C596B3120E0141D7705DB18A /* PFUser+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+Extension.m"; sourceTree = SOURCE_ROOT; };
 		C596B327204C63F2A234B6A5 /* NSArray+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extensions.h"; sourceTree = SOURCE_ROOT; };
 		C596B3738DE751A198964235 /* HalalGuideSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideSettings.m; sourceTree = "<group>"; };
 		C596B37DBDD408BCB0B8A77C /* KeyChainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainService.h; sourceTree = "<group>"; };
 		C596B395AB61E08F8F3A6463 /* LocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableViewCell.m; sourceTree = "<group>"; };
 		C596B45290F26EA1EDD5FCCC /* FrontPageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontPageViewModel.h; sourceTree = "<group>"; };
+		C596B492BF85F9FF0436DBD8 /* ReviewDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewModel.m; sourceTree = "<group>"; };
 		C596B4CC9466EC8306FE455A /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
 		C596B4E9CC97591CF8CF04F8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C596B51276DE9033A418C1C3 /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = SOURCE_ROOT; };
@@ -169,8 +183,10 @@
 		C596B62B5AA2CB8C4E2BAB95 /* MosqueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosqueTableViewCell.h; sourceTree = "<group>"; };
 		C596B6652B392F90E4C7F499 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C596B6A7A045EBA52A0DC9FA /* DiningDetailTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningDetailTopView.m; sourceTree = "<group>"; };
+		C596B6AEE98BF10F36A5EE4F /* HalalGuideDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideDateFormatter.h; sourceTree = "<group>"; };
 		C596B6FEF1B885D146C1F943 /* FilterDiningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterDiningViewController.h; sourceTree = "<group>"; };
 		C596B71BF7FEBEC982AF2EC1 /* DiningViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningViewModel.m; sourceTree = "<group>"; };
+		C596B73877CA533CA6591101 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 		C596B75C6536409252A6F0EA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C596B75CA653650DB3D05A03 /* UIImage+Transformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Transformation.m"; sourceTree = SOURCE_ROOT; };
 		C596B77315FFE5969D3E701D /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -182,6 +198,7 @@
 		C596B8600A531F42063E1E4D /* UIImage+Transformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Transformation.h"; sourceTree = SOURCE_ROOT; };
 		C596B86B05EE4EBD3D4FCDEA /* ReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
 		C596B88F34BE12E8C170701C /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
+		C596B89248EE903E929F79B1 /* HalalGuideDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideDateFormatter.m; sourceTree = "<group>"; };
 		C596B89AA2BBE23BFF3CC6C4 /* DiningTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningTableViewCell.m; sourceTree = "<group>"; };
 		C596B9236BE5EB90B765FFA9 /* AddressService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressService.m; sourceTree = "<group>"; };
 		C596B925E44FBDA7021E332D /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
@@ -203,13 +220,17 @@
 		C596BB8F8B4660CD6FF18B10 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C596BBD30B5DFC72B2472129 /* BaseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewController.h; sourceTree = "<group>"; };
 		C596BBE3511283205B997FB3 /* LocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableViewCell.h; sourceTree = "<group>"; };
+		C596BBFB5C5F15D132E4FB8E /* HalalGuideOnboarding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideOnboarding.m; sourceTree = "<group>"; };
 		C596BC2F8E183942611E602F /* HalalGuideImageViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideImageViews.h; sourceTree = "<group>"; };
 		C596BC3435D995FE87D9DBD9 /* Adgangsadresse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Adgangsadresse.m; sourceTree = "<group>"; };
 		C596BC5EC5F9922BB4906549 /* Adgangsadresse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adgangsadresse.h; sourceTree = "<group>"; };
+		C596BC723A54BB0D50D90469 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		C596BC7A9C8BDF58ABC8FB72 /* BaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewController.m; sourceTree = "<group>"; };
+		C596BC841F23A6433FB59C83 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		C596BCBB613B0910AF633010 /* CoordinatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinatePickerViewController.h; sourceTree = "<group>"; };
 		C596BD19524238EFC52AEF00 /* DiningViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningViewModel.h; sourceTree = "<group>"; };
 		C596BD32247E2B4B929D6FE3 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = SOURCE_ROOT; };
+		C596BD68040F320233372101 /* HalalGuideOnboarding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideOnboarding.h; sourceTree = "<group>"; };
 		C596BD8156F9392A5A9104C9 /* ShopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewCell.h; sourceTree = "<group>"; };
 		C596BDBC265186FAE6BB6D8D /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		C596BDE533E21E62E90543D5 /* NSLocale+iOS8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+iOS8.h"; sourceTree = "<group>"; };
@@ -217,9 +238,12 @@
 		C596BDEB471B1CAC691EE934 /* NSLocale+iOS8.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+iOS8.m"; sourceTree = "<group>"; };
 		C596BDF952304291A766A0B0 /* HalalGuideLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideLabels.m; sourceTree = "<group>"; };
 		C596BE3B3A5B60189D1D1699 /* DiningDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningDetailViewController.m; sourceTree = "<group>"; };
+		C596BE5750691DFADB17984E /* ProfileInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileInfoService.h; sourceTree = "<group>"; };
 		C596BEBB98E1B438C022990F /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		C596BEE49E00FAAA770E6D23 /* NSMutableString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Extensions.h"; sourceTree = SOURCE_ROOT; };
 		C596BF103FAB3DE20495CDCB /* UILabel+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extensions.h"; sourceTree = SOURCE_ROOT; };
+		C596BF171EA6B628A88D5F8E /* PFUser+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFUser+Extension.h"; sourceTree = SOURCE_ROOT; };
+		C596BF18467A6A54197C93BB /* ProfileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileInfo.h; sourceTree = "<group>"; };
 		C596BF9581A8E814E1A7FCED /* CoordinatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinatePickerViewController.m; sourceTree = "<group>"; };
 		C596BFB60717839658B16FF5 /* MosqueTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MosqueTableViewCell.m; sourceTree = "<group>"; };
 		C596BFC95AE0551B4E7A31DD /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = SOURCE_ROOT; };
@@ -318,6 +342,8 @@
 				A10D9C181A15094900E7914A /* LocationPicture.m */,
 				C596BC3435D995FE87D9DBD9 /* Adgangsadresse.m */,
 				C596BC5EC5F9922BB4906549 /* Adgangsadresse.h */,
+				C596B2FC8EC8496A380C0223 /* ProfileInfo.m */,
+				C596BF18467A6A54197C93BB /* ProfileInfo.h */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -441,6 +467,17 @@
 			path = FrontPage;
 			sourceTree = "<group>";
 		};
+		C596B5F374F964CDDDB8BFB5 /* ReviewDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C596B73877CA533CA6591101 /* ReviewDetailViewController.m */,
+				C596B0CAC46D5333388FB1F7 /* ReviewDetailViewController.h */,
+				C596B492BF85F9FF0436DBD8 /* ReviewDetailViewModel.m */,
+				C596B11428DF21ABD2A7916F /* ReviewDetailViewModel.h */,
+			);
+			path = ReviewDetail;
+			sourceTree = "<group>";
+		};
 		C596B650D8A452A6B1FD534B /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +504,8 @@
 				C596BFC95AE0551B4E7A31DD /* UIView+Extensions.h */,
 				C596B108D40A5F53EA841C5D /* UILabel+Extensions.m */,
 				C596BF103FAB3DE20495CDCB /* UILabel+Extensions.h */,
+				C596B3120E0141D7705DB18A /* PFUser+Extension.m */,
+				C596BF171EA6B628A88D5F8E /* PFUser+Extension.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -507,6 +546,10 @@
 				C596B9BAE9FFF82DAA77ED1A /* HalalGuideSettings.h */,
 				C596B24BA9AE85B76AA003C0 /* HalalGuideNumberFormatter.m */,
 				C596B7F7192CA4ADB4DCF721 /* HalalGuideNumberFormatter.h */,
+				C596B89248EE903E929F79B1 /* HalalGuideDateFormatter.m */,
+				C596B6AEE98BF10F36A5EE4F /* HalalGuideDateFormatter.h */,
+				C596BBFB5C5F15D132E4FB8E /* HalalGuideOnboarding.m */,
+				C596BD68040F320233372101 /* HalalGuideOnboarding.h */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -523,6 +566,8 @@
 				C596B781614FDF6D913AB8A9 /* DiningDetail */,
 				C596B8EAD82E509B18EBA060 /* Storyboard */,
 				C596B23CCDB7BC9C91F746A3 /* Base */,
+				C596B5F374F964CDDDB8BFB5 /* ReviewDetail */,
+				C596BAA478151064D6A8744F /* Settings */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -533,6 +578,15 @@
 				C596B05F356CDEA3499310EB /* MainStoryboard.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		C596BAA478151064D6A8744F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C596BC841F23A6433FB59C83 /* SettingsViewController.m */,
+				C596BC723A54BB0D50D90469 /* SettingsViewController.h */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		C596BAAA14050B63FC726085 /* Services */ = {
@@ -550,6 +604,8 @@
 				C596B17E0755B3E673311E25 /* AddressService.h */,
 				C596BA06D0C7BB36204E5D3D /* ErrorReporting.m */,
 				C596B1DE435F257B01619E56 /* ErrorReporting.h */,
+				C596BE5750691DFADB17984E /* ProfileInfoService.h */,
+				C596B03CCC893D655B457A29 /* ProfileInfoService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -791,6 +847,14 @@
 				C596B7108E18D52D31CE8DB1 /* DiningDetailTopView.m in Sources */,
 				C596BDCD9AA05B4831467552 /* BaseCollectionViewController.m in Sources */,
 				C596B896E5FFBACE8438BC3E /* ReviewCell.m in Sources */,
+				C596B1F5A5B4EA5CAF4E59A1 /* ProfileInfo.m in Sources */,
+				C596BE22F26B79E7CBB7BB10 /* ReviewDetailViewController.m in Sources */,
+				C596B6434DE318E0744ACB01 /* ReviewDetailViewModel.m in Sources */,
+				C596B999CB7E7147FCB7A81F /* PFUser+Extension.m in Sources */,
+				C596B3E2D807AC9BF26E753F /* ProfileInfoService.m in Sources */,
+				C596B49078BB7FEFC087204A /* HalalGuideDateFormatter.m in Sources */,
+				C596BCDFB902FAF18D51A1AB /* SettingsViewController.m in Sources */,
+				C596B6AB3FEB0CCFBB49E279 /* HalalGuideOnboarding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

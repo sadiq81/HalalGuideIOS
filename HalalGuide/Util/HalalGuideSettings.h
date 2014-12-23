@@ -12,6 +12,18 @@
 
 + (HalalGuideSettings *)instance;
 
+- (NSUInteger)distanceFilter;
+
+- (void)setAlcoholFilter:(BOOL)alcohol;
+
+- (BOOL)porkFilter;
+
+- (void)setPorkFilter:(BOOL)pork;
+
+- (NSMutableArray *)categoriesFilter;
+
+- (void)setCategoriesFilter:(NSArray *)categories;
+
 - (NSDate *)locationLastUpdatedAt;
 
 - (void)setLocationsLastUpdatedAt;
@@ -24,4 +36,11 @@
 
 - (void)setReviewsLastUpdatedAt;
 
+- (void)setDistanceFilter:(NSUInteger)distance;
+
+- (BOOL)halalFilter;
+
+- (void)setHalalFilter:(BOOL)halal;
+
+- (BOOL)alcoholFilter;
 @end

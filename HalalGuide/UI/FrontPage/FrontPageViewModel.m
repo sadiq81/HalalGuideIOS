@@ -43,7 +43,7 @@
 - (void)refreshLocations:(BOOL) firstLoad {
 
     if (firstLoad){
-        [SVProgressHUD showWithStatus:@"Henter" maskType:SVProgressHUDMaskTypeGradient];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeGradient];
     }
 
     [[LocationService instance] lastTenLocations:^(NSArray *objects, NSError *error) {

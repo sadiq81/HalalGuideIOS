@@ -10,6 +10,7 @@
 #import "NSMutableString+Extensions.h"
 #import "SVProgressHUD.h"
 #import "ErrorReporting.h"
+#import "HalalGuideSettings.h"
 
 @implementation DiningViewModel {
 
@@ -24,12 +25,12 @@
         if (_instance == nil) {
             _instance = [[super alloc] init];
 
-            _instance.maximumDistance = 5;
-            _instance.showPork = true;
-            _instance.showAlcohol = true;
-            _instance.showNonHalal = true;
+            _instance.maximumDistance = (int) [HalalGuideSettings instance].distanceFilter;
+            _instance.showPork = [HalalGuideSettings instance].porkFilter;
+            _instance.showAlcohol = [HalalGuideSettings instance].alcoholFilter;
+            _instance.showNonHalal = [HalalGuideSettings instance].halalFilter;
 
-            _instance.categories = [NSMutableArray new];
+            _instance.categories = [HalalGuideSettings instance].categoriesFilter;
             _instance.locations = [NSMutableArray new];
 
             _instance.page = 0;
@@ -92,7 +93,7 @@
 - (void)refreshLocations:(BOOL)firstLoad {
 
     if (firstLoad) {
-        [SVProgressHUD showWithStatus:@"Henter" maskType:SVProgressHUDMaskTypeGradient];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeGradient];
     }
 
     [[LocationService instance] locationsByQuery:self.query onCompletion:^(NSArray *objects, NSError *error) {
@@ -106,13 +107,13 @@
 
         } else {
 
-            if (self.page != 0){
+            if (self.page != 0) {
                 [self.locations addObjectsFromArray:objects];
-            } else{
+            } else {
                 self.locations = [[NSMutableArray alloc] initWithArray:objects];
             }
 
-            [self calculateDistances:self.locations sortByDistance:true];
+            self.locations = [[NSMutableArray alloc] initWithArray:[self calculateDistances:self.locations sortByDistance:true]];
         }
 
         if ([self.delegate respondsToSelector:@selector(reloadTable)]) {

@@ -3,10 +3,18 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
+#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import "PictureService.h"
 #import "Location.h"
 #import "LocationPicture.h"
 #import "UIImage+Transformation.h"
+#import "ProfileInfo.h"
+#import "FBSession.h"
+#import "ErrorReporting.h"
+#import "FBAccessTokenData.h"
+#import "FBRequest.h"
+#import "PFUser+Extension.h"
 
 
 @implementation PictureService {
@@ -39,7 +47,7 @@
 
     //TODO Move to category
     NSMutableString *asciiCharacters = [NSMutableString string];
-    for (NSInteger i = 32; i < 127; i++) {
+    for (int i = 32; i < 127; i++) {
         if (i == 32 || (i >= 48 && i <= 57) || (i >= 65 && i <= 90) || (i >= 97 && i <= 122)) {
             [asciiCharacters appendFormat:@"%c", i];
         }
@@ -52,6 +60,7 @@
     picture.picture = [PFFile fileWithName:fileName data:UIImagePNGRepresentation(image)];
     [picture saveInBackgroundWithBlock:completion];
 }
+
 
 - (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion {
     //query.cachePolicy = kPFCachePolicyNetworkElseCache;
@@ -74,6 +83,4 @@
     query.limit = 1;
     [query findObjectsInBackgroundWithBlock:completion];
 }
-
-
 @end

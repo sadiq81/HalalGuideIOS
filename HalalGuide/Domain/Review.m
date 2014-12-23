@@ -18,7 +18,7 @@
 }
 
 + (NSString *)parseClassName {
-    return @"Review";
+    return kReviewTableName;
 }
 
 @end

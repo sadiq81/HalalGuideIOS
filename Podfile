@@ -18,3 +18,6 @@ pod 'SVProgressHUD', :head
 pod 'Facebook-iOS-SDK', '~> 3.21'
 pod 'CCBottomRefreshControl'
 pod 'iCarousel'
+pod 'ReactiveCocoa'
+pod 'CMPopTipView'
+#pod 'SCFacebook'

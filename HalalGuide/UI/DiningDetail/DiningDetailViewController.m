@@ -9,6 +9,7 @@
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import <UIAlertController+Blocks/UIAlertController+Blocks.h>
 #import <ParseUI/ParseUI.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "DiningDetailViewController.h"
 #import "CreateReviewViewModel.h"
 #import "Review.h"
@@ -17,10 +18,11 @@
 #import "HalalGuideNumberFormatter.h"
 #import "LocationPicture.h"
 #import "ReviewCell.h"
+#import "ReviewDetailViewModel.h"
+#import "IQUIView+Hierarchy.h"
 
 //TODO Onboarding - Tap for call/directions
 @implementation DiningDetailViewController {
-
 }
 
 - (void)viewDidLoad {
@@ -35,8 +37,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
     [super prepareForSegue:segue sender:sender];
+
     if ([segue.identifier isEqualToString:@"CreateReview"]) {
         [CreateReviewViewModel instance].reviewedLocation = [DiningDetailViewModel instance].location;
+    }
+    else if ([segue.identifier isEqualToString:@"ReviewDetails"]) {
+        NSIndexPath *selected = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
+        Review *review = [[[DiningDetailViewModel instance] reviews] objectAtIndex:selected.item];
+        [ReviewDetailViewModel instance].review = review;
     }
 
 }
@@ -76,24 +84,13 @@
     }
 }
 
-- (void)reloadReviews {
-
-}
-
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     UICollectionViewCell *cell;
     if ([[[DiningDetailViewModel instance] reviews] count] > 0) {
         Review *review = [[[DiningDetailViewModel instance] reviews] objectAtIndex:indexPath.item];
         ReviewCell *reviewCell = (ReviewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kReviewCellIdentifer forIndexPath:indexPath];
-        reviewCell.submitterName.text = review.submitterId;
-
-        reviewCell.rating.rating = [review.rating floatValue];
-        reviewCell.rating.starImage = [UIImage imageNamed:@"starSmall"];
-        reviewCell.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
-
-        reviewCell.review.text = review.review;
+        [reviewCell configure:review];
         cell = reviewCell;
     } else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"placeholder" forIndexPath:indexPath];
@@ -120,6 +117,12 @@
         self.headerView.address.text = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
         [self.headerView.address addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
         self.headerView.distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:loc.distance];
+
+        self.headerView.rating.starImage = [UIImage imageNamed:@"starSmall"];
+        self.headerView.rating.displayMode = EDStarRatingDisplayHalf;
+        self.headerView.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
+        self.headerView.rating.rating = 0;
+
         self.headerView.category.text = [loc categoriesString];
         [self.headerView.porkImage configureViewForLocation:loc];
         [self.headerView.alcoholImage configureViewForLocation:loc];
@@ -145,33 +148,42 @@
 //TODO Select whether to call restaurant or open in maps
 - (void)openMaps:(UITapGestureRecognizer *)recognizer {
 
-    [UIAlertController showAlertInViewController:self withTitle:@"Find vej" message:[NSString stringWithFormat:@"Vil du åbne Kort og få vist vejen til %@", [DiningDetailViewModel instance].location.name] cancelButtonTitle:@"Ellers tak" destructiveButtonTitle:nil otherButtonTitles:@[@"Ja tak"] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-        if (buttonIndex >= UIAlertControllerBlocksFirstOtherButtonIndex) {
-            PFGeoPoint *point = [[DiningDetailViewModel instance].location point];
-            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(point.latitude, point.longitude) addressDictionary:nil];
-            MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-            [mapItem setName:[DiningDetailViewModel instance].location.name];
+    [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"directions", nil)
+                                         message:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"directionsText", nil), [DiningDetailViewModel instance].location.name]
+                               cancelButtonTitle:NSLocalizedString(@"no", nil)
+                          destructiveButtonTitle:nil
+                               otherButtonTitles:@[NSLocalizedString(@"yes", nil)]
 
-            // Set the directions mode to "Driving"
-            // Can use MKLaunchOptionsDirectionsModeWalking instead
-            NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+                                        tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+                                            if (buttonIndex >= UIAlertControllerBlocksFirstOtherButtonIndex) {
+                                                PFGeoPoint *point = [[DiningDetailViewModel instance].location point];
+                                                MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(point.latitude, point.longitude) addressDictionary:nil];
+                                                MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+                                                [mapItem setName:[DiningDetailViewModel instance].location.name];
 
-            // Get the "Current User Location" MKMapItem
-            MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+                                                // Set the directions mode to "Driving"
+                                                // Can use MKLaunchOptionsDirectionsModeWalking instead
+                                                NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
 
-            // Pass the current location and destination map items to the Maps app
-            // Set the direction mode in the launchOptions dictionary
-            [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
-        }
-    }];
+                                                // Get the "Current User Location" MKMapItem
+                                                MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+
+                                                // Pass the current location and destination map items to the Maps app
+                                                // Set the direction mode in the launchOptions dictionary
+                                                [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
+                                            }
+                                        }];
 }
 
 #pragma mark - CollectionView - Pictures
 
 - (void)reloadCollectionView {
-
-    [self.headerView.carousel reloadData];
-
+    if ([[DiningDetailViewModel instance].locationPictures count] == 0) {
+        self.headerView.noPicturesLabel.hidden = false;
+    } else {
+        self.headerView.noPicturesLabel.hidden = true;
+        [self.headerView.carousel reloadData];
+    }
 }
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
@@ -180,17 +192,18 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
 
-    PFImageView *temp;
+    UIImageView *temp;
     LocationPicture *picture = [[DiningDetailViewModel instance] pictureForRow:index];
 
     if (view == nil) {
-        view = temp = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
+        view = temp = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
         temp.contentMode = UIViewContentModeScaleAspectFit;
+        temp.backgroundColor = [UIColor whiteColor];
     }
     //TODO Adjust frame so that portrait and landspace pictures are both max height
     temp.image = [UIImage imageNamed:@"dining"];
-    temp.file = picture.picture;
-    [temp loadInBackground];
+    NSString *url = picture.picture.url;
+    [temp sd_setImageWithURL:[[NSURL alloc] initWithString:url]];
 
     return view;
 }
@@ -198,39 +211,37 @@
 
 - (void)reloadCollectionView:(NSUInteger)oldItemsCount insertNewItems:(NSUInteger)newItemsCount {
 
-    @try
-    {
+    self.headerView.rating.rating = [[[DiningDetailViewModel instance] averageRating] floatValue];
 
-    [self.collectionView
-            performBatchUpdates:^{
+    [self.collectionView performBatchUpdates:^{
 
-                NSMutableArray *arrayWithIndexPathsDelete = [NSMutableArray array];
-                NSMutableArray *arrayWithIndexPathsInsert = [NSMutableArray array];
+        NSMutableArray *arrayWithIndexPathsDelete = [NSMutableArray array];
+        NSMutableArray *arrayWithIndexPathsInsert = [NSMutableArray array];
 
-                //If empty we have a placeholder we need to remove
-                if (oldItemsCount == 0) {
-                    [arrayWithIndexPathsDelete addObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-                } else {
-                    for (int item = 0; item < oldItemsCount; item++) {
-                        [arrayWithIndexPathsDelete addObject:[NSIndexPath indexPathForRow:item inSection:0]];
-                    }
-                }
+        //If empty we have a placeholder we need to remove
+        if (oldItemsCount == 0) {
+            [arrayWithIndexPathsDelete addObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+        } else {
+            for (int item = 0; item < oldItemsCount; item++) {
+                [arrayWithIndexPathsDelete addObject:[NSIndexPath indexPathForRow:item inSection:0]];
+            }
+        }
 
-                [self.collectionView deleteItemsAtIndexPaths:arrayWithIndexPathsDelete];
+        [self.collectionView deleteItemsAtIndexPaths:arrayWithIndexPathsDelete];
 
-                for (int i = 0; i < newItemsCount; i++) {
-                    [arrayWithIndexPathsInsert addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-                }
+        if (newItemsCount == 0) {
+            [arrayWithIndexPathsInsert addObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+        } else {
+            for (int i = 0; i < newItemsCount; i++) {
+                [arrayWithIndexPathsInsert addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+            }
+        }
 
-                [self.collectionView insertItemsAtIndexPaths:arrayWithIndexPathsInsert];
+        [self.collectionView insertItemsAtIndexPaths:arrayWithIndexPathsInsert];
 
-            } completion:nil];
+    }                             completion:nil];
 
-    }
-    @catch (NSException *except)
-    {
-        NSLog(@"DEBUG: failure to batch update.  %@", except.description);
-    }
 }
+
 
 @end

@@ -12,6 +12,8 @@
 #import "DiningTableViewCell.h"
 #import "FrontPageViewModel.h"
 #import "DiningDetailViewModel.h"
+#import "CMPopTipView.h"
+#import "HalalGuideOnboarding.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 
 //TODO Search bar for string searching fx name.
@@ -24,6 +26,20 @@
     [self configureTableView];
     [[DiningViewModel instance] refreshLocations:true];
     [DiningViewModel instance].delegate = self;
+
+    [self setupHints];
+}
+
+- (void)setupHints {
+
+    if ([[HalalGuideOnboarding instance] wasOnBoardingShow:kAddNewDiningOnBoardingButtonKey]) {
+        CMPopTipView *navBarLeftButtonPopTipView = [[CMPopTipView alloc] initWithMessage:NSLocalizedString(@"onBoardingAddNew", nil)];
+        navBarLeftButtonPopTipView.backgroundColor = [UIColor whiteColor];
+        navBarLeftButtonPopTipView.textColor = [UIColor darkTextColor];
+        [navBarLeftButtonPopTipView presentPointingAtBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    }
+
+
 }
 
 - (void)dealloc {

@@ -29,7 +29,7 @@
 - (void)reviewsForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion {
     PFQuery *query = [PFQuery queryWithClassName:kReviewTableName];
     //query.cachePolicy = kPFCachePolicyNetworkElseCache;
-    [query whereKey:@"creationStatus" equalTo:@(1)];
+    [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
     [query whereKey:@"locationId" equalTo:location.objectId];
     [query findObjectsInBackgroundWithBlock:completion];
 }

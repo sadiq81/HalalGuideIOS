@@ -14,13 +14,13 @@
 
 + (PictureService *)instance;
 
-- (void)savePicture:(UIImage*)image forLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion;
+- (void)savePicture:(UIImage *)image forLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion;
 
-- (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion ;
+- (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion;
 
 - (void)locationPicturesForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion;
 
-- (void)thumbnailForLocation:(Location*)location onCompletion:(PFArrayResultBlock)completion ;
+- (void)thumbnailForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion;
 
 
 @end

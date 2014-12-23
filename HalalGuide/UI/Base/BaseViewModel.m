@@ -13,6 +13,7 @@
 #import "PictureService.h"
 #import "KeyChainService.h"
 #import "ErrorReporting.h"
+#import "PFUser+Extension.h"
 
 static CLLocation *currentLocation;
 
@@ -61,9 +62,10 @@ static CLLocation *currentLocation;
         }
 
         if (sort) {
-            return [locations linq_sort:^id(Location *loc) {
+            NSArray *sorted = [locations linq_sort:^id(Location *loc) {
                 return loc.distance;
             }];
+            return sorted;
         }
     }
     return locations;
@@ -73,32 +75,28 @@ static CLLocation *currentLocation;
     return [[KeyChainService instance] isAuthenticated];
 }
 
-- (void)authenticate:(void (^)(PFUser *user, NSError *error))completion {
+- (void)authenticate:(PFBooleanResultBlock)completion {
 
     [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {
-        if (!user) {
-            completion(user, error);
+        if (user.isNew && !error) {
+            [PFUser storeProfileInfoForLoggedInUser:completion];
         } else {
-            completion(user, error);
-        }
-        if (error){
-            [[ErrorReporting instance] reportError:error];
+            completion(true, error);
         }
     }];
-
 }
 
 - (void)getPicture:(UIViewController *)viewController withDelegate:(id <UIImagePickerControllerDelegate>)delegate {
 
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Tilføj billede", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"addPicture", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 
-    UIAlertAction *takeImage = [UIAlertAction actionWithTitle:NSLocalizedString(@"Tag nyt billede", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *takeImage = [UIAlertAction actionWithTitle:NSLocalizedString(@"newPicture", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         pickImageBlock(delegate, viewController, UIImagePickerControllerSourceTypeCamera);
     }];
-    UIAlertAction *chooseImage = [UIAlertAction actionWithTitle:NSLocalizedString(@"Vælg billede", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *chooseImage = [UIAlertAction actionWithTitle:NSLocalizedString(@"choosePicture", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         pickImageBlock(delegate, viewController, UIImagePickerControllerSourceTypePhotoLibrary);
     }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"Fortryd", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"regret", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
     }];
 
     [alertController addAction:takeImage];

@@ -12,6 +12,7 @@
 #import "MZFormSheetSegue.h"
 #import "IQUIView+Hierarchy.h"
 #import "CategoriesViewController.h"
+#import "HalalGuideSettings.h"
 
 
 @implementation FilterDiningViewController {
@@ -61,15 +62,16 @@
     if (self.distanceSlider.value != 20) {
         self.distanceLabel.text = [NSString stringWithFormat:@"%i km", (int) self.distanceSlider.value];
     } else {
-        self.distanceLabel.text = @"Ubegrænset";
+        self.distanceLabel.text = NSLocalizedString(@"unlimited", nil);
     }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [DiningViewModel instance].showPork = self.porkSwitch.on;
-    [DiningViewModel instance].showAlcohol = self.alcoholSwitch.on;
-    [DiningViewModel instance].showNonHalal = self.halalSwitch.on;
-    [DiningViewModel instance].maximumDistance = (int) self.distanceSlider.value;
+    [DiningViewModel instance].showPork = [HalalGuideSettings instance].porkFilter = self.porkSwitch.on;
+    [DiningViewModel instance].showAlcohol = [HalalGuideSettings instance].alcoholFilter = self.alcoholSwitch.on;
+    [DiningViewModel instance].showNonHalal = [HalalGuideSettings instance].halalFilter = self.halalSwitch.on;
+    [DiningViewModel instance].maximumDistance = [HalalGuideSettings instance].distanceFilter = (NSUInteger) self.distanceSlider.value;
+    [HalalGuideSettings instance].categoriesFilter = [DiningViewModel instance].categories;
 
     [[DiningViewModel instance] reset];
     [[DiningViewModel instance] refreshLocations:true];
@@ -96,10 +98,6 @@
         };
     }
 }
-
-
-#pragma mark - TableView
-
 
 #pragma mark - UINavigationBarDelegate
 

@@ -7,6 +7,12 @@
 #define kPicturesLastUpdatedKey @"picturesLastupdated"
 #define kReviewsLastUpdatedKey @"reviewsLastupdated"
 
+#define kDistanceFilterKey @"distanceFilter"
+#define kHalalFilterKey @"halalFilter"
+#define kAlcoholFilterKey @"alcoholFilter"
+#define kPorkFilterKey @"porkFilter"
+#define kCategoriesFilterKey @"categoriesFilter"
+
 #import "HalalGuideSettings.h"
 
 @implementation HalalGuideSettings {
@@ -26,6 +32,52 @@
     }
 
     return _instance;
+}
+
+- (NSUInteger)distanceFilter {
+    NSUInteger distance = [self.defaults integerForKey:kDistanceFilterKey];
+    return distance;
+}
+
+- (void)setDistanceFilter:(NSUInteger)distance {
+    [self.defaults setInteger:distance forKey:kDistanceFilterKey];
+}
+
+- (BOOL)halalFilter {
+    BOOL halal = [self.defaults boolForKey:kHalalFilterKey];
+    return halal;
+}
+
+- (void)setHalalFilter:(BOOL)halal {
+    [self.defaults setBool:halal forKey:kHalalFilterKey];
+}
+
+- (BOOL)alcoholFilter {
+    BOOL alcohol = [self.defaults boolForKey:kAlcoholFilterKey];
+    return alcohol;
+}
+
+- (void)setAlcoholFilter:(BOOL)alcohol {
+    [self.defaults setBool:alcohol forKey:kAlcoholFilterKey];
+}
+
+- (BOOL)porkFilter {
+    BOOL pork = [self.defaults boolForKey:kPorkFilterKey];
+    return pork;
+}
+
+- (void)setPorkFilter:(BOOL)pork {
+    [self.defaults setBool:pork forKey:kPorkFilterKey];
+}
+
+- (NSMutableArray *)categoriesFilter {
+    NSArray *categories = [self.defaults arrayForKey:kCategoriesFilterKey];
+    NSMutableArray *mutableCategories = [[NSMutableArray alloc] initWithArray:categories];
+    return mutableCategories;
+}
+
+- (void)setCategoriesFilter:(NSArray *)categories {
+    [self.defaults setObject:categories forKey:kCategoriesFilterKey];
 }
 
 - (NSDate *)locationLastUpdatedAt {

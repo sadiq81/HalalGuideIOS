@@ -75,8 +75,16 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "wok" = "Wok";
 
 "ok" = "Ok";
-"couldnotcreateindb" = "Kunne ikke kontakte databasen";
-"couldnotuploadfile" = "Kunne ikke kontakte serveren";
+"done" = "Færdig";
+"addReview" = "Tilføj anmeldelse";
+"regret" = "Fortryd";
+"no" = "Nej";
+"yes" = "Ja";
+"directions" = "Find vej";
+"directionsText" = "Vil du åbne Kort og få vist vejen til"
+
+"couldnotcreateindb" = "Kunne ikke kontakte databasen, prøv igen?";
+"couldnotuploadfile" = "Kunne ikke uploade billede, prøv igen?";
 "addressdoesnotexists" = "Adressen findes ikke ";
 "error" = "Ukendt fejl";
 
@@ -93,3 +101,18 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "dining" = "Spisesteder";
 "mosque" = "Moske";
 "shop" = "Handle";
+
+"loggingIn" = "Logger ind";
+"fetching"  = "Henter";
+"unlimited" = "Ubegrænset";
+"savingToTheCloud" = "Gemmer i skyen";
+"reviewSaved" = "Din anmeldelse er gemt";
+"estimatingAddress" = "Gætter din adresse";
+"invalidAddress" = "Ikke en gyldig adresse";
+"GPSNotPreciseEnough" = "GPS punkt for adressen er upræcist, vil du selv vælge den på kortet?";
+
+"addPicture" = "Tilføj billede";
+"newPicture" = "Tag nyt billede";
+"choosePicture" = "Vælg billede";
+
+"errorMailText" = "Der er følgende forkerte oplysninger: \nUDDYB HER!"

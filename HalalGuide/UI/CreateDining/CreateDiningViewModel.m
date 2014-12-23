@@ -98,7 +98,7 @@
 
 - (void)saveEntity:(NSString *)name road:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode city:(NSString *)city telephone:(NSString *)telephone website:(NSString *)website pork:(BOOL)pork alcohol:(BOOL)alcohol nonHalal:(BOOL)nonHalal image:(UIImage *)image onCompletion:(void (^)(CreateEntityResult result))completion {
 
-    [SVProgressHUD showWithStatus:@"Gemmer i skyen" maskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
 
     [[AddressService instance] doesAddressExist:road roadNumber:roadNumber postalCode:postalCode onCompletion:^(Adgangsadresse *address) {
 
@@ -172,7 +172,7 @@
 
 - (void)findAddressByDescription:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(void))completion {
 
-    [SVProgressHUD showWithStatus:@"Gætter din indtastede adresse" maskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"estimatingAddress", nil) maskType:SVProgressHUDMaskTypeGradient];
 
     [[AddressService instance] findPointForAddress:road roadNumber:roadNumber postalCode:postalCode onCompletion:^(CLPlacemark *place) {
 
@@ -186,14 +186,13 @@
 
 - (void)savePicture:(UIImage *)image onCompletion:(void (^)(CreateEntityResult result))completion {
 
-    [SVProgressHUD showWithStatus:@"Gemmer billede i skyen" maskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
 
     [[PictureService instance] savePicture:image forLocation:self.createdLocation onCompletion:^(BOOL succeeded, NSError *error) {
 
         [SVProgressHUD dismiss];
 
         if (error) {
-            //TODO Error message incorrect since location is already saved
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(CreateEntityResultCouldNotUploadFile), nil) maskType:SVProgressHUDMaskTypeGradient];
             [[ErrorReporting instance] reportError:error];
             completion(CreateEntityResultCouldNotUploadFile);

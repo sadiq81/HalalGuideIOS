@@ -15,6 +15,7 @@
 }
 
 //TODO Onboarding - Explain drag and drop
+//TODO Able to set new pin if guess is far away from actual position
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -82,7 +83,7 @@
                 [view.annotation setCoordinate:view.annotation.coordinate];
                 weakSelf.tempCoordinate = view.annotation.coordinate;
             } else {
-                [SVProgressHUD showErrorWithStatus:@"Ikke en gyldig adresse" maskType:SVProgressHUDMaskTypeGradient];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"invalidAddress", nil) maskType:SVProgressHUDMaskTypeGradient];
             }
         }];
 

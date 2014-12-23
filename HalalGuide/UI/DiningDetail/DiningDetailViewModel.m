@@ -38,12 +38,26 @@
     MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
     [mailController setToRecipients:@[@"tommy@eazyit.dk"]];
     [mailController setSubject:[NSString stringWithFormat:@"%@", self.location.objectId]];
-    [mailController setMessageBody:@"Der er følgende forkerte oplysninger: \nUDDYB HER!" isHTML:false];
+    [mailController setMessageBody:NSLocalizedString(@"errorMailText", nil) isHTML:false];
     mailController.mailComposeDelegate = viewController;
     [viewController presentViewController:mailController animated:true completion:nil];
 
 }
 
+- (NSNumber *)averageRating {
+    if (self.reviews && [self.reviews count] > 0) {
+
+        float average = 0;
+        for (Review *review in self.reviews) {
+            average += [review.rating floatValue];
+        }
+        average /= [self.reviews count];
+        return @(average);
+
+    } else {
+        return nil;
+    }
+}
 
 - (LocationPicture *)pictureForRow:(NSUInteger)row {
     return [self.locationPictures objectAtIndex:row];
@@ -57,10 +71,13 @@
     _location = location;
 
     self.locationPictures = [NSArray new];
+    self.reviews = [NSArray new];
+
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeNone];
 
     [[PictureService instance] locationPicturesForLocation:location onCompletion:^(NSArray *objects, NSError *error) {
 
-        [SVProgressHUD dismiss];
+        [SVProgressHUD popActivity];
 
         if (error) {
 
@@ -77,11 +94,13 @@
         }
     }];
 
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeNone];
+
     [[ReviewService instance] reviewsForLocation:location onCompletion:^(NSArray *objects, NSError *error) {
 
-        [SVProgressHUD dismiss];
+        [SVProgressHUD popActivity];
 
-        int oldNumberOfItems = [self.reviews count];
+        int oldNumberOfItems = (int) [self.reviews count];
 
         if (error) {
 
