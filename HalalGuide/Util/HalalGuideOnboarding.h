@@ -3,7 +3,13 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#define kAddNewDiningOnBoardingButtonKey @"AddNewDiningOnBoardingButton"
+#define kAddNewDiningOnBoardingButtonKey @"addNewDiningOnBoardingButton"
+#define kFilterDiningOnBoardingButtonKey @"filterDiningOnBoardingButton"
+#define kDiningCellPorkOnBoardingKey @"diningCellPorkOnBoarding"
+#define kDiningCellAlcoholOnBoardingKey @"diningCellAlcoholOnBoarding"
+#define kDiningCellHalalOnBoardingKey @"diningCellHalalOnBoarding"
+
+#define kDiningDetailAddressTelephoneOptionsOnBoardingKey @"diningDetailAddressTelephoneOptionsOnBoarding"
 
 #import <Foundation/Foundation.h>
 

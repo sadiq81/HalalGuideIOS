@@ -5,8 +5,14 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "CMPopTipView.h"
 
 @interface UIView (Extensions)
 
 -(void)resizeToFitSubviews;
+
+- (CMPopTipView *)showOnBoardingWithHintKey:(NSString *)hintKey withDelegate:(id <CMPopTipViewDelegate>)delegate;
+
+-(UITableView *) parentTableView;
+
 @end

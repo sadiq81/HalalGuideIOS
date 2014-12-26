@@ -7,3 +7,130 @@
   Created by Privat on 05/12/14.
   Copyright (c) 2014 Eazy It. All rights reserved.
 */
+
+"afghan" = "Afghan";
+"african"= "African";
+"american" = "American";
+"argentine" = "Argentine";
+"asian" = "Asian";
+"belgian" = "Belgian";
+"brazilian" = "Brazilian";
+"british" = "British";
+"buffet" = "Buffet";
+"burger" = "Burger";
+"bakery" = "Bakery";
+"bagel" = "Bagel";
+"bubbleThea" = "Bubble thea";
+"butcher" = "Butcher";
+"cafe" = "Cafe";
+"caribbean" = "Caribbean";
+"cupcake" = "Cupcake";
+"candy" = "Candy";
+"chinese" = "Chinese";
+"danish" = "Danish";
+"dessert" = "Dessert";
+"fish" = "Fish";
+"fruit" = "Fruit";
+"fastfood" = "Fast food";
+"french" = "French";
+"german" = "German";
+"grill" = "Grill";
+"greek" = "Greek";
+"iceCream" = "Icecream";
+"juice" = "Juice";
+"kiosk" = "Kiosk";
+"indian" = "Indian";
+"indonesian" = "Indonesian";
+"irish" = "Irish";
+"italian" = "Italian";
+"iranian" = "Iranian";
+"japanese" = "Japanese";
+"kebab" = "Kebab";
+"korean" = "Korean";
+"kosher" = "Kosher";
+"lebanese" = "Libanese";
+"mediterranean" = "Mediterranean";
+"malaysian" = "Malaysian";
+"moroccan" = "Moroccan";
+"mexican" = "Mexican";
+"nordic" = "Nordic";
+"nepalese" = "Nepalese";
+"pastry" = "Pastry";
+"pakistani" = "Pakistani";
+"persian" = "Persian";
+"pizza" = "Pizza";
+"portuguese" = "Portuguese";
+"russian" = "Russian";
+"seafood" = "Seafood";
+"salad" = "Salad";
+"sandwich" = "Sandwich";
+"spanish" = "Spanish";
+"steak" = "Steak";
+"soup" = "Soup";
+"sushi" = "Sushi";
+"tapas" = "Tapas";
+"thai" = "Thai";
+"tibetan" = "Tibetan";
+"turkish" = "Turkish";
+"vegan" = "Vegan";
+"vietnamese" = "Vietnamese";
+"wok" = "Wok";
+
+"ok" = "Ok";
+"done" = "Done";
+"addReview" = "Add review";
+"regret" = "Regret";
+"no" = "No";
+"yes" = "Yes";
+"action"= "Action";
+"directions" = "Get directions";
+"call" = "Call restaurant";
+"directionsText" = "Do you want to open maps and get directions for";
+"warning" = "Warning";
+"callNotAvaileble"= "The device does not support calling";
+
+"couldnotcreateindb" = "Could not reach the database, try again?";
+"couldnotuploadfile" = "Could not upload image, try again?";
+"addressdoesnotexists" = "Address does not exists ";
+"error" = "Unknown error";
+
+"awaiting" = "Awaiting approval";
+"approved" = "Approved";
+"notapproved" = "Not approved";
+
+"none" = "None";
+"danish" ="Danish";
+"arabic" = "Arabic";
+"urdu" = "Urdu";
+"english" = "English";
+
+"dining" = "Dining";
+"mosque" = "Mosque";
+"shop" = "Shop";
+
+"loggingIn" = "Logging in";
+"fetching"  = "Fecthing";
+"unlimited" = "Unlimited";
+"savingToTheCloud" = "Saving in the cloud";
+"reviewSaved" = "Your review has been saved";
+"estimatingAddress" = "Guessing your address";
+"invalidAddress" = "Not a valid address";
+"GPSNotPreciseEnough" = "GPS point for the address could not be located, do you want to choose on a map?";
+"authenticate" = "Autentifikation";
+"authenticateText" = "In order to submit suggestions to HalalGuide, you need to confirm your identify via Facebook";
+
+"addPicture" = "Add picture";
+"newPicture" = "Take picture";
+"choosePicture" = "Choose from library";
+
+"errorMailText" = "The following information is incorrect: \nElaborate here!";
+
+"addNewDiningOnBoardingButton" = "Press here to add suggestions";
+"filterDiningOnBoardingButton" = "Press here to filter your results";
+
+"diningCellPorkOnBoarding" = "Is pork also served";
+"diningCellAlcoholOnBoarding" = "Is alcohol also served";
+"diningCellHalalOnBoarding" =  "Is exclusively halal meat";
+
+"diningDetailAddressTelephoneOptionsOnBoarding" = "Press here to get directions or call the restaurant";
+

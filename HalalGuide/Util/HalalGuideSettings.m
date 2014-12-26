@@ -36,6 +36,12 @@
 
 - (NSUInteger)distanceFilter {
     NSUInteger distance = [self.defaults integerForKey:kDistanceFilterKey];
+
+    if (distance == 0){
+        distance = 5;
+        [self setDistanceFilter:distance];
+    }
+
     return distance;
 }
 

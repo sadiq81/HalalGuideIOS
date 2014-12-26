@@ -8,6 +8,7 @@ pod 'LinqToObjectiveC',:head
 pod 'DCKeyValueObjectMapping'
 pod 'AFNetworking', '2.5.0'
 pod 'SDWebImage', '3.7.1'
+pod 'UIActivityIndicator-for-SDWebImage'
 pod 'ALActionBlocks', '1.0.3'
 pod 'MZFormSheetController', '2.3.6'
 pod 'IQKeyboardManager', '3.2.0.2'

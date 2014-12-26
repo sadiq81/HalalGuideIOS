@@ -5,7 +5,15 @@
 
 #import <Foundation/Foundation.h>
 #import "LocationTableViewCell.h"
+#import "CMPopTipView.h"
+
+@class PorkImageView;
+@class AlcoholImageView;
+@class HalalImageView;
 
 
-@interface DiningTableViewCell : LocationTableViewCell
+@interface DiningTableViewCell : LocationTableViewCell<CMPopTipViewDelegate>
+
+-(void) showToolTip;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 #import "BaseViewModel.h"
 #import "LocationService.h"
 #import "ReviewService.h"
@@ -14,6 +15,7 @@
 #import "KeyChainService.h"
 #import "ErrorReporting.h"
 #import "PFUser+Extension.h"
+#import "UIAlertController+Blocks.h"
 
 static CLLocation *currentLocation;
 
@@ -75,15 +77,35 @@ static CLLocation *currentLocation;
     return [[KeyChainService instance] isAuthenticated];
 }
 
-- (void)authenticate:(PFBooleanResultBlock)completion {
+- (void)authenticate:(UIViewController *)viewController onCompletion:(PFBooleanResultBlock)completion {
 
-    [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {
-        if (user.isNew && !error) {
-            [PFUser storeProfileInfoForLoggedInUser:completion];
-        } else {
-            completion(true, error);
-        }
-    }];
+
+    [UIAlertController showInViewController:viewController
+                                  withTitle:NSLocalizedString(@"authenticate", nil)
+                                    message:NSLocalizedString(@"authenticateText", nil)
+                             preferredStyle:UIAlertControllerStyleAlert
+                          cancelButtonTitle:NSLocalizedString(@"regret", nil)
+                     destructiveButtonTitle:nil
+                          otherButtonTitles:@[NSLocalizedString(@"ok", nil)]
+                                   tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+
+                                       if (buttonIndex == UIAlertControllerBlocksFirstOtherButtonIndex) {
+
+                                           [SVProgressHUD showWithStatus:NSLocalizedString(@"loggingIn", nil) maskType:SVProgressHUDMaskTypeGradient];
+
+                                           [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {
+
+                                               [SVProgressHUD dismiss];
+
+                                               if (user.isNew && !error) {
+                                                   [PFUser storeProfileInfoForLoggedInUser:completion];
+                                               } else {
+                                                   completion(true, error);
+                                               }
+                                           }];
+                                       }
+
+                                   }];
 }
 
 - (void)getPicture:(UIViewController *)viewController withDelegate:(id <UIImagePickerControllerDelegate>)delegate {

@@ -54,7 +54,7 @@ static WaitCompletionBlock waitFor  = ^void (NSTimeInterval duration, WaitComple
 
 - (BOOL)isAuthenticated;
 
-- (void)authenticate:(PFBooleanResultBlock)completion;
+- (void)authenticate:(UIViewController *)viewController onCompletion:(PFBooleanResultBlock)completion;
 
 - (void)getPicture:(UIViewController *)viewController withDelegate:(id <UIImagePickerControllerDelegate>)delegate;
 

@@ -21,6 +21,14 @@
 
 @interface AppDelegate ()
 
+/*
+Testers:
+Maryam Aino         aino.frost@yahoo.com
+Umm Abdel Hakeem
+Maria Akram Monazam Maria-Akram@hotmail.com
+
+ */
+
 @end
 
 @implementation AppDelegate
@@ -49,12 +57,9 @@
 
     //[[LocationService instance] createDummyData];
 
-    //Load Credentials in Azure
-    //[KeyChainService instance];
-
     //Configure Parse
-    [ParseCrashReporting enable]; //TODO Parse library 1.6.0 hangs when calling findObjectsInBackgroundWithBlock on all objects
-    //[Parse enableLocalDatastore];
+    [ParseCrashReporting enable];
+    //[Parse enableLocalDatastore]; //TODO
 
     [Parse setApplicationId:@"7CtuNVHBGEdqFlvUyn2PQCG9R04dwIOyPpIVr7NA" clientKey:@"CWDZXIOhNHvEcrRSRN9gyAJlSEU4nPLfRf3Np47T"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

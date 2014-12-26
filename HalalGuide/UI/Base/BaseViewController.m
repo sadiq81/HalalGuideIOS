@@ -19,10 +19,10 @@
     if ([identifier isEqualToString:@"CreateDining"] || [identifier isEqualToString:@"CreateReview"]) {
 
         if (![[FrontPageViewModel instance] isAuthenticated]) {
-            [SVProgressHUD showWithStatus:NSLocalizedString(@"loggingIn", nil) maskType:SVProgressHUDMaskTypeGradient];
+
             //TODO Warn user of authentication windows
-            [[FrontPageViewModel instance] authenticate:^(BOOL succeeded, NSError *error) {
-                [SVProgressHUD dismiss];
+            [[FrontPageViewModel instance] authenticate:self onCompletion:^(BOOL succeeded, NSError *error) {
+
                 if (!error) {
                     [self performSegueWithIdentifier:identifier sender:self];
                 }

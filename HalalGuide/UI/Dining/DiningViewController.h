@@ -7,15 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CMPopTipView/CMPopTipView.h>
 #import "DiningViewModel.h"
 #import "BaseViewController.h"
 
-@interface DiningViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate>
+@interface DiningViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, CMPopTipViewDelegate>
 
 @property(strong, nonatomic) IBOutlet UITableView *diningTableView;
 @property(strong, nonatomic) UITableViewController *tableViewController;
 @property(strong, nonatomic) UIRefreshControl *refreshControl;
 @property(strong, nonatomic) UIRefreshControl *bottomRefreshControl;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *filter;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 
 
 

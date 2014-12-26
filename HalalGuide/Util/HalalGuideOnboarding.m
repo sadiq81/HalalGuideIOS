@@ -27,7 +27,6 @@
 
 - (BOOL)wasOnBoardingShow:(NSString *)onBoardingKey {
     BOOL shown = [self.defaults boolForKey:onBoardingKey];
-    [self setOnBoardingShown:onBoardingKey];
     return shown;
 }
 

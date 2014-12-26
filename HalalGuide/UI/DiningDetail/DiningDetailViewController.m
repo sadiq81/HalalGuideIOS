@@ -19,7 +19,9 @@
 #import "LocationPicture.h"
 #import "ReviewCell.h"
 #import "ReviewDetailViewModel.h"
-#import "IQUIView+Hierarchy.h"
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
+#import "UIView+Extensions.h"
+#import "HalalGuideOnboarding.h"
 
 //TODO Onboarding - Tap for call/directions
 @implementation DiningDetailViewController {
@@ -116,6 +118,11 @@
         self.headerView.name.text = loc.name;
         self.headerView.address.text = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
         [self.headerView.address addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
+
+        if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningDetailAddressTelephoneOptionsOnBoardingKey]) {
+            [self.headerView.address showOnBoardingWithHintKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey withDelegate:nil];
+        }
+
         self.headerView.distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:loc.distance];
 
         self.headerView.rating.starImage = [UIImage imageNamed:@"starSmall"];
@@ -148,14 +155,15 @@
 //TODO Select whether to call restaurant or open in maps
 - (void)openMaps:(UITapGestureRecognizer *)recognizer {
 
-    [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"directions", nil)
-                                         message:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"directionsText", nil), [DiningDetailViewModel instance].location.name]
-                               cancelButtonTitle:NSLocalizedString(@"no", nil)
+
+    [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"action", nil)
+                                         message:nil
+                               cancelButtonTitle:NSLocalizedString(@"regret", nil)
                           destructiveButtonTitle:nil
-                               otherButtonTitles:@[NSLocalizedString(@"yes", nil)]
+                               otherButtonTitles:@[NSLocalizedString(@"directions", nil), [DiningDetailViewModel instance].location.telephone ? NSLocalizedString(@"call", nil): nil]
 
                                         tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-                                            if (buttonIndex >= UIAlertControllerBlocksFirstOtherButtonIndex) {
+                                            if (buttonIndex == UIAlertControllerBlocksFirstOtherButtonIndex) {
                                                 PFGeoPoint *point = [[DiningDetailViewModel instance].location point];
                                                 MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(point.latitude, point.longitude) addressDictionary:nil];
                                                 MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
@@ -171,6 +179,16 @@
                                                 // Pass the current location and destination map items to the Maps app
                                                 // Set the direction mode in the launchOptions dictionary
                                                 [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
+                                            }
+                                            else if (buttonIndex == 3) {
+
+                                                NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@", [DiningDetailViewModel instance].location.telephone]];
+
+                                                if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+                                                    [[UIApplication sharedApplication] openURL:phoneUrl];
+                                                } else {
+                                                    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"callNotAvaileble", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil, nil] show];
+                                                }
                                             }
                                         }];
 }
@@ -198,13 +216,10 @@
     if (view == nil) {
         view = temp = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
         temp.contentMode = UIViewContentModeScaleAspectFit;
-        temp.backgroundColor = [UIColor whiteColor];
     }
     //TODO Adjust frame so that portrait and landspace pictures are both max height
-    temp.image = [UIImage imageNamed:@"dining"];
-    NSString *url = picture.picture.url;
-    [temp sd_setImageWithURL:[[NSURL alloc] initWithString:url]];
 
+    [temp setImageWithURL:[[NSURL alloc] initWithString:picture.picture.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     return view;
 }
 

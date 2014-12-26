@@ -83,7 +83,7 @@
 
     [super locationChanged:notification];
 
-    [self calculateDistances:self.locations sortByDistance:false];
+    self.locations = [[NSMutableArray alloc] initWithArray:[self calculateDistances:self.locations sortByDistance:true]];
 
     if ([self.delegate respondsToSelector:@selector(refreshTable)]) {
         [self.delegate refreshTable];
@@ -109,11 +109,10 @@
 
             if (self.page != 0) {
                 [self.locations addObjectsFromArray:objects];
+                self.locations = [[NSMutableArray alloc] initWithArray:[self calculateDistances:self.locations sortByDistance:false]];
             } else {
-                self.locations = [[NSMutableArray alloc] initWithArray:objects];
+                self.locations = [[NSMutableArray alloc] initWithArray:[self calculateDistances:objects sortByDistance:true]];
             }
-
-            self.locations = [[NSMutableArray alloc] initWithArray:[self calculateDistances:self.locations sortByDistance:true]];
         }
 
         if ([self.delegate respondsToSelector:@selector(reloadTable)]) {

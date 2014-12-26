@@ -8,6 +8,7 @@
 #import "PictureService.h"
 #import "LocationPicture.h"
 #import "HalalGuideNumberFormatter.h"
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 
 @implementation LocationTableViewCell {
 
@@ -21,8 +22,7 @@
     [[PictureService instance] thumbnailForLocation:location onCompletion:^(NSArray *objects, NSError *error) {
         if (objects != nil && [objects count] == 1) {
             LocationPicture *picture = [objects firstObject];
-            NSString *url = picture.picture.url;
-            [thumbNail sd_setImageWithURL:[[NSURL alloc] initWithString:url]];
+            [thumbNail setImageWithURL:[[NSURL alloc] initWithString:picture.picture.url]  placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         }
     }];
 
