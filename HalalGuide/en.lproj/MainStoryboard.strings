@@ -123,7 +123,7 @@
 "MTE-f2-NTn.title" = "Dining places";
 
 /* Class = "IBUIButton"; normalTitle = "Rapporter fejl"; ObjectID = "Mxa-Rz-PfQ"; */
-"Mxa-Rz-PfQ.normalTitle" = "Repport error";
+"Mxa-Rz-PfQ.normalTitle" = "Report error";
 
 /* Class = "IBUILabel"; text = "Indstillinger"; ObjectID = "N63-RU-xEd"; */
 "N63-RU-xEd.text" = "Settings";
