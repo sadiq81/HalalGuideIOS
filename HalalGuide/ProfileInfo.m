@@ -37,6 +37,12 @@
     return [self.facebookInfo valueForKey:@"relationship"];
 }
 
+- (NSURL *)facebookProfileUrlSmall {
+    NSString *facebookID = [self facebookID];
+    NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small&return_ssl_resources=1", facebookID]];
+    return pictureURL;
+}
+
 //TODO different sizes for cell and view
 - (NSURL *)facebookProfileUrl {
     NSString *facebookID = [self facebookID];

@@ -37,9 +37,9 @@
 		A1E0C0561A17D15000757427 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E0C0551A17D15000757427 /* Foundation.framework */; };
 		A1E0C0581A17D15C00757427 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E0C0571A17D15C00757427 /* CoreGraphics.framework */; };
 		A1FB7A3C1A225BD6005C10A9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FB7A3B1A225BD6005C10A9 /* MapKit.framework */; };
-		C596B04443F0600B9C7BD49F /* DiningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B009EEE9275A43EF3CB6 /* DiningViewController.m */; };
+		C596B04443F0600B9C7BD49F /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B009EEE9275A43EF3CB6 /* LocationViewController.m */; };
 		C596B0D9F593DF35F27ADC0C /* KeyChainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1C53625DF2818FA59EF /* KeyChainService.m */; };
-		C596B14BABF589FCAC939602 /* CreateDiningViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B21D6C38E6FAFD9C1FE1 /* CreateDiningViewModel.m */; };
+		C596B14BABF589FCAC939602 /* CreateLocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B21D6C38E6FAFD9C1FE1 /* CreateLocationViewModel.m */; };
 		C596B1B34978AF18E4D554AC /* UILabel+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B108D40A5F53EA841C5D /* UILabel+Extensions.m */; };
 		C596B1F5A5B4EA5CAF4E59A1 /* ProfileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B2FC8EC8496A380C0223 /* ProfileInfo.m */; };
 		C596B2078F8F1D549C4186A9 /* MosqueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BFB60717839658B16FF5 /* MosqueTableViewCell.m */; };
@@ -57,14 +57,14 @@
 		C596B6434DE318E0744ACB01 /* ReviewDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B492BF85F9FF0436DBD8 /* ReviewDetailViewModel.m */; };
 		C596B6AB3FEB0CCFBB49E279 /* HalalGuideOnboarding.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BBFB5C5F15D132E4FB8E /* HalalGuideOnboarding.m */; };
 		C596B6F2B07B666F6BE4742D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B4E9CC97591CF8CF04F8 /* main.m */; };
-		C596B7108E18D52D31CE8DB1 /* DiningDetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B6A7A045EBA52A0DC9FA /* DiningDetailTopView.m */; };
+		C596B7108E18D52D31CE8DB1 /* LocationDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B6A7A045EBA52A0DC9FA /* LocationDetail.m */; };
 		C596B710A1AA9E1C9F7CDD19 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3B092ADDA5F0E8FE57A /* UIBarButtonItem+Extension.m */; };
 		C596B759B3AC1C91AB3CB4A9 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B0A96756F6C064E85396 /* KeychainWrapper.m */; };
-		C596B8089323C38DC9154E64 /* DiningViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B71BF7FEBEC982AF2EC1 /* DiningViewModel.m */; };
+		C596B8089323C38DC9154E64 /* LocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B71BF7FEBEC982AF2EC1 /* LocationViewModel.m */; };
 		C596B80D6FAEA5A9799020EE /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B99C4E194E7D0F056581 /* UIView+Extensions.m */; };
 		C596B896E5FFBACE8438BC3E /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B5E924343A08F6F50ABC /* ReviewCell.m */; };
 		C596B8A8C0FF3CF2F23CF1EF /* Adgangsadresse.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC3435D995FE87D9DBD9 /* Adgangsadresse.m */; };
-		C596B8C6B71E490C5EBB0100 /* CreateDiningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B9AD84024B9A6D495BE6 /* CreateDiningViewController.m */; };
+		C596B8C6B71E490C5EBB0100 /* CreateLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B9AD84024B9A6D495BE6 /* CreateLocationViewController.m */; };
 		C596B8E01156320C71D2B3D4 /* FrontPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BDE6BE0535D6D62B6DF4 /* FrontPageViewController.m */; };
 		C596B8EB3CA714FC7940EC8B /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B4CC9466EC8306FE455A /* CategoriesViewController.m */; };
 		C596B8FD9DE70F37C1BA268A /* NSArray+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BA6A10727DB38C3E6BAD /* NSArray+Extensions.m */; };
@@ -72,16 +72,16 @@
 		C596B970F2A9B9367DD8F292 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B21B5A6B8B7A9AB721D7 /* NSString+Extensions.m */; };
 		C596B994E8D83F0CFCC43A4B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C596B6652B392F90E4C7F499 /* Images.xcassets */; };
 		C596B999CB7E7147FCB7A81F /* PFUser+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3120E0141D7705DB18A /* PFUser+Extension.m */; };
-		C596B9DC8D40EB2F77F50986 /* DiningDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE3B3A5B60189D1D1699 /* DiningDetailViewController.m */; };
+		C596B9DC8D40EB2F77F50986 /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE3B3A5B60189D1D1699 /* LocationDetailViewController.m */; };
 		C596BA33737001D3108C340F /* ShopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BA5A80257D3B9F034B78 /* ShopTableViewCell.m */; };
 		C596BA362EA74D49E1ADA97E /* CreateReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BB2A29C69C97018BE604 /* CreateReviewViewController.m */; };
-		C596BA3647279B40542C6B0A /* FilterDiningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B10671F66BE5CA315DA1 /* FilterDiningViewController.m */; };
+		C596BA3647279B40542C6B0A /* FilterLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B10671F66BE5CA315DA1 /* FilterLocationViewController.m */; };
 		C596BAC431971EE457E2AC67 /* AddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B9236BE5EB90B765FFA9 /* AddressService.m */; };
 		C596BAC926A22C2B286BC14F /* PictureService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B5C2EFA65F106D065A85 /* PictureService.m */; };
 		C596BADDA4BE97A94610CE1F /* UIImage+Transformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B75CA653650DB3D05A03 /* UIImage+Transformation.m */; };
 		C596BCDFB902FAF18D51A1AB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC841F23A6433FB59C83 /* SettingsViewController.m */; };
 		C596BD96EFEBDDC2BA7E3281 /* HalalGuideSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3738DE751A198964235 /* HalalGuideSettings.m */; };
-		C596BDC0C328C004265F89E0 /* DiningDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B781676517BC117FF418 /* DiningDetailViewModel.m */; };
+		C596BDC0C328C004265F89E0 /* LocationDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B781676517BC117FF418 /* LocationDetailViewModel.m */; };
 		C596BDCD9AA05B4831467552 /* BaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC7A9C8BDF58ABC8FB72 /* BaseCollectionViewController.m */; };
 		C596BDF45FFD32F85D11DB23 /* ErrorReporting.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BA06D0C7BB36204E5D3D /* ErrorReporting.m */; };
 		C596BE2155B2EC68340FF870 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B75C6536409252A6F0EA /* AppDelegate.m */; };
@@ -146,30 +146,30 @@
 		A1E0C0571A17D15C00757427 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A1FB7A3B1A225BD6005C10A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A996AC24EC4EDA46C0F7FC51 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		C596B009EEE9275A43EF3CB6 /* DiningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningViewController.m; sourceTree = "<group>"; };
+		C596B009EEE9275A43EF3CB6 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		C596B02C31F0A3EAC5021006 /* CreateReviewViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReviewViewModel.h; sourceTree = "<group>"; };
 		C596B03AB92D97D71B333FB4 /* DiningTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningTableViewCell.h; sourceTree = "<group>"; };
 		C596B03CCC893D655B457A29 /* ProfileInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileInfoService.m; sourceTree = "<group>"; };
-		C596B046E18BFB1A22B12FAA /* DiningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningViewController.h; sourceTree = "<group>"; };
+		C596B046E18BFB1A22B12FAA /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		C596B0A96756F6C064E85396 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = SOURCE_ROOT; };
 		C596B0B6E24F835EE6935E48 /* FrontPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontPageViewController.h; sourceTree = "<group>"; };
 		C596B0CAC46D5333388FB1F7 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
-		C596B10671F66BE5CA315DA1 /* FilterDiningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterDiningViewController.m; sourceTree = "<group>"; };
+		C596B10671F66BE5CA315DA1 /* FilterLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterLocationViewController.m; sourceTree = "<group>"; };
 		C596B108D40A5F53EA841C5D /* UILabel+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extensions.m"; sourceTree = SOURCE_ROOT; };
-		C596B10C7FAB88D80A2501EA /* DiningDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningDetailViewController.h; sourceTree = "<group>"; };
+		C596B10C7FAB88D80A2501EA /* LocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewController.h; sourceTree = "<group>"; };
 		C596B11428DF21ABD2A7916F /* ReviewDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewModel.h; sourceTree = "<group>"; };
 		C596B17E0755B3E673311E25 /* AddressService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressService.h; sourceTree = "<group>"; };
 		C596B17ED43937F79A5759EE /* NSMutableString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Extensions.m"; sourceTree = SOURCE_ROOT; };
 		C596B1C53625DF2818FA59EF /* KeyChainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainService.m; sourceTree = "<group>"; };
 		C596B1DE435F257B01619E56 /* ErrorReporting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorReporting.h; sourceTree = "<group>"; };
 		C596B21B5A6B8B7A9AB721D7 /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = SOURCE_ROOT; };
-		C596B21D6C38E6FAFD9C1FE1 /* CreateDiningViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateDiningViewModel.m; sourceTree = "<group>"; };
+		C596B21D6C38E6FAFD9C1FE1 /* CreateLocationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLocationViewModel.m; sourceTree = "<group>"; };
 		C596B24BA9AE85B76AA003C0 /* HalalGuideNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideNumberFormatter.m; sourceTree = "<group>"; };
 		C596B27002419226C56B97EB /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		C596B29B914F37DE55FF62C4 /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = SOURCE_ROOT; };
 		C596B2A4EE405E5B07E7107E /* CreateReviewViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReviewViewModel.m; sourceTree = "<group>"; };
-		C596B2C7AD9F3D1C8A088F01 /* DiningDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningDetailViewModel.h; sourceTree = "<group>"; };
-		C596B2DDF0DC07043FC6C9D6 /* CreateDiningViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateDiningViewModel.h; sourceTree = "<group>"; };
+		C596B2C7AD9F3D1C8A088F01 /* LocationDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewModel.h; sourceTree = "<group>"; };
+		C596B2DDF0DC07043FC6C9D6 /* CreateLocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLocationViewModel.h; sourceTree = "<group>"; };
 		C596B2FC8EC8496A380C0223 /* ProfileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileInfo.m; sourceTree = "<group>"; };
 		C596B301F910FB26DFD041FD /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		C596B3120E0141D7705DB18A /* PFUser+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+Extension.m"; sourceTree = SOURCE_ROOT; };
@@ -187,15 +187,15 @@
 		C596B5E924343A08F6F50ABC /* ReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		C596B62B5AA2CB8C4E2BAB95 /* MosqueTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosqueTableViewCell.h; sourceTree = "<group>"; };
 		C596B6652B392F90E4C7F499 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C596B6A7A045EBA52A0DC9FA /* DiningDetailTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningDetailTopView.m; sourceTree = "<group>"; };
+		C596B6A7A045EBA52A0DC9FA /* LocationDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetail.m; sourceTree = "<group>"; };
 		C596B6AEE98BF10F36A5EE4F /* HalalGuideDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideDateFormatter.h; sourceTree = "<group>"; };
-		C596B6FEF1B885D146C1F943 /* FilterDiningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterDiningViewController.h; sourceTree = "<group>"; };
-		C596B71BF7FEBEC982AF2EC1 /* DiningViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningViewModel.m; sourceTree = "<group>"; };
+		C596B6FEF1B885D146C1F943 /* FilterLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterLocationViewController.h; sourceTree = "<group>"; };
+		C596B71BF7FEBEC982AF2EC1 /* LocationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewModel.m; sourceTree = "<group>"; };
 		C596B73877CA533CA6591101 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 		C596B75C6536409252A6F0EA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C596B75CA653650DB3D05A03 /* UIImage+Transformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Transformation.m"; sourceTree = SOURCE_ROOT; };
 		C596B77315FFE5969D3E701D /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		C596B781676517BC117FF418 /* DiningDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningDetailViewModel.m; sourceTree = "<group>"; };
+		C596B781676517BC117FF418 /* LocationDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewModel.m; sourceTree = "<group>"; };
 		C596B7CF65914898A7E6702F /* ReviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewService.m; sourceTree = "<group>"; };
 		C596B7F7192CA4ADB4DCF721 /* HalalGuideNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideNumberFormatter.h; sourceTree = "<group>"; };
 		C596B810C6C83C0302E398C6 /* ReviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewService.h; sourceTree = "<group>"; };
@@ -208,8 +208,8 @@
 		C596B9236BE5EB90B765FFA9 /* AddressService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressService.m; sourceTree = "<group>"; };
 		C596B925E44FBDA7021E332D /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
 		C596B99C4E194E7D0F056581 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = SOURCE_ROOT; };
-		C596B9AD784A1308F3EABF3A /* DiningDetailTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningDetailTopView.h; sourceTree = "<group>"; };
-		C596B9AD84024B9A6D495BE6 /* CreateDiningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateDiningViewController.m; sourceTree = "<group>"; };
+		C596B9AD784A1308F3EABF3A /* LocationDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetail.h; sourceTree = "<group>"; };
+		C596B9AD84024B9A6D495BE6 /* CreateLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLocationViewController.m; sourceTree = "<group>"; };
 		C596B9BAE9FFF82DAA77ED1A /* HalalGuideSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideSettings.h; sourceTree = "<group>"; };
 		C596B9BD485DC2539668196B /* CreateReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReviewViewController.h; sourceTree = "<group>"; };
 		C596B9C7D7E4542EA95E3F62 /* HalalGuide-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HalalGuide-Prefix.pch"; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 		C596BACA6360A5BF75EC6034 /* PictureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureService.h; sourceTree = "<group>"; };
 		C596BAD928F93E43775183D1 /* HalalGuideLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideLabels.h; sourceTree = "<group>"; };
 		C596BB2A29C69C97018BE604 /* CreateReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReviewViewController.m; sourceTree = "<group>"; };
-		C596BB5C544A2CA9B3089ADC /* CreateDiningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateDiningViewController.h; sourceTree = "<group>"; };
+		C596BB5C544A2CA9B3089ADC /* CreateLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLocationViewController.h; sourceTree = "<group>"; };
 		C596BB8F8B4660CD6FF18B10 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C596BBD30B5DFC72B2472129 /* BaseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewController.h; sourceTree = "<group>"; };
 		C596BBE3511283205B997FB3 /* LocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableViewCell.h; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		C596BC7A9C8BDF58ABC8FB72 /* BaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewController.m; sourceTree = "<group>"; };
 		C596BC841F23A6433FB59C83 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		C596BCBB613B0910AF633010 /* CoordinatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinatePickerViewController.h; sourceTree = "<group>"; };
-		C596BD19524238EFC52AEF00 /* DiningViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningViewModel.h; sourceTree = "<group>"; };
+		C596BD19524238EFC52AEF00 /* LocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewModel.h; sourceTree = "<group>"; };
 		C596BD32247E2B4B929D6FE3 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = SOURCE_ROOT; };
 		C596BD68040F320233372101 /* HalalGuideOnboarding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideOnboarding.h; sourceTree = "<group>"; };
 		C596BD8156F9392A5A9104C9 /* ShopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewCell.h; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 		C596BDE6BE0535D6D62B6DF4 /* FrontPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontPageViewController.m; sourceTree = "<group>"; };
 		C596BDEB471B1CAC691EE934 /* NSLocale+iOS8.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+iOS8.m"; sourceTree = "<group>"; };
 		C596BDF952304291A766A0B0 /* HalalGuideLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideLabels.m; sourceTree = "<group>"; };
-		C596BE3B3A5B60189D1D1699 /* DiningDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningDetailViewController.m; sourceTree = "<group>"; };
+		C596BE3B3A5B60189D1D1699 /* LocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewController.m; sourceTree = "<group>"; };
 		C596BE5750691DFADB17984E /* ProfileInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileInfoService.h; sourceTree = "<group>"; };
 		C596BEBB98E1B438C022990F /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		C596BEE49E00FAAA770E6D23 /* NSMutableString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Extensions.h"; sourceTree = SOURCE_ROOT; };
@@ -518,32 +518,32 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		C596B7285130D6D6227286F9 /* CreateDining */ = {
+		C596B7285130D6D6227286F9 /* CreateLocation */ = {
 			isa = PBXGroup;
 			children = (
-				C596B9AD84024B9A6D495BE6 /* CreateDiningViewController.m */,
-				C596BB5C544A2CA9B3089ADC /* CreateDiningViewController.h */,
-				C596B2DDF0DC07043FC6C9D6 /* CreateDiningViewModel.h */,
-				C596B21D6C38E6FAFD9C1FE1 /* CreateDiningViewModel.m */,
+				C596B9AD84024B9A6D495BE6 /* CreateLocationViewController.m */,
+				C596BB5C544A2CA9B3089ADC /* CreateLocationViewController.h */,
+				C596B2DDF0DC07043FC6C9D6 /* CreateLocationViewModel.h */,
+				C596B21D6C38E6FAFD9C1FE1 /* CreateLocationViewModel.m */,
 				C596BF9581A8E814E1A7FCED /* CoordinatePickerViewController.m */,
 				C596BCBB613B0910AF633010 /* CoordinatePickerViewController.h */,
 			);
-			path = CreateDining;
+			path = CreateLocation;
 			sourceTree = "<group>";
 		};
-		C596B781614FDF6D913AB8A9 /* DiningDetail */ = {
+		C596B781614FDF6D913AB8A9 /* LocationDetails */ = {
 			isa = PBXGroup;
 			children = (
-				C596BE3B3A5B60189D1D1699 /* DiningDetailViewController.m */,
-				C596B10C7FAB88D80A2501EA /* DiningDetailViewController.h */,
-				C596B781676517BC117FF418 /* DiningDetailViewModel.m */,
-				C596B2C7AD9F3D1C8A088F01 /* DiningDetailViewModel.h */,
-				C596B6A7A045EBA52A0DC9FA /* DiningDetailTopView.m */,
-				C596B9AD784A1308F3EABF3A /* DiningDetailTopView.h */,
+				C596BE3B3A5B60189D1D1699 /* LocationDetailViewController.m */,
+				C596B10C7FAB88D80A2501EA /* LocationDetailViewController.h */,
+				C596B781676517BC117FF418 /* LocationDetailViewModel.m */,
+				C596B2C7AD9F3D1C8A088F01 /* LocationDetailViewModel.h */,
+				C596B6A7A045EBA52A0DC9FA /* LocationDetail.m */,
+				C596B9AD784A1308F3EABF3A /* LocationDetail.h */,
 				C596B5E924343A08F6F50ABC /* ReviewCell.m */,
 				C596B86B05EE4EBD3D4FCDEA /* ReviewCell.h */,
 			);
-			path = DiningDetail;
+			path = LocationDetails;
 			sourceTree = "<group>";
 		};
 		C596B7938D98AB025BE475AF /* Util */ = {
@@ -566,12 +566,12 @@
 			isa = PBXGroup;
 			children = (
 				C596B4C97CD6C6F1DA582430 /* FrontPage */,
-				C596BC814672EC28345A8F92 /* Dining */,
+				C596BC814672EC28345A8F92 /* Location */,
 				C596BD5F2935E681F31A928A /* Shared */,
 				C596B650D8A452A6B1FD534B /* Common */,
-				C596B7285130D6D6227286F9 /* CreateDining */,
+				C596B7285130D6D6227286F9 /* CreateLocation */,
 				C596B1D00B7F1C3EBEF5284B /* CreateReview */,
-				C596B781614FDF6D913AB8A9 /* DiningDetail */,
+				C596B781614FDF6D913AB8A9 /* LocationDetails */,
 				C596B8EAD82E509B18EBA060 /* Storyboard */,
 				C596B23CCDB7BC9C91F746A3 /* Base */,
 				C596B5F374F964CDDDB8BFB5 /* ReviewDetail */,
@@ -639,17 +639,17 @@
 			name = localization;
 			sourceTree = "<group>";
 		};
-		C596BC814672EC28345A8F92 /* Dining */ = {
+		C596BC814672EC28345A8F92 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				C596B046E18BFB1A22B12FAA /* DiningViewController.h */,
-				C596B009EEE9275A43EF3CB6 /* DiningViewController.m */,
-				C596B71BF7FEBEC982AF2EC1 /* DiningViewModel.m */,
-				C596BD19524238EFC52AEF00 /* DiningViewModel.h */,
-				C596B10671F66BE5CA315DA1 /* FilterDiningViewController.m */,
-				C596B6FEF1B885D146C1F943 /* FilterDiningViewController.h */,
+				C596B046E18BFB1A22B12FAA /* LocationViewController.h */,
+				C596B009EEE9275A43EF3CB6 /* LocationViewController.m */,
+				C596B71BF7FEBEC982AF2EC1 /* LocationViewModel.m */,
+				C596BD19524238EFC52AEF00 /* LocationViewModel.h */,
+				C596B10671F66BE5CA315DA1 /* FilterLocationViewController.m */,
+				C596B6FEF1B885D146C1F943 /* FilterLocationViewController.h */,
 			);
-			path = Dining;
+			path = Location;
 			sourceTree = "<group>";
 		};
 		C596BCD52DE204E6492012D5 /* data */ = {
@@ -838,28 +838,28 @@
 				C596B0D9F593DF35F27ADC0C /* KeyChainService.m in Sources */,
 				C596B8E01156320C71D2B3D4 /* FrontPageViewController.m in Sources */,
 				C596B2E1351E1EAC7E9D30AF /* FrontPageViewModel.m in Sources */,
-				C596B04443F0600B9C7BD49F /* DiningViewController.m in Sources */,
+				C596B04443F0600B9C7BD49F /* LocationViewController.m in Sources */,
 				C596B4189B61146F99B85856 /* LocationTableViewCell.m in Sources */,
 				C596B4B48329DF5997D66820 /* DiningTableViewCell.m in Sources */,
 				C596B2078F8F1D549C4186A9 /* MosqueTableViewCell.m in Sources */,
 				C596BA33737001D3108C340F /* ShopTableViewCell.m in Sources */,
-				C596B8089323C38DC9154E64 /* DiningViewModel.m in Sources */,
-				C596BA3647279B40542C6B0A /* FilterDiningViewController.m in Sources */,
+				C596B8089323C38DC9154E64 /* LocationViewModel.m in Sources */,
+				C596BA3647279B40542C6B0A /* FilterLocationViewController.m in Sources */,
 				C596B365C831FAD6A86FE951 /* NSMutableString+Extensions.m in Sources */,
 				C596B8EB3CA714FC7940EC8B /* CategoriesViewController.m in Sources */,
-				C596B8C6B71E490C5EBB0100 /* CreateDiningViewController.m in Sources */,
+				C596B8C6B71E490C5EBB0100 /* CreateLocationViewController.m in Sources */,
 				C596BAC431971EE457E2AC67 /* AddressService.m in Sources */,
 				C596B970F2A9B9367DD8F292 /* NSString+Extensions.m in Sources */,
 				C596B8FD9DE70F37C1BA268A /* NSArray+Extensions.m in Sources */,
 				C596B8A8C0FF3CF2F23CF1EF /* Adgangsadresse.m in Sources */,
 				C596BA362EA74D49E1ADA97E /* CreateReviewViewController.m in Sources */,
-				C596B14BABF589FCAC939602 /* CreateDiningViewModel.m in Sources */,
+				C596B14BABF589FCAC939602 /* CreateLocationViewModel.m in Sources */,
 				C596B28B3236C3D70724025F /* CreateReviewViewModel.m in Sources */,
-				C596B9DC8D40EB2F77F50986 /* DiningDetailViewController.m in Sources */,
+				C596B9DC8D40EB2F77F50986 /* LocationDetailViewController.m in Sources */,
 				C596B6F2B07B666F6BE4742D /* main.m in Sources */,
 				C596BE2155B2EC68340FF870 /* AppDelegate.m in Sources */,
 				C596BE80D7EB2528F3711E98 /* BaseViewModel.m in Sources */,
-				C596BDC0C328C004265F89E0 /* DiningDetailViewModel.m in Sources */,
+				C596BDC0C328C004265F89E0 /* LocationDetailViewModel.m in Sources */,
 				C596BF2062C7A1A6BF71D84A /* HalalGuideNumberFormatter.m in Sources */,
 				C596B42919399432C0B3AD9F /* HalalGuideImageViews.m in Sources */,
 				C596B95FE3E0FB5A0B0AC9B8 /* HalalGuideLabels.m in Sources */,
@@ -871,7 +871,7 @@
 				C596BADDA4BE97A94610CE1F /* UIImage+Transformation.m in Sources */,
 				C596B80D6FAEA5A9799020EE /* UIView+Extensions.m in Sources */,
 				C596B1B34978AF18E4D554AC /* UILabel+Extensions.m in Sources */,
-				C596B7108E18D52D31CE8DB1 /* DiningDetailTopView.m in Sources */,
+				C596B7108E18D52D31CE8DB1 /* LocationDetail.m in Sources */,
 				C596BDCD9AA05B4831467552 /* BaseCollectionViewController.m in Sources */,
 				C596B896E5FFBACE8438BC3E /* ReviewCell.m in Sources */,
 				C596B1F5A5B4EA5CAF4E59A1 /* ProfileInfo.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  FilterDiningViewController.m
+//  FilterLocationViewController.m
 //  HalalGuide
 //
 //  Created by Privat on 09/11/14.
@@ -7,15 +7,15 @@
 //
 
 #import <ALActionBlocks/ALActionBlocks.h>
-#import "FilterDiningViewController.h"
-#import "DiningViewModel.h"
+#import "FilterLocationViewController.h"
+#import "LocationViewModel.h"
 #import "MZFormSheetSegue.h"
 #import "IQUIView+Hierarchy.h"
 #import "CategoriesViewController.h"
 #import "HalalGuideSettings.h"
 
 
-@implementation FilterDiningViewController {
+@implementation FilterLocationViewController {
 
 }
 
@@ -32,7 +32,7 @@
     }];
 
     [self.reset handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
-        [[DiningViewModel instance].categories removeAllObjects];
+        [[LocationViewModel instance].categories removeAllObjects];
         [weakSelf setCountLabelText];
     }];
 
@@ -45,16 +45,16 @@
 - (void)setUILabels {
     [self setCountLabelText];
 
-    self.porkSwitch.on = [DiningViewModel instance].showPork;
-    self.alcoholSwitch.on = [DiningViewModel instance].showAlcohol;
-    self.halalSwitch.on = [DiningViewModel instance].showNonHalal;
-    self.distanceSlider.value = [DiningViewModel instance].maximumDistance;
+    self.porkSwitch.on = [LocationViewModel instance].showPork;
+    self.alcoholSwitch.on = [LocationViewModel instance].showAlcohol;
+    self.halalSwitch.on = [LocationViewModel instance].showNonHalal;
+    self.distanceSlider.value = [LocationViewModel instance].maximumDistance;
 
     [self setDistanceLabelText];
 }
 
 - (void)setCountLabelText {
-    int count = (int) [[DiningViewModel instance].categories count];
+    int count = (int) [[LocationViewModel instance].categories count];
     self.countLabel.text = [NSString stringWithFormat:@"%i", count];
 }
 
@@ -67,14 +67,14 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [DiningViewModel instance].showPork = [HalalGuideSettings instance].porkFilter = self.porkSwitch.on;
-    [DiningViewModel instance].showAlcohol = [HalalGuideSettings instance].alcoholFilter = self.alcoholSwitch.on;
-    [DiningViewModel instance].showNonHalal = [HalalGuideSettings instance].halalFilter = self.halalSwitch.on;
-    [DiningViewModel instance].maximumDistance = [HalalGuideSettings instance].distanceFilter = (NSUInteger) self.distanceSlider.value;
-    [HalalGuideSettings instance].categoriesFilter = [DiningViewModel instance].categories;
+    [LocationViewModel instance].showPork = [HalalGuideSettings instance].porkFilter = self.porkSwitch.on;
+    [LocationViewModel instance].showAlcohol = [HalalGuideSettings instance].alcoholFilter = self.alcoholSwitch.on;
+    [LocationViewModel instance].showNonHalal = [HalalGuideSettings instance].halalFilter = self.halalSwitch.on;
+    [LocationViewModel instance].maximumDistance = [HalalGuideSettings instance].distanceFilter = (NSUInteger) self.distanceSlider.value;
+    [HalalGuideSettings instance].categoriesFilter = [LocationViewModel instance].categories;
 
-    [[DiningViewModel instance] reset];
-    [[DiningViewModel instance] refreshLocations:true];
+    [[LocationViewModel instance] reset];
+    [[LocationViewModel instance] refreshLocations:true];
 }
 
 
@@ -85,7 +85,7 @@
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"chooseCategories"]) {
         CategoriesViewController *destination = (CategoriesViewController *) segue.destinationViewController;
-        destination.viewModel = [DiningViewModel instance];
+        destination.viewModel = [LocationViewModel instance];
 
         MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *) segue;
         MZFormSheetController *formSheet = formSheetSegue.formSheetController;

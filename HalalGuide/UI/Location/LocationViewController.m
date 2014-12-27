@@ -1,5 +1,5 @@
 //
-//  DiningViewController.m
+//  LocationViewController.m
 //  HalalGuide
 //
 //  Created by Privat on 09/11/14.
@@ -8,19 +8,20 @@
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import "DiningViewController.h"
+#import "LocationViewController.h"
 #import "DiningTableViewCell.h"
 #import "UIView+Extensions.h"
 #import "UIBarButtonItem+Extension.h"
-#import "DiningDetailViewModel.h"
+#import "LocationDetailViewModel.h"
 #import "CMPopTipView.h"
 #import "HalalGuideOnboarding.h"
 #import "RACSignal.h"
+#import "CreateLocationViewModel.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 
 //TODO Search bar for string searching fx name.
 //TODO On first load, distance filter is not working - Only after first dismissing filter.
-@implementation DiningViewController {
+@implementation LocationViewController {
 
 }
 
@@ -29,27 +30,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configureTableView];
-    [[DiningViewModel instance] refreshLocations:true];
-    [DiningViewModel instance].delegate = self;
+    [[LocationViewModel instance] refreshLocations:true];
+    [LocationViewModel instance].delegate = self;
 
-    [self setupHints];
+    self.navigationItem.title = NSLocalizedString(LocationTypeString([LocationViewModel instance].locationType), nil);
 }
 
 - (void)dealloc {
-    [[DiningViewModel instance] reset];
+    [[LocationViewModel instance] reset];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self setupHints];
 }
 
 #pragma mark Onboarding
 
 - (void)setupHints {
 
-    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kAddNewDiningOnBoardingButtonKey]) {
+    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kAddNewOnBoardingButtonKey]) {
 
-        [self.navigationItem.rightBarButtonItem showOnBoardingWithHintKey:kAddNewDiningOnBoardingButtonKey withDelegate:self];
+        [self.navigationItem.rightBarButtonItem showOnBoardingWithHintKey:kAddNewOnBoardingButtonKey withDelegate:self];
 
-    } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterDiningOnBoardingButtonKey]) {
+    } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
 
-        [self.filter showOnBoardingWithHintKey:kFilterDiningOnBoardingButtonKey withDelegate:self];
+        [self.filter showOnBoardingWithHintKey:kFilterOnBoardingButtonKey withDelegate:self];
 
     }
 }
@@ -57,36 +62,31 @@
 - (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView {
 
     if (popTipView.targetObject == self.navigationItem.rightBarButtonItem) {
-        [self.filter showOnBoardingWithHintKey:kFilterDiningOnBoardingButtonKey withDelegate:self];
+        [self.filter showOnBoardingWithHintKey:kFilterOnBoardingButtonKey withDelegate:self];
     }
 
     else if (popTipView.targetObject == self.filter) {
-        DiningTableViewCell *cell = (DiningTableViewCell *) [[self.diningTableView visibleCells] firstObject];
-        [cell showToolTip];
+
+        LocationTableViewCell *cell = (LocationTableViewCell *) [[self.diningTableView visibleCells] firstObject];
+        if ([cell class] == [DiningTableViewCell class]) {
+            [((DiningTableViewCell *) cell) showToolTip];
+        }
     }
 }
 
 #pragma mark - Navigation
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if ([identifier isEqualToString:@"DiningDetail"]) {
-
-        if ([[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellHalalOnBoardingKey]) {
-            return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
-        } else {
-            return false;
-        }
-
-    } else {
-        return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
-    }
+    return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
-    if ([segue.identifier isEqualToString:@"DiningDetail"]) {
-        Location *location = [[DiningViewModel instance] locationForRow:[self.diningTableView indexPathForSelectedRow].row];
-        [DiningDetailViewModel instance].location = location;
+    if ([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"]) {
+        Location *location = [[LocationViewModel instance] locationForRow:[self.diningTableView indexPathForSelectedRow].row];
+        [LocationDetailViewModel instance].location = location;
+    } else if ([segue.identifier isEqualToString:@"CreateLocation"]) {
+        [CreateLocationViewModel instance].locationType = [LocationViewModel instance].locationType;
     }
 }
 
@@ -112,38 +112,41 @@
 
     self.refreshControl = [UIRefreshControl new];
     [self.refreshControl handleControlEvents:UIControlEventValueChanged withBlock:^(id weakControl) {
-        [DiningViewModel instance].page = 0;
-        [[DiningViewModel instance] refreshLocations:false];
+        [LocationViewModel instance].page = 0;
+        [[LocationViewModel instance] refreshLocations:false];
     }];
     self.tableViewController.refreshControl = self.refreshControl;
 
     self.bottomRefreshControl = [UIRefreshControl new];
     self.diningTableView.bottomRefreshControl = self.bottomRefreshControl;
     [self.bottomRefreshControl handleControlEvents:UIControlEventValueChanged withBlock:^(id weakControl) {
-        [DiningViewModel instance].page++;
-        [[DiningViewModel instance] refreshLocations:false];
+        [LocationViewModel instance].page++;
+        [[LocationViewModel instance] refreshLocations:false];
     }];
 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[DiningViewModel instance] numberOfLocations];
+    return [[LocationViewModel instance] numberOfLocations];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    Location *location = [[DiningViewModel instance] locationForRow:indexPath.row];
+    Location *location = [[LocationViewModel instance] locationForRow:indexPath.row];
 
-    NSString *identifier = @"dining";
-    DiningTableViewCell *cell = [self.diningTableView dequeueReusableCellWithIdentifier:identifier];
+
+    NSString *identifier = LocationTypeString([LocationViewModel instance].locationType);
+    LocationTableViewCell *cell = [self.diningTableView dequeueReusableCellWithIdentifier:identifier];
 
     [cell configure:location];
 
-    //If onBoarding was dismissed before cells where displayed
-    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPorkOnBoardingKey] && [[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterDiningOnBoardingButtonKey]) {
-        [cell showToolTip];
-    }
+    if ([cell class] == [DiningTableViewCell class]) {
+        //If onBoarding was dismissed before cells where displayed
+        if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPorkOnBoardingKey] && [[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
+            [((DiningTableViewCell *) cell) showToolTip];
+        }
 
+    }
     return cell;
 }
 

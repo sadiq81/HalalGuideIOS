@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <CoreLocation/CoreLocation.h>
-#import "CreateDiningViewModel.h"
+#import "CreateLocationViewModel.h"
 #import "AddressService.h"
 #import "Adgangsadresse.h"
 #import "LocationService.h"
@@ -18,14 +18,14 @@
 #import "ErrorReporting.h"
 
 
-@implementation CreateDiningViewModel {
+@implementation CreateLocationViewModel {
 
 }
 
-@synthesize streetNumbers, categories, suggestedPlaceMark, suggestionName;
+@synthesize locationType, streetNumbers, categories, language, suggestedPlaceMark, suggestionName;
 
-+ (CreateDiningViewModel *)instance {
-    static CreateDiningViewModel *_instance = nil;
++ (CreateLocationViewModel *)instance {
+    static CreateLocationViewModel *_instance = nil;
 
     @synchronized (self) {
         if (_instance == nil) {
@@ -129,14 +129,17 @@
         location.addressPostalCode = postalCode;
         location.telephone = telephone;
         location.homePage = website;
+        location.creationStatus = @(CreationStatusAwaitingApproval);
+        location.submitterId = [PFUser currentUser].objectId;
+
+        //TODO validation
         location.alcohol = @(alcohol);
         location.pork = @(pork);
         location.nonHalal = @(nonHalal);
-        location.language = @(LanguageNone);
-        location.creationStatus = @(CreationStatusAwaitingApproval);
-        location.locationType = @(LocationTypeDining);
-        location.submitterId = [PFUser currentUser].objectId;
+        location.locationType = @(self.locationType);
         location.categories = self.categories;
+        location.language = @(self.language);
+
         if (!CLLocationCoordinate2DIsValid(self.userChoosenLocation)) {
             NSString *latitude = [address.adgangspunkt.koordinater objectAtIndex:1];
             NSString *longitude = [address.adgangspunkt.koordinater objectAtIndex:0];

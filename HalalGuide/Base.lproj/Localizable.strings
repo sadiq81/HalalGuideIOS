@@ -82,7 +82,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "yes" = "Ja";
 "action"= "Handling";
 "directions" = "Find vej";
-"call" = "Ring til restaurant";
+"call" = "Ring til stedet";
 "warning" = "Advarsel";
 "directionsText" = "Vil du åbne Kort og få vist vejen til";
 "callNotAvaileble"= "Enheden understøtter ikke opringning";
@@ -96,11 +96,17 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "approved" = "Godkendt";
 "notapproved" = "Ikke godkendt";
 
+"shoptype" = "Butiktype";
+"groceries" = "Dagligvarer";
+"furniture" = "Møbler";
+
+"language" = "Sprog";
 "none" = "Intet";
 "danish" ="Dansk";
 "arabic" = "Arabisk";
 "urdu" = "Urdu";
 "english" = "Engelsk";
+
 
 "dining" = "Spisesteder";
 "mosque" = "Moske";
@@ -123,11 +129,13 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "errorMailText" = "Der er følgende forkerte oplysninger: \nUDDYB HER!";
 
-"addNewDiningOnBoardingButton" = "Tryk her for at indsende et forslag";
-"filterDiningOnBoardingButton" = "Tryk her for filtrere de viste spisesteder";
+"addNewOnBoardingButton" = "Tryk her for at indsende et forslag";
+"filterOnBoardingButton" = "Tryk her for filtrere de viste resultater";
 
 "diningCellPorkOnBoarding" = "Viser om der også serveres gris";
 "diningCellAlcoholOnBoarding" = "Viser om der også serveres alkohol";
 "diningCellHalalOnBoarding" =  "Viser om der udelukkende serveres halal kød";
 
-"diningDetailAddressTelephoneOptionsOnBoarding" = "Tryk her for at her få rutevejledning eller ringe til restauranten";
+"diningDetailAddressTelephoneOptionsOnBoarding" = "Tryk her for at her få rutevejledning eller ringe til stedet";
+
+"createLocationPickImageOnBoarding" = "Tryk her for at tilføje et billede";

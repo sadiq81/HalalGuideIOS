@@ -22,7 +22,7 @@
 - (void)configure:(Review *)review1 {
 
     [[ProfileInfoService instance] profileInfoForSubmitter:review1.submitterId onCompletion:^(ProfileInfo *info) {
-        [self.profileImage sd_setImageWithURL:info.facebookProfileUrl];
+        [self.profileImage sd_setImageWithURL:info.facebookProfileUrlSmall];
         self.submitterName.text = info.facebookName;
     }];
 

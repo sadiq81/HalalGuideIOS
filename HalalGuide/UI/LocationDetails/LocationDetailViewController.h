@@ -1,5 +1,5 @@
 //
-//  DiningDetailViewController.h
+//  LocationDetailViewController.h
 //  HalalGuide
 //
 //  Created by Privat on 09/11/14.
@@ -12,15 +12,15 @@
 #import "HalalGuideLabels.h"
 #import "BaseViewController.h"
 #import "iCarousel.h"
-#import "DiningDetailViewModel.h"
+#import "LocationDetailViewModel.h"
 #import "BaseCollectionViewController.h"
 #import <MessageUI/MessageUI.h>
 
-@class DiningDetailTopView;
+@class LocationDetail;
 
-@interface DiningDetailViewController : BaseCollectionViewController   <UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, DiningDetailReviewDelegate,iCarouselDataSource, iCarouselDelegate, DiningDetailPictureDelegate>
+@interface LocationDetailViewController : BaseCollectionViewController   <UIImagePickerControllerDelegate, MFMailComposeViewControllerDelegate, DiningDetailReviewDelegate,iCarouselDataSource, iCarouselDelegate, DiningDetailPictureDelegate>
 
-@property (strong) DiningDetailTopView *headerView;
+@property (strong) LocationDetail *headerView;
 
 - (void)openMaps:(UITapGestureRecognizer *)recognizer;
 @end

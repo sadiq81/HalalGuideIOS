@@ -11,6 +11,7 @@
 @interface CategoriesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 
 }
+@property (nonatomic) LocationType locationType;
 @property(strong, nonatomic) IBOutlet UITableView *categoriesTableView;
 @property(weak, nonatomic) id<CategoriesViewModel> viewModel;
 

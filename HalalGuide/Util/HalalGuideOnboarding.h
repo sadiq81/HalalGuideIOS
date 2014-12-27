@@ -3,11 +3,13 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#define kAddNewDiningOnBoardingButtonKey @"addNewDiningOnBoardingButton"
-#define kFilterDiningOnBoardingButtonKey @"filterDiningOnBoardingButton"
+#define kAddNewOnBoardingButtonKey @"addNewOnBoardingButton"
+#define kFilterOnBoardingButtonKey @"filterOnBoardingButton"
 #define kDiningCellPorkOnBoardingKey @"diningCellPorkOnBoarding"
 #define kDiningCellAlcoholOnBoardingKey @"diningCellAlcoholOnBoarding"
 #define kDiningCellHalalOnBoardingKey @"diningCellHalalOnBoarding"
+
+#define kCreateLocationPickImageOnBoardingKey @"createLocationPickImageOnBoarding"
 
 #define kDiningDetailAddressTelephoneOptionsOnBoardingKey @"diningDetailAddressTelephoneOptionsOnBoarding"
 

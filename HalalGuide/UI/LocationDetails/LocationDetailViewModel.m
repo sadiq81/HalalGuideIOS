@@ -3,24 +3,24 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#import "DiningDetailViewModel.h"
+#import "LocationDetailViewModel.h"
 #import "LocationPicture.h"
 #import "PictureService.h"
 #import "ErrorReporting.h"
-#import "DiningViewModel.h"
+#import "LocationViewModel.h"
 #import "ReviewService.h"
 
 @import MessageUI;
 
 #import <SVProgressHUD/SVProgressHUD.h>
 
-@implementation DiningDetailViewModel {
+@implementation LocationDetailViewModel {
 
 }
 
-+ (DiningDetailViewModel *)instance {
++ (LocationDetailViewModel *)instance {
 
-    static DiningDetailViewModel *_instance = nil;
+    static LocationDetailViewModel *_instance = nil;
 
     @synchronized (self) {
         if (_instance == nil) {

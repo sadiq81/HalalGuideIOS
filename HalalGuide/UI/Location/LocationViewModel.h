@@ -16,8 +16,9 @@
 
 @end
 
-@interface DiningViewModel : BaseViewModel <CategoriesViewModel>
+@interface LocationViewModel : BaseViewModel <CategoriesViewModel>
 
+@property(nonatomic) LocationType locationType;
 @property(nonatomic, retain) NSMutableArray *locations;
 @property id <DiningViewModelDelegate> delegate;
 @property(nonatomic) NSUInteger maximumDistance;
@@ -27,7 +28,7 @@
 @property(nonatomic) int page;
 
 
-+ (DiningViewModel *)instance;
++ (LocationViewModel *)instance;
 
 - (void)reset;
 

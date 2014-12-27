@@ -1,5 +1,5 @@
 //
-//  CreateDiningViewController.m
+//  CreateLocationViewController.m
 //  HalalGuide
 //
 //  Created by Privat on 09/11/14.
@@ -10,27 +10,29 @@
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import <LinqToObjectiveC/NSArray+LinqExtensions.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import "CreateDiningViewController.h"
+#import "CreateLocationViewController.h"
 #import "CategoriesViewController.h"
-#import "CreateDiningViewModel.h"
+#import "CreateLocationViewModel.h"
 #import "MZFormSheetSegue.h"
 #import "IQUIView+Hierarchy.h"
 #import "Adgangsadresse.h"
 #import "IQKeyboardReturnKeyHandler.h"
 #import "UIAlertController+Blocks.h"
 #import "CreateReviewViewModel.h"
+#import "UIView+Extensions.h"
+#import "HalalGuideOnboarding.h"
 
 //TODO Opening hours
 
-@implementation CreateDiningViewController {
+@implementation CreateLocationViewController {
     IQKeyboardReturnKeyHandler *returnKeyHandler;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[CreateDiningViewModel instance] reset];
+    [[CreateLocationViewModel instance] reset];
 
-    [CreateDiningViewModel instance].categories = [NSMutableArray new];
+    [CreateLocationViewModel instance].categories = [NSMutableArray new];
 
     returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
 
@@ -38,20 +40,46 @@
     self.roadNumber.autocompleteDataSource = self;
 
     [self setupEvents];
+
+    [self setupLocationType];
+
+    [self onBoarding];
+}
+
+- (void)onBoarding {
+    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kCreateLocationPickImageOnBoardingKey]) {
+        [self.pickImage showOnBoardingWithHintKey:kCreateLocationPickImageOnBoardingKey withDelegate:nil];
+    }
+}
+
+- (void)setupLocationType {
+
+    if ([CreateLocationViewModel instance].locationType != LocationTypeDining) {
+        [self.diningSwitches removeFromSuperview];
+        self.categoriesView.frame = CGRectMake(self.categoriesView.x, self.website.y + self.website.height + 8, self.categoriesView.width, self.categoriesView.height);
+
+        if ([CreateLocationViewModel instance].locationType == LocationTypeMosque) {
+            [self.reset removeFromSuperview];
+            self.categoriesCount.text = @"";
+            self.categoriesText.text = NSLocalizedString(@"language", nil);
+        } else if ([CreateLocationViewModel instance].locationType == LocationTypeShop) {
+
+        }
+    }
 }
 
 - (void)setupEvents {
 
-    [[CreateDiningViewModel instance] loadAddressesNearPositionOnCompletion:nil];
+    [[CreateLocationViewModel instance] loadAddressesNearPositionOnCompletion:nil];
 
     __weak typeof(self) weakSelf = self;
 
     [self.pickImage handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
-        [[CreateDiningViewModel instance] getPicture:weakSelf withDelegate:weakSelf];
+        [[CreateLocationViewModel instance] getPicture:weakSelf withDelegate:weakSelf];
     }];
 
     [self.road handleControlEvents:UIControlEventEditingDidEnd withBlock:^(UITextField *weakSender) {
-        Postnummer *postnummer = [[CreateDiningViewModel instance] postalCodeFor:weakSender.text];
+        Postnummer *postnummer = [[CreateLocationViewModel instance] postalCodeFor:weakSender.text];
         if (postnummer) {
             weakSelf.postalCode.text = postnummer.nr;
             weakSelf.city.text = postnummer.navn;
@@ -59,7 +87,7 @@
     }];
 
     [self.postalCode handleControlEvents:UIControlEventEditingDidEnd withBlock:^(UITextField *weakSender) {
-        [[CreateDiningViewModel instance] cityNameFor:weakSender.text onCompletion:^(Postnummer *postnummer) {
+        [[CreateLocationViewModel instance] cityNameFor:weakSender.text onCompletion:^(Postnummer *postnummer) {
             if (postnummer) {
                 weakSelf.city.text = postnummer.navn;
             }
@@ -79,7 +107,7 @@
     }];
 
     [self.reset handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
-        [[CreateDiningViewModel instance].categories removeAllObjects];
+        [[CreateLocationViewModel instance].categories removeAllObjects];
         [weakSelf setUILabels];
     }];
 
@@ -89,22 +117,22 @@
 
     [self.save setBlock:^(id weakSender) {
         if ([weakSelf areMandatoryFieldsFilledOut]) {
-            [[CreateDiningViewModel instance] saveEntity:weakSelf.name.text
-                                                    road:weakSelf.road.text
-                                              roadNumber:weakSelf.roadNumber.text
-                                              postalCode:weakSelf.postalCode.text
-                                                    city:weakSelf.city.text
-                                               telephone:weakSelf.telephone.text
-                                                 website:weakSelf.website.text
-                                                    pork:weakSelf.porkSwitch.on
-                                                 alcohol:weakSelf.alcoholSwitch.on
-                                                nonHalal:weakSelf.halalSwitch.on
-                                                   image:weakSelf.image
-                                            onCompletion:^(CreateEntityResult result) {
+            [[CreateLocationViewModel instance] saveEntity:weakSelf.name.text
+                                                      road:weakSelf.road.text
+                                                roadNumber:weakSelf.roadNumber.text
+                                                postalCode:weakSelf.postalCode.text
+                                                      city:weakSelf.city.text
+                                                 telephone:weakSelf.telephone.text
+                                                   website:weakSelf.website.text
+                                                      pork:weakSelf.porkSwitch.on
+                                                   alcohol:weakSelf.alcoholSwitch.on
+                                                  nonHalal:weakSelf.halalSwitch.on
+                                                     image:weakSelf.image
+                                              onCompletion:^(CreateEntityResult result) {
 
-                                                [weakSelf showDialog:result];
+                                                  [weakSelf showDialog:result];
 
-                                            }];
+                                              }];
         }
     }];
 }
@@ -115,11 +143,11 @@
 
     switch (result) {
         case CreateEntityResultAddressDoesNotExist: {
-                [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"GPSNotPreciseEnough", nil) message:nil cancelButtonTitle:NSLocalizedString(@"no", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"yes", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"GPSNotPreciseEnough", nil) message:nil cancelButtonTitle:NSLocalizedString(@"no", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"yes", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
 
                 if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
-                    [[CreateDiningViewModel instance] findAddressByDescription:weakSelf.road.text roadNumber:weakSelf.roadNumber.text postalCode:weakSelf.postalCode.text onCompletion:^{
-                        [CreateDiningViewModel instance].suggestionName = weakSelf.name.text;
+                    [[CreateLocationViewModel instance] findAddressByDescription:weakSelf.road.text roadNumber:weakSelf.roadNumber.text postalCode:weakSelf.postalCode.text onCompletion:^{
+                        [CreateLocationViewModel instance].suggestionName = weakSelf.name.text;
                         [self performSegueWithIdentifier:@"ChooseGPSPoint" sender:self];
                     }];
                 }
@@ -131,7 +159,7 @@
                 if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
                     [self.navigationController popViewControllerAnimated:true];
                 } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
-                    [[CreateDiningViewModel instance] saveEntity:self.name.text road:self.road.text roadNumber:self.roadNumber.text postalCode:self.postalCode.text city:self.city.text telephone:self.telephone.text website:self.website.text pork:self.porkSwitch.on alcohol:self.alcoholSwitch.on nonHalal:self.halalSwitch.on image:weakSelf.image onCompletion:^(CreateEntityResult result) {
+                    [[CreateLocationViewModel instance] saveEntity:self.name.text road:self.road.text roadNumber:self.roadNumber.text postalCode:self.postalCode.text city:self.city.text telephone:self.telephone.text website:self.website.text pork:self.porkSwitch.on alcohol:self.alcoholSwitch.on nonHalal:self.halalSwitch.on image:weakSelf.image onCompletion:^(CreateEntityResult result) {
                         [self showDialog:result];
                     }];
                 }
@@ -143,7 +171,7 @@
                 if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
                     [self.navigationController popViewControllerAnimated:true];
                 } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
-                    [[CreateDiningViewModel instance] savePicture:weakSelf.image onCompletion:^(CreateEntityResult result) {
+                    [[CreateLocationViewModel instance] savePicture:weakSelf.image onCompletion:^(CreateEntityResult result) {
                         [self showDialog:result];
                     }];
                 }
@@ -206,9 +234,13 @@
 #pragma mark UIUpdates
 
 - (void)setUILabels {
-    int count = (int) [[CreateDiningViewModel instance].categories count];
-    self.categoriesCount.text = [NSString stringWithFormat:@"%i", count];
-
+    if ([CreateLocationViewModel instance].locationType != LocationTypeMosque) {
+        int count = (int) [[CreateLocationViewModel instance].categories count];
+        self.categoriesCount.text = [NSString stringWithFormat:@"%i", count];
+    } else {
+        self.categoriesCount.text = NSLocalizedString(LanguageString([CreateLocationViewModel instance].language), nil);
+        [self.categoriesCount sizeToFit];
+    }
 }
 
 #pragma mark - AutoComplete
@@ -218,9 +250,9 @@
     NSArray *suggestions;
 
     if (textField == self.road) {
-        suggestions = [[CreateDiningViewModel instance] streetNameForPrefix:prefix];
+        suggestions = [[CreateLocationViewModel instance] streetNameForPrefix:prefix];
     } else if (textField == self.roadNumber) {
-        suggestions = [[CreateDiningViewModel instance] streetNumbersFor:self.road.text];
+        suggestions = [[CreateLocationViewModel instance] streetNumbersFor:self.road.text];
     }
 
     NSString *suggestion = [suggestions linq_firstOrNil];
@@ -265,7 +297,8 @@
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"chooseCategories"]) {
         CategoriesViewController *destination = (CategoriesViewController *) segue.destinationViewController;
-        destination.viewModel = [CreateDiningViewModel instance];
+        destination.locationType = [CreateLocationViewModel instance].locationType;
+        destination.viewModel = [CreateLocationViewModel instance];
 
         MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *) segue;
         MZFormSheetController *formSheet = formSheetSegue.formSheetController;
@@ -278,7 +311,7 @@
         };
     }
     else if ([segue.identifier isEqualToString:@"CreateReview"]) {
-        [CreateReviewViewModel instance].reviewedLocation = [CreateDiningViewModel instance].createdLocation;
+        [CreateReviewViewModel instance].reviewedLocation = [CreateLocationViewModel instance].createdLocation;
     }
 }
 

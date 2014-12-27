@@ -1,5 +1,5 @@
 //
-//  DiningDetailViewController.m
+//  LocationDetailViewController.m
 //  HalalGuide
 //
 //  Created by Privat on 09/11/14.
@@ -10,11 +10,11 @@
 #import <UIAlertController+Blocks/UIAlertController+Blocks.h>
 #import <ParseUI/ParseUI.h>
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "DiningDetailViewController.h"
+#import "LocationDetailViewController.h"
 #import "CreateReviewViewModel.h"
 #import "Review.h"
-#import "CreateDiningViewModel.h"
-#import "DiningDetailTopView.h"
+#import "CreateLocationViewModel.h"
+#import "LocationDetail.h"
 #import "HalalGuideNumberFormatter.h"
 #import "LocationPicture.h"
 #import "ReviewCell.h"
@@ -23,15 +23,16 @@
 #import "UIView+Extensions.h"
 #import "HalalGuideOnboarding.h"
 
-//TODO Onboarding - Tap for call/directions
-@implementation DiningDetailViewController {
+@implementation LocationDetailViewController {
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [DiningDetailViewModel instance].reviewDelegate = self;
-    [DiningDetailViewModel instance].pictureDelegate = self;
+    [LocationDetailViewModel instance].reviewDelegate = self;
+    [LocationDetailViewModel instance].pictureDelegate = self;
+
+    self.navigationItem.title = [LocationDetailViewModel instance].location.name;
 }
 
 #pragma mark - Navigation
@@ -41,11 +42,11 @@
     [super prepareForSegue:segue sender:sender];
 
     if ([segue.identifier isEqualToString:@"CreateReview"]) {
-        [CreateReviewViewModel instance].reviewedLocation = [DiningDetailViewModel instance].location;
+        [CreateReviewViewModel instance].reviewedLocation = [LocationDetailViewModel instance].location;
     }
     else if ([segue.identifier isEqualToString:@"ReviewDetails"]) {
         NSIndexPath *selected = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
-        Review *review = [[[DiningDetailViewModel instance] reviews] objectAtIndex:selected.item];
+        Review *review = [[[LocationDetailViewModel instance] reviews] objectAtIndex:selected.item];
         [ReviewDetailViewModel instance].review = review;
     }
 
@@ -67,10 +68,10 @@
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
 
     //TODO Ugly hack, fix with TODO below
-    [CreateDiningViewModel instance].createdLocation = [DiningDetailViewModel instance].location;
-    [[CreateDiningViewModel instance] savePicture:image onCompletion:^(CreateEntityResult result) {
-        [CreateDiningViewModel instance].createdLocation = nil;
-        //TODO Error handling like CreateDiningViewController, share code somehow
+    [CreateLocationViewModel instance].createdLocation = [LocationDetailViewModel instance].location;
+    [[CreateLocationViewModel instance] savePicture:image onCompletion:^(CreateEntityResult result) {
+        [CreateLocationViewModel instance].createdLocation = nil;
+        //TODO Error handling like CreateLocationViewController, share code somehow
     }];
 }
 
@@ -78,7 +79,7 @@
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSInteger reviews = [[[DiningDetailViewModel instance] reviews] count];
+    NSInteger reviews = [[[LocationDetailViewModel instance] reviews] count];
     if (reviews == 0) {
         return 1;
     } else {
@@ -89,8 +90,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     UICollectionViewCell *cell;
-    if ([[[DiningDetailViewModel instance] reviews] count] > 0) {
-        Review *review = [[[DiningDetailViewModel instance] reviews] objectAtIndex:indexPath.item];
+    if ([[[LocationDetailViewModel instance] reviews] count] > 0) {
+        Review *review = [[[LocationDetailViewModel instance] reviews] objectAtIndex:indexPath.item];
         ReviewCell *reviewCell = (ReviewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kReviewCellIdentifer forIndexPath:indexPath];
         [reviewCell configure:review];
         cell = reviewCell;
@@ -107,9 +108,9 @@
     if (kind == UICollectionElementKindSectionHeader) {
 
         //TODO Bad design
-        self.headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@ "DiningDetailTopView" forIndexPath:indexPath];
+        self.headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@ "LocationDetail" forIndexPath:indexPath];
 
-        Location *loc = [DiningDetailViewModel instance].location;
+        Location *loc = [LocationDetailViewModel instance].location;
 
         self.headerView.carousel.type = iCarouselTypeCoverFlow2;
         //headerView.carousel.delegate = self;
@@ -130,20 +131,38 @@
         self.headerView.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
         self.headerView.rating.rating = 0;
 
-        self.headerView.category.text = [loc categoriesString];
-        [self.headerView.porkImage configureViewForLocation:loc];
-        [self.headerView.alcoholImage configureViewForLocation:loc];
-        [self.headerView.halalImage configureViewForLocation:loc];
-        [self.headerView.porkLabel configureViewForLocation:loc];
-        [self.headerView.alcoholLabel configureViewForLocation:loc];
-        [self.headerView.halalLabel configureViewForLocation:loc];
+        if ([[LocationDetailViewModel instance].location.locationType isEqualToNumber:@(LocationTypeDining)]) {
+            self.headerView.category.text = [loc categoriesString];
+            [self.headerView.porkImage configureViewForLocation:loc];
+            [self.headerView.alcoholImage configureViewForLocation:loc];
+            [self.headerView.halalImage configureViewForLocation:loc];
+            [self.headerView.porkLabel configureViewForLocation:loc];
+            [self.headerView.alcoholLabel configureViewForLocation:loc];
+            [self.headerView.halalLabel configureViewForLocation:loc];
+        } else {
+
+            if ([[LocationDetailViewModel instance].location.locationType isEqualToNumber:@(LocationTypeMosque)]) {
+                self.headerView.halalLabel.text = NSLocalizedString(LanguageString([[LocationDetailViewModel instance].location.language integerValue]), nil);
+                self.headerView.halalImage.image = [UIImage imageNamed:LanguageString([[LocationDetailViewModel instance].location.language integerValue])];
+            } else {
+                [self.headerView.halalLabel removeFromSuperview];
+                [self.headerView.halalImage removeFromSuperview];
+            }
+
+            [self.headerView.category removeFromSuperview];
+            [self.headerView.porkLabel removeFromSuperview];
+            [self.headerView.porkImage removeFromSuperview];
+            [self.headerView.alcoholImage removeFromSuperview];
+            [self.headerView.alcoholLabel removeFromSuperview];
+
+        }
 
         __weak typeof(self) weakSelf = self;
         [self.headerView.addPicture handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
-            [[DiningDetailViewModel instance] getPicture:weakSelf withDelegate:weakSelf];
+            [[LocationDetailViewModel instance] getPicture:weakSelf withDelegate:weakSelf];
         }];
         [self.headerView.report handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
-            [[DiningDetailViewModel instance] report:weakSelf];
+            [[LocationDetailViewModel instance] report:weakSelf];
         }];
 
         reusableView = self.headerView;
@@ -155,19 +174,26 @@
 //TODO Select whether to call restaurant or open in maps
 - (void)openMaps:(UITapGestureRecognizer *)recognizer {
 
+    NSMutableArray *buttons = [[NSMutableArray alloc] init];
+    if ([LocationDetailViewModel instance].location.addressRoad){
+        [buttons addObject:NSLocalizedString(@"directions", nil)];
+    }
+    if ([LocationDetailViewModel instance].location.telephone){
+        [buttons addObject:NSLocalizedString(@"call", nil)];
+    }
 
     [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"action", nil)
                                          message:nil
                                cancelButtonTitle:NSLocalizedString(@"regret", nil)
                           destructiveButtonTitle:nil
-                               otherButtonTitles:@[NSLocalizedString(@"directions", nil), [DiningDetailViewModel instance].location.telephone ? NSLocalizedString(@"call", nil): nil]
+                               otherButtonTitles:buttons
 
                                         tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
                                             if (buttonIndex == UIAlertControllerBlocksFirstOtherButtonIndex) {
-                                                PFGeoPoint *point = [[DiningDetailViewModel instance].location point];
+                                                PFGeoPoint *point = [[LocationDetailViewModel instance].location point];
                                                 MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(point.latitude, point.longitude) addressDictionary:nil];
                                                 MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-                                                [mapItem setName:[DiningDetailViewModel instance].location.name];
+                                                [mapItem setName:[LocationDetailViewModel instance].location.name];
 
                                                 // Set the directions mode to "Driving"
                                                 // Can use MKLaunchOptionsDirectionsModeWalking instead
@@ -182,7 +208,7 @@
                                             }
                                             else if (buttonIndex == 3) {
 
-                                                NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@", [DiningDetailViewModel instance].location.telephone]];
+                                                NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@", [LocationDetailViewModel instance].location.telephone]];
 
                                                 if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
                                                     [[UIApplication sharedApplication] openURL:phoneUrl];
@@ -196,7 +222,7 @@
 #pragma mark - CollectionView - Pictures
 
 - (void)reloadCollectionView {
-    if ([[DiningDetailViewModel instance].locationPictures count] == 0) {
+    if ([[LocationDetailViewModel instance].locationPictures count] == 0) {
         self.headerView.noPicturesLabel.hidden = false;
     } else {
         self.headerView.noPicturesLabel.hidden = true;
@@ -205,13 +231,13 @@
 }
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
-    return [[DiningDetailViewModel instance].locationPictures count];
+    return [[LocationDetailViewModel instance].locationPictures count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
 
     UIImageView *temp;
-    LocationPicture *picture = [[DiningDetailViewModel instance] pictureForRow:index];
+    LocationPicture *picture = [[LocationDetailViewModel instance] pictureForRow:index];
 
     if (view == nil) {
         view = temp = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
@@ -226,7 +252,7 @@
 
 - (void)reloadCollectionView:(NSUInteger)oldItemsCount insertNewItems:(NSUInteger)newItemsCount {
 
-    self.headerView.rating.rating = [[[DiningDetailViewModel instance] averageRating] floatValue];
+    self.headerView.rating.rating = [[[LocationDetailViewModel instance] averageRating] floatValue];
 
     [self.collectionView performBatchUpdates:^{
 

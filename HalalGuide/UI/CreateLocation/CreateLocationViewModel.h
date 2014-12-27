@@ -12,15 +12,16 @@
 @class Adgangsadresse;
 
 
-@interface CreateDiningViewModel : BaseViewModel <CategoriesViewModel>
+@interface CreateLocationViewModel : BaseViewModel <CategoriesViewModel>
 
+@property (nonatomic) LocationType locationType;
 @property(nonatomic, retain) NSDictionary *streetNumbers;
 @property(nonatomic, retain) Location *createdLocation;
 @property(nonatomic, retain) CLPlacemark *suggestedPlaceMark;
 @property(nonatomic, retain) NSString *suggestionName;
 @property(nonatomic) CLLocationCoordinate2D userChoosenLocation;
 
-+ (CreateDiningViewModel *)instance;
++ (CreateLocationViewModel *)instance;
 
 - (void)reset;
 

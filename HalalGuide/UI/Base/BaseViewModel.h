@@ -39,6 +39,7 @@ static WaitCompletionBlock waitFor  = ^void (NSTimeInterval duration, WaitComple
 @protocol CategoriesViewModel <NSObject>
 
 @property(nonatomic, retain) NSMutableArray *categories;
+@property(nonatomic) Language language;
 
 @end
 

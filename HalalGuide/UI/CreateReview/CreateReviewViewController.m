@@ -10,8 +10,8 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "CreateReviewViewController.h"
 #import "EDStarRating.h"
-#import "DiningViewController.h"
-#import "DiningDetailViewController.h"
+#import "LocationViewController.h"
+#import "LocationDetailViewController.h"
 #import "CreateReviewViewModel.h"
 
 @interface CreateReviewViewController ()
@@ -59,10 +59,10 @@
     NSArray *controllers = self.navigationController.viewControllers;
     for (int i = (int ) [controllers count] - 1; i >= 0; i--) {
         UIViewController *controller = [controllers objectAtIndex:i];
-        if ([controller class] == [DiningViewController class]) {
+        if ([controller class] == [LocationViewController class]) {
             [self.navigationController popToViewController:controller animated:true];
             return;
-        } else if ([controller class] == [DiningDetailViewController class]) {
+        } else if ([controller class] == [LocationDetailViewController class]) {
             [self.navigationController popToViewController:controller animated:true];
             return;
         }

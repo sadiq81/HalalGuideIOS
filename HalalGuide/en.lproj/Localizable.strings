@@ -84,7 +84,7 @@
 "yes" = "Yes";
 "action"= "Action";
 "directions" = "Get directions";
-"call" = "Call restaurant";
+"call" = "Call place";
 "directionsText" = "Do you want to open maps and get directions for";
 "warning" = "Warning";
 "callNotAvaileble"= "The device does not support calling";
@@ -98,6 +98,11 @@
 "approved" = "Approved";
 "notapproved" = "Not approved";
 
+"shoptype" = "Shop type";
+"groceries" = "Groceries";
+"furniture" = "Furniture";
+
+"language" = "Language";
 "none" = "None";
 "danish" ="Danish";
 "arabic" = "Arabic";
@@ -125,12 +130,14 @@
 
 "errorMailText" = "The following information is incorrect: \nElaborate here!";
 
-"addNewDiningOnBoardingButton" = "Press here to add suggestions";
-"filterDiningOnBoardingButton" = "Press here to filter your results";
+"addNewOnBoardingButton" = "Press here to add suggestions";
+"filterOnBoardingButton" = "Press here to filter your results";
 
 "diningCellPorkOnBoarding" = "Is pork also served";
 "diningCellAlcoholOnBoarding" = "Is alcohol also served";
 "diningCellHalalOnBoarding" =  "Is exclusively halal meat";
 
-"diningDetailAddressTelephoneOptionsOnBoarding" = "Press here to get directions or call the restaurant";
+"diningDetailAddressTelephoneOptionsOnBoarding" = "Press here to get directions or call the place";
+
+"createLocationPickImageOnBoarding" = "Press here to add a picture";
 

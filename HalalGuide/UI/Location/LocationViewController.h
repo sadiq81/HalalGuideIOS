@@ -1,5 +1,5 @@
 //
-//  DiningViewController.h
+//  LocationViewController.h
 //  HalalGuide
 //
 //  Created by Privat on 09/11/14.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <CMPopTipView/CMPopTipView.h>
-#import "DiningViewModel.h"
+#import "LocationViewModel.h"
 #import "BaseViewController.h"
 
-@interface DiningViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, CMPopTipViewDelegate>
+@interface LocationViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, CMPopTipViewDelegate>
 
 @property(strong, nonatomic) IBOutlet UITableView *diningTableView;
 @property(strong, nonatomic) UITableViewController *tableViewController;

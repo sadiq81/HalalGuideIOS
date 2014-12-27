@@ -25,10 +25,10 @@
 #import "HalalGuideImageViews.h"
 #import "HalalGuideLabels.h"
 #import "iCarousel.h"
-#import "DiningDetailViewModel.h"
+#import "LocationDetailViewModel.h"
 #import <MessageUI/MessageUI.h>
 
-@interface DiningDetailTopView : UICollectionReusableView {
+@interface LocationDetail : UICollectionReusableView {
 
 }
 

@@ -5,7 +5,7 @@
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import "SettingsViewController.h"
-#import "DiningViewModel.h"
+#import "LocationViewModel.h"
 #import "HalalGuideSettings.h"
 #import "SDImageCache.h"
 
@@ -18,11 +18,11 @@
     [super viewDidLoad];
 
     [self.resetFilter handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
-        [HalalGuideSettings instance].distanceFilter = [DiningViewModel instance].maximumDistance = 5;
-        [HalalGuideSettings instance].porkFilter = [DiningViewModel instance].showPork = true;
-        [HalalGuideSettings instance].alcoholFilter = [DiningViewModel instance].showAlcohol = true;
-        [HalalGuideSettings instance].halalFilter = [DiningViewModel instance].showNonHalal = true;
-        [HalalGuideSettings instance].categoriesFilter = [DiningViewModel instance].categories = [NSMutableArray new];
+        [HalalGuideSettings instance].distanceFilter = [LocationViewModel instance].maximumDistance = 5;
+        [HalalGuideSettings instance].porkFilter = [LocationViewModel instance].showPork = true;
+        [HalalGuideSettings instance].alcoholFilter = [LocationViewModel instance].showAlcohol = true;
+        [HalalGuideSettings instance].halalFilter = [LocationViewModel instance].showNonHalal = true;
+        [HalalGuideSettings instance].categoriesFilter = [LocationViewModel instance].categories = [NSMutableArray new];
     }];
 
     [self.restorePurchases handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
@@ -35,5 +35,7 @@
 
         //TODO Clear pinned objects from parse
     }];
+
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 @end

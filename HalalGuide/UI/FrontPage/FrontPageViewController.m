@@ -7,7 +7,8 @@
 #import "FrontPageViewController.h"
 #import "DiningTableViewCell.h"
 #import "ALActionBlocks.h"
-#import "DiningDetailViewModel.h"
+#import "LocationDetailViewModel.h"
+#import "LocationViewModel.h"
 
 @implementation FrontPageViewController {
 
@@ -33,9 +34,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
-    if ([segue.identifier isEqualToString:@"DiningDetail"]) {
+    if ([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"]) {
         Location *location = [[FrontPageViewModel instance] locationForRow:[self.latestUpdated indexPathForSelectedRow].row];
-        [DiningDetailViewModel instance].location = location;
+        [LocationDetailViewModel instance].location = location;
+    } else if ([segue.identifier isEqualToString:@"Shop"]){
+        [LocationViewModel instance].locationType = LocationTypeShop;
+    } else if ([segue.identifier isEqualToString:@"Dining"]){
+        [LocationViewModel instance].locationType = LocationTypeDining;
+    }else if ([segue.identifier isEqualToString:@"Mosque"]){
+        [LocationViewModel instance].locationType = LocationTypeMosque;
     }
 }
 

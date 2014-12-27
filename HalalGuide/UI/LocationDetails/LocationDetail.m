@@ -4,17 +4,17 @@
 //
 
 #import <ParseUI/ParseUI.h>
-#import "DiningDetailTopView.h"
-#import "DiningDetailViewModel.h"
+#import "LocationDetail.h"
+#import "LocationDetailViewModel.h"
 #import "LocationPicture.h"
 #import "UIView+Extensions.h"
 #import "UIControl+ALActionBlocks.h"
-#import "CreateDiningViewModel.h"
+#import "CreateLocationViewModel.h"
 #import "HalalGuideNumberFormatter.h"
 #import "UIAlertController+Blocks.h"
 
 
-@implementation DiningDetailTopView {
+@implementation LocationDetail {
 
 }
 

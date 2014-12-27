@@ -60,7 +60,15 @@ typedef enum LocationType : int16_t {
 @(LocationTypeMosque) : @"mosque",\
 @(LocationTypeShop) :@"shop",}  objectForKey :@(enum)]
 
-@interface BaseEntity : PFObject<PFSubclassing>
+typedef enum ShopType : int16_t {
+    ShopTypeGroceries = 0,
+    ShopTypeFurniture = 1,
+} ShopType;
+
+#define ShopString(enum) [@{@(ShopTypeGroceries) : @"groceries",\
+@(ShopTypeFurniture) : @"furniture"}  objectForKey :@(enum)]
+
+@interface BaseEntity : PFObject <PFSubclassing>
 
 + (NSString *)parseClassName;
 

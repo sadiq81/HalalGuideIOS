@@ -6,7 +6,7 @@
 "0Ta-Fw-N5f.text" = "Name";
 
 /* Class = "IBUINavigationItem"; title = "Tilføj butik"; ObjectID = "0jR-Se-aIN"; */
-"0jR-Se-aIN.title" = "Add Store";
+"0jR-Se-aIN.title" = "Add";
 
 /* Class = "IBUILabel"; text = "Address"; ObjectID = "18k-5P-STX"; */
 "18k-5P-STX.text" = "Address";
@@ -48,7 +48,7 @@
 "6G2-Br-eEk.text" = "Pork";
 
 /* Class = "IBUINavigationItem"; title = "Tilføj spisested"; ObjectID = "7jK-lD-fc5"; */
-"7jK-lD-fc5.title" = "Add dining place";
+"7jK-lD-fc5.title" = "Add new";
 
 /* Class = "IBUILabel"; text = "Handle"; ObjectID = "7rX-Rb-gCn"; */
 "7rX-Rb-gCn.text" = "Shopping";
@@ -242,7 +242,7 @@ City";
 "gv8-rn-3FZ.placeholder" = "Website";
 
 /* Class = "IBUIButton"; normalTitle = "Gendan køb"; ObjectID = "h5h-5l-hYb"; */
-"h5h-5l-hYb.normalTitle" = "Restore purchases";
+"h5h-5l-hYb.normalTitle" = "Support HalalGuide";
 
 /* Class = "IBUIBarButtonItem"; title = "Gem"; ObjectID = "hYj-cW-w5U"; */
 "hYj-cW-w5U.title" = "Save";
@@ -332,7 +332,7 @@ City";
 "vLR-s9-1lO.title" = "Regret";
 
 /* Class = "IBUILabel"; text = "Spise"; ObjectID = "vfK-HZ-r4n"; */
-"vfK-HZ-r4n.text" = "Eat";
+"vfK-HZ-r4n.text" = "Dining";
 
 /* Class = "IBUILabel"; text = "Name"; ObjectID = "vvh-dz-CSu"; */
 "vvh-dz-CSu.text" = "Name";

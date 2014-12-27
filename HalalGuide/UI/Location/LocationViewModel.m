@@ -5,21 +5,21 @@
 
 
 #import "LocationService.h"
-#import "DiningViewModel.h"
+#import "LocationViewModel.h"
 #import "MapKit/MapKit.h"
 #import "NSMutableString+Extensions.h"
 #import "SVProgressHUD.h"
 #import "ErrorReporting.h"
 #import "HalalGuideSettings.h"
 
-@implementation DiningViewModel {
+@implementation LocationViewModel {
 
 }
 
-@synthesize locations, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories, page;
+@synthesize locations, locationType, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories, language, page;
 
-+ (DiningViewModel *)instance {
-    static DiningViewModel *_instance = nil;
++ (LocationViewModel *)instance {
+    static LocationViewModel *_instance = nil;
 
     @synchronized (self) {
         if (_instance == nil) {
@@ -44,27 +44,31 @@
 - (PFQuery *)query {
 
     PFQuery *query = [PFQuery queryWithClassName:kLocationTableName];
-    [query whereKey:@"locationType" equalTo:@(LocationTypeDining)];
+    [query whereKey:@"locationType" equalTo:@(self.locationType)];
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
 
-    if (!self.showPork) {
-        [query whereKey:@"pork" equalTo:@(self.showPork)];
+    if (self.locationType == LocationTypeDining) {
+
+        if (!self.showPork) {
+            [query whereKey:@"pork" equalTo:@(self.showPork)];
+        }
+
+        if (!self.showAlcohol) {
+            [query whereKey:@"alcohol" equalTo:@(self.showAlcohol)];
+        }
+
+        if (!self.showNonHalal) {
+            [query whereKey:@"nonHalal" equalTo:@(self.showNonHalal)];
+        }
+
+        if ([self.categories count] > 0) {
+            [query whereKey:@"categories" containedIn:self.categories];
+        }
     }
 
-    if (!self.showAlcohol) {
-        [query whereKey:@"alcohol" equalTo:@(self.showAlcohol)];
-    }
-
-    if (!self.showNonHalal) {
-        [query whereKey:@"nonHalal" equalTo:@(self.showNonHalal)];
-    }
 
     if ([BaseViewModel currentLocation] && self.maximumDistance < 20) {
         [query whereKey:@"point" nearGeoPoint:[PFGeoPoint geoPointWithLocation:[BaseViewModel currentLocation]] withinKilometers:self.maximumDistance];
-    }
-
-    if ([self.categories count] > 0) {
-        [query whereKey:@"categories" containedIn:self.categories];
     }
 
     //Paging controls

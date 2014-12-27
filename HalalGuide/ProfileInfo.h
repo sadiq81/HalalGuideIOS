@@ -25,6 +25,8 @@
 
 - (NSString *)facebookRelationship;
 
+- (NSURL *)facebookProfileUrlSmall;
+
 - (NSURL *)facebookProfileUrl;
 
 

@@ -5,7 +5,7 @@
 
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import "CoordinatePickerViewController.h"
-#import "CreateDiningViewModel.h"
+#import "CreateLocationViewModel.h"
 #import <AddressBook/ABPerson.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -22,22 +22,22 @@
 
     self.tempCoordinate = kCLLocationCoordinate2DInvalid;
 
-    if ([CreateDiningViewModel instance].suggestedPlaceMark) {
+    if ([CreateLocationViewModel instance].suggestedPlaceMark) {
         MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-        point.coordinate = [CreateDiningViewModel instance].suggestedPlaceMark.location.coordinate;
-        //point.title = [CreateDiningViewModel instance].suggestionName;
+        point.coordinate = [CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate;
+        //point.title = [CreateLocationViewModel instance].suggestionName;
         [self.mapView addAnnotation:point];
 
         MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
-        MKCoordinateRegion region = MKCoordinateRegionMake([CreateDiningViewModel instance].suggestedPlaceMark.location.coordinate, span);
+        MKCoordinateRegion region = MKCoordinateRegionMake([CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate, span);
         [self.mapView setRegion:region animated:YES];
     }
     __weak typeof(self) weakSelf = self;
     [self.approve setBlock:^(id weakSender) {
-        if (!CLLocationCoordinate2DIsValid(weakSelf.tempCoordinate) && CLLocationCoordinate2DIsValid([CreateDiningViewModel instance].suggestedPlaceMark.location.coordinate)) {
-            [CreateDiningViewModel instance].userChoosenLocation = [CreateDiningViewModel instance].suggestedPlaceMark.location.coordinate;
+        if (!CLLocationCoordinate2DIsValid(weakSelf.tempCoordinate) && CLLocationCoordinate2DIsValid([CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate)) {
+            [CreateLocationViewModel instance].userChoosenLocation = [CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate;
         } else {
-            [CreateDiningViewModel instance].userChoosenLocation = weakSelf.tempCoordinate;
+            [CreateLocationViewModel instance].userChoosenLocation = weakSelf.tempCoordinate;
         }
         [weakSelf.navigationController popViewControllerAnimated:true];
     }];
@@ -45,7 +45,7 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
 
-    if ([CreateDiningViewModel instance].suggestedPlaceMark == nil && mapView.tag == 0) {
+    if ([CreateLocationViewModel instance].suggestedPlaceMark == nil && mapView.tag == 0) {
 
         MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
         MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.location.coordinate, span);

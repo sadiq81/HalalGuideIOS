@@ -26,7 +26,7 @@
 @end
 
 
-@interface DiningDetailViewModel : BaseViewModel
+@interface LocationDetailViewModel : BaseViewModel
 
 @property(nonatomic, retain) id <DiningDetailReviewDelegate> reviewDelegate;
 @property(nonatomic, retain) id <DiningDetailPictureDelegate> pictureDelegate;
@@ -34,7 +34,7 @@
 @property(nonatomic, retain) NSArray *locationPictures;
 @property(nonatomic, retain) NSArray *reviews;
 
-+ (DiningDetailViewModel *)instance;
++ (LocationDetailViewModel *)instance;
 
 - (LocationPicture *)pictureForRow:(NSUInteger)row;
 

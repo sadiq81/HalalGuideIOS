@@ -1,5 +1,5 @@
 //
-//  FilterDiningViewController.h
+//  FilterLocationViewController.h
 //  HalalGuide
 //
 //  Created by Privat on 09/11/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FilterDiningViewController : UIViewController<UINavigationBarDelegate>
+@interface FilterLocationViewController : UIViewController<UINavigationBarDelegate>
 
 @property(strong, nonatomic) IBOutlet UILabel *distanceLabel;
 @property(strong, nonatomic) IBOutlet UISlider *distanceSlider;

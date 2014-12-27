@@ -5,7 +5,7 @@
 
 #import "ReviewDetailViewController.h"
 #import "PictureService.h"
-#import "DiningDetailViewModel.h"
+#import "LocationDetailViewModel.h"
 #import "ReviewDetailViewModel.h"
 #import "RACSubscriptingAssignmentTrampoline.h"
 #import "NSObject+RACPropertySubscribing.h"
