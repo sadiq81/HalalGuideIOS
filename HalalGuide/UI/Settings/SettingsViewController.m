@@ -4,6 +4,7 @@
 //
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 #import "SettingsViewController.h"
 #import "LocationViewModel.h"
 #import "HalalGuideSettings.h"
@@ -35,6 +36,8 @@
         [PFPurchase buyProduct:@"Support" block:^(NSError *error) {
             if (!error) {
                 [UIAlertController showInViewController:weakSelf withTitle:NSLocalizedString(@"thank", nil) message:@"thankText" preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+            } else{
+                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
             }
         }];
 
