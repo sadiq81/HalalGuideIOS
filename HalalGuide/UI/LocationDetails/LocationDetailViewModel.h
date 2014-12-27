@@ -34,6 +34,8 @@
 @property(nonatomic, retain) NSArray *locationPictures;
 @property(nonatomic, retain) NSArray *reviews;
 
+@property (nonatomic) NSUInteger indexOfSelectedImage;
+
 + (LocationDetailViewModel *)instance;
 
 - (LocationPicture *)pictureForRow:(NSUInteger)row;

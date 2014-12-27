@@ -12,6 +12,7 @@
 #define kCreateLocationPickImageOnBoardingKey @"createLocationPickImageOnBoarding"
 
 #define kDiningDetailAddressTelephoneOptionsOnBoardingKey @"diningDetailAddressTelephoneOptionsOnBoarding"
+#define kSlideShowViewSwipeToViewMoreKey @"slideShowViewSwipeToViewMore"
 
 #define kSupportOnBoardingKey @"supportOnBoarding"
 

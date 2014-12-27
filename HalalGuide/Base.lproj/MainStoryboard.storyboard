@@ -563,7 +563,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Navn" minimumFontSize="17" id="Geq-xg-rWm">
-                                                <rect key="frame" x="121.00000070189783" y="20" width="187" height="30"/>
+                                                <rect key="frame" x="121" y="20" width="187" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
@@ -572,7 +572,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vej" minimumFontSize="17" id="LGW-5Q-Byj" customClass="HTAutocompleteTextField">
-                                                <rect key="frame" x="120.9999984925679" y="58" width="132" height="30"/>
+                                                <rect key="frame" x="121" y="58" width="132" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -836,12 +836,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" id="Gza-tS-Krp" customClass="EDStarRating">
-                                            <rect key="frame" x="160.00000010987293" y="8" width="152" height="25"/>
+                                            <rect key="frame" x="160.00000014099817" y="8" width="152" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vKB-gc-7l7">
-                                            <rect key="frame" x="8" y="34" width="304.00000010987293" height="47"/>
+                                            <rect key="frame" x="8" y="34" width="304.00000014099817" height="47"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1027,6 +1027,9 @@
                     </collectionView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="ttq-cl-f0v"/>
+                    <connections>
+                        <segue destination="a14-dy-JEd" kind="custom" identifier="SlideShow" customClass="MZFormSheetSegue" id="CGF-ts-TUh"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvO-fL-6TL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1326,6 +1329,35 @@
             </objects>
             <point key="canvasLocation" x="2684" y="139"/>
         </scene>
+        <!--Slide Show View Controller-->
+        <scene sceneID="iRD-BI-940">
+            <objects>
+                <viewController id="a14-dy-JEd" customClass="SlideShowViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="INm-HY-6os">
+                        <rect key="frame" x="0.0" y="64" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="Guc-Ey-L5m" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="a14-dy-JEd" id="FF2-CP-sHB"/>
+                                    <outlet property="delegate" destination="a14-dy-JEd" id="9FV-V6-2J3"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dUA-li-42V"/>
+                    <connections>
+                        <outlet property="iCarousel" destination="Guc-Ey-L5m" id="Wnh-zR-Guh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ecu-ev-xAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2684" y="822"/>
+        </scene>
         <!--Review Detail View Controller-->
         <scene sceneID="kH9-Rl-4td">
             <objects>
@@ -1430,9 +1462,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0rB-JO-B8E"/>
         <segue reference="Agj-FH-MAf"/>
         <segue reference="SPP-c5-EFI"/>
-        <segue reference="ZG9-AD-yQ5"/>
+        <segue reference="lgj-e5-fFF"/>
+        <segue reference="0rB-JO-B8E"/>
     </inferredMetricsTieBreakers>
 </document>

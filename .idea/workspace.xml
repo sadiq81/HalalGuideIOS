@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/SlideShowViewController.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/SlideShowViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Info.plist" afterPath="$PROJECT_DIR$/HalalGuide/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/MainStoryboard.storyboard" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/MainStoryboard.storyboard" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HalalGuide.iws" />
@@ -30,22 +41,50 @@
       <file leaf-file-name="LocationDetailViewController.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3201" max-vertical-offset="4185">
-              <caret line="238" column="29" selection-start-line="238" selection-start-column="22" selection-end-line="238" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="4725">
+              <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+              <folding>
+                <element signature="e#148#199#0" expanded="true" />
+                <element signature="e#8476#8513#0" expanded="true" />
+                <element signature="e#8614#8645#0" expanded="true" />
+                <element signature="e#8719#8752#0" expanded="true" />
+                <element signature="e#8855#8888#0" expanded="true" />
+                <element signature="e#11396#11430#0" expanded="true" />
+                <element signature="e#11439#11482#0" expanded="true" />
+                <element signature="e#11514#11543#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationDetailViewModel.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="1830">
+              <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SettingsViewController.m" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m">
+      <file leaf-file-name="SlideShowViewController.m" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/SlideShowViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.25" vertical-offset="431" max-vertical-offset="1125">
-              <caret line="21" column="116" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.2362525" vertical-offset="218" max-vertical-offset="975">
+              <caret line="55" column="27" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
               <folding>
-                <element signature="e#93#144#0" expanded="true" />
-                <element signature="e#1467#1499#0" expanded="true" />
+                <element signature="e#93#124#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MZFormSheetController.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Pods/MZFormSheetController/MZFormSheetController/MZFormSheetController.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="13460" max-vertical-offset="14940">
+              <caret line="972" column="8" selection-start-line="972" selection-start-column="8" selection-end-line="972" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,10 +102,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Dining/DiningViewController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/DiningTableViewCell.h" />
-        <option value="$PROJECT_DIR$/UIBarButtonItem+Extension.h" />
-        <option value="$PROJECT_DIR$/CMPopTipView+Extension.h" />
         <option value="$PROJECT_DIR$/CMPopTipView+Extension.m" />
         <option value="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.m" />
         <option value="$PROJECT_DIR$/UIBarButtonItem+Extension.m" />
@@ -75,7 +110,6 @@
         <option value="$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewModel.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Base/BaseCollectionViewController.m" />
-        <option value="$PROJECT_DIR$/Podfile" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/LocationTableViewCell.m" />
         <option value="$PROJECT_DIR$/HalalGuide/Domain/Location.h" />
         <option value="$PROJECT_DIR$/UIView+Extensions.m" />
@@ -91,7 +125,6 @@
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/DiningDetailTopView.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetail.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/DiningDetailViewModel.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/DiningDetailViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateDiningViewController.h" />
@@ -107,13 +140,19 @@
         <option value="$PROJECT_DIR$/HalalGuide/ProfileInfo.m" />
         <option value="$PROJECT_DIR$/HalalGuide/ProfileInfo.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/ReviewCell.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Common/CategoriesViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.h" />
         <option value="$PROJECT_DIR$/HalalGuide/AppDelegate.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" />
+        <option value="$PROJECT_DIR$/Podfile" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/SlideShowViewController.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/SlideShowViewController.m" />
       </list>
     </option>
   </component>
@@ -734,7 +773,14 @@
       </EXTENSION>
       <method />
     </configuration>
-    <list size="23">
+    <configuration default="false" name="Pods-GGFullscreenImageViewController" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-GGFullscreenImageViewController" CONFIG_NAME="Debug" SCHEME_NAME="Pods-GGFullscreenImageViewController" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <list size="24">
       <item index="0" class="java.lang.String" itemvalue="Application.HalalGuide" />
       <item index="1" class="java.lang.String" itemvalue="Application.Pods" />
       <item index="2" class="java.lang.String" itemvalue="Application.Pods-LinqToObjectiveC" />
@@ -758,6 +804,7 @@
       <item index="20" class="java.lang.String" itemvalue="Application.Pods-iCarousel" />
       <item index="21" class="java.lang.String" itemvalue="Application.Pods-CMPopTipView" />
       <item index="22" class="java.lang.String" itemvalue="Application.Pods-UIActivityIndicator-for-SDWebImage" />
+      <item index="23" class="java.lang.String" itemvalue="Application.Pods-GGFullscreenImageViewController" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -775,17 +822,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1398" height="877" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3388535" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3388535" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3732484" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49171975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46751592" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3476612" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996207" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24876237" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24840765" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24945454" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29920116" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
@@ -794,7 +842,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49257424" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -824,161 +871,19 @@
           <line>30</line>
           <option name="timeStamp" value="265" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m</url>
+          <line>39</line>
+          <option name="timeStamp" value="479" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="479" />
+      <option name="time" value="490" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/UIView+Extensions.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5334728" vertical-offset="0" max-vertical-offset="478">
-          <caret line="17" column="11" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Shared/HalalGuideLabels.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="478">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Shared/HalalGuideLabels.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7217573" vertical-offset="0" max-vertical-offset="645">
-          <caret line="23" column="191" selection-start-line="23" selection-start-column="191" selection-end-line="23" selection-end-column="191" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Podfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28242677" vertical-offset="0" max-vertical-offset="478">
-          <caret line="9" column="125" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Services/AddressService.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="405">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewModel.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1185">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/FilterLocationViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/FilterLocationViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="1635">
-          <caret line="67" column="22" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/LocationTableViewCell.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/DiningTableViewCell.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/DiningTableViewCell.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1605">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2130">
-          <caret line="128" column="7" selection-start-line="128" selection-start-column="7" selection-end-line="128" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="735">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetail.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="287" max-vertical-offset="765">
-          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1800">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="478">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/MosqueTableViewCell.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-          <caret line="19" column="91" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UIView+Extensions.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="825">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="735">
-          <caret line="15" column="25" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewModel.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2746114" vertical-offset="96" max-vertical-offset="675">
@@ -990,13 +895,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25906736" vertical-offset="75" max-vertical-offset="2040">
           <caret line="21" column="112" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/CategoriesViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1069,6 +968,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="692" max-vertical-offset="1185">
           <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1076,6 +976,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="630">
           <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,32 +988,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/CategoriesViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="1830">
-          <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1410">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="525">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1138,20 +1018,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33197555" vertical-offset="2972" max-vertical-offset="4710">
-          <caret line="223" column="4" selection-start-line="223" selection-start-column="4" selection-end-line="223" selection-end-column="40" />
-          <folding>
-            <element signature="e#2071#2106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/AppDelegate.m">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="3105">
           <caret line="71" column="64" selection-start-line="71" selection-start-column="64" selection-end-line="71" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1185,14 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3201" max-vertical-offset="4185">
-          <caret line="238" column="29" selection-start-line="238" selection-start-column="22" selection-end-line="238" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/main.m">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38793105" vertical-offset="0" max-vertical-offset="464">
@@ -1203,11 +1066,230 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.25" vertical-offset="431" max-vertical-offset="1125">
-          <caret line="21" column="116" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.39655173" vertical-offset="431" max-vertical-offset="1125">
+          <caret line="41" column="120" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
           <folding>
-            <element signature="e#93#144#0" expanded="true" />
-            <element signature="e#1467#1499#0" expanded="true" />
+            <element signature="e#93#144#0" expanded="false" />
+            <element signature="e#1467#1499#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Parse.framework/Headers/PFPurchase.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33189654" vertical-offset="401" max-vertical-offset="1350">
+          <caret line="40" column="8" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITapGestureRecognizer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIGestureRecognizer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.4568965" vertical-offset="811" max-vertical-offset="1365">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIImageView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33189654" vertical-offset="161" max-vertical-offset="720">
+          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetail.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.88793105" vertical-offset="203" max-vertical-offset="765">
+          <caret line="48" column="36" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Podfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6833713" vertical-offset="0" max-vertical-offset="439">
+          <caret line="20" column="14" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/CategoriesViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2816" max-vertical-offset="8175">
+          <caret line="203" column="36" selection-start-line="203" selection-start-column="36" selection-end-line="203" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6875" vertical-offset="3296" max-vertical-offset="8985">
+          <caret line="248" column="78" selection-start-line="248" selection-start-column="61" selection-end-line="248" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UINavigationController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="1935">
+          <caret line="64" column="55" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pods/Headers/Public/MZFormSheetController/MZFormSheetSegue.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="540">
+          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="765">
+          <caret line="36" column="54" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pods/Headers/Public/iCarousel/iCarousel.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1674" max-vertical-offset="3045">
+          <caret line="123" column="40" selection-start-line="123" selection-start-column="40" selection-end-line="123" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/SlideShowViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <caret line="14" column="71" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="1830">
+          <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="4725">
+          <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+          <folding>
+            <element signature="e#148#199#0" expanded="true" />
+            <element signature="e#8476#8513#0" expanded="true" />
+            <element signature="e#8614#8645#0" expanded="true" />
+            <element signature="e#8719#8752#0" expanded="true" />
+            <element signature="e#8855#8888#0" expanded="true" />
+            <element signature="e#11396#11430#0" expanded="true" />
+            <element signature="e#11439#11482#0" expanded="true" />
+            <element signature="e#11514#11543#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pods/MZFormSheetController/MZFormSheetController/MZFormSheetController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33153638" vertical-offset="1917" max-vertical-offset="4410">
+          <caret line="140" column="57" selection-start-line="140" selection-start-column="57" selection-end-line="140" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pods/Headers/Public/MZFormSheetController/MZFormSheetController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34615386" vertical-offset="0" max-vertical-offset="4410">
+          <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UIView+Extensions.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43846154" vertical-offset="174" max-vertical-offset="795">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30769232" vertical-offset="0" max-vertical-offset="630">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57179487" vertical-offset="4157" max-vertical-offset="4695">
+          <caret line="306" column="34" selection-start-line="306" selection-start-column="34" selection-end-line="306" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/CategoriesViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7307692" vertical-offset="495" max-vertical-offset="1800">
+          <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pods/MZFormSheetController/MZFormSheetController/MZFormSheetController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="13460" max-vertical-offset="14940">
+          <caret line="972" column="8" selection-start-line="972" selection-start-column="8" selection-end-line="972" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/SlideShowViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2362525" vertical-offset="218" max-vertical-offset="975">
+          <caret line="55" column="27" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+          <folding>
+            <element signature="e#93#124#0" expanded="true" />
           </folding>
         </state>
       </provider>

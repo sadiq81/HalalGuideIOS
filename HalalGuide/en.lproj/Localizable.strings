@@ -115,7 +115,7 @@
 
 
 "loggingIn" = "Logging in";
-"fetching"  = "Fecthing";
+"fetching"  = "Fetching";
 "unlimited" = "Unlimited";
 "savingToTheCloud" = "Saving in the cloud";
 "reviewSaved" = "Your review has been saved";
@@ -141,6 +141,8 @@
 "diningDetailAddressTelephoneOptionsOnBoarding" = "Press here to get directions or call the place";
 
 "createLocationPickImageOnBoarding" = "Press here to add a picture";
+
+"slideShowViewSwipeToViewMore" = "Swipe to see more images";
 
 "supportOnBoarding" = "Support the free app with a small amount";
 

@@ -10,6 +10,7 @@
 #import <UIAlertController+Blocks/UIAlertController+Blocks.h>
 #import <ParseUI/ParseUI.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MZFormSheetController/MZFormSheetSegue.h>
 #import "LocationDetailViewController.h"
 #import "CreateReviewViewModel.h"
 #import "Review.h"
@@ -22,8 +23,10 @@
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "UIView+Extensions.h"
 #import "HalalGuideOnboarding.h"
+#import "SlideShowViewController.h"
 
 @implementation LocationDetailViewController {
+    CGRect iCarouselRect;
 }
 
 - (void)viewDidLoad {
@@ -48,6 +51,17 @@
         NSIndexPath *selected = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
         Review *review = [[[LocationDetailViewModel instance] reviews] objectAtIndex:selected.item];
         [ReviewDetailViewModel instance].review = review;
+    }
+
+    else if ([segue.identifier isEqualToString:@"SlideShow"]) {
+        MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *) segue;
+        MZFormSheetController *formSheet = formSheetSegue.formSheetController;
+
+        formSheet.portraitTopInset = 6;
+        formSheet.cornerRadius = 6;
+        CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+        formSheet.presentedFormSheetSize = CGSizeMake(screenSize.width * 0.95f, screenSize.height * 0.95f);
+        formSheet.transitionStyle = MZFormSheetTransitionStyleFade;
     }
 
 }
@@ -113,8 +127,9 @@
         Location *loc = [LocationDetailViewModel instance].location;
 
         self.headerView.carousel.type = iCarouselTypeCoverFlow2;
-        //headerView.carousel.delegate = self;
+        self.headerView.carousel.delegate = self;
         self.headerView.carousel.dataSource = self;
+        iCarouselRect = self.headerView.carousel.frame;
 
         self.headerView.name.text = loc.name;
         self.headerView.address.text = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
@@ -175,10 +190,10 @@
 - (void)openMaps:(UITapGestureRecognizer *)recognizer {
 
     NSMutableArray *buttons = [[NSMutableArray alloc] init];
-    if ([LocationDetailViewModel instance].location.addressRoad){
+    if ([LocationDetailViewModel instance].location.addressRoad) {
         [buttons addObject:NSLocalizedString(@"directions", nil)];
     }
-    if ([LocationDetailViewModel instance].location.telephone){
+    if ([LocationDetailViewModel instance].location.telephone) {
         [buttons addObject:NSLocalizedString(@"call", nil)];
     }
 
@@ -249,6 +264,12 @@
     return view;
 }
 
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
+
+    [LocationDetailViewModel instance].indexOfSelectedImage = index;
+
+    [self performSegueWithIdentifier:@"SlideShow" sender:self];
+}
 
 - (void)reloadCollectionView:(NSUInteger)oldItemsCount insertNewItems:(NSUInteger)newItemsCount {
 

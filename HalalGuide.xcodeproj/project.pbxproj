@@ -63,6 +63,7 @@
 		C596B8089323C38DC9154E64 /* LocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B71BF7FEBEC982AF2EC1 /* LocationViewModel.m */; };
 		C596B80D6FAEA5A9799020EE /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B99C4E194E7D0F056581 /* UIView+Extensions.m */; };
 		C596B896E5FFBACE8438BC3E /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B5E924343A08F6F50ABC /* ReviewCell.m */; };
+		C596B8A34F7CFFA6A7A8247B /* SlideShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B2F7557D5883A668E78D /* SlideShowViewController.m */; };
 		C596B8A8C0FF3CF2F23CF1EF /* Adgangsadresse.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC3435D995FE87D9DBD9 /* Adgangsadresse.m */; };
 		C596B8C6B71E490C5EBB0100 /* CreateLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B9AD84024B9A6D495BE6 /* CreateLocationViewController.m */; };
 		C596B8E01156320C71D2B3D4 /* FrontPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BDE6BE0535D6D62B6DF4 /* FrontPageViewController.m */; };
@@ -170,6 +171,7 @@
 		C596B2A4EE405E5B07E7107E /* CreateReviewViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReviewViewModel.m; sourceTree = "<group>"; };
 		C596B2C7AD9F3D1C8A088F01 /* LocationDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewModel.h; sourceTree = "<group>"; };
 		C596B2DDF0DC07043FC6C9D6 /* CreateLocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLocationViewModel.h; sourceTree = "<group>"; };
+		C596B2F7557D5883A668E78D /* SlideShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideShowViewController.m; sourceTree = "<group>"; };
 		C596B2FC8EC8496A380C0223 /* ProfileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileInfo.m; sourceTree = "<group>"; };
 		C596B301F910FB26DFD041FD /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		C596B3120E0141D7705DB18A /* PFUser+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+Extension.m"; sourceTree = SOURCE_ROOT; };
@@ -238,6 +240,7 @@
 		C596BD68040F320233372101 /* HalalGuideOnboarding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideOnboarding.h; sourceTree = "<group>"; };
 		C596BD8156F9392A5A9104C9 /* ShopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewCell.h; sourceTree = "<group>"; };
 		C596BDBC265186FAE6BB6D8D /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		C596BDD3D43A12ED9A4F882D /* SlideShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideShowViewController.h; sourceTree = "<group>"; };
 		C596BDE533E21E62E90543D5 /* NSLocale+iOS8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+iOS8.h"; sourceTree = "<group>"; };
 		C596BDE6BE0535D6D62B6DF4 /* FrontPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontPageViewController.m; sourceTree = "<group>"; };
 		C596BDEB471B1CAC691EE934 /* NSLocale+iOS8.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+iOS8.m"; sourceTree = "<group>"; };
@@ -542,6 +545,8 @@
 				C596B9AD784A1308F3EABF3A /* LocationDetail.h */,
 				C596B5E924343A08F6F50ABC /* ReviewCell.m */,
 				C596B86B05EE4EBD3D4FCDEA /* ReviewCell.h */,
+				C596B2F7557D5883A668E78D /* SlideShowViewController.m */,
+				C596BDD3D43A12ED9A4F882D /* SlideShowViewController.h */,
 			);
 			path = LocationDetails;
 			sourceTree = "<group>";
@@ -883,6 +888,7 @@
 				C596BCDFB902FAF18D51A1AB /* SettingsViewController.m in Sources */,
 				C596B6AB3FEB0CCFBB49E279 /* HalalGuideOnboarding.m in Sources */,
 				C596B710A1AA9E1C9F7CDD19 /* UIBarButtonItem+Extension.m in Sources */,
+				C596B8A34F7CFFA6A7A8247B /* SlideShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

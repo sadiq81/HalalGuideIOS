@@ -18,6 +18,8 @@
 
 }
 
+@synthesize indexOfSelectedImage;
+
 + (LocationDetailViewModel *)instance {
 
     static LocationDetailViewModel *_instance = nil;
