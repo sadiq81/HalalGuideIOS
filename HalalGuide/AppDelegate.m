@@ -16,6 +16,7 @@
 #import "KeyChainService.h"
 #import "ErrorReporting.h"
 #import "PictureService.h"
+#import "UIAlertController+Blocks.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
 
@@ -68,6 +69,10 @@ Maria Akram Monazam Maria-Akram@hotmail.com
     PFACL *defaultACL = [PFACL ACL];
     [defaultACL setPublicReadAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:false];
+    [PFPurchase addObserverForProduct:@"Support" block:^(SKPaymentTransaction *transaction) {
+
+        //TODO Make some sign of user has contributed;
+    }];
 
     return YES;
 }

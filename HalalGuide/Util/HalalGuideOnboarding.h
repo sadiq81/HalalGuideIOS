@@ -13,6 +13,8 @@
 
 #define kDiningDetailAddressTelephoneOptionsOnBoardingKey @"diningDetailAddressTelephoneOptionsOnBoarding"
 
+#define kSupportOnBoardingKey @"supportOnBoarding"
+
 #import <Foundation/Foundation.h>
 
 
