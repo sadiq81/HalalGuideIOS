@@ -40,7 +40,7 @@
     [[LocationViewModel instance] reset];
 }
 
--(void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     [self setupHints];
 }
 
@@ -100,6 +100,8 @@
     [self.diningTableView reloadData];
     [self.refreshControl endRefreshing];
     [self.bottomRefreshControl endRefreshing];
+
+    self.noResults.hidden = ![[LocationViewModel instance].locations count] == 0;
 }
 
 #pragma mark - TableView
