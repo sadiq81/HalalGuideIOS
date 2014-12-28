@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Images.xcassets/LaunchImage.launchimage/320x480.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Images.xcassets/LaunchImage.launchimage/640x960-1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Images.xcassets/LaunchImage.launchimage/640x960.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Images.xcassets/LaunchImage.launchimage/Retina 4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Images.xcassets/LaunchImage.launchimage/Retina HD 4.7.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Images.xcassets/LaunchImage.launchimage/iPhone Retina 4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Images.xcassets/LaunchImage.launchimage/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/HalalGuide.iml" afterPath="$PROJECT_DIR$/.idea/HalalGuide.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/xcuserdata/privat.xcuserdatad/xcschemes/HalalGuide.xcscheme" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/xcuserdata/privat.xcuserdatad/xcschemes/HalalGuide.xcscheme" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Info.plist" afterPath="$PROJECT_DIR$/HalalGuide/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/MainStoryboard.storyboard" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/MainStoryboard.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/en.lproj/MainStoryboard.strings" afterPath="$PROJECT_DIR$/HalalGuide/en.lproj/MainStoryboard.strings" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HalalGuide.iws" />
@@ -24,22 +30,12 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_iPhone_5s_8.1_x86_64_1" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos" />
   <component name="FavoritesManager">
     <favorites_list name="HalalGuide" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SettingsViewController.h" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ENumberViewController.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.m">
           <provider selected="true" editor-type-id="text-editor">
@@ -53,11 +49,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationViewController.m" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LocationViewController.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7923077" vertical-offset="1071" max-vertical-offset="2325">
-              <caret line="103" column="29" selection-start-line="103" selection-start-column="29" selection-end-line="103" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="2325">
+              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppDelegate.h" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/AppDelegate.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="480">
+              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppDelegate.m" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/AppDelegate.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6923077" vertical-offset="165" max-vertical-offset="3300">
+              <caret line="29" column="23" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -119,7 +135,7 @@
         <entry file="file://$PROJECT_DIR$/HalalGuide/ENumber.h">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-              <caret line="15" column="120" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -173,7 +189,6 @@
         <option value="$PROJECT_DIR$/HalalGuide/ProfileInfo.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/ReviewCell.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Common/CategoriesViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/AppDelegate.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" />
@@ -189,6 +204,7 @@
         <option value="$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/AppDelegate.m" />
       </list>
     </option>
   </component>
@@ -509,7 +525,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="HalalGuide" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="HalalGuide" TARGET_NAME="HalalGuide" CONFIG_NAME="Debug" SCHEME_NAME="HalalGuide" RUN_TARGET_PROJECT_NAME="HalalGuide" RUN_TARGET_NAME="HalalGuide" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+    <configuration default="false" name="HalalGuide" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="HalalGuide" TARGET_NAME="halalguide" CONFIG_NAME="Debug" SCHEME_NAME="HalalGuide" RUN_TARGET_PROJECT_NAME="HalalGuide" RUN_TARGET_NAME="halalguide" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
       <envs />
       <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
         <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
@@ -581,12 +597,6 @@
       <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
         <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
       </EXTENSION>
-      <method />
-    </configuration>
-    <configuration default="false" name="Test all" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="HalalGuide" TARGET_NAME="HalalGuideTests" CONFIG_NAME="Debug" SCHEME_NAME="Test all" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="0">
-      <envs />
-      <RunnerSettings RunnerId="AppRunner" />
-      <ConfigurationWrapper RunnerId="AppRunner" />
       <method />
     </configuration>
     <configuration default="false" name="Pods-UIAlertController+Blocks" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-UIAlertController+Blocks" CONFIG_NAME="Debug" SCHEME_NAME="Pods-UIAlertController+Blocks" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
@@ -680,6 +690,13 @@
       </EXTENSION>
       <method />
     </configuration>
+    <configuration default="false" name="Test all" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="HalalGuide" TARGET_NAME="halalguideTests" CONFIG_NAME="Debug" SCHEME_NAME="Test all" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
     <list size="24">
       <item index="0" class="java.lang.String" itemvalue="Application.HalalGuide" />
       <item index="1" class="java.lang.String" itemvalue="Application.Pods" />
@@ -691,20 +708,20 @@
       <item index="7" class="java.lang.String" itemvalue="Application.Pods-MZFormSheetController" />
       <item index="8" class="java.lang.String" itemvalue="Application.Pods-IQKeyboardManager" />
       <item index="9" class="java.lang.String" itemvalue="Application.Pods-HTAutocompleteTextField" />
-      <item index="10" class="java.lang.String" itemvalue="XCTest/Kiwi.Test all" />
-      <item index="11" class="java.lang.String" itemvalue="Application.Pods-UIAlertController+Blocks" />
-      <item index="12" class="java.lang.String" itemvalue="Application.Pods-EDStarRating" />
-      <item index="13" class="java.lang.String" itemvalue="Application.Pods-SVProgressHUD" />
-      <item index="14" class="java.lang.String" itemvalue="Application.Pods-Bolts" />
-      <item index="15" class="java.lang.String" itemvalue="Application.Pods-Facebook-iOS-SDK" />
-      <item index="16" class="java.lang.String" itemvalue="Application.Pods-DCKeyValueObjectMapping" />
-      <item index="17" class="java.lang.String" itemvalue="Application.Pods-CCBottomRefreshControl" />
-      <item index="18" class="java.lang.String" itemvalue="Application.Pods-ReactiveCocoa" />
-      <item index="19" class="java.lang.String" itemvalue="Application.Pods-UIView+TKGeometry" />
-      <item index="20" class="java.lang.String" itemvalue="Application.Pods-iCarousel" />
-      <item index="21" class="java.lang.String" itemvalue="Application.Pods-CMPopTipView" />
-      <item index="22" class="java.lang.String" itemvalue="Application.Pods-UIActivityIndicator-for-SDWebImage" />
-      <item index="23" class="java.lang.String" itemvalue="Application.Pods-hpple" />
+      <item index="10" class="java.lang.String" itemvalue="Application.Pods-UIAlertController+Blocks" />
+      <item index="11" class="java.lang.String" itemvalue="Application.Pods-EDStarRating" />
+      <item index="12" class="java.lang.String" itemvalue="Application.Pods-SVProgressHUD" />
+      <item index="13" class="java.lang.String" itemvalue="Application.Pods-Bolts" />
+      <item index="14" class="java.lang.String" itemvalue="Application.Pods-Facebook-iOS-SDK" />
+      <item index="15" class="java.lang.String" itemvalue="Application.Pods-DCKeyValueObjectMapping" />
+      <item index="16" class="java.lang.String" itemvalue="Application.Pods-CCBottomRefreshControl" />
+      <item index="17" class="java.lang.String" itemvalue="Application.Pods-ReactiveCocoa" />
+      <item index="18" class="java.lang.String" itemvalue="Application.Pods-UIView+TKGeometry" />
+      <item index="19" class="java.lang.String" itemvalue="Application.Pods-iCarousel" />
+      <item index="20" class="java.lang.String" itemvalue="Application.Pods-CMPopTipView" />
+      <item index="21" class="java.lang.String" itemvalue="Application.Pods-UIActivityIndicator-for-SDWebImage" />
+      <item index="22" class="java.lang.String" itemvalue="Application.Pods-hpple" />
+      <item index="23" class="java.lang.String" itemvalue="Application.Test all" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -722,14 +739,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1398" height="877" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3388535" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49171975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.46751592" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46751592" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3476612" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996207" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -822,13 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/AppDelegate.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.305499" vertical-offset="0" max-vertical-offset="491">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIAlertController.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39307535" vertical-offset="62" max-vertical-offset="765">
@@ -844,18 +854,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/AppDelegate.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="3105">
-          <caret line="71" column="64" selection-start-line="71" selection-start-column="64" selection-end-line="71" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/StoreKit.framework/Headers/SKPaymentTransaction.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="122" max-vertical-offset="795">
           <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1168,7 +1171,7 @@
     <entry file="file://$PROJECT_DIR$/HalalGuide/ENumber.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-          <caret line="15" column="120" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1220,8 +1223,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7923077" vertical-offset="1071" max-vertical-offset="2325">
-          <caret line="103" column="29" selection-start-line="103" selection-start-column="29" selection-end-line="103" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="2325">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/AppDelegate.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="480">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/AppDelegate.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6923077" vertical-offset="165" max-vertical-offset="3300">
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>

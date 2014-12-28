@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A15CE3C81A100A8400F44C9A"
-               BuildableName = "HalalGuide.app"
-               BlueprintName = "HalalGuide"
+               BuildableName = "halalguide.app"
+               BlueprintName = "halalguide"
                ReferencedContainer = "container:HalalGuide.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A15CE3E41A100A8400F44C9A"
-               BuildableName = "HalalGuideTests.xctest"
-               BlueprintName = "HalalGuideTests"
+               BuildableName = "halalguideTests.xctest"
+               BlueprintName = "halalguideTests"
                ReferencedContainer = "container:HalalGuide.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +47,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A15CE3E41A100A8400F44C9A"
-               BuildableName = "HalalGuideTests.xctest"
-               BlueprintName = "HalalGuideTests"
+               BuildableName = "halalguideTests.xctest"
+               BlueprintName = "halalguideTests"
                ReferencedContainer = "container:HalalGuide.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -57,8 +57,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A15CE3C81A100A8400F44C9A"
-            BuildableName = "HalalGuide.app"
-            BlueprintName = "HalalGuide"
+            BuildableName = "halalguide.app"
+            BlueprintName = "halalguide"
             ReferencedContainer = "container:HalalGuide.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -77,8 +77,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A15CE3C81A100A8400F44C9A"
-            BuildableName = "HalalGuide.app"
-            BlueprintName = "HalalGuide"
+            BuildableName = "halalguide.app"
+            BlueprintName = "halalguide"
             ReferencedContainer = "container:HalalGuide.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -95,8 +95,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A15CE3C81A100A8400F44C9A"
-            BuildableName = "HalalGuide.app"
-            BlueprintName = "HalalGuide"
+            BuildableName = "halalguide.app"
+            BlueprintName = "halalguide"
             ReferencedContainer = "container:HalalGuide.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

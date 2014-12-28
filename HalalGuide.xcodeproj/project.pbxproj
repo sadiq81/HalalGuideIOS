@@ -119,9 +119,9 @@
 		A111F7521A3260EA00ABFF70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A111F7541A3260EF00ABFF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A13327781A4B0D1A00C65D6A /* HalalGuide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HalalGuide.entitlements; sourceTree = "<group>"; };
-		A15CE3C91A100A8400F44C9A /* HalalGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalalGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15CE3C91A100A8400F44C9A /* halalguide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = halalguide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15CE3CD1A100A8400F44C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A15CE3E51A100A8400F44C9A /* HalalGuideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HalalGuideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15CE3E51A100A8400F44C9A /* halalguideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = halalguideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15CE3EA1A100A8400F44C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A15CE3EB1A100A8400F44C9A /* HalalGuideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HalalGuideTests.m; sourceTree = "<group>"; };
 		A165DDB81A34E60600F43A15 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseEntity.h; path = Domain/BaseEntity.h; sourceTree = "<group>"; };
@@ -378,8 +378,8 @@
 		A15CE3CA1A100A8400F44C9A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A15CE3C91A100A8400F44C9A /* HalalGuide.app */,
-				A15CE3E51A100A8400F44C9A /* HalalGuideTests.xctest */,
+				A15CE3C91A100A8400F44C9A /* halalguide.app */,
+				A15CE3E51A100A8400F44C9A /* halalguideTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -698,9 +698,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A15CE3C81A100A8400F44C9A /* HalalGuide */ = {
+		A15CE3C81A100A8400F44C9A /* halalguide */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A15CE3EF1A100A8400F44C9A /* Build configuration list for PBXNativeTarget "HalalGuide" */;
+			buildConfigurationList = A15CE3EF1A100A8400F44C9A /* Build configuration list for PBXNativeTarget "halalguide" */;
 			buildPhases = (
 				503AFA7A932BA0C9C5ABC958 /* Check Pods Manifest.lock */,
 				A15CE3C51A100A8400F44C9A /* Sources */,
@@ -713,14 +713,14 @@
 			);
 			dependencies = (
 			);
-			name = HalalGuide;
+			name = halalguide;
 			productName = HalalGuide;
-			productReference = A15CE3C91A100A8400F44C9A /* HalalGuide.app */;
+			productReference = A15CE3C91A100A8400F44C9A /* halalguide.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A15CE3E41A100A8400F44C9A /* HalalGuideTests */ = {
+		A15CE3E41A100A8400F44C9A /* halalguideTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A15CE3F21A100A8400F44C9A /* Build configuration list for PBXNativeTarget "HalalGuideTests" */;
+			buildConfigurationList = A15CE3F21A100A8400F44C9A /* Build configuration list for PBXNativeTarget "halalguideTests" */;
 			buildPhases = (
 				A15CE3E11A100A8400F44C9A /* Sources */,
 				A15CE3E21A100A8400F44C9A /* Frameworks */,
@@ -731,9 +731,9 @@
 			dependencies = (
 				A15CE3E71A100A8400F44C9A /* PBXTargetDependency */,
 			);
-			name = HalalGuideTests;
+			name = halalguideTests;
 			productName = HalalGuideTests;
-			productReference = A15CE3E51A100A8400F44C9A /* HalalGuideTests.xctest */;
+			productReference = A15CE3E51A100A8400F44C9A /* halalguideTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -773,8 +773,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A15CE3C81A100A8400F44C9A /* HalalGuide */,
-				A15CE3E41A100A8400F44C9A /* HalalGuideTests */,
+				A15CE3C81A100A8400F44C9A /* halalguide */,
+				A15CE3E41A100A8400F44C9A /* halalguideTests */,
 			);
 		};
 /* End PBXProject section */
@@ -925,7 +925,7 @@
 /* Begin PBXTargetDependency section */
 		A15CE3E71A100A8400F44C9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A15CE3C81A100A8400F44C9A /* HalalGuide */;
+			target = A15CE3C81A100A8400F44C9A /* halalguide */;
 			targetProxy = A15CE3E61A100A8400F44C9A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1034,6 +1034,7 @@
 			baseConfigurationReference = 7DC353505CC91F279E9EEF95 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1060,6 +1061,7 @@
 			baseConfigurationReference = A996AC24EC4EDA46C0F7FC51 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1127,7 +1129,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A15CE3EF1A100A8400F44C9A /* Build configuration list for PBXNativeTarget "HalalGuide" */ = {
+		A15CE3EF1A100A8400F44C9A /* Build configuration list for PBXNativeTarget "halalguide" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A15CE3F01A100A8400F44C9A /* Debug */,
@@ -1136,7 +1138,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A15CE3F21A100A8400F44C9A /* Build configuration list for PBXNativeTarget "HalalGuideTests" */ = {
+		A15CE3F21A100A8400F44C9A /* Build configuration list for PBXNativeTarget "halalguideTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A15CE3F31A100A8400F44C9A /* Debug */,
