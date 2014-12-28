@@ -24,6 +24,10 @@
 
 - (void)setCategoriesFilter:(NSArray *)categories;
 
+- (NSMutableArray *)shopCategoriesFilter ;
+
+- (void)setShopCategoriesFilter:(NSArray *)shopCategories ;
+
 - (NSDate *)locationLastUpdatedAt;
 
 - (void)setLocationsLastUpdatedAt;

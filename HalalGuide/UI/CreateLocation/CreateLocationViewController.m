@@ -234,12 +234,15 @@
 #pragma mark UIUpdates
 
 - (void)setUILabels {
-    if ([CreateLocationViewModel instance].locationType != LocationTypeMosque) {
+    if ([CreateLocationViewModel instance].locationType == LocationTypeDining) {
         int count = (int) [[CreateLocationViewModel instance].categories count];
         self.categoriesCount.text = [NSString stringWithFormat:@"%i", count];
-    } else {
+    } else if ([CreateLocationViewModel instance].locationType == LocationTypeShop) {
+        int count = (int) [[CreateLocationViewModel instance].shopCategories count];
+        self.categoriesCount.text = [NSString stringWithFormat:@"%i", count];
+    }
+    else if ([CreateLocationViewModel instance].locationType == LocationTypeMosque) {
         self.categoriesCount.text = NSLocalizedString(LanguageString([CreateLocationViewModel instance].language), nil);
-        [self.categoriesCount sizeToFit];
     }
 }
 

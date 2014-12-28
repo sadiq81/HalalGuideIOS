@@ -12,6 +12,7 @@
 #define kAlcoholFilterKey @"alcoholFilter"
 #define kPorkFilterKey @"porkFilter"
 #define kCategoriesFilterKey @"categoriesFilter"
+#define kShopCategoriesFilterKey @"shopCategoriesFilter"
 
 #import "HalalGuideSettings.h"
 
@@ -84,6 +85,16 @@
 
 - (void)setCategoriesFilter:(NSArray *)categories {
     [self.defaults setObject:categories forKey:kCategoriesFilterKey];
+}
+
+- (NSMutableArray *)shopCategoriesFilter {
+    NSArray *categories = [self.defaults arrayForKey:kCategoriesFilterKey];
+    NSMutableArray *mutableCategories = [[NSMutableArray alloc] initWithArray:categories];
+    return mutableCategories;
+}
+
+- (void)setShopCategoriesFilter:(NSArray *)shopCategories {
+    [self.defaults setObject:shopCategories forKey:kShopCategoriesFilterKey];
 }
 
 - (NSDate *)locationLastUpdatedAt {

@@ -13,6 +13,7 @@
 #import "IQUIView+Hierarchy.h"
 #import "CategoriesViewController.h"
 #import "HalalGuideSettings.h"
+#import "CreateLocationViewModel.h"
 
 
 @implementation FilterLocationViewController {
@@ -32,7 +33,16 @@
     }];
 
     [self.reset handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
-        [[LocationViewModel instance].categories removeAllObjects];
+        switch ([LocationViewModel instance].locationType){
+            case LocationTypeDining:{
+                [[LocationViewModel instance].categories removeAllObjects];
+                break;
+            }
+            case LocationTypeShop:{
+                [[LocationViewModel instance].shopCategories removeAllObjects];
+                break;
+            }
+        }
         [weakSelf setCountLabelText];
     }];
 
@@ -40,6 +50,24 @@
     [self.done setBlock:^(id weakSender) {
         [weakSelf dismissViewControllerAnimated:true completion:nil];
     }];
+
+    [self setupLocationType];
+}
+
+- (void)setupLocationType {
+
+    if ([LocationViewModel instance].locationType != LocationTypeDining) {
+        [self.switchView removeFromSuperview];
+        self.categoryView.frame = CGRectMake(self.categoryView.x, self.distanceSlider.y + self.distanceSlider.height + 8, self.categoryView.width, self.categoryView.height);
+
+        if ([LocationViewModel instance].locationType == LocationTypeMosque) {
+            [self.reset removeFromSuperview];
+            self.categories.text = @"";
+            self.categories.text = NSLocalizedString(@"language", nil);
+        } else if ([CreateLocationViewModel instance].locationType == LocationTypeShop) {
+
+        }
+    }
 }
 
 - (void)setUILabels {
@@ -54,8 +82,16 @@
 }
 
 - (void)setCountLabelText {
-    int count = (int) [[LocationViewModel instance].categories count];
-    self.countLabel.text = [NSString stringWithFormat:@"%i", count];
+
+    if ([LocationViewModel instance].locationType == LocationTypeMosque) {
+        self.countLabel.text = NSLocalizedString(LanguageString([LocationViewModel instance].language), nil);
+    } else if ([LocationViewModel instance].locationType == LocationTypeShop) {
+        int count = (int) [[LocationViewModel instance].shopCategories count];
+        self.countLabel.text = [NSString stringWithFormat:@"%i", count];
+    } else if ([LocationViewModel instance].locationType == LocationTypeDining) {
+        int count = (int) [[LocationViewModel instance].categories count];
+        self.countLabel.text = [NSString stringWithFormat:@"%i", count];
+    }
 }
 
 - (void)setDistanceLabelText {
@@ -83,9 +119,13 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
+
+    __weak typeof(self) weakSelf = self;
+
     if ([segue.identifier isEqualToString:@"chooseCategories"]) {
         CategoriesViewController *destination = (CategoriesViewController *) segue.destinationViewController;
         destination.viewModel = [LocationViewModel instance];
+        destination.locationType = [LocationViewModel instance].locationType;
 
         MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *) segue;
         MZFormSheetController *formSheet = formSheetSegue.formSheetController;
@@ -94,7 +134,7 @@
         formSheet.cornerRadius = 8.0;
         formSheet.shouldDismissOnBackgroundViewTap = YES;
         formSheet.didDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
-            [self setCountLabelText];
+            [weakSelf setCountLabelText];
         };
     }
 }

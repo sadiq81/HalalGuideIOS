@@ -16,7 +16,7 @@
 
 }
 
-@synthesize locations, locationType, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories, language, page;
+@synthesize locations, locationType, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories, shopCategories, language, page;
 
 + (LocationViewModel *)instance {
     static LocationViewModel *_instance = nil;
@@ -31,6 +31,7 @@
             _instance.showNonHalal = [HalalGuideSettings instance].halalFilter;
 
             _instance.categories = [HalalGuideSettings instance].categoriesFilter;
+            _instance.shopCategories = [HalalGuideSettings instance].shopCategoriesFilter;
             _instance.locations = [NSMutableArray new];
 
             _instance.page = 0;
@@ -64,6 +65,19 @@
         if ([self.categories count] > 0) {
             [query whereKey:@"categories" containedIn:self.categories];
         }
+
+    } else if (self.locationType == LocationTypeShop) {
+
+        if ([self.shopCategories count] > 0) {
+            [query whereKey:@"categories" containedIn:self.shopCategories];
+        }
+
+    } else if (self.locationType == LocationTypeMosque) {
+
+        if (self.language > 0) {
+            [query whereKey:@"language" equalTo:@(self.language)];
+        }
+
     }
 
 

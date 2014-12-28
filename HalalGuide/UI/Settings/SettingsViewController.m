@@ -28,6 +28,7 @@
         [HalalGuideSettings instance].alcoholFilter = [LocationViewModel instance].showAlcohol = true;
         [HalalGuideSettings instance].halalFilter = [LocationViewModel instance].showNonHalal = true;
         [HalalGuideSettings instance].categoriesFilter = [LocationViewModel instance].categories = [NSMutableArray new];
+        [HalalGuideSettings instance].shopCategoriesFilter = [LocationViewModel instance].shopCategories = [NSMutableArray new];
     }];
 
 

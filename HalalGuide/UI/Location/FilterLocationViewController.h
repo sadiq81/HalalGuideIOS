@@ -15,9 +15,12 @@
 @property(strong, nonatomic) IBOutlet UISwitch *halalSwitch;
 @property(strong, nonatomic) IBOutlet UISwitch *alcoholSwitch;
 @property(strong, nonatomic) IBOutlet UISwitch *porkSwitch;
+@property (strong, nonatomic) IBOutlet UIView *switchView;
 @property(strong, nonatomic) IBOutlet UIButton *choose;
 @property(strong, nonatomic) IBOutlet UIButton *reset;
+@property (strong, nonatomic) IBOutlet UILabel *categories;
 
 @property (strong, nonatomic) IBOutlet UILabel *countLabel;
+@property (strong, nonatomic) IBOutlet UIView *categoryView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *done;
 @end

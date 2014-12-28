@@ -66,9 +66,11 @@
     cell.textLabel.text = NSLocalizedString(catString, nil);
 
     switch (self.locationType) {
-        case LocationTypeDining:
-        case LocationTypeShop: {
+        case LocationTypeDining: {
             cell.accessoryType = [self.viewModel.categories containsObject:@(indexPath.row)] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+        }
+        case LocationTypeShop: {
+            cell.accessoryType = [self.viewModel.shopCategories containsObject:@(indexPath.row)] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
             break;
         }
         case LocationTypeMosque: {
@@ -76,8 +78,6 @@
             break;
         }
     }
-
-
     return cell;
 }
 
@@ -86,15 +86,25 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
     switch (self.locationType) {
-        case LocationTypeDining:
-        case LocationTypeShop: {
-
+        case LocationTypeDining: {
             if ([self.viewModel.categories containsObject:@(indexPath.row)]) {
 
                 [self.viewModel.categories removeObject:@(indexPath.row)];
                 cell.accessoryType = UITableViewCellAccessoryNone;
             } else {
                 [self.viewModel.categories addObject:@(indexPath.row)];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            break;
+        }
+        case LocationTypeShop: {
+
+            if ([self.viewModel.shopCategories containsObject:@(indexPath.row)]) {
+
+                [self.viewModel.shopCategories removeObject:@(indexPath.row)];
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            } else {
+                [self.viewModel.shopCategories addObject:@(indexPath.row)];
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
             break;

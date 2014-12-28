@@ -17,6 +17,7 @@
 #import "HalalGuideOnboarding.h"
 #import "RACSignal.h"
 #import "CreateLocationViewModel.h"
+#import "CategoriesViewController.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 
 //TODO Search bar for string searching fx name.

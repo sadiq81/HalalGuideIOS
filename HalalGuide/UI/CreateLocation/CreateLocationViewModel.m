@@ -22,7 +22,7 @@
 
 }
 
-@synthesize locationType, streetNumbers, categories, language, suggestedPlaceMark, suggestionName;
+@synthesize locationType, streetNumbers, categories, shopCategories, language, suggestedPlaceMark, suggestionName;
 
 + (CreateLocationViewModel *)instance {
     static CreateLocationViewModel *_instance = nil;
@@ -34,6 +34,7 @@
             _instance.streetNumbers = [NSDictionary new];
 
             _instance.categories = [[NSMutableArray alloc] init];
+            _instance.shopCategories = [[NSMutableArray alloc] init];
             _instance.userChoosenLocation = kCLLocationCoordinate2DInvalid;
         }
     }
@@ -133,12 +134,25 @@
         location.submitterId = [PFUser currentUser].objectId;
 
         //TODO validation
-        location.alcohol = @(alcohol);
-        location.pork = @(pork);
-        location.nonHalal = @(nonHalal);
         location.locationType = @(self.locationType);
-        location.categories = self.categories;
-        location.language = @(self.language);
+
+        switch (self.locationType) {
+            case LocationTypeMosque: {
+                location.language = @(self.language);
+                break;
+            }
+            case LocationTypeDining: {
+                location.alcohol = @(alcohol);
+                location.pork = @(pork);
+                location.nonHalal = @(nonHalal);
+                location.categories = self.categories;
+                break;
+            }
+            case LocationTypeShop: {
+                location.categories = self.shopCategories;
+                break;
+            }
+        }
 
         if (!CLLocationCoordinate2DIsValid(self.userChoosenLocation)) {
             NSString *latitude = [address.adgangspunkt.koordinater objectAtIndex:1];
