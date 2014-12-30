@@ -139,6 +139,8 @@
 		A1B68FC11A49573200AE9795 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
 		A1BF83861A397A6500D3AFFC /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		A1BF83881A397A9B00D3AFFC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		A1CEE9D71A514C300099CB8B /* da-DK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "da-DK"; path = "da-DK.lproj/MainStoryboard.strings"; sourceTree = "<group>"; };
+		A1CEE9D81A514C300099CB8B /* da-DK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "da-DK"; path = "da-DK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A1DA8D2B1A3B172C002B37AD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A1DA8D2C1A3B172C002B37AD /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		A1DA8D2D1A3B172C002B37AD /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -767,6 +769,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"da-DK",
 			);
 			mainGroup = A15CE3C01A100A8400F44C9A;
 			productRefGroup = A15CE3CA1A100A8400F44C9A /* Products */;
@@ -936,6 +939,7 @@
 			children = (
 				A111F7521A3260EA00ABFF70 /* Base */,
 				A111F7541A3260EF00ABFF70 /* en */,
+				A1CEE9D81A514C300099CB8B /* da-DK */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -945,6 +949,7 @@
 			children = (
 				A1B68FBE1A49572500AE9795 /* Base */,
 				A1B68FC11A49573200AE9795 /* en */,
+				A1CEE9D71A514C300099CB8B /* da-DK */,
 			);
 			name = MainStoryboard.storyboard;
 			path = HalalGuide;

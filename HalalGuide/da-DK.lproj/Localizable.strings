@@ -1,0 +1,148 @@
+/* 
+Localizable.strings
+HalalGuide
+
+Created by Privat on 05/12/14.
+Copyright (c) 2014 Eazy It. All rights reserved.
+*/
+
+"afghan" = "Afghansk";
+"african"= "Afrikansk";
+"american" = "Amerikansk";
+"argentine" = "Argentinsk";
+"asian" = "Asiatisk";
+"belgian" = "Belgisk";
+"brazilian" = "Brasiliansk";
+"british" = "Engelsk";
+"buffet" = "Buffet";
+"burger" = "Burger";
+"bakery" = "Bager";
+"bagel" = "Bagel";
+"bubbleThea" = "Bubble thea";
+"butcher" = "Slagter";
+"cafe" = "Cafe";
+"caribbean" = "Caribisk";
+"cupcake" = "Cupkage";
+"candy" = "Slik";
+"chinese" = "Kinesisk";
+"danish" = "Dansk";
+"dessert" = "Dessert";
+"fish" = "Fisk";
+"fruit" = "Frugt";
+"fastfood" = "Fast food";
+"french" = "Fransk";
+"german" = "Tysk";
+"grill" = "Grill";
+"greek" = "Græsk";
+"iceCream" = "Is";
+"juice" = "Juice";
+"kiosk" = "Kiosk";
+"indian" = "Indisk";
+"indonesian" = "Indonesisk";
+"irish" = "Irsk";
+"italian" = "Italiensk";
+"iranian" = "Iransk";
+"japanese" = "Japansk";
+"kebab" = "Kebab";
+"korean" = "Koreansk";
+"kosher" = "Kosher";
+"lebanese" = "Libanesisk";
+"mediterranean" = "Middelhavs";
+"malaysian" = "Malaysisk";
+"moroccan" = "Marokansk";
+"mexican" = "Mexikansk";
+"nordic" = "Nordisk";
+"nepalese" = "Nepalesisk";
+"pastry" = "Kager";
+"pakistani" = "Pakistansk";
+"persian" = "Persisk";
+"pizza" = "Pizza";
+"portuguese" = "Portugesisk";
+"russian" = "Russisk";
+"seafood" = "Skaldyr";
+"salad" = "Salat";
+"sandwich" = "Sandwich";
+"spanish" = "Spansk";
+"steak" = "Steak";
+"soup" = "Suppe";
+"sushi" = "Sushi";
+"tapas" = "Tapas";
+"thai" = "Thai";
+"tibetan" = "Tibetansk";
+"turkish" = "Tyrkisk";
+"vegan" = "Vegetar";
+"vietnamese" = "Vietnamesisk";
+"wok" = "Wok";
+
+"ok" = "Ok";
+"done" = "Færdig";
+"addReview" = "Tilføj anmeldelse";
+"regret" = "Fortryd";
+"no" = "Nej";
+"yes" = "Ja";
+"action"= "Handling";
+"directions" = "Find vej";
+"call" = "Ring til stedet";
+"warning" = "Advarsel";
+"directionsText" = "Vil du åbne Kort og få vist vejen til";
+"callNotAvaileble"= "Enheden understøtter ikke opringning";
+
+"couldnotcreateindb" = "Kunne ikke kontakte databasen, prøv igen?";
+"couldnotuploadfile" = "Kunne ikke uploade billede, prøv igen?";
+"addressdoesnotexists" = "Adressen findes ikke ";
+"error" = "Ukendt fejl";
+
+"awaiting" = "Venter godkendelse";
+"approved" = "Godkendt";
+"notapproved" = "Ikke godkendt";
+
+"shoptype" = "Butiktype";
+"groceries" = "Dagligvarer";
+"furniture" = "Møbler";
+
+"language" = "Sprog";
+"none" = "Intet";
+"danish" ="Dansk";
+"arabic" = "Arabisk";
+"urdu" = "Urdu";
+"english" = "Engelsk";
+
+
+"dining" = "Spisesteder";
+"mosque" = "Moske";
+"shop" = "Handle";
+
+"loggingIn" = "Logger ind";
+"fetching"  = "Henter";
+"unlimited" = "Ubegrænset";
+"savingToTheCloud" = "Gemmer i skyen";
+"reviewSaved" = "Din anmeldelse er gemt";
+"estimatingAddress" = "Gætter din adresse";
+"invalidAddress" = "Ikke en gyldig adresse";
+"GPSNotPreciseEnough" = "GPS punkt for adressen er upræcist, vil du selv vælge den på kortet?";
+"authenticate" = "Autentifikation";
+"authenticateText" = "For at kunne indsende forslag til HalalGuide, så skal du bekræfte din identitet via facebook";
+
+"addPicture" = "Tilføj billede";
+"newPicture" = "Tag nyt billede";
+"choosePicture" = "Vælg billede";
+
+"errorMailText" = "Der er følgende forkerte oplysninger: \nUDDYB HER!";
+
+"addNewOnBoardingButton" = "Tryk her for at indsende et forslag";
+"filterOnBoardingButton" = "Tryk her for filtrere de viste resultater";
+
+"diningCellPorkOnBoarding" = "Viser om der også serveres gris";
+"diningCellAlcoholOnBoarding" = "Viser om der også serveres alkohol";
+"diningCellHalalOnBoarding" =  "Viser om der udelukkende serveres halal kød";
+
+"diningDetailAddressTelephoneOptionsOnBoarding" = "Tryk her for at her få rutevejledning eller ringe til stedet";
+
+"createLocationPickImageOnBoarding" = "Tryk her for at tilføje et billede";
+
+"slideShowViewSwipeToViewMore" = "Swipe for at se flere billeder";
+
+"supportOnBoarding" = "Støt den gratis app med et lille beløb";
+
+"thank" = "Tak";
+"thankText" = "Tak for dit bidrag";

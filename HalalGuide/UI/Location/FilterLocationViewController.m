@@ -42,6 +42,9 @@
                 [[LocationViewModel instance].shopCategories removeAllObjects];
                 break;
             }
+            case LocationTypeMosque:{
+                break;
+            }
         }
         [weakSelf setCountLabelText];
     }];

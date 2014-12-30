@@ -36,7 +36,7 @@
 
         [PFPurchase buyProduct:@"Support" block:^(NSError *error) {
             if (!error) {
-                [UIAlertController showInViewController:weakSelf withTitle:NSLocalizedString(@"thank", nil) message:@"thankText" preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+                [UIAlertController showInViewController:weakSelf withTitle:NSLocalizedString(@"thank", nil) message:NSLocalizedString(@"thankText",nil) preferredStyle:UIAlertControllerStyleAlert cancelButtonTitle:nil destructiveButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil tapBlock:nil];
             } else{
                 [SVProgressHUD showErrorWithStatus:error.localizedDescription];
             }

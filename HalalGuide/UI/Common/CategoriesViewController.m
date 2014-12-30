@@ -68,6 +68,7 @@
     switch (self.locationType) {
         case LocationTypeDining: {
             cell.accessoryType = [self.viewModel.categories containsObject:@(indexPath.row)] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+            break;
         }
         case LocationTypeShop: {
             cell.accessoryType = [self.viewModel.shopCategories containsObject:@(indexPath.row)] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;

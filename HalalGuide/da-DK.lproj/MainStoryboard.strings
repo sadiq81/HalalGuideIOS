@@ -1,0 +1,303 @@
+
+/* Class = "IBUIBarButtonItem"; title = "Fortryd"; ObjectID = "0Ej-4a-HKE"; */
+"0Ej-4a-HKE.title" = "Fortryd";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "0Ta-Fw-N5f"; */
+"0Ta-Fw-N5f.text" = "Name";
+
+/* Class = "IBUILabel"; text = "Address"; ObjectID = "18k-5P-STX"; */
+"18k-5P-STX.text" = "Address";
+
+/* Class = "IBUILabel"; text = "Category"; ObjectID = "2YK-Ee-Y2I"; */
+"2YK-Ee-Y2I.text" = "Category";
+
+/* Class = "IBUILabel"; text = "5 km"; ObjectID = "2jP-Rf-YsY"; */
+"2jP-Rf-YsY.text" = "5 km";
+
+/* Class = "IBUILabel"; text = "Gris"; ObjectID = "3bQ-rb-UGA"; */
+"3bQ-rb-UGA.text" = "Gris";
+
+/* Class = "IBUILabel"; text = "Kategorier"; ObjectID = "3cd-FL-haa"; */
+"3cd-FL-haa.text" = "Kategorier";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "3oe-g3-TRq"; */
+"3oe-g3-TRq.text" = "1";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "4bM-vG-OmW"; */
+"4bM-vG-OmW.text" = "0";
+
+/* Class = "IBUILabel"; text = "Vis med gris"; ObjectID = "51k-w7-OfG"; */
+"51k-w7-OfG.text" = "Vis med gris";
+
+/* Class = "IBUILabel"; text = "Postal code"; ObjectID = "55k-ks-PCE"; */
+"55k-ks-PCE.text" = "Postal code";
+
+/* Class = "IBUILabel"; text = "Gris"; ObjectID = "6G2-Br-eEk"; */
+"6G2-Br-eEk.text" = "Gris";
+
+/* Class = "IBUINavigationItem"; title = "Tilføj"; ObjectID = "7jK-lD-fc5"; */
+"7jK-lD-fc5.title" = "Tilføj";
+
+/* Class = "IBUILabel"; text = "Handle"; ObjectID = "7rX-Rb-gCn"; */
+"7rX-Rb-gCn.text" = "Handle";
+
+/* Class = "IBUIBarButtonItem"; title = "Filter"; ObjectID = "8In-1P-wFx"; */
+"8In-1P-wFx.title" = "Filter";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "ANt-bZ-M89"; */
+"ANt-bZ-M89.text" = "1";
+
+/* Class = "IBUIBarButtonItem"; title = "Gem"; ObjectID = "AP4-9j-sDE"; */
+"AP4-9j-sDE.title" = "Gem";
+
+/* Class = "IBUILabel"; text = "Postal code"; ObjectID = "B4V-gE-7aP"; */
+"B4V-gE-7aP.text" = "Postal code";
+
+/* Class = "IBUILabel"; text = "Address"; ObjectID = "BKR-90-eyk"; */
+"BKR-90-eyk.text" = "Address";
+
+/* Class = "IBUIButton"; normalTitle = "Nulstil filtre"; ObjectID = "EDw-O7-QfW"; */
+"EDw-O7-QfW.normalTitle" = "Nulstil filtre";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "GHv-jf-czD"; */
+"GHv-jf-czD.text" = "Name";
+
+/* Class = "IBUITextField"; placeholder = "Navn"; ObjectID = "Geq-xg-rWm"; */
+"Geq-xg-rWm.placeholder" = "Navn";
+
+/* Class = "IBUILabel"; text = "Alkohol"; ObjectID = "H7j-J5-XHC"; */
+"H7j-J5-XHC.text" = "Alkohol";
+
+/* Class = "IBUILabel"; text = "Address"; ObjectID = "HsE-NR-BaQ"; */
+"HsE-NR-BaQ.text" = "Address";
+
+/* Class = "IBUILabel"; text = "Halal"; ObjectID = "I9r-Eo-2C3"; */
+"I9r-Eo-2C3.text" = "Halal";
+
+/* Class = "IBUIBarButtonItem"; title = " "; ObjectID = "KR2-b6-bGi"; */
+"KR2-b6-bGi.title" = " ";
+
+/* Class = "IBUILabel"; text = "Km"; ObjectID = "LDa-i3-UNk"; */
+"LDa-i3-UNk.text" = "Km";
+
+/* Class = "IBUITextField"; placeholder = "Vej"; ObjectID = "LGW-5Q-Byj"; */
+"LGW-5Q-Byj.placeholder" = "Vej";
+
+/* Class = "IBUILabel"; text = "Km"; ObjectID = "Lyd-eb-luB"; */
+"Lyd-eb-luB.text" = "Km";
+
+/* Class = "IBUIButton"; normalTitle = "Rapporter fejl"; ObjectID = "Mxa-Rz-PfQ"; */
+"Mxa-Rz-PfQ.normalTitle" = "Rapporter fejl";
+
+/* Class = "IBUILabel"; text = "Indstillinger"; ObjectID = "N63-RU-xEd"; */
+"N63-RU-xEd.text" = "Indstillinger";
+
+/* Class = "IBUILabel"; text = "Alkohol"; ObjectID = "Nau-dB-tNO"; */
+"Nau-dB-tNO.text" = "Alkohol";
+
+/* Class = "IBUINavigationItem"; title = "Adresse"; ObjectID = "Nzg-kd-K2R"; */
+"Nzg-kd-K2R.title" = "Adresse";
+
+/* Class = "IBUILabel"; text = "Serveres der ikke halal kød?"; ObjectID = "OBM-8m-oGq"; */
+"OBM-8m-oGq.text" = "Serveres der ikke halal kød?";
+
+/* Class = "IBUILabel"; text = "Ingen resultater fundet, prøv at skifte filter"; ObjectID = "OZy-6d-NYg"; */
+"OZy-6d-NYg.text" = "Ingen resultater fundet, prøv at skifte filter";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "Oq4-0a-aDJ"; */
+"Oq4-0a-aDJ.text" = "1";
+
+/* Class = "IBUIButton"; normalTitle = "Nulstil"; ObjectID = "PNT-qC-nfQ"; */
+"PNT-qC-nfQ.normalTitle" = "Nulstil";
+
+/* Class = "IBUINavigationItem"; title = "Enummer"; ObjectID = "PaI-Hr-dFV"; */
+"PaI-Hr-dFV.title" = "Enummer";
+
+/* Class = "IBUILabel"; text = "Reviewer"; ObjectID = "Pbf-Kc-xGM"; */
+"Pbf-Kc-xGM.text" = "Reviewer";
+
+/* Class = "IBUIButton"; normalTitle = "Tilføj anmeldelse"; ObjectID = "Pn9-kl-5is"; */
+"Pn9-kl-5is.normalTitle" = "Tilføj anmeldelse";
+
+/* Class = "IBUILabel"; text = "Serveres der alkohol?"; ObjectID = "Pru-AS-cVN"; */
+"Pru-AS-cVN.text" = "Serveres der alkohol?";
+
+/* Class = "IBUIButton"; normalTitle = "Vælg"; ObjectID = "Pv0-KM-L7W"; */
+"Pv0-KM-L7W.normalTitle" = "Vælg";
+
+/* Class = "IBUILabel"; text = "Moske"; ObjectID = "R3d-VV-UeN"; */
+"R3d-VV-UeN.text" = "Moske";
+
+/* Class = "IBUILabel"; text = "Vis med alkohol"; ObjectID = "Roo-dQ-yLM"; */
+"Roo-dQ-yLM.text" = "Vis med alkohol";
+
+/* Class = "IBUILabel"; text = "Km"; ObjectID = "Tog-vM-jTe"; */
+"Tog-vM-jTe.text" = "Km";
+
+/* Class = "IBUILabel"; text = "Alkohol"; ObjectID = "U4D-kF-53U"; */
+"U4D-kF-53U.text" = "Alkohol";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "VLh-xG-xlW"; */
+"VLh-xG-xlW.text" = "Name";
+
+/* Class = "IBUILabel"; text = "Address City"; ObjectID = "XJI-6r-5zw"; */
+"XJI-6r-5zw.text" = "Address City";
+
+/* Class = "IBUITextField"; placeholder = "Postnummer"; ObjectID = "XT5-8u-dzd"; */
+"XT5-8u-dzd.placeholder" = "Postnummer";
+
+/* Class = "IBUILabel"; text = "Maximum afstand"; ObjectID = "Z5f-OV-y5N"; */
+"Z5f-OV-y5N.text" = "Maximum afstand";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "ZBH-ek-VD7"; */
+"ZBH-ek-VD7.text" = "Name";
+
+/* Class = "IBUILabel"; text = "Km"; ObjectID = "ZCZ-fL-oLd"; */
+"ZCZ-fL-oLd.text" = "Km";
+
+/* Class = "IBUIBarButtonItem"; title = "Færdig"; ObjectID = "ZkG-gx-uce"; */
+"ZkG-gx-uce.title" = "Færdig";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "aCx-3i-G0a"; */
+"aCx-3i-G0a.text" = "1";
+
+/* Class = "IBUILabel"; text = "Address"; ObjectID = "bCB-3z-Jfm"; */
+"bCB-3z-Jfm.text" = "Address";
+
+/* Class = "IBUILabel"; text = "Enummer"; ObjectID = "bTb-qg-eLp"; */
+"bTb-qg-eLp.text" = "Enummer";
+
+/* Class = "IBUINavigationItem"; title = "HalalGuide"; ObjectID = "bUD-Kh-hMd"; */
+"bUD-Kh-hMd.title" = "HalalGuide";
+
+/* Class = "IBUILabel"; text = "Seneste opdateringer"; ObjectID = "cC3-N0-wbw"; */
+"cC3-N0-wbw.text" = "Seneste opdateringer";
+
+/* Class = "IBUILabel"; text = "Sprog"; ObjectID = "cCH-0R-jYR"; */
+"cCH-0R-jYR.text" = "Sprog";
+
+/* Class = "IBUIButton"; normalTitle = "Tilføj billede"; ObjectID = "cNq-Hq-M2d"; */
+"cNq-Hq-M2d.normalTitle" = "Tilføj billede";
+
+/* Class = "IBUIBarButtonItem"; title = "Godkend"; ObjectID = "dAo-s1-lc0"; */
+"dAo-s1-lc0.title" = "Godkend";
+
+/* Class = "IBUILabel"; text = "Date of review"; ObjectID = "eHk-7s-7kJ"; */
+"eHk-7s-7kJ.text" = "Date of review";
+
+/* Class = "IBUILabel"; text = "Halal"; ObjectID = "eh3-ah-fHT"; */
+"eh3-ah-fHT.text" = "Halal";
+
+/* Class = "IBUILabel"; text = "Kategorier"; ObjectID = "fW0-FH-4qm"; */
+"fW0-FH-4qm.text" = "Kategorier";
+
+/* Class = "IBUILabel"; text = "Postal code"; ObjectID = "g7S-8p-8fX"; */
+"g7S-8p-8fX.text" = "Postal code";
+
+/* Class = "IBUIButton"; normalTitle = "Nulstil"; ObjectID = "g8Q-Rx-WWA"; */
+"g8Q-Rx-WWA.normalTitle" = "Nulstil";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "gXi-GS-mV9"; */
+"gXi-GS-mV9.text" = "1";
+
+/* Class = "IBUILabel"; text = "Gris"; ObjectID = "goi-MO-a7H"; */
+"goi-MO-a7H.text" = "Gris";
+
+/* Class = "IBUITextField"; placeholder = "Hjemmeside"; ObjectID = "gv8-rn-3FZ"; */
+"gv8-rn-3FZ.placeholder" = "Hjemmeside";
+
+/* Class = "IBUIButton"; normalTitle = "Støt HalalGuide"; ObjectID = "h5h-5l-hYb"; */
+"h5h-5l-hYb.normalTitle" = "Støt HalalGuide";
+
+/* Class = "IBUIBarButtonItem"; title = "Gem"; ObjectID = "hYj-cW-w5U"; */
+"hYj-cW-w5U.title" = "Gem";
+
+/* Class = "IBUILabel"; text = "Serveres der gris?"; ObjectID = "i24-hv-rMU"; */
+"i24-hv-rMU.text" = "Serveres der gris?";
+
+/* Class = "IBUILabel"; text = "Der findes ikke billeder for dette sted endnu. Skal du være den første?"; ObjectID = "iDp-ZG-c7s"; */
+"iDp-ZG-c7s.text" = "Der findes ikke billeder for dette sted endnu. Skal du være den første?";
+
+/* Class = "IBUITextField"; placeholder = "Nr"; ObjectID = "j4D-lR-Smh"; */
+"j4D-lR-Smh.placeholder" = "Nr";
+
+/* Class = "IBUILabel"; text = "Postal code"; ObjectID = "j51-zv-FMA"; */
+"j51-zv-FMA.text" = "Postal code";
+
+/* Class = "IBUILabel"; text = "Sprog"; ObjectID = "jUX-si-Dfg"; */
+"jUX-si-Dfg.text" = "Sprog";
+
+/* Class = "IBUIButton"; normalTitle = "Vælg"; ObjectID = "jie-eg-gP3"; */
+"jie-eg-gP3.normalTitle" = "Vælg";
+
+/* Class = "IBUILabel"; text = "Postal code"; ObjectID = "k46-6f-ABT"; */
+"k46-6f-ABT.text" = "Postal code";
+
+/* Class = "IBUILabel"; text = "Km"; ObjectID = "kJo-0v-GGD"; */
+"kJo-0v-GGD.text" = "Km";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "lmW-Dh-u8d"; */
+"lmW-Dh-u8d.text" = "Name";
+
+/* Class = "IBUILabel"; text = "Halal"; ObjectID = "lxY-PQ-b43"; */
+"lxY-PQ-b43.text" = "Halal";
+
+/* Class = "IBUILabel"; text = "Km"; ObjectID = "m50-4F-0Le"; */
+"m50-4F-0Le.text" = "Km";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "n4W-Yj-6mI"; */
+"n4W-Yj-6mI.text" = "1";
+
+/* Class = "IBUITextField"; placeholder = "By"; ObjectID = "oi0-lT-y03"; */
+"oi0-lT-y03.placeholder" = "By";
+
+/* Class = "IBUILabel"; text = "Address"; ObjectID = "orD-9t-uIh"; */
+"orD-9t-uIh.text" = "Address";
+
+/* Class = "IBUILabel"; text = "Address"; ObjectID = "q05-PS-Trn"; */
+"q05-PS-Trn.text" = "Address";
+
+/* Class = "IBUILabel"; text = "Postal code"; ObjectID = "qCy-ql-tij"; */
+"qCy-ql-tij.text" = "Postal code";
+
+/* Class = "IBUIBarButtonItem"; title = "Fortryd"; ObjectID = "qZP-22-CRD"; */
+"qZP-22-CRD.title" = "Fortryd";
+
+/* Class = "IBUILabel"; text = "Km"; ObjectID = "rvN-9X-siH"; */
+"rvN-9X-siH.text" = "Km";
+
+/* Class = "IBUINavigationItem"; title = "Indstillinger"; ObjectID = "sF6-eP-CGW"; */
+"sF6-eP-CGW.title" = "Indstillinger";
+
+/* Class = "IBUIButton"; normalTitle = "Ryd cache"; ObjectID = "ui0-Sy-5Bj"; */
+"ui0-Sy-5Bj.normalTitle" = "Ryd cache";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "uyr-sR-Wfx"; */
+"uyr-sR-Wfx.text" = "Name";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "vKB-gc-7l7"; */
+"vKB-gc-7l7.text" = "Label";
+
+/* Class = "IBUIBarButtonItem"; title = "Fortryd"; ObjectID = "vLR-s9-1lO"; */
+"vLR-s9-1lO.title" = "Fortryd";
+
+/* Class = "IBUILabel"; text = "Spise"; ObjectID = "vfK-HZ-r4n"; */
+"vfK-HZ-r4n.text" = "Spise";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "vvh-dz-CSu"; */
+"vvh-dz-CSu.text" = "Name";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "wPA-zE-Mmm"; */
+"wPA-zE-Mmm.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUILabel"; text = "Vis med ikke halal kød"; ObjectID = "x6U-xq-veK"; */
+"x6U-xq-veK.text" = "Vis med ikke halal kød";
+
+/* Class = "IBUITextField"; placeholder = "Telefon"; ObjectID = "xif-cs-G6I"; */
+"xif-cs-G6I.placeholder" = "Telefon";
+
+/* Class = "IBUILabel"; text = "0"; ObjectID = "yiu-vs-eKu"; */
+"yiu-vs-eKu.text" = "0";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "zqW-sX-bZT"; */
+"zqW-sX-bZT.text" = "1";

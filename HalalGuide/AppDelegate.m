@@ -24,7 +24,7 @@
 
 /*
 Testers:
-Maryam Aino         aino.frost@yahoo.com
+Maryam Aino         Maryam.aino@yahoo.dk
 Umm Abdel Hakeem
 Maria Akram Monazam Maria-Akram@hotmail.com
 
