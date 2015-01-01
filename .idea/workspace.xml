@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Info.plist" afterPath="$PROJECT_DIR$/HalalGuide/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/MainStoryboard.storyboard" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/MainStoryboard.storyboard" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/en.lproj/Info.plist" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Info.plist" afterPath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Info.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/HalalGuide.iml" afterPath="$PROJECT_DIR$/.idea/HalalGuide.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HalalGuide.iws" />
@@ -54,22 +51,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseViewModel.m" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="BaseViewModel.m" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewModel.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2100">
-              <caret line="122" column="16" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="16" />
-              <folding>
-                <element signature="e#2336#2375#0" expanded="true" />
-                <element signature="e#2420#2463#0" expanded="true" />
-                <element signature="e#2580#2613#0" expanded="true" />
-                <element signature="e#2708#2737#0" expanded="true" />
-                <element signature="e#3045#3081#0" expanded="true" />
-                <element signature="e#4286#4323#0" expanded="true" />
-                <element signature="e#4450#4487#0" expanded="true" />
-                <element signature="e#4718#4758#0" expanded="true" />
-                <element signature="e#4990#5023#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.33333334" vertical-offset="1235" max-vertical-offset="2235">
+              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,19 +67,6 @@
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateLocationViewController.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4102" max-vertical-offset="4740">
-              <caret line="181" column="12" selection-start-line="181" selection-start-column="12" selection-end-line="181" selection-end-column="12" />
-              <folding>
-                <element signature="e#8760#8789#0" expanded="true" />
-                <element signature="e#8798#8846#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -117,15 +91,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateLocationViewModel.m" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CreateLocationViewModel.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6347826" vertical-offset="2676" max-vertical-offset="3315">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2676" max-vertical-offset="3315">
               <caret line="203" column="8" selection-start-line="203" selection-start-column="8" selection-end-line="203" selection-end-column="8" />
               <folding>
                 <element signature="e#7668#7711#0" expanded="true" />
                 <element signature="e#8301#8338#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/main.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -895,13 +879,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="23" width="1399" height="877" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3388535" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5248408" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5248408" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3476612" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996207" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -948,16 +932,6 @@
           <url>file://$PROJECT_DIR$/HalalGuide/UI/Common/CategoriesViewController.m</url>
           <line>69</line>
           <option name="timeStamp" value="509" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewModel.m</url>
-          <line>90</line>
-          <option name="timeStamp" value="511" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewModel.m</url>
-          <line>96</line>
-          <option name="timeStamp" value="512" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1158,14 +1132,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/main.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3836317" vertical-offset="0" max-vertical-offset="391">
-          <caret line="11" column="97" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40920717" vertical-offset="290" max-vertical-offset="1020">
@@ -1289,24 +1255,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewModel.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2100">
-          <caret line="122" column="16" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="16" />
-          <folding>
-            <element signature="e#2336#2375#0" expanded="true" />
-            <element signature="e#2420#2463#0" expanded="true" />
-            <element signature="e#2580#2613#0" expanded="true" />
-            <element signature="e#2708#2737#0" expanded="true" />
-            <element signature="e#3045#3081#0" expanded="true" />
-            <element signature="e#4286#4323#0" expanded="true" />
-            <element signature="e#4450#4487#0" expanded="true" />
-            <element signature="e#4718#4758#0" expanded="true" />
-            <element signature="e#4990#5023#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="630">
@@ -1359,12 +1307,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6347826" vertical-offset="2676" max-vertical-offset="3315">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2676" max-vertical-offset="3315">
           <caret line="203" column="8" selection-start-line="203" selection-start-column="8" selection-end-line="203" selection-end-column="8" />
           <folding>
             <element signature="e#7668#7711#0" expanded="true" />
             <element signature="e#8301#8338#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/main.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewModel.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1235" max-vertical-offset="2235">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
