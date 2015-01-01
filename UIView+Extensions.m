@@ -23,6 +23,16 @@
     [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, w, h)];
 }
 
+- (CMPopTipView *)showOnBoardingWithHintKey:(NSString *)hintKey withDelegate:(id <CMPopTipViewDelegate>)delegate superView:(UIView *)superView {
+    [[HalalGuideOnboarding instance] setOnBoardingShown:hintKey];
+
+    CMPopTipView *tipView = [[CMPopTipView alloc] initWithMessage:NSLocalizedString(hintKey, nil)];
+    tipView.backgroundColor = [UIColor whiteColor];
+    tipView.textColor = [UIColor darkTextColor];
+    [tipView presentPointingAtView:self inView:superView animated:true];
+    return tipView;
+}
+
 - (CMPopTipView *)showOnBoardingWithHintKey:(NSString *)hintKey withDelegate:(id <CMPopTipViewDelegate>)delegate {
 
     [[HalalGuideOnboarding instance] setOnBoardingShown:hintKey];
@@ -35,12 +45,12 @@
 
 }
 
--(UITableView *) parentTableView {
+- (UITableView *)parentTableView {
     // iterate up the view hierarchy to find the table containing this cell/view
     UIView *aView = self.superview;
-    while(aView != nil) {
-        if([aView isKindOfClass:[UITableView class]]) {
-            return (UITableView *)aView;
+    while (aView != nil) {
+        if ([aView isKindOfClass:[UITableView class]]) {
+            return (UITableView *) aView;
         }
         aView = aView.superview;
     }

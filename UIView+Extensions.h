@@ -11,6 +11,8 @@
 
 -(void)resizeToFitSubviews;
 
+- (CMPopTipView *)showOnBoardingWithHintKey:(NSString *)hintKey withDelegate:(id <CMPopTipViewDelegate>)delegate superView:(UIView *)superView;
+
 - (CMPopTipView *)showOnBoardingWithHintKey:(NSString *)hintKey withDelegate:(id <CMPopTipViewDelegate>)delegate;
 
 -(UITableView *) parentTableView;

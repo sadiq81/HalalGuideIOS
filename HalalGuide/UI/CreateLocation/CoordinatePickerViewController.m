@@ -6,6 +6,8 @@
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import "CoordinatePickerViewController.h"
 #import "CreateLocationViewModel.h"
+#import "HalalGuideOnboarding.h"
+#import "UIView+Extensions.h"
 #import <AddressBook/ABPerson.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import <SVProgressHUD/SVProgressHUD.h>
@@ -13,26 +15,29 @@
 @implementation CoordinatePickerViewController {
 
 }
-
-//TODO Onboarding - Explain drag and drop
-//TODO Able to set new pin if guess is far away from actual position
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    __weak typeof(self) weakSelf = self;
+
     self.tempCoordinate = kCLLocationCoordinate2DInvalid;
 
-    if ([CreateLocationViewModel instance].suggestedPlaceMark) {
-        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-        point.coordinate = [CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate;
-        //point.title = [CreateLocationViewModel instance].suggestionName;
-        [self.mapView addAnnotation:point];
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    point.title = [CreateLocationViewModel instance].suggestionName;
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
+    MKCoordinateRegion region;
 
-        MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
-        MKCoordinateRegion region = MKCoordinateRegionMake([CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate, span);
-        [self.mapView setRegion:region animated:YES];
+    if ([CreateLocationViewModel instance].suggestedPlaceMark) {
+        point.coordinate = [CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate;
+    } else {
+        point.coordinate = [BaseViewModel currentLocation].coordinate;
     }
-    __weak typeof(self) weakSelf = self;
+
+    [self.mapView addAnnotation:point];
+    region = MKCoordinateRegionMake(point.coordinate, span);
+    [self.mapView setRegion:region animated:YES];
+
+
     [self.approve setBlock:^(id weakSender) {
         if (!CLLocationCoordinate2DIsValid(weakSelf.tempCoordinate) && CLLocationCoordinate2DIsValid([CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate)) {
             [CreateLocationViewModel instance].userChoosenLocation = [CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate;
@@ -41,17 +46,6 @@
         }
         [weakSelf.navigationController popViewControllerAnimated:true];
     }];
-}
-
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-
-    if ([CreateLocationViewModel instance].suggestedPlaceMark == nil && mapView.tag == 0) {
-
-        MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
-        MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.location.coordinate, span);
-        self.mapView.tag = 1;
-        [self.mapView setRegion:region animated:YES];
-    }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -67,9 +61,14 @@
         mapPin.animatesDrop = YES;
 
     }
+
+    //TODO Position in view is off
+    if ([[HalalGuideOnboarding instance] wasOnBoardingShow:kManuelGPSPositionKey]) {
+        [mapPin showOnBoardingWithHintKey:kManuelGPSPositionKey withDelegate:nil superView:mapView];
+    }
+
     return mapPin;
 }
-
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
     if (newState == MKAnnotationViewDragStateEnding) {
@@ -86,8 +85,6 @@
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"invalidAddress", nil) maskType:SVProgressHUDMaskTypeGradient];
             }
         }];
-
-
     }
 }
 

@@ -16,6 +16,8 @@
 
 #define kSupportOnBoardingKey @"supportOnBoarding"
 
+#define kManuelGPSPositionKey @"manuelGPSPosition"
+
 #import <Foundation/Foundation.h>
 
 

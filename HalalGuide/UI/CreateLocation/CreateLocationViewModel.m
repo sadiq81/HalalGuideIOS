@@ -116,9 +116,6 @@
 
 
             completion(CreateEntityResultAddressDoesNotExist);
-
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(CreateEntityResultAddressDoesNotExist), nil) maskType:SVProgressHUDMaskTypeGradient];
-
             return;
         }
 

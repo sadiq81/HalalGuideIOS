@@ -125,6 +125,7 @@
 "estimatingAddress" = "Guessing your address";
 "invalidAddress" = "Not a valid address";
 "GPSNotPreciseEnough" = "GPS point for the address could not be located, do you want to choose on a map?";
+"manuelGPSPosition" = "Pull and let go to choose position different";
 "authenticate" = "Autentifikation";
 "authenticateText" = "In order to submit suggestions to HalalGuide, you need to confirm your identify via Facebook";
 
