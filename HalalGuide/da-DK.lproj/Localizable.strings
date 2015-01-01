@@ -83,6 +83,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "action"= "Handling";
 "directions" = "Find vej";
 "call" = "Ring til stedet";
+"homepage" = "Hjemmeside";
 "warning" = "Advarsel";
 "directionsText" = "Vil du åbne Kort og få vist vejen til";
 "callNotAvaileble"= "Enheden understøtter ikke opringning";

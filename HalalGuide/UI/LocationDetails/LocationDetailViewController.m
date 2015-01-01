@@ -197,6 +197,10 @@
         [buttons addObject:NSLocalizedString(@"call", nil)];
     }
 
+    if ([LocationDetailViewModel instance].location.homePage && [[LocationDetailViewModel instance].location.homePage length] > 0) {
+        [buttons addObject:NSLocalizedString(@"homepage", nil)];
+    }
+
     [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"action", nil)
                                          message:nil
                                cancelButtonTitle:NSLocalizedString(@"regret", nil)
@@ -230,6 +234,11 @@
                                                 } else {
                                                     [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"callNotAvaileble", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil, nil] show];
                                                 }
+                                            }
+                                            else if (buttonIndex == 4) {
+                                                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [LocationDetailViewModel instance].location.homePage]];
+                                                [[UIApplication sharedApplication] openURL:url];
+
                                             }
                                         }];
 }

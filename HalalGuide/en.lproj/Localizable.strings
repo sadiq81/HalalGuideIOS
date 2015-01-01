@@ -85,6 +85,7 @@
 "action"= "Action";
 "directions" = "Get directions";
 "call" = "Call place";
+"homepage" = "Website";
 "directionsText" = "Do you want to open maps and get directions for";
 "warning" = "Warning";
 "callNotAvaileble"= "The device does not support calling";
