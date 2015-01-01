@@ -120,6 +120,7 @@
 		A111F7541A3260EF00ABFF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A13327781A4B0D1A00C65D6A /* HalalGuide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HalalGuide.entitlements; sourceTree = "<group>"; };
 		A15CE3C91A100A8400F44C9A /* halalguide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = halalguide.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15CE3CD1A100A8400F44C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A15CE3E51A100A8400F44C9A /* halalguideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = halalguideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15CE3EA1A100A8400F44C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A15CE3EB1A100A8400F44C9A /* HalalGuideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HalalGuideTests.m; sourceTree = "<group>"; };
@@ -136,8 +137,6 @@
 		A165DDD31A34EA9D00F43A15 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A1B68FBE1A49572500AE9795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A1B68FC11A49573200AE9795 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
-		A1B9AB351A55607600D55759 /* da-DK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "da-DK"; path = "da-DK.lproj/Info.plist"; sourceTree = "<group>"; };
-		A1B9AB371A55607D00D55759 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
 		A1BF83861A397A6500D3AFFC /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		A1BF83881A397A9B00D3AFFC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		A1CEE9D71A514C300099CB8B /* da-DK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "da-DK"; path = "da-DK.lproj/MainStoryboard.strings"; sourceTree = "<group>"; };
@@ -432,7 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				A13327781A4B0D1A00C65D6A /* HalalGuide.entitlements */,
-				A1B9AB361A55607600D55759 /* Info.plist */,
+				A15CE3CD1A100A8400F44C9A /* Info.plist */,
 			);
 			name = plist;
 			sourceTree = "<group>";
@@ -955,15 +954,6 @@
 			name = MainStoryboard.storyboard;
 			path = HalalGuide;
 			sourceTree = SOURCE_ROOT;
-		};
-		A1B9AB361A55607600D55759 /* Info.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A1B9AB351A55607600D55759 /* da-DK */,
-				A1B9AB371A55607D00D55759 /* en */,
-			);
-			name = Info.plist;
-			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
