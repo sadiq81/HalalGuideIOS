@@ -116,7 +116,9 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "fetching"  = "Henter";
 "unlimited" = "Ubegrænset";
 "savingToTheCloud" = "Gemmer i skyen";
-"reviewSaved" = "Din anmeldelse er gemt";
+"reviewSaved" = "Din anmeldelse er gemt, og afventer godkendelse";
+"locationSaved" = "Dit forslag er indsendt til godkendelse";
+"imageSaved" = "Dit billede er indsendt til godkendelse";
 "estimatingAddress" = "Gætter din adresse";
 "invalidAddress" = "Ikke en gyldig adresse";
 "GPSNotPreciseEnough" = "GPS punkt for adressen er upræcist, vil du selv vælge den på kortet?";

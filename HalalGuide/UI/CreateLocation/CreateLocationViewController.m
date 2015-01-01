@@ -179,7 +179,7 @@
             break;
         }
         case CreateEntityResultOk: {
-            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"ok", nil) message:nil cancelButtonTitle:NSLocalizedString(@"done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"addReview", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"ok", nil) message:NSLocalizedString(@"locationSaved", <#comment#>) cancelButtonTitle:NSLocalizedString(@"done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"addReview", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
                 if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
                     [self.navigationController popViewControllerAnimated:true];
                 } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {

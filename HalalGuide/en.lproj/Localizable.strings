@@ -118,7 +118,9 @@
 "fetching"  = "Fetching";
 "unlimited" = "Unlimited";
 "savingToTheCloud" = "Saving in the cloud";
-"reviewSaved" = "Your review has been saved";
+"reviewSaved" = "Your review has been saved, and awaits approval";
+"locationSaved" = "Your suggestion has been submitted to approval";
+"imageSaved" = "Your image has been submitted for approval";
 "estimatingAddress" = "Guessing your address";
 "invalidAddress" = "Not a valid address";
 "GPSNotPreciseEnough" = "GPS point for the address could not be located, do you want to choose on a map?";

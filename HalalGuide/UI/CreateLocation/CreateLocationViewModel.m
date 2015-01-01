@@ -214,6 +214,9 @@
             [[ErrorReporting instance] reportError:error];
             completion(CreateEntityResultCouldNotUploadFile);
         } else {
+
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"imageSaved", nil)];
+
             completion(CreateEntityResultOk);
         }
     }];
