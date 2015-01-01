@@ -16,7 +16,7 @@
 
 }
 
-@synthesize locations, locationType, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories, shopCategories, language, page;
+@synthesize locations, locationType, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories, shopCategories, language, page, searchText;
 
 + (LocationViewModel *)instance {
     static LocationViewModel *_instance = nil;
@@ -80,6 +80,31 @@
 
     }
 
+    if (self.searchText && [self.searchText length] > 0) {
+        PFQuery *name = [PFQuery orQueryWithSubqueries:@[query]];
+        [name whereKey:@"name" containsString:self.searchText];
+
+        PFQuery *addressCity = [PFQuery orQueryWithSubqueries:@[query]];
+        [addressCity whereKey:@"addressCity" containsString:self.searchText];
+
+        PFQuery *addressPostalCode = [PFQuery orQueryWithSubqueries:@[query]];
+        [addressPostalCode whereKey:@"addressPostalCode" containsString:self.searchText];
+
+        PFQuery *addressRoad = [PFQuery orQueryWithSubqueries:@[query]];
+        [addressRoad whereKey:@"addressRoad" containsString:self.searchText];
+
+        PFQuery *addressRoadNumber = [PFQuery orQueryWithSubqueries:@[query]];
+        [addressRoadNumber whereKey:@"addressRoadNumber" containsString:self.searchText];
+
+        PFQuery *homePage = [PFQuery orQueryWithSubqueries:@[query]];
+        [homePage whereKey:@"homePage" containsString:self.searchText];
+
+        PFQuery *telephone = [PFQuery orQueryWithSubqueries:@[query]];
+        [telephone whereKey:@"telephone" containsString:self.searchText];
+
+        PFQuery *or = [PFQuery orQueryWithSubqueries:@[name, addressCity, addressPostalCode, addressRoad, addressRoadNumber, homePage, telephone]];
+        return or;
+    }
 
     if ([BaseViewModel currentLocation] && self.maximumDistance < 20) {
         [query whereKey:@"point" nearGeoPoint:[PFGeoPoint geoPointWithLocation:[BaseViewModel currentLocation]] withinKilometers:self.maximumDistance];

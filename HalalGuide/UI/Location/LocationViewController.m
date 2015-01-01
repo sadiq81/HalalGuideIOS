@@ -20,10 +20,8 @@
 #import "CategoriesViewController.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 
-//TODO Search bar for string searching fx name.
-//TODO On first load, distance filter is not working - Only after first dismissing filter.
 @implementation LocationViewController {
-
+    NSString *priorSearchText;
 }
 
 @synthesize tableViewController, diningTableView, refreshControl, bottomRefreshControl, filter, toolbar;
@@ -42,10 +40,45 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self.diningTableView setContentOffset:CGPointMake(0, 44) animated:true];
     [self setupHints];
 }
 
-#pragma mark Onboarding
+#pragma mark SearchBar
+
+- (void)searchBar:(UISearchBar *)aSearchBar textDidChange:(NSString *)searchText {
+
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateSearch:) object:priorSearchText];
+
+    priorSearchText = searchText;
+
+    [self performSelector:@selector(updateSearch:) withObject:searchText afterDelay:1.5];
+
+}
+
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)aSearchBar {
+
+    [self updateSearch:nil];
+
+    aSearchBar.text = @"";
+    [aSearchBar resignFirstResponder];
+
+    [self.diningTableView setContentOffset:CGPointMake(0, 44) animated:true];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)aSearchBar {
+    [self updateSearch:aSearchBar.text];
+    [aSearchBar resignFirstResponder];
+}
+
+- (void)updateSearch:(NSString *)searchText {
+    [LocationViewModel instance].searchText = searchText;
+    [[LocationViewModel instance] refreshLocations:false];
+}
+
+
+#pragma mark OnBoarding
 
 - (void)setupHints {
 
@@ -108,6 +141,8 @@
 #pragma mark - TableView
 
 - (void)configureTableView {
+    self.searchBar.showsCancelButton = true;
+
     self.diningTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     self.tableViewController = [[UITableViewController alloc] init];

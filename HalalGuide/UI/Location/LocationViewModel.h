@@ -26,7 +26,7 @@
 @property(nonatomic) bool showAlcohol;
 @property(nonatomic) bool showPork;
 @property(nonatomic) int page;
-
+@property(nonatomic, copy) NSString *searchText;
 
 + (LocationViewModel *)instance;
 

@@ -11,7 +11,7 @@
 #import "LocationViewModel.h"
 #import "BaseViewController.h"
 
-@interface LocationViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, CMPopTipViewDelegate>
+@interface LocationViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, CMPopTipViewDelegate, UISearchBarDelegate>
 
 @property(strong, nonatomic) IBOutlet UITableView *diningTableView;
 @property(strong, nonatomic) UITableViewController *tableViewController;
@@ -19,6 +19,7 @@
 @property(strong, nonatomic) UIRefreshControl *bottomRefreshControl;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *filter;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) IBOutlet UILabel *noResults;
 
