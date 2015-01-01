@@ -79,7 +79,6 @@ static CLLocation *currentLocation;
 
 - (void)authenticate:(UIViewController *)viewController onCompletion:(PFBooleanResultBlock)completion {
 
-
     [UIAlertController showInViewController:viewController
                                   withTitle:NSLocalizedString(@"authenticate", nil)
                                     message:NSLocalizedString(@"authenticateText", nil)
@@ -109,6 +108,14 @@ static CLLocation *currentLocation;
 }
 
 - (void)getPicture:(UIViewController *)viewController withDelegate:(id <UIImagePickerControllerDelegate>)delegate {
+
+    if (![self isAuthenticated]) {
+        [self authenticate:viewController onCompletion:^(BOOL succeeded, NSError *error) {
+            if (succeeded && !error) {
+                [self getPicture:viewController withDelegate:delegate];
+            }
+        }];
+    }
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"addPicture", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 

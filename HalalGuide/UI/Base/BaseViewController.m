@@ -15,12 +15,10 @@
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
 
-
     if ([identifier isEqualToString:@"CreateDining"] || [identifier isEqualToString:@"CreateReview"]) {
 
         if (![[FrontPageViewModel instance] isAuthenticated]) {
 
-            //TODO Warn user of authentication windows
             [[FrontPageViewModel instance] authenticate:self onCompletion:^(BOOL succeeded, NSError *error) {
 
                 if (!error) {
