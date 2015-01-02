@@ -40,7 +40,9 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self.diningTableView setContentOffset:CGPointMake(0, 44) animated:true];
+    if (self.searchBar.text == nil || [self.searchBar.text length] == 0) {
+        [self.diningTableView setContentOffset:CGPointMake(0, 44) animated:true];
+    }
     [self setupHints];
 }
 
