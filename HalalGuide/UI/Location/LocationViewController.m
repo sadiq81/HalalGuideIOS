@@ -40,9 +40,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+
     if (self.searchBar.text == nil || [self.searchBar.text length] == 0) {
         [self.diningTableView setContentOffset:CGPointMake(0, 44) animated:true];
     }
+
     [self setupHints];
 }
 
@@ -143,6 +145,8 @@
 #pragma mark - TableView
 
 - (void)configureTableView {
+
+    self.searchBar.text = [LocationViewModel instance].searchText;
     self.searchBar.showsCancelButton = true;
 
     self.diningTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];

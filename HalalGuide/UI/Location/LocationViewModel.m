@@ -82,27 +82,28 @@
 
     if (self.searchText && [self.searchText length] > 0) {
         PFQuery *name = [PFQuery orQueryWithSubqueries:@[query]];
-        [name whereKey:@"name" containsString:self.searchText];
+        [name whereKey:@"name" matchesRegex:self.searchText modifiers:@"i"];
 
         PFQuery *addressCity = [PFQuery orQueryWithSubqueries:@[query]];
-        [addressCity whereKey:@"addressCity" containsString:self.searchText];
+        [addressCity whereKey:@"addressCity" matchesRegex:self.searchText modifiers:@"i"];
 
         PFQuery *addressPostalCode = [PFQuery orQueryWithSubqueries:@[query]];
-        [addressPostalCode whereKey:@"addressPostalCode" containsString:self.searchText];
+        [addressPostalCode whereKey:@"addressPostalCode" matchesRegex:self.searchText modifiers:@"i"];
 
         PFQuery *addressRoad = [PFQuery orQueryWithSubqueries:@[query]];
-        [addressRoad whereKey:@"addressRoad" containsString:self.searchText];
+        [addressRoad whereKey:@"addressRoad" matchesRegex:self.searchText modifiers:@"i"];
 
         PFQuery *addressRoadNumber = [PFQuery orQueryWithSubqueries:@[query]];
-        [addressRoadNumber whereKey:@"addressRoadNumber" containsString:self.searchText];
+        [addressRoadNumber whereKey:@"addressRoadNumber" matchesRegex:self.searchText modifiers:@"i"];
 
         PFQuery *homePage = [PFQuery orQueryWithSubqueries:@[query]];
-        [homePage whereKey:@"homePage" containsString:self.searchText];
+        [homePage whereKey:@"homePage" matchesRegex:self.searchText modifiers:@"i"];
 
         PFQuery *telephone = [PFQuery orQueryWithSubqueries:@[query]];
-        [telephone whereKey:@"telephone" containsString:self.searchText];
+        [telephone whereKey:@"telephone" matchesRegex:self.searchText modifiers:@"i"];
 
         PFQuery *or = [PFQuery orQueryWithSubqueries:@[name, addressCity, addressPostalCode, addressRoad, addressRoadNumber, homePage, telephone]];
+        //Or queries do not support geo location and limit/skip
         return or;
     }
 
