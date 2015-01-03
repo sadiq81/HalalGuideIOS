@@ -20,9 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configureTableView];
-
     [FrontPageViewModel instance].delegate = self;
-    [[FrontPageViewModel instance] refreshLocations:true];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [[FrontPageViewModel instance] refreshLocations:false];
 }
 
 - (void)dealloc {
@@ -37,11 +39,11 @@
     if ([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"]) {
         Location *location = [[FrontPageViewModel instance] locationForRow:[self.latestUpdated indexPathForSelectedRow].row];
         [LocationDetailViewModel instance].location = location;
-    } else if ([segue.identifier isEqualToString:@"Shop"]){
+    } else if ([segue.identifier isEqualToString:@"Shop"]) {
         [LocationViewModel instance].locationType = LocationTypeShop;
-    } else if ([segue.identifier isEqualToString:@"Dining"]){
+    } else if ([segue.identifier isEqualToString:@"Dining"]) {
         [LocationViewModel instance].locationType = LocationTypeDining;
-    }else if ([segue.identifier isEqualToString:@"Mosque"]){
+    } else if ([segue.identifier isEqualToString:@"Mosque"]) {
         [LocationViewModel instance].locationType = LocationTypeMosque;
     }
 }
