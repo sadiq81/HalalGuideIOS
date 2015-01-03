@@ -82,6 +82,7 @@
 		C596BAC431971EE457E2AC67 /* AddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B9236BE5EB90B765FFA9 /* AddressService.m */; };
 		C596BAC926A22C2B286BC14F /* PictureService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B5C2EFA65F106D065A85 /* PictureService.m */; };
 		C596BADDA4BE97A94610CE1F /* UIImage+Transformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B75CA653650DB3D05A03 /* UIImage+Transformation.m */; };
+		C596BCAA5BEA01A3182A39B5 /* OpeningHours.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8552DDC807E558A5A30 /* OpeningHours.m */; };
 		C596BCDFB902FAF18D51A1AB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC841F23A6433FB59C83 /* SettingsViewController.m */; };
 		C596BD96EFEBDDC2BA7E3281 /* HalalGuideSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3738DE751A198964235 /* HalalGuideSettings.m */; };
 		C596BDC0C328C004265F89E0 /* LocationDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B781676517BC117FF418 /* LocationDetailViewModel.m */; };
@@ -170,6 +171,7 @@
 		C596B21B5A6B8B7A9AB721D7 /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = SOURCE_ROOT; };
 		C596B21D6C38E6FAFD9C1FE1 /* CreateLocationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLocationViewModel.m; sourceTree = "<group>"; };
 		C596B24BA9AE85B76AA003C0 /* HalalGuideNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideNumberFormatter.m; sourceTree = "<group>"; };
+		C596B26303DD8837D18AE6EF /* OpeningHours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpeningHours.h; sourceTree = "<group>"; };
 		C596B27002419226C56B97EB /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		C596B29B914F37DE55FF62C4 /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = SOURCE_ROOT; };
 		C596B2A4EE405E5B07E7107E /* CreateReviewViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReviewViewModel.m; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		C596B7F7192CA4ADB4DCF721 /* HalalGuideNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideNumberFormatter.h; sourceTree = "<group>"; };
 		C596B810C6C83C0302E398C6 /* ReviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewService.h; sourceTree = "<group>"; };
 		C596B81ACA6EECA8A88D5DA0 /* HalalGuideImageViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideImageViews.m; sourceTree = "<group>"; };
+		C596B8552DDC807E558A5A30 /* OpeningHours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpeningHours.m; sourceTree = "<group>"; };
 		C596B8600A531F42063E1E4D /* UIImage+Transformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Transformation.h"; sourceTree = SOURCE_ROOT; };
 		C596B86B05EE4EBD3D4FCDEA /* ReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
 		C596B88F34BE12E8C170701C /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 				C596BF18467A6A54197C93BB /* ProfileInfo.h */,
 				C596BD577B3C94008D6D6A86 /* ENumber.m */,
 				C596BBB70C59518E28A17566 /* ENumber.h */,
+				C596B8552DDC807E558A5A30 /* OpeningHours.m */,
+				C596B26303DD8837D18AE6EF /* OpeningHours.h */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -708,6 +713,7 @@
 				A15CE3C51A100A8400F44C9A /* Sources */,
 				A15CE3C61A100A8400F44C9A /* Frameworks */,
 				A11841DC1A4BE3000024B9F2 /* ShellScript */,
+				A1B9AB391A57311C00D55759 /* ShellScript */,
 				A15CE3C71A100A8400F44C9A /* Resources */,
 				1E564685AE57B5298787F34E /* Copy Pods Resources */,
 			);
@@ -846,6 +852,19 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
+		A1B9AB391A57311C00D55759 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\nexport PATH=/usr/local/bin:$PATH\ncd \"${PROJECT_DIR}/parse/cloud\"\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -912,6 +931,7 @@
 				C596B8A34F7CFFA6A7A8247B /* SlideShowViewController.m in Sources */,
 				C596B86E7083F827F608D51B /* ENumberViewController.m in Sources */,
 				C596B57CA42D67EDC792CC39 /* ENumber.m in Sources */,
+				C596BCAA5BEA01A3182A39B5 /* OpeningHours.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

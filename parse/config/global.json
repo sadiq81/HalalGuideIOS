@@ -1,1 +1,11 @@
-{}
+{
+    "applications": {
+        "HalalGuide": {
+            "applicationId": "7CtuNVHBGEdqFlvUyn2PQCG9R04dwIOyPpIVr7NA", 
+            "masterKey": "XBkilx8Ci1hQ7XuBleQxVyusK1vnzh8BOjLEhIbZ"
+        }, 
+        "_default": {
+            "link": "HalalGuide"
+        }
+    }
+}
