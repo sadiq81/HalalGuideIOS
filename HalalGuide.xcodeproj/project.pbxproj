@@ -709,13 +709,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A15CE3EF1A100A8400F44C9A /* Build configuration list for PBXNativeTarget "halalguide" */;
 			buildPhases = (
+				A11841DC1A4BE3000024B9F2 /* ShellScript */,
 				503AFA7A932BA0C9C5ABC958 /* Check Pods Manifest.lock */,
 				A15CE3C51A100A8400F44C9A /* Sources */,
 				A15CE3C61A100A8400F44C9A /* Frameworks */,
-				A11841DC1A4BE3000024B9F2 /* ShellScript */,
-				A1B9AB391A57311C00D55759 /* ShellScript */,
 				A15CE3C71A100A8400F44C9A /* Resources */,
 				1E564685AE57B5298787F34E /* Copy Pods Resources */,
+				A1B9AB391A57311C00D55759 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -854,16 +854,16 @@
 		};
 		A1B9AB391A57311C00D55759 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\nexport PATH=/usr/local/bin:$PATH\ncd \"${PROJECT_DIR}/parse/cloud\"\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\nexport PATH=/usr/local/bin:$PATH\ncd \"${PROJECT_DIR}/parse/cloud\"\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
