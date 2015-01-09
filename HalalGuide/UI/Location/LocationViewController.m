@@ -22,6 +22,7 @@
 
 @implementation LocationViewController {
     NSString *priorSearchText;
+    BOOL firstShown;
 }
 
 @synthesize tableViewController, diningTableView, refreshControl, bottomRefreshControl, filter, toolbar;
@@ -41,11 +42,17 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 
-    if (self.searchBar.text == nil || [self.searchBar.text length] == 0) {
+    if ((self.searchBar.text == nil || [self.searchBar.text length] == 0) && firstShown) {
         [self.diningTableView setContentOffset:CGPointMake(0, 44) animated:true];
     }
 
     [self setupHints];
+    firstShown = true;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.bottomRefreshControl endRefreshing];
 }
 
 #pragma mark SearchBar
