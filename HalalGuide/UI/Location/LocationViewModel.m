@@ -107,8 +107,8 @@
         return or;
     }
 
-    if ([BaseViewModel currentLocation] && self.maximumDistance < 20) {
-        [query whereKey:@"point" nearGeoPoint:[PFGeoPoint geoPointWithLocation:[BaseViewModel currentLocation]] withinKilometers:self.maximumDistance];
+    if ([BaseViewModel currentLocation]) {
+        [query whereKey:@"point" nearGeoPoint:[PFGeoPoint geoPointWithLocation:[BaseViewModel currentLocation]] withinKilometers: self.maximumDistance < 20 ? self.maximumDistance:1000];
     }
 
     //Paging controls
