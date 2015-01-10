@@ -172,6 +172,10 @@
 }
 
 - (Location *)locationForRow:(NSUInteger)row {
+    if (self.locations == nil || [self.locations count] <= row){
+        return nil;
+    }
+
     return [self.locations objectAtIndex:row];
 }
 @end

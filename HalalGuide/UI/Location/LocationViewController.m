@@ -42,7 +42,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 
-    if ((self.searchBar.text == nil || [self.searchBar.text length] == 0) && firstShown) {
+    if ((self.searchBar.text == nil || [self.searchBar.text length] == 0) && !firstShown) {
         [self.diningTableView setContentOffset:CGPointMake(0, 44) animated:true];
     }
 
