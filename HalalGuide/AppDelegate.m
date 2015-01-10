@@ -74,7 +74,33 @@ Maria Akram Monazam Maria-Akram@hotmail.com
         //TODO Make some sign of user has contributed;
     }];
 
+    //Push notifications
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+
+    NSString *userId = [PFUser currentUser].objectId;
+
+    NSMutableArray *channels = [NSMutableArray new];
+    [channels addObject:@"global"];
+    if (userId) {
+        [channels addObject:userId];
+    }
+    currentInstallation.channels = channels;
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 - (void)startStandardUpdates {
