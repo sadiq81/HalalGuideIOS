@@ -260,16 +260,16 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
 
-    UIImageView *temp;
+
     LocationPicture *picture = [[LocationDetailViewModel instance] pictureForRow:index];
 
     if (view == nil) {
-        view = temp = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
-        temp.contentMode = UIViewContentModeScaleAspectFit;
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
+        view.contentMode = UIViewContentModeScaleAspectFit;
     }
     //TODO Adjust frame so that portrait and landspace pictures are both max height
 
-    [temp setImageWithURL:[[NSURL alloc] initWithString:picture.picture.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [(UIImageView *) view setImageWithURL:[[NSURL alloc] initWithString:picture.picture.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     return view;
 }
 
