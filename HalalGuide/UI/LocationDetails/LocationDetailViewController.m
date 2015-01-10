@@ -83,7 +83,7 @@
 
     //TODO Ugly hack, fix with TODO below
     [CreateLocationViewModel instance].createdLocation = [LocationDetailViewModel instance].location;
-    [[CreateLocationViewModel instance] savePicture:image onCompletion:^(CreateEntityResult result) {
+    [[CreateLocationViewModel instance] savePicture:image showReviewFeedback:true onCompletion:^(CreateEntityResult result) {
         [CreateLocationViewModel instance].createdLocation = nil;
         //TODO Error handling like CreateLocationViewController, share code somehow
     }];

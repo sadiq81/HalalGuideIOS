@@ -175,7 +175,7 @@
                 self.createdLocation = location;
 
                 if (image) {
-                    [self savePicture:image onCompletion:completion];
+                    [self savePicture:image showReviewFeedback:false onCompletion:completion];
                 } else {
                     completion(CreateEntityResultOk);
                 }
@@ -198,7 +198,7 @@
     }];
 }
 
-- (void)savePicture:(UIImage *)image onCompletion:(void (^)(CreateEntityResult result))completion {
+- (void)savePicture:(UIImage *)image showReviewFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion {
 
     [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
 
@@ -212,8 +212,9 @@
             completion(CreateEntityResultCouldNotUploadFile);
         } else {
 
-            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"imageSaved", nil)];
-
+            if (show) {
+                [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"imageSaved", nil)];
+            }
             completion(CreateEntityResultOk);
         }
     }];

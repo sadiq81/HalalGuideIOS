@@ -171,7 +171,7 @@
                 if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
                     [self.navigationController popViewControllerAnimated:true];
                 } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
-                    [[CreateLocationViewModel instance] savePicture:weakSelf.image onCompletion:^(CreateEntityResult result) {
+                    [[CreateLocationViewModel instance] savePicture:weakSelf.image showReviewFeedback:false onCompletion:^(CreateEntityResult result) {
                         [self showDialog:result];
                     }];
                 }

@@ -41,6 +41,6 @@
 
 - (void)saveEntity:(NSString *)name road:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode city:(NSString *)city telephone:(NSString *)telephone website:(NSString *)website pork:(BOOL)pork alcohol:(BOOL)alcohol nonHalal:(BOOL)nonHalal image:(UIImage *)image onCompletion:(void (^)(CreateEntityResult result))completion;
 
-- (void)savePicture:(UIImage *)image onCompletion:(void (^)(CreateEntityResult result))completion;
+- (void)savePicture:(UIImage *)image showReviewFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion;
 
 @end
