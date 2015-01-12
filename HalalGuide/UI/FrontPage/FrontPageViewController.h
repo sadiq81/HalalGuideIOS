@@ -7,10 +7,8 @@
 #import <UIKit/UIKit.h>
 #import "BaseEntity.h"
 #import "FrontPageViewModel.h"
-#import "BaseViewController.h"
 
-
-@interface FrontPageViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate, FrontPageViewModelDelegate>
+@interface FrontPageViewController :UIViewController <UITableViewDataSource, UITableViewDelegate, FrontPageViewModelDelegate>
 
 @property(strong, nonatomic) IBOutlet UITableView *latestUpdated;
 @property(strong, nonatomic) UITableViewController *tableViewController;

@@ -24,9 +24,9 @@
 #import "UIView+Extensions.h"
 #import "HalalGuideOnboarding.h"
 #import "SlideShowViewController.h"
+#import "UIViewController+Extension.h"
 
 @implementation LocationDetailViewController {
-    CGRect iCarouselRect;
 }
 
 - (void)viewDidLoad {
@@ -39,6 +39,28 @@
 }
 
 #pragma mark - Navigation
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+
+    if ([identifier isEqualToString:@"CreateLocation"] || [identifier isEqualToString:@"CreateReview"]) {
+
+        if (![[LocationDetailViewModel instance] isAuthenticated]) {
+
+            [[LocationDetailViewModel instance] authenticate:self onCompletion:^(BOOL succeeded, NSError *error) {
+
+                if (!error) {
+                    [self performSegueWithIdentifier:identifier sender:self];
+                }
+            }];
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        return true;
+    }
+}
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
@@ -75,18 +97,10 @@
 
 #pragma mark - ImagePicker
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+- (void)finishedPickingImages {
+    [super finishedPickingImages];
 
-    [self.parentViewController dismissViewControllerAnimated:true completion:nil];
-
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-
-    //TODO Ugly hack, fix with TODO below
-    [CreateLocationViewModel instance].createdLocation = [LocationDetailViewModel instance].location;
-    [[CreateLocationViewModel instance] savePicture:image showReviewFeedback:true onCompletion:^(CreateEntityResult result) {
-        [CreateLocationViewModel instance].createdLocation = nil;
-        //TODO Error handling like CreateLocationViewController, share code somehow
-    }];
+    [[LocationDetailViewModel instance] saveMultiplePictures:self.images forLocation:[LocationDetailViewModel instance].location showFeedback:true onCompletion:nil];
 }
 
 #pragma mark - CollectionView
@@ -129,7 +143,6 @@
         self.headerView.carousel.type = iCarouselTypeCoverFlow2;
         self.headerView.carousel.delegate = self;
         self.headerView.carousel.dataSource = self;
-        iCarouselRect = self.headerView.carousel.frame;
 
         self.headerView.name.text = loc.name;
         self.headerView.address.text = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
@@ -173,8 +186,9 @@
         }
 
         __weak typeof(self) weakSelf = self;
+
         [self.headerView.addPicture handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
-            [[LocationDetailViewModel instance] getPicture:weakSelf withDelegate:weakSelf];
+            [[LocationDetailViewModel instance] getPicture:weakSelf];
         }];
         [self.headerView.report handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
             [[LocationDetailViewModel instance] report:weakSelf];
@@ -189,58 +203,56 @@
 //TODO Select whether to call restaurant or open in maps
 - (void)openMaps:(UITapGestureRecognizer *)recognizer {
 
-    NSMutableArray *buttons = [[NSMutableArray alloc] init];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"addPicture", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+
     if ([LocationDetailViewModel instance].location.addressRoad) {
-        [buttons addObject:NSLocalizedString(@"directions", nil)];
+        UIAlertAction *directions = [UIAlertAction actionWithTitle:NSLocalizedString(@"directions", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            PFGeoPoint *point = [[LocationDetailViewModel instance].location point];
+            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(point.latitude, point.longitude) addressDictionary:nil];
+            MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+            [mapItem setName:[LocationDetailViewModel instance].location.name];
+
+            // Set the directions mode to "Driving"
+            // Can use MKLaunchOptionsDirectionsModeWalking instead
+            NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+
+            // Get the "Current User Location" MKMapItem
+            MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+
+            // Pass the current location and destination map items to the Maps app
+            // Set the direction mode in the launchOptions dictionary
+            [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
+        }];
+        [alertController addAction:directions];
     }
     if ([LocationDetailViewModel instance].location.telephone) {
-        [buttons addObject:NSLocalizedString(@"call", nil)];
-    }
+        UIAlertAction *call = [UIAlertAction actionWithTitle:NSLocalizedString(@"call", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
 
+            NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@", [LocationDetailViewModel instance].location.telephone]];
+
+            if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+                [[UIApplication sharedApplication] openURL:phoneUrl];
+            } else {
+                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"callNotAvaileble", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil, nil] show];
+            }
+
+        }];
+        [alertController addAction:call];
+    }
     if ([LocationDetailViewModel instance].location.homePage && [[LocationDetailViewModel instance].location.homePage length] > 0) {
-        [buttons addObject:NSLocalizedString(@"homepage", nil)];
+        UIAlertAction *homepage = [UIAlertAction actionWithTitle:NSLocalizedString(@"homepage", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            //TODO Add http if missing
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [LocationDetailViewModel instance].location.homePage]];
+            [[UIApplication sharedApplication] openURL:url];
+        }];
+        [alertController addAction:homepage];
     }
 
-    [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"action", nil)
-                                         message:nil
-                               cancelButtonTitle:NSLocalizedString(@"regret", nil)
-                          destructiveButtonTitle:nil
-                               otherButtonTitles:buttons
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"regret", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    }];
+    [alertController addAction:cancel];
 
-                                        tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-                                            if (buttonIndex == UIAlertControllerBlocksFirstOtherButtonIndex) {
-                                                PFGeoPoint *point = [[LocationDetailViewModel instance].location point];
-                                                MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(point.latitude, point.longitude) addressDictionary:nil];
-                                                MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-                                                [mapItem setName:[LocationDetailViewModel instance].location.name];
-
-                                                // Set the directions mode to "Driving"
-                                                // Can use MKLaunchOptionsDirectionsModeWalking instead
-                                                NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
-
-                                                // Get the "Current User Location" MKMapItem
-                                                MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
-
-                                                // Pass the current location and destination map items to the Maps app
-                                                // Set the direction mode in the launchOptions dictionary
-                                                [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
-                                            }
-                                            else if (buttonIndex == 3) {
-
-                                                NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@", [LocationDetailViewModel instance].location.telephone]];
-
-                                                if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
-                                                    [[UIApplication sharedApplication] openURL:phoneUrl];
-                                                } else {
-                                                    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"callNotAvaileble", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil, nil] show];
-                                                }
-                                            }
-                                            else if (buttonIndex == 4) {
-                                                NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [LocationDetailViewModel instance].location.homePage]];
-                                                [[UIApplication sharedApplication] openURL:url];
-
-                                            }
-                                        }];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - CollectionView - Pictures

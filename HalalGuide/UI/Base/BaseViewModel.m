@@ -8,6 +8,7 @@
 
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <CTAssetsPickerController/CTAssetsPickerController.h>
 #import "BaseViewModel.h"
 #import "LocationService.h"
 #import "ReviewService.h"
@@ -16,6 +17,7 @@
 #import "ErrorReporting.h"
 #import "PFUser+Extension.h"
 #import "UIAlertController+Blocks.h"
+#import "UIViewController+Extension.h"
 
 static CLLocation *currentLocation;
 
@@ -79,40 +81,39 @@ static CLLocation *currentLocation;
 
 - (void)authenticate:(UIViewController *)viewController onCompletion:(PFBooleanResultBlock)completion {
 
-    [UIAlertController showInViewController:viewController
-                                  withTitle:NSLocalizedString(@"authenticate", nil)
-                                    message:NSLocalizedString(@"authenticateText", nil)
-                             preferredStyle:UIAlertControllerStyleAlert
-                          cancelButtonTitle:NSLocalizedString(@"regret", nil)
-                     destructiveButtonTitle:nil
-                          otherButtonTitles:@[NSLocalizedString(@"ok", nil)]
-                                   tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+    [UIAlertController showAlertInViewController:viewController
+                                       withTitle:NSLocalizedString(@"authenticate", nil)
+                                         message:NSLocalizedString(@"authenticateText", nil)
+                               cancelButtonTitle:NSLocalizedString(@"regret", nil)
+                          destructiveButtonTitle:nil
+                               otherButtonTitles:@[NSLocalizedString(@"ok", nil)]
+                                        tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
 
-                                       if (buttonIndex == UIAlertControllerBlocksFirstOtherButtonIndex) {
+                                            if (buttonIndex == controller.firstOtherButtonIndex) {
 
-                                           [SVProgressHUD showWithStatus:NSLocalizedString(@"loggingIn", nil) maskType:SVProgressHUDMaskTypeGradient];
+                                                [SVProgressHUD showWithStatus:NSLocalizedString(@"loggingIn", nil) maskType:SVProgressHUDMaskTypeGradient];
 
-                                           [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {
+                                                [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {
 
-                                               [SVProgressHUD dismiss];
+                                                    [SVProgressHUD dismiss];
 
-                                               if (user.isNew && !error) {
-                                                   [PFUser storeProfileInfoForLoggedInUser:completion];
-                                               } else {
-                                                   completion(true, error);
-                                               }
-                                           }];
-                                       }
+                                                    if (user.isNew && !error) {
+                                                        [PFUser storeProfileInfoForLoggedInUser:completion];
+                                                    } else {
+                                                        completion(true, error);
+                                                    }
+                                                }];
+                                            }
 
-                                   }];
+                                        }];
 }
 
-- (void)getPicture:(UIViewController *)viewController withDelegate:(id <UIImagePickerControllerDelegate>)delegate {
+- (void)getPicture:(UIViewController <UINavigationControllerDelegate> *)viewController {
 
     if (![self isAuthenticated]) {
         [self authenticate:viewController onCompletion:^(BOOL succeeded, NSError *error) {
             if (succeeded && !error) {
-                [self getPicture:viewController withDelegate:delegate];
+                [self getPicture:viewController];
             }
         }];
     }
@@ -120,11 +121,22 @@ static CLLocation *currentLocation;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"addPicture", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 
     UIAlertAction *takeImage = [UIAlertAction actionWithTitle:NSLocalizedString(@"newPicture", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        pickImageBlock(delegate, viewController, UIImagePickerControllerSourceTypeCamera);
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerController.delegate = viewController;
+        imagePickerController.showsCameraControls = true;
+        [viewController presentViewController:imagePickerController animated:YES completion:nil];
     }];
+
     UIAlertAction *chooseImage = [UIAlertAction actionWithTitle:NSLocalizedString(@"choosePicture", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        pickImageBlock(delegate, viewController, UIImagePickerControllerSourceTypePhotoLibrary);
+        CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
+        picker.assetsFilter = [ALAssetsFilter allPhotos];
+        picker.title = NSLocalizedString(@"choosePicture", nil);
+        picker.delegate = viewController;
+        [viewController presentViewController:picker animated:YES completion:nil];
     }];
+
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"regret", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
     }];
 
@@ -133,6 +145,55 @@ static CLLocation *currentLocation;
     [alertController addAction:cancel];
 
     [viewController presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)savePicture:(UIImage *)image forLocation:(Location *)location showFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion {
+
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
+
+    [[PictureService instance] savePicture:image forLocation:location onCompletion:^(BOOL succeeded, NSError *error) {
+
+        [SVProgressHUD dismiss];
+
+        if (error) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(CreateEntityResultCouldNotUploadFile), nil) maskType:SVProgressHUDMaskTypeGradient];
+            [[ErrorReporting instance] reportError:error];
+            completion(CreateEntityResultCouldNotUploadFile);
+        } else {
+
+            if (show) {
+                [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"imageSaved", nil)];
+            }
+            completion(CreateEntityResultOk);
+        }
+    }];
+}
+
+- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location showFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion {
+
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
+
+    [[PictureService instance] saveMultiplePictures:images forLocation:location onCompletion:^(BOOL succeeded, NSError *error) {
+
+        [SVProgressHUD dismiss];
+
+        if (error) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(CreateEntityResultCouldNotUploadFile), nil) maskType:SVProgressHUDMaskTypeGradient];
+            [[ErrorReporting instance] reportError:error];
+
+            if (completion) {
+                completion(CreateEntityResultCouldNotUploadFile);
+            }
+
+        } else {
+            if (show) {
+                [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"imageSaved", nil)];
+            }
+            if (completion) {
+                completion(CreateEntityResultOk);
+            }
+        }
+    }];
 }
 
 - (void)dealloc {

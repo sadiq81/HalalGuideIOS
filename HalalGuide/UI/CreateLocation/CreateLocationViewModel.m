@@ -46,6 +46,7 @@
     self.suggestedPlaceMark = nil;
     self.suggestionName = nil;
     self.userChoosenLocation = kCLLocationCoordinate2DInvalid;
+    self.createdLocation = nil;
 }
 
 
@@ -97,7 +98,7 @@
 }
 
 
-- (void)saveEntity:(NSString *)name road:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode city:(NSString *)city telephone:(NSString *)telephone website:(NSString *)website pork:(BOOL)pork alcohol:(BOOL)alcohol nonHalal:(BOOL)nonHalal image:(UIImage *)image onCompletion:(void (^)(CreateEntityResult result))completion {
+- (void)saveEntity:(NSString *)name road:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode city:(NSString *)city telephone:(NSString *)telephone website:(NSString *)website pork:(BOOL)pork alcohol:(BOOL)alcohol nonHalal:(BOOL)nonHalal images:(NSArray *)images onCompletion:(void (^)(CreateEntityResult result))completion {
 
     [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
 
@@ -169,15 +170,15 @@
                 [[ErrorReporting instance] reportError:error];
 
                 [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(CreateEntityResultCouldNotCreateEntityInDatabase), nil) maskType:SVProgressHUDMaskTypeGradient];
+
                 completion(CreateEntityResultCouldNotCreateEntityInDatabase);
+
             } else {
 
                 self.createdLocation = location;
 
-                if (image) {
-                    [self savePicture:image showReviewFeedback:false onCompletion:completion];
-                } else {
-                    completion(CreateEntityResultOk);
+                if (images) {
+                    [self saveMultiplePictures:images forLocation:self.createdLocation showFeedback:false onCompletion:completion];
                 }
             }
         }];
@@ -195,28 +196,6 @@
         self.suggestedPlaceMark = place;
 
         completion();
-    }];
-}
-
-- (void)savePicture:(UIImage *)image showReviewFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion {
-
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
-
-    [[PictureService instance] savePicture:image forLocation:self.createdLocation onCompletion:^(BOOL succeeded, NSError *error) {
-
-        [SVProgressHUD dismiss];
-
-        if (error) {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(CreateEntityResultCouldNotUploadFile), nil) maskType:SVProgressHUDMaskTypeGradient];
-            [[ErrorReporting instance] reportError:error];
-            completion(CreateEntityResultCouldNotUploadFile);
-        } else {
-
-            if (show) {
-                [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"imageSaved", nil)];
-            }
-            completion(CreateEntityResultOk);
-        }
     }];
 }
 

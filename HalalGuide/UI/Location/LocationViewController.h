@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CMPopTipView/CMPopTipView.h>
 #import "LocationViewModel.h"
-#import "BaseViewController.h"
 
-@interface LocationViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, CMPopTipViewDelegate, UISearchBarDelegate>
+@interface LocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, CMPopTipViewDelegate, UISearchBarDelegate>
 
 @property(strong, nonatomic) IBOutlet UITableView *diningTableView;
 @property(strong, nonatomic) UITableViewController *tableViewController;

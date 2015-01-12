@@ -14,6 +14,8 @@
 
 + (PictureService *)instance;
 
+- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion;
+
 - (void)savePicture:(UIImage *)image forLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion;
 
 - (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion;

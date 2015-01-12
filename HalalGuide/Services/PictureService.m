@@ -33,11 +33,20 @@
     return _instance;
 }
 
-- (void)savePicture:(UIImage *)image forLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion {
+- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion {
 
-    //Parse can only store files of 10 mb
-    image = [image compressForUpload];
+    NSMutableArray *pictures = [NSMutableArray new];
+    for (UIImage *image in images) {
+        LocationPicture *picture = [self prepareImageForUpload:image forLocation:location];
+        [pictures addObject:picture];
+    }
 
+    [PFObject saveAllInBackground:pictures block:completion];
+}
+
+- (LocationPicture *)prepareImageForUpload:(UIImage *)image forLocation:(Location *)location {
+
+    UIImage *compressed = [image compressForUpload];
     LocationPicture *picture = [LocationPicture object];
     picture.creationStatus = @(CreationStatusAwaitingApproval);
     picture.locationId = location.objectId;
@@ -57,7 +66,15 @@
 
     NSString *fileName = [NSString stringWithFormat:@"%@.png", allowedLocationName];
 
-    picture.picture = [PFFile fileWithName:fileName data:UIImagePNGRepresentation(image)];
+    picture.picture = [PFFile fileWithName:fileName data:UIImagePNGRepresentation(compressed)];
+
+    return picture;
+}
+
+- (void)savePicture:(UIImage *)image forLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion {
+
+    LocationPicture *picture = [self prepareImageForUpload:image forLocation:location];
+
     [picture saveInBackgroundWithBlock:completion];
 }
 

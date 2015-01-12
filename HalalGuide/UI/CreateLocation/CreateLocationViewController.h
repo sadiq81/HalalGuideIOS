@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HTAutocompleteTextField.h"
-#import "BaseViewController.h"
 
-@interface CreateLocationViewController : BaseViewController<HTAutocompleteDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate>
+@interface CreateLocationViewController :UIViewController <UINavigationControllerDelegate, HTAutocompleteDataSource, UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIButton *pickImage;
 @property (strong, nonatomic) IBOutlet UITextField *name;
@@ -34,5 +33,5 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *regret;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *save;
 
-@property (weak, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIImage *image;
 @end

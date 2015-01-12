@@ -9,7 +9,6 @@
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import <LinqToObjectiveC/NSArray+LinqExtensions.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 #import "CreateLocationViewController.h"
 #import "CategoriesViewController.h"
 #import "CreateLocationViewModel.h"
@@ -17,15 +16,22 @@
 #import "IQUIView+Hierarchy.h"
 #import "Adgangsadresse.h"
 #import "IQKeyboardReturnKeyHandler.h"
-#import "UIAlertController+Blocks.h"
 #import "CreateReviewViewModel.h"
 #import "UIView+Extensions.h"
 #import "HalalGuideOnboarding.h"
+#import "UIViewController+Extension.h"
+#import "JSBadgeView.h"
+#import <EXTScope.h>
+#import <UIAlertController+Blocks/UIAlertController+Blocks.h>
+
 
 //TODO Opening hours
 
 @implementation CreateLocationViewController {
     IQKeyboardReturnKeyHandler *returnKeyHandler;
+    NSUInteger index;
+    NSTimer *timer;
+    JSBadgeView *badgeView;
 }
 
 - (void)viewDidLoad {
@@ -35,6 +41,7 @@
     [CreateLocationViewModel instance].categories = [NSMutableArray new];
 
     returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
+    index = 0;
 
     self.road.autocompleteDataSource = self;
     self.roadNumber.autocompleteDataSource = self;
@@ -75,7 +82,7 @@
     __weak typeof(self) weakSelf = self;
 
     [self.pickImage handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
-        [[CreateLocationViewModel instance] getPicture:weakSelf withDelegate:weakSelf];
+        [[CreateLocationViewModel instance] getPicture:weakSelf];
     }];
 
     [self.road handleControlEvents:UIControlEventEditingDidEnd withBlock:^(UITextField *weakSender) {
@@ -115,22 +122,24 @@
         [weakSelf.navigationController popViewControllerAnimated:true];
     }];
 
+    @weakify(self)
     [self.save setBlock:^(id weakSender) {
-        if ([weakSelf areMandatoryFieldsFilledOut]) {
-            [[CreateLocationViewModel instance] saveEntity:weakSelf.name.text
-                                                      road:weakSelf.road.text
-                                                roadNumber:weakSelf.roadNumber.text
-                                                postalCode:weakSelf.postalCode.text
-                                                      city:weakSelf.city.text
-                                                 telephone:weakSelf.telephone.text
-                                                   website:weakSelf.website.text
-                                                      pork:weakSelf.porkSwitch.on
-                                                   alcohol:weakSelf.alcoholSwitch.on
-                                                  nonHalal:weakSelf.halalSwitch.on
-                                                     image:weakSelf.image
+        @strongify(self)
+        if ([self areMandatoryFieldsFilledOut]) {
+            [[CreateLocationViewModel instance] saveEntity:self.name.text
+                                                      road:self.road.text
+                                                roadNumber:self.roadNumber.text
+                                                postalCode:self.postalCode.text
+                                                      city:self.city.text
+                                                 telephone:self.telephone.text
+                                                   website:self.website.text
+                                                      pork:self.porkSwitch.on
+                                                   alcohol:self.alcoholSwitch.on
+                                                  nonHalal:self.halalSwitch.on
+                                                    images:self.images
                                               onCompletion:^(CreateEntityResult result) {
 
-                                                  [weakSelf showDialog:result];
+                                                  [self showDialog:result];
 
                                               }];
         }
@@ -145,10 +154,10 @@
         case CreateEntityResultAddressDoesNotExist: {
             [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"GPSNotPreciseEnough", nil) message:nil cancelButtonTitle:NSLocalizedString(@"no", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"yes", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
 
-                if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
+                if (controller.firstOtherButtonIndex == buttonIndex) {
                     [[CreateLocationViewModel instance] findAddressByDescription:weakSelf.road.text roadNumber:weakSelf.roadNumber.text postalCode:weakSelf.postalCode.text onCompletion:^{
                         [CreateLocationViewModel instance].suggestionName = weakSelf.name.text;
-                        [self performSegueWithIdentifier:@"ChooseGPSPoint" sender:self];
+                        [self performSegueWithIdentifier:@"ChooseGPSPoint" sender:weakSelf];
                     }];
                 }
             }];
@@ -156,10 +165,10 @@
         }
         case CreateEntityResultCouldNotCreateEntityInDatabase: {
             [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"couldnotcreateindb", nil) message:nil cancelButtonTitle:NSLocalizedString(@"no", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"yes", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-                if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
+                if (controller.cancelButtonIndex == buttonIndex) {
                     [self.navigationController popViewControllerAnimated:true];
-                } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
-                    [[CreateLocationViewModel instance] saveEntity:self.name.text road:self.road.text roadNumber:self.roadNumber.text postalCode:self.postalCode.text city:self.city.text telephone:self.telephone.text website:self.website.text pork:self.porkSwitch.on alcohol:self.alcoholSwitch.on nonHalal:self.halalSwitch.on image:weakSelf.image onCompletion:^(CreateEntityResult result) {
+                } else if (controller.firstOtherButtonIndex == buttonIndex) {
+                    [[CreateLocationViewModel instance] saveEntity:self.name.text road:self.road.text roadNumber:self.roadNumber.text postalCode:self.postalCode.text city:self.city.text telephone:self.telephone.text website:self.website.text pork:self.porkSwitch.on alcohol:self.alcoholSwitch.on nonHalal:self.halalSwitch.on images:self.images onCompletion:^(CreateEntityResult result) {
                         [self showDialog:result];
                     }];
                 }
@@ -168,10 +177,10 @@
         }
         case CreateEntityResultCouldNotUploadFile: {
             [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"couldnotuploadfile", nil) message:nil cancelButtonTitle:NSLocalizedString(@"no", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"yes", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-                if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
+                if (controller.cancelButtonIndex == buttonIndex) {
                     [self.navigationController popViewControllerAnimated:true];
-                } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
-                    [[CreateLocationViewModel instance] savePicture:weakSelf.image showReviewFeedback:false onCompletion:^(CreateEntityResult result) {
+                } else if (controller.firstOtherButtonIndex == buttonIndex) {
+                    [[CreateLocationViewModel instance] savePicture:weakSelf.image forLocation:[CreateLocationViewModel instance].createdLocation showFeedback:false onCompletion:^(CreateEntityResult result) {
                         [self showDialog:result];
                     }];
                 }
@@ -180,10 +189,10 @@
         }
         case CreateEntityResultOk: {
             [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"ok", nil) message:NSLocalizedString(@"locationSaved", <#comment#>) cancelButtonTitle:NSLocalizedString(@"done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"addReview", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-                if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
+                if (controller.cancelButtonIndex == buttonIndex) {
                     [self.navigationController popViewControllerAnimated:true];
-                } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
-                    [self performSegueWithIdentifier:@"CreateReview" sender:self];
+                } else if (controller.firstOtherButtonIndex == buttonIndex) {
+                    [self performSegueWithIdentifier:@"CreateReview" sender:weakSelf];
                 }
             }];
             break;
@@ -217,19 +226,36 @@
     return complete;
 }
 
-#pragma mark - ImagePicker
+- (void)finishedPickingImages {
+    [super finishedPickingImages];
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [badgeView removeFromSuperview];
 
-    __weak typeof(self) weakSelf = self;
-
-    [self dismissViewControllerAnimated:true completion:^{
-        weakSelf.image = [info valueForKey:UIImagePickerControllerOriginalImage];
-        [self.pickImage setImage:weakSelf.image forState:UIControlStateNormal];
-    }];
-
+    NSUInteger count = [self.images count];
+    if (count > 0) {
+        badgeView = [[JSBadgeView alloc] initWithParentView:self.pickImage alignment:JSBadgeViewAlignmentTopRight];
+        badgeView.badgeText = [NSString stringWithFormat:@"%d", (int) count];
+    }
+    [self startTimer];
 }
 
+
+#pragma mark - ImagePicker
+
+- (void)startTimer {
+    if (!timer) {
+        timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(updatePhoto) userInfo:nil repeats:YES];
+    }
+}
+
+- (void)updatePhoto {
+    index++;
+    if (index >= [self.images count]) {
+        index = 0;
+    }
+    [self.pickImage setImage:[self.images objectAtIndex:index] forState:UIControlStateNormal];
+
+}
 
 #pragma mark UIUpdates
 
@@ -319,6 +345,7 @@
 
 - (void)dealloc {
     returnKeyHandler = nil;
+    [timer invalidate];
 }
 
 @end

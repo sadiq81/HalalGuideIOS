@@ -10,26 +10,11 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Location.h"
 #import "NSArray+LinqExtensions.h"
-#import "UIKit/UIImagePickerController.h"
 #import "Common.h"
-
-typedef void (^PickImageBlockType)(id <UIImagePickerControllerDelegate>, UIViewController *, UIImagePickerControllerSourceType);
-
-static PickImageBlockType pickImageBlock = ^void(id <UINavigationControllerDelegate, UIImagePickerControllerDelegate> delegate, UIViewController *viewController, UIImagePickerControllerSourceType sourceType) {
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.sourceType = sourceType;
-    imagePickerController.delegate = delegate;
-
-    if (sourceType == UIImagePickerControllerSourceTypeCamera) {
-        imagePickerController.showsCameraControls = true;
-    }
-    [viewController presentViewController:imagePickerController animated:YES completion:nil];
-};
 
 typedef void (^WaitCompletionBlock)();
 
-static WaitCompletionBlock waitFor  = ^void (NSTimeInterval duration, WaitCompletionBlock completion) {
+static WaitCompletionBlock waitFor = ^void(NSTimeInterval duration, WaitCompletionBlock completion) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC),
             dispatch_get_main_queue(), ^{
                 completion();
@@ -58,7 +43,11 @@ static WaitCompletionBlock waitFor  = ^void (NSTimeInterval duration, WaitComple
 
 - (void)authenticate:(UIViewController *)viewController onCompletion:(PFBooleanResultBlock)completion;
 
-- (void)getPicture:(UIViewController *)viewController withDelegate:(id <UIImagePickerControllerDelegate>)delegate;
+- (void)getPicture:(UIViewController<UINavigationControllerDelegate> *)viewController ;
+
+- (void)savePicture:(UIImage *)image forLocation:(Location *)location showFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion;
+
+- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location showFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion;
 
 
 @end

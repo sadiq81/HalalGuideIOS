@@ -6,6 +6,7 @@
 #import "KeyChainService.h"
 #import "KeychainWrapper.h"
 #import <Parse/Parse.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 #define kUserKey @"userid"
 #define kUserToken @"token"
@@ -26,7 +27,7 @@
 }
 
 - (BOOL)isAuthenticated {
-    return [[PFUser currentUser] isAuthenticated] && [[PFUser currentUser] objectId] != nil;
+    return [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]];
 }
 
 - (void)storeCredentials:(NSDictionary *)credentials {

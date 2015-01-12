@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "EDStarRating.h"
-#import "BaseViewController.h"
 
-@interface CreateReviewViewController : BaseViewController<EDStarRatingProtocol>
+@interface CreateReviewViewController:UIViewController  <EDStarRatingProtocol>
 @property (strong, nonatomic) IBOutlet EDStarRating *rating;
 @property (strong, nonatomic) IBOutlet UITextView *review;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *regret;

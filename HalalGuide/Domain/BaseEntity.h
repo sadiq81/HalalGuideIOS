@@ -63,10 +63,12 @@ typedef enum LocationType : int16_t {
 typedef enum ShopType : int16_t {
     ShopTypeGroceries = 0,
     ShopTypeFurniture = 1,
+    ShopTypeButcher = 2,
 } ShopType;
 
 #define ShopString(enum) [@{@(ShopTypeGroceries) : @"groceries",\
-@(ShopTypeFurniture) : @"furniture"}  objectForKey :@(enum)]
+@(ShopTypeFurniture) : @"furniture" ,\
+@(ShopTypeButcher) : @"butcher",} objectForKey :@(enum)]
 
 @interface BaseEntity : PFObject <PFSubclassing>
 

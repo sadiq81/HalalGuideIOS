@@ -122,8 +122,26 @@
 #pragma mark - Navigation
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
+
+    if ([identifier isEqualToString:@"CreateLocation"] || [identifier isEqualToString:@"CreateReview"]) {
+
+        if (![[LocationViewModel instance] isAuthenticated]) {
+
+            [[LocationViewModel instance] authenticate:self onCompletion:^(BOOL succeeded, NSError *error) {
+
+                if (!error) {
+                    [self performSegueWithIdentifier:identifier sender:self];
+                }
+            }];
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        return true;
+    }
 }
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
