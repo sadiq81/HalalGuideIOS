@@ -88,14 +88,9 @@ Maria Akram Monazam Maria-Akram@hotmail.com
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
 
-    NSString *userId = [PFUser currentUser].objectId;
+    currentInstallation[@"user"] = [PFUser currentUser];
 
-    NSMutableArray *channels = [NSMutableArray new];
-    [channels addObject:@"global"];
-    if (userId) {
-        [channels addObject:userId];
-    }
-    currentInstallation.channels = channels;
+    currentInstallation.channels = @[@"global"];
     [currentInstallation saveInBackground];
 }
 
