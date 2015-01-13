@@ -19,7 +19,6 @@
 #import "UIAlertController+Blocks.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
-#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -58,12 +57,9 @@ Maria Akram Monazam Maria-Akram@hotmail.com
     [IQKeyboardManager sharedManager].toolbarManageBehaviour = IQAutoToolbarByTag;
 
     //[[LocationService instance] createDummyData];
-    
-    //Crashlytics
-    [Crashlytics startWithAPIKey:@"fe2c874a8048265bd0ae49ae763de2a1f054f182"];
 
     //Configure Parse
-    //[ParseCrashReporting enable];
+    [ParseCrashReporting enable];
     //[Parse enableLocalDatastore]; //TODO
 
     [Parse setApplicationId:@"7CtuNVHBGEdqFlvUyn2PQCG9R04dwIOyPpIVr7NA" clientKey:@"CWDZXIOhNHvEcrRSRN9gyAJlSEU4nPLfRf3Np47T"];

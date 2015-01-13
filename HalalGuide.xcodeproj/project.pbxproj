@@ -14,7 +14,6 @@
 		A10D9C1C1A15094A00E7914A /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D9C1B1A15094A00E7914A /* Review.m */; };
 		A10D9C1F1A15094A00E7914A /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D9C1E1A15094A00E7914A /* Location.m */; };
 		A111F7511A3260EA00ABFF70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A111F7531A3260EA00ABFF70 /* Localizable.strings */; };
-		A13712E61A6506AC006C4B32 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13712E51A6506AC006C4B32 /* Crashlytics.framework */; };
 		A15CE3EC1A100A8400F44C9A /* HalalGuideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A15CE3EB1A100A8400F44C9A /* HalalGuideTests.m */; };
 		A162CDA01A62A74600FB71FA /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A162CD9F1A62A74600FB71FA /* AssetsLibrary.framework */; };
 		A165DDBA1A34E60600F43A15 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = A165DDB91A34E60600F43A15 /* BaseEntity.m */; };
@@ -122,7 +121,6 @@
 		A111F7521A3260EA00ABFF70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A111F7541A3260EF00ABFF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A13327781A4B0D1A00C65D6A /* HalalGuide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HalalGuide.entitlements; sourceTree = "<group>"; };
-		A13712E51A6506AC006C4B32 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A15CE3C91A100A8400F44C9A /* halalguide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = halalguide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15CE3CD1A100A8400F44C9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A15CE3E51A100A8400F44C9A /* halalguideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = halalguideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,7 +297,6 @@
 				A1E0C0541A17D14700757427 /* UIKit.framework in Frameworks */,
 				A1DA8D311A3B172C002B37AD /* ParseFacebookUtils.framework in Frameworks */,
 				A1E0C0521A17D14000757427 /* CoreData.framework in Frameworks */,
-				A13712E61A6506AC006C4B32 /* Crashlytics.framework in Frameworks */,
 				A1DA8D301A3B172C002B37AD /* ParseCrashReporting.framework in Frameworks */,
 				A1DA8D321A3B172C002B37AD /* ParseUI.framework in Frameworks */,
 				0E5FDF2E7C1BE574B300894D /* libPods.a in Frameworks */,
@@ -319,7 +316,6 @@
 		37B0A22AB9BBC0DDFD0495D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A13712E51A6506AC006C4B32 /* Crashlytics.framework */,
 				A162CDA11A62A74F00FB71FA /* SenTestingKit.framework */,
 				A162CD9F1A62A74600FB71FA /* AssetsLibrary.framework */,
 				A1DA8D2B1A3B172C002B37AD /* Parse.framework */,
@@ -726,7 +722,6 @@
 				A15CE3C71A100A8400F44C9A /* Resources */,
 				1E564685AE57B5298787F34E /* Copy Pods Resources */,
 				A1B9AB391A57311C00D55759 /* ShellScript */,
-				A13712E41A650677006C4B32 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -862,19 +857,6 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
-		A13712E41A650677006C4B32 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run fe2c874a8048265bd0ae49ae763de2a1f054f182 78dc9ffb484e791c97c81b5fa940ae52b0b26dd9de86c1dc5fc527a5e81314ba";
-		};
 		A1B9AB391A57311C00D55759 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -886,7 +868,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n#export PATH=/usr/local/bin:$PATH\n#cd \"${PROJECT_DIR}/parse/cloud\"\n#parse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n#fi";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\nexport PATH=/usr/local/bin:$PATH\ncd \"${PROJECT_DIR}/parse/cloud\"\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1111,8 +1093,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
