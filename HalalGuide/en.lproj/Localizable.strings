@@ -94,6 +94,7 @@
 "couldnotuploadfile" = "Could not upload image, try again?";
 "addressdoesnotexists" = "Address does not exists ";
 "error" = "Unknown error";
+"errorText" = "An unknown error occured, try again later.";
 
 "awaiting" = "Awaiting approval";
 "approved" = "Approved";
@@ -117,6 +118,7 @@
 
 
 "loggingIn" = "Logging in";
+"login" = "Login";
 "fetching"  = "Fetching";
 "unlimited" = "Unlimited";
 "savingToTheCloud" = "Saving in the cloud";
@@ -129,6 +131,7 @@
 "manuelGPSPosition" = "Pull and let go to choose position different";
 "authenticate" = "Autentifikation";
 "authenticateText" = "In order to submit suggestions to HalalGuide, you need to confirm your identify via Facebook";
+"authenticateSuccessfull" = "You are now logged in, try your action again";
 
 "addPicture" = "Add picture";
 "newPicture" = "Take picture";

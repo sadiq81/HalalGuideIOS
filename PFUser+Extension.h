@@ -11,5 +11,20 @@
 
 + (void)storeProfileInfoForLoggedInUser:(PFBooleanResultBlock)completion;
 
+- (NSString *)facebookID;
+
+- (NSString *)facebookName;
+
+- (NSString *)facebookLocation;
+
+- (NSString *)facebookGender;
+
+- (NSString *)facebookBirthday;
+
+- (NSString *)facebookRelationship;
+
+- (NSURL *)facebookProfileUrlSmall;
+
+- (NSURL *)facebookProfileUrl;
 
 @end

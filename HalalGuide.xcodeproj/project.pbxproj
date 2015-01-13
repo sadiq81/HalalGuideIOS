@@ -50,10 +50,10 @@
 		C596B2A8C71382A4E69F1091 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC195C5EE70D30D8E4F9 /* UIViewController+Extension.m */; };
 		C596B2E1351E1EAC7E9D30AF /* FrontPageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BA6A2FFAA13B82F58EBC /* FrontPageViewModel.m */; };
 		C596B365C831FAD6A86FE951 /* NSMutableString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B17ED43937F79A5759EE /* NSMutableString+Extensions.m */; };
-		C596B3E2D807AC9BF26E753F /* ProfileInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B03CCC893D655B457A29 /* ProfileInfoService.m */; };
 		C596B4189B61146F99B85856 /* LocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B395AB61E08F8F3A6463 /* LocationTableViewCell.m */; };
 		C596B42919399432C0B3AD9F /* HalalGuideImageViews.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B81ACA6EECA8A88D5DA0 /* HalalGuideImageViews.m */; };
 		C596B4478E3D17085F49445F /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B27002419226C56B97EB /* LocationService.m */; };
+		C596B458BFF4EDE0783DC2BB /* HalalLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B7ACBD03FC31B609E2FD /* HalalLogInViewController.m */; };
 		C596B49078BB7FEFC087204A /* HalalGuideDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B89248EE903E929F79B1 /* HalalGuideDateFormatter.m */; };
 		C596B4B48329DF5997D66820 /* DiningTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B89AA2BBE23BFF3CC6C4 /* DiningTableViewCell.m */; };
 		C596B527D5161C611CF5524E /* NSLocale+iOS8.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BDEB471B1CAC691EE934 /* NSLocale+iOS8.m */; };
@@ -158,7 +158,6 @@
 		C596B009EEE9275A43EF3CB6 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		C596B02C31F0A3EAC5021006 /* CreateReviewViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReviewViewModel.h; sourceTree = "<group>"; };
 		C596B03AB92D97D71B333FB4 /* DiningTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningTableViewCell.h; sourceTree = "<group>"; };
-		C596B03CCC893D655B457A29 /* ProfileInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileInfoService.m; sourceTree = "<group>"; };
 		C596B046E18BFB1A22B12FAA /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		C596B0A96756F6C064E85396 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = SOURCE_ROOT; };
 		C596B0B6E24F835EE6935E48 /* FrontPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontPageViewController.h; sourceTree = "<group>"; };
@@ -207,6 +206,7 @@
 		C596B75C6536409252A6F0EA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C596B75CA653650DB3D05A03 /* UIImage+Transformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Transformation.m"; sourceTree = SOURCE_ROOT; };
 		C596B781676517BC117FF418 /* LocationDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewModel.m; sourceTree = "<group>"; };
+		C596B7ACBD03FC31B609E2FD /* HalalLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalLogInViewController.m; sourceTree = "<group>"; };
 		C596B7CF65914898A7E6702F /* ReviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewService.m; sourceTree = "<group>"; };
 		C596B7F7192CA4ADB4DCF721 /* HalalGuideNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideNumberFormatter.h; sourceTree = "<group>"; };
 		C596B810C6C83C0302E398C6 /* ReviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewService.h; sourceTree = "<group>"; };
@@ -219,6 +219,7 @@
 		C596B89AA2BBE23BFF3CC6C4 /* DiningTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningTableViewCell.m; sourceTree = "<group>"; };
 		C596B9236BE5EB90B765FFA9 /* AddressService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressService.m; sourceTree = "<group>"; };
 		C596B925E44FBDA7021E332D /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
+		C596B9515D9D805E24B84F59 /* HalalLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalLogInViewController.h; sourceTree = "<group>"; };
 		C596B99C4E194E7D0F056581 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = SOURCE_ROOT; };
 		C596B9AD784A1308F3EABF3A /* LocationDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetail.h; sourceTree = "<group>"; };
 		C596B9AD84024B9A6D495BE6 /* CreateLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLocationViewController.m; sourceTree = "<group>"; };
@@ -260,7 +261,6 @@
 		C596BDF952304291A766A0B0 /* HalalGuideLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideLabels.m; sourceTree = "<group>"; };
 		C596BE3B3A5B60189D1D1699 /* LocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewController.m; sourceTree = "<group>"; };
 		C596BE53C7C61C04D1820020 /* NSObject+MethodExchange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodExchange.m"; sourceTree = SOURCE_ROOT; };
-		C596BE5750691DFADB17984E /* ProfileInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileInfoService.h; sourceTree = "<group>"; };
 		C596BEBB98E1B438C022990F /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		C596BEE49E00FAAA770E6D23 /* NSMutableString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Extensions.h"; sourceTree = SOURCE_ROOT; };
 		C596BF103FAB3DE20495CDCB /* UILabel+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extensions.h"; sourceTree = SOURCE_ROOT; };
@@ -520,6 +520,8 @@
 			children = (
 				C596B4CC9466EC8306FE455A /* CategoriesViewController.m */,
 				C596B88F34BE12E8C170701C /* CategoriesViewController.h */,
+				C596B7ACBD03FC31B609E2FD /* HalalLogInViewController.m */,
+				C596B9515D9D805E24B84F59 /* HalalLogInViewController.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -648,8 +650,6 @@
 				C596B17E0755B3E673311E25 /* AddressService.h */,
 				C596BA06D0C7BB36204E5D3D /* ErrorReporting.m */,
 				C596B1DE435F257B01619E56 /* ErrorReporting.h */,
-				C596BE5750691DFADB17984E /* ProfileInfoService.h */,
-				C596B03CCC893D655B457A29 /* ProfileInfoService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -927,7 +927,6 @@
 				C596BE22F26B79E7CBB7BB10 /* ReviewDetailViewController.m in Sources */,
 				C596B6434DE318E0744ACB01 /* ReviewDetailViewModel.m in Sources */,
 				C596B999CB7E7147FCB7A81F /* PFUser+Extension.m in Sources */,
-				C596B3E2D807AC9BF26E753F /* ProfileInfoService.m in Sources */,
 				C596B49078BB7FEFC087204A /* HalalGuideDateFormatter.m in Sources */,
 				C596BCDFB902FAF18D51A1AB /* SettingsViewController.m in Sources */,
 				C596B6AB3FEB0CCFBB49E279 /* HalalGuideOnboarding.m in Sources */,
@@ -938,6 +937,7 @@
 				C596BCAA5BEA01A3182A39B5 /* OpeningHours.m in Sources */,
 				C596B2A8C71382A4E69F1091 /* UIViewController+Extension.m in Sources */,
 				C596B0C77158528D2944894B /* NSObject+MethodExchange.m in Sources */,
+				C596B458BFF4EDE0783DC2BB /* HalalLogInViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

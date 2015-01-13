@@ -11,6 +11,7 @@
 #import "Location.h"
 #import "NSArray+LinqExtensions.h"
 #import "Common.h"
+#import <ParseUI/ParseUI.h>
 
 typedef void (^WaitCompletionBlock)();
 
@@ -29,7 +30,7 @@ static WaitCompletionBlock waitFor = ^void(NSTimeInterval duration, WaitCompleti
 
 @end
 
-@interface BaseViewModel : NSObject {
+@interface BaseViewModel : NSObject <PFLogInViewControllerDelegate> {
 }
 @property(nonatomic) UIImagePickerController *imagePickerController;
 
@@ -41,7 +42,7 @@ static WaitCompletionBlock waitFor = ^void(NSTimeInterval duration, WaitCompleti
 
 - (BOOL)isAuthenticated;
 
-- (void)authenticate:(UIViewController *)viewController onCompletion:(PFBooleanResultBlock)completion;
+- (void)authenticate:(UIViewController *)viewController;
 
 - (void)getPicture:(UIViewController<UINavigationControllerDelegate> *)viewController ;
 

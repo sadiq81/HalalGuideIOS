@@ -92,6 +92,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "couldnotuploadfile" = "Kunne ikke uploade billede, prøv igen?";
 "addressdoesnotexists" = "Adressen findes ikke ";
 "error" = "Ukendt fejl";
+"errorText" = "Der skete en ukendt fejl, prøv igen senere.";
 
 "awaiting" = "Venter godkendelse";
 "approved" = "Godkendt";
@@ -116,6 +117,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 
 "loggingIn" = "Logger ind";
+"login" = "Log ind";
 "fetching"  = "Henter";
 "unlimited" = "Ubegrænset";
 "savingToTheCloud" = "Gemmer i skyen";
@@ -128,6 +130,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "manuelGPSPosition" = "Træk og slip for vælge ny position";
 "authenticate" = "Autentifikation";
 "authenticateText" = "For at kunne indsende forslag til HalalGuide, så skal du bekræfte din identitet via facebook";
+"authenticateSuccessfull" = "Du er nu logget ind, prøv din handling igen";
 
 "addPicture" = "Tilføj billede";
 "newPicture" = "Tag nyt billede";

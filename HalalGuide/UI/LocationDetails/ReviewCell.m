@@ -11,9 +11,8 @@
 #import "PictureService.h"
 #import "ProfileInfo.h"
 #import "ReviewDetailViewModel.h"
-#import "ProfileInfoService.h"
 #import "UIImageView+WebCache.h"
-
+#import "PFUser+Extension.h"
 
 @implementation ReviewCell {
 
@@ -21,9 +20,10 @@
 
 - (void)configure:(Review *)review1 {
 
-    [[ProfileInfoService instance] profileInfoForSubmitter:review1.submitterId onCompletion:^(ProfileInfo *info) {
-        [self.profileImage sd_setImageWithURL:info.facebookProfileUrlSmall];
-        self.submitterName.text = info.facebookName;
+    [[PFUser query] getObjectInBackgroundWithId:review1.submitterId block:^(PFObject *object, NSError *error) {
+        PFUser *user = (PFUser *) object;
+        [self.profileImage sd_setImageWithURL:user.facebookProfileUrlSmall];
+        self.submitterName.text = user.facebookName;
     }];
 
     self.rating.rating = [review1.rating floatValue];

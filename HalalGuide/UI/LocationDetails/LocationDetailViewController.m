@@ -46,22 +46,8 @@
 
         if (![[LocationDetailViewModel instance] isAuthenticated]) {
 
-            [[LocationDetailViewModel instance] authenticate:self onCompletion:^(BOOL succeeded, NSError *error) {
+            [[LocationDetailViewModel instance] authenticate:self];
 
-                if (!error) {
-                    [self performSegueWithIdentifier:identifier sender:self];
-                } else {
-                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"error", nil)
-                                                                                             message:error.localizedDescription
-                                                                                      preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK action")
-                                                                       style:UIAlertActionStyleDefault
-                                                                     handler:nil];
-                    [alertController addAction:okAction];
-
-                    [self presentViewController:alertController animated:YES completion:nil];
-                }
-            }];
             return false;
         } else {
             return true;

@@ -11,9 +11,9 @@
 #import "NSObject+RACPropertySubscribing.h"
 #import "RACSignal.h"
 #import "ProfileInfo.h"
-#import "ProfileInfoService.h"
 #import "UIImageView+WebCache.h"
 #import "HalalGuideDateFormatter.h"
+#import "PFUser+Extension.h"
 
 
 @implementation ReviewDetailViewController {
@@ -26,11 +26,11 @@
 
 - (void)setupUIValues {
 
-    [[ProfileInfoService instance] profileInfoForSubmitter:[ReviewDetailViewModel instance].review .submitterId onCompletion:^(ProfileInfo *info) {
-        self.name.text = info.facebookName;
-        [self.profilePicture sd_setImageWithURL:info.facebookProfileUrl];
+    [[PFUser query] getObjectInBackgroundWithId:[ReviewDetailViewModel instance].review.submitterId block:^(PFObject *object, NSError *error) {
+        PFUser *user = (PFUser *) object;
+        self.name.text = user.facebookName;
+        [self.profilePicture sd_setImageWithURL:user.facebookProfileUrl];
     }];
-
 
     //TODO add category to NSDate
     self.date.text = [[HalalGuideDateFormatter instance] stringFromDate:[ReviewDetailViewModel instance].review.createdAt];

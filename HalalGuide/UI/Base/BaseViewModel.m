@@ -9,6 +9,7 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <CTAssetsPickerController/CTAssetsPickerController.h>
+
 #import "BaseViewModel.h"
 #import "LocationService.h"
 #import "ReviewService.h"
@@ -19,10 +20,12 @@
 #import "UIAlertController+Blocks.h"
 #import "UIViewController+Extension.h"
 #import "PFUser+Extension.h"
+#import "HalalLogInViewController.h"
 
 static CLLocation *currentLocation;
 
 @implementation BaseViewModel {
+    UIViewController *presentingViewController;
 }
 
 - (instancetype)init {
@@ -80,55 +83,55 @@ static CLLocation *currentLocation;
     return [[KeyChainService instance] isAuthenticated];
 }
 
-- (void)authenticate:(UIViewController *)viewController onCompletion:(PFBooleanResultBlock)completion {
+- (void)authenticate:(UIViewController *)viewController {
 
-    [UIAlertController showAlertInViewController:viewController
-                                       withTitle:NSLocalizedString(@"authenticate", nil)
-                                         message:NSLocalizedString(@"authenticateText", nil)
-                               cancelButtonTitle:NSLocalizedString(@"regret", nil)
-                          destructiveButtonTitle:nil
-                               otherButtonTitles:@[NSLocalizedString(@"ok", nil)]
-                                        tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-
-                                            if (buttonIndex == controller.firstOtherButtonIndex) {
-
-                                                [SVProgressHUD showWithStatus:NSLocalizedString(@"loggingIn", nil) maskType:SVProgressHUDMaskTypeGradient];
-
-                                                NSArray *permissionsArray = @[@"public_profile"];
-                                                [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-
-                                                    [SVProgressHUD dismiss];
-
-                                                    if (!error) {
-
-                                                        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-                                                        currentInstallation[@"user"] = user;
-                                                        [currentInstallation saveEventually];
-                                                        [PFUser storeProfileInfoForLoggedInUser:completion];
-
-                                                    }
-                                                    else if (error && [[error.userInfo objectForKey:@"com.facebook.sdk:HTTPStatusCode"] isEqual:@"400"]) {
-                                                        [PFUser logOut];
-                                                        completion(false, error);
-                                                    } else {
-                                                        [PFUser logOut];
-                                                        completion(false, error);
-                                                    }
-                                                }];
-                                            }
-                                        }];
+    HalalLogInViewController *logInController = [[HalalLogInViewController alloc] init];
+    logInController.delegate = self;
+    logInController.fields = (PFLogInFieldsFacebook | PFLogInFieldsDismissButton);
+    logInController.facebookPermissions = @[@"public_profile"];
+    [presentingViewController = viewController presentViewController:logInController animated:true completion:nil];
 }
+
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+
+    [presentingViewController dismissViewControllerAnimated:true completion:^{
+
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        currentInstallation[@"user"] = user;
+        [currentInstallation saveEventually];
+
+        if (user.isNew) {
+            [PFUser storeProfileInfoForLoggedInUser:nil];
+        }
+
+        UIAlertController *error = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"ok", nil) message:NSLocalizedString(@"authenticateSuccessfull", nil) preferredStyle:UIAlertControllerStyleAlert];
+        [error addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"ok", nil) style:UIAlertActionStyleCancel handler:nil]];
+        [presentingViewController presentViewController:error animated:true completion:nil];
+
+    }];
+}
+
+- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+    [presentingViewController dismissViewControllerAnimated:true completion:^{
+        UIAlertController *error = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"error", nil) message:NSLocalizedString(@"errorText", nil) preferredStyle:UIAlertControllerStyleAlert];
+        [error addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"ok", nil) style:UIAlertActionStyleCancel handler:nil]];
+        [presentingViewController presentViewController:error animated:true completion:nil];
+    }];
+}
+
+- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
+    [presentingViewController dismissViewControllerAnimated:true completion:^{
+        UIAlertController *error = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"authenticateText", nil) preferredStyle:UIAlertControllerStyleAlert];
+        [error addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"ok", nil) style:UIAlertActionStyleCancel handler:nil]];
+    }];
+}
+
 
 - (void)getPicture:(UIViewController <UINavigationControllerDelegate> *)viewController {
 
     if (![self isAuthenticated]) {
-        [self authenticate:viewController onCompletion:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                [self getPicture:viewController];
-            } else {
-                [[UIAlertController alertControllerWithTitle:NSLocalizedString(@"error", error.localizedDescription) message:nil preferredStyle:UIAlertControllerStyleAlert] showViewController:viewController sender:self];
-            }
-        }];
+        [self authenticate:viewController];
+        return;
     }
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"addPicture", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
