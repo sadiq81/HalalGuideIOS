@@ -18,6 +18,7 @@
 #import "PFUser+Extension.h"
 #import "UIAlertController+Blocks.h"
 #import "UIViewController+Extension.h"
+#import "PFUser+Extension.h"
 
 static CLLocation *currentLocation;
 
@@ -101,16 +102,16 @@ static CLLocation *currentLocation;
                                                     if (!error) {
 
                                                         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-                                                        currentInstallation[@"user"] = [PFUser currentUser];
+                                                        currentInstallation[@"user"] = user;
                                                         [currentInstallation saveEventually];
-
-                                                        completion(true, error);
+                                                        [PFUser storeProfileInfoForLoggedInUser:completion];
 
                                                     }
                                                     else if (error && [[error.userInfo objectForKey:@"com.facebook.sdk:HTTPStatusCode"] isEqual:@"400"]) {
                                                         [PFUser logOut];
                                                         completion(false, error);
                                                     } else {
+                                                        [PFUser logOut];
                                                         completion(false, error);
                                                     }
                                                 }];

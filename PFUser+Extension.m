@@ -23,6 +23,13 @@
             ProfileInfo *info = [ProfileInfo object];
             info.facebookInfo = userData;
             info.submitterId = [PFUser currentUser].objectId;
+
+            PFACL *userACL = [PFACL ACL];
+            [userACL setPublicReadAccess:true];
+            [userACL setWriteAccess:true forUser:[PFUser currentUser]];
+
+            info.ACL = userACL;
+
             [[ProfileInfoService instance] saveProfileInfo:info onCompletion:completion];
 
         } else {
@@ -30,8 +37,6 @@
         }
     }];
 }
-
-
 
 
 @end
