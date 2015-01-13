@@ -179,6 +179,8 @@
 
                 if (images) {
                     [self saveMultiplePictures:images forLocation:self.createdLocation showFeedback:false onCompletion:completion];
+                } else {
+                    completion(CreateEntityResultOk);
                 }
             }
         }];

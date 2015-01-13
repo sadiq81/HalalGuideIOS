@@ -131,6 +131,17 @@
 
                 if (!error) {
                     [self performSegueWithIdentifier:identifier sender:self];
+                } else {
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"error", nil)
+                                                                                             message:error.localizedDescription
+                                                                                      preferredStyle:UIAlertControllerStyleAlert];
+
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                                                                       style:UIAlertActionStyleDefault
+                                                                     handler:nil];
+                    [alertController addAction:okAction];
+
+                    [self presentViewController:alertController animated:YES completion:nil];
                 }
             }];
             return false;
@@ -141,7 +152,6 @@
         return true;
     }
 }
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];

@@ -93,18 +93,28 @@ static CLLocation *currentLocation;
 
                                                 [SVProgressHUD showWithStatus:NSLocalizedString(@"loggingIn", nil) maskType:SVProgressHUDMaskTypeGradient];
 
-                                                [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {
+                                                NSArray *permissionsArray = @[@"public_profile"];
+                                                [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
 
                                                     [SVProgressHUD dismiss];
 
-                                                    if (user.isNew && !error) {
-                                                        [PFUser storeProfileInfoForLoggedInUser:completion];
-                                                    } else {
+                                                    if (!error) {
+
+                                                        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+                                                        currentInstallation[@"user"] = [PFUser currentUser];
+                                                        [currentInstallation saveEventually];
+
                                                         completion(true, error);
+
+                                                    }
+                                                    else if (error && [[error.userInfo objectForKey:@"com.facebook.sdk:HTTPStatusCode"] isEqual:@"400"]) {
+                                                        [PFUser logOut];
+                                                        completion(false, error);
+                                                    } else {
+                                                        completion(false, error);
                                                     }
                                                 }];
                                             }
-
                                         }];
 }
 
@@ -112,8 +122,10 @@ static CLLocation *currentLocation;
 
     if (![self isAuthenticated]) {
         [self authenticate:viewController onCompletion:^(BOOL succeeded, NSError *error) {
-            if (succeeded && !error) {
+            if (!error) {
                 [self getPicture:viewController];
+            } else {
+                [[UIAlertController alertControllerWithTitle:NSLocalizedString(@"error", error.localizedDescription) message:nil preferredStyle:UIAlertControllerStyleAlert] showViewController:viewController sender:self];
             }
         }];
     }

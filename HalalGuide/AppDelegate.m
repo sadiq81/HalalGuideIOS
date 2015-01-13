@@ -17,18 +17,11 @@
 #import "ErrorReporting.h"
 #import "PictureService.h"
 #import "UIAlertController+Blocks.h"
+#import "IQUIWindow+Hierarchy.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
 
 @interface AppDelegate ()
-
-/*
-Testers:
-Maryam Aino         Maryam.aino@yahoo.dk
-Umm Abdel Hakeem
-Maria Akram Monazam Maria-Akram@hotmail.com
-
- */
 
 @end
 
@@ -65,7 +58,6 @@ Maria Akram Monazam Maria-Akram@hotmail.com
     [Parse setApplicationId:@"7CtuNVHBGEdqFlvUyn2PQCG9R04dwIOyPpIVr7NA" clientKey:@"CWDZXIOhNHvEcrRSRN9gyAJlSEU4nPLfRf3Np47T"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [PFFacebookUtils initializeFacebook];
-    [PFUser enableAutomaticUser];
     PFACL *defaultACL = [PFACL ACL];
     [defaultACL setPublicReadAccess:YES];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:false];
@@ -87,11 +79,9 @@ Maria Akram Monazam Maria-Akram@hotmail.com
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-
-    currentInstallation[@"user"] = [PFUser currentUser];
-
     currentInstallation.channels = @[@"global"];
     [currentInstallation saveInBackground];
+
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

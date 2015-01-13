@@ -27,7 +27,7 @@
 }
 
 - (BOOL)isAuthenticated {
-    return [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]];
+    return ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]);
 }
 
 - (void)storeCredentials:(NSDictionary *)credentials {
