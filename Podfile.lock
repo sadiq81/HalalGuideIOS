@@ -99,7 +99,7 @@ DEPENDENCIES:
   - ALActionBlocks (= 1.0.3)
   - CCBottomRefreshControl
   - CMPopTipView
-  - CTAssetsPickerController (from `https://github.com/sadiq81/CTAssetsPickerController.git`)
+  - CTAssetsPickerController
   - DCKeyValueObjectMapping
   - EDStarRating
   - Facebook-iOS-SDK (~> 3.21)
@@ -117,22 +117,13 @@ DEPENDENCIES:
   - UIActivityIndicator-for-SDWebImage
   - UIAlertController+Blocks
 
-EXTERNAL SOURCES:
-  CTAssetsPickerController:
-    :git: https://github.com/sadiq81/CTAssetsPickerController.git
-
-CHECKOUT OPTIONS:
-  CTAssetsPickerController:
-    :commit: f5bc0ea95be8b0fd305e68fda2802e43f8d61f5a
-    :git: https://github.com/sadiq81/CTAssetsPickerController.git
-
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   ALActionBlocks: 6a899107d2def997caae8de46d82c8fa2421987e
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   CCBottomRefreshControl: 0dd3b0d9d50a36586495d183a0662fb1d0025579
   CMPopTipView: f731ea93316c4f964d3d5d8e71b4ba0ae30bf5a4
-  CTAssetsPickerController: a32bcd6e1c773700537ce784818bba3706b3ece4
+  CTAssetsPickerController: 32b02079e2dd41c76fbc63740f4638ced71b7d1b
   DCKeyValueObjectMapping: c3561709f296ddffba7768a9d7ccf234307fd3c9
   EDStarRating: c7b87f9866be0ea29bb054964023b8eb3f18286c
   Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
