@@ -51,8 +51,6 @@
     picture.creationStatus = @(CreationStatusAwaitingApproval);
     picture.locationId = location.objectId;
     picture.submitterId = [PFUser currentUser].objectId;
-    picture.width = image.size.width;
-    picture.height = image.size.height;
 
     //TODO Move to category
     NSMutableString *asciiCharacters = [NSMutableString string];

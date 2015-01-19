@@ -18,7 +18,6 @@
     float maxWidth = portrait ? 1536.0 : 2048;
     float maxRatio = maxHeight / maxWidth;
 
-
     if (imgRatio != maxRatio) {
         if (imgRatio < maxRatio) {
             imgRatio = maxHeight / actualHeight;

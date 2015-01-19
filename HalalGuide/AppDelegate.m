@@ -18,6 +18,8 @@
 #import "PictureService.h"
 #import "UIAlertController+Blocks.h"
 #import "IQUIWindow+Hierarchy.h"
+#import "LocationPicture.h"
+#import "RACTuple.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
 
@@ -58,11 +60,13 @@
     [Parse setApplicationId:@"7CtuNVHBGEdqFlvUyn2PQCG9R04dwIOyPpIVr7NA" clientKey:@"CWDZXIOhNHvEcrRSRN9gyAJlSEU4nPLfRf3Np47T"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [PFFacebookUtils initializeFacebook];
+
     PFACL *defaultACL = [PFACL ACL];
     [defaultACL setPublicReadAccess:YES];
+    [defaultACL setWriteAccess:true forRoleWithName:@"admin"];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:false];
-    [PFPurchase addObserverForProduct:@"Support" block:^(SKPaymentTransaction *transaction) {
 
+    [PFPurchase addObserverForProduct:@"Support" block:^(SKPaymentTransaction *transaction) {
         //TODO Make some sign of user has contributed;
     }];
 
@@ -84,9 +88,9 @@
             [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
         }
     }
-
     return YES;
 }
+
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Store the deviceToken in the current installation and save it to Parse.

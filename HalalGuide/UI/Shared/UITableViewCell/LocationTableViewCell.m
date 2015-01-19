@@ -22,7 +22,7 @@
     [[PictureService instance] thumbnailForLocation:location onCompletion:^(NSArray *objects, NSError *error) {
         if (objects != nil && [objects count] == 1) {
             LocationPicture *picture = [objects firstObject];
-            [thumbNail setImageWithURL:[[NSURL alloc] initWithString:picture.picture.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [thumbNail setImageWithURL:[[NSURL alloc] initWithString:picture.thumbnail.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         }
     }];
 
@@ -40,6 +40,7 @@
 - (void)prepareForReuse {
     [super prepareForReuse];
     UIImageView *thumbNail = (UIImageView *) [self.contentView viewWithTag:101];
+    thumbNail.image = nil;
     [thumbNail sd_cancelCurrentImageLoad];
 }
 
