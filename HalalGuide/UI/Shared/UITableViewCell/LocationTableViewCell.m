@@ -22,7 +22,7 @@
     [[PictureService instance] thumbnailForLocation:location onCompletion:^(NSArray *objects, NSError *error) {
         if (objects != nil && [objects count] == 1) {
             LocationPicture *picture = [objects firstObject];
-            [thumbNail setImageWithURL:[[NSURL alloc] initWithString:picture.picture.url]  placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [thumbNail setImageWithURL:[[NSURL alloc] initWithString:picture.picture.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         }
     }];
 
@@ -35,6 +35,12 @@
     UILabel *postalCode = (UILabel *) [self.contentView viewWithTag:203];
     postalCode.text = [NSString stringWithFormat:@"%@ %@", location.addressPostalCode, location.addressCity];
 
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    UIImageView *thumbNail = (UIImageView *) [self.contentView viewWithTag:101];
+    [thumbNail sd_cancelCurrentImageLoad];
 }
 
 - (NSString *)placeholderImageName {
