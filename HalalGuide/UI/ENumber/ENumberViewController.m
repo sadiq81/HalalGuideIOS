@@ -22,7 +22,7 @@
 
 }
 - (void)webViewDidStartLoad:(UIWebView *)theWebView{
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeNone];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView {

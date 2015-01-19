@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
+    <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="Enumber HUD should not block page. #60">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HalalGuide.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="Pods/" />
+    <ignored path="HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +28,38 @@
     <favorites_list name="HalalGuide" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="LocationTableViewCell.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/LocationTableViewCell.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ENumberViewController.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.47556144" vertical-offset="0" max-vertical-offset="757">
+              <caret line="24" column="104" selection-start-line="24" selection-start-column="104" selection-end-line="24" selection-end-column="104" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SVProgressHUD.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Pods/Headers/Public/SVProgressHUD/SVProgressHUD.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="1260">
+              <caret line="21" column="29" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -36,66 +70,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="changedFiles">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Common/CategoriesViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewModel.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CoordinatePickerViewController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.h" />
-        <option value="$PROJECT_DIR$/UIView+Extensions.m" />
-        <option value="$PROJECT_DIR$/UIView+Extensions.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CoordinatePickerViewController.m" />
-        <option value="$PROJECT_DIR$/UIImage+Transformation.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/OpeningHours.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/OpeningHours.m" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewModel.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/SlideShowViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/BaseCollectionViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Services/PictureService.h" />
-        <option value="$PROJECT_DIR$/Pods/ELCImagePickerController/Classes/ELCImagePicker/ELCAlbumPickerController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.h" />
-        <option value="$PROJECT_DIR$/NSObject+MethodExchange.h" />
-        <option value="$PROJECT_DIR$/NSObject+MethodExchange.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" />
-        <option value="$PROJECT_DIR$/Podfile" />
-        <option value="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
-        <option value="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
-        <option value="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
-        <option value="$PROJECT_DIR$/HalalGuide/Domain/BaseEntity.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Services/KeyChainService.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewModel.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Common/HalalLogInViewController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Common/HalalLogInViewController.m" />
-        <option value="$PROJECT_DIR$/PFUser+Extension.h" />
-        <option value="$PROJECT_DIR$/PFUser+Extension.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/ReviewCell.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/ReviewDetailViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/AppDelegate.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Info.plist" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewModel.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Services/PictureService.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/LocationTableViewCell.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.m" />
       </list>
     </option>
   </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="44" />
+    <option name="x" value="70" />
     <option name="y" value="23" />
-    <option name="width" value="1396" />
+    <option name="width" value="1370" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -124,7 +112,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Cidr.FilesView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -170,10 +157,6 @@
               <option name="myItemId" value="HalalGuide" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Util" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -190,164 +173,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Shared" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Shared" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UITableViewCell" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Settings" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReviewDetail" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LocationDetails" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Location" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontPage" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -373,252 +198,9 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CreateReview" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CreateLocation" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Common" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UI" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Base" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Supporting Files" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plist" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Supporting Files" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="localization" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Localizable.strings" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Supporting Files" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Supporting Files" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Extensions" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Domain" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HalalGuide" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Frameworks" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Cidr.FilesView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -827,46 +409,7 @@
       </EXTENSION>
       <method />
     </configuration>
-    <configuration default="false" name="Pods-hpple" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-hpple" CONFIG_NAME="Debug" SCHEME_NAME="Pods-hpple" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-      <method />
-    </configuration>
-    <configuration default="false" name="Test all" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="HalalGuide" TARGET_NAME="halalguideTests" CONFIG_NAME="Debug" SCHEME_NAME="Test all" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="0">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="Pods-libextobjc" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-libextobjc" CONFIG_NAME="Debug" SCHEME_NAME="Pods-libextobjc" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-      <method />
-    </configuration>
-    <configuration default="false" name="Pods-CTAssetsPickerController" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-CTAssetsPickerController" CONFIG_NAME="Debug" SCHEME_NAME="Pods-CTAssetsPickerController" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-      <method />
-    </configuration>
-    <configuration default="false" name="Pods-JSBadgeView" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-JSBadgeView" CONFIG_NAME="Debug" SCHEME_NAME="Pods-JSBadgeView" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-      <method />
-    </configuration>
-    <configuration default="false" name="halalguide copy" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="HalalGuide" TARGET_NAME="halalguide copy" CONFIG_NAME="Debug" SCHEME_NAME="halalguide copy" RUN_TARGET_PROJECT_NAME="HalalGuide" RUN_TARGET_NAME="halalguide copy" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-      <method />
-    </configuration>
-    <list size="28">
+    <list size="22">
       <item index="0" class="java.lang.String" itemvalue="Application.HalalGuide" />
       <item index="1" class="java.lang.String" itemvalue="Application.Pods" />
       <item index="2" class="java.lang.String" itemvalue="Application.Pods-LinqToObjectiveC" />
@@ -889,12 +432,6 @@
       <item index="19" class="java.lang.String" itemvalue="Application.Pods-iCarousel" />
       <item index="20" class="java.lang.String" itemvalue="Application.Pods-CMPopTipView" />
       <item index="21" class="java.lang.String" itemvalue="Application.Pods-UIActivityIndicator-for-SDWebImage" />
-      <item index="22" class="java.lang.String" itemvalue="Application.Pods-hpple" />
-      <item index="23" class="java.lang.String" itemvalue="XCTest/Kiwi.Test all" />
-      <item index="24" class="java.lang.String" itemvalue="Application.Pods-libextobjc" />
-      <item index="25" class="java.lang.String" itemvalue="Application.Pods-CTAssetsPickerController" />
-      <item index="26" class="java.lang.String" itemvalue="Application.Pods-JSBadgeView" />
-      <item index="27" class="java.lang.String" itemvalue="Application.halalguide copy" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -998,34 +535,40 @@
       <option name="project" value="LOCAL" />
       <updated>1421244449341</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fast scrolling loads multiple images #62">
+      <created>1421653042278</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1421653042278</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="44" y="23" width="1396" height="877" extended-state="6" />
+    <frame x="70" y="23" width="1370" height="877" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24585988" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="true" weight="0.33630574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3375796" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36178344" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3476612" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996207" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24585988" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24945454" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23345454" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32920793" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23647146" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3476612" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996207" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="142" y="123" width="1198" height="677" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28535032" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36178344" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32920793" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1057,7 +600,8 @@
     <MESSAGE value="Users get notified when their suggestions are approved #28" />
     <MESSAGE value="bugfix 2" />
     <MESSAGE value="App notification badge is not cleared #49" />
-    <option name="LAST_COMMIT_MESSAGE" value="App notification badge is not cleared #49" />
+    <MESSAGE value="Fast scrolling loads multiple images #62" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fast scrolling loads multiple images #62" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1088,29 +632,9 @@
       </breakpoints-dialog>
       <option name="time" value="587" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Adgangsadresse.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1500">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1267" max-vertical-offset="3165">
-          <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="3135">
-          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1395" max-vertical-offset="3180">
@@ -1449,6 +973,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/LocationTableViewCell.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pods/Headers/Public/SVProgressHUD/SVProgressHUD.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="1260">
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47556144" vertical-offset="0" max-vertical-offset="757">
+          <caret line="24" column="104" selection-start-line="24" selection-start-column="104" selection-end-line="24" selection-end-column="104" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
-
