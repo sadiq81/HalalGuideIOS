@@ -145,6 +145,7 @@
 "diningCellPorkOnBoarding" = "Is pork also served";
 "diningCellAlcoholOnBoarding" = "Is alcohol also served";
 "diningCellHalalOnBoarding" =  "Is exclusively halal meat";
+"diningCellPullToShowMore" = "Pull up for fetch more results";
 
 "diningDetailAddressTelephoneOptionsOnBoarding" = "Press here to get directions or call the place";
 

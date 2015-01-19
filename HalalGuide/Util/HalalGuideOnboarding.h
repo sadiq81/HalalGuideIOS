@@ -8,6 +8,7 @@
 #define kDiningCellPorkOnBoardingKey @"diningCellPorkOnBoarding"
 #define kDiningCellAlcoholOnBoardingKey @"diningCellAlcoholOnBoarding"
 #define kDiningCellHalalOnBoardingKey @"diningCellHalalOnBoarding"
+#define kDiningCellPullToShowMoreKey @"diningCellPullToShowMore"
 
 #define kCreateLocationPickImageOnBoardingKey @"createLocationPickImageOnBoarding"
 

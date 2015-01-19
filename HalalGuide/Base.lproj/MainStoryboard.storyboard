@@ -1530,9 +1530,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Agj-FH-MAf"/>
-        <segue reference="SPP-c5-EFI"/>
-        <segue reference="lgj-e5-fFF"/>
         <segue reference="p48-EI-kol"/>
+        <segue reference="Agj-FH-MAf"/>
+        <segue reference="bZb-Q1-MzK"/>
+        <segue reference="lgj-e5-fFF"/>
     </inferredMetricsTieBreakers>
 </document>

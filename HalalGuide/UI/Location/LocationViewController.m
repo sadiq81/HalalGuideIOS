@@ -18,6 +18,7 @@
 #import "RACSignal.h"
 #import "CreateLocationViewModel.h"
 #import "CategoriesViewController.h"
+#import "UITableViewCell+Extension.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 
 @implementation LocationViewController {
@@ -210,6 +211,9 @@
             [((DiningTableViewCell *) cell) showToolTip];
         }
 
+        if (indexPath.row == 19 && ![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPullToShowMoreKey]) {
+            [((DiningTableViewCell *) cell) displayTipViewFor:cell withHintKey:kDiningCellPullToShowMoreKey withDelegate:nil];
+        }
     }
     return cell;
 }

@@ -144,6 +144,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "diningCellPorkOnBoarding" = "Viser om der også serveres gris";
 "diningCellAlcoholOnBoarding" = "Viser om der også serveres alkohol";
 "diningCellHalalOnBoarding" =  "Viser om der udelukkende serveres halal kød";
+"diningCellPullToShowMore" = "Træk op for at hente flere";
 
 "diningDetailAddressTelephoneOptionsOnBoarding" = "Tryk her for at her få rutevejledning eller ringe til stedet";
 
