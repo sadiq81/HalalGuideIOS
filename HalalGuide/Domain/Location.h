@@ -16,7 +16,7 @@ typedef enum DiningCategory : int16_t {
     DiningCategoryAfghan = 0, DiningCategoryAfrican = 1, DiningCategoryAmerican = 2, DiningCategoryArgentine = 3,
     DiningCategoryAsian = 4, DiningCategoryBelgian = 5, DiningCategoryBrazilian = 6, DiningCategoryBritish = 7,
     DiningCategoryBuffet = 8, DiningCategoryBurger = 9, DiningCategoryBakery = 10, DiningCategoryBagel = 11,
-    DiningCategoryBubbleThea = 12, DiningCategoryButcher = 13, DiningCategoryCafe = 14, DiningCategoryCaribbean = 14,
+    DiningCategoryBubbleThea = 12, DiningCategoryArabic = 13, DiningCategoryCafe = 14, DiningCategoryCaribbean = 14,
     DiningCategoryCupcake = 15, DiningCategoryCandy = 16, DiningCategoryChinese = 17, DiningCategoryDanish = 18,
     DiningCategoryDessert = 19, DiningCategoryFish = 20, DiningCategoryFruit = 21, DiningCategoryFastFood = 22,
     DiningCategoryFrench = 23, DiningCategoryGerman = 24, DiningCategoryGrill = 25, DiningCategoryGreek = 26,
@@ -36,7 +36,7 @@ typedef enum DiningCategory : int16_t {
 #define categoryString(enum) [@{@(DiningCategoryAfghan) : @"afghan",@(DiningCategoryAfrican) : @"african",@(DiningCategoryAmerican) : @"american",@(DiningCategoryAmerican) : @"american",@(DiningCategoryArgentine) :@"argentine",\
 @(DiningCategoryAsian):@"asian", @(DiningCategoryBelgian) :@"belgian",@( DiningCategoryBrazilian ):@"brazilian",@( DiningCategoryBritish ):@"british",\
 @(DiningCategoryBuffet ):@"buffet",@( DiningCategoryBurger ):@"burger",@( DiningCategoryBakery ):@"bakery",@( DiningCategoryBagel ):@"bagel",\
-@(DiningCategoryBubbleThea ):@"bubbleThea",@( DiningCategoryButcher ):@"butcher",@( DiningCategoryCafe ):@"cafe",@( DiningCategoryCaribbean ):@"caribbean",\
+@(DiningCategoryBubbleThea ):@"bubbleThea",@( DiningCategoryArabic ):@"arabic",@( DiningCategoryCafe ):@"cafe",@( DiningCategoryCaribbean ):@"caribbean",\
 @(DiningCategoryCupcake ):@"cupcake",@( DiningCategoryCandy ):@"candy",@( DiningCategoryChinese ):@"chinese",@( DiningCategoryDanish ):@"danish",\
 @(DiningCategoryDessert ):@"dessert",@( DiningCategoryFish ):@"fish",@( DiningCategoryFruit ):@"fruit",@( DiningCategoryFastFood ):@"fastfood",\
 @(DiningCategoryFrench ):@"french",@( DiningCategoryGerman ):@"german",@( DiningCategoryGrill ):@"grill",@( DiningCategoryGreek ):@"greek",\

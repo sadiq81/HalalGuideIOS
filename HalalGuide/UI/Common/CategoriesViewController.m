@@ -26,7 +26,7 @@
             return DiningCategoryWok + 1;
         }
         case LocationTypeShop: {
-            return ShopTypeFurniture + 1;
+            return ShopTypeButcher + 1;
         }
         case LocationTypeMosque: {
             return LanguageEnglish + 1;
