@@ -212,7 +212,7 @@
         }
 
         if (indexPath.row == 19 && ![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPullToShowMoreKey]) {
-            [((DiningTableViewCell *) cell) displayTipViewFor:cell withHintKey:kDiningCellPullToShowMoreKey withDelegate:nil];
+            [self.toolbar showOnBoardingWithHintKey:kDiningCellPullToShowMoreKey withDelegate:nil];
         }
     }
     return cell;
