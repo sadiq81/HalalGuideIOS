@@ -58,6 +58,7 @@
 		C596B4B48329DF5997D66820 /* DiningTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B89AA2BBE23BFF3CC6C4 /* DiningTableViewCell.m */; };
 		C596B527D5161C611CF5524E /* NSLocale+iOS8.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BDEB471B1CAC691EE934 /* NSLocale+iOS8.m */; };
 		C596B57CA42D67EDC792CC39 /* ENumber.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BD577B3C94008D6D6A86 /* ENumber.m */; };
+		C596B5987C09C30339F85CCB /* UITableViewCell+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B17D7797390A6E2AFAF0 /* UITableViewCell+Extension.m */; };
 		C596B6434DE318E0744ACB01 /* ReviewDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B492BF85F9FF0436DBD8 /* ReviewDetailViewModel.m */; };
 		C596B6AB3FEB0CCFBB49E279 /* HalalGuideOnboarding.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BBFB5C5F15D132E4FB8E /* HalalGuideOnboarding.m */; };
 		C596B6F2B07B666F6BE4742D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B4E9CC97591CF8CF04F8 /* main.m */; };
@@ -166,6 +167,7 @@
 		C596B108D40A5F53EA841C5D /* UILabel+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extensions.m"; sourceTree = SOURCE_ROOT; };
 		C596B10C7FAB88D80A2501EA /* LocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewController.h; sourceTree = "<group>"; };
 		C596B11428DF21ABD2A7916F /* ReviewDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewModel.h; sourceTree = "<group>"; };
+		C596B17D7797390A6E2AFAF0 /* UITableViewCell+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Extension.m"; sourceTree = SOURCE_ROOT; };
 		C596B17E0755B3E673311E25 /* AddressService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressService.h; sourceTree = "<group>"; };
 		C596B17ED43937F79A5759EE /* NSMutableString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Extensions.m"; sourceTree = SOURCE_ROOT; };
 		C596B1C53625DF2818FA59EF /* KeyChainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainService.m; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 		C596BDEB471B1CAC691EE934 /* NSLocale+iOS8.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+iOS8.m"; sourceTree = "<group>"; };
 		C596BDF952304291A766A0B0 /* HalalGuideLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideLabels.m; sourceTree = "<group>"; };
 		C596BE3B3A5B60189D1D1699 /* LocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewController.m; sourceTree = "<group>"; };
+		C596BE4CD1054590CEB3C1BB /* UITableViewCell+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Extension.h"; sourceTree = SOURCE_ROOT; };
 		C596BE53C7C61C04D1820020 /* NSObject+MethodExchange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodExchange.m"; sourceTree = SOURCE_ROOT; };
 		C596BEBB98E1B438C022990F /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		C596BEE49E00FAAA770E6D23 /* NSMutableString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Extensions.h"; sourceTree = SOURCE_ROOT; };
@@ -549,6 +552,8 @@
 				C596B29B914F37DE55FF62C4 /* UIBarButtonItem+Extension.h */,
 				C596BE53C7C61C04D1820020 /* NSObject+MethodExchange.m */,
 				C596BD40B49D5855DCC771E3 /* NSObject+MethodExchange.h */,
+				C596B17D7797390A6E2AFAF0 /* UITableViewCell+Extension.m */,
+				C596BE4CD1054590CEB3C1BB /* UITableViewCell+Extension.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -938,6 +943,7 @@
 				C596B2A8C71382A4E69F1091 /* UIViewController+Extension.m in Sources */,
 				C596B0C77158528D2944894B /* NSObject+MethodExchange.m in Sources */,
 				C596B458BFF4EDE0783DC2BB /* HalalLogInViewController.m in Sources */,
+				C596B5987C09C30339F85CCB /* UITableViewCell+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 #import "HalalGuideLabels.h"
 #import "HalalGuideOnboarding.h"
 #import "UIView+Extensions.h"
+#import "UITableViewCell+Extension.h"
 
 @implementation DiningTableViewCell {
 
@@ -45,33 +46,21 @@
 
 }
 
-- (void)displayTipViewFor:(UIView *)view withHintKey:(NSString *)hintKey {
-    CMPopTipView *tipView = [[CMPopTipView alloc] initWithMessage:NSLocalizedString(hintKey, nil)];
-    tipView.delegate = self;
-    tipView.backgroundColor = [UIColor whiteColor];
-    tipView.textColor = [UIColor darkTextColor];
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    UIView *topView = window.rootViewController.view;
-    [tipView presentPointingAtView:view inView:topView animated:true];
-
-    [[HalalGuideOnboarding instance] setOnBoardingShown:hintKey];
-}
-
 - (void)showToolTip {
 
     self.contentView.clipsToBounds = false;
 
     if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPorkOnBoardingKey]) {
 
-        [self displayTipViewFor:[self porkImageView] withHintKey:kDiningCellPorkOnBoardingKey];
+        [self displayTipViewFor:[self porkImageView] withHintKey:kDiningCellPorkOnBoardingKey withDelegate:self];
 
     } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellAlcoholOnBoardingKey]) {
 
-        [self displayTipViewFor:[self alcoholImageView] withHintKey:kDiningCellAlcoholOnBoardingKey];
+        [self displayTipViewFor:[self alcoholImageView] withHintKey:kDiningCellAlcoholOnBoardingKey withDelegate:self];
 
     } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellHalalOnBoardingKey]) {
 
-        [self displayTipViewFor:[self halalImageView] withHintKey:kDiningCellHalalOnBoardingKey];
+        [self displayTipViewFor:[self halalImageView] withHintKey:kDiningCellHalalOnBoardingKey withDelegate:self];
 
     }
 }
@@ -81,13 +70,13 @@
     if (popTipView.targetObject == [self porkImageView]) {
 
         if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellAlcoholOnBoardingKey]) {
-            [self displayTipViewFor:[self alcoholImageView] withHintKey:kDiningCellAlcoholOnBoardingKey];
+            [self displayTipViewFor:[self alcoholImageView] withHintKey:kDiningCellAlcoholOnBoardingKey withDelegate:self];
         }
 
     } else if (popTipView.targetObject == [self alcoholImageView]) {
 
         if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellHalalOnBoardingKey]) {
-            [self displayTipViewFor:[self halalImageView] withHintKey:kDiningCellHalalOnBoardingKey];
+            [self displayTipViewFor:[self halalImageView] withHintKey:kDiningCellHalalOnBoardingKey withDelegate:self];
         }
     }
 }

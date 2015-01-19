@@ -86,9 +86,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Indstillinger" id="sF6-eP-CGW"/>
                     <connections>
+                        <outlet property="clear" destination="HYe-dc-juL" id="zNX-0o-khr"/>
                         <outlet property="clearCache" destination="ui0-Sy-5Bj" id="Wdo-Vx-T1l"/>
+                        <outlet property="reset" destination="nZb-hu-Fk5" id="mF4-QG-MFX"/>
                         <outlet property="resetFilter" destination="EDw-O7-QfW" id="9KW-QH-ldW"/>
                         <outlet property="restorePurchases" destination="h5h-5l-hYb" id="XXd-uj-IR0"/>
+                        <outlet property="support" destination="MbM-j1-vft" id="47L-A3-hBD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qu4-7c-Mkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -611,7 +614,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Navn" minimumFontSize="17" id="Geq-xg-rWm">
-                                                <rect key="frame" x="121.00000016829547" y="20" width="187" height="30"/>
+                                                <rect key="frame" x="121.00000034314786" y="20" width="187" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
@@ -620,7 +623,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vej" minimumFontSize="17" id="LGW-5Q-Byj" customClass="HTAutocompleteTextField">
-                                                <rect key="frame" x="121" y="58" width="131.99999819291725" height="30"/>
+                                                <rect key="frame" x="121" y="58" width="131.99999796600792" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>

@@ -15,4 +15,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *restorePurchases;
 @property (strong, nonatomic) IBOutlet UIButton *resetFilter;
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *clear;
+@property (weak, nonatomic) IBOutlet UITableViewCell *support;
+@property (weak, nonatomic) IBOutlet UITableViewCell *reset;
+
 @end
