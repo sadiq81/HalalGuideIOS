@@ -15,5 +15,20 @@
     @throw @"Must be overriden";
 }
 
+- (BOOL) isEqual:(id)object
+{
+    if ([object isKindOfClass:[PFObject class]])
+    {
+        PFObject* pfObject = object;
+        return [self.objectId isEqualToString:pfObject.objectId];
+    }
+
+    return NO;
+}
+
+- (NSUInteger)hash {
+    return self.objectId.hash;
+}
+
 
 @end

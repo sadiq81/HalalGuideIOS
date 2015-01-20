@@ -10,8 +10,9 @@
 #import <CMPopTipView/CMPopTipView.h>
 #import "LocationViewModel.h"
 
-@interface LocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, CMPopTipViewDelegate, UISearchBarDelegate>
+@interface LocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, CMPopTipViewDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property(strong, nonatomic) IBOutlet UITableView *diningTableView;
 @property(strong, nonatomic) UITableViewController *tableViewController;
 @property(strong, nonatomic) UIRefreshControl *refreshControl;
@@ -19,8 +20,8 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *filter;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-
 @property (strong, nonatomic) IBOutlet UILabel *noResults;
-
+@property (strong, nonatomic) IBOutlet UIView *tableView;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

@@ -16,7 +16,7 @@
 
 }
 
-@synthesize locations, locationType, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories, shopCategories, language, page, searchText;
+@synthesize locations, locationType, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories, shopCategories, language, page, searchText, locationPresentation, southWest, northEast;
 
 + (LocationViewModel *)instance {
     static LocationViewModel *_instance = nil;
@@ -48,72 +48,79 @@
     [query whereKey:@"locationType" equalTo:@(self.locationType)];
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
 
-    if (self.locationType == LocationTypeDining) {
+    if (self.locationPresentation == LocationPresentationList) {
 
-        if (!self.showPork) {
-            [query whereKey:@"pork" equalTo:@(self.showPork)];
+
+        if (self.locationType == LocationTypeDining) {
+
+            if (!self.showPork) {
+                [query whereKey:@"pork" equalTo:@(self.showPork)];
+            }
+
+            if (!self.showAlcohol) {
+                [query whereKey:@"alcohol" equalTo:@(self.showAlcohol)];
+            }
+
+            if (!self.showNonHalal) {
+                [query whereKey:@"nonHalal" equalTo:@(self.showNonHalal)];
+            }
+
+            if ([self.categories count] > 0) {
+                [query whereKey:@"categories" containedIn:self.categories];
+            }
+
+        } else if (self.locationType == LocationTypeShop) {
+
+            if ([self.shopCategories count] > 0) {
+                [query whereKey:@"categories" containedIn:self.shopCategories];
+            }
+
+        } else if (self.locationType == LocationTypeMosque) {
+
+            if (self.language > 0) {
+                [query whereKey:@"language" equalTo:@(self.language)];
+            }
+
         }
 
-        if (!self.showAlcohol) {
-            [query whereKey:@"alcohol" equalTo:@(self.showAlcohol)];
+        if (self.searchText && [self.searchText length] > 0) {
+            PFQuery *name = [PFQuery orQueryWithSubqueries:@[query]];
+            [name whereKey:@"name" matchesRegex:self.searchText modifiers:@"i"];
+
+            PFQuery *addressCity = [PFQuery orQueryWithSubqueries:@[query]];
+            [addressCity whereKey:@"addressCity" matchesRegex:self.searchText modifiers:@"i"];
+
+            PFQuery *addressPostalCode = [PFQuery orQueryWithSubqueries:@[query]];
+            [addressPostalCode whereKey:@"addressPostalCode" matchesRegex:self.searchText modifiers:@"i"];
+
+            PFQuery *addressRoad = [PFQuery orQueryWithSubqueries:@[query]];
+            [addressRoad whereKey:@"addressRoad" matchesRegex:self.searchText modifiers:@"i"];
+
+            PFQuery *addressRoadNumber = [PFQuery orQueryWithSubqueries:@[query]];
+            [addressRoadNumber whereKey:@"addressRoadNumber" matchesRegex:self.searchText modifiers:@"i"];
+
+            PFQuery *homePage = [PFQuery orQueryWithSubqueries:@[query]];
+            [homePage whereKey:@"homePage" matchesRegex:self.searchText modifiers:@"i"];
+
+            PFQuery *telephone = [PFQuery orQueryWithSubqueries:@[query]];
+            [telephone whereKey:@"telephone" matchesRegex:self.searchText modifiers:@"i"];
+
+            PFQuery *or = [PFQuery orQueryWithSubqueries:@[name, addressCity, addressPostalCode, addressRoad, addressRoadNumber, homePage, telephone]];
+            //Or queries do not support geo location and limit/skip
+            return or;
         }
 
-        if (!self.showNonHalal) {
-            [query whereKey:@"nonHalal" equalTo:@(self.showNonHalal)];
+        if ([BaseViewModel currentLocation]) {
+            [query whereKey:@"point" nearGeoPoint:[PFGeoPoint geoPointWithLocation:[BaseViewModel currentLocation]] withinKilometers:self.maximumDistance < 20 ? self.maximumDistance : 1000];
         }
 
-        if ([self.categories count] > 0) {
-            [query whereKey:@"categories" containedIn:self.categories];
-        }
-
-    } else if (self.locationType == LocationTypeShop) {
-
-        if ([self.shopCategories count] > 0) {
-            [query whereKey:@"categories" containedIn:self.shopCategories];
-        }
-
-    } else if (self.locationType == LocationTypeMosque) {
-
-        if (self.language > 0) {
-            [query whereKey:@"language" equalTo:@(self.language)];
-        }
-
+        //Paging controls
+        query.limit = 20;
+        query.skip = self.page * 20;
+    } else if (self.locationPresentation == LocationPresentationMap) {
+        [query whereKey:@"point" withinGeoBoxFromSouthwest:self.southWest toNortheast:self.northEast];
     }
 
-    if (self.searchText && [self.searchText length] > 0) {
-        PFQuery *name = [PFQuery orQueryWithSubqueries:@[query]];
-        [name whereKey:@"name" matchesRegex:self.searchText modifiers:@"i"];
-
-        PFQuery *addressCity = [PFQuery orQueryWithSubqueries:@[query]];
-        [addressCity whereKey:@"addressCity" matchesRegex:self.searchText modifiers:@"i"];
-
-        PFQuery *addressPostalCode = [PFQuery orQueryWithSubqueries:@[query]];
-        [addressPostalCode whereKey:@"addressPostalCode" matchesRegex:self.searchText modifiers:@"i"];
-
-        PFQuery *addressRoad = [PFQuery orQueryWithSubqueries:@[query]];
-        [addressRoad whereKey:@"addressRoad" matchesRegex:self.searchText modifiers:@"i"];
-
-        PFQuery *addressRoadNumber = [PFQuery orQueryWithSubqueries:@[query]];
-        [addressRoadNumber whereKey:@"addressRoadNumber" matchesRegex:self.searchText modifiers:@"i"];
-
-        PFQuery *homePage = [PFQuery orQueryWithSubqueries:@[query]];
-        [homePage whereKey:@"homePage" matchesRegex:self.searchText modifiers:@"i"];
-
-        PFQuery *telephone = [PFQuery orQueryWithSubqueries:@[query]];
-        [telephone whereKey:@"telephone" matchesRegex:self.searchText modifiers:@"i"];
-
-        PFQuery *or = [PFQuery orQueryWithSubqueries:@[name, addressCity, addressPostalCode, addressRoad, addressRoadNumber, homePage, telephone]];
-        //Or queries do not support geo location and limit/skip
-        return or;
-    }
-
-    if ([BaseViewModel currentLocation]) {
-        [query whereKey:@"point" nearGeoPoint:[PFGeoPoint geoPointWithLocation:[BaseViewModel currentLocation]] withinKilometers: self.maximumDistance < 20 ? self.maximumDistance:1000];
-    }
-
-    //Paging controls
-    query.limit = 20;
-    query.skip = self.page * 20;
 
     return query;
 }
@@ -121,6 +128,7 @@
 - (void)reset {
     self.locations = [NSMutableArray new];
     self.page = 0;
+    self.locationPresentation = LocationPresentationList;
 }
 
 - (void)locationChanged:(NSNotification *)notification {
@@ -159,9 +167,17 @@
             }
         }
 
-        if ([self.delegate respondsToSelector:@selector(reloadTable)]) {
-            [self.delegate reloadTable];
+        if (self.locationPresentation == LocationPresentationList) {
+            if ([self.delegate respondsToSelector:@selector(reloadTable)]) {
+                [self.delegate reloadTable];
+            }
+        } else if (self.locationPresentation == LocationPresentationMap) {
+            if ([self.delegate respondsToSelector:@selector(reloadAnnotations)]) {
+                [self.delegate reloadAnnotations];
+            }
         }
+
+
     }];
 
 
@@ -172,7 +188,7 @@
 }
 
 - (Location *)locationForRow:(NSUInteger)row {
-    if (self.locations == nil || [self.locations count] <= row){
+    if (self.locations == nil || [self.locations count] <= row) {
         return nil;
     }
 

@@ -38,15 +38,16 @@
 		A1E0C0561A17D15000757427 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E0C0551A17D15000757427 /* Foundation.framework */; };
 		A1E0C0581A17D15C00757427 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E0C0571A17D15C00757427 /* CoreGraphics.framework */; };
 		A1FB7A3C1A225BD6005C10A9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FB7A3B1A225BD6005C10A9 /* MapKit.framework */; };
-		C596B017451A7E15B8A78E82 /* main.js in Sources */ = {isa = PBXBuildFile; fileRef = C596B0F6491409F9FB257D0D /* main.js */; };
 		C596B04443F0600B9C7BD49F /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B009EEE9275A43EF3CB6 /* LocationViewController.m */; };
 		C596B0C77158528D2944894B /* NSObject+MethodExchange.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE53C7C61C04D1820020 /* NSObject+MethodExchange.m */; };
 		C596B0D9F593DF35F27ADC0C /* KeyChainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1C53625DF2818FA59EF /* KeyChainService.m */; };
+		C596B11B609140D48E85C8FC /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BB407EE0FB563D279809 /* MKAnnotationView+WebCache.m */; };
 		C596B14BABF589FCAC939602 /* CreateLocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B21D6C38E6FAFD9C1FE1 /* CreateLocationViewModel.m */; };
 		C596B1B34978AF18E4D554AC /* UILabel+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B108D40A5F53EA841C5D /* UILabel+Extensions.m */; };
 		C596B1F5A5B4EA5CAF4E59A1 /* ProfileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B2FC8EC8496A380C0223 /* ProfileInfo.m */; };
 		C596B2078F8F1D549C4186A9 /* MosqueTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BFB60717839658B16FF5 /* MosqueTableViewCell.m */; };
 		C596B28B3236C3D70724025F /* CreateReviewViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B2A4EE405E5B07E7107E /* CreateReviewViewModel.m */; };
+		C596B291B043C2E69C488B7F /* LocationAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B7E8245B094777ED2D61 /* LocationAnnotationView.m */; };
 		C596B2A131DC27AC871E92BC /* ReviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B7CF65914898A7E6702F /* ReviewService.m */; };
 		C596B2A8C71382A4E69F1091 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC195C5EE70D30D8E4F9 /* UIViewController+Extension.m */; };
 		C596B2E1351E1EAC7E9D30AF /* FrontPageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BA6A2FFAA13B82F58EBC /* FrontPageViewModel.m */; };
@@ -60,15 +61,17 @@
 		C596B527D5161C611CF5524E /* NSLocale+iOS8.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BDEB471B1CAC691EE934 /* NSLocale+iOS8.m */; };
 		C596B57CA42D67EDC792CC39 /* ENumber.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BD577B3C94008D6D6A86 /* ENumber.m */; };
 		C596B5987C09C30339F85CCB /* UITableViewCell+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B17D7797390A6E2AFAF0 /* UITableViewCell+Extension.m */; };
-		C596B5ECDA14AFE45F0B4876 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = C596BFFF24C78F6A21345D98 /* index.html */; };
 		C596B6434DE318E0744ACB01 /* ReviewDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B492BF85F9FF0436DBD8 /* ReviewDetailViewModel.m */; };
 		C596B6AB3FEB0CCFBB49E279 /* HalalGuideOnboarding.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BBFB5C5F15D132E4FB8E /* HalalGuideOnboarding.m */; };
 		C596B6F2B07B666F6BE4742D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B4E9CC97591CF8CF04F8 /* main.m */; };
 		C596B7108E18D52D31CE8DB1 /* LocationDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B6A7A045EBA52A0DC9FA /* LocationDetail.m */; };
 		C596B710A1AA9E1C9F7CDD19 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3B092ADDA5F0E8FE57A /* UIBarButtonItem+Extension.m */; };
 		C596B759B3AC1C91AB3CB4A9 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B0A96756F6C064E85396 /* KeychainWrapper.m */; };
+		C596B7CD11A2935C9B5AD46A /* MKMapView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BA1F58B554F03525933F /* MKMapView+Extension.m */; };
+		C596B7F1364FB112206CC639 /* UIImage+Transformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B4ABACD9339302456AE7 /* UIImage+Transformation.m */; };
 		C596B8089323C38DC9154E64 /* LocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B71BF7FEBEC982AF2EC1 /* LocationViewModel.m */; };
 		C596B80D6FAEA5A9799020EE /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B99C4E194E7D0F056581 /* UIView+Extensions.m */; };
+		C596B84D247D5475BA209433 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BD7A359A74181777DF23 /* LocationAnnotation.m */; };
 		C596B86E7083F827F608D51B /* ENumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B448202B5ACA4E2E3C56 /* ENumberViewController.m */; };
 		C596B896E5FFBACE8438BC3E /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B5E924343A08F6F50ABC /* ReviewCell.m */; };
 		C596B8A34F7CFFA6A7A8247B /* SlideShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B2F7557D5883A668E78D /* SlideShowViewController.m */; };
@@ -87,8 +90,6 @@
 		C596BA3647279B40542C6B0A /* FilterLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B10671F66BE5CA315DA1 /* FilterLocationViewController.m */; };
 		C596BAC431971EE457E2AC67 /* AddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B9236BE5EB90B765FFA9 /* AddressService.m */; };
 		C596BAC926A22C2B286BC14F /* PictureService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B5C2EFA65F106D065A85 /* PictureService.m */; };
-		C596BADDA4BE97A94610CE1F /* UIImage+Transformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B75CA653650DB3D05A03 /* UIImage+Transformation.m */; };
-		C596BC59AABE54F1735C9B21 /* global.json in Resources */ = {isa = PBXBuildFile; fileRef = C596B0D816F76F252C2A7FFC /* global.json */; };
 		C596BCAA5BEA01A3182A39B5 /* OpeningHours.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8552DDC807E558A5A30 /* OpeningHours.m */; };
 		C596BCDFB902FAF18D51A1AB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC841F23A6433FB59C83 /* SettingsViewController.m */; };
 		C596BD96EFEBDDC2BA7E3281 /* HalalGuideSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3738DE751A198964235 /* HalalGuideSettings.m */; };
@@ -163,7 +164,9 @@
 		C596B02C31F0A3EAC5021006 /* CreateReviewViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReviewViewModel.h; sourceTree = "<group>"; };
 		C596B03AB92D97D71B333FB4 /* DiningTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningTableViewCell.h; sourceTree = "<group>"; };
 		C596B046E18BFB1A22B12FAA /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		C596B05799C02FB3C94B3918 /* LocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationAnnotation.h; sourceTree = "<group>"; };
 		C596B0A96756F6C064E85396 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = SOURCE_ROOT; };
+		C596B0AEEAF26A19642F27DC /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = SOURCE_ROOT; };
 		C596B0B6E24F835EE6935E48 /* FrontPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontPageViewController.h; sourceTree = "<group>"; };
 		C596B0CAC46D5333388FB1F7 /* ReviewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewController.h; sourceTree = "<group>"; };
 		C596B0D816F76F252C2A7FFC /* global.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = global.json; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 		C596B17ED43937F79A5759EE /* NSMutableString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Extensions.m"; sourceTree = SOURCE_ROOT; };
 		C596B1C53625DF2818FA59EF /* KeyChainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainService.m; sourceTree = "<group>"; };
 		C596B1DE435F257B01619E56 /* ErrorReporting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorReporting.h; sourceTree = "<group>"; };
+		C596B211184001D8E5AEF0C6 /* UIImage+Transformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Transformation.h"; sourceTree = SOURCE_ROOT; };
 		C596B21B5A6B8B7A9AB721D7 /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = SOURCE_ROOT; };
 		C596B21D6C38E6FAFD9C1FE1 /* CreateLocationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateLocationViewModel.m; sourceTree = "<group>"; };
 		C596B24BA9AE85B76AA003C0 /* HalalGuideNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideNumberFormatter.m; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 		C596B448202B5ACA4E2E3C56 /* ENumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ENumberViewController.m; sourceTree = "<group>"; };
 		C596B45290F26EA1EDD5FCCC /* FrontPageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrontPageViewModel.h; sourceTree = "<group>"; };
 		C596B492BF85F9FF0436DBD8 /* ReviewDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewModel.m; sourceTree = "<group>"; };
+		C596B4ABACD9339302456AE7 /* UIImage+Transformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Transformation.m"; sourceTree = SOURCE_ROOT; };
+		C596B4C3CE265303DC1AE5CE /* LocationAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationAnnotationView.h; sourceTree = "<group>"; };
 		C596B4CC9466EC8306FE455A /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
 		C596B4E9CC97591CF8CF04F8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C596B51276DE9033A418C1C3 /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = SOURCE_ROOT; };
@@ -211,15 +217,14 @@
 		C596B71BF7FEBEC982AF2EC1 /* LocationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewModel.m; sourceTree = "<group>"; };
 		C596B73877CA533CA6591101 /* ReviewDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewDetailViewController.m; sourceTree = "<group>"; };
 		C596B75C6536409252A6F0EA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C596B75CA653650DB3D05A03 /* UIImage+Transformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Transformation.m"; sourceTree = SOURCE_ROOT; };
 		C596B781676517BC117FF418 /* LocationDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewModel.m; sourceTree = "<group>"; };
 		C596B7ACBD03FC31B609E2FD /* HalalLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalLogInViewController.m; sourceTree = "<group>"; };
 		C596B7CF65914898A7E6702F /* ReviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewService.m; sourceTree = "<group>"; };
+		C596B7E8245B094777ED2D61 /* LocationAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAnnotationView.m; sourceTree = "<group>"; };
 		C596B7F7192CA4ADB4DCF721 /* HalalGuideNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideNumberFormatter.h; sourceTree = "<group>"; };
 		C596B810C6C83C0302E398C6 /* ReviewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewService.h; sourceTree = "<group>"; };
 		C596B81ACA6EECA8A88D5DA0 /* HalalGuideImageViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideImageViews.m; sourceTree = "<group>"; };
 		C596B8552DDC807E558A5A30 /* OpeningHours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpeningHours.m; sourceTree = "<group>"; };
-		C596B8600A531F42063E1E4D /* UIImage+Transformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Transformation.h"; sourceTree = SOURCE_ROOT; };
 		C596B86B05EE4EBD3D4FCDEA /* ReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
 		C596B88F34BE12E8C170701C /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
 		C596B89248EE903E929F79B1 /* HalalGuideDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideDateFormatter.m; sourceTree = "<group>"; };
@@ -234,6 +239,7 @@
 		C596B9BD485DC2539668196B /* CreateReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReviewViewController.h; sourceTree = "<group>"; };
 		C596B9C7D7E4542EA95E3F62 /* HalalGuide-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HalalGuide-Prefix.pch"; sourceTree = "<group>"; };
 		C596BA06D0C7BB36204E5D3D /* ErrorReporting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorReporting.m; sourceTree = "<group>"; };
+		C596BA1F58B554F03525933F /* MKMapView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Extension.m"; sourceTree = SOURCE_ROOT; };
 		C596BA312DA1A0F17B24EEF1 /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
 		C596BA5A80257D3B9F034B78 /* ShopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopTableViewCell.m; sourceTree = "<group>"; };
 		C596BA6A10727DB38C3E6BAD /* NSArray+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extensions.m"; sourceTree = SOURCE_ROOT; };
@@ -242,6 +248,7 @@
 		C596BACA6360A5BF75EC6034 /* PictureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureService.h; sourceTree = "<group>"; };
 		C596BAD928F93E43775183D1 /* HalalGuideLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideLabels.h; sourceTree = "<group>"; };
 		C596BB2A29C69C97018BE604 /* CreateReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReviewViewController.m; sourceTree = "<group>"; };
+		C596BB407EE0FB563D279809 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = SOURCE_ROOT; };
 		C596BB5C544A2CA9B3089ADC /* CreateLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLocationViewController.h; sourceTree = "<group>"; };
 		C596BB8F8B4660CD6FF18B10 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C596BBB70C59518E28A17566 /* ENumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENumber.h; sourceTree = "<group>"; };
@@ -251,6 +258,7 @@
 		C596BC1C6C1BD2CE4EFF1643 /* ENumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENumberViewController.h; sourceTree = "<group>"; };
 		C596BC2F8E183942611E602F /* HalalGuideImageViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideImageViews.h; sourceTree = "<group>"; };
 		C596BC3435D995FE87D9DBD9 /* Adgangsadresse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Adgangsadresse.m; sourceTree = "<group>"; };
+		C596BC5E6A1456F479A2C582 /* MKMapView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Extension.h"; sourceTree = SOURCE_ROOT; };
 		C596BC5EC5F9922BB4906549 /* Adgangsadresse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adgangsadresse.h; sourceTree = "<group>"; };
 		C596BC723A54BB0D50D90469 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		C596BC841F23A6433FB59C83 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -260,6 +268,7 @@
 		C596BD40B49D5855DCC771E3 /* NSObject+MethodExchange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MethodExchange.h"; sourceTree = SOURCE_ROOT; };
 		C596BD577B3C94008D6D6A86 /* ENumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ENumber.m; sourceTree = "<group>"; };
 		C596BD68040F320233372101 /* HalalGuideOnboarding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideOnboarding.h; sourceTree = "<group>"; };
+		C596BD7A359A74181777DF23 /* LocationAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAnnotation.m; sourceTree = "<group>"; };
 		C596BD8156F9392A5A9104C9 /* ShopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopTableViewCell.h; sourceTree = "<group>"; };
 		C596BDD3D43A12ED9A4F882D /* SlideShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideShowViewController.h; sourceTree = "<group>"; };
 		C596BDE533E21E62E90543D5 /* NSLocale+iOS8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+iOS8.h"; sourceTree = "<group>"; };
@@ -571,8 +580,6 @@
 				C596B327204C63F2A234B6A5 /* NSArray+Extensions.h */,
 				C596B0A96756F6C064E85396 /* KeychainWrapper.m */,
 				C596BD32247E2B4B929D6FE3 /* KeychainWrapper.h */,
-				C596B75CA653650DB3D05A03 /* UIImage+Transformation.m */,
-				C596B8600A531F42063E1E4D /* UIImage+Transformation.h */,
 				C596B99C4E194E7D0F056581 /* UIView+Extensions.m */,
 				C596BFC95AE0551B4E7A31DD /* UIView+Extensions.h */,
 				C596B108D40A5F53EA841C5D /* UILabel+Extensions.m */,
@@ -585,6 +592,12 @@
 				C596BD40B49D5855DCC771E3 /* NSObject+MethodExchange.h */,
 				C596B17D7797390A6E2AFAF0 /* UITableViewCell+Extension.m */,
 				C596BE4CD1054590CEB3C1BB /* UITableViewCell+Extension.h */,
+				C596BA1F58B554F03525933F /* MKMapView+Extension.m */,
+				C596BC5E6A1456F479A2C582 /* MKMapView+Extension.h */,
+				C596BB407EE0FB563D279809 /* MKAnnotationView+WebCache.m */,
+				C596B0AEEAF26A19642F27DC /* MKAnnotationView+WebCache.h */,
+				C596B4ABACD9339302456AE7 /* UIImage+Transformation.m */,
+				C596B211184001D8E5AEF0C6 /* UIImage+Transformation.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -730,6 +743,10 @@
 				C596BD19524238EFC52AEF00 /* LocationViewModel.h */,
 				C596B10671F66BE5CA315DA1 /* FilterLocationViewController.m */,
 				C596B6FEF1B885D146C1F943 /* FilterLocationViewController.h */,
+				C596BD7A359A74181777DF23 /* LocationAnnotation.m */,
+				C596B05799C02FB3C94B3918 /* LocationAnnotation.h */,
+				C596B7E8245B094777ED2D61 /* LocationAnnotationView.m */,
+				C596B4C3CE265303DC1AE5CE /* LocationAnnotationView.h */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -848,8 +865,6 @@
 				A111F7511A3260EA00ABFF70 /* Localizable.strings in Resources */,
 				A1B68FBD1A49572500AE9795 /* MainStoryboard.storyboard in Resources */,
 				C596B994E8D83F0CFCC43A4B /* Images.xcassets in Resources */,
-				C596BC59AABE54F1735C9B21 /* global.json in Resources */,
-				C596B5ECDA14AFE45F0B4876 /* index.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -966,7 +981,6 @@
 				C596BDF45FFD32F85D11DB23 /* ErrorReporting.m in Sources */,
 				C596BE3F86C6A8EB1EFA87EB /* CoordinatePickerViewController.m in Sources */,
 				C596B527D5161C611CF5524E /* NSLocale+iOS8.m in Sources */,
-				C596BADDA4BE97A94610CE1F /* UIImage+Transformation.m in Sources */,
 				C596B80D6FAEA5A9799020EE /* UIView+Extensions.m in Sources */,
 				C596B1B34978AF18E4D554AC /* UILabel+Extensions.m in Sources */,
 				C596B7108E18D52D31CE8DB1 /* LocationDetail.m in Sources */,
@@ -987,7 +1001,11 @@
 				C596B0C77158528D2944894B /* NSObject+MethodExchange.m in Sources */,
 				C596B458BFF4EDE0783DC2BB /* HalalLogInViewController.m in Sources */,
 				C596B5987C09C30339F85CCB /* UITableViewCell+Extension.m in Sources */,
-				C596B017451A7E15B8A78E82 /* main.js in Sources */,
+				C596B7CD11A2935C9B5AD46A /* MKMapView+Extension.m in Sources */,
+				C596B11B609140D48E85C8FC /* MKAnnotationView+WebCache.m in Sources */,
+				C596B84D247D5475BA209433 /* LocationAnnotation.m in Sources */,
+				C596B291B043C2E69C488B7F /* LocationAnnotationView.m in Sources */,
+				C596B7F1364FB112206CC639 /* UIImage+Transformation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,8 +1134,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tommy Lynge Hinrichsen (C7LH75JYEC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tommy Lynge Hinrichsen (C7LH75JYEC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1133,7 +1151,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c5be02df-a453-4612-a6a7-62a2a56a8f1a";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
@@ -1144,8 +1162,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tommy Hinrichsen";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tommy Hinrichsen";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1161,7 +1179,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23854602-1c4d-423a-b88d-1706bf49f4ca";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;

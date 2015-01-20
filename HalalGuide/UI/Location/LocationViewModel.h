@@ -6,6 +6,11 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
 
+typedef enum LocationPresentation : int16_t {
+    LocationPresentationList = 0,
+    LocationPresentationMap = 1,
+} LocationPresentation;
+
 @protocol DiningViewModelDelegate <NSObject>
 
 @optional
@@ -13,6 +18,8 @@
 - (void)refreshTable;
 
 - (void)reloadTable;
+
+- (void)reloadAnnotations;
 
 @end
 
@@ -27,6 +34,10 @@
 @property(nonatomic) bool showPork;
 @property(nonatomic) int page;
 @property(nonatomic, copy) NSString *searchText;
+
+@property(nonatomic) LocationPresentation locationPresentation;
+@property(nonatomic) PFGeoPoint *southWest;
+@property(nonatomic) PFGeoPoint *northEast;
 
 + (LocationViewModel *)instance;
 

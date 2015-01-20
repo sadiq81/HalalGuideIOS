@@ -19,7 +19,15 @@
 #import "CreateLocationViewModel.h"
 #import "CategoriesViewController.h"
 #import "UITableViewCell+Extension.h"
+#import "MKMapView+Extension.h"
+#import "PictureService.h"
+#import "LocationPicture.h"
+#import "LocationAnnotation.h"
+#import "MKAnnotationView+WebCache.h"
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
+#import "LocationAnnotationView.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation LocationViewController {
     NSString *priorSearchText;
@@ -31,10 +39,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configureTableView];
+    [self configureMapView];
     [[LocationViewModel instance] refreshLocations:true];
     [LocationViewModel instance].delegate = self;
 
-    self.navigationItem.title = NSLocalizedString(LocationTypeString([LocationViewModel instance].locationType), nil);
+    [self.segmentControl handleControlEvents:UIControlEventValueChanged withBlock:^(UISegmentedControl *weakSender) {
+        UIView *fromView = weakSender.selectedSegmentIndex == 0 ? self.mapView : self.tableView;
+        UIView *toView = weakSender.selectedSegmentIndex == 0 ? self.tableView : self.mapView;
+        [LocationViewModel instance].locationPresentation = weakSender.selectedSegmentIndex;
+
+        [UIView transitionFromView:fromView toView:toView
+                          duration:1.0
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        completion:^(BOOL finished) {
+                            [self updateMap:self.mapView];
+                        }];
+    }];
+
+    //self.navigationItem.title = NSLocalizedString(LocationTypeString([LocationViewModel instance].locationType), nil);
 }
 
 - (void)dealloc {
@@ -141,7 +163,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
-    if ([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"]) {
+
+    if (([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"]) && [LocationViewModel instance].locationPresentation == LocationPresentationList) {
         Location *location = [[LocationViewModel instance] locationForRow:[self.diningTableView indexPathForSelectedRow].row];
         [LocationDetailViewModel instance].location = location;
     } else if ([segue.identifier isEqualToString:@"CreateLocation"]) {
@@ -199,7 +222,6 @@
 
     Location *location = [[LocationViewModel instance] locationForRow:indexPath.row];
 
-
     NSString *identifier = LocationTypeString([LocationViewModel instance].locationType);
     LocationTableViewCell *cell = [self.diningTableView dequeueReusableCellWithIdentifier:identifier];
 
@@ -220,6 +242,142 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
+}
+
+#pragma mark MapView
+
+- (void)configureMapView {
+    [self.mapView setRegion:MKCoordinateRegionMake([BaseViewModel currentLocation].coordinate, MKCoordinateSpanMake(0.02, 0.02))];
+    self.mapView.showsUserLocation = true;
+}
+
+- (BOOL)mapViewRegionDidChangeFromUserInteraction {
+    //TODO Ugly
+    UIView *view = self.mapView.subviews.firstObject;
+    //  Look through gesture recognizers to determine whether this region change is from user interaction
+    for (UIGestureRecognizer *recognizer in view.gestureRecognizers) {
+        if (recognizer.state == UIGestureRecognizerStateBegan || recognizer.state == UIGestureRecognizerStateEnded) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+static BOOL mapChangedFromUserInteraction = NO;
+
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
+    mapChangedFromUserInteraction = [self mapViewRegionDidChangeFromUserInteraction];
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+
+    if (mapChangedFromUserInteraction) {
+        if ([LocationViewModel instance].locationPresentation == LocationPresentationList) {
+            return;
+        }
+
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateSearch:) object:mapView];
+
+        [self performSelector:@selector(updateMap:) withObject:mapView afterDelay:1.0];
+    }
+}
+
+- (void)updateMap:(MKMapView *)mapView {
+
+    [LocationViewModel instance].southWest = [mapView southWest];
+    [LocationViewModel instance].northEast = [mapView northEast];
+
+    [[LocationViewModel instance] refreshLocations:false];
+}
+
+- (void)reloadAnnotations {
+
+    NSMutableArray *shouldBeRemoved = [NSMutableArray new];
+    NSMutableArray *shouldNotAdded = [NSMutableArray new];
+
+    for (MKPointAnnotation *annotation in self.mapView.annotations) {
+
+        if ([annotation isKindOfClass:[LocationAnnotation class]]) {
+            if ([[LocationViewModel instance].locations indexOfObject:((LocationAnnotation *) annotation).location] == NSNotFound) {
+                [shouldBeRemoved addObject:annotation];
+            } else {
+                [shouldNotAdded addObject:((LocationAnnotation *) annotation).location];
+            }
+        }
+    }
+
+    [self.mapView removeAnnotations:shouldBeRemoved];
+
+    for (Location *loc in [LocationViewModel instance].locations) {
+
+        if ([shouldNotAdded containsObject:loc]) {
+            continue;
+        }
+
+        LocationAnnotation *myAnnotation = [[LocationAnnotation alloc] init];
+        myAnnotation.location = loc;
+        myAnnotation.coordinate = CLLocationCoordinate2DMake(loc.point.latitude, loc.point.longitude);
+        myAnnotation.title = loc.name;
+        myAnnotation.subtitle = [NSString stringWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
+
+        [self.mapView addAnnotation:myAnnotation];
+    }
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    // If it's the user location, just return nil.
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+
+    // Handle any custom annotations.
+    if ([annotation isKindOfClass:[LocationAnnotation class]]) {
+        // Try to dequeue an existing pin view first.
+
+        //TODO make class for view
+        LocationAnnotationView *pinView = (LocationAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"MKAnnotationView"];
+        if (!pinView) {
+            // If an existing pin view was not available, create one.
+            pinView = [[LocationAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MKAnnotationView"];
+            //pinView.animatesDrop = YES;
+            pinView.canShowCallout = YES;
+
+            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            [rightButton setTitle:annotation.title forState:UIControlStateNormal];
+            [rightButton addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
+            pinView.rightCalloutAccessoryView = rightButton;
+
+            UIImageView *profileIconView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 33, 33)];
+            profileIconView.contentMode = UIViewContentModeScaleAspectFit;
+            pinView.leftCalloutAccessoryView = pinView.thumbnail = profileIconView;
+
+            pinView.image = [UIImage imageNamed:@"diningSmall"];
+
+        } else {
+            pinView.annotation = annotation;
+        }
+
+        [[PictureService instance] thumbnailForLocation:((LocationAnnotation *) annotation).location onCompletion:^(NSArray *objects, NSError *error) {
+            if (objects != nil && [objects count] == 1) {
+                LocationPicture *picture = [objects firstObject];
+                SDWebImageManager *manager = [SDWebImageManager sharedManager];
+                [manager downloadImageWithURL:[[NSURL alloc] initWithString:picture.thumbnail.url] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                    pinView.thumbnail.image = image;
+                }];
+            }
+        }];
+
+        return pinView;
+    }
+    return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    LocationAnnotation *annotation = (LocationAnnotation *) view.annotation;
+    [LocationDetailViewModel instance].location = annotation.location;
+}
+
+- (IBAction)showDetails:(id)sender {
+    [self performSegueWithIdentifier:@"DiningDetail" sender:self];
 }
 
 
