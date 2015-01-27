@@ -50,11 +50,16 @@
     //[[LocationService instance] createDummyData];
 
     //Configure Parse
+#if !DEBUG
     [ParseCrashReporting enable];
+#endif
     //[Parse enableLocalDatastore]; //TODO
 
     [Parse setApplicationId:@"7CtuNVHBGEdqFlvUyn2PQCG9R04dwIOyPpIVr7NA" clientKey:@"CWDZXIOhNHvEcrRSRN9gyAJlSEU4nPLfRf3Np47T"];
+
+#if !DEBUG
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+#endif
     [PFFacebookUtils initializeFacebook];
 
     PFACL *defaultACL = [PFACL ACL];
@@ -66,6 +71,7 @@
         //TODO Make some sign of user has contributed;
     }];
 
+#if !DEBUG
     //Push notifications
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
@@ -84,6 +90,7 @@
             [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
         }
     }
+#endif
     return YES;
 }
 
