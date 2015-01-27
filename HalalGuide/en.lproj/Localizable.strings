@@ -77,6 +77,7 @@
 "wok" = "Wok";
 
 "ok" = "Ok";
+"save"= "Save";
 "done" = "Done";
 "addReview" = "Add review";
 "regret" = "Regret";
@@ -95,6 +96,7 @@
 "addressdoesnotexists" = "Address does not exists ";
 "error" = "Unknown error";
 "errorText" = "An unknown error occured, try again later.";
+"reviewMinimum" = "A review should at least be 30 characters";
 
 "awaiting" = "Awaiting approval";
 "approved" = "Approved";
@@ -125,6 +127,7 @@
 "reviewSaved" = "Your review has been saved, and awaits approval";
 "locationSaved" = "Your suggestion has been submitted to approval";
 "imageSaved" = "Your image has been submitted for approval";
+"imagesSaved" = "Your images has been submitted for approval";
 "estimatingAddress" = "Guessing your address";
 "invalidAddress" = "Not a valid address";
 "GPSNotPreciseEnough" = "GPS point for the address could not be located, do you want to choose on a map?";
@@ -206,5 +209,15 @@
 "minute" = "minute";
 "seconds" = "seconds";
 "second" = "second";
+
+"sunday" ="Sunday";
+"monday"="Monday";
+"tuesday"="Tuesday";
+"wednesday"="Wednesday";
+"thursdag"="Thursday";
+"friday"="Friday";
+"saturday"="Saturday";
+"closed"= "Closed";
+"open"= "Open";
 
 

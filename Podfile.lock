@@ -28,6 +28,7 @@ PODS:
   - CMPopTipView (2.2.0)
   - CTAssetsPickerController (2.8.0)
   - DCKeyValueObjectMapping (1.4)
+  - DCRoundSwitch (0.0.1)
   - EDStarRating (1.1)
   - Facebook-iOS-SDK (3.22.0):
     - Bolts (~> 1.0)
@@ -101,6 +102,7 @@ DEPENDENCIES:
   - CMPopTipView
   - CTAssetsPickerController
   - DCKeyValueObjectMapping
+  - DCRoundSwitch
   - EDStarRating
   - Facebook-iOS-SDK (~> 3.21)
   - hpple
@@ -125,6 +127,7 @@ SPEC CHECKSUMS:
   CMPopTipView: f731ea93316c4f964d3d5d8e71b4ba0ae30bf5a4
   CTAssetsPickerController: 32b02079e2dd41c76fbc63740f4638ced71b7d1b
   DCKeyValueObjectMapping: c3561709f296ddffba7768a9d7ccf234307fd3c9
+  DCRoundSwitch: df465861ed880ee8d3c44ac8d3459faf1abaa6a9
   EDStarRating: c7b87f9866be0ea29bb054964023b8eb3f18286c
   Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
   hpple: f4eb7c21a8db83ec264e5d614ec7509e10e5adec

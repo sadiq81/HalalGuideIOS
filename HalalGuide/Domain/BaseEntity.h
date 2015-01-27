@@ -13,14 +13,12 @@
 typedef enum CreateEntityResult : int16_t {
     CreateEntityResultOk = 0,
     CreateEntityResultCouldNotCreateEntityInDatabase = 1,
-    CreateEntityResultCouldNotUploadFile = 2,
     CreateEntityResultAddressDoesNotExist = 3,
     CreateEntityResultError = 4
 } CreateEntityResult;
 
 #define CreateEntityResultString(enum) [@{@(CreateEntityResultOk) : @"ok",\
 @(CreateEntityResultCouldNotCreateEntityInDatabase) : @"couldnotcreateindb",\
-@(CreateEntityResultCouldNotUploadFile) : @"couldnotuploadfile",\
 @(CreateEntityResultAddressDoesNotExist) : @"addressdoesnotexists",\
 @(CreateEntityResultError) :@"error",}  objectForKey :@(enum)]
 

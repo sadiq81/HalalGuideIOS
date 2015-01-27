@@ -7,7 +7,7 @@
 #import "Location.h"
 #import "LocationViewModel.h"
 
-//TODO Onboarding - How to dismiss
+//TODO Categories should also be searchable
 @implementation CategoriesViewController {
 
 }

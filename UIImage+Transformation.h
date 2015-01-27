@@ -10,4 +10,8 @@
 
 - (UIImage *)compressForUpload;
 
+- (UIImage *)compressImage;
+
+- (UIImage *)scaleDown:(UIImage *)img withSize:(CGSize)newSize;
+
 @end

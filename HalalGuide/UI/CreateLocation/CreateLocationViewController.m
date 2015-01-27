@@ -24,33 +24,33 @@
 #import <EXTScope.h>
 #import <UIAlertController+Blocks/UIAlertController+Blocks.h>
 
-
-//TODO Opening hours
-
 @implementation CreateLocationViewController {
     IQKeyboardReturnKeyHandler *returnKeyHandler;
-    NSUInteger index;
-    NSTimer *timer;
+    NSUInteger index; //Index of show picture
+    NSTimer *timer; //Used for imageslideshow
     JSBadgeView *badgeView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [[CreateLocationViewModel instance] reset];
 
     [CreateLocationViewModel instance].categories = [NSMutableArray new];
 
-    returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
-    index = 0;
-
-    self.road.autocompleteDataSource = self;
-    self.roadNumber.autocompleteDataSource = self;
+    [self setupIQKeyboardReturnKeyHandler];
 
     [self setupEvents];
+
+    [self setupUI];
 
     [self setupLocationType];
 
     [self onBoarding];
+}
+
+- (void)setupIQKeyboardReturnKeyHandler {
+    returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
 }
 
 - (void)onBoarding {
@@ -64,22 +64,34 @@
     if ([CreateLocationViewModel instance].locationType != LocationTypeDining) {
         [self.diningSwitches removeFromSuperview];
         self.categoriesView.frame = CGRectMake(self.categoriesView.x, self.website.y + self.website.height + 8, self.categoriesView.width, self.categoriesView.height);
-
-        if ([CreateLocationViewModel instance].locationType == LocationTypeMosque) {
-            [self.reset removeFromSuperview];
-            self.categoriesCount.text = @"";
-            self.categoriesText.text = NSLocalizedString(@"language", nil);
-        } else if ([CreateLocationViewModel instance].locationType == LocationTypeShop) {
-
-        }
     }
+
+    if ([CreateLocationViewModel instance].locationType == LocationTypeMosque) {
+        [self.reset removeFromSuperview];
+        self.categoriesCount.text = @"";
+        self.categoriesText.text = NSLocalizedString(@"language", nil);
+    }
+}
+
+- (void)setupUI {
+
+    index = 0;
+
+    self.porkSwitch.offText = self.alcoholSwitch.offText = self.halalSwitch.offText = NSLocalizedString(@"no", nil);
+    self.porkSwitch.onText = self.alcoholSwitch.onText = self.halalSwitch.onText = NSLocalizedString(@"yes", nil);
+    self.porkSwitch.onTintColor = self.alcoholSwitch.onTintColor = self.halalSwitch.onTintColor = [UIColor redColor];
+
+    self.road.autocompleteDataSource = self;
+    self.roadNumber.autocompleteDataSource = self;
+
+
 }
 
 - (void)setupEvents {
 
-    [[CreateLocationViewModel instance] loadAddressesNearPositionOnCompletion:nil];
-
     __weak typeof(self) weakSelf = self;
+
+    [[CreateLocationViewModel instance] loadAddressesNearPositionOnCompletion:nil];
 
     [self.pickImage handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
         [[CreateLocationViewModel instance] getPicture:weakSelf];
@@ -125,6 +137,7 @@
     @weakify(self)
     [self.save setBlock:^(id weakSender) {
         @strongify(self)
+
         if ([self areMandatoryFieldsFilledOut]) {
             [[CreateLocationViewModel instance] saveEntity:self.name.text
                                                       road:self.road.text
@@ -175,26 +188,8 @@
             }];
             break;
         }
-        case CreateEntityResultCouldNotUploadFile: {
-            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"couldnotuploadfile", nil) message:nil cancelButtonTitle:NSLocalizedString(@"no", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"yes", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-                if (controller.cancelButtonIndex == buttonIndex) {
-                    [self.navigationController popViewControllerAnimated:true];
-                } else if (controller.firstOtherButtonIndex == buttonIndex) {
-                    [[CreateLocationViewModel instance] savePicture:weakSelf.image forLocation:[CreateLocationViewModel instance].createdLocation showFeedback:false onCompletion:^(CreateEntityResult result) {
-                        [self showDialog:result];
-                    }];
-                }
-            }];
-            break;
-        }
         case CreateEntityResultOk: {
-            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"ok", nil) message:NSLocalizedString(@"locationSaved", <#comment#>) cancelButtonTitle:NSLocalizedString(@"done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"addReview", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-                if (controller.cancelButtonIndex == buttonIndex) {
-                    [self.navigationController popViewControllerAnimated:true];
-                } else if (controller.firstOtherButtonIndex == buttonIndex) {
-                    [self performSegueWithIdentifier:@"CreateReview" sender:weakSelf];
-                }
-            }];
+            [self performSegueWithIdentifier:@"OpeningHours" sender:self];
             break;
         }
         case CreateEntityResultError: {
@@ -293,8 +288,6 @@
     }
 
 }
-
-#pragma mark - AutoComplete
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
 

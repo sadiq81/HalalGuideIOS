@@ -10,7 +10,10 @@
 @interface UIViewController (Extension) <UIImagePickerControllerDelegate, CTAssetsPickerControllerDelegate>
 
 @property(nonatomic, strong) NSArray *images;
+@property(readonly) UIViewController *backViewController;
 
 - (void)finishedPickingImages;
+
+- (void)popToViewControllerClass:(Class )aClass animated:(BOOL)animated;
 
 @end

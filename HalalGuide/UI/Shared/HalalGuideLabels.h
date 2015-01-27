@@ -20,3 +20,6 @@
 
 @interface HalalLabel : HalalGuideLabels
 @end
+
+@interface OpenLabel : HalalGuideLabels
+@end

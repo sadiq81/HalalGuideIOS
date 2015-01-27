@@ -33,15 +33,14 @@
     return _instance;
 }
 
-- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion {
+- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location {
 
     NSMutableArray *pictures = [NSMutableArray new];
     for (UIImage *image in images) {
         LocationPicture *picture = [self prepareImageForUpload:image forLocation:location];
         [pictures addObject:picture];
     }
-
-    [PFObject saveAllInBackground:pictures block:completion];
+    [PFObject saveAllInBackground:pictures];
 }
 
 - (LocationPicture *)prepareImageForUpload:(UIImage *)image forLocation:(Location *)location {
@@ -69,11 +68,10 @@
     return picture;
 }
 
-- (void)savePicture:(UIImage *)image forLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion {
+- (void)savePicture:(UIImage *)image forLocation:(Location *)location {
 
     LocationPicture *picture = [self prepareImageForUpload:image forLocation:location];
-
-    [picture saveInBackgroundWithBlock:completion];
+    [picture saveInBackground];
 }
 
 

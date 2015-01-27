@@ -9,6 +9,7 @@
 #import "LocationPicture.h"
 #import "HalalGuideNumberFormatter.h"
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
+#import "HalalGuideLabels.h"
 
 @implementation LocationTableViewCell {
 
@@ -34,6 +35,10 @@
     address.text = [NSString stringWithFormat:@"%@ %@", location.addressRoad, location.addressRoadNumber];
     UILabel *postalCode = (UILabel *) [self.contentView viewWithTag:203];
     postalCode.text = [NSString stringWithFormat:@"%@ %@", location.addressPostalCode, location.addressCity];
+
+    OpenLabel *open = (OpenLabel *) [self.contentView viewWithTag:207];
+    [open configureViewForLocation:location];
+
 
 }
 

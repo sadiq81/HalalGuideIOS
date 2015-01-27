@@ -9,6 +9,7 @@
 #import "ALActionBlocks.h"
 #import "LocationDetailViewModel.h"
 #import "LocationViewModel.h"
+#import "CAGradientLayer+SJSGradients.h"
 
 @implementation FrontPageViewController {
 

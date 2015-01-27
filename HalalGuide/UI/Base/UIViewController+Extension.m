@@ -38,8 +38,7 @@
     [self finishedPickingImages];
 }
 
-- (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldSelectAsset:(ALAsset *)asset
-{
+- (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldSelectAsset:(ALAsset *)asset {
     // Allow 10 assets to be picked
     return (picker.selectedAssets.count < 5);
 }
@@ -55,4 +54,26 @@
 - (void)setImages:(NSArray *)images {
     objc_setAssociatedObject(self, @selector(images), images, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
+- (UIViewController *)backViewController {
+
+    NSInteger numberOfViewControllers = self.navigationController.viewControllers.count;
+    if (numberOfViewControllers < 2)
+        return nil;
+    else
+        return [self.navigationController.viewControllers objectAtIndex:numberOfViewControllers - 2];
+}
+
+- (void)popToViewControllerClass:(Class)aClass animated:(BOOL)animated {
+
+    NSArray *viewControllers = self.navigationController.viewControllers;
+
+    for (UIViewController *controller in viewControllers) {
+        if ([controller class] == aClass) {
+            [self.navigationController popToViewController:controller animated:animated];
+        }
+    }
+
+}
+
 @end

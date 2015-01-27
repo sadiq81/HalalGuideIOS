@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HTAutocompleteTextField.h"
+#import "DCRoundSwitch.h"
 
 @interface CreateLocationViewController :UIViewController <UINavigationControllerDelegate, HTAutocompleteDataSource, UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -21,11 +22,11 @@
 @property (strong, nonatomic) IBOutlet UITextField *website;
 @property (strong, nonatomic) IBOutlet UIView *diningSwitches;
 @property (strong, nonatomic) IBOutlet UIImageView *porkImage;
-@property (strong, nonatomic) IBOutlet UISwitch *porkSwitch;
+@property (strong, nonatomic) IBOutlet DCRoundSwitch *porkSwitch;
 @property (strong, nonatomic) IBOutlet UIImageView *alcoholImage;
-@property (strong, nonatomic) IBOutlet UISwitch *alcoholSwitch;
+@property (strong, nonatomic) IBOutlet DCRoundSwitch *alcoholSwitch;
 @property (strong, nonatomic) IBOutlet UIImageView *halalImage;
-@property (strong, nonatomic) IBOutlet UISwitch *halalSwitch;
+@property (strong, nonatomic) IBOutlet DCRoundSwitch *halalSwitch;
 @property (strong, nonatomic) IBOutlet UIView *categoriesView;
 @property (strong, nonatomic) IBOutlet UILabel *categoriesText;
 @property (strong, nonatomic) IBOutlet UILabel *categoriesCount;

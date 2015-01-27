@@ -40,9 +40,8 @@
 
         completion(postnummer);
     }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //TODO Logging
-        completion(nil);
         [[ErrorReporting instance] reportError:error];
+        completion(nil);
     }];
 
 }
@@ -68,9 +67,8 @@
 
         completion(adgangsadresse);
     }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //TODO Logging
-        completion(nil);
         [[ErrorReporting instance] reportError:error];
+        completion(nil);
     }];
 }
 
@@ -111,9 +109,8 @@
         completion(addressses);
 
     }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        completion(nil);
-        //TODO Logging
         [[ErrorReporting instance] reportError:error];
+        completion(nil);
     }];
 }
 

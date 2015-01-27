@@ -160,7 +160,6 @@
             location.point = [PFGeoPoint geoPointWithLatitude:self.userChoosenLocation.latitude longitude:self.userChoosenLocation.longitude];
         }
 
-
         [[LocationService instance] saveLocation:location onCompletion:^(BOOL succeeded, NSError *error) {
 
             [SVProgressHUD dismiss];
@@ -178,10 +177,10 @@
                 self.createdLocation = location;
 
                 if (images) {
-                    [self saveMultiplePictures:images forLocation:self.createdLocation showFeedback:false onCompletion:completion];
-                } else {
-                    completion(CreateEntityResultOk);
+                    [self saveMultiplePictures:images forLocation:self.createdLocation];
                 }
+
+                completion(CreateEntityResultOk);
             }
         }];
     }];

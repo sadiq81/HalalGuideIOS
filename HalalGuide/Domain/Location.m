@@ -10,7 +10,7 @@
 
 @implementation Location
 
-@dynamic addressCity, addressPostalCode, addressRoad, addressRoadNumber, alcohol, creationStatus, distance, homePage, language, locationType, name, nonHalal, pork, submitterId, telephone, categories, point;
+@dynamic addressCity, addressPostalCode, addressRoad, addressRoadNumber, alcohol, creationStatus, distance, homePage, language, locationType, name, nonHalal, pork, submitterId, telephone, categories, point, openingHours;
 
 + (void)load {
     [self registerSubclass];
@@ -30,6 +30,20 @@
         [categoryAsString deleteCharactersInRange:NSMakeRange([categoryAsString length] - 2, 2)];
     }
     return categoryAsString;
+}
+
+- (void)setOpen:(NSDate *)open andClose:(NSDate *)close forWeekDay:(WeekDay)weekDay {
+    NSMutableDictionary *openClose = [[NSMutableDictionary alloc] initWithDictionary:self.openingHours];
+    if (open && close) {
+        [openClose setObject:@{@"open" : open, @"close" : close} forKey:DayString(weekDay)];
+    } else {
+        [openClose removeObjectForKey:DayString(weekDay)];
+    }
+    self.openingHours = openClose;
+}
+
+- (NSDictionary *)openCloseForWeekDay:(WeekDay)weekDay {
+    return [self.openingHours valueForKey:DayString(weekDay)];
 }
 
 @end

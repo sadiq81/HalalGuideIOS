@@ -19,7 +19,7 @@
             // result is a dictionary with the user's Facebook data
             NSDictionary *userData = (NSDictionary *) result;
             [[PFUser currentUser] setObject:userData forKey:@"userData"];
-            [[PFUser currentUser] saveEventually];
+            [[PFUser currentUser] saveInBackground];
 
         } else {
             completion(false, error);

@@ -98,7 +98,7 @@ static CLLocation *currentLocation;
 
         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
         currentInstallation[@"user"] = user;
-        [currentInstallation saveEventually];
+        [currentInstallation saveInBackground];
 
         if (user.isNew) {
             [PFUser storeProfileInfoForLoggedInUser:nil];
@@ -163,58 +163,23 @@ static CLLocation *currentLocation;
     [viewController presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)savePicture:(UIImage *)image forLocation:(Location *)location showFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion {
+- (void)savePicture:(UIImage *)image forLocation:(Location *)location {
 
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
+    [[PictureService instance] savePicture:image forLocation:location];
 
-    [[PictureService instance] savePicture:image forLocation:location onCompletion:^(BOOL succeeded, NSError *error) {
+    [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"imageSaved", nil)];
 
-        [SVProgressHUD dismiss];
-
-        if (error) {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(CreateEntityResultCouldNotUploadFile), nil) maskType:SVProgressHUDMaskTypeGradient];
-            [[ErrorReporting instance] reportError:error];
-            completion(CreateEntityResultCouldNotUploadFile);
-        } else {
-
-            if (show) {
-                [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"imageSaved", nil)];
-            }
-            completion(CreateEntityResultOk);
-        }
-    }];
 }
 
-- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location showFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion {
+- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location {
 
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
+    [[PictureService instance] saveMultiplePictures:images forLocation:location];
 
-    [[PictureService instance] saveMultiplePictures:images forLocation:location onCompletion:^(BOOL succeeded, NSError *error) {
-
-        [SVProgressHUD dismiss];
-
-        if (error) {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(CreateEntityResultCouldNotUploadFile), nil) maskType:SVProgressHUDMaskTypeGradient];
-            [[ErrorReporting instance] reportError:error];
-
-            if (completion) {
-                completion(CreateEntityResultCouldNotUploadFile);
-            }
-
-        } else {
-            if (show) {
-                [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"imageSaved", nil)];
-            }
-            if (completion) {
-                completion(CreateEntityResultOk);
-            }
-        }
-    }];
+    [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"imagesSaved", nil)];
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
 
 @end

@@ -31,10 +31,6 @@
 
 @synthesize locationManager;
 
-//TODO AppIcon
-//TODO AppDescription
-//TODO AppWebsite
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     //AFNetworking
@@ -64,7 +60,7 @@
     PFACL *defaultACL = [PFACL ACL];
     [defaultACL setPublicReadAccess:YES];
     [defaultACL setWriteAccess:true forRoleWithName:@"admin"];
-    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:false];
+    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:true];
 
     [PFPurchase addObserverForProduct:@"Support" block:^(SKPaymentTransaction *transaction) {
         //TODO Make some sign of user has contributed;
@@ -156,7 +152,7 @@
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     if (currentInstallation.badge != 0) {
         currentInstallation.badge = 0;
-        [currentInstallation saveEventually];
+        [currentInstallation saveInBackground];
     }
 }
 

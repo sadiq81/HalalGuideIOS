@@ -3,6 +3,9 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
+#define kMaxUploadSize 1024.0f * 1024.0f * 2.0f
+#define kMinUploadResolution 1136.0f * 640.0f
+
 #import "UIImage+Transformation.h"
 
 
@@ -39,5 +42,41 @@
     UIGraphicsEndImageContext();
 
     return img;
+}
+
+- (UIImage *)compressImage {
+
+    UIImage *img;
+    //Resize the image
+    float factor;
+    float resol = self.size.height * self.size.width;
+
+    if (resol > kMinUploadResolution) {
+        factor = sqrt(resol / kMinUploadResolution) * 2;
+        img = [self scaleDown:img withSize:CGSizeMake(img.size.width / factor, img.size.height / factor)];
+    }
+
+    //Compress the image
+    CGFloat compression = 0.9f;
+    CGFloat maxCompression = 0.1f;
+
+    NSData *imageData = UIImageJPEGRepresentation(img, compression);
+
+    while ([imageData length] > kMaxUploadSize && compression > maxCompression) {
+        compression -= 0.10;
+        imageData = UIImageJPEGRepresentation(img, compression);
+        NSLog(@"Compress : %lu", (unsigned long)imageData.length);
+    }
+    return img;
+}
+
+- (UIImage *)scaleDown:(UIImage *)img withSize:(CGSize)newSize {
+
+    UIGraphicsBeginImageContextWithOptions(newSize, YES, 0.0);
+    [img drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return scaledImage;
 }
 @end

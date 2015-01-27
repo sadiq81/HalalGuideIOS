@@ -11,7 +11,7 @@
 #import "BaseEntity.h"
 #import <MapKit/MapKit.h>
 
-//TODO Add multinational, ethiopian, arabic, sisha
+//TODO Add multinational, ethiopian, sisha
 typedef enum DiningCategory : int16_t {
     DiningCategoryAfghan = 0, DiningCategoryAfrican = 1, DiningCategoryAmerican = 2, DiningCategoryArgentine = 3,
     DiningCategoryAsian = 4, DiningCategoryBelgian = 5, DiningCategoryBrazilian = 6, DiningCategoryBritish = 7,
@@ -53,6 +53,26 @@ typedef enum DiningCategory : int16_t {
 
 #define kLocationTableName @"Location"
 
+typedef enum WeekDay : int16_t {
+
+    WeekDayMonday = 0,
+    WeekDayTuesday = 1,
+    WeekDayWednesday = 2,
+    WeekDayThursday = 3,
+    WeekDayFriday = 4,
+    WeekDaySaturday = 5,
+    WeekDaySunday = 6
+} WeekDay;
+
+
+#define DayString(enum) [@{@(WeekDaySunday) : @"sunday",\
+@(WeekDayMonday) : @"monday",\
+@(WeekDayTuesday) : @"tuesday",\
+@(WeekDayWednesday) : @"wednesday",\
+@(WeekDayThursday) : @"thursdag",\
+@(WeekDayFriday) : @"friday",\
+@(WeekDaySaturday) :@"saturday",}  objectForKey :@(enum)]
+
 @interface Location : BaseEntity
 
 @property(nonatomic, retain) NSString *addressCity;
@@ -73,7 +93,13 @@ typedef enum DiningCategory : int16_t {
 @property(nonatomic, retain) NSString *telephone;
 @property(nonatomic, retain) NSArray *categories;
 
+@property(nonatomic, retain) NSDictionary *openingHours;
+
 - (NSString *)categoriesString;
+
+- (void)setOpen:(NSDate *)open andClose:(NSDate *)close forWeekDay:(WeekDay)weekDay;
+
+- (NSDictionary *)openCloseForWeekDay:(WeekDay)weekDay;
 
 @end
 

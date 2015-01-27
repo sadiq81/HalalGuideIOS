@@ -96,7 +96,7 @@
 - (void)finishedPickingImages {
     [super finishedPickingImages];
 
-    [[LocationDetailViewModel instance] saveMultiplePictures:self.images forLocation:[LocationDetailViewModel instance].location showFeedback:true onCompletion:nil];
+    [[LocationDetailViewModel instance] saveMultiplePictures:self.images forLocation:[LocationDetailViewModel instance].location];
 }
 
 #pragma mark - CollectionView

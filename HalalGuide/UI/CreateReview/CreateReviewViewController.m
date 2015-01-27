@@ -8,11 +8,14 @@
 
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <UIAlertController+Blocks/UIAlertController+Blocks.h>
 #import "CreateReviewViewController.h"
 #import "EDStarRating.h"
 #import "LocationViewController.h"
 #import "LocationDetailViewController.h"
 #import "CreateReviewViewModel.h"
+#import "UIViewController+Extension.h"
+#import "OpeningsHoursViewController.h"
 
 @interface CreateReviewViewController ()
 
@@ -20,18 +23,49 @@
 
 @implementation CreateReviewViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     [self setupRating];
     [self setupReview];
 
+    [self setupUI];
+
+   [self setupEvents];
+
+}
+
+-(void) setupEvents{
+
     __weak typeof(self) weakSelf = self;
+
     [self.regret setBlock:^(id weakSender) {
         [weakSelf finished];
     }];
 
     [self.save setBlock:^(id weakSender) {
+
+        //TODO Bad flow
+        if (![weakSelf areMandatoryDataFilled]) {
+
+            if ([weakSelf.backViewController class] == [LocationDetailViewController class]) {
+                [UIAlertController showAlertInViewController:weakSelf withTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"reviewMinimum", nil) cancelButtonTitle:NSLocalizedString(@"ok", nil) destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+                return;
+            } else {
+
+                if (weakSelf.rating.rating > 0) {
+                    [UIAlertController showAlertInViewController:weakSelf withTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"reviewMinimum", nil) cancelButtonTitle:NSLocalizedString(@"ok", nil) destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+                    return;
+                } else {
+                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"locationSaved", nil)];
+                    [weakSelf finished];
+                    return;
+                }
+            }
+        }
+
         [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
 
         [[CreateReviewViewModel instance] saveEntity:weakSelf.review.text rating:(int) weakSelf.rating.rating onCompletion:^(CreateEntityResult result) {
@@ -39,35 +73,46 @@
             dispatch_async(dispatch_get_main_queue(), ^{
 
                 [SVProgressHUD dismiss];
+
                 if (result != CreateEntityResultOk) {
                     [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(result), nil) maskType:SVProgressHUDMaskTypeGradient];
                     return;
                 } else {
 
-                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"reviewSaved", nil)];
+                    if ([weakSelf.backViewController class] == [LocationDetailViewController class]) {
+                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"reviewSaved", nil)];
+                    } else {
+                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"locationSaved", nil)];
+                    }
+
                     [weakSelf finished];
                 }
             });
         }];
     }];
-
 }
 
--(void) finished{
+-(void) setupUI{
 
-    //TODO Bad design
-    NSArray *controllers = self.navigationController.viewControllers;
-    for (int i = (int ) [controllers count] - 1; i >= 0; i--) {
-        UIViewController *controller = [controllers objectAtIndex:i];
-        if ([controller class] == [LocationViewController class]) {
-            [self.navigationController popToViewController:controller animated:true];
-            return;
-        } else if ([controller class] == [LocationDetailViewController class]) {
-            [self.navigationController popToViewController:controller animated:true];
-            return;
-        }
+    if ([self.backViewController class] == [OpeningsHoursViewController class]) {
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.hidesBackButton = YES;
+    } else {
+        [self.navigationItem.rightBarButtonItem setTitle:NSLocalizedString(@"save", nil)];
     }
-    [self.navigationController popToRootViewControllerAnimated:true];
+}
+
+- (BOOL)areMandatoryDataFilled {
+    return [self.review.text length] > 30 && self.rating.rating > 0;
+}
+
+- (void)finished {
+
+    if ([self.backViewController class] == [LocationDetailViewController class]) {
+        [self.navigationController popToViewController:self.backViewController animated:true];
+    } else {
+        [self popToViewControllerClass:[LocationViewController class] animated:true];
+    }
 }
 
 - (void)setupRating {
@@ -80,6 +125,9 @@
     self.rating.editable = YES;
     self.rating.displayMode = EDStarRatingDisplayFull;
 
+    if ([self.backViewController class] == [LocationDetailViewController class]) {
+        self.rating.rating = 1;
+    }
 }
 
 - (void)setupReview {

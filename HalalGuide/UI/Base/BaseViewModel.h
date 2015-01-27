@@ -46,9 +46,9 @@ static WaitCompletionBlock waitFor = ^void(NSTimeInterval duration, WaitCompleti
 
 - (void)getPicture:(UIViewController<UINavigationControllerDelegate> *)viewController ;
 
-- (void)savePicture:(UIImage *)image forLocation:(Location *)location showFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion;
+- (void)savePicture:(UIImage *)image forLocation:(Location *)location ;
 
-- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location showFeedback:(BOOL)show onCompletion:(void (^)(CreateEntityResult result))completion;
+- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location;
 
 
 @end

@@ -75,6 +75,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "wok" = "Wok";
 
 "ok" = "Ok";
+"save"= "Gem";
 "done" = "Færdig";
 "addReview" = "Tilføj anmeldelse";
 "regret" = "Fortryd";
@@ -93,6 +94,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "addressdoesnotexists" = "Adressen findes ikke ";
 "error" = "Ukendt fejl";
 "errorText" = "Der skete en ukendt fejl, prøv igen senere.";
+"reviewMinimum" = "En anmeldelse skal minimum være på 30 tegn";
 
 "awaiting" = "Venter godkendelse";
 "approved" = "Godkendt";
@@ -123,6 +125,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "reviewSaved" = "Din anmeldelse er gemt, og afventer godkendelse";
 "locationSaved" = "Dit forslag er indsendt til godkendelse";
 "imageSaved" = "Dit billede er indsendt til godkendelse";
+"imagesSaved" = "Dine billeder er indsendt til godkendelse";
 "estimatingAddress" = "Gætter din adresse";
 "invalidAddress" = "Ikke en gyldig adresse";
 "GPSNotPreciseEnough" = "GPS punkt for adressen er upræcist, vil du selv vælge den på kortet?";
@@ -205,3 +208,12 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "seconds" = "sekunder";
 "second" = "sekund";
 
+"sunday" ="Søndag";
+"monday"="Mandag";
+"tuesday"="Tirsdag";
+"wednesday"="Onsdag";
+"thursdag"="Torsdag";
+"friday"="Fredag";
+"saturday"="Lørdag";
+"closed"= "Lukket";
+"open"= "Åben";
