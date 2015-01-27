@@ -179,9 +179,13 @@
 
 
     }];
-
-
 }
+
+- (void)setLocationType:(LocationType)locationType1 {
+    self.searchText = @"";
+    locationType = locationType1;
+}
+
 
 - (NSUInteger)numberOfLocations {
     return [self.locations count];
