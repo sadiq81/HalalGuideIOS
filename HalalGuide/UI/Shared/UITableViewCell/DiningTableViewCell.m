@@ -4,7 +4,6 @@
 //
 
 #import <ParseUI/ParseUI.h>
-#import <CMPopTipView/CMPopTipView.h>
 #import <IQKeyboardManager/IQUIView+Hierarchy.h>
 #import "DiningTableViewCell.h"
 #import "HalalGuideImageViews.h"
@@ -15,7 +14,7 @@
 #import "HalalGuideLabels.h"
 #import "HalalGuideOnboarding.h"
 #import "UIView+Extensions.h"
-#import "UITableViewCell+Extension.h"
+
 
 @implementation DiningTableViewCell {
 
@@ -25,14 +24,11 @@
     [super configure:location];
 
 
-    PorkImageView *pork = (PorkImageView *) [self.contentView viewWithTag:102];
-    [pork configureViewForLocation:location];
+    [self.porkImageView configureViewForLocation:location];
 
-    AlcoholImageView *alcohol = (AlcoholImageView *) [self.contentView viewWithTag:103];
-    [alcohol configureViewForLocation:location];
+    [self.alcoholImageView configureViewForLocation:location];
 
-    HalalImageView *halal = (HalalImageView *) [self.contentView viewWithTag:104];
-    [halal configureViewForLocation:location];
+    [self.halalImageView configureViewForLocation:location];
 
     PorkLabel *porkLabel = (PorkLabel *) [self.contentView viewWithTag:204];
     [porkLabel configureViewForLocation:location];
@@ -45,42 +41,6 @@
 
 
 }
-
-- (void)showToolTip {
-
-    self.contentView.clipsToBounds = false;
-
-    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPorkOnBoardingKey]) {
-
-        [self displayTipViewFor:[self porkImageView] withHintKey:kDiningCellPorkOnBoardingKey withDelegate:self];
-
-    } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellAlcoholOnBoardingKey]) {
-
-        [self displayTipViewFor:[self alcoholImageView] withHintKey:kDiningCellAlcoholOnBoardingKey withDelegate:self];
-
-    } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellHalalOnBoardingKey]) {
-
-        [self displayTipViewFor:[self halalImageView] withHintKey:kDiningCellHalalOnBoardingKey withDelegate:self];
-
-    }
-}
-
-- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView {
-
-    if (popTipView.targetObject == [self porkImageView]) {
-
-        if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellAlcoholOnBoardingKey]) {
-            [self displayTipViewFor:[self alcoholImageView] withHintKey:kDiningCellAlcoholOnBoardingKey withDelegate:self];
-        }
-
-    } else if (popTipView.targetObject == [self alcoholImageView]) {
-
-        if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellHalalOnBoardingKey]) {
-            [self displayTipViewFor:[self halalImageView] withHintKey:kDiningCellHalalOnBoardingKey withDelegate:self];
-        }
-    }
-}
-
 
 - (PorkImageView *)porkImageView {
     return (PorkImageView *) [self.contentView viewWithTag:102];

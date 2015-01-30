@@ -8,30 +8,34 @@
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "BaseViewModel.h"
 #import "LocationViewController.h"
 #import "DiningTableViewCell.h"
 #import "UIView+Extensions.h"
-#import "UIBarButtonItem+Extension.h"
 #import "LocationDetailViewModel.h"
-#import "CMPopTipView.h"
 #import "HalalGuideOnboarding.h"
 #import "RACSignal.h"
 #import "CreateLocationViewModel.h"
 #import "CategoriesViewController.h"
-#import "UITableViewCell+Extension.h"
 #import "MKMapView+Extension.h"
 #import "PictureService.h"
 #import "LocationPicture.h"
 #import "LocationAnnotation.h"
-#import "MKAnnotationView+WebCache.h"
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "LocationAnnotationView.h"
+#import "UIViewController+Extension.h"
+#import "UIImage+ScreenShot.h"
+#import "UIImage+Transformation.h"
+#import "UIImage+ImageEffects.h"
+#import "UIImage+RoundedCorner.h"
+#import "UIImage+Combine.h"
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation LocationViewController {
     NSString *priorSearchText;
     BOOL firstShown;
+    UIImageView *tipView;
 }
 
 @synthesize tableViewController, diningTableView, refreshControl, bottomRefreshControl, filter, toolbar;
@@ -56,8 +60,11 @@
                         }];
     }];
 
-    //self.navigationItem.title = NSLocalizedString(LocationTypeString([LocationViewModel instance].locationType), nil);
+    //Used for onBoarding
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hudDismissed:) name:SVProgressHUDDidDisappearNotification object:nil];
+
 }
+
 
 - (void)dealloc {
     [[LocationViewModel instance] reset];
@@ -69,13 +76,12 @@
         [self.diningTableView setContentOffset:CGPointMake(0, 44) animated:true];
     }
 
-    [self setupHints];
-    firstShown = true;
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.bottomRefreshControl endRefreshing];
+
 }
 
 #pragma mark SearchBar
@@ -114,32 +120,49 @@
 
 #pragma mark OnBoarding
 
-- (void)setupHints {
+- (void)hudDismissed:(NSNotification *)notification {
 
-    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kAddNewOnBoardingButtonKey]) {
-
-        [self.navigationItem.rightBarButtonItem showOnBoardingWithHintKey:kAddNewOnBoardingButtonKey withDelegate:self];
-
-    } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
-
-        [self.filter showOnBoardingWithHintKey:kFilterOnBoardingButtonKey withDelegate:self];
-
+    if (!firstShown) {
+        [self setupHints];
     }
 }
 
-- (void)popTipViewWasDismissedByUser:(CMPopTipView *)popTipView {
+- (void)setupHints {
+    UIImage *image = [UIImage snapshot];
+    UIView *buttonView = [self.addButton valueForKey:@"view"];
+    CGRect buttonViewAbsolute = [buttonView convertRect:buttonView.bounds toView:nil];
+    UIImage *cropped = [image crop:buttonViewAbsolute];
+    UIImage *button = [UIImage makeRoundedImage:cropped radius:fmaxf(cropped.size.height, cropped.size.width) / 2];
+    UIImage *blurred = [image applyBlurWithRadius:3 tintColor:[UIColor colorWithWhite:0.44 alpha:0.53] saturationDeltaFactor:1.5 maskImage:nil];
 
-    if (popTipView.targetObject == self.navigationItem.rightBarButtonItem) {
-        [self.filter showOnBoardingWithHintKey:kFilterOnBoardingButtonKey withDelegate:self];
-    }
+    UIImage *combined = [blurred drawImage:button InRect:buttonViewAbsolute];
+    UIImage *final = [combined crop:CGRectMake(0, 20, image.size.width, image.size.height)];
 
-    else if (popTipView.targetObject == self.filter) {
+    tipView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height + 44)];
+    [tipView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissTipView:)]];
+    tipView.userInteractionEnabled = true;
+    tipView.alpha = 0.0;
+    tipView.image = final;
 
-        LocationTableViewCell *cell = (LocationTableViewCell *) [[self.diningTableView visibleCells] firstObject];
-        if ([cell class] == [DiningTableViewCell class]) {
-            [((DiningTableViewCell *) cell) showToolTip];
-        }
-    }
+    [[UIApplication sharedApplication].keyWindow addSubview:tipView];
+
+    [UIView animateWithDuration:0.5 animations:^{
+        tipView.alpha = 1.0;
+    }];
+
+
+#warning implement
+
+}
+
+- (void)dismissTipView:(UIGestureRecognizer *)recognizer {
+    [UIView animateWithDuration:0.5 animations:^{
+        tipView.alpha = 0.0;
+    }                completion:^(BOOL finished) {
+        [tipView removeFromSuperview];
+    }];
+
+
 }
 
 #pragma mark - Navigation
@@ -227,16 +250,6 @@
 
     [cell configure:location];
 
-    if ([cell class] == [DiningTableViewCell class]) {
-        //If onBoarding was dismissed before cells where displayed
-        if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPorkOnBoardingKey] && [[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
-            [((DiningTableViewCell *) cell) showToolTip];
-        }
-
-        if (indexPath.row == 19 && ![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPullToShowMoreKey]) {
-            [self.toolbar showOnBoardingWithHintKey:kDiningCellPullToShowMoreKey withDelegate:nil];
-        }
-    }
     return cell;
 }
 

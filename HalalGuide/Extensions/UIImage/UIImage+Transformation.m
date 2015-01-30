@@ -65,7 +65,7 @@
     while ([imageData length] > kMaxUploadSize && compression > maxCompression) {
         compression -= 0.10;
         imageData = UIImageJPEGRepresentation(img, compression);
-        NSLog(@"Compress : %lu", (unsigned long)imageData.length);
+        NSLog(@"Compress : %lu", (unsigned long) imageData.length);
     }
     return img;
 }
@@ -79,4 +79,42 @@
 
     return scaledImage;
 }
+
+- (UIImage *)crop:(CGRect)rect {
+
+    if (self.scale > 1.0f) {
+        rect = CGRectMake(rect.origin.x * self.scale,
+                rect.origin.y * self.scale,
+                rect.size.width * self.scale,
+                rect.size.height * self.scale);
+    }
+
+    CGImageRef imageRef = CGImageCreateWithImageInRect(self.CGImage, rect);
+    UIImage *result = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:self.imageOrientation];
+    CGImageRelease(imageRef);
+    return result;
+}
+
+- (UIImage *)cropCircular:(CGRect)rect {
+
+    float a = rect.size.width / 2;
+    float b = rect.size.height / 2;
+    float c = sqrtf(powf(a, 2) + powf(b, 2));
+    rect = CGRectInset(rect, -(c - a), -(c - b));
+
+    if (self.scale > 1.0f) {
+        rect = CGRectMake(rect.origin.x * self.scale,
+                rect.origin.y * self.scale,
+                rect.size.width * self.scale,
+                rect.size.height * self.scale);
+
+    }
+
+    CGImageRef imageRef = CGImageCreateWithImageInRect(self.CGImage, rect);
+    UIImage *result = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:self.imageOrientation];
+    CGImageRelease(imageRef);
+    return result;
+}
+
+
 @end

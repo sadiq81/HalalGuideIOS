@@ -64,7 +64,7 @@
 
     //TODO Position in view is off
     if ([[HalalGuideOnboarding instance] wasOnBoardingShow:kManuelGPSPositionKey]) {
-        [mapPin showOnBoardingWithHintKey:kManuelGPSPositionKey withDelegate:nil superView:mapView];
+        #warning implement
     }
 
     return mapPin;

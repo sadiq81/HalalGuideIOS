@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="WrF-f3-RcI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="WrF-f3-RcI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -631,7 +631,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Navn" minimumFontSize="17" id="Geq-xg-rWm">
-                                                <rect key="frame" x="121.00000052481278" y="20" width="187" height="30"/>
+                                                <rect key="frame" x="121.00000016829549" y="20" width="187" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
@@ -640,7 +640,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vej" minimumFontSize="17" id="LGW-5Q-Byj" customClass="HTAutocompleteTextField">
-                                                <rect key="frame" x="120.99999796600798" y="58" width="132" height="30"/>
+                                                <rect key="frame" x="121" y="58" width="132" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -1124,12 +1124,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" id="Gza-tS-Krp" customClass="EDStarRating">
-                                            <rect key="frame" x="160.00000034344038" y="8" width="152" height="25"/>
+                                            <rect key="frame" x="160.00000036479483" y="8" width="152" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vKB-gc-7l7">
-                                            <rect key="frame" x="8" y="34" width="304.00000034344038" height="47"/>
+                                            <rect key="frame" x="8" y="34" width="304.00000036479486" height="47"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1594,7 +1594,7 @@
                     <navigationItem key="navigationItem" id="MTE-f2-NTn">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="lxE-7c-6hR">
-                            <rect key="frame" x="60" y="8" width="200" height="29"/>
+                            <rect key="frame" x="60" y="7.5" width="200" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Liste"/>
@@ -1609,6 +1609,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="DiningTableView" destination="dHn-qf-Xtv" id="yDl-yU-6RB"/>
+                        <outlet property="addButton" destination="vfc-8s-iMb" id="n5X-AH-XuM"/>
                         <outlet property="diningTableView" destination="dHn-qf-Xtv" id="ipJ-MB-VuA"/>
                         <outlet property="filter" destination="8In-1P-wFx" id="Z35-Cg-UBi"/>
                         <outlet property="mapView" destination="UFx-18-m3K" id="UYM-bd-nxU"/>
@@ -1811,9 +1812,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lgj-e5-fFF"/>
-        <segue reference="bZb-Q1-MzK"/>
         <segue reference="Agj-FH-MAf"/>
+        <segue reference="SPP-c5-EFI"/>
+        <segue reference="lgj-e5-fFF"/>
         <segue reference="0rB-JO-B8E"/>
     </inferredMetricsTieBreakers>
 </document>

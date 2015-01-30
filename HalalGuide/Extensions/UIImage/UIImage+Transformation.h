@@ -14,4 +14,8 @@
 
 - (UIImage *)scaleDown:(UIImage *)img withSize:(CGSize)newSize;
 
+- (UIImage *)crop:(CGRect)rect;
+
+- (UIImage *)cropCircular:(CGRect)rect;
+
 @end

@@ -25,14 +25,12 @@ PODS:
   - CCBottomRefreshControl (0.3.0):
     - ReactiveCocoa
     - UIView+TKGeometry
-  - CMPopTipView (2.2.0)
   - CTAssetsPickerController (2.8.0)
   - DCKeyValueObjectMapping (1.4)
   - DCRoundSwitch (0.0.1)
   - EDStarRating (1.1)
   - Facebook-iOS-SDK (3.22.0):
     - Bolts (~> 1.0)
-  - hpple (0.2.0)
   - HTAutocompleteTextField (1.3.1)
   - iCarousel (1.8.1)
   - IQKeyboardManager (3.2.0.2)
@@ -99,13 +97,11 @@ DEPENDENCIES:
   - AFNetworking (= 2.5.0)
   - ALActionBlocks (= 1.0.3)
   - CCBottomRefreshControl
-  - CMPopTipView
   - CTAssetsPickerController
   - DCKeyValueObjectMapping
   - DCRoundSwitch
   - EDStarRating
   - Facebook-iOS-SDK (~> 3.21)
-  - hpple
   - HTAutocompleteTextField (= 1.3.1)
   - iCarousel
   - IQKeyboardManager (= 3.2.0.2)
@@ -124,13 +120,11 @@ SPEC CHECKSUMS:
   ALActionBlocks: 6a899107d2def997caae8de46d82c8fa2421987e
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   CCBottomRefreshControl: 0dd3b0d9d50a36586495d183a0662fb1d0025579
-  CMPopTipView: f731ea93316c4f964d3d5d8e71b4ba0ae30bf5a4
   CTAssetsPickerController: 32b02079e2dd41c76fbc63740f4638ced71b7d1b
   DCKeyValueObjectMapping: c3561709f296ddffba7768a9d7ccf234307fd3c9
   DCRoundSwitch: df465861ed880ee8d3c44ac8d3459faf1abaa6a9
   EDStarRating: c7b87f9866be0ea29bb054964023b8eb3f18286c
   Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
-  hpple: f4eb7c21a8db83ec264e5d614ec7509e10e5adec
   HTAutocompleteTextField: 1212d1d40c4e8d0ae6508be6faca738fb2919732
   iCarousel: 5acab560f10dc13da2440c89f35a0ad278b5147d
   IQKeyboardManager: f30f3e98fa36ca1599042c9d0cea2fb4f4ac3df9

@@ -5,8 +5,7 @@
 
 #import <objc/runtime.h>
 #import "UIViewController+Extension.h"
-#import "FrontPageViewModel.h"
-#import "NSObject+MethodExchange.h"
+#import "UIImage+Transformation.h"
 
 
 @implementation UIViewController (Extension)
@@ -73,7 +72,9 @@
             [self.navigationController popToViewController:controller animated:animated];
         }
     }
-
 }
+
+
+
 
 @end

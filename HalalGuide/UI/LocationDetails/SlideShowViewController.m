@@ -45,11 +45,6 @@
 
     [(UIImageView *) view setImageWithURL:[[NSURL alloc] initWithString:picture.picture.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
-
-    if ([[LocationDetailViewModel instance].locationPictures count] > 1 && ![[HalalGuideOnboarding instance] wasOnBoardingShow:kSlideShowViewSwipeToViewMoreKey]) {
-        [view showOnBoardingWithHintKey:kSlideShowViewSwipeToViewMoreKey withDelegate:nil];
-    }
-
     //TODO Adjust frame so that portrait and landspace pictures are both max height
     return view;
 }

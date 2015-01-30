@@ -55,7 +55,7 @@
 
 - (void)onBoarding {
     if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kCreateLocationPickImageOnBoardingKey]) {
-        [self.pickImage showOnBoardingWithHintKey:kCreateLocationPickImageOnBoardingKey withDelegate:nil];
+        #warning implement
     }
 }
 

@@ -145,7 +145,9 @@
         [self.headerView.address addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
 
         if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningDetailAddressTelephoneOptionsOnBoardingKey]) {
-            [self.headerView.address showOnBoardingWithHintKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey withDelegate:nil];
+
+#warning implement
+
         }
 
         self.headerView.distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:loc.distance];

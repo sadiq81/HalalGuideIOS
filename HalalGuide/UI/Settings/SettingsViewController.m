@@ -12,7 +12,6 @@
 #import "HalalGuideOnboarding.h"
 #import "UIView+Extensions.h"
 #import "UIAlertController+Blocks.h"
-#import "UITableViewCell+Extension.h"
 
 @implementation SettingsViewController {
 
@@ -65,7 +64,7 @@
 - (void)onBoarding {
 
     if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kSupportOnBoardingKey]) {
-        [self.support displayTipViewFor:self.restorePurchases withHintKey:kSupportOnBoardingKey withDelegate:nil];
+        #warning implement
     }
 
 }

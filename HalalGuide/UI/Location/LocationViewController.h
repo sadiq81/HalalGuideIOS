@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CMPopTipView/CMPopTipView.h>
+#import <MapKit/MapKit.h>
 #import "LocationViewModel.h"
 
-@interface LocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, CMPopTipViewDelegate, UISearchBarDelegate, MKMapViewDelegate>
+@interface LocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DiningViewModelDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property(strong, nonatomic) IBOutlet UITableView *diningTableView;
 @property(strong, nonatomic) UITableViewController *tableViewController;
 @property(strong, nonatomic) UIRefreshControl *refreshControl;
