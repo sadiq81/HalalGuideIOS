@@ -6,6 +6,8 @@
 #import <Foundation/Foundation.h>
 #import "Location.h"
 
+@class RACSignal;
+
 
 @interface LocationService : NSObject
 + (LocationService *)instance;

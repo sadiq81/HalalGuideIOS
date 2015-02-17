@@ -6,16 +6,29 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "CTAssetsPickerController.h"
+#import "JGProgressHUD.h"
+#import "SVProgressHUD.h"
+
+typedef enum HintPosition : int16_t {
+    HintPositionAbove = 0,
+    HintPositionRight = 1,
+    HintPositionBelow = 3,
+    HintPositionLeft = 4
+} HintPosition;
 
 @interface UIViewController (Extension) <UIImagePickerControllerDelegate, CTAssetsPickerControllerDelegate>
 
 @property(nonatomic, strong) NSArray *images;
 @property(readonly) UIViewController *backViewController;
 
+- (NSString *)percentageString:(float)progress;
+
 - (void)finishedPickingImages;
 
-- (void)popToViewControllerClass:(Class )aClass animated:(BOOL)animated;
+- (void)popToViewControllerClass:(Class)aClass animated:(BOOL)animated;
 
+- (void)hintWasDismissedByUser:(NSString *)hintKey;
 
+- (void)displayHintForView:(UIView *)viewWithHint withHintKey:(NSString *)hintKey preferedPositionOfText:(HintPosition)position;
 
 @end

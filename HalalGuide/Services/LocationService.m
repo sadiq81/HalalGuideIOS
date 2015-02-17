@@ -5,6 +5,7 @@
 
 #import "LocationService.h"
 #import "HalalGuideSettings.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 
 @implementation LocationService {

@@ -13,4 +13,10 @@
 
 @interface DiningTableViewCell : LocationTableViewCell
 
+- (PorkImageView *)porkImageView;
+
+- (AlcoholImageView *)alcoholImageView;
+
+- (HalalImageView *)halalImageView;
+
 @end

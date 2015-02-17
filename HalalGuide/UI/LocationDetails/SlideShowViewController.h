@@ -6,8 +6,11 @@
 #import <Foundation/Foundation.h>
 #import <iCarousel/iCarousel.h>
 
+@class LocationDetailViewModel;
+
 
 @interface SlideShowViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
 @property(strong, nonatomic) IBOutlet iCarousel *iCarousel;
+@property(strong, nonatomic) LocationDetailViewModel *viewModel;
 
 @end

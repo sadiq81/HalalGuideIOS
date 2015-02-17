@@ -3,7 +3,6 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#import <SVProgressHUD/SVProgressHUD.h>
 #import "ENumberViewController.h"
 #import "ENumber.h"
 
@@ -21,7 +20,8 @@
 
 }
 - (void)webViewDidStartLoad:(UIWebView *)theWebView{
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeNone];
+    [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"fetching", nil)];
+
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView {

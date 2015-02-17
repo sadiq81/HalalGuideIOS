@@ -20,16 +20,25 @@
 #import "IQUIWindow+Hierarchy.h"
 #import "LocationPicture.h"
 #import "RACTuple.h"
+#import "FrontPageViewController.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
-#import <ParseCrashReporting/ParseCrashReporting.h>
+
 
 @interface AppDelegate ()
 
+@property(strong, nonatomic) UINavigationController *navigationController;
+
 @end
+
+/*
+
+
+
+*/
 
 @implementation AppDelegate
 
-@synthesize locationManager;
+@synthesize locationManager, navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
@@ -50,9 +59,6 @@
     //[[LocationService instance] createDummyData];
 
     //Configure Parse
-#if !DEBUG
-    [ParseCrashReporting enable];
-#endif
     //[Parse enableLocalDatastore]; //TODO
 
     [Parse setApplicationId:@"7CtuNVHBGEdqFlvUyn2PQCG9R04dwIOyPpIVr7NA" clientKey:@"CWDZXIOhNHvEcrRSRN9gyAJlSEU4nPLfRf3Np47T"];
@@ -91,6 +97,12 @@
         }
     }
 #endif
+
+    //Setup ViewModel
+    self.navigationController = (UINavigationController *) self.window.rootViewController;
+    FrontPageViewController *viewController = [self.navigationController.viewControllers objectAtIndex:0];
+    viewController.viewModel = [[FrontPageViewModel alloc] init];
+
     return YES;
 }
 
@@ -115,18 +127,14 @@
 }
 
 - (void)startStandardUpdates {
-    // Create the location manager if this object does not
-    // already have one.
-    if (nil == locationManager)
-        locationManager = [[CLLocationManager alloc] init];
-
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    [locationManager requestWhenInUseAuthorization];
-    // Set a movement threshold for new events.
-    locationManager.distanceFilter = 500; // meters
-
-    [locationManager startUpdatingLocation];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    self.locationManager.distanceFilter = 500;
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
@@ -135,7 +143,7 @@
     NSDate *eventDate = currentLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     if (abs(howRecent) < 15.0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kCLLocationManagerDidUpdateLocations object:self userInfo:@{kCurrentLocation : currentLocation}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"locationManager:didUpdateLocations" object:self userInfo:@{@"lastObject" : currentLocation}];
     }
 }
 

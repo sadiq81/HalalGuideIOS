@@ -2,16 +2,12 @@
 // Created by Privat on 13/12/14.
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
-#define kReviewCellIdentifer @"ReviewCell"
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "Review.h"
+#import "EDStarRating.h"
 
-@class EDStarRating;
-@class Review;
-
-
-@interface ReviewCell : UICollectionViewCell
+@interface ReviewCell : UITableViewCell
 
 @property (strong) IBOutlet UIImageView *profileImage;
 @property (strong) IBOutlet UILabel *submitterName;

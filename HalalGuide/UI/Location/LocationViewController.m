@@ -7,161 +7,143 @@
 //
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 #import "BaseViewModel.h"
 #import "LocationViewController.h"
 #import "DiningTableViewCell.h"
-#import "UIView+Extensions.h"
 #import "LocationDetailViewModel.h"
-#import "HalalGuideOnboarding.h"
-#import "RACSignal.h"
 #import "CreateLocationViewModel.h"
-#import "CategoriesViewController.h"
 #import "MKMapView+Extension.h"
-#import "PictureService.h"
-#import "LocationPicture.h"
 #import "LocationAnnotation.h"
-#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "LocationAnnotationView.h"
-#import "UIViewController+Extension.h"
-#import "UIImage+ScreenShot.h"
-#import "UIImage+Transformation.h"
-#import "UIImage+ImageEffects.h"
-#import "UIImage+RoundedCorner.h"
-#import "UIImage+Combine.h"
-#import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "HalalGuideOnboarding.h"
+#import "AppDelegate.h"
+#import "FilterLocationViewController.h"
+#import "LocationDetailViewController.h"
+#import "CreateLocationViewController.h"
 
 @implementation LocationViewController {
-    NSString *priorSearchText;
-    BOOL firstShown;
-    UIImageView *tipView;
 }
 
-@synthesize tableViewController, diningTableView, refreshControl, bottomRefreshControl, filter, toolbar;
+@synthesize tableViewController, diningTableView, filter, toolbar, viewModel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupViewModel];
+    [self setupSegmentedController];
+    [self setupSearchBar];
+
     [self configureTableView];
     [self configureMapView];
-    [[LocationViewModel instance] refreshLocations:true];
-    [LocationViewModel instance].delegate = self;
-
-    [self.segmentControl handleControlEvents:UIControlEventValueChanged withBlock:^(UISegmentedControl *weakSender) {
-        UIView *fromView = weakSender.selectedSegmentIndex == 0 ? self.mapView : self.tableView;
-        UIView *toView = weakSender.selectedSegmentIndex == 0 ? self.tableView : self.mapView;
-        [LocationViewModel instance].locationPresentation = weakSender.selectedSegmentIndex;
-
-        [UIView transitionFromView:fromView toView:toView
-                          duration:1.0
-                           options:UIViewAnimationOptionTransitionFlipFromLeft
-                        completion:^(BOOL finished) {
-                            [self updateMap:self.mapView];
-                        }];
-    }];
-
-    //Used for onBoarding
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hudDismissed:) name:SVProgressHUDDidDisappearNotification object:nil];
-
-}
-
-
-- (void)dealloc {
-    [[LocationViewModel instance] reset];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-
-    if ((self.searchBar.text == nil || [self.searchBar.text length] == 0) && !firstShown) {
-        [self.diningTableView setContentOffset:CGPointMake(0, 44) animated:true];
-    }
-
+    [super viewDidAppear:animated];
+    [self setupHints];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.bottomRefreshControl endRefreshing];
+#pragma mark - ViewModel changes
 
-}
+- (void)setupViewModel {
 
-#pragma mark SearchBar
+    @weakify(self)
+    [[RACObserve(self.viewModel, fetchCount) throttle:0.5] subscribeNext:^(NSNumber *fetching) {
+        @strongify(self)
+        if (fetching.intValue == 0) {
+            [SVProgressHUD dismiss];
+        } else if (fetching.intValue == 1 && !self.diningTableView.headerLoadingIndicator.isAnimating && !self.diningTableView.footerLoadingIndicator.isAnimating) {
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeNone];
+        }
+    }];
 
-- (void)searchBar:(UISearchBar *)aSearchBar textDidChange:(NSString *)searchText {
+    [[RACObserve(self.viewModel, error) throttle:0.5] subscribeNext:^(NSError *error) {
+        if (error) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"error", nil)];
+        }
+    }];
 
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateSearch:) object:priorSearchText];
+    RACSignal *locations = RACObserve(self.viewModel, listLocations);
+    [locations subscribeNext:^(NSArray *locations) {
+        @strongify(self)
+        [self.diningTableView reloadData];
+        [self.diningTableView finishRefresh];
+        [self.diningTableView finishLoadMore];
+    }];
 
-    priorSearchText = searchText;
+    RAC(self.noResults, hidden) = [locations map:^(NSArray *locations) {
+        return @([locations count]);
+    }];
 
-    [self performSelector:@selector(updateSearch:) withObject:searchText afterDelay:1.5];
-
-}
-
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)aSearchBar {
-
-    [self updateSearch:nil];
-
-    aSearchBar.text = @"";
-    [aSearchBar resignFirstResponder];
-
-    [self.diningTableView setContentOffset:CGPointMake(0, 44) animated:true];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)aSearchBar {
-    [self updateSearch:aSearchBar.text];
-    [aSearchBar resignFirstResponder];
-}
-
-- (void)updateSearch:(NSString *)searchText {
-    [LocationViewModel instance].searchText = searchText;
-    [[LocationViewModel instance] refreshLocations:false];
+    [RACObserve(self.viewModel, mapLocations) subscribeNext:^(NSArray *locations) {
+        @strongify(self)
+        [self reloadAnnotations];
+    }];
 }
 
 
-#pragma mark OnBoarding
+#pragma mark - SegmentedController
 
-- (void)hudDismissed:(NSNotification *)notification {
+- (void)setupSegmentedController {
 
-    if (!firstShown) {
-        [self setupHints];
-    }
+    RACSignal *segmentChanged = [self.segmentControl rac_newSelectedSegmentIndexChannelWithNilValue:nil];
+
+    @weakify(self)
+    RAC(self.viewModel, locationPresentation) = segmentChanged;
+    [[segmentChanged deliverOnMainThread] subscribeNext:^(NSNumber *selectedSegmentIndex) {
+        @strongify(self)
+        UIView *fromView = selectedSegmentIndex.intValue == 0 ? self.mapView : self.tableView;
+        UIView *toView = selectedSegmentIndex.intValue == 0 ? self.tableView : self.mapView;
+        [UIView transitionFromView:fromView toView:toView duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft completion:^(BOOL finished) {
+            [self.viewModel refreshLocations];
+        }];
+    }];
 }
+
+#pragma mark - Hints
 
 - (void)setupHints {
-    UIImage *image = [UIImage snapshot];
-    UIView *buttonView = [self.addButton valueForKey:@"view"];
-    CGRect buttonViewAbsolute = [buttonView convertRect:buttonView.bounds toView:nil];
-    UIImage *cropped = [image crop:buttonViewAbsolute];
-    UIImage *button = [UIImage makeRoundedImage:cropped radius:fmaxf(cropped.size.height, cropped.size.width) / 2];
-    UIImage *blurred = [image applyBlurWithRadius:3 tintColor:[UIColor colorWithWhite:0.44 alpha:0.53] saturationDeltaFactor:1.5 maskImage:nil];
-
-    UIImage *combined = [blurred drawImage:button InRect:buttonViewAbsolute];
-    UIImage *final = [combined crop:CGRectMake(0, 20, image.size.width, image.size.height)];
-
-    tipView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height + 44)];
-    [tipView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissTipView:)]];
-    tipView.userInteractionEnabled = true;
-    tipView.alpha = 0.0;
-    tipView.image = final;
-
-    [[UIApplication sharedApplication].keyWindow addSubview:tipView];
-
-    [UIView animateWithDuration:0.5 animations:^{
-        tipView.alpha = 1.0;
-    }];
-
-
-#warning implement
-
+    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kAddNewOnBoardingButtonKey]) {
+        [self displayHintForView:[self.addButton valueForKey:@"view"] withHintKey:kAddNewOnBoardingButtonKey preferedPositionOfText:HintPositionBelow];
+    } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
+        [self displayHintForView:[self.filter valueForKey:@"view"] withHintKey:kFilterOnBoardingButtonKey preferedPositionOfText:HintPositionAbove];
+    }
 }
 
-- (void)dismissTipView:(UIGestureRecognizer *)recognizer {
-    [UIView animateWithDuration:0.5 animations:^{
-        tipView.alpha = 0.0;
-    }                completion:^(BOOL finished) {
-        [tipView removeFromSuperview];
+- (void)hintWasDismissedByUser:(NSString *)hintKey {
+    if ([hintKey isEqualToString:kAddNewOnBoardingButtonKey]) {
+        [self displayHintForView:[self.filter valueForKey:@"view"] withHintKey:kFilterOnBoardingButtonKey preferedPositionOfText:HintPositionAbove];
+    } else if ([hintKey isEqualToString:kFilterOnBoardingButtonKey]) {
+
+    }
+}
+
+#pragma mark - SearchBar
+
+- (void)setupSearchBar {
+
+    self.searchBar.showsCancelButton = true;
+
+    RAC(self.viewModel, searchText) = [[[self rac_signalForSelector:@selector(searchBar:textDidChange:)] throttle:1.5] reduceEach:^(UISearchBar *searchBar, NSString *text) {
+        return text;
     }];
 
+    @weakify(self)
+    [[self rac_signalForSelector:@selector(searchBarSearchButtonClicked:) fromProtocol:@protocol(UISearchBarDelegate)] subscribeNext:^(RACTuple *tuple) {
+        @strongify(self);
+        [self.searchBar resignFirstResponder];
+    }];
+
+    [[self rac_signalForSelector:@selector(searchBarCancelButtonClicked:) fromProtocol:@protocol(UISearchBarDelegate)] subscribeNext:^(RACTuple *tuple) {
+        @strongify(self);
+        [self.searchBar resignFirstResponder];
+        self.searchBar.text = @"";
+    }];
+
+    [[self rac_signalForSelector:@selector(viewWillDisappear:)] subscribeNext:^(NSNumber *animated) {
+        @strongify(self);
+        [self.diningTableView finishRefresh];
+        [self.diningTableView finishLoadMore];
+        [SVProgressHUD dismiss];
+    }];
 
 }
 
@@ -171,9 +153,9 @@
 
     if ([identifier isEqualToString:@"CreateLocation"] || [identifier isEqualToString:@"CreateReview"]) {
 
-        if (![[LocationViewModel instance] isAuthenticated]) {
+        if (![self.viewModel isAuthenticated]) {
 
-            [[LocationViewModel instance] authenticate:self];
+            [self.viewModel authenticate:self];
 
             return false;
         } else {
@@ -187,65 +169,70 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
 
-    if (([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"]) && [LocationViewModel instance].locationPresentation == LocationPresentationList) {
-        Location *location = [[LocationViewModel instance] locationForRow:[self.diningTableView indexPathForSelectedRow].row];
-        [LocationDetailViewModel instance].location = location;
+    if (([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"])) {
+
+        Location *location = (self.viewModel.locationPresentation == LocationPresentationList) ? [self.viewModel.listLocations objectAtIndex:[self.diningTableView indexPathForSelectedRow].row] : ((LocationAnnotation *) [[self.mapView selectedAnnotations] objectAtIndex:0]).location;
+        LocationDetailViewModel *detailViewModel = [[LocationDetailViewModel alloc] initWithLocation:location];
+
+        LocationDetailViewController *detailViewController = (LocationDetailViewController *) segue.destinationViewController;
+        detailViewController.viewModel = detailViewModel;
+
     } else if ([segue.identifier isEqualToString:@"CreateLocation"]) {
-        [CreateLocationViewModel instance].locationType = [LocationViewModel instance].locationType;
+
+        CreateLocationViewModel *_viewModel = [[CreateLocationViewModel alloc] init];
+        _viewModel.locationType = self.viewModel.locationType;
+
+        UINavigationController *_navigationController = (UINavigationController *) segue.destinationViewController;
+        CreateLocationViewController *_controller = [_navigationController.viewControllers objectAtIndex:0];
+        _controller.viewModel = _viewModel;
+
+    } else if ([segue.identifier isEqualToString:@"Filter"]) {
+        FilterLocationViewController *controller = segue.destinationViewController;
+        controller.viewModel = self.viewModel;
     }
-}
-
-#pragma mark - DiningViewModelDelegate
-
-- (void)refreshTable {
-    [self.diningTableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-}
-
-- (void)reloadTable {
-    [self.diningTableView reloadData];
-    [self.refreshControl endRefreshing];
-    [self.bottomRefreshControl endRefreshing];
-
-    self.noResults.hidden = ![[LocationViewModel instance].locations count] == 0;
 }
 
 #pragma mark - TableView
 
 - (void)configureTableView {
 
-    self.searchBar.text = [LocationViewModel instance].searchText;
-    self.searchBar.showsCancelButton = true;
+    RACSignal *disappear = [self rac_signalForSelector:@selector(viewWillDisappear:)];
+    @weakify(self)
+    [[[NSNotificationCenter.defaultCenter rac_addObserverForName:@"locationManager:didUpdateLocations" object:nil] takeUntil:disappear] subscribeNext:^(id x) {
+        @strongify(self);
+        [self.diningTableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+    }];
 
     self.diningTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     self.tableViewController = [[UITableViewController alloc] init];
     self.tableViewController.tableView = self.diningTableView;
 
-    self.refreshControl = [UIRefreshControl new];
-    [self.refreshControl handleControlEvents:UIControlEventValueChanged withBlock:^(id weakControl) {
-        [LocationViewModel instance].page = 0;
-        [[LocationViewModel instance] refreshLocations:false];
+    [[self rac_signalForSelector:@selector(dragTableDidTriggerRefresh:) fromProtocol:@protocol(UITableViewDragLoadDelegate)] subscribeNext:^(RACTuple *tuple) {
+        @strongify(self);
+        self.viewModel.page = 0;
+        [self.viewModel refreshLocations];
     }];
-    self.tableViewController.refreshControl = self.refreshControl;
 
-    self.bottomRefreshControl = [UIRefreshControl new];
-    self.diningTableView.bottomRefreshControl = self.bottomRefreshControl;
-    [self.bottomRefreshControl handleControlEvents:UIControlEventValueChanged withBlock:^(id weakControl) {
-        [LocationViewModel instance].page++;
-        [[LocationViewModel instance] refreshLocations:false];
+    [[self rac_signalForSelector:@selector(dragTableDidTriggerLoadMore:) fromProtocol:@protocol(UITableViewDragLoadDelegate)] subscribeNext:^(RACTuple *tuple) {
+        @strongify(self);
+        self.viewModel.page++;
+        [self.viewModel refreshLocations];
     }];
+    [self.diningTableView setDragDelegate:self refreshDatePermanentKey:@"LocationViewController"];
+    self.diningTableView.headerRefreshDateFormatText = NSLocalizedString(@"Last Updated: %@", nil);
 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[LocationViewModel instance] numberOfLocations];
+    return [self.viewModel.listLocations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    Location *location = [[LocationViewModel instance] locationForRow:indexPath.row];
+    Location *location = [self.viewModel.listLocations objectAtIndex:indexPath.row];
 
-    NSString *identifier = LocationTypeString([LocationViewModel instance].locationType);
+    NSString *identifier = LocationTypeString(self.viewModel.locationType);
     LocationTableViewCell *cell = [self.diningTableView dequeueReusableCellWithIdentifier:identifier];
 
     [cell configure:location];
@@ -260,48 +247,26 @@
 #pragma mark MapView
 
 - (void)configureMapView {
-    [self.mapView setRegion:MKCoordinateRegionMake([BaseViewModel currentLocation].coordinate, MKCoordinateSpanMake(0.02, 0.02))];
+    CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
+    [self.mapView setRegion:MKCoordinateRegionMake(manager.location.coordinate, MKCoordinateSpanMake(0.02, 0.02))];
     self.mapView.showsUserLocation = true;
-}
 
-- (BOOL)mapViewRegionDidChangeFromUserInteraction {
-    //TODO Ugly
-    UIView *view = self.mapView.subviews.firstObject;
-    //  Look through gesture recognizers to determine whether this region change is from user interaction
-    for (UIGestureRecognizer *recognizer in view.gestureRecognizers) {
-        if (recognizer.state == UIGestureRecognizerStateBegan || recognizer.state == UIGestureRecognizerStateEnded) {
-            return YES;
-        }
-    }
-    return NO;
-}
+    @weakify(self)
+    [[[self rac_signalForSelector:@selector(mapView:regionWillChangeAnimated:) fromProtocol:@protocol(MKMapViewDelegate)] throttle:1] subscribeNext:^(RACTuple *tuple) {
+        @strongify(self);
+        self.viewModel.southWest = [self.mapView southWest];
+        self.viewModel.northEast = [self.mapView northEast];
 
-static BOOL mapChangedFromUserInteraction = NO;
-
-- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
-    mapChangedFromUserInteraction = [self mapViewRegionDidChangeFromUserInteraction];
-}
-
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-
-    if (mapChangedFromUserInteraction) {
-        if ([LocationViewModel instance].locationPresentation == LocationPresentationList) {
+        if (self.viewModel.locationPresentation == LocationPresentationList) {
             return;
+        } else {
+            [self.viewModel refreshLocations];
         }
-
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateSearch:) object:mapView];
-
-        [self performSelector:@selector(updateMap:) withObject:mapView afterDelay:1.0];
-    }
+    }];
+    //https://github.com/ReactiveCocoa/ReactiveCocoa/issues/1121
+    self.mapView.delegate = self;
 }
 
-- (void)updateMap:(MKMapView *)mapView {
-
-    [LocationViewModel instance].southWest = [mapView southWest];
-    [LocationViewModel instance].northEast = [mapView northEast];
-
-    [[LocationViewModel instance] refreshLocations:false];
-}
 
 - (void)reloadAnnotations {
 
@@ -311,7 +276,7 @@ static BOOL mapChangedFromUserInteraction = NO;
     for (MKPointAnnotation *annotation in self.mapView.annotations) {
 
         if ([annotation isKindOfClass:[LocationAnnotation class]]) {
-            if ([[LocationViewModel instance].locations indexOfObject:((LocationAnnotation *) annotation).location] == NSNotFound) {
+            if ([self.viewModel.mapLocations indexOfObject:((LocationAnnotation *) annotation).location] == NSNotFound) {
                 [shouldBeRemoved addObject:annotation];
             } else {
                 [shouldNotAdded addObject:((LocationAnnotation *) annotation).location];
@@ -321,7 +286,7 @@ static BOOL mapChangedFromUserInteraction = NO;
 
     [self.mapView removeAnnotations:shouldBeRemoved];
 
-    for (Location *loc in [LocationViewModel instance].locations) {
+    for (Location *loc in self.viewModel.mapLocations) {
 
         if ([shouldNotAdded containsObject:loc]) {
             continue;
@@ -349,49 +314,18 @@ static BOOL mapChangedFromUserInteraction = NO;
         //TODO make class for view
         LocationAnnotationView *pinView = (LocationAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"MKAnnotationView"];
         if (!pinView) {
-            // If an existing pin view was not available, create one.
             pinView = [[LocationAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MKAnnotationView"];
-            //pinView.animatesDrop = YES;
-            pinView.canShowCallout = YES;
-
-            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-            [rightButton setTitle:annotation.title forState:UIControlStateNormal];
-            [rightButton addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
-            pinView.rightCalloutAccessoryView = rightButton;
-
-            UIImageView *profileIconView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 33, 33)];
-            profileIconView.contentMode = UIViewContentModeScaleAspectFit;
-            pinView.leftCalloutAccessoryView = pinView.thumbnail = profileIconView;
-
-            pinView.image = [UIImage imageNamed:@"diningSmall"];
-
         } else {
             pinView.annotation = annotation;
         }
-
-        [[PictureService instance] thumbnailForLocation:((LocationAnnotation *) annotation).location onCompletion:^(NSArray *objects, NSError *error) {
-            if (objects != nil && [objects count] == 1) {
-                LocationPicture *picture = [objects firstObject];
-                SDWebImageManager *manager = [SDWebImageManager sharedManager];
-                [manager downloadImageWithURL:[[NSURL alloc] initWithString:picture.thumbnail.url] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                    pinView.thumbnail.image = image;
-                }];
-            }
-        }];
-
+        [pinView configureLocation];
         return pinView;
     }
     return nil;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    LocationAnnotation *annotation = (LocationAnnotation *) view.annotation;
-    [LocationDetailViewModel instance].location = annotation.location;
-}
 
-- (IBAction)showDetails:(id)sender {
     [self performSegueWithIdentifier:@"DiningDetail" sender:self];
 }
-
-
 @end

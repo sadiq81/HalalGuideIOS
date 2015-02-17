@@ -4,7 +4,6 @@
 //
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 #import "SettingsViewController.h"
 #import "LocationViewModel.h"
 #import "HalalGuideSettings.h"
@@ -12,6 +11,7 @@
 #import "HalalGuideOnboarding.h"
 #import "UIView+Extensions.h"
 #import "UIAlertController+Blocks.h"
+#import "UIViewController+Extension.h"
 
 @implementation SettingsViewController {
 
@@ -20,52 +20,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    __weak typeof(self) weakSelf = self;
-
-    [self.resetFilter handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
-        [HalalGuideSettings instance].distanceFilter = [LocationViewModel instance].maximumDistance = 5;
-        [HalalGuideSettings instance].porkFilter = [LocationViewModel instance].showPork = true;
-        [HalalGuideSettings instance].alcoholFilter = [LocationViewModel instance].showAlcohol = true;
-        [HalalGuideSettings instance].halalFilter = [LocationViewModel instance].showNonHalal = true;
-        [HalalGuideSettings instance].categoriesFilter = [LocationViewModel instance].categories = [NSMutableArray new];
-        [HalalGuideSettings instance].shopCategoriesFilter = [LocationViewModel instance].shopCategories = [NSMutableArray new];
+    [[self.resetFilter rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [HalalGuideSettings instance].distanceFilter = 5;
+        [HalalGuideSettings instance].porkFilter = true;
+        [HalalGuideSettings instance].alcoholFilter = true;
+        [HalalGuideSettings instance].halalFilter = true;
+        [HalalGuideSettings instance].categoriesFilter = [NSMutableArray new];
+        [HalalGuideSettings instance].shopCategoriesFilter = [NSMutableArray new];
     }];
 
-
-    [self.restorePurchases handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
-
+    [[self.restorePurchases rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [PFPurchase buyProduct:@"Support" block:^(NSError *error) {
             if (!error) {
-                [UIAlertController showAlertInViewController:weakSelf withTitle:NSLocalizedString(@"thank", nil) message:NSLocalizedString(@"thankText", nil) cancelButtonTitle:NSLocalizedString(@"ok", nil) destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
+                [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"thank", nil) message:NSLocalizedString(@"thankText", nil) cancelButtonTitle:NSLocalizedString(@"ok", nil) destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
             } else {
-                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"error", nil)];
             }
         }];
-
     }];
 
-    [self.clearCache handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
+    [[self.clearCache rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [[SDImageCache sharedImageCache] clearMemory];
         [[SDImageCache sharedImageCache] clearDisk];
-
-        //TODO Clear pinned objects from parse
     }];
+
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-
-    [self onBoarding];
-
-}
-
-- (void)onBoarding {
-
-    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kSupportOnBoardingKey]) {
-        #warning implement
-    }
-
-}
 @end

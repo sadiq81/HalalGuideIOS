@@ -7,7 +7,6 @@
 #import "ErrorReporting.h"
 
 
-
 @implementation ErrorReporting {
 
 }
@@ -26,7 +25,8 @@
 
 - (void)reportError:(NSError *)error {
 
-    NSString *codeString = [NSString stringWithFormat:@"%ld",(long)[error code]];
+    //TODO use crashlytics
+    NSString *codeString = [NSString stringWithFormat:@"%ld", (long) [error code]];
     NSString *caller = [NSString stringWithFormat:@"Origin: [%@]", [[[[NSThread callStackSymbols] objectAtIndex:1] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"[]"]] objectAtIndex:1]];
     caller = [caller stringByReplacingOccurrencesOfString:@" " withString:@""];
     [PFAnalytics trackEvent:caller dimensions:@{@"code" : codeString}];

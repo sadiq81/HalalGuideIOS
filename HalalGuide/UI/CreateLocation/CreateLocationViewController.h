@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "HTAutocompleteTextField.h"
-#import "DCRoundSwitch.h"
+#import "SevenSwitch.h"
+#import "CreateReviewViewModel.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "CreateLocationViewModel.h"
+
 
 @interface CreateLocationViewController :UIViewController <UINavigationControllerDelegate, HTAutocompleteDataSource, UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -22,11 +26,11 @@
 @property (strong, nonatomic) IBOutlet UITextField *website;
 @property (strong, nonatomic) IBOutlet UIView *diningSwitches;
 @property (strong, nonatomic) IBOutlet UIImageView *porkImage;
-@property (strong, nonatomic) IBOutlet DCRoundSwitch *porkSwitch;
+@property (strong, nonatomic) IBOutlet SevenSwitch *porkSwitch;
 @property (strong, nonatomic) IBOutlet UIImageView *alcoholImage;
-@property (strong, nonatomic) IBOutlet DCRoundSwitch *alcoholSwitch;
+@property (strong, nonatomic) IBOutlet SevenSwitch *alcoholSwitch;
 @property (strong, nonatomic) IBOutlet UIImageView *halalImage;
-@property (strong, nonatomic) IBOutlet DCRoundSwitch *halalSwitch;
+@property (strong, nonatomic) IBOutlet SevenSwitch *halalSwitch;
 @property (strong, nonatomic) IBOutlet UIView *categoriesView;
 @property (strong, nonatomic) IBOutlet UILabel *categoriesText;
 @property (strong, nonatomic) IBOutlet UILabel *categoriesCount;
@@ -34,5 +38,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *regret;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *save;
 
-@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) CreateLocationViewModel *viewModel;
+
 @end

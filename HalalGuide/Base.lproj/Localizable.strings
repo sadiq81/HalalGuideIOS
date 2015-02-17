@@ -74,7 +74,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "vietnamese" = "Vietnamesisk";
 "wok" = "Wok";
 
-"ok" = "Ok";
+"ok" = "OK";
 "save"= "Gem";
 "done" = "Færdig";
 "addReview" = "Tilføj anmeldelse";
@@ -94,7 +94,8 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "addressdoesnotexists" = "Adressen findes ikke ";
 "error" = "Ukendt fejl";
 "errorText" = "Der skete en ukendt fejl, prøv igen senere.";
-"reviewMinimum" = "En anmeldelse skal minimum være på 30 tegn";
+"reviewMinimum" = "En anmeldelse skal minimum være 30 tegn";
+"reviewMinimum2" = "En anmeldelse skal minimum være 30 tegn og mindst en stjerne";
 
 "awaiting" = "Venter godkendelse";
 "approved" = "Godkendt";
@@ -141,17 +142,16 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "errorMailText" = "Der er følgende forkerte oplysninger: \nUDDYB HER!";
 
-"addNewOnBoardingButton" = "Tryk her for at indsende et forslag";
-"filterOnBoardingButton" = "Tryk her for filtrere de viste resultater";
+"addNewOnBoardingButton" = "Tryk på '+' for at indsende nye forslag";
+"filterOnBoardingButton" = "Tryk på 'Filter' for at filtrere de viste forslag";
 
 "diningCellPorkOnBoarding" = "Viser om der også serveres gris";
 "diningCellAlcoholOnBoarding" = "Viser om der også serveres alkohol";
 "diningCellHalalOnBoarding" =  "Viser om der udelukkende serveres halal kød";
-"diningCellPullToShowMore" = "Træk op for at hente flere";
 
-"diningDetailAddressTelephoneOptionsOnBoarding" = "Tryk her for at her få rutevejledning eller ringe til stedet";
+"diningDetailAddressTelephoneOptionsOnBoarding" = "Tryk på adressen for at få rutevejledning eller ringe til stedet";
 
-"createLocationPickImageOnBoarding" = "Tryk her for at tilføje et billede";
+"createLocationPickImageOnBoarding" = "Tryk på kameraet for at tilføje billeder";
 
 "slideShowViewSwipeToViewMore" = "Swipe for at se flere billeder";
 
@@ -218,5 +218,18 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "saturday"="Lørdag";
 "closed"= "Lukket";
 "open"= "Åben";
+
+"Pull down to refresh..." ="Træk ned for genopfriske...";
+"Release to refresh..."= "Slip for at genopfriske...";
+"Loading..."= "Henter...";
+"Pull up to load more..."= "Træk op for at hente flere...";
+"Release to load more..."= "Slip for at hente flere...";
+"Loading..."= "Henter...";
+"MM/dd/yyyy hh:mm:a"= "MM/dd/yyyy hh:mm:a";
+"Last Updated: %@"= "Sidst opdateret: %@";
+
+"uploading" = "Sender...";
+"downloading" = "Henter...";
+"percentageComplete"= "færdig";
 
 

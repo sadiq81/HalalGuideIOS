@@ -3,61 +3,50 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#import <SVProgressHUD/SVProgressHUD.h>
 #import "FrontPageViewController.h"
 #import "DiningTableViewCell.h"
-#import "ALActionBlocks.h"
 #import "LocationDetailViewModel.h"
 #import "LocationViewModel.h"
-#import "CAGradientLayer+SJSGradients.h"
+#import "LocationViewController.h"
+#import "LocationDetailViewController.h"
 
 @implementation FrontPageViewController {
 
 }
 
-//TODO Onboarding - What does latest mean
-@synthesize latestUpdated, tableViewController, refreshControl;
+@synthesize latestUpdated, tableViewController, refreshControl, viewModel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupViewModel];
     [self configureTableView];
-    [FrontPageViewModel instance].delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [[FrontPageViewModel instance] refreshLocations:false];
-}
-
-- (void)dealloc {
-    [FrontPageViewModel instance].delegate = nil;
+    [self.viewModel refreshLocations];
 }
 
 
-#pragma mark - Navigation
+#pragma mark - ViewModel changes
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [super prepareForSegue:segue sender:sender];
-    if ([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"]) {
-        Location *location = [[FrontPageViewModel instance] locationForRow:[self.latestUpdated indexPathForSelectedRow].row];
-        [LocationDetailViewModel instance].location = location;
-    } else if ([segue.identifier isEqualToString:@"Shop"]) {
-        [LocationViewModel instance].locationType = LocationTypeShop;
-    } else if ([segue.identifier isEqualToString:@"Dining"]) {
-        [LocationViewModel instance].locationType = LocationTypeDining;
-    } else if ([segue.identifier isEqualToString:@"Mosque"]) {
-        [LocationViewModel instance].locationType = LocationTypeMosque;
-    }
-}
+- (void)setupViewModel {
 
-#pragma mark - FrontPageViewModelDelegate
+    @weakify(self)
+    [[RACObserve(self.viewModel, fetchCount) throttle:0.5] subscribeNext:^(NSNumber *fetching) {
+        @strongify(self)
+        if (fetching.intValue == 0) {
+            [SVProgressHUD dismiss];
+        } else if (fetching.intValue == 1 && !self.refreshControl.refreshing) {
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeNone];
+        }
+    }];
 
-- (void)refreshTable {
-    [self.latestUpdated reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-}
+    [[RACObserve(self.viewModel, error) throttle:0.5] subscribeNext:^(NSError *error) {
+        if (error) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"error", nil)];
+        }
+    }];
 
-- (void)reloadTable {
-    [self.latestUpdated reloadData];
-    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - TableView
@@ -66,20 +55,33 @@
     self.latestUpdated.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableViewController = [[UITableViewController alloc] init];
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl handleControlEvents:UIControlEventValueChanged withBlock:^(id weakControl) {
-        [[FrontPageViewModel instance] refreshLocations:false];
+
+    self.refreshControl = [UIRefreshControl new];
+
+    @weakify(self)
+    RACSignal *locations = RACObserve(self.viewModel, locations);
+    [locations subscribeNext:^(NSArray *locations) {
+        @strongify(self)
+        [self.latestUpdated reloadData];
+        [self.refreshControl endRefreshing];
     }];
+
+    [[self.refreshControl rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
+        @strongify(self)
+        [self.viewModel refreshLocations];
+    }];
+
     self.tableViewController.tableView = self.latestUpdated;
     self.tableViewController.refreshControl = self.refreshControl;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[FrontPageViewModel instance] numberOfLocations];
+    return [self.viewModel.locations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    Location *location = [[FrontPageViewModel instance] locationForRow:indexPath.row];
+    Location *location = [self.viewModel.locations objectAtIndex:indexPath.row];
 
     NSString *identifier = LocationTypeString([location.locationType integerValue]);
     DiningTableViewCell *cell = [self.latestUpdated dequeueReusableCellWithIdentifier:identifier];
@@ -91,6 +93,34 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    if ([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"]) {
+        Location *location = [self.viewModel.locations objectAtIndex:[self.latestUpdated indexPathForSelectedRow].row];
+        LocationDetailViewModel *detailViewModel = [[LocationDetailViewModel alloc] initWithLocation:location];
+
+        LocationDetailViewController *detailViewController = (LocationDetailViewController *) segue.destinationViewController;
+        detailViewController.viewModel = detailViewModel;
+
+    } else if ([segue.identifier isEqualToString:@"Shop"]) {
+
+        LocationViewController *controller = (LocationViewController *) segue.destinationViewController;
+        controller.viewModel = [LocationViewModel modelWithLocationType:LocationTypeShop];
+
+    } else if ([segue.identifier isEqualToString:@"Dining"]) {
+
+        LocationViewController *controller = (LocationViewController *) segue.destinationViewController;
+        controller.viewModel = [LocationViewModel modelWithLocationType:LocationTypeDining];
+
+    } else if ([segue.identifier isEqualToString:@"Mosque"]) {
+
+        LocationViewController *controller = (LocationViewController *) segue.destinationViewController;
+        controller.viewModel = [LocationViewModel modelWithLocationType:LocationTypeMosque];
+    }
 }
 
 

@@ -4,27 +4,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 #import "ReviewDetailViewModel.h"
 #import "PictureService.h"
-#import "Review.h"
-#import "ProfileInfo.h"
 
 
 @implementation ReviewDetailViewModel {
 
 }
 
-+ (ReviewDetailViewModel *)instance {
-    static ReviewDetailViewModel *_instance = nil;
-
-    @synchronized (self) {
-        if (_instance == nil) {
-            _instance = [[self alloc] init];
-        }
+- (instancetype)initWithReview:(Review *)review {
+    self = [super init];
+    if (self) {
+        _review = review;
     }
 
-    return _instance;
+    return self;
+}
+
++ (instancetype)modelWithReview:(Review *)review {
+    return [[self alloc] initWithReview:review];
 }
 
 

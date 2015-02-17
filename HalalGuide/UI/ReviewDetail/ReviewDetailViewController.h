@@ -9,14 +9,17 @@
 #import "Review.h"
 #import <ParseUI/ParseUI.h>
 
-@interface ReviewDetailViewController : UIViewController{
-}
-@property (strong) Review *review;
+@class ReviewDetailViewModel;
 
-@property (strong, nonatomic) IBOutlet PFImageView *profilePicture;
-@property (strong, nonatomic) IBOutlet UILabel *name;
-@property (strong, nonatomic) IBOutlet UILabel *date;
-@property (strong, nonatomic) IBOutlet EDStarRating *rating;
-@property (strong, nonatomic) IBOutlet UITextView *reviewText;
+@interface ReviewDetailViewController : UIViewController {
+}
+
+@property(strong, nonatomic) IBOutlet PFImageView *profilePicture;
+@property(strong, nonatomic) IBOutlet UILabel *name;
+@property(strong, nonatomic) IBOutlet UILabel *date;
+@property(strong, nonatomic) IBOutlet EDStarRating *rating;
+@property(strong, nonatomic) IBOutlet UITextView *reviewText;
+
+@property(strong, nonatomic) ReviewDetailViewModel *viewModel;
 
 @end

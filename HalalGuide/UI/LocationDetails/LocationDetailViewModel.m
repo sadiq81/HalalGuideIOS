@@ -10,30 +10,43 @@
 #import "LocationViewModel.h"
 #import "ReviewService.h"
 
+
 @import MessageUI;
 
-#import <SVProgressHUD/SVProgressHUD.h>
+@interface LocationDetailViewModel () {
+}
+@property(nonatomic) NSArray *locationPictures;
+@property(nonatomic) NSArray *reviews;
+@end
 
 @implementation LocationDetailViewModel {
 
 }
 
-@synthesize indexOfSelectedImage;
+@synthesize reviews, locationPictures, location, indexOfSelectedImage;
 
-+ (LocationDetailViewModel *)instance {
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        locationPictures = [NSArray new];
+        reviews = [NSArray new];
+    }
+    return self;
+}
 
-    static LocationDetailViewModel *_instance = nil;
-
-    @synchronized (self) {
-        if (_instance == nil) {
-            _instance = [[super alloc] init];
-            _instance.locationPictures = [NSArray new];
-            _instance.reviews = [NSArray new];
-        }
+- (instancetype)initWithLocation:(Location *)aLocation {
+    self = [super init];
+    if (self) {
+        self.location = aLocation;
     }
 
-    return _instance;
+    return self;
 }
+
++ (instancetype)modelWithLocation:(Location *)location {
+    return [[self alloc] initWithLocation:location];
+}
+
 
 - (void)report:(UIViewController <MFMailComposeViewControllerDelegate> *)viewController {
 
@@ -45,6 +58,23 @@
     [viewController presentViewController:mailController animated:true completion:nil];
 
 }
+
+- (void)saveMultiplePictures:(NSArray *)images {
+    self.saving = true;
+    self.progress = 1;
+
+    @weakify(self)
+    [[PictureService instance] saveMultiplePictures:images forLocation:self.location completion:^(BOOL completed, NSError *error, NSNumber *progress) {
+        @strongify(self)
+
+        self.progress = progress.intValue;
+        self.error = error;
+        if (completed) {
+            self.saving = false;
+        }
+    }];
+}
+
 
 - (NSNumber *)averageRating {
     if (self.reviews && [self.reviews count] > 0) {
@@ -61,63 +91,32 @@
     }
 }
 
-- (LocationPicture *)pictureForRow:(NSUInteger)row {
-    return [self.locationPictures objectAtIndex:row];
-}
-
-- (void)locationChanged:(NSNotification *)notification {
-    //TODO reload distance
-}
-
-- (void)setLocation:(Location *)location {
-    _location = location;
+- (void)setLocation:(Location *)aLocation {
+    location = aLocation;
 
     self.locationPictures = [NSArray new];
     self.reviews = [NSArray new];
 
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeNone];
+    self.fetchCount++;
+    [[PictureService instance] locationPicturesForLocation:aLocation onCompletion:^(NSArray *objects, NSError *error) {
+        self.fetchCount--;
 
-    [[PictureService instance] locationPicturesForLocation:location onCompletion:^(NSArray *objects, NSError *error) {
-
-        [SVProgressHUD popActivity];
-
-        if (error) {
-
+        if ((self.error = error)) {
             [[ErrorReporting instance] reportError:error];
-            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error.localizedDescription]];
-
         } else {
             self.locationPictures = objects;
         }
-
-        if ([self.pictureDelegate respondsToSelector:@selector(reloadCollectionView)]) {
-            [self.pictureDelegate reloadCollectionView];
-
-        }
     }];
 
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeNone];
+    self.fetchCount++;
+    [[ReviewService instance] reviewsForLocation:aLocation onCompletion:^(NSArray *objects, NSError *error) {
+        self.fetchCount--;
 
-    [[ReviewService instance] reviewsForLocation:location onCompletion:^(NSArray *objects, NSError *error) {
-
-        [SVProgressHUD popActivity];
-
-        int oldNumberOfItems = (int) [self.reviews count];
-
-        if (error) {
-
+        if ((self.error = error)) {
             [[ErrorReporting instance] reportError:error];
-            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error.localizedDescription]];
-
         } else {
-
             self.reviews = objects;
         }
-
-        if ([self.reviewDelegate respondsToSelector:@selector(reloadCollectionView:insertNewItems:)]) {
-            [self.reviewDelegate reloadCollectionView:oldNumberOfItems insertNewItems:[self.reviews count]];
-        }
-
     }];
 
 }

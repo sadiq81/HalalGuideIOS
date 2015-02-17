@@ -5,48 +5,34 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
+#import "ReactiveCocoa/ReactiveCocoa.h"
+
 
 typedef enum LocationPresentation : int16_t {
     LocationPresentationList = 0,
     LocationPresentationMap = 1,
 } LocationPresentation;
 
-@protocol DiningViewModelDelegate <NSObject>
-
-@optional
-
-- (void)refreshTable;
-
-- (void)reloadTable;
-
-- (void)reloadAnnotations;
-
-@end
-
 @interface LocationViewModel : BaseViewModel <CategoriesViewModel>
 
 @property(nonatomic) LocationType locationType;
-@property(nonatomic, retain) NSMutableArray *locations;
-@property id <DiningViewModelDelegate> delegate;
+@property(nonatomic, readonly) NSArray *listLocations;
+@property(nonatomic, readonly) NSArray *mapLocations;
 @property(nonatomic) NSUInteger maximumDistance;
 @property(nonatomic) bool showNonHalal;
 @property(nonatomic) bool showAlcohol;
 @property(nonatomic) bool showPork;
 @property(nonatomic) int page;
-@property(nonatomic, copy) NSString *searchText;
+@property(nonatomic) NSString *searchText;
 
 @property(nonatomic) LocationPresentation locationPresentation;
 @property(nonatomic) PFGeoPoint *southWest;
 @property(nonatomic) PFGeoPoint *northEast;
 
-+ (LocationViewModel *)instance;
+- (instancetype)initWithLocationType:(LocationType)aLocationType;
 
-- (void)reset;
++ (instancetype)modelWithLocationType:(LocationType)locationType;
 
-- (void)refreshLocations:(BOOL)firstLoad;
-
-- (NSUInteger)numberOfLocations;
-
-- (Location *)locationForRow:(NSUInteger)row;
+- (void)refreshLocations;
 
 @end

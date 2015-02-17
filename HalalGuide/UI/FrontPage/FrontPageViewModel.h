@@ -6,28 +6,10 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
 
-@protocol FrontPageViewModelDelegate <NSObject>
-
-@optional
-
-- (void)refreshTable;
-
-- (void)reloadTable;
-
-@end
-
-
 @interface FrontPageViewModel : BaseViewModel
 
-@property(nonatomic, copy) NSArray *locations;
-@property id <FrontPageViewModelDelegate> delegate;
+@property(nonatomic, readonly) NSArray *locations;
 
-+ (FrontPageViewModel *)instance;
-
-- (void)refreshLocations:(BOOL) firstLoad;
-
-- (NSUInteger)numberOfLocations;
-
-- (Location *)locationForRow:(NSUInteger)row;
+- (void)refreshLocations;
 
 @end

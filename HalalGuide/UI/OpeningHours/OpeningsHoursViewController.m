@@ -4,14 +4,19 @@
 //
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
+#import "UIBarButtonItem+ALActionBlocks.h"
+#import "UIAlertController+Blocks.m"
 #import <IQKeyboardManager/IQUIView+Hierarchy.h>
 #import "OpeningsHoursViewController.h"
 #import "CreateLocationViewModel.h"
+#import "CreateReviewViewController.h"
 
 @implementation OpeningsHoursViewController {
     WeekDay currentWeekDay;
     NSDateFormatter *formatter;
 }
+
+@synthesize viewModel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,7 +52,7 @@
     [self.closed handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
         UILabel *label = (UILabel *) [self.view viewWithTag:currentWeekDay + 100];
         label.text = NSLocalizedString(@"closed", nil);
-        [[CreateLocationViewModel instance].createdLocation setOpen:[NSDate dateWithTimeIntervalSince1970:60*60*23] andClose:[NSDate dateWithTimeIntervalSince1970:60*60*23] forWeekDay:currentWeekDay];
+        [self.viewModel.createdLocation setOpen:[NSDate dateWithTimeIntervalSince1970:60 * 60 * 23] andClose:[NSDate dateWithTimeIntervalSince1970:60 * 60 * 23] forWeekDay:currentWeekDay];
         currentWeekDay = abs(currentWeekDay + 1) % 7;
         [self setWeekDayLabel];
         [self setOpenCloseTime];
@@ -58,12 +63,24 @@
             [self.datePickerView setY:self.view.height];
         }];
     }];
+
+    [self.rightBarButton setBlock:^(id weakSender) {
+
+        [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"ok", nil) message:NSLocalizedString(@"locationSaved", <#comment#>) cancelButtonTitle:NSLocalizedString(@"done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"addReview", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+            if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
+                [self performSegueWithIdentifier:@"CreateReview" sender:self];
+            }
+        }];
+
+    }];
 }
 
 - (void)saveOpenCloseToLocation {
     //TODO Move to viewmodel
-    [[CreateLocationViewModel instance].createdLocation setOpen:self.openPicker.date andClose:self.closePicker.date forWeekDay:currentWeekDay];
-    [[CreateLocationViewModel instance].createdLocation saveInBackground];
+    [self.viewModel.createdLocation setOpen:self.openPicker.date andClose:self.closePicker.date forWeekDay:currentWeekDay];
+    [self.viewModel.createdLocation saveInBackground];
 }
 
 - (void)setOpenCloseLabel {
@@ -76,8 +93,8 @@
 }
 
 - (void)setOpenCloseTime {
-    NSDictionary *openClose = [[CreateLocationViewModel instance].createdLocation openCloseForWeekDay:currentWeekDay];
-    if (openClose){
+    NSDictionary *openClose = [self.viewModel.createdLocation openCloseForWeekDay:currentWeekDay];
+    if (openClose) {
         self.openPicker.date = [openClose valueForKey:@"open"];
         self.closePicker.date = [openClose valueForKey:@"close"];
     }
@@ -88,5 +105,14 @@
 
     [self.datePickerView setY:self.view.height];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    if ([segue.identifier isEqualToString:@"CreateReview"]) {
+        CreateReviewViewController *viewController = (CreateReviewViewController *) segue.destinationViewController;
+        viewController.viewModel = [[CreateReviewViewModel alloc] initWithReviewedLocation:self.viewModel.createdLocation];
+    }
+}
+
 
 @end

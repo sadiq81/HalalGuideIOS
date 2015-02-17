@@ -6,10 +6,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class CreateLocationViewModel;
+
 
 @interface OpeningsHoursViewController : UIViewController  {
 }
-@property (weak, nonatomic) IBOutlet UIButton *rightBarButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButton;
 @property(weak, nonatomic) IBOutlet UIButton *chooseButton;
 
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *datePickerView;
@@ -21,5 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *closed;
 @property (weak, nonatomic) IBOutlet UIButton *finished;
 @property (weak, nonatomic) IBOutlet UILabel *day;
+
+@property (strong, nonatomic) CreateLocationViewModel *viewModel;
 
 @end

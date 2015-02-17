@@ -5,43 +5,26 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
-
-@class LocationPicture;
-
-
-@protocol DiningDetailReviewDelegate <NSObject>
-
-@optional
-
-- (void)reloadCollectionView:(NSUInteger)oldItemsCount insertNewItems:(NSUInteger)newItemsCount;
-
-@end
-
-@protocol DiningDetailPictureDelegate <NSObject>
-
-@optional
-
-- (void)reloadCollectionView;
-
-@end
+#import "LocationPicture.h"
 
 
 @interface LocationDetailViewModel : BaseViewModel
 
-@property(nonatomic, retain) id <DiningDetailReviewDelegate> reviewDelegate;
-@property(nonatomic, retain) id <DiningDetailPictureDelegate> pictureDelegate;
 @property(nonatomic, retain) Location *location;
-@property(nonatomic, retain) NSArray *locationPictures;
-@property(nonatomic, retain) NSArray *reviews;
+@property(nonatomic, readonly) NSArray *locationPictures;
+@property(nonatomic, readonly) NSArray *reviews;
 
-@property (nonatomic) NSUInteger indexOfSelectedImage;
+@property(nonatomic) NSInteger indexOfSelectedImage;
 
-+ (LocationDetailViewModel *)instance;
+- (instancetype)initWithLocation:(Location *)aLocation;
 
-- (LocationPicture *)pictureForRow:(NSUInteger)row;
++ (instancetype)modelWithLocation:(Location *)location;
+
 
 - (NSNumber *)averageRating;
 
 - (void)report:(UIViewController *)viewController;
+
+- (void)saveMultiplePictures:(NSArray *)images;
 
 @end

@@ -7,15 +7,10 @@
 //
 
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
-#import <SVProgressHUD/SVProgressHUD.h>
-#import <UIAlertController+Blocks/UIAlertController+Blocks.h>
 #import "CreateReviewViewController.h"
-#import "EDStarRating.h"
 #import "LocationViewController.h"
-#import "LocationDetailViewController.h"
-#import "CreateReviewViewModel.h"
-#import "UIViewController+Extension.h"
-#import "OpeningsHoursViewController.h"
+#import "Review.h"
+#import "JGProgressHUDSuccessIndicatorView.h"
 
 @interface CreateReviewViewController ()
 
@@ -23,96 +18,66 @@
 
 @implementation CreateReviewViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self setupViewModel];
+    [self setupEvents];
     [self setupRating];
     [self setupReview];
 
-    [self setupUI];
-
-   [self setupEvents];
-
 }
 
--(void) setupEvents{
+- (void)setupViewModel {
 
-    __weak typeof(self) weakSelf = self;
+    [RACObserve(self.viewModel, saving) subscribeNext:^(NSNumber *saving) {
+        if (saving.boolValue) {
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeBlack];
+        } else {
+            [SVProgressHUD dismiss];
+        }
+    }];
 
+    [[RACObserve(self.viewModel, error) throttle:0.5] subscribeNext:^(NSError *error) {
+        if (error) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"error", nil)];
+        }
+    }];
+}
+
+- (void)setupEvents {
+
+    @weakify(self)
     [self.regret setBlock:^(id weakSender) {
-        [weakSelf finished];
+        @strongify(self)
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }];
+
+    RACSignal *review = [RACSignal merge:@[[self.review rac_textSignal], RACObserve(self.review, text),]];
+    RACSignal *rating = RACObserve(self.rating, rating);
+    RAC(self.save, enabled) = [RACSignal combineLatest:@[review, rating]
+                                                reduce:^(NSString *reviewText, NSNumber *rating) {
+                                                    return @([reviewText length] > 30 && rating > 0);
+                                                }];
+
+    [[RACObserve(self.viewModel, createdReview) skip:1] subscribeNext:^(Review *review) {
+        if (!self.viewModel.error && review.objectId) {
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"reviewSaved", nil)];
+        }
+    }];
+
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:SVProgressHUDDidDisappearNotification object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(NSNotification *notification) {
+        NSString *hudText = [[notification userInfo] valueForKey:SVProgressHUDStatusUserInfoKey];
+        if ([hudText isEqualToString:NSLocalizedString(@"reviewSaved", nil)]) {
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        }
     }];
 
     [self.save setBlock:^(id weakSender) {
-
-        //TODO Bad flow
-        if (![weakSelf areMandatoryDataFilled]) {
-
-            if ([weakSelf.backViewController class] == [LocationDetailViewController class]) {
-                [UIAlertController showAlertInViewController:weakSelf withTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"reviewMinimum", nil) cancelButtonTitle:NSLocalizedString(@"ok", nil) destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
-                return;
-            } else {
-
-                if (weakSelf.rating.rating > 0) {
-                    [UIAlertController showAlertInViewController:weakSelf withTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"reviewMinimum", nil) cancelButtonTitle:NSLocalizedString(@"ok", nil) destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
-                    return;
-                } else {
-                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"locationSaved", nil)];
-                    [weakSelf finished];
-                    return;
-                }
-            }
-        }
-
-        [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
-
-        [[CreateReviewViewModel instance] saveEntity:weakSelf.review.text rating:(int) weakSelf.rating.rating onCompletion:^(CreateEntityResult result) {
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-
-                [SVProgressHUD dismiss];
-
-                if (result != CreateEntityResultOk) {
-                    [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(result), nil) maskType:SVProgressHUDMaskTypeGradient];
-                    return;
-                } else {
-
-                    if ([weakSelf.backViewController class] == [LocationDetailViewController class]) {
-                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"reviewSaved", nil)];
-                    } else {
-                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"locationSaved", nil)];
-                    }
-
-                    [weakSelf finished];
-                }
-            });
-        }];
+        @strongify(self)
+        [self.viewModel saveEntity:self.review.text rating:self.rating.rating];
     }];
-}
 
--(void) setupUI{
-
-    if ([self.backViewController class] == [OpeningsHoursViewController class]) {
-        self.navigationItem.leftBarButtonItem = nil;
-        self.navigationItem.hidesBackButton = YES;
-    } else {
-        [self.navigationItem.rightBarButtonItem setTitle:NSLocalizedString(@"save", nil)];
-    }
-}
-
-- (BOOL)areMandatoryDataFilled {
-    return [self.review.text length] > 30 && self.rating.rating > 0;
-}
-
-- (void)finished {
-
-    if ([self.backViewController class] == [LocationDetailViewController class]) {
-        [self.navigationController popToViewController:self.backViewController animated:true];
-    } else {
-        [self popToViewControllerClass:[LocationViewController class] animated:true];
-    }
 }
 
 - (void)setupRating {
@@ -123,25 +88,19 @@
     self.rating.delegate = self;
     self.rating.horizontalMargin = 12;
     self.rating.editable = YES;
+    self.rating.rating = 1;
     self.rating.displayMode = EDStarRatingDisplayFull;
 
-    if ([self.backViewController class] == [LocationDetailViewController class]) {
-        self.rating.rating = 1;
-    }
 }
 
 - (void)setupReview {
+    self.review.placeholder = NSLocalizedString(@"reviewMinimum", nil);
+
     self.review.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.review.layer.borderWidth = 0.5;
     self.review.layer.cornerRadius = 5;
     self.review.ClipsToBounds = true;
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark - Navigation
 

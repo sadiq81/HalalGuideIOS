@@ -15,7 +15,7 @@
 #import "FBAccessTokenData.h"
 #import "FBRequest.h"
 #import "PFUser+Extension.h"
-
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation PictureService {
 
@@ -33,14 +33,29 @@
     return _instance;
 }
 
-- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location {
+- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion {
 
-    NSMutableArray *pictures = [NSMutableArray new];
-    for (UIImage *image in images) {
+    NSError *uploadError;
+    __block int counter = 0;
+
+    for (int i = 0; i < [images count]; i++) {
+        UIImage *image = [images objectAtIndex:i];
         LocationPicture *picture = [self prepareImageForUpload:image forLocation:location];
-        [pictures addObject:picture];
+
+        @weakify(uploadError)
+        [picture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            @strongify(uploadError)
+
+            if ((uploadError = error) || uploadError) {
+                completion(true, error, @(100));
+            } else {
+                counter++;
+                int progress = ceil((100 / [images count]) * counter);
+                completion(progress == 100, uploadError, @(progress));
+            }
+        }];
     }
-    [PFObject saveAllInBackground:pictures];
+
 }
 
 - (LocationPicture *)prepareImageForUpload:(UIImage *)image forLocation:(Location *)location {
@@ -67,13 +82,6 @@
 
     return picture;
 }
-
-- (void)savePicture:(UIImage *)image forLocation:(Location *)location {
-
-    LocationPicture *picture = [self prepareImageForUpload:image forLocation:location];
-    [picture saveInBackground];
-}
-
 
 - (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion {
     //query.cachePolicy = kPFCachePolicyNetworkElseCache;

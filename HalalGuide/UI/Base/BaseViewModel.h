@@ -28,27 +28,23 @@ static WaitCompletionBlock waitFor = ^void(NSTimeInterval duration, WaitCompleti
 @property(nonatomic, retain) NSMutableArray *shopCategories;
 @property(nonatomic) Language language;
 
+
 @end
 
 @interface BaseViewModel : NSObject <PFLogInViewControllerDelegate> {
 }
+
 @property(nonatomic) UIImagePickerController *imagePickerController;
-
-+ (CLLocation *)currentLocation;
-
-- (void)locationChanged:(NSNotification *)notification;
-
-- (NSArray *)calculateDistances:(NSArray *)locations sortByDistance:(BOOL)sort;
+@property(nonatomic) BOOL saving;
+@property(nonatomic) int progress;
+@property(nonatomic) NSUInteger fetchCount;
+@property(nonatomic) CLLocation *userLocation;
+@property(nonatomic) NSError *error;
 
 - (BOOL)isAuthenticated;
 
 - (void)authenticate:(UIViewController *)viewController;
 
-- (void)getPicture:(UIViewController<UINavigationControllerDelegate> *)viewController ;
-
-- (void)savePicture:(UIImage *)image forLocation:(Location *)location ;
-
-- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location;
-
+- (void)getPictures:(UIViewController <UINavigationControllerDelegate> *)viewController;
 
 @end

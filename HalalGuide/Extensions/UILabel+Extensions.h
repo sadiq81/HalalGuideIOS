@@ -17,4 +17,16 @@
 */
 -(CGSize)sizeOfMultiLineLabel;
 
+/*! Returns the size of the label to display the text provided
+    @param text
+        The string to be displayed
+    @param width
+        The width required for displaying the string
+    @param fontName
+        The font name for the label
+    @param fontSize
+        The font size for the label
+ */
+- (CGSize)getSizeForText:(NSString *)text maxWidth:(CGFloat)width;
+
 @end

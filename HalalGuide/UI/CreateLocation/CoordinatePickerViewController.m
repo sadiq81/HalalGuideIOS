@@ -10,27 +10,28 @@
 #import "UIView+Extensions.h"
 #import <AddressBook/ABPerson.h>
 #import <AddressBookUI/AddressBookUI.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation CoordinatePickerViewController {
 
 }
+@synthesize viewModel;
+
+//TODO Guide user to pick coordinate
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    __weak typeof(self) weakSelf = self;
-
     self.tempCoordinate = kCLLocationCoordinate2DInvalid;
 
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.title = [CreateLocationViewModel instance].suggestionName;
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
-    MKCoordinateRegion region;
+    //MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    //point.title = self.viewModel.suggestionName;
+    //MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
+    //MKCoordinateRegion region;
 
-    if ([CreateLocationViewModel instance].suggestedPlaceMark) {
-        point.coordinate = [CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate;
+    /*
+    if (self.viewModel.suggestedPlaceMark) {
+        point.coordinate = self.viewModel.suggestedPlaceMark.location.coordinate;
     } else {
-        point.coordinate = [BaseViewModel currentLocation].coordinate;
+        //point.coordinate = [BaseViewModel currentLocation].coordinate;
     }
 
     [self.mapView addAnnotation:point];
@@ -39,13 +40,14 @@
 
 
     [self.approve setBlock:^(id weakSender) {
-        if (!CLLocationCoordinate2DIsValid(weakSelf.tempCoordinate) && CLLocationCoordinate2DIsValid([CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate)) {
-            [CreateLocationViewModel instance].userChoosenLocation = [CreateLocationViewModel instance].suggestedPlaceMark.location.coordinate;
+        if (!CLLocationCoordinate2DIsValid(weakSelf.tempCoordinate) && CLLocationCoordinate2DIsValid(self.viewModel.suggestedPlaceMark.location.coordinate)) {
+            self.viewModel.userChoosenLocation = self.viewModel.suggestedPlaceMark.location.coordinate;
         } else {
-            [CreateLocationViewModel instance].userChoosenLocation = weakSelf.tempCoordinate;
+            self.viewModel.userChoosenLocation = weakSelf.tempCoordinate;
         }
         [weakSelf.navigationController popViewControllerAnimated:true];
     }];
+    */
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -61,12 +63,6 @@
         mapPin.animatesDrop = YES;
 
     }
-
-    //TODO Position in view is off
-    if ([[HalalGuideOnboarding instance] wasOnBoardingShow:kManuelGPSPositionKey]) {
-        #warning implement
-    }
-
     return mapPin;
 }
 
@@ -78,11 +74,11 @@
         [[[CLGeocoder alloc] init] reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             if (placemarks && !error && [placemarks count] > 0) {
                 CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                [SVProgressHUD showSuccessWithStatus:ABCreateStringWithAddressDictionary(placemark.addressDictionary, false) maskType:SVProgressHUDMaskTypeGradient];
+                //[SVProgressHUD showSuccessWithStatus:ABCreateStringWithAddressDictionary(placemark.addressDictionary, false) maskType:SVProgressHUDMaskTypeGradient];
                 [view.annotation setCoordinate:view.annotation.coordinate];
                 weakSelf.tempCoordinate = view.annotation.coordinate;
             } else {
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"invalidAddress", nil) maskType:SVProgressHUDMaskTypeGradient];
+                //[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"invalidAddress", nil) maskType:SVProgressHUDMaskTypeGradient];
             }
         }];
     }

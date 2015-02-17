@@ -9,4 +9,6 @@
 
 @interface LocationAnnotationView : MKAnnotationView
 @property UIImageView *thumbnail;
+
+- (void)configureLocation;
 @end

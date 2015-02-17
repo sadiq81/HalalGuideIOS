@@ -4,16 +4,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class Review;
-@class UIImage;
-@class ProfileInfo;
-
+#import "Review.h"
 
 @interface ReviewDetailViewModel : NSObject
 
-@property (nonatomic) Review *review;
+@property (nonatomic, readonly) Review *review;
 
-+ (ReviewDetailViewModel *)instance;
+- (instancetype)initWithReview:(Review *)review;
+
++ (instancetype)modelWithReview:(Review *)review;
+
 
 @end

@@ -7,36 +7,288 @@
 //
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
-#import <UIAlertController+Blocks/UIAlertController+Blocks.h>
 #import <ParseUI/ParseUI.h>
-#import <SDWebImage/UIImageView+WebCache.h>
 #import <MZFormSheetController/MZFormSheetSegue.h>
 #import "LocationDetailViewController.h"
 #import "CreateReviewViewModel.h"
 #import "Review.h"
-#import "CreateLocationViewModel.h"
-#import "LocationDetail.h"
 #import "HalalGuideNumberFormatter.h"
-#import "LocationPicture.h"
 #import "ReviewCell.h"
 #import "ReviewDetailViewModel.h"
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
-#import "UIView+Extensions.h"
 #import "HalalGuideOnboarding.h"
-#import "SlideShowViewController.h"
 #import "UIViewController+Extension.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "SlideShowViewController.h"
+#import "ReviewDetailViewController.h"
+#import "CreateReviewViewController.h"
+#import "AppDelegate.h"
 
 @implementation LocationDetailViewController {
 }
 
+@synthesize viewModel;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupViewModel];
 
-    [LocationDetailViewModel instance].reviewDelegate = self;
-    [LocationDetailViewModel instance].pictureDelegate = self;
+    [self setupTableView];
+    [self setupUI];
+    [self setupPictures];
 
-    self.navigationItem.title = [LocationDetailViewModel instance].location.name;
+    self.navigationItem.title = self.viewModel.location.name;
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.viewModel.indexOfSelectedImage != 0) {
+        [self.pictures scrollToItemAtIndex:self.viewModel.indexOfSelectedImage animated:false];
+    }
+    [self setupHints];
+}
+
+
+#pragma mark - Hints
+
+- (void)setupHints {
+    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningDetailAddressTelephoneOptionsOnBoardingKey]) {
+        [self displayHintForView:self.address withHintKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey preferedPositionOfText:HintPositionBelow];
+    }
+}
+
+#pragma mark - ViewModel changes
+
+- (void)setupViewModel {
+
+    [[RACObserve(self.viewModel, progress) skip:1] subscribeNext:^(NSNumber *progress) {
+        NSLog(progress.stringValue);
+        if (progress.intValue != 0 && progress.intValue != 100) {
+            if ([SVProgressHUD isVisible]){
+                [SVProgressHUD setStatus:[self percentageString:progress.floatValue]];
+            } else{
+                [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
+            }
+        } else if (progress.intValue == 100) {
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"imagesSaved", nil)];
+        } else {
+            [SVProgressHUD dismiss];
+        }
+    }];
+
+    /*
+    [[RACObserve(self.viewModel, saving) skip:1] subscribeNext:^(NSNumber *saving) {
+        if (saving.boolValue) {
+            [self showProgressHUD:NSLocalizedString(@"savingToTheCloud", nil)];
+        } else {
+            [self dismissProgressHUD];
+        }
+    }];
+    */
+
+    [[[RACObserve(self.viewModel, fetchCount) skip:1] throttle:0.5] subscribeNext:^(NSNumber *fetching) {
+        if (fetching.intValue == 0) {
+            [SVProgressHUD dismiss];
+        } else if (fetching.intValue == 1) {
+            [SVProgressHUD showInfoWithStatus:NSLocalizedString(@"fetching", nil)];
+        }
+    }];
+
+    [[RACObserve(self.viewModel, error) throttle:0.5] subscribeNext:^(NSError *error) {
+        if (error) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"error", nil)];
+        }
+    }];
+}
+
+
+#pragma mark - Reviews
+
+- (void)setupTableView {
+
+    @weakify(self)
+    [[RACObserve(self.viewModel, reviews) skip:1] subscribeNext:^(NSArray *locations) {
+        @strongify(self)
+        [self.reviews reloadData];
+    }];
+
+    self.reviews.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.viewModel.reviews count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    Review *review = [[self.viewModel reviews] objectAtIndex:indexPath.item];
+
+    ReviewCell *reviewCell = (ReviewCell *) [self.reviews dequeueReusableCellWithIdentifier:@"Review" forIndexPath:indexPath];
+    [reviewCell configure:review];
+    return reviewCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 90;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.reviews deselectRowAtIndexPath:indexPath animated:false];
+}
+
+#pragma mark - UI
+
+- (void)setupUI {
+
+    Location *loc = self.viewModel.location;
+
+    self.name.text = loc.name;
+    self.address.text = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
+    [self.address sizeToFit];
+    [self.address addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
+
+    CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
+    self.distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:@([loc.location distanceFromLocation:manager.location] / 1000)];
+
+
+    self.rating.starImage = [UIImage imageNamed:@"starSmall"];
+    self.rating.displayMode = EDStarRatingDisplayHalf;
+    self.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
+    self.rating.rating = 0;
+
+    if ([loc.locationType isEqualToNumber:@(LocationTypeDining)]) {
+        self.category.text = [loc categoriesString];
+        [self.porkImage configureViewForLocation:loc];
+        [self.alcoholImage configureViewForLocation:loc];
+        [self.halalImage configureViewForLocation:loc];
+        [self.porkLabel configureViewForLocation:loc];
+        [self.alcoholLabel configureViewForLocation:loc];
+        [self.halalLabel configureViewForLocation:loc];
+    } else {
+
+        if ([loc.locationType isEqualToNumber:@(LocationTypeMosque)]) {
+            self.halalLabel.text = NSLocalizedString(LanguageString([loc.language integerValue]), nil);
+            self.halalImage.image = [UIImage imageNamed:LanguageString([loc.language integerValue])];
+        } else {
+            [self.halalLabel removeFromSuperview];
+            [self.halalImage removeFromSuperview];
+        }
+
+        [self.category removeFromSuperview];
+        [self.porkLabel removeFromSuperview];
+        [self.porkImage removeFromSuperview];
+        [self.alcoholImage removeFromSuperview];
+        [self.alcoholLabel removeFromSuperview];
+    }
+
+    @weakify(self)
+    [[self.addPicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        [self.viewModel getPictures:self];
+    }];
+
+    [[self.report rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        [self.viewModel report:self];
+    }];
+}
+
+- (void)openMaps:(UITapGestureRecognizer *)recognizer {
+
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"addPicture", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+
+    if (self.viewModel.location.addressRoad) {
+        UIAlertAction *directions = [UIAlertAction actionWithTitle:NSLocalizedString(@"directions", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            PFGeoPoint *point = [self.viewModel.location point];
+            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(point.latitude, point.longitude) addressDictionary:nil];
+            MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+            [mapItem setName:self.viewModel.location.name];
+
+            // Set the directions mode to "Driving"
+            // Can use MKLaunchOptionsDirectionsModeWalking instead
+            NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+
+            // Get the "Current User Location" MKMapItem
+            MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+
+            // Pass the current location and destination map items to the Maps app
+            // Set the direction mode in the launchOptions dictionary
+            [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
+        }];
+        [alertController addAction:directions];
+    }
+    if (self.viewModel.location.telephone) {
+        UIAlertAction *call = [UIAlertAction actionWithTitle:NSLocalizedString(@"call", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+            NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@", self.viewModel.location.telephone]];
+
+            if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+                [[UIApplication sharedApplication] openURL:phoneUrl];
+            } else {
+                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"callNotAvaileble", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil, nil] show];
+            }
+
+        }];
+        [alertController addAction:call];
+    }
+    if (self.viewModel.location.homePage && [self.viewModel.location.homePage length] > 0) {
+        UIAlertAction *homepage = [UIAlertAction actionWithTitle:NSLocalizedString(@"homepage", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            //TODO Add http if missing
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self.viewModel.location.homePage]];
+            [[UIApplication sharedApplication] openURL:url];
+        }];
+        [alertController addAction:homepage];
+    }
+
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"regret", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    }];
+    [alertController addAction:cancel];
+
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+#pragma mark - CollectionView - Pictures
+
+- (void)setupPictures {
+    self.pictures.type = iCarouselTypeCoverFlow2;
+    self.pictures.delegate = self;
+    self.pictures.dataSource = self;
+
+    @weakify(self)
+    RACSignal *pictures = RACObserve(self.viewModel, locationPictures);
+    [pictures subscribeNext:^(NSArray *locations) {
+        @strongify(self)
+        [self.pictures reloadData];
+    }];
+
+    RAC(self.noPicturesLabel, hidden) = [pictures map:^(NSArray *pictures) {
+        return @([pictures count]);
+    }];
+}
+
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
+    return [self.viewModel.locationPictures count];
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
+
+    LocationPicture *picture = [self.viewModel.locationPictures objectAtIndex:index];
+
+    if (view == nil) {
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
+        view.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    //TODO Adjust frame so that portrait and landspace pictures are both max height
+
+    [(UIImageView *) view setImageWithURL:[[NSURL alloc] initWithString:picture.mediumPicture.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    return view;
+}
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
+    self.viewModel.indexOfSelectedImage = index;
+    [self performSegueWithIdentifier:@"SlideShow" sender:self];
+}
+
 
 #pragma mark - Navigation
 
@@ -44,9 +296,9 @@
 
     if ([identifier isEqualToString:@"CreateLocation"] || [identifier isEqualToString:@"CreateReview"]) {
 
-        if (![[LocationDetailViewModel instance] isAuthenticated]) {
+        if (![self.viewModel isAuthenticated]) {
 
-            [[LocationDetailViewModel instance] authenticate:self];
+            [self.viewModel authenticate:self];
 
             return false;
         } else {
@@ -63,17 +315,26 @@
     [super prepareForSegue:segue sender:sender];
 
     if ([segue.identifier isEqualToString:@"CreateReview"]) {
-        [CreateReviewViewModel instance].reviewedLocation = [LocationDetailViewModel instance].location;
+
+        CreateReviewViewModel *viewModel1 = [[CreateReviewViewModel alloc] initWithReviewedLocation:self.viewModel.location];
+        UINavigationController *_navigationController = (UINavigationController *) segue.destinationViewController;
+
+        CreateReviewViewController *controller = [_navigationController.viewControllers objectAtIndex:0];
+        controller.viewModel = viewModel1;
     }
     else if ([segue.identifier isEqualToString:@"ReviewDetails"]) {
-        NSIndexPath *selected = [[self.collectionView indexPathsForSelectedItems] objectAtIndex:0];
-        Review *review = [[[LocationDetailViewModel instance] reviews] objectAtIndex:selected.item];
-        [ReviewDetailViewModel instance].review = review;
+        NSIndexPath *selected = [self.reviews indexPathForSelectedRow];
+        Review *review = [[self.viewModel reviews] objectAtIndex:selected.item];
+        ReviewDetailViewModel *viewModel1 = [[ReviewDetailViewModel alloc] initWithReview:review];
+        ReviewDetailViewController *controller = (ReviewDetailViewController *) segue.destinationViewController;
+        controller.viewModel = viewModel1;
     }
 
     else if ([segue.identifier isEqualToString:@"SlideShow"]) {
         MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *) segue;
         MZFormSheetController *formSheet = formSheetSegue.formSheetController;
+        SlideShowViewController *controller = (SlideShowViewController *) segue.destinationViewController;
+        controller.viewModel = self.viewModel;
 
         formSheet.portraitTopInset = 6;
         formSheet.cornerRadius = 6;
@@ -95,234 +356,7 @@
 
 - (void)finishedPickingImages {
     [super finishedPickingImages];
-
-    [[LocationDetailViewModel instance] saveMultiplePictures:self.images forLocation:[LocationDetailViewModel instance].location];
+    [self.viewModel saveMultiplePictures:self.images];
 }
-
-#pragma mark - CollectionView
-
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSInteger reviews = [[[LocationDetailViewModel instance] reviews] count];
-    if (reviews == 0) {
-        return 1;
-    } else {
-        return reviews;
-    }
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    UICollectionViewCell *cell;
-    if ([[[LocationDetailViewModel instance] reviews] count] > 0) {
-        Review *review = [[[LocationDetailViewModel instance] reviews] objectAtIndex:indexPath.item];
-        ReviewCell *reviewCell = (ReviewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kReviewCellIdentifer forIndexPath:indexPath];
-        [reviewCell configure:review];
-        cell = reviewCell;
-    } else {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"placeholder" forIndexPath:indexPath];
-    }
-    return cell;
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-
-    UICollectionReusableView *reusableView = nil;
-
-    if (kind == UICollectionElementKindSectionHeader) {
-
-        //TODO Bad design
-        self.headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@ "LocationDetail" forIndexPath:indexPath];
-
-        Location *loc = [LocationDetailViewModel instance].location;
-
-        self.headerView.carousel.type = iCarouselTypeCoverFlow2;
-        self.headerView.carousel.delegate = self;
-        self.headerView.carousel.dataSource = self;
-
-        self.headerView.name.text = loc.name;
-        self.headerView.address.text = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
-        [self.headerView.address addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
-
-        if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningDetailAddressTelephoneOptionsOnBoardingKey]) {
-
-#warning implement
-
-        }
-
-        self.headerView.distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:loc.distance];
-
-        self.headerView.rating.starImage = [UIImage imageNamed:@"starSmall"];
-        self.headerView.rating.displayMode = EDStarRatingDisplayHalf;
-        self.headerView.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
-        self.headerView.rating.rating = 0;
-
-        if ([[LocationDetailViewModel instance].location.locationType isEqualToNumber:@(LocationTypeDining)]) {
-            self.headerView.category.text = [loc categoriesString];
-            [self.headerView.porkImage configureViewForLocation:loc];
-            [self.headerView.alcoholImage configureViewForLocation:loc];
-            [self.headerView.halalImage configureViewForLocation:loc];
-            [self.headerView.porkLabel configureViewForLocation:loc];
-            [self.headerView.alcoholLabel configureViewForLocation:loc];
-            [self.headerView.halalLabel configureViewForLocation:loc];
-        } else {
-
-            if ([[LocationDetailViewModel instance].location.locationType isEqualToNumber:@(LocationTypeMosque)]) {
-                self.headerView.halalLabel.text = NSLocalizedString(LanguageString([[LocationDetailViewModel instance].location.language integerValue]), nil);
-                self.headerView.halalImage.image = [UIImage imageNamed:LanguageString([[LocationDetailViewModel instance].location.language integerValue])];
-            } else {
-                [self.headerView.halalLabel removeFromSuperview];
-                [self.headerView.halalImage removeFromSuperview];
-            }
-
-            [self.headerView.category removeFromSuperview];
-            [self.headerView.porkLabel removeFromSuperview];
-            [self.headerView.porkImage removeFromSuperview];
-            [self.headerView.alcoholImage removeFromSuperview];
-            [self.headerView.alcoholLabel removeFromSuperview];
-
-        }
-
-        __weak typeof(self) weakSelf = self;
-
-        [self.headerView.addPicture handleControlEvents:UIControlEventTouchUpInside withBlock:^(UIButton *weakSender) {
-            [[LocationDetailViewModel instance] getPicture:weakSelf];
-        }];
-        [self.headerView.report handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
-            [[LocationDetailViewModel instance] report:weakSelf];
-        }];
-
-        reusableView = self.headerView;
-    }
-
-    return reusableView;
-}
-
-//TODO Select whether to call restaurant or open in maps
-- (void)openMaps:(UITapGestureRecognizer *)recognizer {
-
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"addPicture", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-
-    if ([LocationDetailViewModel instance].location.addressRoad) {
-        UIAlertAction *directions = [UIAlertAction actionWithTitle:NSLocalizedString(@"directions", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            PFGeoPoint *point = [[LocationDetailViewModel instance].location point];
-            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(point.latitude, point.longitude) addressDictionary:nil];
-            MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-            [mapItem setName:[LocationDetailViewModel instance].location.name];
-
-            // Set the directions mode to "Driving"
-            // Can use MKLaunchOptionsDirectionsModeWalking instead
-            NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
-
-            // Get the "Current User Location" MKMapItem
-            MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
-
-            // Pass the current location and destination map items to the Maps app
-            // Set the direction mode in the launchOptions dictionary
-            [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
-        }];
-        [alertController addAction:directions];
-    }
-    if ([LocationDetailViewModel instance].location.telephone) {
-        UIAlertAction *call = [UIAlertAction actionWithTitle:NSLocalizedString(@"call", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
-            NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@", [LocationDetailViewModel instance].location.telephone]];
-
-            if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
-                [[UIApplication sharedApplication] openURL:phoneUrl];
-            } else {
-                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"callNotAvaileble", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", nil) otherButtonTitles:nil, nil] show];
-            }
-
-        }];
-        [alertController addAction:call];
-    }
-    if ([LocationDetailViewModel instance].location.homePage && [[LocationDetailViewModel instance].location.homePage length] > 0) {
-        UIAlertAction *homepage = [UIAlertAction actionWithTitle:NSLocalizedString(@"homepage", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            //TODO Add http if missing
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [LocationDetailViewModel instance].location.homePage]];
-            [[UIApplication sharedApplication] openURL:url];
-        }];
-        [alertController addAction:homepage];
-    }
-
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"regret", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-    }];
-    [alertController addAction:cancel];
-
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
-#pragma mark - CollectionView - Pictures
-
-- (void)reloadCollectionView {
-    if ([[LocationDetailViewModel instance].locationPictures count] == 0) {
-        self.headerView.noPicturesLabel.hidden = false;
-    } else {
-        self.headerView.noPicturesLabel.hidden = true;
-        [self.headerView.carousel reloadData];
-    }
-}
-
-- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
-    return [[LocationDetailViewModel instance].locationPictures count];
-}
-
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
-
-
-    LocationPicture *picture = [[LocationDetailViewModel instance] pictureForRow:index];
-
-    if (view == nil) {
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
-        view.contentMode = UIViewContentModeScaleAspectFit;
-    }
-    //TODO Adjust frame so that portrait and landspace pictures are both max height
-
-    [(UIImageView *) view setImageWithURL:[[NSURL alloc] initWithString:picture.mediumPicture.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    return view;
-}
-
-- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
-
-    [LocationDetailViewModel instance].indexOfSelectedImage = index;
-
-    [self performSegueWithIdentifier:@"SlideShow" sender:self];
-}
-
-- (void)reloadCollectionView:(NSUInteger)oldItemsCount insertNewItems:(NSUInteger)newItemsCount {
-
-    self.headerView.rating.rating = [[[LocationDetailViewModel instance] averageRating] floatValue];
-
-    [self.collectionView performBatchUpdates:^{
-
-        NSMutableArray *arrayWithIndexPathsDelete = [NSMutableArray array];
-        NSMutableArray *arrayWithIndexPathsInsert = [NSMutableArray array];
-
-        //If empty we have a placeholder we need to remove
-        if (oldItemsCount == 0) {
-            [arrayWithIndexPathsDelete addObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-        } else {
-            for (int item = 0; item < oldItemsCount; item++) {
-                [arrayWithIndexPathsDelete addObject:[NSIndexPath indexPathForRow:item inSection:0]];
-            }
-        }
-
-        [self.collectionView deleteItemsAtIndexPaths:arrayWithIndexPathsDelete];
-
-        if (newItemsCount == 0) {
-            [arrayWithIndexPathsInsert addObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-        } else {
-            for (int i = 0; i < newItemsCount; i++) {
-                [arrayWithIndexPathsInsert addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-            }
-        }
-
-        [self.collectionView insertItemsAtIndexPaths:arrayWithIndexPathsInsert];
-
-    }                             completion:nil];
-
-}
-
 
 @end

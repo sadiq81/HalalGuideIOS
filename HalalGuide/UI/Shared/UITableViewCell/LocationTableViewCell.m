@@ -10,6 +10,7 @@
 #import "HalalGuideNumberFormatter.h"
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "HalalGuideLabels.h"
+#import "AppDelegate.h"
 
 @implementation LocationTableViewCell {
 
@@ -23,12 +24,13 @@
     [[PictureService instance] thumbnailForLocation:location onCompletion:^(NSArray *objects, NSError *error) {
         if (objects != nil && [objects count] == 1) {
             LocationPicture *picture = [objects firstObject];
-            [thumbNail setImageWithURL:[[NSURL alloc] initWithString:picture.thumbnail.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [thumbNail setImageWithURL:[[NSURL alloc] initWithString:picture.thumbnail.url] placeholderImage:[UIImage imageNamed:self.placeholderImageName] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         }
     }];
 
     UILabel *distance = (UILabel *) [self.contentView viewWithTag:200];
-    distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:location.distance];
+    CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
+    distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:@([location.location distanceFromLocation:manager.location] / 1000)];
     UILabel *name = (UILabel *) [self.contentView viewWithTag:201];
     name.text = location.name;
     UILabel *address = (UILabel *) [self.contentView viewWithTag:202];
@@ -52,8 +54,6 @@
 - (NSString *)placeholderImageName {
     @throw @"Should be override";
 }
-
-
 
 
 @end

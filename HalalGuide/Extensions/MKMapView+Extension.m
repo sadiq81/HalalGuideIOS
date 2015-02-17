@@ -13,8 +13,8 @@
 
 - (PFGeoPoint *)southWest {
     MKCoordinateRegion region1 = self.region;
-    double latitude = region1.center.latitude - region1.span.latitudeDelta;
-    double longitude = region1.center.longitude - region1.span.longitudeDelta;
+    double latitude = region1.center.latitude - region1.span.latitudeDelta/2;
+    double longitude = region1.center.longitude - region1.span.longitudeDelta/2;
     CLLocation *sw = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
     PFGeoPoint *southwest = [PFGeoPoint geoPointWithLocation:sw];
 
@@ -24,8 +24,8 @@
 - (PFGeoPoint *)northEast {
 
     MKCoordinateRegion region1 = self.region;
-    double latitude = region1.center.latitude + region1.span.latitudeDelta;
-    double longitude = region1.center.longitude + region1.span.longitudeDelta;
+    double latitude = region1.center.latitude + region1.span.latitudeDelta/2;
+    double longitude = region1.center.longitude + region1.span.longitudeDelta/2;
     CLLocation *ne = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
     PFGeoPoint *northeast = [PFGeoPoint geoPointWithLocation:ne];
 

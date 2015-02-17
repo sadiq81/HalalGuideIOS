@@ -11,6 +11,7 @@
 #import "DCParserConfiguration.h"
 #import "ErrorReporting.h"
 #import <AddressBook/ABPerson.h>
+#import <Parse/Parse.h>
 
 @implementation AddressService {
 
@@ -49,7 +50,6 @@
 - (void)doesAddressExist:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(Adgangsadresse *address))completion {
 
     NSString *url = [[NSString stringWithFormat:@"http://dawa.aws.dk/adgangsadresser?vejnavn=%@&husnummer=%@&postnr=%@", road, roadNumber, postalCode] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
@@ -64,7 +64,6 @@
         Adgangsadresse *adgangsadresse = [addressses linq_firstOrNil:^BOOL(Adgangsadresse *item) {
             return [road isEqualToString:item.vejstykke.navn] && [roadNumber isEqualToString:item.husnr] && [postalCode isEqualToString:item.postnummer.nr];
         }];
-
         completion(adgangsadresse);
     }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [[ErrorReporting instance] reportError:error];
@@ -90,7 +89,7 @@
     }];
 }
 
-- (void)addressNearPosition:(CLLocation *)location onCompletion:(void (^)(NSArray *addresses))completion {
+- (void)addressNearPosition:(CLLocation *)location onCompletion: (void (^)(NSArray *addresses))completion {
 
     NSString *url = [NSString stringWithFormat:@"http://dawa.aws.dk/adgangsadresser?cirkel=%f,%f,%f&srid=4326", location.coordinate.longitude, location.coordinate.latitude, 150.0f];
 //    NSString *url = [[NSString stringWithFormat:@"http://dawa.aws.dk/adgangsadresser?cirkel=%@,%@,%@&srid=4326", location.coordinate.longitude, location.coordinate.latitude, @150] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

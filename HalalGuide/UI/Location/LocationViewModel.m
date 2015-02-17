@@ -8,38 +8,54 @@
 #import "LocationViewModel.h"
 #import "MapKit/MapKit.h"
 #import "NSMutableString+Extensions.h"
-#import "SVProgressHUD.h"
 #import "ErrorReporting.h"
 #import "HalalGuideSettings.h"
+
+@interface LocationViewModel () {
+}
+
+@property(nonatomic) NSArray *listLocations;
+@property(nonatomic) NSArray *mapLocations;
+@end
 
 @implementation LocationViewModel {
 
 }
 
-@synthesize locations, locationType, delegate, maximumDistance, showNonHalal, showAlcohol, showPork, categories, shopCategories, language, page, searchText, locationPresentation, southWest, northEast;
 
-+ (LocationViewModel *)instance {
-    static LocationViewModel *_instance = nil;
+@synthesize mapLocations, listLocations, locationType, maximumDistance, showNonHalal, showAlcohol, showPork, categories, shopCategories, language, page, searchText, locationPresentation, southWest, northEast;
 
-    @synchronized (self) {
-        if (_instance == nil) {
-            _instance = [[super alloc] init];
+- (instancetype)initWithLocationType:(LocationType)aLocationType {
+    self = [super init];
+    if (self) {
+        self.locationType = aLocationType;
 
-            _instance.maximumDistance = (int) [HalalGuideSettings instance].distanceFilter;
-            _instance.showPork = [HalalGuideSettings instance].porkFilter;
-            _instance.showAlcohol = [HalalGuideSettings instance].alcoholFilter;
-            _instance.showNonHalal = [HalalGuideSettings instance].halalFilter;
+        maximumDistance = (int) [HalalGuideSettings instance].distanceFilter;
+        showPork = [HalalGuideSettings instance].porkFilter;
+        showAlcohol = [HalalGuideSettings instance].alcoholFilter;
+        showNonHalal = [HalalGuideSettings instance].halalFilter;
+        categories = [HalalGuideSettings instance].categoriesFilter;
+        shopCategories = [HalalGuideSettings instance].shopCategoriesFilter;
+        mapLocations = [NSArray new];
+        listLocations = [NSArray new];
+        page = 0;
 
-            _instance.categories = [HalalGuideSettings instance].categoriesFilter;
-            _instance.shopCategories = [HalalGuideSettings instance].shopCategoriesFilter;
-            _instance.locations = [NSMutableArray new];
+        [self configureLocation];
 
-            _instance.page = 0;
-
-        }
+        [self refreshLocations];
     }
 
-    return _instance;
+    return self;
+}
+
++ (instancetype)modelWithLocationType:(LocationType)locationType {
+    return [[self alloc] initWithLocationType:locationType];
+}
+
+- (void)configureLocation {
+    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"locationManager:didUpdateLocations" object:nil] subscribeNext:^(NSNotification *notification) {
+        self.userLocation = [notification.userInfo objectForKey:@"lastObject"];
+    }];
 }
 
 - (PFQuery *)query {
@@ -84,6 +100,7 @@
         }
 
         if (self.searchText && [self.searchText length] > 0) {
+
             PFQuery *name = [PFQuery orQueryWithSubqueries:@[query]];
             [name whereKey:@"name" matchesRegex:self.searchText modifiers:@"i"];
 
@@ -107,11 +124,12 @@
 
             PFQuery *or = [PFQuery orQueryWithSubqueries:@[name, addressCity, addressPostalCode, addressRoad, addressRoadNumber, homePage, telephone]];
             //Or queries do not support geo location and limit/skip
+            listLocations = [NSArray new];
             return or;
         }
 
-        if ([BaseViewModel currentLocation]) {
-            [query whereKey:@"point" nearGeoPoint:[PFGeoPoint geoPointWithLocation:[BaseViewModel currentLocation]] withinKilometers:self.maximumDistance < 20 ? self.maximumDistance : 20000];
+        if (self.userLocation) {
+            [query whereKey:@"point" nearGeoPoint:[PFGeoPoint geoPointWithLocation:self.userLocation] withinKilometers:self.maximumDistance < 20 ? self.maximumDistance : 20000]; //TODO
         }
 
         //Paging controls
@@ -121,81 +139,40 @@
         [query whereKey:@"point" withinGeoBoxFromSouthwest:self.southWest toNortheast:self.northEast];
     }
 
-
     return query;
 }
 
-- (void)reset {
-    self.locations = [NSMutableArray new];
-    self.page = 0;
-    self.locationPresentation = LocationPresentationList;
-}
 
-- (void)locationChanged:(NSNotification *)notification {
+- (void)refreshLocations {
 
-    [super locationChanged:notification];
-
-    self.locations = [[NSMutableArray alloc] initWithArray:[self calculateDistances:self.locations sortByDistance:true]];
-
-    if ([self.delegate respondsToSelector:@selector(refreshTable)]) {
-        [self.delegate refreshTable];
-    }
-}
-
-- (void)refreshLocations:(BOOL)firstLoad {
-
-    if (firstLoad) {
-        [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeGradient];
-    }
-
+    self.fetchCount++;
     [[LocationService instance] locationsByQuery:self.query onCompletion:^(NSArray *objects, NSError *error) {
 
-        [SVProgressHUD dismiss];
+        self.fetchCount--;
 
-        if (error) {
-
+        if ((self.error = error)) {
             [[ErrorReporting instance] reportError:error];
-            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error.localizedDescription]];
-
-        } else {
-
-            if (self.page != 0) {
-                [self.locations addObjectsFromArray:objects];
-                self.locations = [[NSMutableArray alloc] initWithArray:[self calculateDistances:self.locations sortByDistance:false]];
-            } else {
-                self.locations = [[NSMutableArray alloc] initWithArray:[self calculateDistances:objects sortByDistance:true]];
-            }
-        }
-
-        if (self.locationPresentation == LocationPresentationList) {
-            if ([self.delegate respondsToSelector:@selector(reloadTable)]) {
-                [self.delegate reloadTable];
-            }
+        } else if (self.locationPresentation == LocationPresentationList) {
+            self.listLocations = (self.page == 0) ? objects : [self.listLocations arrayByAddingObjectsFromArray:objects];
         } else if (self.locationPresentation == LocationPresentationMap) {
-            if ([self.delegate respondsToSelector:@selector(reloadAnnotations)]) {
-                [self.delegate reloadAnnotations];
-            }
+            self.mapLocations = (self.page == 0) ? objects : [self.mapLocations arrayByAddingObjectsFromArray:objects];
         }
-
-
     }];
 }
 
 - (void)setLocationType:(LocationType)locationType1 {
-    self.searchText = @"";
+    mapLocations = [NSArray new];
+    listLocations = [NSArray new];
+    page = 0;
     locationType = locationType1;
 }
 
-
-- (NSUInteger)numberOfLocations {
-    return [self.locations count];
+- (void)setSearchText:(NSString *)searchText1 {
+    searchText = searchText1;
+    listLocations = [NSArray new];
+    page = 0;
+    [self refreshLocations];
 }
 
-- (Location *)locationForRow:(NSUInteger)row {
-    if (self.locations == nil || [self.locations count] <= row) {
-        return nil;
-    }
-
-    return [self.locations objectAtIndex:row];
-}
 @end
+

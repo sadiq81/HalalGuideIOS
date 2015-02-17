@@ -25,17 +25,15 @@
     self.iCarousel.bounces = false;
     self.iCarousel.pagingEnabled = true;
 
-    [self.iCarousel scrollToItemAtIndex:[LocationDetailViewModel instance].indexOfSelectedImage animated:false];
 }
 
-//TODO Make delegate methods in LocationDetailViewController use same datasource
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
-    return [[LocationDetailViewModel instance].locationPictures count];
+    return [self.viewModel.locationPictures count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
 
-    LocationPicture *picture = [[LocationDetailViewModel instance] pictureForRow:index];
+    LocationPicture *picture = [self.viewModel.locationPictures objectAtIndex:index];
 
     if (view == nil) {
         view  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width * 0.90f, self.view.height * 0.90f)];
@@ -50,7 +48,15 @@
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
+    self.viewModel.indexOfSelectedImage = index;
     [self mz_dismissFormSheetControllerAnimated:true completionHandler:nil];
 }
+
+- (void)setViewModel:(LocationDetailViewModel *)viewModel {
+    _viewModel = viewModel;
+    [self.iCarousel reloadData];
+    [self.iCarousel scrollToItemAtIndex:self.viewModel.indexOfSelectedImage animated:false];
+}
+
 
 @end

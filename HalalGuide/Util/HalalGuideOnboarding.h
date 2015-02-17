@@ -5,19 +5,18 @@
 
 #define kAddNewOnBoardingButtonKey @"addNewOnBoardingButton"
 #define kFilterOnBoardingButtonKey @"filterOnBoardingButton"
+
+//TODO Use new onBoarding
 #define kDiningCellPorkOnBoardingKey @"diningCellPorkOnBoarding"
 #define kDiningCellAlcoholOnBoardingKey @"diningCellAlcoholOnBoarding"
 #define kDiningCellHalalOnBoardingKey @"diningCellHalalOnBoarding"
-#define kDiningCellPullToShowMoreKey @"diningCellPullToShowMore"
 
+//TODO Use new onBoarding
 #define kCreateLocationPickImageOnBoardingKey @"createLocationPickImageOnBoarding"
 
 #define kDiningDetailAddressTelephoneOptionsOnBoardingKey @"diningDetailAddressTelephoneOptionsOnBoarding"
-#define kSlideShowViewSwipeToViewMoreKey @"slideShowViewSwipeToViewMore"
 
 #define kSupportOnBoardingKey @"supportOnBoarding"
-
-#define kManuelGPSPositionKey @"manuelGPSPosition"
 
 #import <Foundation/Foundation.h>
 

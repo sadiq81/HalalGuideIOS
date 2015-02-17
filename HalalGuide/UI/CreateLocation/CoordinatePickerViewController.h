@@ -7,6 +7,8 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+@class CreateLocationViewModel;
+
 
 @interface CoordinatePickerViewController : UIViewController<MKMapViewDelegate>{
     
@@ -15,5 +17,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *approve;
 @property CLLocationCoordinate2D tempCoordinate;
 @property BOOL dismissByApproval;
+@property (strong, nonatomic) CreateLocationViewModel *viewModel;
 
 @end

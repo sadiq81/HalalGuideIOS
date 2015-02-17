@@ -20,38 +20,48 @@
 
 }
 
+@synthesize viewModel;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    __weak typeof(self) weakSelf = self;
-
     [self setUILabels];
 
-    [self.distanceSlider handleControlEvents:UIControlEventValueChanged withBlock:^(UISlider *weakControl) {
-        weakControl.value = [@(weakControl.value) intValue];
+    @weakify(self)
+    [[self.distanceSlider rac_newValueChannelWithNilValue:nil] subscribeNext:^(NSNumber * value) {
+        @strongify(self)
+        self.distanceSlider.value = value.intValue;
         [self setDistanceLabelText];
     }];
 
-    [self.reset handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
-        switch ([LocationViewModel instance].locationType){
+    [[self.reset rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(NSNumber * value) {
+        @strongify(self)
+                switch (self.viewModel.locationType){
             case LocationTypeDining:{
-                [[LocationViewModel instance].categories removeAllObjects];
+                [self.viewModel.categories removeAllObjects];
                 break;
             }
             case LocationTypeShop:{
-                [[LocationViewModel instance].shopCategories removeAllObjects];
+                [self.viewModel.shopCategories removeAllObjects];
                 break;
             }
             case LocationTypeMosque:{
                 break;
             }
         }
-        [weakSelf setCountLabelText];
+        [self setCountLabelText];
     }];
 
+    [[self.distanceSlider rac_newValueChannelWithNilValue:nil] subscribeNext:^(NSNumber * value) {
+        @strongify(self)
+        self.distanceSlider.value = value.intValue;
+        [self setDistanceLabelText];
+    }];
 
-    [self.done setBlock:^(id weakSender) {
-        [weakSelf dismissViewControllerAnimated:true completion:nil];
+    self.done.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self)
+        [self dismissViewControllerAnimated:true completion:nil];
+        return [RACSignal empty];
     }];
 
     [self setupLocationType];
@@ -59,15 +69,15 @@
 
 - (void)setupLocationType {
 
-    if ([LocationViewModel instance].locationType != LocationTypeDining) {
+    if (self.viewModel.locationType != LocationTypeDining) {
         [self.switchView removeFromSuperview];
         self.categoryView.frame = CGRectMake(self.categoryView.x, self.distanceSlider.y + self.distanceSlider.height + 8, self.categoryView.width, self.categoryView.height);
 
-        if ([LocationViewModel instance].locationType == LocationTypeMosque) {
+        if (self.viewModel.locationType == LocationTypeMosque) {
             [self.reset removeFromSuperview];
             self.categories.text = @"";
             self.categories.text = NSLocalizedString(@"language", nil);
-        } else if ([CreateLocationViewModel instance].locationType == LocationTypeShop) {
+        } else if (self.viewModel.locationType == LocationTypeShop) {
 
         }
     }
@@ -76,23 +86,23 @@
 - (void)setUILabels {
     [self setCountLabelText];
 
-    self.porkSwitch.on = [LocationViewModel instance].showPork;
-    self.alcoholSwitch.on = [LocationViewModel instance].showAlcohol;
-    self.halalSwitch.on = [LocationViewModel instance].showNonHalal;
-    self.distanceSlider.value = [LocationViewModel instance].maximumDistance;
+    self.porkSwitch.on = self.viewModel.showPork;
+    self.alcoholSwitch.on = self.viewModel.showAlcohol;
+    self.halalSwitch.on = self.viewModel.showNonHalal;
+    self.distanceSlider.value = self.viewModel.maximumDistance;
 
     [self setDistanceLabelText];
 }
 
 - (void)setCountLabelText {
 
-    if ([LocationViewModel instance].locationType == LocationTypeMosque) {
-        self.countLabel.text = NSLocalizedString(LanguageString([LocationViewModel instance].language), nil);
-    } else if ([LocationViewModel instance].locationType == LocationTypeShop) {
-        int count = (int) [[LocationViewModel instance].shopCategories count];
+    if (self.viewModel.locationType == LocationTypeMosque) {
+        self.countLabel.text = NSLocalizedString(LanguageString(self.viewModel.language), nil);
+    } else if (self.viewModel.locationType == LocationTypeShop) {
+        int count = (int) [self.viewModel.shopCategories count];
         self.countLabel.text = [NSString stringWithFormat:@"%i", count];
-    } else if ([LocationViewModel instance].locationType == LocationTypeDining) {
-        int count = (int) [[LocationViewModel instance].categories count];
+    } else if (self.viewModel.locationType == LocationTypeDining) {
+        int count = (int) [self.viewModel.categories count];
         self.countLabel.text = [NSString stringWithFormat:@"%i", count];
     }
 }
@@ -106,14 +116,13 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [LocationViewModel instance].showPork = [HalalGuideSettings instance].porkFilter = self.porkSwitch.on;
-    [LocationViewModel instance].showAlcohol = [HalalGuideSettings instance].alcoholFilter = self.alcoholSwitch.on;
-    [LocationViewModel instance].showNonHalal = [HalalGuideSettings instance].halalFilter = self.halalSwitch.on;
-    [LocationViewModel instance].maximumDistance = [HalalGuideSettings instance].distanceFilter = (NSUInteger) self.distanceSlider.value;
-    [HalalGuideSettings instance].categoriesFilter = [LocationViewModel instance].categories;
+    self.viewModel.showPork = [HalalGuideSettings instance].porkFilter = self.porkSwitch.on;
+    self.viewModel.showAlcohol = [HalalGuideSettings instance].alcoholFilter = self.alcoholSwitch.on;
+    self.viewModel.showNonHalal = [HalalGuideSettings instance].halalFilter = self.halalSwitch.on;
+    self.viewModel.maximumDistance = [HalalGuideSettings instance].distanceFilter = (NSUInteger) self.distanceSlider.value;
+    [HalalGuideSettings instance].categoriesFilter = self.viewModel.categories;
 
-    [[LocationViewModel instance] reset];
-    [[LocationViewModel instance] refreshLocations:true];
+    [self.viewModel refreshLocations];
 }
 
 
@@ -127,8 +136,8 @@
 
     if ([segue.identifier isEqualToString:@"chooseCategories"]) {
         CategoriesViewController *destination = (CategoriesViewController *) segue.destinationViewController;
-        destination.viewModel = [LocationViewModel instance];
-        destination.locationType = [LocationViewModel instance].locationType;
+        destination.viewModel = self.viewModel;
+        destination.locationType = self.viewModel.locationType;
 
         MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *) segue;
         MZFormSheetController *formSheet = formSheetSegue.formSheetController;

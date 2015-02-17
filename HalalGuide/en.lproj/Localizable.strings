@@ -97,6 +97,7 @@
 "error" = "Unknown error";
 "errorText" = "An unknown error occured, try again later.";
 "reviewMinimum" = "A review should at least be 30 characters";
+"reviewMinimum2" = "A review should at least be 30 characters and at least one star";
 
 "awaiting" = "Awaiting approval";
 "approved" = "Approved";
@@ -142,19 +143,16 @@
 
 "errorMailText" = "The following information is incorrect: \nElaborate here!";
 
-"addNewOnBoardingButton" = "Press here to add suggestions";
-"filterOnBoardingButton" = "Press here to filter your results";
+"addNewOnBoardingButton" = "Press '+' to add suggestions";
+"filterOnBoardingButton" = "Press 'Filter' to filter your results";
 
 "diningCellPorkOnBoarding" = "Is pork also served";
 "diningCellAlcoholOnBoarding" = "Is alcohol also served";
-"diningCellHalalOnBoarding" =  "Is exclusively halal meat";
-"diningCellPullToShowMore" = "Pull up for fetch more results";
+"diningCellHalalOnBoarding" =  "Is chicken/beef exclusively halal meat";
 
-"diningDetailAddressTelephoneOptionsOnBoarding" = "Press here to get directions or call the place";
+"diningDetailAddressTelephoneOptionsOnBoarding" = "Press the address to get directions or call the place";
 
-"createLocationPickImageOnBoarding" = "Press here to add a picture";
-
-"slideShowViewSwipeToViewMore" = "Swipe to see more images";
+"createLocationPickImageOnBoarding" = "Press the camera to add pictures";
 
 "supportOnBoarding" = "Support the free app with a small amount";
 
@@ -220,4 +218,15 @@
 "closed"= "Closed";
 "open"= "Open";
 
+//"Pull down to refresh..." = "Pull down to refresh...";
+//"Release to refresh..."= "Release to refresh...";
+//"Loading..."= "Loading...";
+//"Pull up to load more..."= "Pull up to load more...";
+//"Release to load more..."= "Release to load more...";
+//"Loading..."= "Loading...";
+//"MM/dd/yyyy hh:mm:a"= "MM/dd/yyyy hh:mm:a";
+//"Last Updated: %@"= "Last Updated: %@";
 
+"uploading" = "Uploading...";
+"downloading" = "Downloading...";
+"percentageComplete"= "finished";

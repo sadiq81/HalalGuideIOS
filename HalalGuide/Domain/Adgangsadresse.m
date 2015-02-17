@@ -8,7 +8,23 @@
 
 @implementation Adgangsadresse {
 
+
 }
+
+- (CLLocation *)location {
+    NSString *latitude = [self.adgangspunkt.koordinater objectAtIndex:1];
+    NSString *longitude = [self.adgangspunkt.koordinater objectAtIndex:0];
+    return [[CLLocation alloc] initWithLatitude:latitude.floatValue longitude:longitude.floatValue];
+}
+
+- (NSString *)latitude {
+    return [self.adgangspunkt.koordinater objectAtIndex:1];
+}
+
+- (NSString *)longitude {
+    return [self.adgangspunkt.koordinater objectAtIndex:0];
+}
+
 
 @end
 
@@ -81,7 +97,7 @@
 
 }
 
-- (instancetype)initWithName:(NSString *)name numbers:(NSMutableArray *)numbers postalCode:(Postnummer *)postnummer{
+- (instancetype)initWithName:(NSString *)name numbers:(NSMutableArray *)numbers postalCode:(Postnummer *)postnummer {
     self = [super init];
     if (self) {
         self.name = name;

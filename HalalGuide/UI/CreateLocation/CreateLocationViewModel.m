@@ -3,52 +3,30 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#define CLCOORDINATES_EQUAL(coord1, coord2) (coord1.latitude == coord2.latitude && coord1.longitude == coord2.longitude)
-
 #import <UIKit/UIKit.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 #import <CoreLocation/CoreLocation.h>
 #import "CreateLocationViewModel.h"
 #import "AddressService.h"
-#import "Adgangsadresse.h"
 #import "LocationService.h"
-#import "KeyChainService.h"
-#import "LocationPicture.h"
+#import "AppDelegate.h"
 #import "PictureService.h"
-#import "ErrorReporting.h"
-
 
 @implementation CreateLocationViewModel {
 
 }
 
-@synthesize locationType, streetNumbers, categories, shopCategories, language, suggestedPlaceMark, suggestionName;
+@synthesize locationType, streetNumbers, categories, shopCategories, language;
 
-+ (CreateLocationViewModel *)instance {
-    static CreateLocationViewModel *_instance = nil;
-
-    @synchronized (self) {
-        if (_instance == nil) {
-            _instance = [[super alloc] init];
-
-            _instance.streetNumbers = [NSDictionary new];
-
-            _instance.categories = [[NSMutableArray alloc] init];
-            _instance.shopCategories = [[NSMutableArray alloc] init];
-            _instance.userChoosenLocation = kCLLocationCoordinate2DInvalid;
-        }
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        streetNumbers = [NSDictionary new];
+        categories = [[NSMutableArray alloc] init];
+        shopCategories = [[NSMutableArray alloc] init];
     }
 
-    return _instance;
+    return self;
 }
-
-- (void)reset {
-    self.suggestedPlaceMark = nil;
-    self.suggestionName = nil;
-    self.userChoosenLocation = kCLLocationCoordinate2DInvalid;
-    self.createdLocation = nil;
-}
-
 
 - (NSArray *)streetNameForPrefix:(NSString *)prefix {
     return [[self.streetNumbers allKeys] linq_where:^BOOL(NSString *item) {
@@ -67,8 +45,8 @@
 }
 
 - (void)loadAddressesNearPositionOnCompletion:(void (^)(void))completion {
-
-    [[AddressService instance] addressNearPosition:[BaseViewModel currentLocation] onCompletion:^(NSArray *addresses) {
+    CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
+    [[AddressService instance] addressNearPosition:manager.location onCompletion:^(NSArray *addresses) {
 
         NSMutableDictionary *streetNumbersTemp = [NSMutableDictionary new];
         for (Adgangsadresse *key in addresses) {
@@ -89,114 +67,96 @@
     }];
 }
 
-- (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postnummer))completion {
+- (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postNummer))completion {
     [[AddressService instance] cityNameFor:postalCode onCompletion:completion];
 }
 
-- (void)findAddressesForRoad:(NSString *)road number:(NSString *)roadNumber code:(NSString *)postalCode onCompletion:(void (^)(Adgangsadresse *address))completion {
-    [[AddressService instance] doesAddressExist:road roadNumber:roadNumber postalCode:postalCode onCompletion:completion];
-}
+- (void)saveEntity:(NSString *)name road:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode city:(NSString *)city telephone:(NSString *)telephone website:(NSString *)website pork:(BOOL)pork alcohol:(BOOL)alcohol nonHalal:(BOOL)nonHalal images:(NSArray *)images {
 
+    self.error = nil;
+    self.saving = true;
 
-- (void)saveEntity:(NSString *)name road:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode city:(NSString *)city telephone:(NSString *)telephone website:(NSString *)website pork:(BOOL)pork alcohol:(BOOL)alcohol nonHalal:(BOOL)nonHalal images:(NSArray *)images onCompletion:(void (^)(CreateEntityResult result))completion {
+    Location *location = [Location locationWithAddressCity:city addressPostalCode:postalCode addressRoad:road addressRoadNumber:roadNumber alcohol:@(alcohol) creationStatus:@(CreationStatusAwaitingApproval) homePage:website language:@(self.language) locationType:@(self.locationType) name:name nonHalal:@(nonHalal) pork:@(pork) submitterId:[PFUser currentUser].objectId telephone:telephone categories:self.typeBaseCategories];
 
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeGradient];
-
-    [[AddressService instance] doesAddressExist:road roadNumber:roadNumber postalCode:postalCode onCompletion:^(Adgangsadresse *address) {
-
-        if (!address && !CLLocationCoordinate2DIsValid(self.userChoosenLocation)) {
-            [SVProgressHUD dismiss];
-
-            [PFAnalytics trackEvent:@"CreateEntityResultAddressDoesNotExist" dimensions:@{
-                    @"name" : name,
-                    @"road" : road,
-                    @"roadNumber" : roadNumber,
-                    @"postalCode" : postalCode,
-                    @"city" : city,
-            }];
-
-
-            completion(CreateEntityResultAddressDoesNotExist);
-            return;
-        }
-
-        Location *location = [Location object];
-        location.name = name;
-        location.addressRoad = road;
-        location.addressRoadNumber = roadNumber;
-        location.addressCity = city;
-        location.addressPostalCode = postalCode;
-        location.telephone = telephone;
-        location.homePage = website;
-        location.creationStatus = @(CreationStatusAwaitingApproval);
-        location.submitterId = [PFUser currentUser].objectId;
-
-        //TODO validation
-        location.locationType = @(self.locationType);
-
-        switch (self.locationType) {
-            case LocationTypeMosque: {
-                location.language = @(self.language);
-                break;
-            }
-            case LocationTypeDining: {
-                location.alcohol = @(alcohol);
-                location.pork = @(pork);
-                location.nonHalal = @(nonHalal);
-                location.categories = self.categories;
-                break;
-            }
-            case LocationTypeShop: {
-                location.categories = self.shopCategories;
-                break;
-            }
-        }
-
-        if (!CLLocationCoordinate2DIsValid(self.userChoosenLocation)) {
-            NSString *latitude = [address.adgangspunkt.koordinater objectAtIndex:1];
-            NSString *longitude = [address.adgangspunkt.koordinater objectAtIndex:0];
-            location.point = [PFGeoPoint geoPointWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
-        } else {
-            location.point = [PFGeoPoint geoPointWithLatitude:self.userChoosenLocation.latitude longitude:self.userChoosenLocation.longitude];
-        }
-
-        [[LocationService instance] saveLocation:location onCompletion:^(BOOL succeeded, NSError *error) {
-
-            [SVProgressHUD dismiss];
-
-            if (error) {
-
-                [[ErrorReporting instance] reportError:error];
-
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(CreateEntityResultString(CreateEntityResultCouldNotCreateEntityInDatabase), nil) maskType:SVProgressHUDMaskTypeGradient];
-
-                completion(CreateEntityResultCouldNotCreateEntityInDatabase);
-
-            } else {
-
-                self.createdLocation = location;
-
-                if (images) {
-                    [self saveMultiplePictures:images forLocation:self.createdLocation];
-                }
-
-                completion(CreateEntityResultOk);
-            }
-        }];
+    [[[[[self doesAddressExist:road roadNumber:roadNumber postalCode:postalCode] flattenMap:^RACStream *(Adgangsadresse *value) {
+        location.point = [self pointForAddress:value];
+        return [self saveLocation:location];
+    }] then:^RACSignal * {
+        return images ? [self saveImages:images forLocation:location] : [RACSignal empty];
+    }] finally:^{
+        self.createdLocation = location;
+        self.saving = false;
+    }] subscribeError:^(NSError *error) {
+        self.error = error;
+        self.createdLocation = nil;
+        [location deleteEventually];
     }];
 }
 
-- (void)findAddressByDescription:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(void))completion {
+- (NSArray *)typeBaseCategories {
+    switch (self.locationType) {
+        case LocationTypeMosque: {
+            return nil;
+        }
+        case LocationTypeDining: {
+            return self.categories;
+        }
+        case LocationTypeShop: {
+            return self.shopCategories;
+        }
+        default: {
+            return nil;
+        }
+    }
+}
 
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"estimatingAddress", nil) maskType:SVProgressHUDMaskTypeGradient];
+- (PFGeoPoint *)pointForAddress:(Adgangsadresse *)address {
+    if (address) {
+        return [PFGeoPoint geoPointWithLatitude:[address.latitude doubleValue] longitude:[address.longitude doubleValue]];
+    } else {
+        return nil;
+    }
+}
 
-    [[AddressService instance] findPointForAddress:road roadNumber:roadNumber postalCode:postalCode onCompletion:^(CLPlacemark *place) {
+- (RACSignal *)doesAddressExist:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode {
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        [[AddressService instance] doesAddressExist:road roadNumber:roadNumber postalCode:postalCode onCompletion:^(Adgangsadresse *address) {
+            [subscriber sendNext:address];
+            [subscriber sendCompleted];
+        }];
+        return nil;
+    }];
+}
 
-        [SVProgressHUD dismiss];
+- (RACSignal *)saveLocation:(Location *)location {
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        [[LocationService instance] saveLocation:location onCompletion:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                [subscriber sendNext:@(succeeded)];
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError:error];
+            }
+        }];
+        return nil;
+    }];
+}
 
-        self.suggestedPlaceMark = place;
-
-        completion();
+- (RACSignal *)saveImages:(NSArray *)images forLocation:(Location *)location {
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        [[PictureService instance] saveMultiplePictures:images forLocation:location completion:^(BOOL completed, NSError *error, NSNumber *progress) {
+            if (progress) {
+                self.progress = progress.floatValue;
+                [subscriber sendNext:progress];
+            }
+            if (completed) {
+                [subscriber sendCompleted];
+            }
+            if (error) {
+                [subscriber sendError:error];
+            }
+        }];
+        return nil;
     }];
 }
 

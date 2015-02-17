@@ -5,73 +5,45 @@
 
 #import "FrontPageViewModel.h"
 #import "LocationService.h"
-#import "SVProgressHUD.h"
 #import "ErrorReporting.h"
 
+@interface FrontPageViewModel () {
+}
+
+@property(nonatomic) NSArray *locations;
+
+@end
 
 @implementation FrontPageViewModel {
 
 }
 
-@synthesize locations, delegate;
+@synthesize locations;
 
-+ (FrontPageViewModel *)instance {
+- (instancetype)init {
 
-    static FrontPageViewModel *_instance = nil;
+    self = [super init];
+    if (self) {
 
-    @synchronized (self) {
-        if (_instance == nil) {
-            _instance = [[super alloc] init];
-            _instance.locations = [[NSArray alloc] init];
-
-        }
     }
-
-    return _instance;
+    return self;
 }
 
-- (void)locationChanged:(NSNotification *)notification {
 
-    [super locationChanged:notification];
-    [self calculateDistances:self.locations sortByDistance:false];
+- (void)refreshLocations {
 
-    if ([self.delegate respondsToSelector:@selector(refreshTable)]) {
-        [self.delegate refreshTable];
-    }
-}
-
-- (void)refreshLocations:(BOOL) firstLoad {
-
-    if (firstLoad){
-        [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeGradient];
-    }
-
+    self.fetchCount++;
     [[LocationService instance] lastTenLocations:^(NSArray *objects, NSError *error) {
+        self.fetchCount--;
 
-        [SVProgressHUD dismiss];
-
-        if (error) {
+        if ((self.error = error)) {
             [[ErrorReporting instance] reportError:error];
-            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@", error.localizedDescription]];
         } else {
             self.locations = objects;
-            [self calculateDistances:self.locations sortByDistance:false];
-        }
-
-        if ([self.delegate respondsToSelector:@selector(reloadTable)]) {
-            [self.delegate reloadTable];
         }
     }];
 
 
-}
-
-- (NSUInteger)numberOfLocations {
-    return [self.locations count];
-}
-
-- (Location *)locationForRow:(NSUInteger)row {
-    return [self.locations objectAtIndex:row];
 }
 
 @end

@@ -8,10 +8,11 @@
 #import "BaseEntity.h"
 #import "FrontPageViewModel.h"
 
-@interface FrontPageViewController :UIViewController <UITableViewDataSource, UITableViewDelegate, FrontPageViewModelDelegate>
+@interface FrontPageViewController :UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property(strong, nonatomic) IBOutlet UITableView *latestUpdated;
 @property(strong, nonatomic) UITableViewController *tableViewController;
 @property(strong, nonatomic) UIRefreshControl *refreshControl;
+@property(strong, nonatomic) FrontPageViewModel *viewModel;
 
 @end

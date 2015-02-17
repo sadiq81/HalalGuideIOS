@@ -26,19 +26,19 @@
 
 - (void)setupUIValues {
 
-    [[PFUser query] getObjectInBackgroundWithId:[ReviewDetailViewModel instance].review.submitterId block:^(PFObject *object, NSError *error) {
+    [[PFUser query] getObjectInBackgroundWithId:self.viewModel.review.submitterId block:^(PFObject *object, NSError *error) {
         PFUser *user = (PFUser *) object;
         self.name.text = user.facebookName;
         [self.profilePicture sd_setImageWithURL:user.facebookProfileUrl];
     }];
 
     //TODO add category to NSDate
-    self.date.text = [[HalalGuideDateFormatter instance] stringFromDate:[ReviewDetailViewModel instance].review.createdAt];
-    self.reviewText.text = [ReviewDetailViewModel instance].review.review;
+    self.date.text = [[HalalGuideDateFormatter instance] stringFromDate:self.viewModel.review.createdAt];
+    self.reviewText.text = self.viewModel.review.review;
 
     self.rating.starImage = [UIImage imageNamed:@"starSmall"];
     self.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
-    self.rating.rating = [[ReviewDetailViewModel instance].review.rating floatValue];
+    self.rating.rating = [self.viewModel.review.rating floatValue];
 }
 
 @end

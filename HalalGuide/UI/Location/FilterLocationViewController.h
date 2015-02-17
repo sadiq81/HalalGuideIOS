@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class LocationViewModel;
+
 @interface FilterLocationViewController : UIViewController<UINavigationBarDelegate>
 
 @property(strong, nonatomic) IBOutlet UILabel *distanceLabel;
@@ -23,4 +25,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *countLabel;
 @property (strong, nonatomic) IBOutlet UIView *categoryView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *done;
+
+@property (strong, nonatomic) LocationViewModel *viewModel;
 @end

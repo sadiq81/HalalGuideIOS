@@ -5,13 +5,20 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
+#import "ReactiveCocoa/ReactiveCocoa.h"
+#import "Review.h"
+
+@class RACSignal;
 
 @interface CreateReviewViewModel : BaseViewModel
 
-@property Location *reviewedLocation;
+@property Location *location;
+@property Review *createdReview;
 
-+ (CreateReviewViewModel *)instance;
+- (instancetype)initWithReviewedLocation:(Location *)reviewedLocation;
 
-- (void)saveEntity:(NSString *)reviewText rating:(int)rating onCompletion:(void (^)(CreateEntityResult result))completion;
++ (instancetype)modelWithReviewedLocation:(Location *)reviewedLocation;
+
+- (void)saveEntity:(NSString *)reviewText rating:(int)rating;
 
 @end

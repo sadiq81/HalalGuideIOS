@@ -5,10 +5,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CreateReviewViewModel.h"
-#import "LocationService.h"
 #import "Review.h"
 #import "ReviewService.h"
-#import "KeyChainService.h"
 #import "ErrorReporting.h"
 
 
@@ -16,36 +14,37 @@
 
 }
 
-@synthesize reviewedLocation;
+@synthesize location, createdReview;
 
-+ (CreateReviewViewModel *)instance {
-    static CreateReviewViewModel *_instance = nil;
-
-    @synchronized (self) {
-        if (_instance == nil) {
-            _instance = [[super alloc] init];
-
-        }
+- (instancetype)initWithReviewedLocation:(Location *)reviewedLocation {
+    self = [super init];
+    if (self) {
+        self.location = reviewedLocation;
     }
 
-    return _instance;
+    return self;
 }
 
-- (void)saveEntity:(NSString *)reviewText rating:(int)rating onCompletion:(void (^)(CreateEntityResult result))completion {
++ (instancetype)modelWithReviewedLocation:(Location *)reviewedLocation {
+    return [[self alloc] initWithReviewedLocation:reviewedLocation];
+}
+
+- (void)saveEntity:(NSString *)reviewText rating:(int)rating {
 
     Review *review = [Review object];
     review.review = reviewText;
     review.rating = @(rating);
-    review.submitterId  = [PFUser currentUser].objectId;
-    review.locationId = self.reviewedLocation.objectId;
+    review.submitterId = [PFUser currentUser].objectId;
+    review.locationId = self.location.objectId;
     review.creationStatus = @(CreationStatusAwaitingApproval);
 
+    self.saving = true;
     [[ReviewService instance] saveReview:review onCompletion:^(BOOL succeeded, NSError *error) {
-        if (error) {
+        self.saving = false;
+        if ((self.error = error)) {
             [[ErrorReporting instance] reportError:error];
-            completion(CreateEntityResultCouldNotCreateEntityInDatabase);
         } else {
-            completion(CreateEntityResultOk);
+            self.createdReview = review;
         }
     }];
 }

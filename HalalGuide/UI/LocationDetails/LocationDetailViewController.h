@@ -14,11 +14,26 @@
 #import "LocationDetailViewModel.h"
 #import <MessageUI/MessageUI.h>
 
-@class LocationDetail;
+@interface LocationDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, iCarouselDataSource, iCarouselDelegate>
 
-@interface LocationDetailViewController : UICollectionViewController <UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, DiningDetailReviewDelegate, iCarouselDataSource, iCarouselDelegate, DiningDetailPictureDelegate>
-
-@property(strong) LocationDetail *headerView;
+@property(strong) IBOutlet UILabel *name;
+@property(strong) IBOutlet UILabel *address;
+@property(strong) IBOutlet UILabel *distance;
+@property(strong) IBOutlet EDStarRating *rating;
+@property(strong) IBOutlet UILabel *category;
+@property(strong) IBOutlet PorkImageView *porkImage;
+@property(strong) IBOutlet AlcoholImageView *alcoholImage;
+@property(strong) IBOutlet HalalImageView *halalImage;
+@property(strong) IBOutlet PorkLabel *porkLabel;
+@property(strong) IBOutlet AlcoholLabel *alcoholLabel;
+@property(strong) IBOutlet HalalLabel *halalLabel;
+@property(strong) IBOutlet UIButton *report;
+@property(strong) IBOutlet UIButton *addReview;
+@property(strong) IBOutlet UIButton *addPicture;
+@property(strong) IBOutlet iCarousel *pictures;
+@property(strong) IBOutlet UITableView *reviews;
+@property (strong, nonatomic) IBOutlet UILabel *noPicturesLabel;
+@property (strong, nonatomic) LocationDetailViewModel *viewModel;
 
 - (void)openMaps:(UITapGestureRecognizer *)recognizer;
 @end
