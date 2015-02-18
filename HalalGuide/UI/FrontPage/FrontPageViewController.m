@@ -9,6 +9,7 @@
 #import "LocationViewModel.h"
 #import "LocationViewController.h"
 #import "LocationDetailViewController.h"
+#import "ZLPromptUserReview.h"
 
 @implementation FrontPageViewController {
 
@@ -23,7 +24,9 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self.viewModel refreshLocations];
+    [[ZLPromptUserReview sharedInstance] showPrompt];
 }
 
 

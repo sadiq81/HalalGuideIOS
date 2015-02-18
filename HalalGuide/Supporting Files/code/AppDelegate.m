@@ -22,6 +22,7 @@
 #import "RACTuple.h"
 #import "FrontPageViewController.h"
 #import "HalalGuideIAPHelper.h"
+#import "ZLPromptUserReview.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
 
@@ -102,6 +103,15 @@
 
     //In-App Purchases
     [HalalGuideIAPHelper sharedInstance];
+
+    //App Store review
+    [[ZLPromptUserReview sharedInstance] setAppID:@"950446731"];
+    [[ZLPromptUserReview sharedInstance] setNumberOfDaysToWaitBeforeRemindingUser:15];
+    [[ZLPromptUserReview sharedInstance] setTitle:NSLocalizedString(@"ZLPromptUserReview.title", nil)];
+    [[ZLPromptUserReview sharedInstance] setMessage:NSLocalizedString(@"ZLPromptUserReview.message", nil)];
+    [[ZLPromptUserReview sharedInstance] setConfirmButtonText:NSLocalizedString(@"ZLPromptUserReview.confirm", nil)];
+    [[ZLPromptUserReview sharedInstance] setCancelButtonText:NSLocalizedString(@"ZLPromptUserReview.cancel", nil)];
+    [[ZLPromptUserReview sharedInstance] setRemindButtonText:NSLocalizedString(@"ZLPromptUserReview.remind", nil)];
 
     return YES;
 }

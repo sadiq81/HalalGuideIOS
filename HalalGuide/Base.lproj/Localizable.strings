@@ -232,4 +232,10 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "downloading" = "Henter...";
 "percentageComplete"= "færdig";
 
+"ZLPromptUserReview.title"="Anmeld";
+"ZLPromptUserReview.message"="Vi håber du nyder HalalGuide, måske kunne du tænke dig at give os en anmeldelse?";
+"ZLPromptUserReview.confirm"="Ja";
+"ZLPromptUserReview.cancel"="Nej tak";
+"ZLPromptUserReview.remind"="Påmind mig senere";
+
 

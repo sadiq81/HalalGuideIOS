@@ -230,3 +230,9 @@
 "uploading" = "Uploading...";
 "downloading" = "Downloading...";
 "percentageComplete"= "finished";
+
+"ZLPromptUserReview.title"="Review";
+"ZLPromptUserReview.message"="We hope you are enjoying HalalGuide, perhaps you would like to review it?";
+"ZLPromptUserReview.confirm"="Yes";
+"ZLPromptUserReview.cancel"="No thank you";
+"ZLPromptUserReview.remind"="Remind me";

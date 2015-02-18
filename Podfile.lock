@@ -98,6 +98,7 @@ PODS:
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
   - UIAlertController+Blocks (0.8)
+  - ZLPromptUserReview (1.0.2)
 
 DEPENDENCIES:
   - AFNetworking (= 2.5.0)
@@ -125,6 +126,7 @@ DEPENDENCIES:
   - SZTextView
   - UIActivityIndicator-for-SDWebImage
   - UIAlertController+Blocks
+  - ZLPromptUserReview (~> 1.0.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
@@ -154,5 +156,6 @@ SPEC CHECKSUMS:
   SZTextView: 8f1126696c6d54e5f0d672bbecf259ef65b04aeb
   UIActivityIndicator-for-SDWebImage: 8bd92c15280fbe54816448c6b14674145eee05c7
   UIAlertController+Blocks: a02869a586a1e242accabc86beb5f08f00998a76
+  ZLPromptUserReview: 88ecf0db5c19fb6fe979e8161123fd10fbd7d208
 
 COCOAPODS: 0.35.0
