@@ -12,6 +12,7 @@
 #import "UIView+Extensions.h"
 #import "UIAlertController+Blocks.h"
 #import "UIViewController+Extension.h"
+#import "RMStore.h"
 
 @implementation SettingsViewController {
 
@@ -30,12 +31,11 @@
     }];
 
     [[self.restorePurchases rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [PFPurchase buyProduct:@"Support" block:^(NSError *error) {
-            if (!error) {
-                [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"thank", nil) message:NSLocalizedString(@"thankText", nil) cancelButtonTitle:NSLocalizedString(@"ok", nil) destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
-            } else {
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"error", nil)];
-            }
+
+        [[RMStore defaultStore] addPayment:@"Support" success:^(SKPaymentTransaction *transaction) {
+            //[SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"thankText", nil)];
+        }                          failure:^(SKPaymentTransaction *transaction, NSError *error) {
+            //[SVProgressHUD showErrorWithStatus:error.localizedDescription];
         }];
     }];
 

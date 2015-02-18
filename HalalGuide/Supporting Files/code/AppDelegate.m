@@ -21,6 +21,7 @@
 #import "LocationPicture.h"
 #import "RACTuple.h"
 #import "FrontPageViewController.h"
+#import "HalalGuideIAPHelper.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
 
@@ -73,10 +74,6 @@
     [defaultACL setWriteAccess:true forRoleWithName:@"admin"];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:true];
 
-    [PFPurchase addObserverForProduct:@"Support" block:^(SKPaymentTransaction *transaction) {
-        //TODO Make some sign of user has contributed;
-    }];
-
 #if !DEBUG
     //Push notifications
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
@@ -102,6 +99,9 @@
     self.navigationController = (UINavigationController *) self.window.rootViewController;
     FrontPageViewController *viewController = [self.navigationController.viewControllers objectAtIndex:0];
     viewController.viewModel = [[FrontPageViewModel alloc] init];
+
+    //In-App Purchases
+    [HalalGuideIAPHelper sharedInstance];
 
     return YES;
 }

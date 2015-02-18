@@ -36,9 +36,9 @@
 		A1A699CD1A7B9CE100AB1C6C /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A699C91A7B9CE100AB1C6C /* ParseCrashReporting.framework */; };
 		A1A699CE1A7B9CE100AB1C6C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A699CA1A7B9CE100AB1C6C /* ParseFacebookUtils.framework */; };
 		A1A699CF1A7B9CE100AB1C6C /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A699CB1A7B9CE100AB1C6C /* ParseUI.framework */; };
-		A1B68FBD1A49572500AE9795 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B68FBF1A49572500AE9795 /* MainStoryboard.storyboard */; };
 		A1BF83871A397A6500D3AFFC /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BF83861A397A6500D3AFFC /* libstdc++.6.dylib */; };
 		A1BF83891A397A9B00D3AFFC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BF83881A397A9B00D3AFFC /* libsqlite3.dylib */; };
+		A1C8B18F1A932D68009F2252 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B68FBF1A49572500AE9795 /* MainStoryboard.storyboard */; };
 		A1E0C0521A17D14000757427 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E0C0511A17D14000757427 /* CoreData.framework */; };
 		A1E0C0541A17D14700757427 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E0C0531A17D14700757427 /* UIKit.framework */; };
 		A1E0C0561A17D15000757427 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1E0C0551A17D15000757427 /* Foundation.framework */; };
@@ -104,7 +104,6 @@
 		C596BDAC4B5938C40198E797 /* UIImage+Transformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1D6467AD502887DAFEF /* UIImage+Transformation.m */; };
 		C596BDC0C328C004265F89E0 /* LocationDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B781676517BC117FF418 /* LocationDetailViewModel.m */; };
 		C596BDE32DA14B42EA352467 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BF1CC236CE195558FC23 /* Location.m */; };
-		C596BE18DED05ECAFE08CBDE /* HalalGuide.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C596B28573B51DC85F7230CE /* HalalGuide.entitlements */; };
 		C596BE22F26B79E7CBB7BB10 /* ReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B73877CA533CA6591101 /* ReviewDetailViewController.m */; };
 		C596BE3E29F80B4D4E15DF01 /* AddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B84A08E3F2B1D860AFFB /* AddressService.m */; };
 		C596BE3F86C6A8EB1EFA87EB /* CoordinatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BF9581A8E814E1A7FCED /* CoordinatePickerViewController.m */; };
@@ -112,6 +111,7 @@
 		C596BEDD6555AF75D8EEA9DB /* UIImage+Combine.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B115347BFC1E3BDF4274 /* UIImage+Combine.m */; };
 		C596BEF25A73910BB1A16C3A /* NSMutableString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B43DA040C153F39C9847 /* NSMutableString+Extensions.m */; };
 		C596BF2062C7A1A6BF71D84A /* HalalGuideNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B24BA9AE85B76AA003C0 /* HalalGuideNumberFormatter.m */; };
+		C596BF53FA7367BE40FD9E78 /* HalalGuideIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B01FCA8EAA7669298C44 /* HalalGuideIAPHelper.m */; };
 		C596BF594ECE0C4393F7BCEC /* OpeningsHoursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BBE8F50E386D9BCBDB41 /* OpeningsHoursViewController.m */; };
 		C596BFA8BA47A59868814CF7 /* UIImage+ScreenShot.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B2172F2582F0D4674E3F /* UIImage+ScreenShot.m */; };
 		C596BFE139C47CE7D5443543 /* TestImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B332908FA96E86C3F0DA /* TestImageView.m */; };
@@ -183,6 +183,7 @@
 		A1FB7A3B1A225BD6005C10A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A996AC24EC4EDA46C0F7FC51 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C596B009EEE9275A43EF3CB6 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		C596B01FCA8EAA7669298C44 /* HalalGuideIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideIAPHelper.m; sourceTree = "<group>"; };
 		C596B02C31F0A3EAC5021006 /* CreateReviewViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateReviewViewModel.h; sourceTree = "<group>"; };
 		C596B03AB92D97D71B333FB4 /* DiningTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningTableViewCell.h; sourceTree = "<group>"; };
 		C596B03BBBDFDA8F20E0D898 /* NSLocale+iOS8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSLocale+iOS8.h"; path = "Supporting Files/code/NSLocale+iOS8.h"; sourceTree = "<group>"; };
@@ -235,6 +236,7 @@
 		C596B4CC9466EC8306FE455A /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
 		C596B55081DEB101226EB5D5 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseEntity.h; path = Domain/BaseEntity.h; sourceTree = "<group>"; };
 		C596B5996D6B67D100CC24DD /* LocationPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationPicture.m; path = Domain/LocationPicture.m; sourceTree = "<group>"; };
+		C596B5C1670DF29CA8E5B406 /* HalalGuideIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideIAPHelper.h; sourceTree = "<group>"; };
 		C596B5C4D2BA58493F20E91A /* UILabel+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extensions.h"; sourceTree = "<group>"; };
 		C596B5E924343A08F6F50ABC /* ReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		C596B619AECBB263C4ED02FE /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
@@ -848,6 +850,8 @@
 				C596B6E88BC59CF7CAF632D0 /* PictureService.m */,
 				C596BC967A9ABFD66374F6F1 /* ReviewService.h */,
 				C596BDFE3A3D8F8CE6E706BE /* ReviewService.m */,
+				C596B5C1670DF29CA8E5B406 /* HalalGuideIAPHelper.h */,
+				C596B01FCA8EAA7669298C44 /* HalalGuideIAPHelper.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1001,12 +1005,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C8B18F1A932D68009F2252 /* MainStoryboard.storyboard in Resources */,
 				A111F7511A3260EA00ABFF70 /* Localizable.strings in Resources */,
-				A1B68FBD1A49572500AE9795 /* MainStoryboard.storyboard in Resources */,
 				C596B994E8D83F0CFCC43A4B /* Images.xcassets in Resources */,
 				A12FAF8D1A8ECE2F00E2EEEC /* blueArrow@2x.png in Resources */,
 				A12FAF8C1A8ECE2F00E2EEEC /* blueArrow.png in Resources */,
-				C596BE18DED05ECAFE08CBDE /* HalalGuide.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,7 +1064,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\nfi";
 		};
 		A1B9AB391A57311C00D55759 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1160,6 +1163,7 @@
 				C596B33A1A99E0D42D05D503 /* UIView+Extensions.m in Sources */,
 				C596B21DBED9853B6609D924 /* UIView+FrameAdditions.m in Sources */,
 				C596BFE139C47CE7D5443543 /* TestImageView.m in Sources */,
+				C596BF53FA7367BE40FD9E78 /* HalalGuideIAPHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
