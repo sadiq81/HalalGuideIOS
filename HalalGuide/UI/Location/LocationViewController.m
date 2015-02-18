@@ -273,6 +273,8 @@
     NSMutableArray *shouldBeRemoved = [NSMutableArray new];
     NSMutableArray *shouldNotAdded = [NSMutableArray new];
 
+    bool shouldZoom = [self.mapView.annotations count] <= 1;
+
     for (MKPointAnnotation *annotation in self.mapView.annotations) {
 
         if ([annotation isKindOfClass:[LocationAnnotation class]]) {
@@ -286,11 +288,9 @@
 
     [self.mapView removeAnnotations:shouldBeRemoved];
 
+    float minimumDistance = CGFLOAT_MAX, secondMinimumDistance = CGFLOAT_MAX;
+    LocationAnnotation *closest = nil, *secondClosest = nil;
     for (Location *loc in self.viewModel.mapLocations) {
-
-        if ([shouldNotAdded containsObject:loc]) {
-            continue;
-        }
 
         LocationAnnotation *myAnnotation = [[LocationAnnotation alloc] init];
         myAnnotation.location = loc;
@@ -298,8 +298,28 @@
         myAnnotation.title = loc.name;
         myAnnotation.subtitle = [NSString stringWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
 
+        CLLocationDistance distance = [loc.location distanceFromLocation:self.mapView.userLocation.location];
+
+        if (distance < minimumDistance) {
+            minimumDistance = distance;
+            closest = myAnnotation;
+        } else if (minimumDistance < distance && distance < secondMinimumDistance) {
+            secondMinimumDistance = distance;
+            secondClosest = myAnnotation;
+        }
+
+        if ([shouldNotAdded containsObject:loc]) {
+            continue;
+        }
+
         [self.mapView addAnnotation:myAnnotation];
     }
+
+    if (shouldZoom && closest && secondClosest){
+        MKCoordinateRegion region = [self regionForAnnotations:@[closest, secondClosest, self.mapView.userLocation.location]];
+        [self.mapView setRegion:region animated:true];
+    }
+
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -328,4 +348,23 @@
 
     [self performSegueWithIdentifier:@"DiningDetail" sender:self];
 }
+
+- (MKCoordinateRegion)regionForAnnotations:(NSArray *)annotations {
+    double minLat = 90.0f, maxLat = -90.0f;
+    double minLon = 180.0f, maxLon = -180.0f;
+
+    for (id <MKAnnotation> mka in annotations) {
+        if (mka.coordinate.latitude < minLat) minLat = mka.coordinate.latitude;
+        if (mka.coordinate.latitude > maxLat) maxLat = mka.coordinate.latitude;
+        if (mka.coordinate.longitude < minLon) minLon = mka.coordinate.longitude;
+        if (mka.coordinate.longitude > maxLon) maxLon = mka.coordinate.longitude;
+    }
+
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake((minLat + maxLat) / 2.0, (minLon + maxLon) / 2.0);
+    MKCoordinateSpan span = MKCoordinateSpanMake(maxLat - minLat, maxLon - minLon);
+    MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
+
+    return region;
+}
+
 @end

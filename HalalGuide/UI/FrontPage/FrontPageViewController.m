@@ -26,7 +26,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.viewModel refreshLocations];
-    [[ZLPromptUserReview sharedInstance] showPrompt];
 }
 
 
