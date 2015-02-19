@@ -24,6 +24,8 @@
 #import "HalalGuideIAPHelper.h"
 #import "ZLPromptUserReview.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 
 @interface AppDelegate ()
@@ -62,14 +64,11 @@
 
     //Configure Parse
     //[Parse enableLocalDatastore]; //TODO
-
     [Parse setApplicationId:@"7CtuNVHBGEdqFlvUyn2PQCG9R04dwIOyPpIVr7NA" clientKey:@"CWDZXIOhNHvEcrRSRN9gyAJlSEU4nPLfRf3Np47T"];
-
 #if !DEBUG
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 #endif
     [PFFacebookUtils initializeFacebook];
-
     PFACL *defaultACL = [PFACL ACL];
     [defaultACL setPublicReadAccess:YES];
     [defaultACL setWriteAccess:true forRoleWithName:@"admin"];
@@ -112,6 +111,13 @@
     [[ZLPromptUserReview sharedInstance] setConfirmButtonText:NSLocalizedString(@"ZLPromptUserReview.confirm", nil)];
     [[ZLPromptUserReview sharedInstance] setCancelButtonText:NSLocalizedString(@"ZLPromptUserReview.cancel", nil)];
     [[ZLPromptUserReview sharedInstance] setRemindButtonText:NSLocalizedString(@"ZLPromptUserReview.remind", nil)];
+
+    //NewRelic - Crash reporting and monitoring
+    //[NewRelicAgent startWithApplicationToken:@"AA69951ea85edfeb6cbbfc13fb394a245db90c727b"];
+
+    //Crashlytics
+    [Fabric with:@[CrashlyticsKit]];
+
 
     return YES;
 }

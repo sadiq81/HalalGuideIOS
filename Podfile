@@ -30,3 +30,4 @@ pod 'SZTextView'
 pod 'Masonry'
 pod 'RMStore', '~> 0.7'
 pod "ZLPromptUserReview", "~>1.0.0"
+pod 'NewRelicAgent'

@@ -8,6 +8,7 @@
 
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <CTAssetsPickerController/CTAssetsPickerController.h>
+#import <Crashlytics/Crashlytics.h>
 
 #import "BaseViewModel.h"
 #import "LocationService.h"
@@ -60,6 +61,8 @@ static CLLocation *currentLocation;
         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
         currentInstallation[@"user"] = user;
         [currentInstallation saveInBackground];
+        [Crashlytics setUserIdentifier:user.objectId];
+        [Crashlytics setUserName:user.facebookName];
 
         if (user.isNew) {
             [PFUser storeProfileInfoForLoggedInUser:nil];

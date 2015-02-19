@@ -4,6 +4,7 @@
 //
 
 #import <Parse/Parse.h>
+#import <Crashlytics/Crashlytics.h>
 #import "ErrorReporting.h"
 
 
@@ -25,11 +26,10 @@
 
 - (void)reportError:(NSError *)error {
 
-    //TODO use crashlytics
     NSString *codeString = [NSString stringWithFormat:@"%ld", (long) [error code]];
     NSString *caller = [NSString stringWithFormat:@"Origin: [%@]", [[[[NSThread callStackSymbols] objectAtIndex:1] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"[]"]] objectAtIndex:1]];
     caller = [caller stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [PFAnalytics trackEvent:caller dimensions:@{@"code" : codeString}];
+    CLS_LOG(@"Error: %@", codeString);
 }
 
 @end

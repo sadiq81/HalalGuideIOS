@@ -11,12 +11,8 @@
 #define kDiningCellAlcoholOnBoardingKey @"diningCellAlcoholOnBoarding"
 #define kDiningCellHalalOnBoardingKey @"diningCellHalalOnBoarding"
 
-//TODO Use new onBoarding
 #define kCreateLocationPickImageOnBoardingKey @"createLocationPickImageOnBoarding"
-
 #define kDiningDetailAddressTelephoneOptionsOnBoardingKey @"diningDetailAddressTelephoneOptionsOnBoarding"
-
-#define kSupportOnBoardingKey @"supportOnBoarding"
 
 #import <Foundation/Foundation.h>
 
@@ -30,4 +26,6 @@
 - (BOOL)wasOnBoardingShow:(NSString *)onBoardingKey;
 
 - (void)setOnBoardingShown:(NSString *)onBoardingKey;
+
+- (void)resetOnBoarding;
 @end

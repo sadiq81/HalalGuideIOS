@@ -105,14 +105,20 @@
         [self displayHintForView:[self.addButton valueForKey:@"view"] withHintKey:kAddNewOnBoardingButtonKey preferedPositionOfText:HintPositionBelow];
     } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
         [self displayHintForView:[self.filter valueForKey:@"view"] withHintKey:kFilterOnBoardingButtonKey preferedPositionOfText:HintPositionAbove];
+    } else {
+        // Delay execution of my block for 2 seconds.
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self displayOnBoardingForFirstCell];
+        });
     }
 }
 
 - (void)hintWasDismissedByUser:(NSString *)hintKey {
+
     if ([hintKey isEqualToString:kAddNewOnBoardingButtonKey]) {
         [self displayHintForView:[self.filter valueForKey:@"view"] withHintKey:kFilterOnBoardingButtonKey preferedPositionOfText:HintPositionAbove];
-    } else if ([hintKey isEqualToString:kFilterOnBoardingButtonKey]) {
-
+    } else {
+        [self displayOnBoardingForFirstCell];
     }
 }
 
@@ -244,6 +250,26 @@
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 
+- (void)displayOnBoardingForFirstCell {
+
+    LocationTableViewCell *cell = (LocationTableViewCell *) [self.diningTableView cellForRowAtIndexPath:[[self.diningTableView indexPathsForVisibleRows] firstObject]];
+
+    if ([cell isKindOfClass:[DiningTableViewCell class]]) {
+
+        DiningTableViewCell *diningTableViewCell = (DiningTableViewCell *) cell;
+
+        if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPorkOnBoardingKey]) {
+            [self displayHintForView:diningTableViewCell.porkImageView withHintKey:kDiningCellPorkOnBoardingKey preferedPositionOfText:HintPositionBelow];
+
+        } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellAlcoholOnBoardingKey]) {
+            [self displayHintForView:diningTableViewCell.alcoholImageView withHintKey:kDiningCellAlcoholOnBoardingKey preferedPositionOfText:HintPositionBelow];
+
+        } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellHalalOnBoardingKey]) {
+            [self displayHintForView:diningTableViewCell.halalImageView withHintKey:kDiningCellHalalOnBoardingKey preferedPositionOfText:HintPositionBelow];
+        }
+    }
+}
+
 #pragma mark MapView
 
 - (void)configureMapView {
@@ -315,7 +341,7 @@
         [self.mapView addAnnotation:myAnnotation];
     }
 
-    if (shouldZoom && closest && secondClosest){
+    if (shouldZoom && closest && secondClosest) {
         MKCoordinateRegion region = [self regionForAnnotations:@[closest, secondClosest, self.mapView.userLocation.location]];
         [self.mapView setRegion:region animated:true];
     }

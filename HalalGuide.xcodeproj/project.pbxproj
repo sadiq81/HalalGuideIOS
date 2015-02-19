@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2A36923D8DC76F5D59BCF3B7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3953AC7E9F27FA436202F1C7 /* libPods.a */; };
+		A1072EB71A962E1300C3A2A3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1072EB51A962E1300C3A2A3 /* Crashlytics.framework */; };
+		A1072EB81A962E1300C3A2A3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1072EB61A962E1300C3A2A3 /* Fabric.framework */; };
 		A10CD7041A364D79001863B9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10CD7031A364D79001863B9 /* Accounts.framework */; };
 		A10CD7061A364D84001863B9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10CD7051A364D84001863B9 /* Social.framework */; };
 		A111F7511A3260EA00ABFF70 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A111F7531A3260EA00ABFF70 /* Localizable.strings */; };
@@ -130,6 +132,8 @@
 /* Begin PBXFileReference section */
 		3953AC7E9F27FA436202F1C7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DC353505CC91F279E9EEF95 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A1072EB51A962E1300C3A2A3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		A1072EB61A962E1300C3A2A3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		A10CD7031A364D79001863B9 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		A10CD7051A364D84001863B9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A111F7521A3260EA00ABFF70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -357,6 +361,8 @@
 				A1FB7A3C1A225BD6005C10A9 /* MapKit.framework in Frameworks */,
 				A1E0C0581A17D15C00757427 /* CoreGraphics.framework in Frameworks */,
 				A1E0C0561A17D15000757427 /* Foundation.framework in Frameworks */,
+				A1072EB81A962E1300C3A2A3 /* Fabric.framework in Frameworks */,
+				A1072EB71A962E1300C3A2A3 /* Crashlytics.framework in Frameworks */,
 				A1E0C0541A17D14700757427 /* UIKit.framework in Frameworks */,
 				A1E0C0521A17D14000757427 /* CoreData.framework in Frameworks */,
 				2A36923D8DC76F5D59BCF3B7 /* libPods.a in Frameworks */,
@@ -376,6 +382,8 @@
 		37B0A22AB9BBC0DDFD0495D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1072EB51A962E1300C3A2A3 /* Crashlytics.framework */,
+				A1072EB61A962E1300C3A2A3 /* Fabric.framework */,
 				A1A699C81A7B9CE100AB1C6C /* Parse.framework */,
 				A1A699C91A7B9CE100AB1C6C /* ParseCrashReporting.framework */,
 				A1A699CA1A7B9CE100AB1C6C /* ParseFacebookUtils.framework */,
@@ -1077,7 +1085,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\nexport PATH=/usr/local/bin:$PATH\ncd \"${PROJECT_DIR}/parse/cloud\"\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi";
+			shellScript = "#if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n./Fabric.framework/run 412b38fc4b7f4e3bab82ec4ea7badbb3ecad9f30 8ae7028b2c1015d818ac8fbd9a469d248238b5d5278690075b0d5f16a850e545\n#fi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

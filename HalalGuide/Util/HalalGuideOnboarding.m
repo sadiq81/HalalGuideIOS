@@ -34,4 +34,19 @@
     [self.defaults setBool:true forKey:onBoardingKey];
 }
 
+- (void)resetOnBoarding {
+
+    [self.defaults setBool:false forKey:kAddNewOnBoardingButtonKey];
+    [self.defaults setBool:false forKey:kFilterOnBoardingButtonKey];
+    [self.defaults setBool:false forKey:kDiningCellPorkOnBoardingKey];
+    [self.defaults setBool:false forKey:kDiningCellAlcoholOnBoardingKey];
+    [self.defaults setBool:false forKey:kDiningCellHalalOnBoardingKey];
+
+    [self.defaults setBool:false forKey:kCreateLocationPickImageOnBoardingKey];
+
+    [self.defaults setBool:false forKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey];
+
+
+}
+
 @end

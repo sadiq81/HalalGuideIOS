@@ -90,13 +90,12 @@
 
 - (void)dismissHintView:(NSString *)hintKey {
 
+    [[HalalGuideOnboarding instance] setOnBoardingShown:hintKey];
     [UIView animateWithDuration:0.5 animations:^{
         self.hintView.alpha = 0;
     }                completion:^(BOOL finished) {
         [self.hintView removeFromSuperview];
-
         [self hintWasDismissedByUser:hintKey];
-        [[HalalGuideOnboarding instance] setOnBoardingShown:hintKey];
     }];
 }
 

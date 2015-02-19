@@ -44,6 +44,9 @@
         [[SDImageCache sharedImageCache] clearDisk];
     }];
 
+    [[self.resetIntro rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [[HalalGuideOnboarding instance] resetOnBoarding];
+    }];
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
