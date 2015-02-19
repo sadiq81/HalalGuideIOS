@@ -6,13 +6,14 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
 #import "LocationPicture.h"
-
+#import "ReviewDetailViewModel.h"
 
 @interface LocationDetailViewModel : BaseViewModel
 
 @property(nonatomic, retain) Location *location;
 @property(nonatomic, readonly) NSArray *locationPictures;
 @property(nonatomic, readonly) NSArray *reviews;
+@property (nonatomic, readonly) PFUser *user;
 
 @property(nonatomic) NSInteger indexOfSelectedImage;
 
@@ -20,8 +21,9 @@
 
 + (instancetype)modelWithLocation:(Location *)location;
 
-
 - (NSNumber *)averageRating;
+
+- (ReviewDetailViewModel *)getReviewDetailViewModel:(NSUInteger)index;
 
 - (void)report:(UIViewController *)viewController;
 

@@ -7,13 +7,14 @@
 #import "Review.h"
 #import "EDStarRating.h"
 
+@class ReviewDetailViewModel;
+
 @interface ReviewCell : UITableViewCell
 
-@property (strong) IBOutlet UIImageView *profileImage;
-@property (strong) IBOutlet UILabel *submitterName;
-@property (strong) IBOutlet EDStarRating *rating;
-@property (strong) IBOutlet UILabel *review;
-
--(void) configure:(Review *)review1;
+@property(strong) IBOutlet UIImageView *profileImage;
+@property(strong) IBOutlet UILabel *submitterName;
+@property(strong) IBOutlet EDStarRating *rating;
+@property(strong) IBOutlet UILabel *review;
+@property(strong) ReviewDetailViewModel *viewModel;
 
 @end

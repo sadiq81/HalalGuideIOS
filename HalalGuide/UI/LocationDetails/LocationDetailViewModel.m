@@ -17,6 +17,7 @@
 }
 @property(nonatomic) NSArray *locationPictures;
 @property(nonatomic) NSArray *reviews;
+@property(nonatomic) PFUser *user;
 @end
 
 @implementation LocationDetailViewModel {
@@ -25,19 +26,11 @@
 
 @synthesize reviews, locationPictures, location, indexOfSelectedImage;
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        locationPictures = [NSArray new];
-        reviews = [NSArray new];
-    }
-    return self;
-}
-
 - (instancetype)initWithLocation:(Location *)aLocation {
     self = [super init];
     if (self) {
         self.location = aLocation;
+        [self setup];
     }
 
     return self;
@@ -45,6 +38,17 @@
 
 + (instancetype)modelWithLocation:(Location *)location {
     return [[self alloc] initWithLocation:location];
+}
+
+- (void)setup {
+    self.locationPictures = [NSArray new];
+    self.reviews = [NSArray new];
+
+    @weakify(self)
+    [[PFUser query] getObjectInBackgroundWithId:self.location.submitterId block:^(PFObject *object, NSError *error) {
+        @strongify(self)
+        self.user = (PFUser *) object;
+    }];
 }
 
 
@@ -89,6 +93,10 @@
     } else {
         return nil;
     }
+}
+
+- (ReviewDetailViewModel *)getReviewDetailViewModel:(NSUInteger)index {
+    return [[ReviewDetailViewModel alloc] initWithReview:[self.reviews objectAtIndex:index]];
 }
 
 - (void)setLocation:(Location *)aLocation {

@@ -4,13 +4,8 @@
 //
 
 #import "ReviewDetailViewController.h"
-#import "PictureService.h"
 #import "LocationDetailViewModel.h"
-#import "ReviewDetailViewModel.h"
-#import "RACSubscriptingAssignmentTrampoline.h"
-#import "NSObject+RACPropertySubscribing.h"
-#import "RACSignal.h"
-#import "ProfileInfo.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "UIImageView+WebCache.h"
 #import "HalalGuideDateFormatter.h"
 #import "PFUser+Extension.h"
@@ -22,23 +17,31 @@
 
 - (void)viewDidLoad {
     [self setupUIValues];
+    [self setupRAC];
+}
+
+- (void)setupRAC {
+
+    @weakify(self)
+    [RACObserve(self, viewModel) subscribeNext:^(ReviewDetailViewModel *model) {
+        @strongify(self)
+        self.reviewText.text = model.review.review;
+        self.rating.rating = model.review.rating.floatValue;
+        self.date.text = [[HalalGuideDateFormatter instance] stringFromDate:model.review.createdAt];
+    }];
+
+    [RACObserve(self, viewModel.user) subscribeNext:^(PFUser *user) {
+        @strongify(self)
+        [self.profilePicture sd_setImageWithURL:user.facebookProfileUrlSmall];
+        self.name.text = user.facebookName;
+    }];
+
 }
 
 - (void)setupUIValues {
 
-    [[PFUser query] getObjectInBackgroundWithId:self.viewModel.review.submitterId block:^(PFObject *object, NSError *error) {
-        PFUser *user = (PFUser *) object;
-        self.name.text = user.facebookName;
-        [self.profilePicture sd_setImageWithURL:user.facebookProfileUrl];
-    }];
-
-    //TODO add category to NSDate
-    self.date.text = [[HalalGuideDateFormatter instance] stringFromDate:self.viewModel.review.createdAt];
-    self.reviewText.text = self.viewModel.review.review;
-
     self.rating.starImage = [UIImage imageNamed:@"starSmall"];
     self.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
-    self.rating.rating = [self.viewModel.review.rating floatValue];
 }
 
 @end

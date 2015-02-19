@@ -9,6 +9,7 @@
 @interface ReviewDetailViewModel : NSObject
 
 @property (nonatomic, readonly) Review *review;
+@property (nonatomic, readonly) PFUser *user;
 
 - (instancetype)initWithReview:(Review *)review;
 

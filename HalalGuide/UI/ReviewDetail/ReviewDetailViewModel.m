@@ -7,6 +7,10 @@
 #import "ReviewDetailViewModel.h"
 #import "PictureService.h"
 
+@interface ReviewDetailViewModel () {
+}
+@property(nonatomic) PFUser *user;
+@end
 
 @implementation ReviewDetailViewModel {
 
@@ -16,6 +20,7 @@
     self = [super init];
     if (self) {
         _review = review;
+        [self setup];
     }
 
     return self;
@@ -23,6 +28,12 @@
 
 + (instancetype)modelWithReview:(Review *)review {
     return [[self alloc] initWithReview:review];
+}
+
+- (void)setup {
+    [[PFUser query] getObjectInBackgroundWithId:self.review.submitterId block:^(PFObject *object, NSError *error) {
+        self.user = (PFUser *) object;
+    }];
 }
 
 

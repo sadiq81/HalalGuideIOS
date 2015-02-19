@@ -1129,7 +1129,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" tag="1" contentMode="scaleToFill" id="S2v-nD-9Wi">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="377"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="106" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Halal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JrV-y3-CqQ" customClass="HalalLabel">
@@ -1160,6 +1160,11 @@
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="g0o-QC-owI" userLabel="pork" customClass="PorkImageView">
                                             <rect key="frame" x="199" y="56" width="31" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="6"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xJj-UI-gpR">
+                                            <rect key="frame" x="8" y="111" width="31" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="6"/>
                                         </imageView>
@@ -1201,24 +1206,29 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" id="dhD-u2-tNq">
-                                            <rect key="frame" x="0.0" y="115" width="320" height="1"/>
+                                            <rect key="frame" x="0.0" y="148" width="320" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" id="9SF-RF-4A1">
+                                            <rect key="frame" x="0.0" y="107" width="320" height="1"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <view contentMode="scaleToFill" id="VLu-Km-icI">
-                                            <rect key="frame" x="0.0" y="376" width="320" height="1"/>
+                                            <rect key="frame" x="0.0" y="409" width="320" height="1"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <button opaque="NO" tag="300" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jXE-ga-u7Q">
-                                            <rect key="frame" x="16" y="117" width="288" height="30"/>
+                                            <rect key="frame" x="16" y="150" width="288" height="30"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Rapporter fejl">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
                                         <view tag="401" contentMode="scaleToFill" id="KVr-rJ-Ddu" userLabel="images" customClass="iCarousel">
-                                            <rect key="frame" x="0.0" y="147" width="320" height="200"/>
+                                            <rect key="frame" x="0.0" y="180" width="320" height="200"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Der findes ikke billeder for dette sted endnu. Skal du være den første?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="1" id="Jx9-ch-ntf">
@@ -1232,14 +1242,14 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <button opaque="NO" tag="302" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uZB-qq-YW0">
-                                            <rect key="frame" x="170" y="347" width="150" height="30"/>
+                                            <rect key="frame" x="170" y="380" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Tilføj billede">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" tag="301" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Qgk-tH-18M">
-                                            <rect key="frame" x="0.0" y="347" width="150" height="30"/>
+                                            <rect key="frame" x="0.0" y="380" width="150" height="30"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Tilføj anmeldelse">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1248,6 +1258,20 @@
                                                 <segue destination="Ost-p0-oSK" kind="modal" identifier="CreateReview" id="fz2-Lh-kZx"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hnm-n5-g4I">
+                                            <rect key="frame" x="47" y="121" width="265" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indsendt af:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ebz-nT-SYG">
+                                            <rect key="frame" x="47" y="111" width="265" height="11"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
@@ -1333,6 +1357,8 @@
                         <outlet property="rating" destination="lJd-6y-O5b" id="rFb-Sa-yco"/>
                         <outlet property="report" destination="jXE-ga-u7Q" id="CWs-YV-dy4"/>
                         <outlet property="reviews" destination="BPi-mE-sY5" id="DfW-mP-uia"/>
+                        <outlet property="submitterImage" destination="xJj-UI-gpR" id="Gg5-Ob-jvB"/>
+                        <outlet property="submitterName" destination="Hnm-n5-g4I" id="qLu-X5-a8i"/>
                         <segue destination="a14-dy-JEd" kind="custom" identifier="SlideShow" customClass="MZFormSheetSegue" id="nXO-pM-Qhl"/>
                     </connections>
                 </viewController>

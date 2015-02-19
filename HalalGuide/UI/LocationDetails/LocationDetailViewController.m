@@ -23,6 +23,7 @@
 #import "ReviewDetailViewController.h"
 #import "CreateReviewViewController.h"
 #import "AppDelegate.h"
+#import "PFUser+Extension.h"
 
 @implementation LocationDetailViewController {
 }
@@ -125,10 +126,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    Review *review = [[self.viewModel reviews] objectAtIndex:indexPath.item];
-
     ReviewCell *reviewCell = (ReviewCell *) [self.reviews dequeueReusableCellWithIdentifier:@"Review" forIndexPath:indexPath];
-    [reviewCell configure:review];
+    ReviewDetailViewModel *detailViewModel = [self.viewModel getReviewDetailViewModel:indexPath.item];
+    reviewCell.viewModel = detailViewModel;
     return reviewCell;
 }
 
@@ -153,7 +153,6 @@
 
     CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
     self.distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:@([loc.location distanceFromLocation:manager.location] / 1000)];
-
 
     self.rating.starImage = [UIImage imageNamed:@"starSmall"];
     self.rating.displayMode = EDStarRatingDisplayHalf;
@@ -184,8 +183,13 @@
         [self.alcoholImage removeFromSuperview];
         [self.alcoholLabel removeFromSuperview];
     }
-
     @weakify(self)
+    [RACObserve(self, viewModel.user) subscribeNext:^(PFUser *user) {
+        @strongify(self)
+        [self.submitterImage sd_setImageWithURL:user.facebookProfileUrlSmall];
+        self.submitterName.text = user.facebookName;
+    }];
+
     [[self.addPicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
         [self.viewModel getPictures:self];
@@ -201,27 +205,26 @@
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"addPicture", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 
-    if (self.viewModel.location.addressRoad) {
-        UIAlertAction *directions = [UIAlertAction actionWithTitle:NSLocalizedString(@"directions", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            PFGeoPoint *point = [self.viewModel.location point];
-            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(point.latitude, point.longitude) addressDictionary:nil];
-            MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-            [mapItem setName:self.viewModel.location.name];
+    UIAlertAction *directions = [UIAlertAction actionWithTitle:NSLocalizedString(@"directions", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        PFGeoPoint *point = [self.viewModel.location point];
+        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(point.latitude, point.longitude) addressDictionary:nil];
+        MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+        [mapItem setName:self.viewModel.location.name];
 
-            // Set the directions mode to "Driving"
-            // Can use MKLaunchOptionsDirectionsModeWalking instead
-            NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+        // Set the directions mode to "Driving"
+        // Can use MKLaunchOptionsDirectionsModeWalking instead
+        NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
 
-            // Get the "Current User Location" MKMapItem
-            MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
+        // Get the "Current User Location" MKMapItem
+        MKMapItem *currentLocationMapItem = [MKMapItem mapItemForCurrentLocation];
 
-            // Pass the current location and destination map items to the Maps app
-            // Set the direction mode in the launchOptions dictionary
-            [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
-        }];
-        [alertController addAction:directions];
-    }
-    if (self.viewModel.location.telephone) {
+        // Pass the current location and destination map items to the Maps app
+        // Set the direction mode in the launchOptions dictionary
+        [MKMapItem openMapsWithItems:@[currentLocationMapItem, mapItem] launchOptions:launchOptions];
+    }];
+    [alertController addAction:directions];
+
+    if (self.viewModel.location.telephone && [self.viewModel.location.telephone length] >= 8) {
         UIAlertAction *call = [UIAlertAction actionWithTitle:NSLocalizedString(@"call", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
 
             NSURL *phoneUrl = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@", self.viewModel.location.telephone]];

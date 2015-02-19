@@ -4,48 +4,43 @@
 //
 
 #import <EDStarRating/EDStarRating.h>
-#import <ParseUI/ParseUI.h>
 #import "ReviewCell.h"
-#import "Review.h"
-#import "PictureService.h"
-#import "ProfileInfo.h"
 #import "ReviewDetailViewModel.h"
 #import "UIImageView+WebCache.h"
 #import "PFUser+Extension.h"
-#import "View+MASAdditions.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <CoreGraphics/CoreGraphics.h>
 
-//TODO use MVVM/RAC on cell
 @implementation ReviewCell {
 
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
     if (self) {
-
+        [self configureRating];
+        [self configureRAC];
     }
-
     return self;
 }
 
+- (void)configureRAC {
 
-- (void)configure:(Review *)review1 {
-    self.profileImage.image = nil;
-    self.submitterName.text = @"";
+    [RACObserve(self, viewModel) subscribeNext:^(ReviewDetailViewModel *model) {
+        self.review.text = model.review.review;
+        self.rating.rating = model.review.rating.floatValue;
+    }];
 
-    [[PFUser query] getObjectInBackgroundWithId:review1.submitterId block:^(PFObject *object, NSError *error) {
-        PFUser *user = (PFUser *) object;
+    [RACObserve(self, viewModel.user) subscribeNext:^(PFUser *user) {
         [self.profileImage sd_setImageWithURL:user.facebookProfileUrlSmall];
         self.submitterName.text = user.facebookName;
     }];
 
-    self.rating.rating = [review1.rating floatValue];
+}
+
+- (void)configureRating {
     self.rating.starImage = [UIImage imageNamed:@"starSmall"];
     self.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
-
-    self.review.text = review1.review;
-
-    //[self needsUpdateConstraints];
 }
 
 /*
