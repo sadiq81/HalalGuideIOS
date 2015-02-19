@@ -33,6 +33,7 @@
 @property(strong) IBOutlet iCarousel *pictures;
 @property(strong) IBOutlet UITableView *reviews;
 @property (strong, nonatomic) IBOutlet UILabel *noPicturesLabel;
+@property (strong, nonatomic) IBOutlet UILabel *noReviewsLabel;
 @property (strong, nonatomic) LocationDetailViewModel *viewModel;
 
 - (void)openMaps:(UITapGestureRecognizer *)recognizer;

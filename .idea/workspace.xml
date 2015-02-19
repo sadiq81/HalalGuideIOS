@@ -2,44 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/Crashlytics" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/Versions/A/Crashlytics" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/Versions/Current" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fabric.framework/Versions/Current" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fabric.framework/Fabric" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fabric.framework/Versions/A/Fabric" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/Headers" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fabric.framework/Headers" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/Modules" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fabric.framework/Modules" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/Resources" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fabric.framework/Resources" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/run" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fabric.framework/run" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/submit" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/Versions/A/Headers/Crashlytics.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fabric.framework/Versions/A/Headers/Fabric.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/Versions/A/Resources/Info.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fabric.framework/Versions/A/Resources/Info.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Crashlytics.framework/Versions/A/Modules/module.modulemap" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fabric.framework/Versions/A/Modules/module.modulemap" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/AppDelegate.m" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/AppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Base/BaseViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/DiningTableViewCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Shared/UITableViewCell/DiningTableViewCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/ErrorReporting.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/ErrorReporting.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.m" afterPath="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Info.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/MainStoryboard.storyboard" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/MainStoryboard.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/third_party_licenses.txt" afterPath="$PROJECT_DIR$/Frameworks/Parse.framework/third_party_licenses.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frameworks/ParseCrashReporting.framework/third_party_licenses.txt" afterPath="$PROJECT_DIR$/Frameworks/ParseCrashReporting.framework/third_party_licenses.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frameworks/ParseFacebookUtils.framework/third_party_licenses.txt" afterPath="$PROJECT_DIR$/Frameworks/ParseFacebookUtils.framework/third_party_licenses.txt" />
@@ -69,26 +34,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LocationViewController.m" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m">
+      <file leaf-file-name="LocationDetailViewController.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23650385" vertical-offset="1241" max-vertical-offset="4425">
-              <caret line="108" column="53" selection-start-line="108" selection-start-column="53" selection-end-line="108" selection-end-column="53" />
-              <folding>
-                <element signature="e#4343#5409#0" expanded="false" />
-                <element signature="e#5438#5848#0" expanded="false" />
-                <element signature="e#5850#7417#0" expanded="false" />
-                <element signature="e#7445#8866#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.3419355" vertical-offset="1341" max-vertical-offset="5355">
+              <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UIViewController+Extension.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.m">
+      <file leaf-file-name="main.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/main.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="956" max-vertical-offset="2760">
-              <caret line="95" column="21" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationDetailViewController.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="600">
+              <caret line="35" column="56" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -117,7 +87,6 @@
         <option value="$PROJECT_DIR$/HalalGuide/Services/AddressService.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/OpeningHours/OpeningsHoursViewController.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewModel.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Staging/TestImageView.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Staging/TestImageView.m" />
         <option value="$PROJECT_DIR$/HalalGuide/Extensions/MKMapView+Extension.m" />
@@ -149,7 +118,6 @@
         <option value="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
         <option value="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
         <option value="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.h" />
         <option value="$PROJECT_DIR$/HalalGuide/Util/HalalGuideOnboarding.m" />
@@ -162,6 +130,8 @@
         <option value="$PROJECT_DIR$/HalalGuide/Services/ErrorReporting.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" />
       </list>
     </option>
   </component>
@@ -170,10 +140,10 @@
   </component>
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-286" />
-    <option name="y" value="-1177" />
-    <option name="width" value="1920" />
-    <option name="height" value="1177" />
+    <option name="x" value="44" />
+    <option name="y" value="23" />
+    <option name="width" value="1396" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -1299,7 +1269,13 @@
       <option name="project" value="LOCAL" />
       <updated>1424289223151</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="On boarding can be reset from setting #68">
+      <created>1424360213126</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1424360213126</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1323,21 +1299,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-286" y="-1177" width="1920" height="1177" extended-state="6" />
+    <frame x="44" y="23" width="1396" height="877" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25714287" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.355414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32738853" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34009215" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3388535" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32738853" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37603685" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37579617" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2489019" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18799368" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25963637" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32920793" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="142" y="123" width="1198" height="677" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1364,7 +1340,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Location search field is cleared after unload, but model search text is not #33" />
     <MESSAGE value="Front page should reload on view did appear #34" />
     <MESSAGE value="When distance filter is unlimited sort by distance Doss not work #39" />
     <MESSAGE value="Bottom spinner sometimes remain #41&#10;Location VC scroll to top when going back from detail view. #42" />
@@ -1389,7 +1364,8 @@
     <MESSAGE value="Fix in app purchases #88" />
     <MESSAGE value="Add review reminder. #87" />
     <MESSAGE value="Location map should show 2 nearest locations #73" />
-    <option name="LAST_COMMIT_MESSAGE" value="Location map should show 2 nearest locations #73" />
+    <MESSAGE value="On boarding can be reset from setting #68" />
+    <option name="LAST_COMMIT_MESSAGE" value="On boarding can be reset from setting #68" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1428,32 +1404,17 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="906" />
+      <option name="time" value="907" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="AppleRunConfiguration">
         <watch expression="[tableView indexPathsForVisibleRows]" language="ObjectiveC" />
         <watch expression="[self.diningTableView indexPathsForVisibleRows]" language="ObjectiveC" />
+        <watch expression="self.reviews.tableFooterView" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/main.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3009" max-vertical-offset="8175">
-          <caret line="217" column="8" selection-start-line="217" selection-start-column="8" selection-end-line="217" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/OpeningHours/OpeningsHoursViewController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="954" max-vertical-offset="1755">
@@ -1507,6 +1468,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="729" max-vertical-offset="1620">
           <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1543,14 +1505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2445">
-          <caret line="85" column="17" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CoordinatePickerViewController.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
@@ -1563,6 +1517,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="2070">
           <caret line="69" column="22" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1594,6 +1549,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.10526316" vertical-offset="3444" max-vertical-offset="11955">
           <caret line="226" column="8" selection-start-line="226" selection-start-column="8" selection-end-line="226" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1601,6 +1557,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="4695">
           <caret line="110" column="3" selection-start-line="110" selection-start-column="3" selection-end-line="110" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1631,14 +1588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7081081" vertical-offset="3117" max-vertical-offset="3705">
           <caret line="234" column="1" selection-start-line="234" selection-start-column="1" selection-end-line="234" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32972974" vertical-offset="2907" max-vertical-offset="5280">
-          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1704,6 +1653,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
           <caret line="16" column="59" selection-start-line="16" selection-start-column="59" selection-end-line="16" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1711,6 +1661,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
           <caret line="14" column="34" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1829,22 +1780,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="956" max-vertical-offset="2760">
+        <state vertical-scroll-proportion="0.667364" vertical-offset="956" max-vertical-offset="2760">
           <caret line="95" column="21" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.4435146" vertical-offset="795" max-vertical-offset="2445">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23650385" vertical-offset="1241" max-vertical-offset="4425">
-          <caret line="108" column="53" selection-start-line="108" selection-start-column="53" selection-end-line="108" selection-end-column="53" />
+        <state vertical-scroll-proportion="1.043933" vertical-offset="1241" max-vertical-offset="4425">
+          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
           <folding>
             <element signature="e#4343#5409#0" expanded="false" />
             <element signature="e#5438#5848#0" expanded="false" />
             <element signature="e#5850#7417#0" expanded="false" />
             <element signature="e#7445#8866#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="600">
+          <caret line="35" column="56" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/main.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3419355" vertical-offset="1341" max-vertical-offset="5355">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

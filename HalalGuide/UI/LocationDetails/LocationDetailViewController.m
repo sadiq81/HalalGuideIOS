@@ -64,9 +64,9 @@
     [[RACObserve(self.viewModel, progress) skip:1] subscribeNext:^(NSNumber *progress) {
         NSLog(progress.stringValue);
         if (progress.intValue != 0 && progress.intValue != 100) {
-            if ([SVProgressHUD isVisible]){
+            if ([SVProgressHUD isVisible]) {
                 [SVProgressHUD setStatus:[self percentageString:progress.floatValue]];
-            } else{
+            } else {
                 [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
             }
         } else if (progress.intValue == 100) {
@@ -107,12 +107,16 @@
 - (void)setupTableView {
 
     @weakify(self)
-    [[RACObserve(self.viewModel, reviews) skip:1] subscribeNext:^(NSArray *locations) {
+    RACSignal *reviewSignal = RACObserve(self.viewModel, reviews);
+
+    [[reviewSignal skip:1] subscribeNext:^(NSArray *locations) {
         @strongify(self)
         [self.reviews reloadData];
     }];
 
-    self.reviews.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    RAC(self.reviews.tableFooterView, hidden) = [reviewSignal map:^(NSArray *reviews) {
+        return @([reviews count]);
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -256,6 +260,7 @@
 
     @weakify(self)
     RACSignal *pictures = RACObserve(self.viewModel, locationPictures);
+
     [pictures subscribeNext:^(NSArray *locations) {
         @strongify(self)
         [self.pictures reloadData];
