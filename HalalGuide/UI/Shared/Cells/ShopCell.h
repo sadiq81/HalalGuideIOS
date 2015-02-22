@@ -4,8 +4,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LocationTableViewCell.h"
+#import "LocationCell.h"
 
 
-@interface ShopTableViewCell : LocationTableViewCell
+@interface ShopCell : LocationCell
 @end

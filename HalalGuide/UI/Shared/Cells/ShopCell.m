@@ -3,21 +3,18 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#import "ShopTableViewCell.h"
+#import "ShopCell.h"
 #import "LocationPicture.h"
 #import "PictureService.h"
 #import "UIImageView+WebCache.h"
 
 
-@implementation ShopTableViewCell {
+@implementation ShopCell {
 
 }
 
-- (void)configure:(Location *)location {
-    [super configure:location];
-}
 
-- (NSString *)placeholderImageName {
++ (NSString *)placeholderImageName {
     return @"shop";
 }
 

@@ -9,7 +9,7 @@
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import "BaseViewModel.h"
 #import "LocationViewController.h"
-#import "DiningTableViewCell.h"
+#import "DiningCell.h"
 #import "LocationDetailViewModel.h"
 #import "CreateLocationViewModel.h"
 #import "MKMapView+Extension.h"
@@ -50,6 +50,11 @@
         @strongify(self)
         if (fetching.intValue == 0) {
             [SVProgressHUD dismiss];
+
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                [self displayOnBoardingForFirstCell];
+            });
+
         } else if (fetching.intValue == 1 && !self.diningTableView.headerLoadingIndicator.isAnimating && !self.diningTableView.footerLoadingIndicator.isAnimating) {
             [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeNone];
         }
@@ -105,11 +110,6 @@
         [self displayHintForView:[self.addButton valueForKey:@"view"] withHintKey:kAddNewOnBoardingButtonKey preferedPositionOfText:HintPositionBelow];
     } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
         [self displayHintForView:[self.filter valueForKey:@"view"] withHintKey:kFilterOnBoardingButtonKey preferedPositionOfText:HintPositionAbove];
-    } else {
-        // Delay execution of my block for 2 seconds.
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [self displayOnBoardingForFirstCell];
-        });
     }
 }
 
@@ -239,9 +239,9 @@
     Location *location = [self.viewModel.listLocations objectAtIndex:indexPath.row];
 
     NSString *identifier = LocationTypeString(self.viewModel.locationType);
-    LocationTableViewCell *cell = [self.diningTableView dequeueReusableCellWithIdentifier:identifier];
+    LocationCell *cell = [self.diningTableView dequeueReusableCellWithIdentifier:identifier];
 
-    [cell configure:location];
+    //[cell configure:location];
 
     return cell;
 }
@@ -252,20 +252,20 @@
 
 - (void)displayOnBoardingForFirstCell {
 
-    LocationTableViewCell *cell = (LocationTableViewCell *) [self.diningTableView cellForRowAtIndexPath:[[self.diningTableView indexPathsForVisibleRows] firstObject]];
+    LocationCell *cell = (LocationCell *) [self.diningTableView cellForRowAtIndexPath:[[self.diningTableView indexPathsForVisibleRows] firstObject]];
 
-    if ([cell isKindOfClass:[DiningTableViewCell class]]) {
+    if ([cell isKindOfClass:[DiningCell class]] && [[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
 
-        DiningTableViewCell *diningTableViewCell = (DiningTableViewCell *) cell;
+        DiningCell *diningTableViewCell = (DiningCell *) cell;
 
         if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPorkOnBoardingKey]) {
-            [self displayHintForView:diningTableViewCell.porkImageView withHintKey:kDiningCellPorkOnBoardingKey preferedPositionOfText:HintPositionBelow];
+            [self displayHintForView:diningTableViewCell.porkImage withHintKey:kDiningCellPorkOnBoardingKey preferedPositionOfText:HintPositionBelow];
 
         } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellAlcoholOnBoardingKey]) {
-            [self displayHintForView:diningTableViewCell.alcoholImageView withHintKey:kDiningCellAlcoholOnBoardingKey preferedPositionOfText:HintPositionBelow];
+            [self displayHintForView:diningTableViewCell.alcoholImage withHintKey:kDiningCellAlcoholOnBoardingKey preferedPositionOfText:HintPositionBelow];
 
         } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellHalalOnBoardingKey]) {
-            [self displayHintForView:diningTableViewCell.halalImageView withHintKey:kDiningCellHalalOnBoardingKey preferedPositionOfText:HintPositionBelow];
+            [self displayHintForView:diningTableViewCell.halalImage withHintKey:kDiningCellHalalOnBoardingKey preferedPositionOfText:HintPositionBelow];
         }
     }
 }

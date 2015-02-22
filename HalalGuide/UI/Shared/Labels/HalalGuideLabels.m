@@ -3,10 +3,21 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
+#import <CoreGraphics/CoreGraphics.h>
 #import "HalalGuideLabels.h"
 
 
-@implementation HalalGuideLabels
+@implementation HalalGuideLabel
+
+- (instancetype)initWithFrame:(CGRect)frame andFontSize:(CGFloat)size {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.font = [UIFont systemFontOfSize:size];
+    }
+    return self;
+}
+
+
 - (void)configureViewForLocation:(Location *)location {
 }
 @end
@@ -63,4 +74,5 @@
 
 }
 @end
+
 

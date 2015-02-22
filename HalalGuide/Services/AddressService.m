@@ -10,8 +10,10 @@
 #import "DCArrayMapping.h"
 #import "DCParserConfiguration.h"
 #import "ErrorReporting.h"
+#import "HalalGuideNumberFormatter.h"
 #import <AddressBook/ABPerson.h>
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
 
 @implementation AddressService {
 
@@ -29,7 +31,12 @@
     return _instance;
 }
 
-- (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postnummer))completion {
++ (CLLocationDistance)distanceInMetersToPoint:(CLLocation *)location {
+    CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
+    return [location distanceFromLocation:manager.location];
+}
+
++ (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postnummer))completion {
 
     NSString *url = [[NSString stringWithFormat:@"http://dawa.aws.dk/postnumre?nr=%@", postalCode] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
@@ -47,7 +54,7 @@
 
 }
 
-- (void)doesAddressExist:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(Adgangsadresse *address))completion {
++ (void)doesAddressExist:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(Adgangsadresse *address))completion {
 
     NSString *url = [[NSString stringWithFormat:@"http://dawa.aws.dk/adgangsadresser?vejnavn=%@&husnummer=%@&postnr=%@", road, roadNumber, postalCode] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -71,7 +78,7 @@
     }];
 }
 
-- (void)findPointForAddress:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(CLPlacemark *place))completion {
++ (void)findPointForAddress:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(CLPlacemark *place))completion {
 
     NSDictionary *addressDict = @{
             (NSString *) kABPersonAddressStreetKey : [NSString stringWithFormat:@"%@ %@", road, roadNumber],
@@ -89,7 +96,7 @@
     }];
 }
 
-- (void)addressNearPosition:(CLLocation *)location onCompletion: (void (^)(NSArray *addresses))completion {
++ (void)addressNearPosition:(CLLocation *)location onCompletion:(void (^)(NSArray *addresses))completion {
 
     NSString *url = [NSString stringWithFormat:@"http://dawa.aws.dk/adgangsadresser?cirkel=%f,%f,%f&srid=4326", location.coordinate.longitude, location.coordinate.latitude, 150.0f];
 //    NSString *url = [[NSString stringWithFormat:@"http://dawa.aws.dk/adgangsadresser?cirkel=%@,%@,%@&srid=4326", location.coordinate.longitude, location.coordinate.latitude, @150] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -113,7 +120,7 @@
     }];
 }
 
-- (DCKeyValueObjectMapping *)parserForAdgangsadresser {
++ (DCKeyValueObjectMapping *)parserForAdgangsadresser {
     DCParserConfiguration *config = [DCParserConfiguration configuration];
     DCObjectMapping *idToId = [DCObjectMapping mapKeyPath:@"id" toAttribute:@"Id" onClass:[Adgangsadresse class]];
     [config addObjectMapping:idToId];
@@ -121,7 +128,7 @@
     return parser;
 }
 
-- (DCKeyValueObjectMapping *)parserForPostnummer {
++ (DCKeyValueObjectMapping *)parserForPostnummer {
     DCParserConfiguration *config = [DCParserConfiguration configuration];
 
     DCObjectMapping *idToId = [DCObjectMapping mapKeyPath:@"id" toAttribute:@"Id" onClass:[Stormodtageradresser class]];

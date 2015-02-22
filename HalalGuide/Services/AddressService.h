@@ -11,12 +11,14 @@
 
 + (AddressService *)instance;
 
-- (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postnummer))completion;
++ (CLLocationDistance)distanceInMetersToPoint:(CLLocation *)location;
 
-- (void)doesAddressExist:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(Adgangsadresse *address))completion;
++ (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postnummer))completion;
 
-- (void)findPointForAddress:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(CLPlacemark *place))completion;
++ (void)doesAddressExist:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(Adgangsadresse *address))completion;
 
-- (void)addressNearPosition:(CLLocation *)location onCompletion:(void (^)(NSArray *addresses))completion;
++ (void)findPointForAddress:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(CLPlacemark *place))completion;
+
++ (void)addressNearPosition:(CLLocation *)location onCompletion:(void (^)(NSArray *addresses))completion;
 
 @end

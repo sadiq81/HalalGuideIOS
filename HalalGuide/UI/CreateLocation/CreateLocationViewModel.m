@@ -46,7 +46,7 @@
 
 - (void)loadAddressesNearPositionOnCompletion:(void (^)(void))completion {
     CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
-    [[AddressService instance] addressNearPosition:manager.location onCompletion:^(NSArray *addresses) {
+    [AddressService  addressNearPosition:manager.location onCompletion:^(NSArray *addresses) {
 
         NSMutableDictionary *streetNumbersTemp = [NSMutableDictionary new];
         for (Adgangsadresse *key in addresses) {
@@ -68,7 +68,7 @@
 }
 
 - (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postNummer))completion {
-    [[AddressService instance] cityNameFor:postalCode onCompletion:completion];
+    [AddressService cityNameFor:postalCode onCompletion:completion];
 }
 
 - (void)saveEntity:(NSString *)name road:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode city:(NSString *)city telephone:(NSString *)telephone website:(NSString *)website pork:(BOOL)pork alcohol:(BOOL)alcohol nonHalal:(BOOL)nonHalal images:(NSArray *)images {
@@ -120,7 +120,7 @@
 
 - (RACSignal *)doesAddressExist:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        [[AddressService instance] doesAddressExist:road roadNumber:roadNumber postalCode:postalCode onCompletion:^(Adgangsadresse *address) {
+        [AddressService doesAddressExist:road roadNumber:roadNumber postalCode:postalCode onCompletion:^(Adgangsadresse *address) {
             [subscriber sendNext:address];
             [subscriber sendCompleted];
         }];

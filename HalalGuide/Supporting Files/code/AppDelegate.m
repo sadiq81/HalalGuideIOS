@@ -26,7 +26,7 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-
+#import "Constants.h"
 
 @interface AppDelegate ()
 
@@ -60,11 +60,9 @@
     //IQKeyboard
     [IQKeyboardManager sharedManager].toolbarManageBehaviour = IQAutoToolbarByTag;
 
-    //[[LocationService instance] createDummyData];
-
     //Configure Parse
     //[Parse enableLocalDatastore]; //TODO
-    [Parse setApplicationId:@"7CtuNVHBGEdqFlvUyn2PQCG9R04dwIOyPpIVr7NA" clientKey:@"CWDZXIOhNHvEcrRSRN9gyAJlSEU4nPLfRf3Np47T"];
+    [Parse setApplicationId:kParseApplicationId clientKey:kParseClientKey];
 #if !DEBUG
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 #endif
@@ -95,16 +93,11 @@
     }
 #endif
 
-    //Setup ViewModel
-    self.navigationController = (UINavigationController *) self.window.rootViewController;
-    FrontPageViewController *viewController = [self.navigationController.viewControllers objectAtIndex:0];
-    viewController.viewModel = [[FrontPageViewModel alloc] init];
-
     //In-App Purchases
     [HalalGuideIAPHelper sharedInstance];
 
     //App Store review
-    [[ZLPromptUserReview sharedInstance] setAppID:@"950446731"];
+    [[ZLPromptUserReview sharedInstance] setAppID:kZLPromptUserReviewAppId];
     [[ZLPromptUserReview sharedInstance] setNumberOfDaysToWaitBeforeRemindingUser:15];
     [[ZLPromptUserReview sharedInstance] setTitle:NSLocalizedString(@"ZLPromptUserReview.title", nil)];
     [[ZLPromptUserReview sharedInstance] setMessage:NSLocalizedString(@"ZLPromptUserReview.message", nil)];
@@ -112,12 +105,19 @@
     [[ZLPromptUserReview sharedInstance] setCancelButtonText:NSLocalizedString(@"ZLPromptUserReview.cancel", nil)];
     [[ZLPromptUserReview sharedInstance] setRemindButtonText:NSLocalizedString(@"ZLPromptUserReview.remind", nil)];
 
-    //NewRelic - Crash reporting and monitoring
-    //[NewRelicAgent startWithApplicationToken:@"AA69951ea85edfeb6cbbfc13fb394a245db90c727b"];
-
     //Crashlytics
+#if !DEBUG
     [Fabric with:@[CrashlyticsKit]];
+#endif
 
+    //Setup view controller
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    self.window.backgroundColor = [UIColor whiteColor];
+    FrontPageViewController *viewController = [[FrontPageViewController alloc] initWithViewModel:[[FrontPageViewModel alloc] init]];
+    UINavigationController *nav = [[UINavigationController alloc]  initWithRootViewController:viewController];
+    nav.navigationBar.translucent = NO;
+    self.window.rootViewController = nav;
+    [self.window makeKeyAndVisible];
 
     return YES;
 }

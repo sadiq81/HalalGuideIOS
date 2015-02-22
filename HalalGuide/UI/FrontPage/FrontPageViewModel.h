@@ -5,10 +5,13 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseViewModel.h"
+#import "LocationDetailViewModel.h"
 
 @interface FrontPageViewModel : BaseViewModel
 
 @property(nonatomic, readonly) NSArray *locations;
+
+- (LocationDetailViewModel *)viewModelForLocationAtIndex:(NSUInteger)index;
 
 - (void)refreshLocations;
 

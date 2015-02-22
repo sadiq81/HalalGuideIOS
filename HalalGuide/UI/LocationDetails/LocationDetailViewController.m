@@ -39,6 +39,7 @@
     [self setupPictures];
 
     self.navigationItem.title = self.viewModel.location.name;
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -115,6 +116,9 @@
         [self.reviews reloadData];
     }];
 
+    CGRect oldFrame = self.reviews.tableFooterView.frame;
+    oldFrame.size.height = 63;
+    self.reviews.tableFooterView.frame = oldFrame;
     RAC(self.reviews.tableFooterView, hidden) = [reviewSignal map:^(NSArray *reviews) {
         return @([reviews count]);
     }];

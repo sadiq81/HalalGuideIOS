@@ -236,3 +236,11 @@
 "ZLPromptUserReview.confirm"="Yes";
 "ZLPromptUserReview.cancel"="No thank you";
 "ZLPromptUserReview.remind"="Remind me";
+
+"FrontPageViewController.title"  = "HalalGuide";
+"FrontPageViewController.button.shop"= "Shop";
+"FrontPageViewController.button.enumber"= "Enumber";
+"FrontPageViewController.button.eat"= "Eat";
+"FrontPageViewController.button.mosque"= "Mosque";
+"FrontPageViewController.button.settings"= "Settings";
+"FrontPageViewController.label.latest.updates" = "Latest updates";

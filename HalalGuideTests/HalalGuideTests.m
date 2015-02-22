@@ -35,7 +35,7 @@
 //
 //    }];
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:55.690392 longitude:12.542331];
-    [[AddressService instance] addressNearPosition:loc onCompletion:^(NSArray *address) {
+    [AddressService addressNearPosition:loc onCompletion:^(NSArray *address) {
 
     }];
 }

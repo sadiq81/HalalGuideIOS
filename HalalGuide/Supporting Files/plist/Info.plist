@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>314</string>
+	<string>315</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -51,8 +51,6 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Bruges til at beregne afstande til lokationer, vi gemmer aldrig dine GPS oplysninger</string>
-	<key>UIMainStoryboardFile</key>
-	<string>MainStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

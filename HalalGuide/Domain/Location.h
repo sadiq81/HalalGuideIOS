@@ -93,6 +93,7 @@ typedef enum WeekDay : int16_t {
 @property(nonatomic, retain) NSString *telephone;
 @property(nonatomic, retain) NSArray *categories;
 @property(nonatomic) CLLocation *location;
+@property(nonatomic) BOOL open;
 
 @property(nonatomic, retain) NSDictionary *openingHours;
 
