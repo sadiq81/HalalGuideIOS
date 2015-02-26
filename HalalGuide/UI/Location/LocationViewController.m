@@ -7,6 +7,8 @@
 //
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
+#import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
+#import <Masonry/View+MASAdditions.h>
 #import "BaseViewModel.h"
 #import "LocationViewController.h"
 #import "DiningCell.h"
@@ -20,25 +22,73 @@
 #import "FilterLocationViewController.h"
 #import "LocationDetailViewController.h"
 #import "CreateLocationViewController.h"
+#import "MosqueCell.h"
+#import "ShopCell.h"
+
+@interface LocationViewController ()
+@property(strong, nonatomic) UISegmentedControl *segmentControl;
+@property(strong, nonatomic) UIBarButtonItem *addButton;
+@property(strong, nonatomic) UITableView *tableView;
+@property(strong, nonatomic) UITableViewController *tableViewController;
+@property(strong, nonatomic) UIBarButtonItem *filter;
+@property(strong, nonatomic) UIToolbar *toolbar;
+@property(strong, nonatomic) UISearchBar *searchBar;
+@property(strong, nonatomic) UILabel *noResults;
+@property(strong, nonatomic) MKMapView *mapView;
+@property(strong, nonatomic) LocationViewModel *viewModel;
+
+@end
+
 
 @implementation LocationViewController {
 }
 
-@synthesize tableViewController, diningTableView, filter, toolbar, viewModel;
+- (instancetype)initWithViewModel:(LocationViewModel *)viewModel {
+    self = [super init];
+    if (self) {
+        self.viewModel = viewModel;
+        [self setupViews];
+        [self setupViewModel];
+        [self setupSegmentedController];
+        [self setupSearchBar];
+        [self setupTableView];
+        [self setupMapView];
+        [self updateViewConstraints];
+    }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setupViewModel];
-    [self setupSegmentedController];
-    [self setupSearchBar];
+    return self;
+}
 
-    [self configureTableView];
-    [self configureMapView];
++ (instancetype)controllerWithViewModel:(LocationViewModel *)viewModel {
+    return [[self alloc] initWithViewModel:viewModel];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self setupHints];
+}
+
+- (void)setupViews {
+    self.segmentControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"LocationViewController.segmentControl.list", nil), NSLocalizedString(@"LocationViewController.segmentControl.map", nil)]];
+    self.navigationItem.titleView = self.segmentControl;
+
+
+    self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd block:nil];
+    self.navigationItem.rightBarButtonItem = self.addButton;
+
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.tableView];
+
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
+    self.tableView.tableHeaderView = self.searchBar;
+
+    self.noResults = [[UILabel alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.noResults];
+
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.toolbar];
+
+
 }
 
 #pragma mark - ViewModel changes
@@ -55,7 +105,7 @@
                 [self displayOnBoardingForFirstCell];
             });
 
-        } else if (fetching.intValue == 1 && !self.diningTableView.headerLoadingIndicator.isAnimating && !self.diningTableView.footerLoadingIndicator.isAnimating) {
+        } else if (fetching.intValue == 1 && !self.tableView.headerLoadingIndicator.isAnimating && !self.tableView.footerLoadingIndicator.isAnimating) {
             [SVProgressHUD showWithStatus:NSLocalizedString(@"fetching", nil) maskType:SVProgressHUDMaskTypeNone];
         }
     }];
@@ -69,9 +119,9 @@
     RACSignal *locations = RACObserve(self.viewModel, listLocations);
     [locations subscribeNext:^(NSArray *locations) {
         @strongify(self)
-        [self.diningTableView reloadData];
-        [self.diningTableView finishRefresh];
-        [self.diningTableView finishLoadMore];
+        [self.tableView reloadData];
+        [self.tableView finishRefresh];
+        [self.tableView finishLoadMore];
     }];
 
     RAC(self.noResults, hidden) = [locations map:^(NSArray *locations) {
@@ -146,8 +196,8 @@
 
     [[self rac_signalForSelector:@selector(viewWillDisappear:)] subscribeNext:^(NSNumber *animated) {
         @strongify(self);
-        [self.diningTableView finishRefresh];
-        [self.diningTableView finishLoadMore];
+        [self.tableView finishRefresh];
+        [self.tableView finishLoadMore];
         [SVProgressHUD dismiss];
     }];
 
@@ -177,11 +227,11 @@
 
     if (([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"])) {
 
-        Location *location = (self.viewModel.locationPresentation == LocationPresentationList) ? [self.viewModel.listLocations objectAtIndex:[self.diningTableView indexPathForSelectedRow].row] : ((LocationAnnotation *) [[self.mapView selectedAnnotations] objectAtIndex:0]).location;
+        Location *location = (self.viewModel.locationPresentation == LocationPresentationList) ? [self.viewModel.listLocations objectAtIndex:[self.tableView indexPathForSelectedRow].row] : ((LocationAnnotation *) [[self.mapView selectedAnnotations] objectAtIndex:0]).location;
         LocationDetailViewModel *detailViewModel = [[LocationDetailViewModel alloc] initWithLocation:location];
 
         LocationDetailViewController *detailViewController = (LocationDetailViewController *) segue.destinationViewController;
-        detailViewController.viewModel = detailViewModel;
+        //detailViewController.viewModel = detailViewModel;
 
     } else if ([segue.identifier isEqualToString:@"CreateLocation"]) {
 
@@ -200,19 +250,23 @@
 
 #pragma mark - TableView
 
-- (void)configureTableView {
+- (void)setupTableView {
+
+    [self.tableView registerClass:[DiningCell class] forCellReuseIdentifier:[DiningCell placeholderImageName]];
+    [self.tableView registerClass:[MosqueCell class] forCellReuseIdentifier:[MosqueCell placeholderImageName]];
+    [self.tableView registerClass:[ShopCell class] forCellReuseIdentifier:[ShopCell placeholderImageName]];
 
     RACSignal *disappear = [self rac_signalForSelector:@selector(viewWillDisappear:)];
     @weakify(self)
     [[[NSNotificationCenter.defaultCenter rac_addObserverForName:@"locationManager:didUpdateLocations" object:nil] takeUntil:disappear] subscribeNext:^(id x) {
         @strongify(self);
-        [self.diningTableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     }];
 
-    self.diningTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     self.tableViewController = [[UITableViewController alloc] init];
-    self.tableViewController.tableView = self.diningTableView;
+    self.tableViewController.tableView = self.tableView;
 
     [[self rac_signalForSelector:@selector(dragTableDidTriggerRefresh:) fromProtocol:@protocol(UITableViewDragLoadDelegate)] subscribeNext:^(RACTuple *tuple) {
         @strongify(self);
@@ -225,8 +279,8 @@
         self.viewModel.page++;
         [self.viewModel refreshLocations];
     }];
-    [self.diningTableView setDragDelegate:self refreshDatePermanentKey:@"LocationViewController"];
-    self.diningTableView.headerRefreshDateFormatText = NSLocalizedString(@"Last Updated: %@", nil);
+    [self.tableView setDragDelegate:self refreshDatePermanentKey:@"LocationViewController"];
+    self.tableView.headerRefreshDateFormatText = NSLocalizedString(@"Last Updated: %@", nil);
 
 }
 
@@ -236,12 +290,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    Location *location = [self.viewModel.listLocations objectAtIndex:indexPath.row];
+    LocationDetailViewModel *cellModel = [self.viewModel viewModelForLocationAtIndex:indexPath.row];
 
-    NSString *identifier = LocationTypeString(self.viewModel.locationType);
-    LocationCell *cell = [self.diningTableView dequeueReusableCellWithIdentifier:identifier];
+    NSString *identifier = LocationTypeString([cellModel.location.locationType integerValue]);
 
-    //[cell configure:location];
+    LocationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+
+    [cell configureForViewModel:cellModel];
 
     return cell;
 }
@@ -252,7 +307,7 @@
 
 - (void)displayOnBoardingForFirstCell {
 
-    LocationCell *cell = (LocationCell *) [self.diningTableView cellForRowAtIndexPath:[[self.diningTableView indexPathsForVisibleRows] firstObject]];
+    LocationCell *cell = (LocationCell *) [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] firstObject]];
 
     if ([cell isKindOfClass:[DiningCell class]] && [[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
 
@@ -272,7 +327,7 @@
 
 #pragma mark MapView
 
-- (void)configureMapView {
+- (void)setupMapView {
     CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
     [self.mapView setRegion:MKCoordinateRegionMake(manager.location.coordinate, MKCoordinateSpanMake(0.02, 0.02))];
     self.mapView.showsUserLocation = true;
@@ -391,6 +446,28 @@
     MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
 
     return region;
+}
+
+- (void)updateViewConstraints {
+
+    [self.searchBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.view);
+        make.height.equalTo(@(44));
+    }];
+
+    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+        //make.self.top.equalTo(self.navigationController.navigationBar);
+        make.self.bottom.equalTo(self.toolbar.mas_top);
+        make.width.equalTo(self.view);
+    }];
+
+    [self.toolbar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view);
+        make.width.equalTo(self.view);
+        make.height.equalTo(@(44));
+    }];
+
+    [super updateViewConstraints];
 }
 
 @end

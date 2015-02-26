@@ -9,27 +9,35 @@
 #import "ErrorReporting.h"
 #import "LocationViewModel.h"
 #import "ReviewService.h"
+#import "AddressService.h"
+#import "HalalGuideNumberFormatter.h"
 
 
 @import MessageUI;
 
 @interface LocationDetailViewModel () {
+
 }
+@property(nonatomic, retain) Location *location;
 @property(nonatomic) NSArray *locationPictures;
 @property(nonatomic) NSArray *reviews;
 @property(nonatomic) PFUser *user;
+
+@property(nonatomic, strong) UIImage *thumbnail;
+@property(nonatomic, strong) NSString *distance;
+@property(nonatomic, strong) NSString *address;
+@property(nonatomic, strong) NSString *postalCode;
+
 @end
 
 @implementation LocationDetailViewModel {
 
 }
 
-@synthesize reviews, locationPictures, location, indexOfSelectedImage;
-
-- (instancetype)initWithLocation:(Location *)aLocation {
+- (instancetype)initWithLocation:(Location *)location {
     self = [super init];
     if (self) {
-        self.location = aLocation;
+        self.location = location;
         [self setup];
     }
 
@@ -48,6 +56,46 @@
     [[PFUser query] getObjectInBackgroundWithId:self.location.submitterId block:^(PFObject *object, NSError *error) {
         @strongify(self)
         self.user = (PFUser *) object;
+    }];
+
+    [[PictureService instance] thumbnailForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
+        @strongify(self)
+        if (objects != nil && [objects count] == 1) {
+            LocationPicture *picture = [objects firstObject];
+            [picture.thumbnail getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                self.thumbnail = [[UIImage alloc] initWithData:data];
+            }];
+        }
+    }];
+
+    CLLocationDistance distanceM = [AddressService distanceInMetersToPoint:self.location.location];
+    self.distance = [[HalalGuideNumberFormatter instance] stringFromNumber:@(distanceM / 1000)];
+    self.address = [NSString stringWithFormat:@"%@ %@", self.location.addressRoad, self.location.addressRoadNumber];
+    self.postalCode = [NSString stringWithFormat:@"%@ %@", self.location.addressPostalCode, self.location.addressCity];
+
+    self.locationPictures = [NSArray new];
+    self.reviews = [NSArray new];
+
+    self.fetchCount++;
+    [[PictureService instance] locationPicturesForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
+        self.fetchCount--;
+
+        if ((self.error = error)) {
+            [[ErrorReporting instance] reportError:error];
+        } else {
+            self.locationPictures = objects;
+        }
+    }];
+
+    self.fetchCount++   ;
+    [[ReviewService instance] reviewsForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
+        self.fetchCount--;
+
+        if ((self.error = error)) {
+            [[ErrorReporting instance] reportError:error];
+        } else {
+            self.reviews = objects;
+        }
     }];
 }
 
@@ -97,36 +145,6 @@
 
 - (ReviewDetailViewModel *)getReviewDetailViewModel:(NSUInteger)index {
     return [[ReviewDetailViewModel alloc] initWithReview:[self.reviews objectAtIndex:index]];
-}
-
-- (void)setLocation:(Location *)aLocation {
-    location = aLocation;
-
-    self.locationPictures = [NSArray new];
-    self.reviews = [NSArray new];
-
-    self.fetchCount++;
-    [[PictureService instance] locationPicturesForLocation:aLocation onCompletion:^(NSArray *objects, NSError *error) {
-        self.fetchCount--;
-
-        if ((self.error = error)) {
-            [[ErrorReporting instance] reportError:error];
-        } else {
-            self.locationPictures = objects;
-        }
-    }];
-
-    self.fetchCount++;
-    [[ReviewService instance] reviewsForLocation:aLocation onCompletion:^(NSArray *objects, NSError *error) {
-        self.fetchCount--;
-
-        if ((self.error = error)) {
-            [[ErrorReporting instance] reportError:error];
-        } else {
-            self.reviews = objects;
-        }
-    }];
-
 }
 
 

@@ -10,6 +10,7 @@
 #import "NSMutableString+Extensions.h"
 #import "ErrorReporting.h"
 #import "HalalGuideSettings.h"
+#import "LocationDetailViewModel.h"
 
 @interface LocationViewModel () {
 }
@@ -140,6 +141,11 @@
     }
 
     return query;
+}
+
+
+- (LocationDetailViewModel *)viewModelForLocationAtIndex:(NSUInteger)index {
+    return [[LocationDetailViewModel alloc] initWithLocation:self.locationPresentation == LocationPresentationList ? [self.listLocations objectAtIndex:index] : [self.mapLocations objectAtIndex:index]];
 }
 
 

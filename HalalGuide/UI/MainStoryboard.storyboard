@@ -1505,7 +1505,6 @@
                     <connections>
                         <outlet property="DiningTableView" destination="dHn-qf-Xtv" id="yDl-yU-6RB"/>
                         <outlet property="addButton" destination="vfc-8s-iMb" id="n5X-AH-XuM"/>
-                        <outlet property="diningTableView" destination="dHn-qf-Xtv" id="ipJ-MB-VuA"/>
                         <outlet property="filter" destination="8In-1P-wFx" id="Z35-Cg-UBi"/>
                         <outlet property="mapView" destination="UFx-18-m3K" id="UYM-bd-nxU"/>
                         <outlet property="noResults" destination="OZy-6d-NYg" id="h24-qK-vm3"/>
@@ -1730,8 +1729,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uXh-ZL-84A"/>
-        <segue reference="Agj-FH-MAf"/>
+        <segue reference="NPh-OA-SzI"/>
+        <segue reference="v67-8Q-1Ev"/>
         <segue reference="0rB-JO-B8E"/>
         <segue reference="AbE-X5-4pa"/>
     </inferredMetricsTieBreakers>

@@ -12,7 +12,7 @@
 #import "AddressService.h"
 
 @interface LocationCell ()
-@property(nonatomic, strong) UIImageView *thumbNail;
+@property(nonatomic, strong) UIImageView *thumbnail;
 @property(nonatomic, strong) UILabel *distance;
 @property(nonatomic, strong) UILabel *km;
 @property(nonatomic, strong) UILabel *name;
@@ -29,9 +29,9 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.thumbNail = [[UIImageView alloc] initWithFrame:CGRectZero];
-        self.thumbNail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
-        [self.contentView addSubview:self.thumbNail];
+        self.thumbnail = [[UIImageView alloc] initWithFrame:CGRectZero];
+        self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
+        [self.contentView addSubview:self.thumbnail];
 
         self.distance = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:13];
         self.distance.textAlignment = NSTextAlignmentRight;
@@ -62,27 +62,11 @@
 //        self.open = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:10];
 //        self.open.textAlignment = NSTextAlignmentRight;
 //        [self.contentView addSubview:self.open];
-
-        @weakify(self)
-        [[RACObserve(self, viewModel) ignore:nil] subscribeNext:^(LocationDetailViewModel *viewModel) {
-            @strongify(self)
-
-            [[PictureService instance] thumbnailForLocation:viewModel.location onCompletion:^(NSArray *objects, NSError *error) {
-                if (objects != nil && [objects count] == 1) {
-                    LocationPicture *picture = [objects firstObject];
-                    [self.thumbNail setImageWithURL:[[NSURL alloc] initWithString:picture.thumbnail.url] placeholderImage:[UIImage imageNamed:[[self class] placeholderImageName]] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-                }
-            }];
-//
-            CLLocationDistance distanceM = [AddressService distanceInMetersToPoint:viewModel.location.location];
-            self.distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:@(distanceM / 1000)];
-            self.name.text = viewModel.location.name;
-            self.address.text = [NSString stringWithFormat:@"%@ %@", viewModel.location.addressRoad, viewModel.location.addressRoadNumber];
-            self.postalCode.text = [NSString stringWithFormat:@"%@ %@", viewModel.location.addressPostalCode, viewModel.location.addressCity];
-
-
-            //[open configureViewForLocation:location];TODO
-        }];
+        RAC(self.name, text) = RACObserve(self, viewModel.location.name);
+        RAC(self.distance, text) = RACObserve(self, viewModel.distance);
+        RAC(self.address, text) = RACObserve(self, viewModel.address);
+        RAC(self.postalCode, text) = RACObserve(self, viewModel.postalCode);
+        RAC(self.thumbnail, image, [UIImage imageNamed:[[self class]placeholderImageName]]) = RACObserve(self, viewModel.thumbnail);
 
         [self setNeedsUpdateConstraints];
 
@@ -96,15 +80,15 @@
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    self.thumbNail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
-    [self.thumbNail sd_cancelCurrentImageLoad];
+    self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
+    [self.thumbnail sd_cancelCurrentImageLoad];
 }
 
 static const int standardLabelWidth = 100;
 
 - (void)updateConstraints {
 
-    [self.thumbNail mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.thumbnail mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(standardCellSpacing);
         make.left.equalTo(self.contentView).offset(standardCellSpacing);
         make.width.equalTo(@(48));
@@ -113,19 +97,19 @@ static const int standardLabelWidth = 100;
 
     [self.name mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(standardCellSpacing);
-        make.left.equalTo(self.thumbNail.mas_right).offset(standardCellSpacing);
+        make.left.equalTo(self.thumbnail.mas_right).offset(standardCellSpacing);
         make.height.equalTo(@(16));
     }];
 
     [self.address mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.name.mas_bottom).offset(4);
-        make.left.equalTo(self.thumbNail.mas_right).offset(standardCellSpacing);
+        make.left.equalTo(self.thumbnail.mas_right).offset(standardCellSpacing);
         make.height.equalTo(@(14));
     }];
 
     [self.postalCode mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.address.mas_bottom);
-        make.left.equalTo(self.thumbNail.mas_right).offset(standardCellSpacing);
+        make.left.equalTo(self.thumbnail.mas_right).offset(standardCellSpacing);
         make.height.equalTo(@(14));
     }];
 

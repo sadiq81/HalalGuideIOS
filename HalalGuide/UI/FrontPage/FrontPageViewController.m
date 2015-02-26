@@ -10,18 +10,18 @@
 #import "LocationViewController.h"
 #import "LocationDetailViewController.h"
 #import "ZLPromptUserReview.h"
-#import "UIButton+VerticalLayout.h"
-#import "View+MASAdditions.h"
 #import "MosqueCell.h"
 #import "ShopCell.h"
+#import "Masonry/Masonry.h"
+#import "ButtonView.h"
 
 @interface FrontPageViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) UIView *topView;
-@property(nonatomic, strong) UIButton *shop;
-@property(nonatomic, strong) UIButton *eNumber;
-@property(nonatomic, strong) UIButton *eat;
-@property(nonatomic, strong) UIButton *mosque;
-@property(nonatomic, strong) UIButton *settings;
+@property(nonatomic, strong) ButtonView *shopView;
+@property(nonatomic, strong) ButtonView *eNumberView;
+@property(nonatomic, strong) ButtonView *eatView;
+@property(nonatomic, strong) ButtonView *mosqueView;
+@property(nonatomic, strong) ButtonView *settingsView;
 
 @property(nonatomic, strong) UILabel *latest;
 @property(nonatomic, strong) UITableView *tableView;
@@ -36,17 +36,22 @@
 
 }
 
-- (instancetype)initWithViewModel:(FrontPageViewModel *)aViewModel {
+- (instancetype)initWithViewModel:(FrontPageViewModel *)viewModel {
     self = [super init];
     if (self) {
-        self.viewModel = aViewModel;
+        self.viewModel = viewModel;
         [self setupViews];
         [self setupViewModel];
-        [self configureTableView];
+        [self setupTableView];
         [self updateViewConstraints];
     }
     return self;
 }
+
++ (instancetype)controllerWithViewModel:(FrontPageViewModel *)viewModel {
+    return [[self alloc] initWithViewModel:viewModel];
+}
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -60,40 +65,20 @@
     self.topView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.topView];
 
-    self.shop = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self.shop setImage:[UIImage imageNamed:@"shop"] forState:UIControlStateNormal];
-    [self.shop setTitle:NSLocalizedString(@"FrontPageViewController.button.shop", nil) forState:UIControlStateNormal];
-    [self.shop setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.shop centerVertically];
-    [self.topView addSubview:self.shop];
+    self.shopView = [[ButtonView alloc] initWithButtonImageName:@"shop" andLabelText:@"FrontPageViewController.label.shop" andTapHandler:[self tapHandlerForType:LocationTypeShop]];
+    [self.topView addSubview:self.shopView];
 
-    self.eNumber = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self.eNumber setImage:[UIImage imageNamed:@"ENumber"] forState:UIControlStateNormal];
-    [self.eNumber setTitle:NSLocalizedString(@"FrontPageViewController.button.enumber", nil) forState:UIControlStateNormal];
-    [self.eNumber setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.eNumber centerVertically];
-    [self.topView addSubview:self.eNumber];
+    self.eNumberView = [[ButtonView alloc] initWithButtonImageName:@"ENumber" andLabelText:@"FrontPageViewController.label.enumber" andTapHandler:nil];
+    [self.topView addSubview:self.eNumberView];
 
-    self.eat = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self.eat setImage:[UIImage imageNamed:@"dining"] forState:UIControlStateNormal];
-    [self.eat setTitle:NSLocalizedString(@"FrontPageViewController.button.eat", nil) forState:UIControlStateNormal];
-    [self.eat setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.eat centerVertically];
-    [self.topView addSubview:self.eat];
+    self.eatView = [[ButtonView alloc] initWithButtonImageName:@"dining" andLabelText:@"FrontPageViewController.label.eat" andTapHandler:[self tapHandlerForType:LocationTypeDining]];
+    [self.topView addSubview:self.eatView];
 
-    self.mosque = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self.mosque setImage:[UIImage imageNamed:@"mosque"] forState:UIControlStateNormal];
-    [self.mosque setTitle:NSLocalizedString(@"FrontPageViewController.button.mosque", nil) forState:UIControlStateNormal];
-    [self.mosque setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.mosque centerVertically];
-    [self.topView addSubview:self.mosque];
+    self.mosqueView = [[ButtonView alloc] initWithButtonImageName:@"mosque" andLabelText:@"FrontPageViewController.label.mosque" andTapHandler:[self tapHandlerForType:LocationTypeShop]];
+    [self.topView addSubview:self.mosqueView];
 
-    self.settings = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self.settings setImage:[UIImage imageNamed:@"Indstillinger"] forState:UIControlStateNormal];
-    [self.settings setTitle:NSLocalizedString(@"FrontPageViewController.button.settings", nil) forState:UIControlStateNormal];
-    [self.settings setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.settings centerVertically];
-    [self.topView addSubview:self.settings];
+    self.settingsView = [[ButtonView alloc] initWithButtonImageName:@"Indstillinger" andLabelText:@"FrontPageViewController.label.settings" andTapHandler:nil];
+    [self.topView addSubview:self.settingsView];
 
     self.latest = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:13];
     self.latest.text = NSLocalizedString(@"FrontPageViewController.label.latest.updates", nil);
@@ -105,6 +90,19 @@
 
     [self.view addSubview:self.tableView];
 
+}
+
+- (ButtonViewTapHandler)tapHandlerForType:(LocationType)type {
+
+    @weakify(self)
+    ButtonViewTapHandler handler = ^void(void) {
+        @strongify(self)
+        LocationViewModel *shopModel = [LocationViewModel modelWithLocationType:type];
+        LocationViewController *viewController = [LocationViewController controllerWithViewModel:shopModel];
+        [self.navigationController pushViewController:viewController animated:true];
+    };
+
+    return handler;
 }
 
 #pragma mark - ViewModel changes
@@ -131,7 +129,7 @@
 
 #pragma mark - TableView
 
-- (void)configureTableView {
+- (void)setupTableView {
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -169,14 +167,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-
     LocationDetailViewModel *cellModel = [self.viewModel viewModelForLocationAtIndex:indexPath.row];
 
     NSString *identifier = LocationTypeString([cellModel.location.locationType integerValue]);
 
     LocationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
 
-    [cell configureForViewModel: cellModel];
+    [cell configureForViewModel:cellModel];
 
     return cell;
 }
@@ -187,84 +184,57 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    LocationCell *cell = (LocationCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+    LocationDetailViewController *detailViewController = [LocationDetailViewController controllerWithViewModel:cell.viewModel];
+    [self.navigationController pushViewController:detailViewController animated:true];
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [super prepareForSegue:segue sender:sender];
-    if ([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"]) {
-        Location *location = [self.viewModel.locations objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-        LocationDetailViewModel *detailViewModel = [[LocationDetailViewModel alloc] initWithLocation:location];
-
-        LocationDetailViewController *detailViewController = (LocationDetailViewController *) segue.destinationViewController;
-        detailViewController.viewModel = detailViewModel;
-
-    } else if ([segue.identifier isEqualToString:@"Shop"]) {
-
-        LocationViewController *controller = (LocationViewController *) segue.destinationViewController;
-        controller.viewModel = [LocationViewModel modelWithLocationType:LocationTypeShop];
-
-    } else if ([segue.identifier isEqualToString:@"Dining"]) {
-
-        LocationViewController *controller = (LocationViewController *) segue.destinationViewController;
-        controller.viewModel = [LocationViewModel modelWithLocationType:LocationTypeDining];
-
-    } else if ([segue.identifier isEqualToString:@"Mosque"]) {
-
-        LocationViewController *controller = (LocationViewController *) segue.destinationViewController;
-        controller.viewModel = [LocationViewModel modelWithLocationType:LocationTypeMosque];
-    }
-}
+#pragma mark - Appearance
 
 - (void)updateViewConstraints {
-    [super updateViewConstraints];
+
 
     [self.topView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view);
         make.left.equalTo(self.view);
         make.right.equalTo(self.view);
-        make.height.equalTo(@(20 + 48 + 40 + 48 + 20));
+        make.height.equalTo(@(220));
     }];
 
-    [self.shop mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.shopView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@48);
-        make.height.equalTo(@48);
-       make.centerX.equalTo(self.topView).centerOffset(CGPointMake(-(self.view.frame.size.width/4+24), 0));
+        make.centerX.equalTo(self.topView).centerOffset(CGPointMake(-(self.view.frame.size.width / 4 + 24), 0));
         make.top.equalTo(self.topView).offset(20);
     }];
 
-    [self.eNumber mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.eNumberView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@48);
-        make.height.equalTo(@48);
         make.centerX.equalTo(self.topView);
         make.top.equalTo(self.topView).offset(20);
     }];
 
-    [self.eat mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.eatView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@48);
-        make.height.equalTo(@48);
-        make.centerX.equalTo(self.topView).centerOffset(CGPointMake(self.view.frame.size.width/4+24, 0));
+        make.centerX.equalTo(self.topView).centerOffset(CGPointMake(self.view.frame.size.width / 4 + 24, 0));
         make.top.equalTo(self.topView).offset(20);
     }];
 
-    [self.mosque mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.mosqueView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@48);
-        make.height.equalTo(@48);
-        make.centerX.equalTo(self.topView).centerOffset(CGPointMake(-(self.view.frame.size.width/4+24), 0));
-        make.top.equalTo(self.shop.mas_bottom).offset(40);
+        make.centerX.equalTo(self.shopView);
+        make.top.equalTo(self.shopView.mas_bottom).offset(20);
     }];
 
-    [self.settings mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.settingsView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@48);
-        make.height.equalTo(@48);
-        make.centerX.equalTo(self.topView).centerOffset(CGPointMake(self.view.frame.size.width/4+24, 0));
-        make.top.equalTo(self.eat.mas_bottom).offset(40);
+        make.centerX.equalTo(self.eatView);
+        make.top.equalTo(self.eatView.mas_bottom).offset(20);
     }];
 
     [self.latest mas_updateConstraints:^(MASConstraintMaker *make) {
-       make.left.equalTo(self.topView).offset(standardCellSpacing);
+        make.left.equalTo(self.topView).offset(standardCellSpacing);
         make.bottom.equalTo(self.topView);
     }];
 
@@ -274,6 +244,8 @@
         make.right.equalTo(self.view);
         make.bottom.equalTo(self.view);
     }];
+
+    [super updateViewConstraints];
 
 }
 

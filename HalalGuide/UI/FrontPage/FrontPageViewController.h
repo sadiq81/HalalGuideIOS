@@ -14,4 +14,7 @@
 
 - (instancetype)initWithViewModel:(FrontPageViewModel *)aViewModel;
 
++ (instancetype)controllerWithViewModel:(FrontPageViewModel *)viewModel;
+
+
 @end

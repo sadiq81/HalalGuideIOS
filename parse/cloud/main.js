@@ -88,5 +88,11 @@ Parse.Cloud.beforeSave("LocationPicture", function (request, response) {
             response.error(error);
         });
     });
+
+    if (!locationPicture.get("createdAt")) {
+
+
+    }
+
 });
 

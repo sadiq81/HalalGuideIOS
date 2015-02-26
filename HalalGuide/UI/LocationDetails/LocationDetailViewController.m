@@ -25,16 +25,33 @@
 #import "AppDelegate.h"
 #import "PFUser+Extension.h"
 
+@interface LocationDetailViewController ()
+@property(strong, nonatomic) LocationDetailViewModel *viewModel;
+@end
+
 @implementation LocationDetailViewController {
 }
 
-@synthesize viewModel;
+- (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel {
+    self = [super init];
+    if (self) {
+        self.viewModel = viewModel;
+        //[self setupViews];
+        [self setupViewModel];
+        [self setupTableView];
+        [self updateViewConstraints];
+    }
+
+    return self;
+}
+
++ (instancetype)controllerWithViewModel:(LocationDetailViewModel *)viewModel {
+    return [[self alloc] initWithViewModel:viewModel];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupViewModel];
 
-    [self setupTableView];
     [self setupUI];
     [self setupPictures];
 

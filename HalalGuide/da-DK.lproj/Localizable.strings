@@ -238,10 +238,24 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "ZLPromptUserReview.cancel"="Nej tak";
 "ZLPromptUserReview.remind"="Påmind mig senere";
 
+
+
 "FrontPageViewController.title"  = "HalalGuide";
-"FrontPageViewController.button.shop"= "Handle";
-"FrontPageViewController.button.enumber"= "Enummer";
-"FrontPageViewController.button.eat"= "Spise";
-"FrontPageViewController.button.mosque"= "Moske";
-"FrontPageViewController.button.settings"= "Indstillinger";
+"FrontPageViewController.label.shop"= "Handle";
+"FrontPageViewController.label.enumber"= "Enummer";
+"FrontPageViewController.label.eat"= "Spise";
+"FrontPageViewController.label.mosque"= "Moske";
+"FrontPageViewController.label.settings"= "Indstillinger";
 "FrontPageViewController.label.latest.updates" = "Seneste opdateringer";
+
+"DiningCell.yes"= "Ja";
+"DiningCell.no"= "Nej";
+
+"MosqueCell.language.none"= "";
+"MosqueCell.language.danish"= "Dansk";
+"MosqueCell.language.arabic"= "Arabisk";
+"MosqueCell.language.urdu"= "Urdu";
+"MosqueCell.language.english"= "Engelsk";
+
+"LocationViewController.segmentControl.list" = "List";
+"LocationViewController.segmentControl.map" = "Map";

@@ -36,7 +36,12 @@
 @property(strong) IBOutlet UITableView *reviews;
 @property (strong, nonatomic) IBOutlet UILabel *noPicturesLabel;
 @property (strong, nonatomic) IBOutlet UILabel *noReviewsLabel;
-@property (strong, nonatomic) LocationDetailViewModel *viewModel;
+@property (strong, nonatomic, readonly) LocationDetailViewModel *viewModel;
+
+- (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel;
+
++ (instancetype)controllerWithViewModel:(LocationDetailViewModel *)viewModel;
+
 
 - (void)openMaps:(UITapGestureRecognizer *)recognizer;
 @end

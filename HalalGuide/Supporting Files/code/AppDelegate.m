@@ -113,7 +113,7 @@
     //Setup view controller
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     self.window.backgroundColor = [UIColor whiteColor];
-    FrontPageViewController *viewController = [[FrontPageViewController alloc] initWithViewModel:[[FrontPageViewModel alloc] init]];
+    FrontPageViewController *viewController = [FrontPageViewController controllerWithViewModel:[[FrontPageViewModel alloc] init]];
     UINavigationController *nav = [[UINavigationController alloc]  initWithRootViewController:viewController];
     nav.navigationBar.translucent = NO;
     self.window.rootViewController = nav;

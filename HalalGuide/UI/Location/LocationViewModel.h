@@ -7,6 +7,8 @@
 #import "BaseViewModel.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 
+@class LocationDetailViewModel;
+
 
 typedef enum LocationPresentation : int16_t {
     LocationPresentationList = 0,
@@ -32,6 +34,8 @@ typedef enum LocationPresentation : int16_t {
 - (instancetype)initWithLocationType:(LocationType)aLocationType;
 
 + (instancetype)modelWithLocationType:(LocationType)locationType;
+
+- (LocationDetailViewModel *)viewModelForLocationAtIndex:(NSUInteger)index;
 
 - (void)refreshLocations;
 

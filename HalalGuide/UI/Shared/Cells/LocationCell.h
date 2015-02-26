@@ -17,7 +17,7 @@ static const int standardCellSpacing = 8;
 
 }
 
-@property(nonatomic, strong, readonly) UIImageView *thumbNail;
+@property(nonatomic, strong, readonly) UIImageView *thumbnail;
 @property(nonatomic, strong, readonly) UILabel *distance;
 @property(nonatomic, strong, readonly) UILabel *name;
 @property(nonatomic, strong, readonly) UILabel *address;

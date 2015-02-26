@@ -10,10 +10,17 @@
 
 @interface LocationDetailViewModel : BaseViewModel
 
-@property(nonatomic, retain) Location *location;
+@property(nonatomic, retain, readonly) Location *location;
 @property(nonatomic, readonly) NSArray *locationPictures;
 @property(nonatomic, readonly) NSArray *reviews;
 @property (nonatomic, readonly) PFUser *user;
+
+@property (nonatomic, strong, readonly) UIImage *thumbnail;
+@property (nonatomic, strong, readonly) NSString *distance;
+@property (nonatomic, strong, readonly) NSString *address;
+@property (nonatomic, strong, readonly) NSString *postalCode;
+
+
 
 @property(nonatomic) NSInteger indexOfSelectedImage;
 

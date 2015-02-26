@@ -238,9 +238,21 @@
 "ZLPromptUserReview.remind"="Remind me";
 
 "FrontPageViewController.title"  = "HalalGuide";
-"FrontPageViewController.button.shop"= "Shop";
-"FrontPageViewController.button.enumber"= "Enumber";
-"FrontPageViewController.button.eat"= "Eat";
-"FrontPageViewController.button.mosque"= "Mosque";
-"FrontPageViewController.button.settings"= "Settings";
+"FrontPageViewController.label.shop"= "Shop";
+"FrontPageViewController.label.enumber"= "Enumber";
+"FrontPageViewController.label.eat"= "Eat";
+"FrontPageViewController.label.mosque"= "Mosque";
+"FrontPageViewController.label.settings"= "Settings";
 "FrontPageViewController.label.latest.updates" = "Latest updates";
+
+"DiningCell.yes"= "Yes";
+"DiningCell.no"= "No";
+
+"MosqueCell.language.none"= "";
+"MosqueCell.language.danish"= "Danish";
+"MosqueCell.language.arabic"= "Arabic";
+"MosqueCell.language.urdu"= "Urdu";
+"MosqueCell.language.english"= "English";
+
+"LocationViewController.segmentControl.list" = "List";
+"LocationViewController.segmentControl.map" = "Map";
