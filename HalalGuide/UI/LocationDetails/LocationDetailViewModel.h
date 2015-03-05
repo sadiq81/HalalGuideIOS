@@ -20,6 +20,18 @@
 @property (nonatomic, strong, readonly) NSString *address;
 @property (nonatomic, strong, readonly) NSString *postalCode;
 
+@property (nonatomic, readonly) float rating;
+@property (nonatomic, strong, readonly) NSString *category;
+
+@property (nonatomic, readonly,strong) UIImage *porkImage;
+@property (nonatomic, readonly,strong) NSAttributedString *porkString;
+@property (nonatomic, readonly,strong) UIImage *alcoholImage;
+@property (nonatomic, readonly,strong) NSAttributedString *alcoholString;
+@property (nonatomic, readonly,strong) UIImage *halalImage;
+@property (nonatomic, readonly,strong) NSAttributedString *halalString;
+
+@property(nonatomic, readonly, strong) UIImage *languageImage;
+@property(nonatomic, readonly, strong) NSString *languageString;
 
 
 @property(nonatomic) NSInteger indexOfSelectedImage;

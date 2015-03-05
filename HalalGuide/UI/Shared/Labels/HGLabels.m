@@ -4,10 +4,10 @@
 //
 
 #import <CoreGraphics/CoreGraphics.h>
-#import "HalalGuideLabels.h"
+#import "HGLabels.h"
 
 
-@implementation HalalGuideLabel
+@implementation HGLabel
 
 - (instancetype)initWithFrame:(CGRect)frame andFontSize:(CGFloat)size {
     self = [super initWithFrame:frame];

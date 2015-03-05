@@ -9,39 +9,41 @@
 #import <UIKit/UIKit.h>
 #import "EDStarRating.h"
 #import "HalalGuideImageViews.h"
-#import "HalalGuideLabels.h"
+#import "HGLabels.h"
 #import "iCarousel.h"
 #import "LocationDetailViewModel.h"
 #import <MessageUI/MessageUI.h>
+#import <ALActionBlocks/UIControl+ALActionBlocks.h>
+#import <ParseUI/ParseUI.h>
+#import <MZFormSheetController/MZFormSheetSegue.h>
+#import "BaseViewModel.h"
+#import "CreateReviewViewModel.h"
+#import "Review.h"
+#import "HalalGuideNumberFormatter.h"
+#import "ReviewCell.h"
+#import "ReviewDetailViewModel.h"
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
+#import "HalalGuideOnboarding.h"
+#import "UIViewController+Extension.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Masonry/View+MASAdditions.h>
+#import "SlideShowViewController.h"
+#import "ReviewDetailViewController.h"
+#import "CreateReviewViewController.h"
+#import "AppDelegate.h"
+#import "PFUser+Extension.h"
+#import "HGLabels.h"
+#import "Location.h"
 
 @interface LocationDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, iCarouselDataSource, iCarouselDelegate>
 
-@property(strong) IBOutlet UILabel *name;
-@property(strong) IBOutlet UILabel *address;
-@property(strong) IBOutlet UILabel *distance;
-@property(strong) IBOutlet EDStarRating *rating;
-@property(strong) IBOutlet UILabel *category;
-@property(strong) IBOutlet PorkImageView *porkImage;
-@property(strong) IBOutlet AlcoholImageView *alcoholImage;
-@property(strong) IBOutlet HalalImageView *halalImage;
-@property(strong) IBOutlet PorkLabel *porkLabel;
-@property(strong) IBOutlet AlcoholLabel *alcoholLabel;
-@property(strong) IBOutlet HalalLabel *halalLabel;
-@property(strong) IBOutlet UILabel *submitterName;
-@property(strong) IBOutlet UIImageView *submitterImage;
-@property(strong) IBOutlet UIButton *report;
-@property(strong) IBOutlet UIButton *addReview;
-@property(strong) IBOutlet UIButton *addPicture;
-@property(strong) IBOutlet iCarousel *pictures;
-@property(strong) IBOutlet UITableView *reviews;
-@property (strong, nonatomic) IBOutlet UILabel *noPicturesLabel;
-@property (strong, nonatomic) IBOutlet UILabel *noReviewsLabel;
+
 @property (strong, nonatomic, readonly) LocationDetailViewModel *viewModel;
 
 - (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel;
 
 + (instancetype)controllerWithViewModel:(LocationDetailViewModel *)viewModel;
 
-
 - (void)openMaps:(UITapGestureRecognizer *)recognizer;
+
 @end

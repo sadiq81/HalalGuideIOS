@@ -28,6 +28,19 @@
 @property(nonatomic, strong) NSString *address;
 @property(nonatomic, strong) NSString *postalCode;
 
+@property(nonatomic) float rating;
+@property(nonatomic, strong) NSString *category;
+
+@property(nonatomic, strong) UIImage *porkImage;
+@property(nonatomic, strong) NSAttributedString *porkString;
+@property(nonatomic, strong) UIImage *alcoholImage;
+@property(nonatomic, strong) NSAttributedString *alcoholString;
+@property(nonatomic, strong) UIImage *halalImage;
+@property(nonatomic, strong) NSAttributedString *halalString;
+
+@property(nonatomic, strong) UIImage *languageImage;
+@property(nonatomic, strong) NSString *languageString;
+
 @end
 
 @implementation LocationDetailViewModel {
@@ -70,8 +83,20 @@
 
     CLLocationDistance distanceM = [AddressService distanceInMetersToPoint:self.location.location];
     self.distance = [[HalalGuideNumberFormatter instance] stringFromNumber:@(distanceM / 1000)];
-    self.address = [NSString stringWithFormat:@"%@ %@", self.location.addressRoad, self.location.addressRoadNumber];
+    self.address = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", self.location.addressRoad, self.location.addressRoadNumber, self.location.addressPostalCode, self.location.addressCity];
     self.postalCode = [NSString stringWithFormat:@"%@ %@", self.location.addressPostalCode, self.location.addressCity];
+    self.category =
+
+    self.porkImage = [UIImage imageNamed:self.location.pork.boolValue ? @"PigTrue" : @"PigFalse"];
+    self.alcoholImage = [UIImage imageNamed:self.location.alcohol.boolValue ? @"AlcoholTrue" : @"AlcoholFalse"];
+    self.halalImage = [UIImage imageNamed:self.location.nonHalal.boolValue ? @"NonHalalTrue" : @"NonHalalFalse"];
+
+    self.porkString = [self stringForBool:self.location.pork.boolValue];
+    self.alcoholString = [self stringForBool:self.location.alcohol.boolValue];
+    self.halalString = [self stringForBool:self.location.nonHalal.boolValue];
+
+    self.languageImage = [UIImage imageNamed:LanguageString([self.location.language integerValue])];
+    self.languageString = NSLocalizedString(LanguageString([self.location.language integerValue]), nil);
 
     self.locationPictures = [NSArray new];
     self.reviews = [NSArray new];
@@ -87,7 +112,7 @@
         }
     }];
 
-    self.fetchCount++   ;
+    self.fetchCount++;
     [[ReviewService instance] reviewsForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
         self.fetchCount--;
 
@@ -95,10 +120,16 @@
             [[ErrorReporting instance] reportError:error];
         } else {
             self.reviews = objects;
+            [self calculateAverageRating];
         }
     }];
 }
 
+- (NSMutableAttributedString *)stringForBool:(BOOL)value {
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:value ? NSLocalizedString(@"yes", nil) : NSLocalizedString(@"no", nil)];
+    [string addAttribute:NSForegroundColorAttributeName value:value ? [UIColor redColor] : [UIColor greenColor] range:NSMakeRange(0, [string.mutableString length])];
+    return string;
+}
 
 - (void)report:(UIViewController <MFMailComposeViewControllerDelegate> *)viewController {
 
@@ -128,18 +159,13 @@
 }
 
 
-- (NSNumber *)averageRating {
+- (void)calculateAverageRating {
     if (self.reviews && [self.reviews count] > 0) {
-
         float average = 0;
         for (Review *review in self.reviews) {
             average += [review.rating floatValue];
         }
-        average /= [self.reviews count];
-        return @(average);
-
-    } else {
-        return nil;
+        self.rating = average / [self.reviews count];
     }
 }
 

@@ -6,26 +6,41 @@
 //  Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#import <ALActionBlocks/UIControl+ALActionBlocks.h>
-#import <ParseUI/ParseUI.h>
-#import <MZFormSheetController/MZFormSheetSegue.h>
+#import <IQKeyboardManager/IQUIView+Hierarchy.h>
 #import "LocationDetailViewController.h"
-#import "CreateReviewViewModel.h"
-#import "Review.h"
-#import "HalalGuideNumberFormatter.h"
-#import "ReviewCell.h"
-#import "ReviewDetailViewModel.h"
-#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
-#import "HalalGuideOnboarding.h"
-#import "UIViewController+Extension.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import "SlideShowViewController.h"
-#import "ReviewDetailViewController.h"
-#import "CreateReviewViewController.h"
-#import "AppDelegate.h"
-#import "PFUser+Extension.h"
 
 @interface LocationDetailViewController ()
+@property(strong) UIView *headerView;
+//-------------------------------------------
+@property(strong) UILabel *name;
+@property(strong) UILabel *road;
+@property(strong) UILabel *postalCode;
+@property(strong) UILabel *distance;
+@property(strong) UILabel *km;
+@property(strong) EDStarRating *rating;
+@property(strong) UILabel *category;
+@property(strong) UIImageView *porkImage;
+@property(strong) UILabel *porkLabel;
+@property(strong) UIImageView *alcoholImage;
+@property(strong) UILabel *alcoholLabel;
+@property(strong) UIImageView *halalImage;
+@property(strong) UILabel *halalLabel;
+@property(strong) UIImageView *languageImage;
+@property(strong) UILabel *languageLabel;
+//-------------------------------------------
+@property(strong) UILabel *submitterHeadLine;
+@property(strong) UILabel *submitterName;
+@property(strong) UIImageView *submitterImage;
+//-------------------------------------------
+@property(strong) UIButton *report;
+@property(strong) UIButton *addReview;
+@property(strong) UIButton *addPicture;
+@property(strong) iCarousel *pictures;
+@property(strong, nonatomic) UILabel *noPicturesLabel;
+//-------------------------------------------
+@property(strong) UITableView *reviews;
+@property(strong, nonatomic) UILabel *noReviewsLabel;
+//-------------------------------------------
 @property(strong, nonatomic) LocationDetailViewModel *viewModel;
 @end
 
@@ -36,9 +51,10 @@
     self = [super init];
     if (self) {
         self.viewModel = viewModel;
-        //[self setupViews];
+        [self setupViews];
         [self setupViewModel];
         [self setupTableView];
+        [self setupPictures];
         [self updateViewConstraints];
     }
 
@@ -49,14 +65,79 @@
     return [[self alloc] initWithViewModel:viewModel];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)setupViews {
 
-    [self setupUI];
-    [self setupPictures];
+    self.title = self.viewModel.location.name;
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.view.backgroundColor = [UIColor whiteColor];
 
-    self.navigationItem.title = self.viewModel.location.name;
+    self.reviews = [[UITableView alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.reviews];
 
+    self.headerView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.reviews.tableHeaderView = self.headerView;
+
+    self.name = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:17];
+    [self.name addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
+    [self.headerView addSubview:self.name];
+
+    self.road = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:14];
+    [self.road addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
+    [self.headerView addSubview:self.road];
+
+    self.postalCode = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:14];
+    [self.postalCode addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
+    [self.headerView addSubview:self.postalCode];
+
+    self.rating = [[EDStarRating alloc] initWithFrame:CGRectZero];
+    self.rating.starImage = [UIImage imageNamed:@"starSmall"];
+    self.rating.displayMode = EDStarRatingDisplayHalf;
+    self.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
+    self.rating.rating = 0;
+    [self.headerView addSubview:self.rating];
+
+    self.category = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];
+    [self.headerView addSubview:self.category];
+
+    self.distance = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];
+    [self.headerView addSubview:self.distance];
+    self.km = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
+    [self.headerView addSubview:self.km];
+
+    self.porkImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.headerView addSubview:self.porkImage];
+    self.porkLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
+    [self.headerView addSubview:self.porkLabel];
+
+    self.alcoholImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.headerView addSubview:self.alcoholImage];
+    self.alcoholLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
+    [self.headerView addSubview:self.alcoholLabel];
+
+    self.halalImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.headerView addSubview:self.halalImage];
+    self.halalLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
+    [self.headerView addSubview:self.halalLabel];
+
+    self.submitterImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.headerView addSubview:self.submitterImage];
+
+    self.submitterHeadLine = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
+    [self.headerView addSubview:self.submitterHeadLine];
+    self.submitterName = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:17];
+    [self.headerView addSubview:self.submitterName];
+
+    self.report = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.headerView addSubview:self.report];
+
+    self.pictures = [[iCarousel alloc] initWithFrame:CGRectZero];
+    [self.headerView addSubview:self.pictures];
+
+    self.addReview = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.headerView addSubview:self.addReview];
+
+    self.addPicture = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.headerView addSubview:self.addPicture];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -67,12 +148,11 @@
     [self setupHints];
 }
 
-
 #pragma mark - Hints
 
 - (void)setupHints {
     if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningDetailAddressTelephoneOptionsOnBoardingKey]) {
-        [self displayHintForView:self.address withHintKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey preferedPositionOfText:HintPositionBelow];
+        [self displayHintForView:self.road withHintKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey preferedPositionOfText:HintPositionBelow];
     }
 }
 
@@ -94,6 +174,13 @@
             [SVProgressHUD dismiss];
         }
     }];
+
+    RAC(self.name, text) = RACObserve(self, viewModel.location.name);
+    RAC(self.distance, text) = RACObserve(self, viewModel.distance);
+    RAC(self.road, text) = RACObserve(self, viewModel.address);
+    RAC(self.postalCode, text) = RACObserve(self, viewModel.postalCode);
+    RAC(self.rating, rating) = RACObserve(self, viewModel.rating);
+
 
     /*
     [[RACObserve(self.viewModel, saving) skip:1] subscribeNext:^(NSNumber *saving) {
@@ -130,15 +217,17 @@
 
     [[reviewSignal skip:1] subscribeNext:^(NSArray *locations) {
         @strongify(self)
-        [self.reviews reloadData];
+        [self.tableView reloadData];
     }];
 
-    CGRect oldFrame = self.reviews.tableFooterView.frame;
+    CGRect oldFrame = self.tableView.tableFooterView.frame;
     oldFrame.size.height = 63;
-    self.reviews.tableFooterView.frame = oldFrame;
-    RAC(self.reviews.tableFooterView, hidden) = [reviewSignal map:^(NSArray *reviews) {
+    self.tableView.tableFooterView.frame = oldFrame;
+    RAC(self.tableView.tableFooterView, hidden) = [reviewSignal map:^(NSArray *reviews) {
         return @([reviews count]);
     }];
+
+    RAC(self.name, text) = RACObserve(self, viewModel.location.name);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -147,7 +236,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    ReviewCell *reviewCell = (ReviewCell *) [self.reviews dequeueReusableCellWithIdentifier:@"Review" forIndexPath:indexPath];
+    ReviewCell *reviewCell = (ReviewCell *) [self.tableView dequeueReusableCellWithIdentifier:@"Review" forIndexPath:indexPath];
     ReviewDetailViewModel *detailViewModel = [self.viewModel getReviewDetailViewModel:indexPath.item];
     reviewCell.viewModel = detailViewModel;
     return reviewCell;
@@ -158,7 +247,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.reviews deselectRowAtIndexPath:indexPath animated:false];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:false];
 }
 
 #pragma mark - UI
@@ -167,27 +256,16 @@
 
     Location *loc = self.viewModel.location;
 
-    self.name.text = loc.name;
-    self.address.text = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", loc.addressRoad, loc.addressRoadNumber, loc.addressPostalCode, loc.addressCity];
-    [self.address sizeToFit];
-    [self.address addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
 
-    CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
-    self.distance.text = [[HalalGuideNumberFormatter instance] stringFromNumber:@([loc.location distanceFromLocation:manager.location] / 1000)];
-
-    self.rating.starImage = [UIImage imageNamed:@"starSmall"];
-    self.rating.displayMode = EDStarRatingDisplayHalf;
-    self.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
-    self.rating.rating = 0;
 
     if ([loc.locationType isEqualToNumber:@(LocationTypeDining)]) {
         self.category.text = [loc categoriesString];
-        [self.porkImage configureViewForLocation:loc];
-        [self.alcoholImage configureViewForLocation:loc];
-        [self.halalImage configureViewForLocation:loc];
-        [self.porkLabel configureViewForLocation:loc];
-        [self.alcoholLabel configureViewForLocation:loc];
-        [self.halalLabel configureViewForLocation:loc];
+//        [self.porkImage configureViewForLocation:loc];
+//        [self.alcoholImage configureViewForLocation:loc];
+//        [self.halalImage configureViewForLocation:loc];
+//        [self.porkLabel configureViewForLocation:loc];
+//        [self.alcoholLabel configureViewForLocation:loc];
+//        [self.halalLabel configureViewForLocation:loc];
     } else {
 
         if ([loc.locationType isEqualToNumber:@(LocationTypeMosque)]) {
@@ -352,7 +430,7 @@
         controller.viewModel = viewModel1;
     }
     else if ([segue.identifier isEqualToString:@"ReviewDetails"]) {
-        NSIndexPath *selected = [self.reviews indexPathForSelectedRow];
+        NSIndexPath *selected = [self.tableView indexPathForSelectedRow];
         Review *review = [[self.viewModel reviews] objectAtIndex:selected.item];
         ReviewDetailViewModel *viewModel1 = [[ReviewDetailViewModel alloc] initWithReview:review];
         ReviewDetailViewController *controller = (ReviewDetailViewController *) segue.destinationViewController;
@@ -386,6 +464,148 @@
 - (void)finishedPickingImages {
     [super finishedPickingImages];
     [self.viewModel saveMultiplePictures:self.images];
+}
+
+
+- (void)updateViewConstraints {
+
+    [self.name mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.headerView).offset(8);
+        make.left.equalTo(self.headerView).offset(8);
+    }];
+
+    [self.road mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.name.mas_bottom).offset(4);
+        make.left.equalTo(self.headerView).offset(8);
+    }];
+    [self.postalCode mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.road.mas_bottom).offset(4);
+        make.left.equalTo(self.headerView).offset(8);
+    }];
+
+    [self.rating mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.category.mas_top).offset(-8);
+        make.left.equalTo(self.headerView).offset(8);
+        make.height.equalTo(@(20));
+    }];
+
+    [self.category mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.headerView).offset(-8);
+        make.left.equalTo(self.headerView).offset(8);
+    }];
+
+    [self.distance mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.headerView).offset(-8);
+        make.top.equalTo(self.headerView).offset(8);
+    }];
+
+    [self.km mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.headerView).offset(-8);
+        make.top.equalTo(self.distance.mas_bottom).offset(4);
+    }];
+
+    [self.porkImage mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.alcoholImage.mas_left).offset(-8);
+        make.width.equalTo(@(31));
+        make.height.equalTo(@(31));
+    }];
+
+    [self.porkLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.headerView).offset(-8);
+        make.centerX.equalTo(self.porkImage);
+        make.top.equalTo(self.porkImage.mas_bottom).offset(-8);
+    }];
+
+    [self.alcoholImage mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.halalImage.mas_left).offset(-8);
+        make.width.equalTo(@(31));
+        make.height.equalTo(@(31));
+    }];
+
+    [self.alcoholLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.headerView).offset(-8);
+        make.centerX.equalTo(self.alcoholImage);
+        make.top.equalTo(self.alcoholImage.mas_bottom).offset(-8);
+    }];
+
+    [self.halalImage mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.headerView).offset(-8);
+        make.width.equalTo(@(31));
+        make.height.equalTo(@(31));
+    }];
+
+    [self.halalLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.headerView).offset(-8);
+        make.centerX.equalTo(self.halalImage);
+        make.top.equalTo(self.halalImage.mas_bottom).offset(-8);
+    }];
+
+    [self.submitterImage mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.category.mas_bottom).offset(8);
+        make.left.equalTo(self.headerView).offset(8);
+        make.width.equalTo(@(31));
+        make.height.equalTo(@(31));
+    }];
+
+    [self.submitterHeadLine mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.submitterImage);
+        make.left.equalTo(self.submitterImage.mas_right).offset(8);
+    }];
+
+    [self.submitterName mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.submitterHeadLine.mas_bottom).offset(4);
+        make.left.equalTo(self.submitterImage.mas_right).offset(8);
+        make.bottom.equalTo(self.submitterImage);
+    }];
+
+    [self.report mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.submitterImage.mas_bottom).offset(8);
+        make.left.equalTo(self.headerView).offset(8);
+        make.right.equalTo(self.headerView).offset(-8);
+        make.height.equalTo(@(30));
+    }];
+
+    [self.pictures mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.report.mas_bottom).offset(8);
+        make.right.equalTo(self.headerView);
+        make.left.equalTo(self.headerView);
+        make.height.equalTo(@(200));
+    }];
+
+    [self.noPicturesLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.pictures);
+        make.centerY.equalTo(self.pictures);
+        make.width.equalTo(self.headerView).offset(8);
+    }];
+
+    [self.addReview mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.pictures.mas_bottom).offset(8);
+        make.left.equalTo(self.headerView).offset(8);
+        make.right.equalTo(self.headerView.mas_centerX);
+        make.height.equalTo(@(30));
+        make.bottom.equalTo(self.headerView);
+    }];
+
+    [self.addPicture mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.pictures.mas_bottom).offset(8);
+        make.left.equalTo(self.headerView.mas_centerX).offset(8);
+        make.right.equalTo(self.headerView).offset(-8);
+        make.height.equalTo(@(30));
+        make.bottom.equalTo(self.headerView);
+    }];
+
+    [self.reviews mas_updateConstraints:^(MASConstraintMaker *make) {
+       make.edges.equalTo(self.view);
+    }];
+
+    [self.noReviewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.headerView.mas_bottom).offset(8);
+        make.centerX.equalTo(self.view);
+        make.width.equalTo(self.view).offset(8);
+    }];
+
+    [super updateViewConstraints];
+
 }
 
 @end

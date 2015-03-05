@@ -61,6 +61,8 @@
 - (void)setupViews {
 
     self.title = NSLocalizedString(@"FrontPageViewController.title", nil);
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.view.backgroundColor = [UIColor whiteColor];
 
     self.topView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.topView];
@@ -80,7 +82,7 @@
     self.settingsView = [[ButtonView alloc] initWithButtonImageName:@"Indstillinger" andLabelText:@"FrontPageViewController.label.settings" andTapHandler:nil];
     [self.topView addSubview:self.settingsView];
 
-    self.latest = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:13];
+    self.latest = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];
     self.latest.text = NSLocalizedString(@"FrontPageViewController.label.latest.updates", nil);
     [self.topView addSubview:self.latest];
 

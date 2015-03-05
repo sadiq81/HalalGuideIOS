@@ -35,6 +35,7 @@
 		A165DDD01A34EA8E00F43A15 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A165DDCF1A34EA8E00F43A15 /* Security.framework */; };
 		A165DDD21A34EA9600F43A15 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A165DDD11A34EA9600F43A15 /* StoreKit.framework */; };
 		A165DDD41A34EA9D00F43A15 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A165DDD31A34EA9D00F43A15 /* SystemConfiguration.framework */; };
+		A1709C911AA33B3C00ADAECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1709C901AA33B3C00ADAECD /* Images.xcassets */; };
 		A1A699CC1A7B9CE100AB1C6C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A699C81A7B9CE100AB1C6C /* Parse.framework */; };
 		A1A699CD1A7B9CE100AB1C6C /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A699C91A7B9CE100AB1C6C /* ParseCrashReporting.framework */; };
 		A1A699CE1A7B9CE100AB1C6C /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A699CA1A7B9CE100AB1C6C /* ParseFacebookUtils.framework */; };
@@ -79,6 +80,7 @@
 		C596B76EDDF019BDADE30D03 /* HalalLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B4C92E78DEFF3BE48FF3 /* HalalLogInViewController.m */; };
 		C596B8089323C38DC9154E64 /* LocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B71BF7FEBEC982AF2EC1 /* LocationViewModel.m */; };
 		C596B84535BA2C02AB15A896 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B619AECBB263C4ED02FE /* UIImage+Alpha.m */; };
+		C596B847EDD38F5CC989D1B5 /* HGTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8A53F21CBC927875E74 /* HGTextField.m */; };
 		C596B84D247D5475BA209433 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BD7A359A74181777DF23 /* LocationAnnotation.m */; };
 		C596B86E7083F827F608D51B /* ENumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B448202B5ACA4E2E3C56 /* ENumberViewController.m */; };
 		C596B896E5FFBACE8438BC3E /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B5E924343A08F6F50ABC /* ReviewCell.m */; };
@@ -87,8 +89,7 @@
 		C596B8E01156320C71D2B3D4 /* FrontPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BDE6BE0535D6D62B6DF4 /* FrontPageViewController.m */; };
 		C596B9230EA78FF87B90E5AF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1DD04247DEB9EC797A7 /* LocationService.m */; };
 		C596B97845A60BDE2EBD8D94 /* ENumber.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B75D2EDAB33AE4DC6CC4 /* ENumber.m */; };
-		C596B994E8D83F0CFCC43A4B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C596B6652B392F90E4C7F499 /* Images.xcassets */; };
-		C596B9C508E4E25C7AEFB1AE /* HalalGuideLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE809C133E47309A70FE /* HalalGuideLabels.m */; };
+		C596B9C508E4E25C7AEFB1AE /* HGLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE809C133E47309A70FE /* HGLabels.m */; };
 		C596B9DC8D40EB2F77F50986 /* LocationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE3B3A5B60189D1D1699 /* LocationDetailViewController.m */; };
 		C596B9F844193490D9A6B3E7 /* UILabel+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BF9C4BB1DDEF86A7E229 /* UILabel+Extensions.m */; };
 		C596BA0D65267A5757B31A37 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8DD34F850AE20E4F562 /* UIImage+ImageEffects.m */; };
@@ -99,6 +100,7 @@
 		C596BA7CA9398A331DCB5B14 /* Adgangsadresse.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8B206E72424A29EC190 /* Adgangsadresse.m */; };
 		C596BAD88EA37DD67A02C9C6 /* MKMapView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1AFC308D5211D4CEA65 /* MKMapView+Extension.m */; };
 		C596BADBAD00EE3295E1D197 /* PFUser+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B61E35EBAAF16E0A862C /* PFUser+Extension.m */; };
+		C596BBEDF00B04239985401D /* UITableView+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1252B5FEC446A55A856 /* UITableView+Header.m */; };
 		C596BC90F2C215AF04009886 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B76374759947E3D1466D /* Review.m */; };
 		C596BCDFB902FAF18D51A1AB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC841F23A6433FB59C83 /* SettingsViewController.m */; };
 		C596BD2F3DEA743000DA7441 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3B9B67A50AA098B0D07 /* NSString+Extensions.m */; };
@@ -174,6 +176,7 @@
 		A165DDCF1A34EA8E00F43A15 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A165DDD11A34EA9600F43A15 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A165DDD31A34EA9D00F43A15 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A1709C901AA33B3C00ADAECD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Supporting Files/data/Images.xcassets"; sourceTree = "<group>"; };
 		A1A699C81A7B9CE100AB1C6C /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Frameworks/Parse.framework; sourceTree = "<group>"; };
 		A1A699C91A7B9CE100AB1C6C /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Frameworks/ParseCrashReporting.framework; sourceTree = "<group>"; };
 		A1A699CA1A7B9CE100AB1C6C /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = Frameworks/ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -204,6 +207,7 @@
 		C596B10C7FAB88D80A2501EA /* LocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewController.h; sourceTree = "<group>"; };
 		C596B11428DF21ABD2A7916F /* ReviewDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewDetailViewModel.h; sourceTree = "<group>"; };
 		C596B115347BFC1E3BDF4274 /* UIImage+Combine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Combine.m"; sourceTree = "<group>"; };
+		C596B1252B5FEC446A55A856 /* UITableView+Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Header.m"; sourceTree = "<group>"; };
 		C596B14569CD77B7D5D5881E /* NSLocale+iOS8.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSLocale+iOS8.m"; path = "Supporting Files/code/NSLocale+iOS8.m"; sourceTree = "<group>"; };
 		C596B1751D01A6846D554782 /* UIView+FrameAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameAdditions.m"; sourceTree = "<group>"; };
 		C596B1AFC308D5211D4CEA65 /* MKMapView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Extension.m"; sourceTree = "<group>"; };
@@ -247,8 +251,7 @@
 		C596B619AECBB263C4ED02FE /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		C596B61E35EBAAF16E0A862C /* PFUser+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+Extension.m"; sourceTree = "<group>"; };
 		C596B62B5AA2CB8C4E2BAB95 /* MosqueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MosqueCell.h; sourceTree = "<group>"; };
-		C596B633068FB6CCEFEE23F5 /* HalalGuideLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideLabels.h; sourceTree = "<group>"; };
-		C596B6652B392F90E4C7F499 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C596B633068FB6CCEFEE23F5 /* HGLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLabels.h; sourceTree = "<group>"; };
 		C596B6AEE98BF10F36A5EE4F /* HalalGuideDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalGuideDateFormatter.h; sourceTree = "<group>"; };
 		C596B6D973C97856C7175F97 /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
 		C596B6E88BC59CF7CAF632D0 /* PictureService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureService.m; sourceTree = "<group>"; };
@@ -272,6 +275,7 @@
 		C596B86B05EE4EBD3D4FCDEA /* ReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
 		C596B89248EE903E929F79B1 /* HalalGuideDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideDateFormatter.m; sourceTree = "<group>"; };
 		C596B89AA2BBE23BFF3CC6C4 /* DiningCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningCell.m; sourceTree = "<group>"; };
+		C596B8A53F21CBC927875E74 /* HGTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HGTextField.m; path = HalalGuide/UI/Shared/Textfield/HGTextField.m; sourceTree = SOURCE_ROOT; };
 		C596B8AB94C4F3C1C74EC0DD /* ProfileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileInfo.h; path = Domain/ProfileInfo.h; sourceTree = "<group>"; };
 		C596B8B206E72424A29EC190 /* Adgangsadresse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Adgangsadresse.m; path = Domain/Adgangsadresse.m; sourceTree = "<group>"; };
 		C596B8B64DBAA6F42C225067 /* NSArray+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extensions.m"; sourceTree = "<group>"; };
@@ -323,10 +327,12 @@
 		C596BDFE3A3D8F8CE6E706BE /* ReviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewService.m; sourceTree = "<group>"; };
 		C596BE0A117FCC273AB0E5B3 /* HalalLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalLogInViewController.h; sourceTree = "<group>"; };
 		C596BE3B3A5B60189D1D1699 /* LocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewController.m; sourceTree = "<group>"; };
+		C596BE526991A39426245E61 /* UITableView+Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Header.h"; sourceTree = "<group>"; };
 		C596BE5F6DD11AEFA20FA2B6 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		C596BE71AE285B679A9C7D10 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonView.h; sourceTree = "<group>"; };
-		C596BE809C133E47309A70FE /* HalalGuideLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideLabels.m; sourceTree = "<group>"; };
+		C596BE809C133E47309A70FE /* HGLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLabels.m; sourceTree = "<group>"; };
 		C596BEBB98E1B438C022990F /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		C596BEBCF1EDA05362684CAF /* HGTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HGTextField.h; path = HalalGuide/UI/Shared/Textfield/HGTextField.h; sourceTree = SOURCE_ROOT; };
 		C596BECF7F558954528F4BEC /* CAGradientLayer+SJSGradients.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAGradientLayer+SJSGradients.h"; sourceTree = "<group>"; };
 		C596BF1CC236CE195558FC23 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = Domain/Location.m; sourceTree = "<group>"; };
 		C596BF4C54F1AFBED592C59A /* ButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonView.m; sourceTree = "<group>"; };
@@ -768,6 +774,8 @@
 				C596BF9C4BB1DDEF86A7E229 /* UILabel+Extensions.m */,
 				A12FAF731A8ECE2F00E2EEEC /* UITableViewDragLoad */,
 				C596B36E230B87C39254F512 /* UIView */,
+				C596B1252B5FEC446A55A856 /* UITableView+Header.m */,
+				C596BE526991A39426245E61 /* UITableView+Header.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -867,10 +875,20 @@
 		C596B902F068FCA517B5C929 /* Labels */ = {
 			isa = PBXGroup;
 			children = (
-				C596B633068FB6CCEFEE23F5 /* HalalGuideLabels.h */,
-				C596BE809C133E47309A70FE /* HalalGuideLabels.m */,
+				C596B633068FB6CCEFEE23F5 /* HGLabels.h */,
+				C596BE809C133E47309A70FE /* HGLabels.m */,
 			);
 			path = Labels;
+			sourceTree = "<group>";
+		};
+		C596BA9B2C794ED61197AA3D /* Textfield */ = {
+			isa = PBXGroup;
+			children = (
+				C596BEBCF1EDA05362684CAF /* HGTextField.h */,
+				C596B8A53F21CBC927875E74 /* HGTextField.m */,
+			);
+			name = Textfield;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		C596BAA478151064D6A8744F /* Settings */ = {
@@ -945,7 +963,7 @@
 		C596BCD52DE204E6492012D5 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				C596B6652B392F90E4C7F499 /* Images.xcassets */,
+				A1709C901AA33B3C00ADAECD /* Images.xcassets */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -957,6 +975,7 @@
 				C596B18A7E77DF6CD02C5952 /* Controllers */,
 				C596B902F068FCA517B5C929 /* Labels */,
 				C596B3F34D4494FC92547953 /* ImageViews */,
+				C596BA9B2C794ED61197AA3D /* Textfield */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1009,6 +1028,7 @@
 		A15CE3C11A100A8400F44C9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HG;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Eazy It";
 				TargetAttributes = {
@@ -1053,8 +1073,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A111F7511A3260EA00ABFF70 /* Localizable.strings in Resources */,
+				A1709C911AA33B3C00ADAECD /* Images.xcassets in Resources */,
 				A13A405F1A9A1B1B00283CFB /* MainStoryboard.storyboard in Resources */,
-				C596B994E8D83F0CFCC43A4B /* Images.xcassets in Resources */,
 				A12FAF8D1A8ECE2F00E2EEEC /* blueArrow@2x.png in Resources */,
 				A12FAF8C1A8ECE2F00E2EEEC /* blueArrow.png in Resources */,
 			);
@@ -1209,9 +1229,11 @@
 				C596BF53FA7367BE40FD9E78 /* HalalGuideIAPHelper.m in Sources */,
 				C596B76EDDF019BDADE30D03 /* HalalLogInViewController.m in Sources */,
 				C596B328EB93B5BCD900D855 /* CategoriesViewController.m in Sources */,
-				C596B9C508E4E25C7AEFB1AE /* HalalGuideLabels.m in Sources */,
+				C596B9C508E4E25C7AEFB1AE /* HGLabels.m in Sources */,
 				C596B023C31409C69613E004 /* HalalGuideImageViews.m in Sources */,
 				C596BFE8B975D7943F96E335 /* ButtonView.m in Sources */,
+				C596BBEDF00B04239985401D /* UITableView+Header.m in Sources */,
+				C596B847EDD38F5CC989D1B5 /* HGTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

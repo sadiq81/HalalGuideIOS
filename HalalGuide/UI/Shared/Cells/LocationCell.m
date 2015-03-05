@@ -11,6 +11,7 @@
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "AddressService.h"
 
+
 @interface LocationCell ()
 @property(nonatomic, strong) UIImageView *thumbnail;
 @property(nonatomic, strong) UILabel *distance;
@@ -29,49 +30,56 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.thumbnail = [[UIImageView alloc] initWithFrame:CGRectZero];
-        self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
-        [self.contentView addSubview:self.thumbnail];
-
-        self.distance = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:13];
-        self.distance.textAlignment = NSTextAlignmentRight;
-        self.distance.adjustsFontSizeToFitWidth = true;
-        self.distance.minimumScaleFactor = 0.5;
-        [self.contentView addSubview:self.distance];
-
-        self.km = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-        self.km.text = @"km";
-        self.km.textAlignment = NSTextAlignmentRight;
-        [self.contentView addSubview:self.km];
-
-        self.name = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:13];
-        self.name.adjustsFontSizeToFitWidth = true;
-        self.name.minimumScaleFactor = 0.5;
-        [self.contentView addSubview:self.name];
-
-        self.address = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-        self.address.adjustsFontSizeToFitWidth = true;
-        self.address.minimumScaleFactor = 0.5;
-        [self.contentView addSubview:self.address];
-
-        self.postalCode = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-        self.postalCode.adjustsFontSizeToFitWidth = true;
-        self.postalCode.minimumScaleFactor = 0.5;
-        [self.contentView addSubview:self.postalCode];
-//
-//        self.open = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-//        self.open.textAlignment = NSTextAlignmentRight;
-//        [self.contentView addSubview:self.open];
-        RAC(self.name, text) = RACObserve(self, viewModel.location.name);
-        RAC(self.distance, text) = RACObserve(self, viewModel.distance);
-        RAC(self.address, text) = RACObserve(self, viewModel.address);
-        RAC(self.postalCode, text) = RACObserve(self, viewModel.postalCode);
-        RAC(self.thumbnail, image, [UIImage imageNamed:[[self class]placeholderImageName]]) = RACObserve(self, viewModel.thumbnail);
-
+        [self setupViews];
+        [self setupViewModel];
         [self setNeedsUpdateConstraints];
 
     }
     return self;
+}
+- (void)setupViews {
+    self.thumbnail = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
+    [self.contentView addSubview:self.thumbnail];
+
+    self.distance = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];
+    self.distance.textAlignment = NSTextAlignmentRight;
+    self.distance.adjustsFontSizeToFitWidth = true;
+    self.distance.minimumScaleFactor = 0.5;
+    [self.contentView addSubview:self.distance];
+
+    self.km = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
+    self.km.text = @"km";
+    self.km.textAlignment = NSTextAlignmentRight;
+    [self.contentView addSubview:self.km];
+
+    self.name = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];
+    self.name.adjustsFontSizeToFitWidth = true;
+    self.name.minimumScaleFactor = 0.5;
+    [self.contentView addSubview:self.name];
+
+    self.address = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
+    self.address.adjustsFontSizeToFitWidth = true;
+    self.address.minimumScaleFactor = 0.5;
+    [self.contentView addSubview:self.address];
+
+    self.postalCode = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
+    self.postalCode.adjustsFontSizeToFitWidth = true;
+    self.postalCode.minimumScaleFactor = 0.5;
+    [self.contentView addSubview:self.postalCode];
+//
+//        self.open = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:10];
+//        self.open.textAlignment = NSTextAlignmentRight;
+//        [self.contentView addSubview:self.open];
+}
+
+- (void)setupViewModel {
+
+    RAC(self.name, text) = RACObserve(self, viewModel.location.name);
+    RAC(self.distance, text) = RACObserve(self, viewModel.distance);
+    RAC(self.address, text) = RACObserve(self, viewModel.address);
+    RAC(self.postalCode, text) = RACObserve(self, viewModel.postalCode);
+    RAC(self.thumbnail, image, [UIImage imageNamed:[[self class] placeholderImageName]]) = RACObserve(self, viewModel.thumbnail);
 }
 
 - (void)configureForViewModel:(LocationDetailViewModel *)viewModel {
@@ -96,19 +104,19 @@ static const int standardLabelWidth = 100;
     }];
 
     [self.name mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView).offset(standardCellSpacing);
+        make.bottom.equalTo(self.address.mas_top).offset(-4);
         make.left.equalTo(self.thumbnail.mas_right).offset(standardCellSpacing);
         make.height.equalTo(@(16));
     }];
 
     [self.address mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.name.mas_bottom).offset(4);
+        make.bottom.equalTo(self.postalCode.mas_top).offset(-2);
         make.left.equalTo(self.thumbnail.mas_right).offset(standardCellSpacing);
         make.height.equalTo(@(14));
     }];
 
     [self.postalCode mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.address.mas_bottom);
+        make.bottom.equalTo(self.contentView).offset(-standardCellSpacing);
         make.left.equalTo(self.thumbnail.mas_right).offset(standardCellSpacing);
         make.height.equalTo(@(14));
     }];

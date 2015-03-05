@@ -145,7 +145,7 @@
 
 
 - (LocationDetailViewModel *)viewModelForLocationAtIndex:(NSUInteger)index {
-    return [[LocationDetailViewModel alloc] initWithLocation:self.locationPresentation == LocationPresentationList ? [self.listLocations objectAtIndex:index] : [self.mapLocations objectAtIndex:index]];
+    return [LocationDetailViewModel modelWithLocation:self.locationPresentation == LocationPresentationList ? [self.listLocations objectAtIndex:index] : [self.mapLocations objectAtIndex:index]];
 }
 
 

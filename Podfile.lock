@@ -24,7 +24,6 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - ALActionBlocks (1.0.3)
-  - AZCenterLabelButton (0.1.1)
   - Bolts (1.1.3)
   - CTAssetsPickerController (2.9.1)
   - DCKeyValueObjectMapping (1.4)
@@ -105,7 +104,6 @@ DEPENDENCIES:
   - AFNetworking (= 2.5.0)
   - AFNetworking-RACExtensions
   - ALActionBlocks (= 1.0.3)
-  - AZCenterLabelButton (from `https://github.com/albert-zhang/AZCenterLabelButton.git`)
   - CTAssetsPickerController (~> 2.9.0)
   - DCKeyValueObjectMapping
   - EDStarRating
@@ -130,20 +128,10 @@ DEPENDENCIES:
   - UIAlertController+Blocks
   - ZLPromptUserReview (~> 1.0.0)
 
-EXTERNAL SOURCES:
-  AZCenterLabelButton:
-    :git: https://github.com/albert-zhang/AZCenterLabelButton.git
-
-CHECKOUT OPTIONS:
-  AZCenterLabelButton:
-    :commit: a36210f93246f73c6b574a7fe11220d7713eeb1b
-    :git: https://github.com/albert-zhang/AZCenterLabelButton.git
-
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   AFNetworking-RACExtensions: dd55d08dbfa013b9e118d5c1a5e4b58b63e734e1
   ALActionBlocks: 6a899107d2def997caae8de46d82c8fa2421987e
-  AZCenterLabelButton: ef8c7418b5fcc5ab11a27f4b7ba8dcd527677bc9
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   CTAssetsPickerController: 9a061b0aede144a66b959d635739f7e88b9b3eb5
   DCKeyValueObjectMapping: c3561709f296ddffba7768a9d7ccf234307fd3c9

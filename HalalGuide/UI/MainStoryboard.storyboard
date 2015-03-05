@@ -1198,7 +1198,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZb-DO-iyO">
-                                                    <rect key="frame" x="8" y="41" width="304" height="40.5"/>
+                                                    <rect key="frame" x="8" y="41" width="304" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1241,9 +1241,9 @@
                         <outlet property="porkLabel" destination="j1o-Dt-1ch" id="PBi-VA-rTB"/>
                         <outlet property="rating" destination="lJd-6y-O5b" id="rFb-Sa-yco"/>
                         <outlet property="report" destination="jXE-ga-u7Q" id="CWs-YV-dy4"/>
-                        <outlet property="reviews" destination="BPi-mE-sY5" id="DfW-mP-uia"/>
                         <outlet property="submitterImage" destination="xJj-UI-gpR" id="Gg5-Ob-jvB"/>
                         <outlet property="submitterName" destination="Hnm-n5-g4I" id="qLu-X5-a8i"/>
+                        <outlet property="tableView" destination="BPi-mE-sY5" id="DfW-mP-uia"/>
                         <segue destination="a14-dy-JEd" kind="custom" identifier="SlideShow" customClass="MZFormSheetSegue" id="nXO-pM-Qhl"/>
                     </connections>
                 </viewController>
@@ -1717,7 +1717,7 @@
         <image name="Camera" width="128" height="128"/>
         <image name="ENumber" width="48" height="48"/>
         <image name="Indstillinger" width="48" height="48"/>
-        <image name="NonHalalTrue" width="128" height="128"/>
+        <image name="NonHalalTrue" width="556" height="555"/>
         <image name="PigTrue" width="128" height="128"/>
         <image name="dining" width="48" height="48"/>
         <image name="mosque" width="48" height="48"/>

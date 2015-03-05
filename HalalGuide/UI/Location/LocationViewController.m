@@ -12,7 +12,6 @@
 #import "BaseViewModel.h"
 #import "LocationViewController.h"
 #import "DiningCell.h"
-#import "LocationDetailViewModel.h"
 #import "CreateLocationViewModel.h"
 #import "MKMapView+Extension.h"
 #import "LocationAnnotation.h"
@@ -24,13 +23,15 @@
 #import "CreateLocationViewController.h"
 #import "MosqueCell.h"
 #import "ShopCell.h"
+#import "UITableView+Header.h"
 
 @interface LocationViewController ()
-@property(strong, nonatomic) UISegmentedControl *segmentControl;
+//@property(strong, nonatomic) UISegmentedControl *segmentControl;
 @property(strong, nonatomic) UIBarButtonItem *addButton;
 @property(strong, nonatomic) UITableView *tableView;
 @property(strong, nonatomic) UITableViewController *tableViewController;
 @property(strong, nonatomic) UIBarButtonItem *filter;
+@property(strong, nonatomic) UIBarButtonItem *presentationMode;
 @property(strong, nonatomic) UIToolbar *toolbar;
 @property(strong, nonatomic) UISearchBar *searchBar;
 @property(strong, nonatomic) UILabel *noResults;
@@ -46,14 +47,16 @@
 - (instancetype)initWithViewModel:(LocationViewModel *)viewModel {
     self = [super init];
     if (self) {
+
         self.viewModel = viewModel;
         [self setupViews];
         [self setupViewModel];
-        [self setupSegmentedController];
+        [self setupToolbar];
         [self setupSearchBar];
         [self setupTableView];
         [self setupMapView];
         [self updateViewConstraints];
+
     }
 
     return self;
@@ -69,12 +72,16 @@
 }
 
 - (void)setupViews {
-    self.segmentControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"LocationViewController.segmentControl.list", nil), NSLocalizedString(@"LocationViewController.segmentControl.map", nil)]];
-    self.navigationItem.titleView = self.segmentControl;
-
+    NSString *title = [NSString stringWithFormat:@"LocationViewController.title.%@", LocationTypeString(self.viewModel.locationType)];
+    self.title = NSLocalizedString(title, nil);
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.view.backgroundColor = [UIColor whiteColor];
 
     self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd block:nil];
     self.navigationItem.rightBarButtonItem = self.addButton;
+
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.mapView];
 
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.tableView];
@@ -83,13 +90,17 @@
     self.tableView.tableHeaderView = self.searchBar;
 
     self.noResults = [[UILabel alloc] initWithFrame:CGRectZero];
-    [self.view addSubview:self.noResults];
+    [self.tableView addSubview:self.noResults];
 
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.toolbar];
 
+    self.filter = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"LocationViewController.button.filter", nil) style:UIBarButtonItemStylePlain block:nil];
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    self.presentationMode = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"LocationViewController.button.map", nil) style:UIBarButtonItemStylePlain block:nil];
+    [self.toolbar setItems:@[self.filter, spacer, self.presentationMode]];
 
-}
+};
 
 #pragma mark - ViewModel changes
 
@@ -117,7 +128,7 @@
     }];
 
     RACSignal *locations = RACObserve(self.viewModel, listLocations);
-    [locations subscribeNext:^(NSArray *locations) {
+    [[locations ignore:nil] subscribeNext:^(NSArray *locations) {
         @strongify(self)
         [self.tableView reloadData];
         [self.tableView finishRefresh];
@@ -128,7 +139,7 @@
         return @([locations count]);
     }];
 
-    [RACObserve(self.viewModel, mapLocations) subscribeNext:^(NSArray *locations) {
+    [[RACObserve(self.viewModel, mapLocations) ignore:nil] subscribeNext:^(NSArray *locations) {
         @strongify(self)
         [self reloadAnnotations];
     }];
@@ -137,20 +148,17 @@
 
 #pragma mark - SegmentedController
 
-- (void)setupSegmentedController {
-
-    RACSignal *segmentChanged = [self.segmentControl rac_newSelectedSegmentIndexChannelWithNilValue:nil];
+- (void)setupToolbar {
 
     @weakify(self)
-    RAC(self.viewModel, locationPresentation) = segmentChanged;
-    [[segmentChanged deliverOnMainThread] subscribeNext:^(NSNumber *selectedSegmentIndex) {
+    [self.presentationMode setBlock:^(id weakSender) {
         @strongify(self)
-        UIView *fromView = selectedSegmentIndex.intValue == 0 ? self.mapView : self.tableView;
-        UIView *toView = selectedSegmentIndex.intValue == 0 ? self.tableView : self.mapView;
-        [UIView transitionFromView:fromView toView:toView duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft completion:^(BOOL finished) {
-            [self.viewModel refreshLocations];
-        }];
+        //TODO animate
+        self.mapView.alpha = self.tableView.alpha;
+        self.tableView.alpha = abs(self.tableView.alpha - 1);
     }];
+
+
 }
 
 #pragma mark - Hints
@@ -177,6 +185,7 @@
 - (void)setupSearchBar {
 
     self.searchBar.showsCancelButton = true;
+    self.searchBar.placeholder = NSLocalizedString(@"LocationViewController.searchbar.placeholder", nil);
 
     RAC(self.viewModel, searchText) = [[[self rac_signalForSelector:@selector(searchBar:textDidChange:)] throttle:1.5] reduceEach:^(UISearchBar *searchBar, NSString *text) {
         return text;
@@ -200,6 +209,7 @@
         [self.tableView finishLoadMore];
         [SVProgressHUD dismiss];
     }];
+    self.searchBar.delegate = self;
 
 }
 
@@ -228,7 +238,7 @@
     if (([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"])) {
 
         Location *location = (self.viewModel.locationPresentation == LocationPresentationList) ? [self.viewModel.listLocations objectAtIndex:[self.tableView indexPathForSelectedRow].row] : ((LocationAnnotation *) [[self.mapView selectedAnnotations] objectAtIndex:0]).location;
-        LocationDetailViewModel *detailViewModel = [[LocationDetailViewModel alloc] initWithLocation:location];
+        LocationDetailViewModel *detailViewModel = [LocationDetailViewModel modelWithLocation:location];
 
         LocationDetailViewController *detailViewController = (LocationDetailViewController *) segue.destinationViewController;
         //detailViewController.viewModel = detailViewModel;
@@ -251,6 +261,10 @@
 #pragma mark - TableView
 
 - (void)setupTableView {
+
+    //TODO is this to late?
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 
     [self.tableView registerClass:[DiningCell class] forCellReuseIdentifier:[DiningCell placeholderImageName]];
     [self.tableView registerClass:[MosqueCell class] forCellReuseIdentifier:[MosqueCell placeholderImageName]];
@@ -301,7 +315,14 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 64;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    LocationCell *cell = (LocationCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+    LocationDetailViewController *detailViewController = [LocationDetailViewController controllerWithViewModel:cell.viewModel];
+    [self.navigationController pushViewController:detailViewController animated:true];
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 
@@ -456,15 +477,28 @@
     }];
 
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        //make.self.top.equalTo(self.navigationController.navigationBar);
+        make.self.top.equalTo(self.view);
         make.self.bottom.equalTo(self.toolbar.mas_top);
         make.width.equalTo(self.view);
+    }];
+
+    [self.tableView sizeHeaderToFit];
+
+    [self.noResults mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.centerY.equalTo(self.view);
     }];
 
     [self.toolbar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view);
         make.width.equalTo(self.view);
         make.height.equalTo(@(44));
+    }];
+
+    [self.mapView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.self.top.equalTo(self.view);
+        make.self.bottom.equalTo(self.toolbar.mas_top);
+        make.width.equalTo(self.view);
     }];
 
     [super updateViewConstraints];

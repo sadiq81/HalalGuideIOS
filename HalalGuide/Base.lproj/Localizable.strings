@@ -255,5 +255,10 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "MosqueCell.language.urdu"= "Urdu";
 "MosqueCell.language.english"= "Engelsk";
 
-"LocationViewController.segmentControl.list" = "Liste";
-"LocationViewController.segmentControl.map" = "Kort";
+"LocationViewController.title.dining" = "Spisesteder";
+"LocationViewController.title.mosque" = "Moskeer";
+"LocationViewController.title.shop" = "Butikker";
+"LocationViewController.button.filter" = "Filter";
+"LocationViewController.button.map" = "Kort";
+"LocationViewController.button.list" = "Liste";
+"LocationViewController.searchbar.placeholder" = "Søgetekst";

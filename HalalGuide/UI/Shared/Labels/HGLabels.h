@@ -8,7 +8,7 @@
 #import "Location.h"
 
 
-@interface HalalGuideLabel : UILabel
+@interface HGLabel : UILabel
 
 - (instancetype)initWithFrame:(CGRect)frame andFontSize:(CGFloat)size;
 
@@ -16,15 +16,15 @@
 
 @end
 
-@interface PorkLabel : HalalGuideLabel
+@interface PorkLabel : HGLabel
 @end
 
-@interface AlcoholLabel : HalalGuideLabel
+@interface AlcoholLabel : HGLabel
 @end
 
-@interface HalalLabel : HalalGuideLabel
+@interface HalalLabel : HGLabel
 @end
 
-@interface OpenLabel : HalalGuideLabel
+@interface OpenLabel : HGLabel
 @end
 

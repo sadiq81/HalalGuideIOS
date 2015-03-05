@@ -12,7 +12,7 @@
 #import "UIView+Extensions.h"
 #import "UIImageView+WebCache.h"
 #import "HalalGuideImageViews.h"
-#import "HalalGuideLabels.h"
+#import "HGLabels.h"
 #import "HalalGuideOnboarding.h"
 #import "UIView+Extensions.h"
 
@@ -31,53 +31,42 @@
 
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
+- (void)setupViews {
+    [super setupViews];
 
-        self.porkImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [self.contentView addSubview:self.porkImage];
+    self.porkImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.contentView addSubview:self.porkImage];
 
-        self.alcoholImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [self.contentView addSubview:self.alcoholImage];
+    self.alcoholImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.contentView addSubview:self.alcoholImage];
 
-        self.halalImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [self.contentView addSubview:self.halalImage];
+    self.halalImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.contentView addSubview:self.halalImage];
 
-        self.porkLabel = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-        self.porkLabel.textAlignment = NSTextAlignmentCenter;
-        [self.contentView addSubview:self.porkLabel];
+    self.porkLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
+    self.porkLabel.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:self.porkLabel];
 
-        self.alcoholLabel = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-        self.alcoholLabel.textAlignment = NSTextAlignmentCenter;
-        [self.contentView addSubview:self.alcoholLabel];
+    self.alcoholLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
+    self.alcoholLabel.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:self.alcoholLabel];
 
-        self.halalLabel = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-        self.halalLabel.textAlignment = NSTextAlignmentCenter;
-        [self.contentView addSubview:self.halalLabel];
-
-        @weakify(self)
-        [[RACObserve(self, viewModel) ignore:nil] subscribeNext:^(LocationDetailViewModel *viewModel) {
-            @strongify(self)
-
-            self.porkImage.image = [UIImage imageNamed:viewModel.location.pork.boolValue ? @"PigTrue" : @"PigFalse"];
-            self.alcoholImage.image = [UIImage imageNamed:viewModel.location.alcohol.boolValue ? @"AlcoholTrue" : @"AlcoholFalse"];
-            self.halalImage.image = [UIImage imageNamed:viewModel.location.nonHalal.boolValue ? @"NonHalalTrue" : @"NonHalalFalse"];
-
-            self.porkLabel.attributedText = [self stringForBool:self.viewModel.location.pork.boolValue];
-            self.alcoholLabel.attributedText = [self stringForBool:self.viewModel.location.alcohol.boolValue];
-            self.halalLabel.attributedText = [self stringForBool:self.viewModel.location.nonHalal.boolValue];
-
-        }];
-    }
-
-    return self;
+    self.halalLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
+    self.halalLabel.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:self.halalLabel];
 }
 
-- (NSMutableAttributedString *)stringForBool:(BOOL)value {
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:value ? NSLocalizedString(@"yes", nil) : NSLocalizedString(@"no", nil)];
-    [string addAttribute:NSForegroundColorAttributeName value:value ? [UIColor redColor] : [UIColor greenColor] range:NSMakeRange(0, [string.mutableString length])];
-    return string;
+- (void)setupViewModel {
+    [super setupViewModel];
+
+    RAC(self.porkImage, image) = RACObserve(self, viewModel.porkImage);
+    RAC(self.alcoholImage, image) = RACObserve(self, viewModel.alcoholImage);
+    RAC(self.halalImage, image) = RACObserve(self, viewModel.halalImage);
+
+    RAC(self.porkLabel, attributedText) = RACObserve(self, viewModel.porkString);
+    RAC(self.alcoholLabel, attributedText) = RACObserve(self, viewModel.alcoholString);
+    RAC(self.halalLabel, attributedText) = RACObserve(self, viewModel.halalString);
+
 }
 
 - (void)updateConstraints {
@@ -93,7 +82,7 @@
         make.centerX.equalTo(self.halalImage);
         make.width.equalTo(@(31));
         make.height.equalTo(@(13));
-        make.bottom.equalTo(self.postalCode.mas_bottom);
+        make.bottom.equalTo(self.contentView).offset(-standardCellSpacing);
     }];
 
     [self.alcoholImage mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -131,11 +120,6 @@
     [self.address mas_updateConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.porkImage.mas_left).offset(-standardCellSpacing);
     }];
-
-    [self.postalCode mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.porkImage.mas_left).offset(-standardCellSpacing);
-    }];
-
 
     [super updateConstraints];
 }

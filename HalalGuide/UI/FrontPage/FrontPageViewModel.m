@@ -30,7 +30,7 @@
 }
 
 - (LocationDetailViewModel *)viewModelForLocationAtIndex:(NSUInteger)index {
-    return [[LocationDetailViewModel alloc] initWithLocation:[self.locations objectAtIndex:index]];
+    return [LocationDetailViewModel modelWithLocation:[self.locations objectAtIndex:index]];
 }
 
 - (void)refreshLocations {

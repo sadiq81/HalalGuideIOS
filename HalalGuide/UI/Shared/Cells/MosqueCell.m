@@ -20,33 +20,26 @@
 
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
 
-        self.languageImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [self.contentView addSubview:self.languageImage];
+- (void)setupViews {
+    [super setupViews];
 
-        self.languageLabel = [[HalalGuideLabel alloc] initWithFrame:CGRectZero andFontSize:13];
-        self.languageLabel.adjustsFontSizeToFitWidth = true;
-        self.languageLabel.minimumScaleFactor = 0.5;
-        [self.contentView addSubview:self.languageLabel];
+    self.languageImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.contentView addSubview:self.languageImage];
 
-
-        @weakify(self)
-        [RACObserve(self, viewModel) subscribeNext:^(LocationDetailViewModel *viewModel) {
-            @strongify(self)
-
-            self.languageImage.image = [UIImage imageNamed:LanguageString([viewModel.location.language integerValue])];
-
-            self.languageLabel.text = NSLocalizedString(LanguageString([viewModel.location.language integerValue]), nil);
-
-        }];
-
-    }
-
-    return self;
+    self.languageLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];
+    self.languageLabel.adjustsFontSizeToFitWidth = true;
+    self.languageLabel.minimumScaleFactor = 0.5;
+    [self.contentView addSubview:self.languageLabel];
 }
+
+- (void)setupViewModel {
+    [super setupViewModel];
+
+    RAC(self.languageImage, image) = RACObserve(self, viewModel.languageImage);
+    RAC(self.languageLabel, text) = RACObserve(self, viewModel.languageString);
+}
+
 
 - (void)updateConstraints {
 
@@ -61,7 +54,7 @@
         make.centerX.equalTo(self.languageImage);
         make.width.equalTo(@(31));
         make.height.equalTo(@(13));
-        make.bottom.equalTo(self.postalCode.mas_bottom);
+        make.bottom.equalTo(self.address.mas_bottom);
     }];
 
     [self.name mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -69,10 +62,6 @@
     }];
 
     [self.address mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.languageImage.mas_left).offset(-standardCellSpacing);
-    }];
-
-    [self.postalCode mas_updateConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.languageImage.mas_left).offset(-standardCellSpacing);
     }];
 

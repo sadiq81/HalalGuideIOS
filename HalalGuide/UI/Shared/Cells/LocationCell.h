@@ -9,7 +9,7 @@
 #import <ParseUI/ParseUI.h>
 #import "LocationDetailViewModel.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
-#import "HalalGuideLabels.h"
+#import "HGLabels.h"
 
 static const int standardCellSpacing = 8;
 
@@ -23,7 +23,11 @@ static const int standardCellSpacing = 8;
 @property(nonatomic, strong, readonly) UILabel *address;
 @property(nonatomic, strong, readonly) UILabel *postalCode;
 @property(nonatomic, strong, readonly) UILabel *open;
-@property (nonatomic, strong, readonly) LocationDetailViewModel *viewModel;
+@property(nonatomic, strong, readonly) LocationDetailViewModel *viewModel;
+
+- (void)setupViews;
+
+- (void)setupViewModel;
 
 - (void)configureForViewModel:(LocationDetailViewModel *)viewModel;
 
