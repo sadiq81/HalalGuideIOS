@@ -14,6 +14,7 @@
 #import <AddressBook/ABPerson.h>
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
+#import "NSArray+Extensions.h"
 
 @implementation AddressService {
 
