@@ -10,7 +10,6 @@
 #import "CreateReviewViewController.h"
 #import "LocationViewController.h"
 #import "Review.h"
-#import "JGProgressHUDSuccessIndicatorView.h"
 
 @interface CreateReviewViewController ()
 

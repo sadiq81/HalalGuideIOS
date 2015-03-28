@@ -90,42 +90,4 @@ static CLLocation *currentLocation;
     }];
 }
 
-
-- (void)getPictures:(UIViewController <UINavigationControllerDelegate> *)viewController {
-
-    if (![self isAuthenticated]) {
-        [self authenticate:viewController];
-        return;
-    }
-
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"addPicture", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-
-    UIAlertAction *takeImage = [UIAlertAction actionWithTitle:NSLocalizedString(@"newPicture", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-        imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePickerController.delegate = viewController;
-        imagePickerController.showsCameraControls = true;
-        [viewController presentViewController:imagePickerController animated:YES completion:nil];
-    }];
-
-    UIAlertAction *chooseImage = [UIAlertAction actionWithTitle:NSLocalizedString(@"choosePicture", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
-        picker.assetsFilter = [ALAssetsFilter allPhotos];
-        picker.title = NSLocalizedString(@"choosePicture", nil);
-        picker.delegate = viewController;
-        [viewController presentViewController:picker animated:YES completion:nil];
-    }];
-
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"regret", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-    }];
-
-    [alertController addAction:takeImage];
-    [alertController addAction:chooseImage];
-    [alertController addAction:cancel];
-
-    [viewController presentViewController:alertController animated:YES completion:nil];
-}
-
-
 @end

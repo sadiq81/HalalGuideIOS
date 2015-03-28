@@ -95,7 +95,7 @@
     @weakify(self)
     [[self.pickImage rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        [self.viewModel getPictures:self];
+        //[self.viewModel getPictures:self];
     }];
 
     [[self.road rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(id x) {

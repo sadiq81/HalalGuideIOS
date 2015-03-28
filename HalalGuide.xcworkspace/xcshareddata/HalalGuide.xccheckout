@@ -12,6 +12,8 @@
 	<dict>
 		<key>F4CCFBF2D940C4A4BA863D1348FBD423793355E1</key>
 		<string>https://github.com/sadiq81/HalalGuideNative</string>
+		<key>FF130102FF65DF31AED5E84D403FF47B27E79183</key>
+		<string>https://github.com/miklselsoe/MSSPopMasonry</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>HalalGuide.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>F4CCFBF2D940C4A4BA863D1348FBD423793355E1</key>
 		<string>..</string>
+		<key>FF130102FF65DF31AED5E84D403FF47B27E79183</key>
+		<string>../../../Github/MSSPopMasonry</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/sadiq81/HalalGuideNative</string>
@@ -35,6 +39,14 @@
 			<string>F4CCFBF2D940C4A4BA863D1348FBD423793355E1</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HalalGuide</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FF130102FF65DF31AED5E84D403FF47B27E79183</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MSSPopMasonry</string>
 		</dict>
 	</array>
 </dict>

@@ -33,6 +33,9 @@
 @property(nonatomic, readonly, strong) UIImage *languageImage;
 @property(nonatomic, readonly, strong) NSString *languageString;
 
+@property(nonatomic, readonly, strong) UIImage *submitterImage;
+@property(nonatomic, readonly, strong) NSString *submitterName;
+
 
 @property(nonatomic) NSInteger indexOfSelectedImage;
 

@@ -14,6 +14,7 @@
 #import "ShopCell.h"
 #import "Masonry/Masonry.h"
 #import "ButtonView.h"
+#import "HGImagePickerController.h"
 
 @interface FrontPageViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) UIView *topView;

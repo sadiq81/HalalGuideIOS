@@ -11,6 +11,7 @@
 #import "ReviewService.h"
 #import "AddressService.h"
 #import "HalalGuideNumberFormatter.h"
+#import "PFUser+Extension.h"
 
 
 @import MessageUI;
@@ -41,6 +42,9 @@
 @property(nonatomic, strong) UIImage *languageImage;
 @property(nonatomic, strong) NSString *languageString;
 
+@property(nonatomic, strong) UIImage *submitterImage;
+@property(nonatomic, strong) NSString *submitterName;
+
 @end
 
 @implementation LocationDetailViewModel {
@@ -69,6 +73,14 @@
     [[PFUser query] getObjectInBackgroundWithId:self.location.submitterId block:^(PFObject *object, NSError *error) {
         @strongify(self)
         self.user = (PFUser *) object;
+        self.submitterName = self.user.facebookName;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:self.user.facebookProfileUrlSmall];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update the UI
+                self.submitterImage = [UIImage imageWithData:imageData];
+            });
+        });
     }];
 
     [[PictureService instance] thumbnailForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
@@ -85,18 +97,21 @@
     self.distance = [[HalalGuideNumberFormatter instance] stringFromNumber:@(distanceM / 1000)];
     self.address = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", self.location.addressRoad, self.location.addressRoadNumber, self.location.addressPostalCode, self.location.addressCity];
     self.postalCode = [NSString stringWithFormat:@"%@ %@", self.location.addressPostalCode, self.location.addressCity];
-    self.category =
+    self.category = [self.location categoriesString];
 
-    self.porkImage = [UIImage imageNamed:self.location.pork.boolValue ? @"PigTrue" : @"PigFalse"];
-    self.alcoholImage = [UIImage imageNamed:self.location.alcohol.boolValue ? @"AlcoholTrue" : @"AlcoholFalse"];
-    self.halalImage = [UIImage imageNamed:self.location.nonHalal.boolValue ? @"NonHalalTrue" : @"NonHalalFalse"];
+    if (self.location.locationType.intValue == LocationTypeDining) {
+        self.porkImage = [UIImage imageNamed:self.location.pork.boolValue ? @"PigTrue" : @"PigFalse"];
+        self.alcoholImage = [UIImage imageNamed:self.location.alcohol.boolValue ? @"AlcoholTrue" : @"AlcoholFalse"];
+        self.halalImage = [UIImage imageNamed:self.location.nonHalal.boolValue ? @"NonHalalTrue" : @"NonHalalFalse"];
 
-    self.porkString = [self stringForBool:self.location.pork.boolValue];
-    self.alcoholString = [self stringForBool:self.location.alcohol.boolValue];
-    self.halalString = [self stringForBool:self.location.nonHalal.boolValue];
+        self.porkString = [self stringForBool:self.location.pork.boolValue];
+        self.alcoholString = [self stringForBool:self.location.alcohol.boolValue];
+        self.halalString = [self stringForBool:self.location.nonHalal.boolValue];
 
-    self.languageImage = [UIImage imageNamed:LanguageString([self.location.language integerValue])];
-    self.languageString = NSLocalizedString(LanguageString([self.location.language integerValue]), nil);
+    } else if (self.location.locationType.intValue == LocationTypeMosque) {
+        self.languageImage = [UIImage imageNamed:LanguageString([self.location.language integerValue])];
+        self.languageString = NSLocalizedString(LanguageString([self.location.language integerValue]), nil);
+    }
 
     self.locationPictures = [NSArray new];
     self.reviews = [NSArray new];
@@ -123,6 +138,8 @@
             [self calculateAverageRating];
         }
     }];
+
+
 }
 
 - (NSMutableAttributedString *)stringForBool:(BOOL)value {

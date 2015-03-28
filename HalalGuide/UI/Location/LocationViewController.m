@@ -25,7 +25,7 @@
 #import "ShopCell.h"
 #import "UITableView+Header.h"
 
-@interface LocationViewController ()
+@interface LocationViewController () <UISearchBarDelegate>
 //@property(strong, nonatomic) UISegmentedControl *segmentControl;
 @property(strong, nonatomic) UIBarButtonItem *addButton;
 @property(strong, nonatomic) UITableView *tableView;

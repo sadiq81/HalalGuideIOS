@@ -28,7 +28,6 @@ static WaitCompletionBlock waitFor = ^void(NSTimeInterval duration, WaitCompleti
 @property(nonatomic, retain) NSMutableArray *shopCategories;
 @property(nonatomic) Language language;
 
-
 @end
 
 @interface BaseViewModel : NSObject <PFLogInViewControllerDelegate> {
@@ -44,7 +43,5 @@ static WaitCompletionBlock waitFor = ^void(NSTimeInterval duration, WaitCompleti
 - (BOOL)isAuthenticated;
 
 - (void)authenticate:(UIViewController *)viewController;
-
-- (void)getPictures:(UIViewController <UINavigationControllerDelegate> *)viewController;
 
 @end

@@ -6,7 +6,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "CTAssetsPickerController.h"
-#import "JGProgressHUD.h"
 #import "SVProgressHUD.h"
 
 typedef enum HintPosition : int16_t {
