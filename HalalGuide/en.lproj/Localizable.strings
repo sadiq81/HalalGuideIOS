@@ -261,3 +261,17 @@
 "LocationViewController.button.map" = "Map";
 "LocationViewController.button.list" = "List";
 "LocationViewController.searchbar.placeholder" = "Search text";
+
+"LocationDetailViewController.label.km" = "km";
+"LocationDetailViewController.label.submitterHeadLine" = "Submitted by:";
+"LocationDetailViewController.button.report" = "Report error";
+"LocationDetailViewController.button.add.review" = "Add review";
+"LocationDetailViewController.button.add.picture" = "Add picture";
+"LocationDetailViewController.label.no.reviews" = "There are no reviews for this location yet, you could be the first?";
+"LocationDetailViewController.label.no.pictures" = "There are no pictures for this location yet, you could be the first?";
+
+"HGImagePickerView.button.approve" = "Add 1 picture";
+"HGImagePickerView.button.approve.multiple" = "Add %lu pictures";
+"HGImagePickerView.button.photoLibrary" = "Photo library";
+"HGImagePickerView.button.takePicture" = "Take picture";
+"HGImagePickerView.button.cancel" = "Regreet";
