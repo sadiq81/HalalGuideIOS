@@ -8,15 +8,15 @@
 
 #import "LocationDetailViewController.h"
 #import "UITableView+Header.h"
-#import "HGLocationDetailsTopView.h"
+#import "HGLocationDetailsInfoView.h"
 #import "HGLocationDetailsSubmitterView.h"
 #import "HGLocationDetailsPictureView.h"
+#import "UIView+Extensions.h"
+#import "HGLocationDetailsHeaderView.h"
 
 @interface LocationDetailViewController ()
 //-------------------------------------------
-@property(strong) HGLocationDetailsTopView *headerTopView;
-@property(strong) HGLocationDetailsSubmitterView *submitterView;
-@property(strong) HGLocationDetailsPictureView *pictureView;
+@property(strong) HGLocationDetailsHeaderView *header;
 
 //-------------------------------------------
 //-------------------------------------------
@@ -55,16 +55,13 @@
     self.reviews = [[UITableView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.reviews];
 
-    self.reviews.tableHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
-
-    self.headerTopView = [HGLocationDetailsTopView viewWithViewModel:self.viewModel];
-    [self.reviews.tableHeaderView addSubview:self.headerTopView];
-
-    self.submitterView = [HGLocationDetailsSubmitterView viewWithViewModel:self.viewModel];
-    [self.reviews.tableHeaderView addSubview:self.submitterView];
-
-    self.pictureView = [HGLocationDetailsPictureView viewWithViewModel:self.viewModel];
-    [self.reviews.tableHeaderView addSubview:self.pictureView];
+    self.header = [HGLocationDetailsHeaderView viewWithViewModel:self.viewModel];
+    [self.header.headerTopView.name addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
+    [self.header.headerTopView.road addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
+    [self.header.headerTopView.postalCode addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
+    self.header.frame = CGRectMake(0, 0, self.view.frame.size.width, 428);
+    self.reviews.tableHeaderView = self.header;
+    self.reviews.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
 
 }
@@ -78,7 +75,7 @@
 
 - (void)setupHints {
     if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningDetailAddressTelephoneOptionsOnBoardingKey]) {
-        [self displayHintForView:self.headerTopView.road withHintKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey preferedPositionOfText:HintPositionBelow];
+        [self displayHintForView:self.header.headerTopView.road withHintKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey preferedPositionOfText:HintPositionBelow];
     }
 }
 
@@ -114,22 +111,26 @@
         }
     }];
 
-    @weakify(self)
-    [[self.pictureView.addPicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self)
-        //[self.viewModel getPictures:self];
-    }];
-
-    [[self.pictureView.report rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self)
-        [self.viewModel report:self];
-    }];
+//    @weakify(self)
+//    [[self.pictureView.addPicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+//        @strongify(self)
+//        //[self.viewModel getPictures:self];
+//    }];
+//
+//    [[self.pictureView.report rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+//        @strongify(self)
+//        [self.viewModel report:self];
+//    }];
 }
-
 
 #pragma mark - Reviews
 
 - (void)setupTableView {
+
+    self.reviews.delegate = self;
+    self.reviews.dataSource = self;
+
+    [self.reviews registerClass:[ReviewCell class] forCellReuseIdentifier:@"Review"];
 
     @weakify(self)
     RACSignal *reviewSignal = RACObserve(self.viewModel, reviews);
@@ -147,7 +148,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;//[self.viewModel.reviews count];
+    return [self.viewModel.reviews count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -164,13 +165,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.reviews deselectRowAtIndexPath:indexPath animated:false];
-}
-
-#pragma mark - UI
-
-- (void)setupUI {
-
-
 }
 
 - (void)openMaps:(UITapGestureRecognizer *)recognizer {
@@ -281,46 +275,28 @@
     [self.viewModel saveMultiplePictures:self.images];
 }
 
-
 - (void)updateViewConstraints {
+
+    [self.header mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.reviews);
+        make.right.equalTo(self.reviews);
+        make.left.equalTo(self.reviews);
+        make.width.equalTo(self.view);
+        make.height.equalTo(@(428));
+    }];
+
+     [self.reviews sizeHeaderToFit];
 
     [self.reviews mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
 
-    [self.reviews.tableHeaderView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view);
-        make.left.equalTo(self.view);
-        make.height.equalTo(@(410));
-        make.width.equalTo(self.view);
-    }];
-
-    [self.reviews sizeHeaderToFit];
-
-    [self.headerTopView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.reviews.tableHeaderView);
-        make.left.equalTo(self.reviews.tableHeaderView);
-        make.right.equalTo(self.reviews.tableHeaderView);
-        make.height.equalTo(@(110));
-    }];
-
-    [self.submitterView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.headerTopView.mas_bottom).offset(8);
-        make.left.equalTo(self.reviews.tableHeaderView);
-        make.right.equalTo(self.reviews.tableHeaderView);
-        make.height.equalTo(@(48));
-    }];
-
-
-//
-//
 //    [self.noReviewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(self.headerView.mas_bottom).offset(8);
 //        make.centerX.equalTo(self.view);
 //        make.width.equalTo(self.view).offset(8);
 //    }];
 //
-
 
     [super updateViewConstraints];
 

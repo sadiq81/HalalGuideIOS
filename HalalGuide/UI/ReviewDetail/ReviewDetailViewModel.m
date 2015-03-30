@@ -4,12 +4,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SDWebImage/SDWebImageManager.h>
 #import "ReviewDetailViewModel.h"
 #import "PictureService.h"
+#import "PFUser+Extension.h"
 
 @interface ReviewDetailViewModel () {
 }
-@property(nonatomic) PFUser *user;
+@property(nonatomic) Review *review;
+@property(strong, nonatomic) UIImage *submitterImage;
+@property(strong, nonatomic) NSString *submitterName;
+@property(strong, nonatomic) NSNumber *rating;
+@property(strong, nonatomic) NSString *reviewText;
+
 @end
 
 @implementation ReviewDetailViewModel {
@@ -31,9 +38,21 @@
 }
 
 - (void)setup {
+
+    self.rating = self.review.rating;
+    self.reviewText = self.review.review;
+
     [[PFUser query] getObjectInBackgroundWithId:self.review.submitterId block:^(PFObject *object, NSError *error) {
-        self.user = (PFUser *) object;
+        PFUser *user = (PFUser *) object;
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager downloadImageWithURL:[user facebookProfileUrlSmall] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            if (image) {
+                self.submitterImage = image;
+            }
+        }];
+        self.submitterName = [user facebookName];
     }];
+
 }
 
 

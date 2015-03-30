@@ -27,7 +27,6 @@
 #import "UIViewController+Extension.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Masonry/View+MASAdditions.h>
-#import "SlideShowViewController.h"
 #import "ReviewDetailViewController.h"
 #import "CreateReviewViewController.h"
 #import "AppDelegate.h"

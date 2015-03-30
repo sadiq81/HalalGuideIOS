@@ -1206,9 +1206,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="profileImage" destination="nFT-g8-QsX" id="GWi-XX-8ep"/>
                                             <outlet property="rating" destination="NxT-n5-dz5" id="ZsI-Th-tXW"/>
                                             <outlet property="review" destination="mZb-DO-iyO" id="C9r-X3-J6r"/>
+                                            <outlet property="submitterImage" destination="nFT-g8-QsX" id="GWi-XX-8ep"/>
                                             <outlet property="submitterName" destination="VjQ-Ik-hiL" id="bef-X0-MQR"/>
                                             <segue destination="kLW-bC-3IZ" kind="push" identifier="ReviewDetails" id="0RS-cj-D91"/>
                                         </connections>
@@ -1671,7 +1671,7 @@
                         <outlet property="name" destination="Pbf-Kc-xGM" id="524-zx-6db"/>
                         <outlet property="profilePicture" destination="DjJ-EV-f7n" id="N22-8o-Efq"/>
                         <outlet property="rating" destination="Man-yx-bPJ" id="POI-cC-rb9"/>
-                        <outlet property="reviewText" destination="wPA-zE-Mmm" id="Opb-ri-DUg"/>
+                        <outlet property="review" destination="wPA-zE-Mmm" id="Opb-ri-DUg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XlO-Ez-aDt" userLabel="First Responder" sceneMemberID="firstResponder"/>

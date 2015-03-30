@@ -66,6 +66,7 @@
 		C596B2A8C71382A4E69F1091 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC195C5EE70D30D8E4F9 /* UIViewController+Extension.m */; };
 		C596B2BD0845AD9D857B3996 /* ErrorReporting.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BBC0139A3CEE553489DA /* ErrorReporting.m */; };
 		C596B2E1351E1EAC7E9D30AF /* FrontPageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BA6A2FFAA13B82F58EBC /* FrontPageViewModel.m */; };
+		C596B2F55EBBDED43797DB3D /* HGLocationDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE68C9B7BA266DB045B5 /* HGLocationDetailsHeaderView.m */; };
 		C596B328EB93B5BCD900D855 /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B6D973C97856C7175F97 /* CategoriesViewController.m */; };
 		C596B334F2DDC08F410EF70F /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B49C10458AF4FFB9C6E5 /* ReviewCell.m */; };
 		C596B3371B7C27D2AD0DBFF1 /* NSLocale+iOS8.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B14569CD77B7D5D5881E /* NSLocale+iOS8.m */; };
@@ -80,7 +81,7 @@
 		C596B6434DE318E0744ACB01 /* ReviewDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B492BF85F9FF0436DBD8 /* ReviewDetailViewModel.m */; };
 		C596B6AB3FEB0CCFBB49E279 /* HalalGuideOnboarding.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BBFB5C5F15D132E4FB8E /* HalalGuideOnboarding.m */; };
 		C596B751F47FCB833B912C70 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B21303E2E3A67B80F80A /* KeychainWrapper.m */; };
-		C596B75AA02F22D07C4EA602 /* HGLocationDetailsTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE034F8F983A93A75D48 /* HGLocationDetailsTopView.m */; };
+		C596B75AA02F22D07C4EA602 /* HGLocationDetailsInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE034F8F983A93A75D48 /* HGLocationDetailsInfoView.m */; };
 		C596B76EDDF019BDADE30D03 /* HalalLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B4C92E78DEFF3BE48FF3 /* HalalLogInViewController.m */; };
 		C596B8089323C38DC9154E64 /* LocationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B71BF7FEBEC982AF2EC1 /* LocationViewModel.m */; };
 		C596B84535BA2C02AB15A896 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B619AECBB263C4ED02FE /* UIImage+Alpha.m */; };
@@ -232,7 +233,7 @@
 		C596B24BA9AE85B76AA003C0 /* HalalGuideNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalalGuideNumberFormatter.m; sourceTree = "<group>"; };
 		C596B28573B51DC85F7230CE /* HalalGuide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = file.entitlements; name = HalalGuide.entitlements; path = "Supporting Files/plist/HalalGuide.entitlements"; sourceTree = "<group>"; };
 		C596B2A4EE405E5B07E7107E /* CreateReviewViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReviewViewModel.m; sourceTree = "<group>"; };
-		C596B2BA6F6131F744978A73 /* HGLocationDetailsTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationDetailsTopView.h; sourceTree = "<group>"; };
+		C596B2BA6F6131F744978A73 /* HGLocationDetailsInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationDetailsInfoView.h; sourceTree = "<group>"; };
 		C596B2C7AD9F3D1C8A088F01 /* LocationDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailViewModel.h; sourceTree = "<group>"; };
 		C596B2DDF0DC07043FC6C9D6 /* CreateLocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateLocationViewModel.h; sourceTree = "<group>"; };
 		C596B301F910FB26DFD041FD /* BaseViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
@@ -307,6 +308,7 @@
 		C596BA5A80257D3B9F034B78 /* ShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCell.m; sourceTree = "<group>"; };
 		C596BA5C7595B8418317B5AC /* PictureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureService.h; sourceTree = "<group>"; };
 		C596BA6A2FFAA13B82F58EBC /* FrontPageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontPageViewModel.m; sourceTree = "<group>"; };
+		C596BA8004BECAA2E713F10C /* HGLocationDetailsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationDetailsHeaderView.h; sourceTree = "<group>"; };
 		C596BA8C404D79008918B909 /* BaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
 		C596BB2A29C69C97018BE604 /* CreateReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateReviewViewController.m; sourceTree = "<group>"; };
 		C596BB37691EF0A00C10AD8D /* POPAnimatableProperty+Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "POPAnimatableProperty+Masonry.h"; path = "../../../../Github/MSSPopMasonry/Classes/POPAnimatableProperty+Masonry.h"; sourceTree = "<group>"; };
@@ -344,11 +346,12 @@
 		C596BDE6BE0535D6D62B6DF4 /* FrontPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrontPageViewController.m; sourceTree = "<group>"; };
 		C596BDFA45B2B36A3FF5DBC2 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseEntity.m; path = Domain/BaseEntity.m; sourceTree = "<group>"; };
 		C596BDFE3A3D8F8CE6E706BE /* ReviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewService.m; sourceTree = "<group>"; };
-		C596BE034F8F983A93A75D48 /* HGLocationDetailsTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationDetailsTopView.m; sourceTree = "<group>"; };
+		C596BE034F8F983A93A75D48 /* HGLocationDetailsInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationDetailsInfoView.m; sourceTree = "<group>"; };
 		C596BE0A117FCC273AB0E5B3 /* HalalLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalalLogInViewController.h; sourceTree = "<group>"; };
 		C596BE3B3A5B60189D1D1699 /* LocationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailViewController.m; sourceTree = "<group>"; };
 		C596BE526991A39426245E61 /* UITableView+Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Header.h"; sourceTree = "<group>"; };
 		C596BE5F6DD11AEFA20FA2B6 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
+		C596BE68C9B7BA266DB045B5 /* HGLocationDetailsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationDetailsHeaderView.m; sourceTree = "<group>"; };
 		C596BE71AE285B679A9C7D10 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonView.h; sourceTree = "<group>"; };
 		C596BE809C133E47309A70FE /* HGLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLabels.m; sourceTree = "<group>"; };
 		C596BEBB98E1B438C022990F /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -645,14 +648,16 @@
 		C596B2B517AE0843ECBBA1D5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C596BE034F8F983A93A75D48 /* HGLocationDetailsTopView.m */,
-				C596B2BA6F6131F744978A73 /* HGLocationDetailsTopView.h */,
+				C596BE034F8F983A93A75D48 /* HGLocationDetailsInfoView.m */,
+				C596B2BA6F6131F744978A73 /* HGLocationDetailsInfoView.h */,
 				C596B0C9E16AC723AAF99F07 /* HGLocationDetailsSubmitterView.m */,
 				C596B84D6CF331927CB6F91A /* HGLocationDetailsSubmitterView.h */,
 				C596B89567F277E9BB803103 /* HGLocationDetailsPictureView.m */,
 				C596BBF8517210514B2CA755 /* HGLocationDetailsPictureView.h */,
 				C596B49C10458AF4FFB9C6E5 /* ReviewCell.m */,
 				C596B3F36D3764DC53AF2C4C /* ReviewCell.h */,
+				C596BE68C9B7BA266DB045B5 /* HGLocationDetailsHeaderView.m */,
+				C596BA8004BECAA2E713F10C /* HGLocationDetailsHeaderView.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1285,7 +1290,7 @@
 				C596BFE8B975D7943F96E335 /* ButtonView.m in Sources */,
 				C596BBEDF00B04239985401D /* UITableView+Header.m in Sources */,
 				C596B847EDD38F5CC989D1B5 /* HGTextField.m in Sources */,
-				C596B75AA02F22D07C4EA602 /* HGLocationDetailsTopView.m in Sources */,
+				C596B75AA02F22D07C4EA602 /* HGLocationDetailsInfoView.m in Sources */,
 				C596BF1E2EA59E41FC92E76E /* HGLocationDetailsSubmitterView.m in Sources */,
 				C596BAE8A50E7BE5B46A433B /* HGLocationDetailsPictureView.m in Sources */,
 				C596BF3AC395D8DACDA3AFA0 /* HGImagePickerController.m in Sources */,
@@ -1294,6 +1299,7 @@
 				C596B36B7F44215D90DB74C4 /* POPAnimatableProperty+Masonry.m in Sources */,
 				C596BF9B26E6B08AD6A8A78A /* HGImagePickerButton.m in Sources */,
 				C596B334F2DDC08F410EF70F /* ReviewCell.m in Sources */,
+				C596B2F55EBBDED43797DB3D /* HGLocationDetailsHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

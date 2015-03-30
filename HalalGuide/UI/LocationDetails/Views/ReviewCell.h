@@ -11,10 +11,10 @@
 
 @interface ReviewCell : UITableViewCell
 
-@property(strong) IBOutlet UIImageView *profileImage;
-@property(strong) IBOutlet UILabel *submitterName;
-@property(strong) IBOutlet EDStarRating *rating;
-@property(strong) IBOutlet UILabel *review;
-@property(strong) ReviewDetailViewModel *viewModel;
+@property(strong, nonatomic, readonly) UIImageView *submitterImage;
+@property(strong, nonatomic, readonly) UILabel *submitterName;
+@property(strong, nonatomic, readonly) EDStarRating *rating;
+@property(strong, nonatomic, readonly) UILabel *review;
+@property(strong, nonatomic) ReviewDetailViewModel *viewModel;
 
 @end

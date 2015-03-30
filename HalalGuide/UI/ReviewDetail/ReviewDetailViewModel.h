@@ -8,8 +8,10 @@
 
 @interface ReviewDetailViewModel : NSObject
 
-@property (nonatomic, readonly) Review *review;
-@property (nonatomic, readonly) PFUser *user;
+@property(strong, nonatomic, readonly) UIImage *submitterImage;
+@property(strong, nonatomic, readonly) NSString *submitterName;
+@property(strong, nonatomic, readonly) NSNumber *rating;
+@property(strong, nonatomic, readonly) NSString *reviewText;
 
 - (instancetype)initWithReview:(Review *)review;
 

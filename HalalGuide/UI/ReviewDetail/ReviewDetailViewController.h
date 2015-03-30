@@ -14,11 +14,11 @@
 @interface ReviewDetailViewController : UIViewController {
 }
 
-@property(strong, nonatomic) IBOutlet PFImageView *profilePicture;
-@property(strong, nonatomic) IBOutlet UILabel *name;
-@property(strong, nonatomic) IBOutlet UILabel *date;
-@property(strong, nonatomic) IBOutlet EDStarRating *rating;
-@property(strong, nonatomic) IBOutlet UITextView *reviewText;
+@property(strong, nonatomic, readonly) UIImageView *submitterImage;
+@property(strong, nonatomic, readonly) UILabel *submitterName;
+@property(strong, nonatomic, readonly) EDStarRating *rating;
+@property(strong, nonatomic, readonly) UITextView *review;
+@property(strong, nonatomic, readonly) UILabel *date;
 
 @property(strong, nonatomic) ReviewDetailViewModel *viewModel;
 

@@ -10,38 +10,39 @@
 #import "HalalGuideDateFormatter.h"
 #import "PFUser+Extension.h"
 
+@interface ReviewDetailViewController ()
+@property(strong, nonatomic) UIImageView *submitterImage;
+@property(strong, nonatomic) UILabel *submitterName;
+@property(strong, nonatomic) EDStarRating *rating;
+@property(strong, nonatomic) UITextView *review;
+@property(strong, nonatomic) UILabel *date;
+
+@end
+
 
 @implementation ReviewDetailViewController {
 
 }
 
 - (void)viewDidLoad {
-    [self setupUIValues];
-    [self setupRAC];
+    [self setupRating];
+    [self setupViewModel];
 }
-
-- (void)setupRAC {
-
-    @weakify(self)
-    [RACObserve(self, viewModel) subscribeNext:^(ReviewDetailViewModel *model) {
-        @strongify(self)
-        self.reviewText.text = model.review.review;
-        self.rating.rating = model.review.rating.floatValue;
-        self.date.text = [[HalalGuideDateFormatter instance] stringFromDate:model.review.createdAt];
-    }];
-
-    [RACObserve(self, viewModel.user) subscribeNext:^(PFUser *user) {
-        @strongify(self)
-        [self.profilePicture sd_setImageWithURL:user.facebookProfileUrlSmall];
-        self.name.text = user.facebookName;
-    }];
-
-}
-
-- (void)setupUIValues {
+- (void)setupRating {
 
     self.rating.starImage = [UIImage imageNamed:@"starSmall"];
     self.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
 }
+
+- (void)setupViewModel {
+
+    RAC(self.submitterName, text) = RACObserve(self, viewModel.submitterName);
+    RAC(self.submitterImage, image) = RACObserve(self, viewModel.submitterImage);
+
+    RAC(self.review, text) = RACObserve(self, viewModel.reviewText);
+    RAC(self.rating, rating) = RACObserve(self, viewModel.rating);
+}
+
+
 
 @end

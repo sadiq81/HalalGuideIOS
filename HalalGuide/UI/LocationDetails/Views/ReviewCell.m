@@ -6,72 +6,99 @@
 #import <EDStarRating/EDStarRating.h>
 #import "ReviewCell.h"
 #import "ReviewDetailViewModel.h"
-#import "UIImageView+WebCache.h"
-#import "PFUser+Extension.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <CoreGraphics/CoreGraphics.h>
+#import <Masonry/Masonry.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+
+@interface ReviewCell ()
+@property(strong, nonatomic) UIImageView *submitterImage;
+@property(strong, nonatomic) UILabel *submitterName;
+@property(strong, nonatomic) EDStarRating *rating;
+@property(strong, nonatomic) UILabel *review;
+@end
 
 @implementation ReviewCell {
 
 }
-
-- (id)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self configureRating];
-        [self configureRAC];
+        [self setupViews];
+        [self setupRating];
+        [self setupViewModel];
+        [self setNeedsUpdateConstraints];
+
     }
     return self;
 }
 
-- (void)configureRAC {
+- (void)setupViews {
+    self.submitterImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.submitterImage.contentMode = UIViewContentModeScaleAspectFill;
+    [self.contentView addSubview:self.submitterImage];
 
-    [RACObserve(self, viewModel) subscribeNext:^(ReviewDetailViewModel *model) {
-        self.review.text = model.review.review;
-        self.rating.rating = model.review.rating.floatValue;
-    }];
+    self.submitterName = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.submitterName.minimumScaleFactor = 0.5;
+    self.submitterName.adjustsFontSizeToFitWidth = true;
+    [self.contentView addSubview:self.submitterName];
 
-    [RACObserve(self, viewModel.user) subscribeNext:^(PFUser *user) {
-        [self.profileImage sd_setImageWithURL:user.facebookProfileUrlSmall];
-        self.submitterName.text = user.facebookName;
-    }];
+    self.rating = [[EDStarRating alloc] initWithFrame:CGRectZero];
+    [self.contentView addSubview:self.rating];
 
+    self.review = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.review.numberOfLines = 0;
+    self.review.font = [UIFont systemFontOfSize:12];
+    [self.contentView addSubview:self.review];
 }
 
-- (void)configureRating {
+- (void)setupRating {
     self.rating.starImage = [UIImage imageNamed:@"starSmall"];
     self.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
+    self.rating.backgroundColor = [UIColor whiteColor];
 }
 
-/*
+- (void)setupViewModel {
+
+    RAC(self.submitterName, text) = RACObserve(self, viewModel.submitterName);
+    RAC(self.submitterImage, image) = RACObserve(self, viewModel.submitterImage);
+
+    RAC(self.review, text) = RACObserve(self, viewModel.reviewText);
+    RAC(self.rating, rating) = [RACObserve(self, viewModel.rating) map:^id(NSNumber *value) {
+        return @([value floatValue]);
+    }];
+}
+
+
 - (void)updateConstraints {
 
-    [self.profileImage mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.submitterImage mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView).offset(8);
         make.left.equalTo(self.contentView).offset(8);
-        make.right.equalTo(self.submitterName).offset(8);
-        make.height.mas_equalTo(@(25));
-        make.width.mas_equalTo(@(25));
+        make.height.equalTo(@(25));
+        make.width.equalTo(@(25));
     }];
 
     [self.submitterName mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.rating).offset(8);
-        make.height.equalTo(self.profileImage);
+        make.top.equalTo(self.contentView).offset(8);
+        make.right.equalTo(self.rating.mas_left).offset(-8);
+        make.left.equalTo(self.submitterImage.mas_right).offset(8);
+        make.height.equalTo(self.submitterImage);
     }];
 
     [self.rating mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView).offset(8);
         make.width.equalTo(@(158));
-        make.right.equalTo(self.contentView).offset(8);
-        make.height.equalTo(self.submitterName);
+        make.right.equalTo(self.contentView).offset(-8);
+        make.height.equalTo(self.submitterImage);
     }];
 
     [self.review mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(8);
-        make.right.equalTo(self.contentView).offset(8);
-        make.top.equalTo(self.profileImage).offset(8);
-        make.bottom.equalTo(self.contentView).offset(8);
+        make.right.equalTo(self.contentView).offset(-8);
+        make.top.equalTo(self.rating.mas_bottom).offset(8);
+        make.bottom.equalTo(self.contentView).offset(-8);
     }];
 
     [super updateConstraints];
 }
-*/
 @end

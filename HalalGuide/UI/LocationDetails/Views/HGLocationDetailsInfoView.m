@@ -3,14 +3,12 @@
 // Copyright (c) 2015 Eazy It. All rights reserved.
 //
 
-#import <EDStarRating/EDStarRating.h>
-#import <Masonry/MASConstraintMaker.h>
-#import <Masonry/View+MASAdditions.h>
-#import "HGLocationDetailsTopView.h"
+#import <Masonry/Masonry.h>
+#import "HGLocationDetailsInfoView.h"
 #import "HGLabels.h"
 #import "ReactiveCocoa.h"
 
-@interface HGLocationDetailsTopView ()
+@interface HGLocationDetailsInfoView ()
 
 @property(strong) UILabel *name;
 @property(strong) UILabel *road;
@@ -31,7 +29,7 @@
 @property(strong, nonatomic) LocationDetailViewModel *viewModel;
 @end
 
-@implementation HGLocationDetailsTopView {
+@implementation HGLocationDetailsInfoView {
 
 }
 
@@ -52,15 +50,12 @@
 
 -(void)setupViews{
     self.name = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:17];
-    [self.name addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
     [self addSubview:self.name];
 
     self.road = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:14];
-    [self.road addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
     [self addSubview:self.road];
 
     self.postalCode = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:14];
-    [self.postalCode addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
     [self addSubview:self.postalCode];
 
     self.rating = [[EDStarRating alloc] initWithFrame:CGRectZero];
@@ -120,6 +115,8 @@
 }
 
 - (void)updateConstraints {
+
+    self.translatesAutoresizingMaskIntoConstraints = false;
 
     [self.name mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(8);

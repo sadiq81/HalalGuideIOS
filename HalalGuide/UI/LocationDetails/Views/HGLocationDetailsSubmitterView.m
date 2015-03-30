@@ -39,9 +39,11 @@
 - (void)setupViews {
     self.submitterImage = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self addSubview:self.submitterImage];
+
     self.submitterHeadLine = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
     self.submitterHeadLine.text = NSLocalizedString(@"LocationDetailViewController.label.submitterHeadLine", nil);
     [self addSubview:self.submitterHeadLine];
+
     self.submitterName = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:17];
     [self addSubview:self.submitterName];
 }

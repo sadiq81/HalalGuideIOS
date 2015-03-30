@@ -145,7 +145,6 @@
     }];
 }
 
-
 #pragma mark - SegmentedController
 
 - (void)setupToolbar {
@@ -369,7 +368,6 @@
     self.mapView.delegate = self;
 }
 
-
 - (void)reloadAnnotations {
 
     NSMutableArray *shouldBeRemoved = [NSMutableArray new];
@@ -477,9 +475,10 @@
     }];
 
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.self.top.equalTo(self.view);
-        make.self.bottom.equalTo(self.toolbar.mas_top);
-        make.width.equalTo(self.view);
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.toolbar.mas_top);
     }];
 
     [self.tableView sizeHeaderToFit];
@@ -491,14 +490,16 @@
 
     [self.toolbar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view);
-        make.width.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
         make.height.equalTo(@(44));
     }];
 
     [self.mapView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.self.top.equalTo(self.view);
-        make.self.bottom.equalTo(self.toolbar.mas_top);
-        make.width.equalTo(self.view);
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.toolbar.mas_top);
     }];
 
     [super updateViewConstraints];

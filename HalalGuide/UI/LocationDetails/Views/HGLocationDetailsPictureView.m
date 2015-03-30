@@ -43,7 +43,7 @@
 }
 
 - (void)setupViews {
-    self.report = [[UIButton alloc] initWithFrame:CGRectZero];
+    self.report = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.report setTitle:NSLocalizedString(@"LocationDetailViewController.button.report", nil) forState:UIControlStateNormal];
     [self addSubview:self.report];
 
@@ -53,11 +53,11 @@
     self.pictures.dataSource = self;
     [self addSubview:self.pictures];
 
-    self.addReview = [[UIButton alloc] initWithFrame:CGRectZero];
+    self.addReview = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.addReview setTitle:NSLocalizedString(@"LocationDetailViewController.button.add.review", nil) forState:UIControlStateNormal];
     [self addSubview:self.addReview];
 
-    self.addPicture = [[UIButton alloc] initWithFrame:CGRectZero];
+    self.addPicture = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.addPicture setTitle:NSLocalizedString(@"LocationDetailViewController.button.add.picture", nil) forState:UIControlStateNormal];
     [self addSubview:self.addPicture];
 }
@@ -98,15 +98,11 @@
     return view;
 }
 
-- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
-    self.viewModel.indexOfSelectedImage = index;
-    //[self performSegueWithIdentifier:@"SlideShow" sender:self];
-}
-
-
 - (void)updateConstraints {
 
-        [self.report mas_updateConstraints:^(MASConstraintMaker *make) {
+    self.translatesAutoresizingMaskIntoConstraints = false;
+
+    [self.report mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
         make.left.equalTo(self);
         make.right.equalTo(self);
@@ -114,7 +110,7 @@
     }];
 
     [self.pictures mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.report.mas_bottom).offset(8);
+        make.top.equalTo(self.report.mas_bottom);
         make.right.equalTo(self);
         make.left.equalTo(self);
         make.height.equalTo(@(200));

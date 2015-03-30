@@ -6,9 +6,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "LocationDetailViewModel.h"
+#import "EDStarRating/EDStarRating.h"
 
 
-@interface HGLocationDetailsTopView : UIView
+@interface HGLocationDetailsInfoView : UIView
 
 @property(strong, readonly) UILabel *name;
 @property(strong, readonly) UILabel *road;
