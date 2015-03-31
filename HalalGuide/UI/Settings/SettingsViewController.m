@@ -4,6 +4,7 @@
 //
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
+#import <Masonry/View+MASAdditions.h>
 #import "SettingsViewController.h"
 #import "LocationViewModel.h"
 #import "HGSettings.h"
@@ -14,42 +15,142 @@
 #import "UIViewController+Extension.h"
 #import "RMStore.h"
 
+@interface SettingsViewController ()
+
+@property(strong, nonatomic) UITableViewCell *clearCache;
+@property(strong, nonatomic) UITableViewCell *support;
+@property(strong, nonatomic) UITableViewCell *resetFilter;
+@property(strong, nonatomic) UITableViewCell *resetIntro;
+@end
+
 @implementation SettingsViewController {
 
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self setupViews];
+        [self updateViewConstraints];
+    }
 
-    [[self.resetFilter rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [HGSettings instance].distanceFilter = 5;
-        [HGSettings instance].porkFilter = true;
-        [HGSettings instance].alcoholFilter = true;
-        [HGSettings instance].halalFilter = true;
-        [HGSettings instance].categoriesFilter = [NSMutableArray new];
-        [HGSettings instance].shopCategoriesFilter = [NSMutableArray new];
-    }];
+    return self;
+}
 
-    [[self.restorePurchases rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+- (void)setupViews {
 
-        [[RMStore defaultStore] addPayment:@"Support" success:^(SKPaymentTransaction *transaction) {
-            //[SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"thankText", nil)];
-        }                          failure:^(SKPaymentTransaction *transaction, NSError *error) {
-            //[SVProgressHUD showErrorWithStatus:error.localizedDescription];
-        }];
-    }];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
 
-    [[self.clearCache rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [[SDImageCache sharedImageCache] clearMemory];
-        [[SDImageCache sharedImageCache] clearDisk];
-    }];
+    self.clearCache = [[UITableViewCell alloc] init];
+    self.clearCache.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
+    self.clearCache.textLabel.text = NSLocalizedString(@"SettingsViewController.button.clear.cache", nil);
 
-    [[self.resetIntro rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [[HGOnboarding instance] resetOnBoarding];
-    }];
+    self.support = [[UITableViewCell alloc] init];
+    self.support.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
+    self.support.textLabel.text = NSLocalizedString(@"SettingsViewController.button.support", nil);
+
+    self.resetFilter = [[UITableViewCell alloc] init];
+    self.resetFilter.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
+    self.resetFilter.textLabel.text = NSLocalizedString(@"SettingsViewController.button.reset.filter", nil);
+
+    self.resetIntro = [[UITableViewCell alloc] init];
+    self.resetIntro.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
+    self.resetIntro.textLabel.text = NSLocalizedString(@"SettingsViewController.button.reset.intro", nil);
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return 1;
+        case 1:
+            return 3;
+        default:
+            return 0;
+    };
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case 0:
+            switch (indexPath.row) {
+                case 0:
+                    return self.support;
+            }
+        case 1:
+            switch (indexPath.row) {
+                case 0:
+                    return self.resetFilter;
+                case 1:
+                    return self.resetIntro;
+                case 2:
+                    return self.clearCache;
+            }
+    }
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    switch (indexPath.section) {
+        case 0:
+            switch (indexPath.row) {
+                case 0:
+                    [[RMStore defaultStore] addPayment:@"Support" success:nil failure:nil];
+            }
+        case 1:
+            switch (indexPath.row) {
+                case 0:
+                    [HGSettings instance].distanceFilter = 5;
+                    [HGSettings instance].porkFilter = true;
+                    [HGSettings instance].alcoholFilter = true;
+                    [HGSettings instance].halalFilter = true;
+                    [HGSettings instance].categoriesFilter = [NSMutableArray new];
+                    [HGSettings instance].shopCategoriesFilter = [NSMutableArray new];
+                case 1:
+                    [[HGOnboarding instance] resetOnBoarding];
+                case 2:
+                    [[SDImageCache sharedImageCache] clearMemory];
+                    [[SDImageCache sharedImageCache] clearDisk];
+            }
+    }
+
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return NSLocalizedString(@"SettingsViewController.section.title.support", nil);
+        case 1:
+            return NSLocalizedString(@"SettingsViewController.section.title.reset", nil);
+        default:
+            return nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 22;
+}
+
+- (void)updateViewConstraints {
+
+//    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view);
+//    }];
+
+    [super updateViewConstraints];
+}
+
 
 @end

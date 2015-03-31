@@ -16,6 +16,7 @@
 #import "ButtonView.h"
 #import "HGImagePickerController.h"
 #import "ENumberViewController.h"
+#import "SettingsViewController.h"
 
 @interface FrontPageViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) UIView *topView;
@@ -84,7 +85,10 @@
     self.mosqueView = [[ButtonView alloc] initWithButtonImageName:@"mosque" andLabelText:@"FrontPageViewController.label.mosque" andTapHandler:[self tapHandlerForType:LocationTypeMosque]];
     [self.topView addSubview:self.mosqueView];
 
-    self.settingsView = [[ButtonView alloc] initWithButtonImageName:@"Indstillinger" andLabelText:@"FrontPageViewController.label.settings" andTapHandler:nil];
+    self.settingsView = [[ButtonView alloc] initWithButtonImageName:@"Indstillinger" andLabelText:@"FrontPageViewController.label.settings" andTapHandler:^{
+        SettingsViewController *controller = [[SettingsViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:true];
+    }];
     [self.topView addSubview:self.settingsView];
 
     self.latest = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];

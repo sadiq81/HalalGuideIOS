@@ -278,3 +278,10 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGImagePickerView.button.photoLibrary" = "Fotobibliotek";
 "HGImagePickerView.button.takePicture" = "Tag billede";
 "HGImagePickerView.button.cancel" = "Fortryd";
+
+"SettingsViewController.button.clear.cache" = "Ryd billedcache";
+"SettingsViewController.button.support" = "Støt Halalguide";
+"SettingsViewController.button.reset.filter" = "Nulstil søgefilter";
+"SettingsViewController.button.reset.intro" = "Nulstil introduktion";
+"SettingsViewController.section.title.support" = "Støt";
+"SettingsViewController.section.title.reset" = "Nulstil";

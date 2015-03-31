@@ -276,3 +276,10 @@
 "HGImagePickerView.button.photoLibrary" = "Photo library";
 "HGImagePickerView.button.takePicture" = "Take picture";
 "HGImagePickerView.button.cancel" = "Regreet";
+
+"SettingsViewController.button.clear.cache" = "Clear image cache";
+"SettingsViewController.button.support" = "Support Halalguide";
+"SettingsViewController.button.reset.filter" = "Reset search filter";
+"SettingsViewController.button.reset.intro" = "Reset introduktion";
+"SettingsViewController.section.title.support" = "Support";
+"SettingsViewController.section.title.reset" = "Reset";
