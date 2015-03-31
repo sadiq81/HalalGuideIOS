@@ -9,19 +9,19 @@
 
 #import "AppDelegate.h"
 #import "Location.h"
-#import "LocationService.h"
+#import "HGLocationService.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "MZFormSheetBackgroundWindow.h"
 #import "IQKeyboardManager.h"
-#import "KeyChainService.h"
-#import "ErrorReporting.h"
-#import "PictureService.h"
+#import "HGKeyChainService.h"
+#import "HGErrorReporting.h"
+#import "HGPictureService.h"
 #import "UIAlertController+Blocks.h"
 #import "IQUIWindow+Hierarchy.h"
 #import "LocationPicture.h"
 #import "RACTuple.h"
 #import "FrontPageViewController.h"
-#import "HalalGuideIAPHelper.h"
+#import "HGAPHelper.h"
 #import "ZLPromptUserReview.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <Fabric/Fabric.h>
@@ -94,7 +94,7 @@
 #endif
 
     //In-App Purchases
-    [HalalGuideIAPHelper sharedInstance];
+    [HGAPHelper sharedInstance];
 
     //App Store review
     [[ZLPromptUserReview sharedInstance] setAppID:kZLPromptUserReviewAppId];

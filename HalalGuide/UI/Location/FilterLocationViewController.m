@@ -12,7 +12,7 @@
 #import "MZFormSheetSegue.h"
 #import "IQUIView+Hierarchy.h"
 #import "CategoriesViewController.h"
-#import "HalalGuideSettings.h"
+#import "HGSettings.h"
 #import "CreateLocationViewModel.h"
 
 
@@ -116,11 +116,11 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    self.viewModel.showPork = [HalalGuideSettings instance].porkFilter = self.porkSwitch.on;
-    self.viewModel.showAlcohol = [HalalGuideSettings instance].alcoholFilter = self.alcoholSwitch.on;
-    self.viewModel.showNonHalal = [HalalGuideSettings instance].halalFilter = self.halalSwitch.on;
-    self.viewModel.maximumDistance = [HalalGuideSettings instance].distanceFilter = (NSUInteger) self.distanceSlider.value;
-    [HalalGuideSettings instance].categoriesFilter = self.viewModel.categories;
+    self.viewModel.showPork = [HGSettings instance].porkFilter = self.porkSwitch.on;
+    self.viewModel.showAlcohol = [HGSettings instance].alcoholFilter = self.alcoholSwitch.on;
+    self.viewModel.showNonHalal = [HGSettings instance].halalFilter = self.halalSwitch.on;
+    self.viewModel.maximumDistance = [HGSettings instance].distanceFilter = (NSUInteger) self.distanceSlider.value;
+    [HGSettings instance].categoriesFilter = self.viewModel.categories;
 
     [self.viewModel refreshLocations];
 }

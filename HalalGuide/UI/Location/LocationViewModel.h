@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseViewModel.h"
+#import "HGBaseViewModel.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 
 @class LocationDetailViewModel;
@@ -15,7 +15,7 @@ typedef enum LocationPresentation : int16_t {
     LocationPresentationMap = 1,
 } LocationPresentation;
 
-@interface LocationViewModel : BaseViewModel <CategoriesViewModel>
+@interface LocationViewModel : HGBaseViewModel <CategoriesViewModel>
 
 @property(nonatomic) LocationType locationType;
 @property(nonatomic, readonly) NSArray *listLocations;

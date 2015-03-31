@@ -14,7 +14,7 @@
 #import "MZFormSheetSegue.h"
 #import "IQUIView+Hierarchy.h"
 #import "IQKeyboardReturnKeyHandler.h"
-#import "HalalGuideOnboarding.h"
+#import "HGOnboarding.h"
 #import "UIViewController+Extension.h"
 #import "JSBadgeView.h"
 #import "CreateReviewViewController.h"
@@ -58,7 +58,7 @@
 }
 
 - (void)onBoarding {
-    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kCreateLocationPickImageOnBoardingKey]) {
+    if (![[HGOnboarding instance] wasOnBoardingShow:kCreateLocationPickImageOnBoardingKey]) {
         [self displayHintForView:self.pickImage withHintKey:kCreateLocationPickImageOnBoardingKey preferedPositionOfText:HintPositionAbove];
     }
 }

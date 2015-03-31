@@ -271,7 +271,8 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "LocationDetailViewController.button.add.review" = "Tilføj anmeldelse";
 "LocationDetailViewController.button.add.picture" = "Tilføj billede";
 "LocationDetailViewController.label.no.reviews" = "Der findes ingen anmeldelser for dette sted endnu. Skal du være den første?";
-"LocationDetailViewController.label.no.pictures" = "Der findes ingen billeder for dette sted endnu. Skal du være den første?";
+
+"HGLocationDetailsPictureView.label.no.pictures" = "Der findes ingen billeder for dette sted endnu. Skal du være den første?";
 
 "HGImagePickerView.button.approve" = "Tilføj 1 billed";
 "HGImagePickerView.button.approve.multiple" = "Tilføj %lu billeder";

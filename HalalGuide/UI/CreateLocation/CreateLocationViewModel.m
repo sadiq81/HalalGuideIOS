@@ -6,10 +6,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "CreateLocationViewModel.h"
-#import "AddressService.h"
-#import "LocationService.h"
+#import "HGAddressService.h"
+#import "HGLocationService.h"
 #import "AppDelegate.h"
-#import "PictureService.h"
+#import "HGPictureService.h"
 
 @implementation CreateLocationViewModel {
 
@@ -46,10 +46,10 @@
 
 - (void)loadAddressesNearPositionOnCompletion:(void (^)(void))completion {
     CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
-    [AddressService  addressNearPosition:manager.location onCompletion:^(NSArray *addresses) {
+    [HGAddressService addressNearPosition:manager.location onCompletion:^(NSArray *addresses) {
 
         NSMutableDictionary *streetNumbersTemp = [NSMutableDictionary new];
-        for (Adgangsadresse *key in addresses) {
+        for (HGAdgangsadresse *key in addresses) {
 
             SimpleAddress *address = [streetNumbersTemp valueForKey:key.vejstykke.navn];
             if (!address) {
@@ -68,7 +68,7 @@
 }
 
 - (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postNummer))completion {
-    [AddressService cityNameFor:postalCode onCompletion:completion];
+    [HGAddressService cityNameFor:postalCode onCompletion:completion];
 }
 
 - (void)saveEntity:(NSString *)name road:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode city:(NSString *)city telephone:(NSString *)telephone website:(NSString *)website pork:(BOOL)pork alcohol:(BOOL)alcohol nonHalal:(BOOL)nonHalal images:(NSArray *)images {
@@ -78,7 +78,7 @@
 
     Location *location = [Location locationWithAddressCity:city addressPostalCode:postalCode addressRoad:road addressRoadNumber:roadNumber alcohol:@(alcohol) creationStatus:@(CreationStatusAwaitingApproval) homePage:website language:@(self.language) locationType:@(self.locationType) name:name nonHalal:@(nonHalal) pork:@(pork) submitterId:[PFUser currentUser].objectId telephone:telephone categories:self.typeBaseCategories];
 
-    [[[[[self doesAddressExist:road roadNumber:roadNumber postalCode:postalCode] flattenMap:^RACStream *(Adgangsadresse *value) {
+    [[[[[self doesAddressExist:road roadNumber:roadNumber postalCode:postalCode] flattenMap:^RACStream *(HGAdgangsadresse *value) {
         location.point = [self pointForAddress:value];
         return [self saveLocation:location];
     }] then:^RACSignal * {
@@ -110,7 +110,7 @@
     }
 }
 
-- (PFGeoPoint *)pointForAddress:(Adgangsadresse *)address {
+- (PFGeoPoint *)pointForAddress:(HGAdgangsadresse *)address {
     if (address) {
         return [PFGeoPoint geoPointWithLatitude:[address.latitude doubleValue] longitude:[address.longitude doubleValue]];
     } else {
@@ -120,7 +120,7 @@
 
 - (RACSignal *)doesAddressExist:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        [AddressService doesAddressExist:road roadNumber:roadNumber postalCode:postalCode onCompletion:^(Adgangsadresse *address) {
+        [HGAddressService doesAddressExist:road roadNumber:roadNumber postalCode:postalCode onCompletion:^(HGAdgangsadresse *address) {
             [subscriber sendNext:address];
             [subscriber sendCompleted];
         }];
@@ -130,7 +130,7 @@
 
 - (RACSignal *)saveLocation:(Location *)location {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        [[LocationService instance] saveLocation:location onCompletion:^(BOOL succeeded, NSError *error) {
+        [[HGLocationService instance] saveLocation:location onCompletion:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 [subscriber sendNext:@(succeeded)];
                 [subscriber sendCompleted];
@@ -144,7 +144,7 @@
 
 - (RACSignal *)saveImages:(NSArray *)images forLocation:(Location *)location {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        [[PictureService instance] saveMultiplePictures:images forLocation:location completion:^(BOOL completed, NSError *error, NSNumber *progress) {
+        [[HGPictureService instance] saveMultiplePictures:images forLocation:location completion:^(BOOL completed, NSError *error, NSNumber *progress) {
             if (progress) {
                 self.progress = progress.floatValue;
                 [subscriber sendNext:progress];

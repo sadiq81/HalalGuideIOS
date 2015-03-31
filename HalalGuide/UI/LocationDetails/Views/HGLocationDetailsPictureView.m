@@ -8,7 +8,7 @@
 #import "ReactiveCocoa.h"
 #import "Masonry.h"
 
-@interface HGLocationDetailsPictureView ()
+@interface HGLocationDetailsPictureView ()<iCarouselDataSource, iCarouselDelegate>
 
 @property(strong) UIButton *report;
 @property(strong) UIButton *addReview;
@@ -51,6 +51,7 @@
     self.pictures.type = iCarouselTypeCoverFlow2;
     self.pictures.delegate = self;
     self.pictures.dataSource = self;
+    self.pictures.clipsToBounds = true;
     [self addSubview:self.pictures];
 
     self.addReview = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -60,6 +61,12 @@
     self.addPicture = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.addPicture setTitle:NSLocalizedString(@"LocationDetailViewController.button.add.picture", nil) forState:UIControlStateNormal];
     [self addSubview:self.addPicture];
+
+    self.noPicturesLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.noPicturesLabel.text = NSLocalizedString(@"HGLocationDetailsPictureView.label.no.pictures", nil);
+    self.noPicturesLabel.numberOfLines =0;
+    self.noPicturesLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.noPicturesLabel];
 }
 
 - (void)setupViewModel {
@@ -111,15 +118,16 @@
 
     [self.pictures mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.report.mas_bottom);
-        make.right.equalTo(self);
-        make.left.equalTo(self);
+        make.left.equalTo(self).offset(8);
+        make.right.equalTo(self).offset(-8);
         make.height.equalTo(@(200));
     }];
 
     [self.noPicturesLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.pictures);
         make.centerY.equalTo(self.pictures);
-        make.width.equalTo(self);
+        make.left.equalTo(self).offset(8);
+        make.right.equalTo(self).offset(-8);
     }];
 
     [self.addReview mas_updateConstraints:^(MASConstraintMaker *make) {

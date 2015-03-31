@@ -9,14 +9,14 @@
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import <Masonry/View+MASAdditions.h>
-#import "BaseViewModel.h"
+#import "HGBaseViewModel.h"
 #import "LocationViewController.h"
 #import "DiningCell.h"
 #import "CreateLocationViewModel.h"
 #import "MKMapView+Extension.h"
 #import "LocationAnnotation.h"
 #import "LocationAnnotationView.h"
-#import "HalalGuideOnboarding.h"
+#import "HGOnboarding.h"
 #import "AppDelegate.h"
 #import "FilterLocationViewController.h"
 #import "LocationDetailViewController.h"
@@ -163,9 +163,9 @@
 #pragma mark - Hints
 
 - (void)setupHints {
-    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kAddNewOnBoardingButtonKey]) {
+    if (![[HGOnboarding instance] wasOnBoardingShow:kAddNewOnBoardingButtonKey]) {
         [self displayHintForView:[self.addButton valueForKey:@"view"] withHintKey:kAddNewOnBoardingButtonKey preferedPositionOfText:HintPositionBelow];
-    } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
+    } else if (![[HGOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
         [self displayHintForView:[self.filter valueForKey:@"view"] withHintKey:kFilterOnBoardingButtonKey preferedPositionOfText:HintPositionAbove];
     }
 }
@@ -329,17 +329,17 @@
 
     LocationCell *cell = (LocationCell *) [self.tableView cellForRowAtIndexPath:[[self.tableView indexPathsForVisibleRows] firstObject]];
 
-    if ([cell isKindOfClass:[DiningCell class]] && [[HalalGuideOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
+    if ([cell isKindOfClass:[DiningCell class]] && [[HGOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
 
         DiningCell *diningTableViewCell = (DiningCell *) cell;
 
-        if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellPorkOnBoardingKey]) {
+        if (![[HGOnboarding instance] wasOnBoardingShow:kDiningCellPorkOnBoardingKey]) {
             [self displayHintForView:diningTableViewCell.porkImage withHintKey:kDiningCellPorkOnBoardingKey preferedPositionOfText:HintPositionBelow];
 
-        } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellAlcoholOnBoardingKey]) {
+        } else if (![[HGOnboarding instance] wasOnBoardingShow:kDiningCellAlcoholOnBoardingKey]) {
             [self displayHintForView:diningTableViewCell.alcoholImage withHintKey:kDiningCellAlcoholOnBoardingKey preferedPositionOfText:HintPositionBelow];
 
-        } else if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningCellHalalOnBoardingKey]) {
+        } else if (![[HGOnboarding instance] wasOnBoardingShow:kDiningCellHalalOnBoardingKey]) {
             [self displayHintForView:diningTableViewCell.halalImage withHintKey:kDiningCellHalalOnBoardingKey preferedPositionOfText:HintPositionBelow];
         }
     }

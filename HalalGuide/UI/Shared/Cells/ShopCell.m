@@ -5,7 +5,7 @@
 
 #import "ShopCell.h"
 #import "LocationPicture.h"
-#import "PictureService.h"
+#import "HGPictureService.h"
 #import "UIImageView+WebCache.h"
 
 

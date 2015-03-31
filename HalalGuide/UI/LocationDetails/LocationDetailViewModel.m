@@ -5,12 +5,12 @@
 
 #import "LocationDetailViewModel.h"
 #import "LocationPicture.h"
-#import "PictureService.h"
-#import "ErrorReporting.h"
+#import "HGPictureService.h"
+#import "HGErrorReporting.h"
 #import "LocationViewModel.h"
-#import "ReviewService.h"
-#import "AddressService.h"
-#import "HalalGuideNumberFormatter.h"
+#import "HGReviewService.h"
+#import "HGAddressService.h"
+#import "HGNumberFormatter.h"
 #import "PFUser+Extension.h"
 
 
@@ -24,7 +24,7 @@
 @property(nonatomic) NSArray *reviews;
 @property(nonatomic) PFUser *user;
 
-@property(nonatomic, strong) UIImage *thumbnail;
+@property(nonatomic, strong) NSURL *thumbnail;
 @property(nonatomic, strong) NSString *distance;
 @property(nonatomic, strong) NSString *address;
 @property(nonatomic, strong) NSString *postalCode;
@@ -42,7 +42,7 @@
 @property(nonatomic, strong) UIImage *languageImage;
 @property(nonatomic, strong) NSString *languageString;
 
-@property(nonatomic, strong) UIImage *submitterImage;
+@property(nonatomic, strong) NSURL *submitterImage;
 @property(nonatomic, strong) NSString *submitterName;
 
 @end
@@ -74,27 +74,19 @@
         @strongify(self)
         self.user = (PFUser *) object;
         self.submitterName = self.user.facebookName;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            NSData *imageData = [NSData dataWithContentsOfURL:self.user.facebookProfileUrlSmall];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // Update the UI
-                self.submitterImage = [UIImage imageWithData:imageData];
-            });
-        });
+        self.submitterImage = self.user.facebookProfileUrlSmall;
     }];
 
-    [[PictureService instance] thumbnailForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
+    [[HGPictureService instance] thumbnailForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
         @strongify(self)
         if (objects != nil && [objects count] == 1) {
             LocationPicture *picture = [objects firstObject];
-            [picture.thumbnail getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                self.thumbnail = [[UIImage alloc] initWithData:data];
-            }];
+            self.thumbnail = [[NSURL alloc] initWithString:picture.thumbnail.url];
         }
     }];
 
-    CLLocationDistance distanceM = [AddressService distanceInMetersToPoint:self.location.location];
-    self.distance = [[HalalGuideNumberFormatter instance] stringFromNumber:@(distanceM / 1000)];
+    CLLocationDistance distanceM = [HGAddressService distanceInMetersToPoint:self.location.location];
+    self.distance = [[HGNumberFormatter instance] stringFromNumber:@(distanceM / 1000)];
     self.address = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", self.location.addressRoad, self.location.addressRoadNumber, self.location.addressPostalCode, self.location.addressCity];
     self.postalCode = [NSString stringWithFormat:@"%@ %@", self.location.addressPostalCode, self.location.addressCity];
     self.category = [self.location categoriesString];
@@ -117,22 +109,22 @@
     self.reviews = [NSArray new];
 
     self.fetchCount++;
-    [[PictureService instance] locationPicturesForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
+    [[HGPictureService instance] locationPicturesForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
         self.fetchCount--;
 
         if ((self.error = error)) {
-            [[ErrorReporting instance] reportError:error];
+            [[HGErrorReporting instance] reportError:error];
         } else {
             self.locationPictures = objects;
         }
     }];
 
     self.fetchCount++;
-    [[ReviewService instance] reviewsForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
+    [[HGReviewService instance] reviewsForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
         self.fetchCount--;
 
         if ((self.error = error)) {
-            [[ErrorReporting instance] reportError:error];
+            [[HGErrorReporting instance] reportError:error];
         } else {
             self.reviews = objects;
             [self calculateAverageRating];
@@ -164,7 +156,7 @@
     self.progress = 1;
 
     @weakify(self)
-    [[PictureService instance] saveMultiplePictures:images forLocation:self.location completion:^(BOOL completed, NSError *error, NSNumber *progress) {
+    [[HGPictureService instance] saveMultiplePictures:images forLocation:self.location completion:^(BOOL completed, NSError *error, NSNumber *progress) {
         @strongify(self)
 
         self.progress = progress.intValue;

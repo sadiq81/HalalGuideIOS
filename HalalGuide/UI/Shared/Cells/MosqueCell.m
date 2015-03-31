@@ -5,7 +5,7 @@
 
 #import <Masonry/View+MASAdditions.h>
 #import "MosqueCell.h"
-#import "PictureService.h"
+#import "HGPictureService.h"
 #import "LocationPicture.h"
 #import "UIImageView+WebCache.h"
 
@@ -54,7 +54,7 @@
         make.centerX.equalTo(self.languageImage);
         make.width.equalTo(@(31));
         make.height.equalTo(@(13));
-        make.bottom.equalTo(self.address.mas_bottom);
+        make.top.equalTo(self.languageImage.mas_bottom).offset(4);
     }];
 
     [self.name mas_updateConstraints:^(MASConstraintMaker *make) {

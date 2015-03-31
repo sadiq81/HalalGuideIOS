@@ -6,7 +6,7 @@
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import "CoordinatePickerViewController.h"
 #import "CreateLocationViewModel.h"
-#import "HalalGuideOnboarding.h"
+#import "HGOnboarding.h"
 #import "UIView+Extensions.h"
 #import <AddressBook/ABPerson.h>
 #import <AddressBookUI/AddressBookUI.h>
@@ -31,7 +31,7 @@
     if (self.viewModel.suggestedPlaceMark) {
         point.coordinate = self.viewModel.suggestedPlaceMark.location.coordinate;
     } else {
-        //point.coordinate = [BaseViewModel currentLocation].coordinate;
+        //point.coordinate = [HGBaseViewModel currentLocation].coordinate;
     }
 
     [self.mapView addAnnotation:point];

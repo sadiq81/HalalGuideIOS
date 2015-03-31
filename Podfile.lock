@@ -24,6 +24,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - ALActionBlocks (1.0.3)
+  - AsyncImageView (1.5.1)
   - Bolts (1.1.3)
   - CTAssetsPickerController (2.9.3)
   - DCKeyValueObjectMapping (1.4)
@@ -104,6 +105,7 @@ DEPENDENCIES:
   - AFNetworking (= 2.5.0)
   - AFNetworking-RACExtensions (= 0.1.6)
   - ALActionBlocks (= 1.0.3)
+  - AsyncImageView (= 1.5.1)
   - CTAssetsPickerController (~> 2.9.3)
   - DCKeyValueObjectMapping (= 1.4)
   - EDStarRating (= 1.1)
@@ -129,33 +131,34 @@ DEPENDENCIES:
   - ZLPromptUserReview (~> 1.0.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
-  AFNetworking-RACExtensions: dd55d08dbfa013b9e118d5c1a5e4b58b63e734e1
-  ALActionBlocks: 6a899107d2def997caae8de46d82c8fa2421987e
-  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  AFNetworking: 96ac9bf3eda33582701cb1fcc5b896aa1e20311e
+  AFNetworking-RACExtensions: 501ab1564f5be65e01fe3017cda7bba25764c20d
+  ALActionBlocks: ac91b1a37b60a8004fb687ddade0600446f3d3fa
+  AsyncImageView: db9433939160710b34a5c249479e03af2a2121b0
+  Bolts: e431c88fd02115d4a34016c2100bbfa4d2d5b146
   CTAssetsPickerController: 56a4a228dcb48a9375ab8d4922e82ac74af74aa1
-  DCKeyValueObjectMapping: c3561709f296ddffba7768a9d7ccf234307fd3c9
-  EDStarRating: c7b87f9866be0ea29bb054964023b8eb3f18286c
-  Facebook-iOS-SDK: 3d65f685348b789e46a9aacf92bfa85b60b63755
-  HTAutocompleteTextField: 1212d1d40c4e8d0ae6508be6faca738fb2919732
-  iCarousel: 5acab560f10dc13da2440c89f35a0ad278b5147d
-  IQKeyboardManager: f30f3e98fa36ca1599042c9d0cea2fb4f4ac3df9
-  JSBadgeView: 75bec79d76e0eb01d57c9ce75b7c5ea8d6707955
-  KASlideShow: 1c2398948f260cf6cd7ac27f1e2a62efaa238f0c
-  libextobjc: d6146fce3ebea986b7f75fcb4c967639200b88b0
-  LinqToObjectiveC: db2ceec81d45192ffe971bbd8e73ef0de614723c
-  Masonry: 2cb49fd14d203d2db5ca6bb017135b235dde9980
-  MZAppearance: c88502c0c2345120630c34e09d5ff09e2969ba30
-  MZFormSheetController: a7dce224ce8bd9015abeabca8cb6cde0d49d3fe3
-  pop: 2f14a1ea61339767af9e66741b418c831b3844df
-  ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387
-  RMStore: 034bacb5f8d8807866f80e53907db47b9cefd984
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SevenSwitch: 2f6832907b4f0d4eeb61e2a24acb1e28f6f8c059
-  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
-  SZTextView: 8f1126696c6d54e5f0d672bbecf259ef65b04aeb
-  UIActivityIndicator-for-SDWebImage: 8bd92c15280fbe54816448c6b14674145eee05c7
-  UIAlertController+Blocks: a02869a586a1e242accabc86beb5f08f00998a76
-  ZLPromptUserReview: 88ecf0db5c19fb6fe979e8161123fd10fbd7d208
+  DCKeyValueObjectMapping: 04cd5a338c03ce1c02488926cab6e1d1f704a093
+  EDStarRating: a41a6440a945020745d0e9ff8ada7d1afa952114
+  Facebook-iOS-SDK: fcb0fd5bcdb50f1fe9ce27bf6b8cdf1aa5b2b0ed
+  HTAutocompleteTextField: 40b3680e7986d8ed70e41452bce6c82ffa401f9d
+  iCarousel: dace1cb858e3f4dc2614bee3201041247f82feda
+  IQKeyboardManager: 437647780f4de0947e798df33e3e8ae208d718a5
+  JSBadgeView: 08284afc9d0eb60069674e517cac2d37d4319208
+  KASlideShow: a2c01f5fc5fdb19444ada4ef6c2c138f4336c4b9
+  libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
+  LinqToObjectiveC: 768f98c62d5b57cb6bdb7ab869e33d0a7a2da29c
+  Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
+  MZAppearance: c2937318234fd782e900fb178942278881ac5490
+  MZFormSheetController: e3c0accfab12ed1f9ddf2c61bb8c0abfc6b3f87b
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
+  ReactiveCocoa: cbe3b5eae464aa72a348a7323996b171728a9e71
+  RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
+  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  SevenSwitch: e992e56e2e7f401eb00538b9fa92bf848bacbe27
+  SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
+  SZTextView: c814e6dcb2303e3e79feb0fd27cf44d74e3c59a6
+  UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
+  UIAlertController+Blocks: 45787b973b5f2f4ca4f01bc76f4175481ce059b3
+  ZLPromptUserReview: 5bdd576d6d85db223579c5ace7583e0b77da63be
 
 COCOAPODS: 0.36.0

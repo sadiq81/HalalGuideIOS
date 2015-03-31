@@ -25,7 +25,7 @@
 @property(strong, nonatomic) UIView *blockingView;
 @property(strong, nonatomic) HGImagePickerView *imagePickerView;
 @property(strong, nonatomic) UICollectionView *collectionView;
-@property(strong, nonatomic) BaseViewModel *viewModel;
+@property(strong, nonatomic) HGBaseViewModel *viewModel;
 
 @property(strong, nonatomic) MASConstraint *imagePickerViewBottom;
 
@@ -36,7 +36,7 @@
 
 }
 
-- (instancetype)initWithViewModel:(BaseViewModel *)viewModel {
+- (instancetype)initWithViewModel:(HGBaseViewModel *)viewModel {
     self = [super init];
     if (self) {
 
@@ -53,7 +53,7 @@
 }
 
 
-+ (instancetype)controllerWithViewModel:(BaseViewModel *)viewModel {
++ (instancetype)controllerWithViewModel:(HGBaseViewModel *)viewModel {
     return [[self alloc] initWithViewModel:viewModel];
 }
 

@@ -4,10 +4,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseViewModel.h"
+#import "HGBaseViewModel.h"
 #import "LocationDetailViewModel.h"
 
-@interface FrontPageViewModel : BaseViewModel
+@interface FrontPageViewModel : HGBaseViewModel
 
 @property(nonatomic, readonly) NSArray *locations;
 

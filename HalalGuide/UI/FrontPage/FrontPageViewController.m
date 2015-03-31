@@ -15,6 +15,7 @@
 #import "Masonry/Masonry.h"
 #import "ButtonView.h"
 #import "HGImagePickerController.h"
+#import "ENumberViewController.h"
 
 @interface FrontPageViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) UIView *topView;
@@ -71,13 +72,16 @@
     self.shopView = [[ButtonView alloc] initWithButtonImageName:@"shop" andLabelText:@"FrontPageViewController.label.shop" andTapHandler:[self tapHandlerForType:LocationTypeShop]];
     [self.topView addSubview:self.shopView];
 
-    self.eNumberView = [[ButtonView alloc] initWithButtonImageName:@"ENumber" andLabelText:@"FrontPageViewController.label.enumber" andTapHandler:nil];
+    self.eNumberView = [[ButtonView alloc] initWithButtonImageName:@"ENumber" andLabelText:@"FrontPageViewController.label.enumber" andTapHandler:^{
+        ENumberViewController *controller = [[ENumberViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:true];
+    }];
     [self.topView addSubview:self.eNumberView];
 
     self.eatView = [[ButtonView alloc] initWithButtonImageName:@"dining" andLabelText:@"FrontPageViewController.label.eat" andTapHandler:[self tapHandlerForType:LocationTypeDining]];
     [self.topView addSubview:self.eatView];
 
-    self.mosqueView = [[ButtonView alloc] initWithButtonImageName:@"mosque" andLabelText:@"FrontPageViewController.label.mosque" andTapHandler:[self tapHandlerForType:LocationTypeShop]];
+    self.mosqueView = [[ButtonView alloc] initWithButtonImageName:@"mosque" andLabelText:@"FrontPageViewController.label.mosque" andTapHandler:[self tapHandlerForType:LocationTypeMosque]];
     [self.topView addSubview:self.mosqueView];
 
     self.settingsView = [[ButtonView alloc] initWithButtonImageName:@"Indstillinger" andLabelText:@"FrontPageViewController.label.settings" andTapHandler:nil];
@@ -104,7 +108,6 @@
         LocationViewController *viewController = [LocationViewController controllerWithViewModel:shopModel];
         [self.navigationController pushViewController:viewController animated:true];
     };
-
     return handler;
 }
 

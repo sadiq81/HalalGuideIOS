@@ -4,8 +4,8 @@
 //
 
 #import "FrontPageViewModel.h"
-#import "LocationService.h"
-#import "ErrorReporting.h"
+#import "HGLocationService.h"
+#import "HGErrorReporting.h"
 
 @interface FrontPageViewModel () {
 }
@@ -36,11 +36,11 @@
 - (void)refreshLocations {
 
     self.fetchCount++;
-    [[LocationService instance] lastTenLocations:^(NSArray *objects, NSError *error) {
+    [[HGLocationService instance] lastTenLocations:^(NSArray *objects, NSError *error) {
         self.fetchCount--;
 
         if ((self.error = error)) {
-            [[ErrorReporting instance] reportError:error];
+            [[HGErrorReporting instance] reportError:error];
         } else {
             self.locations = objects;
         }

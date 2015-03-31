@@ -6,16 +6,19 @@
 #import <UIKit/UIKit.h>
 #import <SDWebImage/SDWebImageManager.h>
 #import "ReviewDetailViewModel.h"
-#import "PictureService.h"
+#import "HGPictureService.h"
 #import "PFUser+Extension.h"
+#import "HGDateFormatter.h"
 
 @interface ReviewDetailViewModel () {
 }
 @property(nonatomic) Review *review;
 @property(strong, nonatomic) UIImage *submitterImage;
+@property(strong, nonatomic) UIImage *submitterImageLarge;
 @property(strong, nonatomic) NSString *submitterName;
 @property(strong, nonatomic) NSNumber *rating;
 @property(strong, nonatomic) NSString *reviewText;
+@property(strong, nonatomic) NSString *date;
 
 @end
 
@@ -41,6 +44,7 @@
 
     self.rating = self.review.rating;
     self.reviewText = self.review.review;
+    self.date = [[HGDateFormatter instance] stringFromDate:self.review.createdAt];
 
     [[PFUser query] getObjectInBackgroundWithId:self.review.submitterId block:^(PFObject *object, NSError *error) {
         PFUser *user = (PFUser *) object;
@@ -48,6 +52,12 @@
         [manager downloadImageWithURL:[user facebookProfileUrlSmall] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             if (image) {
                 self.submitterImage = image;
+            }
+        }];
+
+        [manager downloadImageWithURL:[user facebookProfileUrl] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            if (image) {
+                self.submitterImageLarge = image;
             }
         }];
         self.submitterName = [user facebookName];

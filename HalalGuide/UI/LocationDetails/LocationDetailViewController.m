@@ -74,7 +74,7 @@
 #pragma mark - Hints
 
 - (void)setupHints {
-    if (![[HalalGuideOnboarding instance] wasOnBoardingShow:kDiningDetailAddressTelephoneOptionsOnBoardingKey]) {
+    if (![[HGOnboarding instance] wasOnBoardingShow:kDiningDetailAddressTelephoneOptionsOnBoardingKey]) {
         [self displayHintForView:self.header.headerTopView.road withHintKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey preferedPositionOfText:HintPositionBelow];
     }
 }
@@ -164,7 +164,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
     [self.reviews deselectRowAtIndexPath:indexPath animated:false];
+
+    ReviewDetailViewModel *reviewModel = [self.viewModel getReviewDetailViewModel:indexPath.item];
+    ReviewDetailViewController *controller = [ReviewDetailViewController controllerWithViewModel:reviewModel];
+    [self.navigationController pushViewController:controller animated:true];
 }
 
 - (void)openMaps:(UITapGestureRecognizer *)recognizer {
@@ -253,11 +258,7 @@
         controller.viewModel = viewModel1;
     }
     else if ([segue.identifier isEqualToString:@"ReviewDetails"]) {
-        NSIndexPath *selected = [self.reviews indexPathForSelectedRow];
-        Review *review = [[self.viewModel reviews] objectAtIndex:selected.item];
-        ReviewDetailViewModel *viewModel1 = [[ReviewDetailViewModel alloc] initWithReview:review];
-        ReviewDetailViewController *controller = (ReviewDetailViewController *) segue.destinationViewController;
-        controller.viewModel = viewModel1;
+
     }
 }
 
@@ -285,7 +286,7 @@
         make.height.equalTo(@(428));
     }];
 
-     [self.reviews sizeHeaderToFit];
+    [self.reviews sizeHeaderToFit];
 
     [self.reviews mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);

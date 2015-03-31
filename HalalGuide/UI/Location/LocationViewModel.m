@@ -4,12 +4,12 @@
 //
 
 
-#import "LocationService.h"
+#import "HGLocationService.h"
 #import "LocationViewModel.h"
 #import "MapKit/MapKit.h"
 #import "NSMutableString+Extensions.h"
-#import "ErrorReporting.h"
-#import "HalalGuideSettings.h"
+#import "HGErrorReporting.h"
+#import "HGSettings.h"
 #import "LocationDetailViewModel.h"
 
 @interface LocationViewModel () {
@@ -31,12 +31,12 @@
     if (self) {
         self.locationType = aLocationType;
 
-        maximumDistance = (int) [HalalGuideSettings instance].distanceFilter;
-        showPork = [HalalGuideSettings instance].porkFilter;
-        showAlcohol = [HalalGuideSettings instance].alcoholFilter;
-        showNonHalal = [HalalGuideSettings instance].halalFilter;
-        categories = [HalalGuideSettings instance].categoriesFilter;
-        shopCategories = [HalalGuideSettings instance].shopCategoriesFilter;
+        maximumDistance = (int) [HGSettings instance].distanceFilter;
+        showPork = [HGSettings instance].porkFilter;
+        showAlcohol = [HGSettings instance].alcoholFilter;
+        showNonHalal = [HGSettings instance].halalFilter;
+        categories = [HGSettings instance].categoriesFilter;
+        shopCategories = [HGSettings instance].shopCategoriesFilter;
         mapLocations = [NSArray new];
         listLocations = [NSArray new];
         page = 0;
@@ -152,12 +152,12 @@
 - (void)refreshLocations {
 
     self.fetchCount++;
-    [[LocationService instance] locationsByQuery:self.query onCompletion:^(NSArray *objects, NSError *error) {
+    [[HGLocationService instance] locationsByQuery:self.query onCompletion:^(NSArray *objects, NSError *error) {
 
         self.fetchCount--;
 
         if ((self.error = error)) {
-            [[ErrorReporting instance] reportError:error];
+            [[HGErrorReporting instance] reportError:error];
         } else if (self.locationPresentation == LocationPresentationList) {
             self.listLocations = (self.page == 0) ? objects : [self.listLocations arrayByAddingObjectsFromArray:objects];
         } else if (self.locationPresentation == LocationPresentationMap) {

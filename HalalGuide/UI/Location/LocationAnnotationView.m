@@ -5,7 +5,7 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "LocationAnnotationView.h"
-#import "PictureService.h"
+#import "HGPictureService.h"
 #import "LocationAnnotation.h"
 #import "LocationPicture.h"
 
@@ -37,7 +37,7 @@
 
 - (void)configureLocation {
 
-    [[PictureService instance] thumbnailForLocation:((LocationAnnotation *) self.annotation).location onCompletion:^(NSArray *objects, NSError *error) {
+    [[HGPictureService instance] thumbnailForLocation:((LocationAnnotation *) self.annotation).location onCompletion:^(NSArray *objects, NSError *error) {
         if (objects != nil && [objects count] == 1) {
             LocationPicture *picture = [objects firstObject];
             [self.thumbnail sd_setImageWithURL:[[NSURL alloc] initWithString:picture.thumbnail.url]];

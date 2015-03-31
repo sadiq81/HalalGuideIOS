@@ -7,11 +7,9 @@
 #import <UIKit/UIKit.h>
 #import "UIViewController+Extension.h"
 
-@interface ENumberViewController : UIViewController<UIWebViewDelegate>{
+@interface ENumberViewController : UIViewController{
     
 }
-
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 
 @end

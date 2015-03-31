@@ -4,15 +4,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseViewModel.h"
+#import "HGBaseViewModel.h"
 
 @interface HGImagePickerController : UIViewController
 
-@property(strong, nonatomic, readonly) BaseViewModel *viewModel;
+@property(strong, nonatomic, readonly) HGBaseViewModel *viewModel;
 
-- (instancetype)initWithViewModel:(BaseViewModel *)viewModel;
+- (instancetype)initWithViewModel:(HGBaseViewModel *)viewModel;
 
-+ (instancetype)controllerWithViewModel:(BaseViewModel *)viewModel;
++ (instancetype)controllerWithViewModel:(HGBaseViewModel *)viewModel;
 
 
 @end

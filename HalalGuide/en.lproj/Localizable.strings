@@ -268,7 +268,8 @@
 "LocationDetailViewController.button.add.review" = "Add review";
 "LocationDetailViewController.button.add.picture" = "Add picture";
 "LocationDetailViewController.label.no.reviews" = "There are no reviews for this location yet, you could be the first?";
-"LocationDetailViewController.label.no.pictures" = "There are no pictures for this location yet, you could be the first?";
+
+"HGLocationDetailsPictureView.label.no.pictures" = "There are no pictures for this location yet, you could be the first?";
 
 "HGImagePickerView.button.approve" = "Add 1 picture";
 "HGImagePickerView.button.approve.multiple" = "Add %lu pictures";

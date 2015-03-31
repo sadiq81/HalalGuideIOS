@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "AddressService.h"
+#import "HGAddressService.h"
 
 @interface HalalGuideTests : XCTestCase
 
@@ -28,14 +28,14 @@
 
 - (void)testExample {
     // This is an example of a functional test case.
-//    [[AddressService instance] doesAddressExist:@"Humlebækgade" :@"16" :@"2200" :^(Adgangsadresse *address) {
+//    [[HGAddressService instance] doesAddressExist:@"Humlebækgade" :@"16" :@"2200" :^(HGAdgangsadresse *address) {
 //
 //    }];
-//    [[AddressService instance] cityNameFor:@"2200" :^(NSString *cityName) {
+//    [[HGAddressService instance] cityNameFor:@"2200" :^(NSString *cityName) {
 //
 //    }];
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:55.690392 longitude:12.542331];
-    [AddressService addressNearPosition:loc onCompletion:^(NSArray *address) {
+    [HGAddressService addressNearPosition:loc onCompletion:^(NSArray *address) {
 
     }];
 }

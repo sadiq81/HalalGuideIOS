@@ -4,7 +4,7 @@
 //
 
 #import "UIView+Extensions.h"
-#import "HalalGuideOnboarding.h"
+#import "HGOnboarding.h"
 #import "UIImage+Transformation.h"
 
 

@@ -6,14 +6,15 @@
 #import <Masonry/View+MASAdditions.h>
 #import "LocationCell.h"
 #import "UIImageView+WebCache.h"
-#import "PictureService.h"
-#import "HalalGuideNumberFormatter.h"
+#import "HGPictureService.h"
+#import "HGNumberFormatter.h"
 #import "UIImageView+UIActivityIndicatorForSDWebImage.h"
-#import "AddressService.h"
+#import "HGAddressService.h"
+#import "AsyncImageView.h"
 
 
 @interface LocationCell ()
-@property(nonatomic, strong) UIImageView *thumbnail;
+@property(nonatomic, strong) AsyncImageView *thumbnail;
 @property(nonatomic, strong) UILabel *distance;
 @property(nonatomic, strong) UILabel *km;
 @property(nonatomic, strong) UILabel *name;
@@ -37,9 +38,12 @@
     }
     return self;
 }
+
 - (void)setupViews {
-    self.thumbnail = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.thumbnail = [[AsyncImageView alloc] initWithFrame:CGRectZero];
     self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
+    self.thumbnail.showActivityIndicator = true;
+    self.thumbnail.activityIndicatorStyle = UIActivityIndicatorViewStyleGray;
     [self.contentView addSubview:self.thumbnail];
 
     self.distance = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];
@@ -79,7 +83,7 @@
     RAC(self.distance, text) = RACObserve(self, viewModel.distance);
     RAC(self.address, text) = RACObserve(self, viewModel.address);
     RAC(self.postalCode, text) = RACObserve(self, viewModel.postalCode);
-    RAC(self.thumbnail, image, [UIImage imageNamed:[[self class] placeholderImageName]]) = RACObserve(self, viewModel.thumbnail);
+    RAC(self.thumbnail, imageURL) = [RACObserve(self, viewModel.thumbnail) ignore:nil];
 }
 
 - (void)configureForViewModel:(LocationDetailViewModel *)viewModel {
@@ -89,7 +93,7 @@
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
-    [self.thumbnail sd_cancelCurrentImageLoad];
+    [self.thumbnail cancelCurrentImageLoad];
 }
 
 static const int standardLabelWidth = 100;

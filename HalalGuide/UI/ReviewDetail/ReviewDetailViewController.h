@@ -22,4 +22,9 @@
 
 @property(strong, nonatomic) ReviewDetailViewModel *viewModel;
 
+- (instancetype)initWithViewModel:(ReviewDetailViewModel *)viewModel;
+
++ (instancetype)controllerWithViewModel:(ReviewDetailViewModel *)viewModel;
+
+
 @end

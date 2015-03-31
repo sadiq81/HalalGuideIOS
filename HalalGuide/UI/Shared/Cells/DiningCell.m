@@ -7,13 +7,13 @@
 #import <IQKeyboardManager/IQUIView+Hierarchy.h>
 #import <Masonry/View+MASAdditions.h>
 #import "DiningCell.h"
-#import "HalalGuideImageViews.h"
+#import "HGImageViews.h"
 #import "LocationPicture.h"
 #import "UIView+Extensions.h"
 #import "UIImageView+WebCache.h"
-#import "HalalGuideImageViews.h"
+#import "HGImageViews.h"
 #import "HGLabels.h"
-#import "HalalGuideOnboarding.h"
+#import "HGOnboarding.h"
 #import "UIView+Extensions.h"
 
 @interface DiningCell ()

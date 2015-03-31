@@ -140,6 +140,7 @@
     }];
 
     [self.category mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.rating.mas_bottom).offset(4);
         make.bottom.equalTo(self.porkLabel.mas_bottom);
         make.left.equalTo(self.mas_left).offset(8);
     }];

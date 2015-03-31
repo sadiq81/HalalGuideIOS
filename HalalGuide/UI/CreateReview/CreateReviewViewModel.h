@@ -4,13 +4,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseViewModel.h"
+#import "HGBaseViewModel.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "Review.h"
 
 @class RACSignal;
 
-@interface CreateReviewViewModel : BaseViewModel
+@interface CreateReviewViewModel : HGBaseViewModel
 
 @property Location *location;
 @property Review *createdReview;

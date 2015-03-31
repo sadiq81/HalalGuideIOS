@@ -9,9 +9,11 @@
 @interface ReviewDetailViewModel : NSObject
 
 @property(strong, nonatomic, readonly) UIImage *submitterImage;
+@property(strong, nonatomic, readonly) UIImage *submitterImageLarge;
 @property(strong, nonatomic, readonly) NSString *submitterName;
 @property(strong, nonatomic, readonly) NSNumber *rating;
 @property(strong, nonatomic, readonly) NSString *reviewText;
+@property(strong, nonatomic, readonly) NSString *date;
 
 - (instancetype)initWithReview:(Review *)review;
 

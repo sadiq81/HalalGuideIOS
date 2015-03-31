@@ -4,6 +4,7 @@
 //
 
 #import <Masonry/View+MASAdditions.h>
+#import <AsyncImageView/AsyncImageView.h>
 #import "HGLocationDetailsSubmitterView.h"
 #import "HGLabels.h"
 #import "ReactiveCocoa.h"
@@ -11,8 +12,8 @@
 @interface HGLocationDetailsSubmitterView ()
 
 @property(strong) UILabel *submitterHeadLine;
+@property(strong) AsyncImageView *submitterImage;
 @property(strong) UILabel *submitterName;
-@property(strong) UIImageView *submitterImage;
 
 
 @end
@@ -37,7 +38,7 @@
 }
 
 - (void)setupViews {
-    self.submitterImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.submitterImage = [[AsyncImageView alloc] initWithFrame:CGRectZero];
     [self addSubview:self.submitterImage];
 
     self.submitterHeadLine = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
@@ -49,7 +50,7 @@
 }
 
 - (void)setupViewModel {
-    RAC(self.submitterImage, image) = RACObserve(self, viewModel.submitterImage);
+    RAC(self.submitterImage, imageURL) = RACObserve(self, viewModel.submitterImage);
     RAC(self.submitterName, text) = RACObserve(self, viewModel.submitterName);
 }
 

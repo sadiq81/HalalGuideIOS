@@ -7,7 +7,7 @@
 #import <ALActionBlocks/UIGestureRecognizer+ALActionBlocks.h>
 #import "UIViewController+Extension.h"
 #import "UIImage+Transformation.h"
-#import "HalalGuideOnboarding.h"
+#import "HGOnboarding.h"
 #import "UILabel+Extensions.h"
 #import <EXTScope.h>
 
@@ -58,7 +58,7 @@
 
 - (void)dismissHintView:(NSString *)hintKey {
 
-    [[HalalGuideOnboarding instance] setOnBoardingShown:hintKey];
+    [[HGOnboarding instance] setOnBoardingShown:hintKey];
     [UIView animateWithDuration:0.5 animations:^{
         self.hintView.alpha = 0;
     }                completion:^(BOOL finished) {

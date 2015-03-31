@@ -5,11 +5,11 @@
 
 #import <Foundation/Foundation.h>
 #import <HTAutocompleteTextField/HTAutocompleteTextField.h>
-#import "BaseViewModel.h"
-#import "Adgangsadresse.h"
+#import "HGBaseViewModel.h"
+#import "HGAdgangsadresse.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-@interface CreateLocationViewModel : BaseViewModel <CategoriesViewModel>
+@interface CreateLocationViewModel : HGBaseViewModel <CategoriesViewModel>
 
 @property (nonatomic) LocationType locationType;
 @property(nonatomic, retain) NSDictionary *streetNumbers;

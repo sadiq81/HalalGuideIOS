@@ -6,9 +6,9 @@
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import "SettingsViewController.h"
 #import "LocationViewModel.h"
-#import "HalalGuideSettings.h"
+#import "HGSettings.h"
 #import "SDImageCache.h"
-#import "HalalGuideOnboarding.h"
+#import "HGOnboarding.h"
 #import "UIView+Extensions.h"
 #import "UIAlertController+Blocks.h"
 #import "UIViewController+Extension.h"
@@ -22,12 +22,12 @@
     [super viewDidLoad];
 
     [[self.resetFilter rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [HalalGuideSettings instance].distanceFilter = 5;
-        [HalalGuideSettings instance].porkFilter = true;
-        [HalalGuideSettings instance].alcoholFilter = true;
-        [HalalGuideSettings instance].halalFilter = true;
-        [HalalGuideSettings instance].categoriesFilter = [NSMutableArray new];
-        [HalalGuideSettings instance].shopCategoriesFilter = [NSMutableArray new];
+        [HGSettings instance].distanceFilter = 5;
+        [HGSettings instance].porkFilter = true;
+        [HGSettings instance].alcoholFilter = true;
+        [HGSettings instance].halalFilter = true;
+        [HGSettings instance].categoriesFilter = [NSMutableArray new];
+        [HGSettings instance].shopCategoriesFilter = [NSMutableArray new];
     }];
 
     [[self.restorePurchases rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -45,7 +45,7 @@
     }];
 
     [[self.resetIntro rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [[HalalGuideOnboarding instance] resetOnBoarding];
+        [[HGOnboarding instance] resetOnBoarding];
     }];
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];

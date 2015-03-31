@@ -6,8 +6,8 @@
 #import <UIKit/UIKit.h>
 #import "CreateReviewViewModel.h"
 #import "Review.h"
-#import "ReviewService.h"
-#import "ErrorReporting.h"
+#import "HGReviewService.h"
+#import "HGErrorReporting.h"
 
 
 @implementation CreateReviewViewModel {
@@ -39,10 +39,10 @@
     review.creationStatus = @(CreationStatusAwaitingApproval);
 
     self.saving = true;
-    [[ReviewService instance] saveReview:review onCompletion:^(BOOL succeeded, NSError *error) {
+    [[HGReviewService instance] saveReview:review onCompletion:^(BOOL succeeded, NSError *error) {
         self.saving = false;
         if ((self.error = error)) {
-            [[ErrorReporting instance] reportError:error];
+            [[HGErrorReporting instance] reportError:error];
         } else {
             self.createdReview = review;
         }

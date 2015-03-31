@@ -4,18 +4,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseViewModel.h"
+#import "HGBaseViewModel.h"
 #import "LocationPicture.h"
 #import "ReviewDetailViewModel.h"
 
-@interface LocationDetailViewModel : BaseViewModel
+@interface LocationDetailViewModel : HGBaseViewModel
 
 @property(nonatomic, retain, readonly) Location *location;
 @property(nonatomic, readonly) NSArray *locationPictures;
 @property(nonatomic, readonly) NSArray *reviews;
 @property (nonatomic, readonly) PFUser *user;
 
-@property (nonatomic, strong, readonly) UIImage *thumbnail;
+@property (nonatomic, strong, readonly) NSURL *thumbnail;
 @property (nonatomic, strong, readonly) NSString *distance;
 @property (nonatomic, strong, readonly) NSString *address;
 @property (nonatomic, strong, readonly) NSString *postalCode;
@@ -33,7 +33,7 @@
 @property(nonatomic, readonly, strong) UIImage *languageImage;
 @property(nonatomic, readonly, strong) NSString *languageString;
 
-@property(nonatomic, readonly, strong) UIImage *submitterImage;
+@property(nonatomic, readonly, strong) NSURL *submitterImage;
 @property(nonatomic, readonly, strong) NSString *submitterName;
 
 

@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "BaseViewModel.h"
+#import "HGBaseViewModel.h"
 
 
 @interface CategoriesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
