@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>dk.eazyit.halalguide.filter.maximum.distance.shop</key>
+	<integer>5</integer>
+	<key>dk.eazyit.halalguide.filter.maximum.distance.dining</key>
+	<integer>5</integer>
+	<key>dk.eazyit.halalguide.filter.maximum.distance.mosque</key>
+	<integer>5</integer>
+	<key>dk.eazyit.halalguide.filter.halal</key>
+	<integer>0</integer>
+	<key>dk.eazyit.halalguide.filter.alcohol</key>
+	<integer>0</integer>
+	<key>dk.eazyit.halalguide.filter.shop</key>
+	<array/>
+	<key>dk.eazyit.halalguide.filter.dining</key>
+	<array/>
+	<key>dk.eazyit.halalguide.filter.pork</key>
+	<integer>0</integer>
+	<key>dk.eazyit.halalguide.filter.language</key>
+	<integer>0</integer>
+</dict>
+</plist>

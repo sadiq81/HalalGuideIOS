@@ -4,17 +4,8 @@
 //
 
 #import <ParseUI/ParseUI.h>
-#import <IQKeyboardManager/IQUIView+Hierarchy.h>
 #import <Masonry/View+MASAdditions.h>
 #import "DiningCell.h"
-#import "HGImageViews.h"
-#import "LocationPicture.h"
-#import "UIView+Extensions.h"
-#import "UIImageView+WebCache.h"
-#import "HGImageViews.h"
-#import "HGLabels.h"
-#import "HGOnboarding.h"
-#import "UIView+Extensions.h"
 
 @interface DiningCell ()
 
@@ -125,7 +116,11 @@
 }
 
 + (NSString *)placeholderImageName {
-    return @"dining";
+    return kDiningImageIdentifier;
+}
+
++(NSString *)reuseIdentifier {
+    return kDiningReuseIdentifier;
 }
 
 @end

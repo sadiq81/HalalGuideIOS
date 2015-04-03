@@ -9,6 +9,10 @@
 #import "LocationAnnotation.h"
 #import "LocationPicture.h"
 
+@interface LocationAnnotationView ()
+
+@property(nonatomic, strong) UIImageView *imageView;
+@end
 
 @implementation LocationAnnotationView {
 
@@ -26,10 +30,15 @@
         self.rightCalloutAccessoryView = rightButton;
 
         UIImageView *profileIconView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 33, 33)];
-        profileIconView.contentMode = UIViewContentModeScaleAspectFit;
+        profileIconView.contentMode = UIViewContentModeScaleAspectFill;
         self.leftCalloutAccessoryView = self.thumbnail = profileIconView;
 
-        self.image = [UIImage imageNamed:@"diningSmall"];
+        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(-15, -15, 30, 30)];
+        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        self.imageView.image = [UIImage imageNamed:((LocationAnnotation *) self.annotation).location.imageForType];
+        [self addSubview:self.imageView];
+
+
     }
 
     return self;

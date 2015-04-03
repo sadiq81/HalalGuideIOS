@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
+
 #import "Location.h"
 
 @implementation Location
@@ -51,12 +52,29 @@
 - (NSString *)categoriesString {
     NSMutableString *categoryAsString = [[NSMutableString alloc] init];
     for (NSNumber *number in self.categories) {
-        NSString *string = NSLocalizedString(categoryString([number integerValue]), nil);
+        NSString *string = nil;
+        switch (self.locationType.intValue) {
+            case LocationTypeShop: {
+                string = NSLocalizedString(ShopString([number integerValue]), nil);
+                break;
+            };
+            case LocationTypeDining: {
+                string = NSLocalizedString(CategoryString([number integerValue]), nil);
+                break;
+            };
+            case LocationTypeMosque: {
+                string = NSLocalizedString(LanguageString([number integerValue]), nil);
+                break;
+            };
+        }
         [categoryAsString appendString:[NSString stringWithFormat:@"%@, ", string]];
     }
+
     if ([categoryAsString length] > 0) {
         [categoryAsString deleteCharactersInRange:NSMakeRange([categoryAsString length] - 2, 2)];
     }
+
+
     return categoryAsString;
 }
 
@@ -109,6 +127,32 @@
 
     return _open;
     */
+}
+
+- (NSString *)reuseIdentifier {
+    switch (self.locationType.intValue) {
+        case LocationTypeShop:
+            return kShopReuseIdentifier;
+        case LocationTypeDining:
+            return kDiningReuseIdentifier;
+        case LocationTypeMosque:
+            return kMosqueReuseIdentifier;
+        default:
+            return nil;
+    }
+}
+
+- (NSString *)imageForType {
+    switch (self.locationType.intValue) {
+        case LocationTypeShop:
+            return kShopImageIdentifier;
+        case LocationTypeDining:
+            return kDiningImageIdentifier;
+        case LocationTypeMosque:
+            return kMosqueImageIdentifier;
+        default:
+            return nil;
+    }
 }
 
 

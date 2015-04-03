@@ -23,19 +23,16 @@
 #import "HGLogInViewController.h"
 #import "AppDelegate.h"
 
-static CLLocation *currentLocation;
-
 @implementation HGBaseViewModel {
     UIViewController *presentingViewController;
 }
 
 
-@synthesize saving, progress, fetchCount, userLocation, error;
+@synthesize saving, progress, fetchCount, error;
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        userLocation = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager.location;
         fetchCount = 0;
     }
     return self;

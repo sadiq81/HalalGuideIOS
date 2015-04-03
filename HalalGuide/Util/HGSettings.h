@@ -4,47 +4,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseEntity.h"
 
 
 @interface HGSettings : NSObject
 
 @property NSUserDefaults *defaults;
 
+@property(nonatomic, strong) NSNumber *maximumDistanceShop;
+@property(nonatomic, strong) NSNumber *maximumDistanceDining;
+@property(nonatomic, strong) NSNumber *maximumDistanceMosque;
+
+@property(nonatomic, strong) NSNumber *halalFilter;
+@property(nonatomic, strong) NSNumber *alcoholFilter;
+@property(nonatomic, strong) NSNumber *porkFilter;
+
+@property(nonatomic, strong) NSMutableArray *categoriesFilter;
+@property(nonatomic, strong) NSMutableArray *shopCategoriesFilter;
+
+@property (nonatomic) Language language;
+
 + (HGSettings *)instance;
 
-- (NSUInteger)distanceFilter;
-
-- (void)setAlcoholFilter:(BOOL)alcohol;
-
-- (BOOL)porkFilter;
-
-- (void)setPorkFilter:(BOOL)pork;
-
-- (NSMutableArray *)categoriesFilter;
-
-- (void)setCategoriesFilter:(NSArray *)categories;
-
-- (NSMutableArray *)shopCategoriesFilter ;
-
-- (void)setShopCategoriesFilter:(NSArray *)shopCategories ;
-
-- (NSDate *)locationLastUpdatedAt;
-
-- (void)setLocationsLastUpdatedAt;
-
-- (NSDate *)picturesLastUpdatedAt;
-
-- (void)setPicturesLastUpdatedAt;
-
-- (NSDate *)reviewsLastUpdatedAt;
-
-- (void)setReviewsLastUpdatedAt;
-
-- (void)setDistanceFilter:(NSUInteger)distance;
-
-- (BOOL)halalFilter;
-
-- (void)setHalalFilter:(BOOL)halal;
-
-- (BOOL)alcoholFilter;
 @end

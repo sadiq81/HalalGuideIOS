@@ -147,7 +147,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "diningCellPorkOnBoarding" = "Viser om der også serveres gris";
 "diningCellAlcoholOnBoarding" = "Viser om der også serveres alkohol";
-"diningCellHalalOnBoarding" =  "Viser om der udelukkende serveres halal kød";
+"diningCellHalalOnBoarding" =  "Viser om der serveres ikke halal kød";
 
 "diningDetailAddressTelephoneOptionsOnBoarding" = "Tryk på adressen for at få rutevejledning eller ringe til stedet";
 
@@ -269,9 +269,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "LocationDetailViewController.button.add.review" = "Tilføj anmeldelse";
 "LocationDetailViewController.button.add.picture" = "Tilføj billede";
 "LocationDetailViewController.label.no.reviews" = "Der findes ingen anmeldelser for dette sted endnu. Skal du være den første?";
-
 "HGLocationDetailsPictureView.label.no.pictures" = "Der findes ingen billeder for dette sted endnu. Skal du være den første?";
-
 
 "HGImagePickerView.button.approve" = "Tilføj 1 billed";
 "HGImagePickerView.button.approve.multiple" = "Tilføj %lu billeder";
@@ -285,3 +283,17 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "SettingsViewController.button.reset.intro" = "Nulstil introduktion";
 "SettingsViewController.section.title.support" = "Støt";
 "SettingsViewController.section.title.reset" = "Nulstil";
+
+"HGCategoriesView.button.reset" = "Nulstil";
+"HGCategoriesView.button.chose" = "Vælg";
+"HGCategoriesView.label.categories" = "Kategorier:";
+"HGCategoriesView.label.language" = "Sprog";
+"HGSwitchView.label.pork" = "Vis med gris";
+"HGSwitchView.label.alcohol" = "Vis med alkohol";
+"HGSwitchView.label.halal" = "Vis med ikke halal kød";
+"HGSwitchView.switch.on" = "Ja";
+"HGSwitchView.switch.off" = "Nej";
+
+"FilterLocationViewController.button.dismiss" = "Færdig";
+"FilterLocationViewController.label.max.distance" = "Maksimal afstand";
+"FilterLocationViewController.label.km" = "km";

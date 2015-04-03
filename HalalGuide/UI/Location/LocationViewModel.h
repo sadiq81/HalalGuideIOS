@@ -20,10 +20,10 @@ typedef enum LocationPresentation : int16_t {
 @property(nonatomic) LocationType locationType;
 @property(nonatomic, readonly) NSArray *listLocations;
 @property(nonatomic, readonly) NSArray *mapLocations;
-@property(nonatomic) NSUInteger maximumDistance;
-@property(nonatomic) bool showNonHalal;
-@property(nonatomic) bool showAlcohol;
-@property(nonatomic) bool showPork;
+@property(nonatomic) NSNumber * maximumDistance;
+@property(nonatomic) NSNumber *showNonHalal;
+@property(nonatomic) NSNumber *showAlcohol;
+@property(nonatomic) NSNumber *showPork;
 @property(nonatomic) int page;
 @property(nonatomic) NSString *searchText;
 
@@ -31,9 +31,9 @@ typedef enum LocationPresentation : int16_t {
 @property(nonatomic) PFGeoPoint *southWest;
 @property(nonatomic) PFGeoPoint *northEast;
 
-- (instancetype)initWithLocationType:(LocationType)aLocationType;
+- (instancetype)initWithLocationType:(LocationType)type;
 
-+ (instancetype)modelWithLocationType:(LocationType)locationType;
++ (instancetype)modelWithLocationType:(LocationType)type;
 
 - (LocationDetailViewModel *)viewModelForLocationAtIndex:(NSUInteger)index;
 

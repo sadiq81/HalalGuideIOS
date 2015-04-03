@@ -7,155 +7,194 @@
 //
 
 #import <ALActionBlocks/ALActionBlocks.h>
+#import <Masonry/View+MASAdditions.h>
+#import <MZFormSheetController/MZFormSheetController.h>
 #import "FilterLocationViewController.h"
 #import "LocationViewModel.h"
-#import "MZFormSheetSegue.h"
-#import "IQUIView+Hierarchy.h"
+#import "HGCategoriesView.h"
+#import "HGSwitchView.h"
 #import "CategoriesViewController.h"
-#import "HGSettings.h"
-#import "CreateLocationViewModel.h"
 
+@interface FilterLocationViewController ()
+
+@property(strong, nonatomic) UIToolbar *toolbar;
+@property(strong, nonatomic) UIBarButtonItem *dismiss;
+
+@property(strong, nonatomic) UILabel *distanceHeadline;
+@property(strong, nonatomic) UILabel *distanceLabel;
+@property(strong, nonatomic) UISlider *distanceSlider;
+
+
+@property(strong, nonatomic) HGSwitchView *switchView;
+@property(strong, nonatomic) HGCategoriesView *categoryView;
+@property(strong, nonatomic) UIBarButtonItem *done;
+
+@property(strong, nonatomic) LocationViewModel *viewModel;
+
+@end
 
 @implementation FilterLocationViewController {
 
 }
 
+
 @synthesize viewModel;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (instancetype)initWithViewModel:(LocationViewModel *)model {
+    self = [super init];
+    if (self) {
+        self.viewModel = model;
+        [self setupViews];
+        [self setupToolbar];
+        [self setupViewModel];
+        [self updateViewConstraints];
+    }
 
-    [self setUILabels];
+    return self;
+}
+
+- (void)setupViews {
+
+    self.view.backgroundColor = [UIColor whiteColor];
+
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.toolbar];
+
+    self.dismiss = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"FilterLocationViewController.button.dismiss", nil) style:UIBarButtonItemStylePlain block:nil];
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    [self.toolbar setItems:@[self.dismiss, spacer]];
+
+    self.distanceHeadline = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.distanceHeadline.text = NSLocalizedString(@"FilterLocationViewController.label.max.distance", nil);
+    [self.view addSubview:self.distanceHeadline];
+
+    self.distanceSlider = [[UISlider alloc] initWithFrame:CGRectZero];
+    self.distanceSlider.minimumValue = 1;
+    self.distanceSlider.maximumValue = 20;
+    self.distanceSlider.value = self.viewModel.maximumDistance.floatValue;
+    [self.view addSubview:self.distanceSlider];
+
+    self.distanceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.distanceLabel];
+    [self setDistanceLabelText];
+
+    self.switchView = [[HGSwitchView alloc] initWithViewModel:self.viewModel];
+    [self.view addSubview:self.switchView];
+
+    self.categoryView = [[HGCategoriesView alloc] initWithViewModel:self.viewModel];
+    [self.view addSubview:self.categoryView];
+}
+
+- (void)setupToolbar {
 
     @weakify(self)
-    [[self.distanceSlider rac_newValueChannelWithNilValue:nil] subscribeNext:^(NSNumber * value) {
+    [self.dismiss setBlock:^(id weakSender) {
+        @strongify(self);
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+            [self.viewModel refreshLocations];
+        }];
+    }];
+}
+
+- (void)setupViewModel {
+
+    @weakify(self)
+    [[[[[self.distanceSlider rac_signalForControlEvents:UIControlEventValueChanged] skip:1] map:^id(UISlider *slider) {
         @strongify(self)
-        self.distanceSlider.value = value.intValue;
         [self setDistanceLabelText];
-    }];
-
-    [[self.reset rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(NSNumber * value) {
+        return @(slider.value);
+    }] throttle:1] subscribeNext:^(NSNumber *value) {
         @strongify(self)
-                switch (self.viewModel.locationType){
-            case LocationTypeDining:{
-                [self.viewModel.categories removeAllObjects];
-                break;
-            }
-            case LocationTypeShop:{
-                [self.viewModel.shopCategories removeAllObjects];
-                break;
-            }
-            case LocationTypeMosque:{
-                break;
-            }
-        }
-        [self setCountLabelText];
+        [self.viewModel setMaximumDistance:value];
     }];
 
-    [[self.distanceSlider rac_newValueChannelWithNilValue:nil] subscribeNext:^(NSNumber * value) {
+    [[self.categoryView.choose rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        self.distanceSlider.value = value.intValue;
-        [self setDistanceLabelText];
-    }];
 
-    self.done.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self)
-        [self dismissViewControllerAnimated:true completion:nil];
-        return [RACSignal empty];
-    }];
+        CategoriesViewController *viewController = [CategoriesViewController controllerWithViewModel:self.viewModel];
+        MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:viewController];
+        formSheet.presentedFSViewController.view.clipsToBounds = false;
 
-    [self setupLocationType];
-}
-
-- (void)setupLocationType {
-
-    if (self.viewModel.locationType != LocationTypeDining) {
-        [self.switchView removeFromSuperview];
-        self.categoryView.frame = CGRectMake(self.categoryView.x, self.distanceSlider.y + self.distanceSlider.height + 8, self.categoryView.width, self.categoryView.height);
-
-        if (self.viewModel.locationType == LocationTypeMosque) {
-            [self.reset removeFromSuperview];
-            self.categories.text = @"";
-            self.categories.text = NSLocalizedString(@"language", nil);
-        } else if (self.viewModel.locationType == LocationTypeShop) {
-
-        }
-    }
-}
-
-- (void)setUILabels {
-    [self setCountLabelText];
-
-    self.porkSwitch.on = self.viewModel.showPork;
-    self.alcoholSwitch.on = self.viewModel.showAlcohol;
-    self.halalSwitch.on = self.viewModel.showNonHalal;
-    self.distanceSlider.value = self.viewModel.maximumDistance;
-
-    [self setDistanceLabelText];
-}
-
-- (void)setCountLabelText {
-
-    if (self.viewModel.locationType == LocationTypeMosque) {
-        self.countLabel.text = NSLocalizedString(LanguageString(self.viewModel.language), nil);
-    } else if (self.viewModel.locationType == LocationTypeShop) {
-        int count = (int) [self.viewModel.shopCategories count];
-        self.countLabel.text = [NSString stringWithFormat:@"%i", count];
-    } else if (self.viewModel.locationType == LocationTypeDining) {
-        int count = (int) [self.viewModel.categories count];
-        self.countLabel.text = [NSString stringWithFormat:@"%i", count];
-    }
-}
-
-- (void)setDistanceLabelText {
-    if (self.distanceSlider.value != 20) {
-        self.distanceLabel.text = [NSString stringWithFormat:@"%i km", (int) self.distanceSlider.value];
-    } else {
-        self.distanceLabel.text = NSLocalizedString(@"unlimited", nil);
-    }
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    self.viewModel.showPork = [HGSettings instance].porkFilter = self.porkSwitch.on;
-    self.viewModel.showAlcohol = [HGSettings instance].alcoholFilter = self.alcoholSwitch.on;
-    self.viewModel.showNonHalal = [HGSettings instance].halalFilter = self.halalSwitch.on;
-    self.viewModel.maximumDistance = [HGSettings instance].distanceFilter = (NSUInteger) self.distanceSlider.value;
-    [HGSettings instance].categoriesFilter = self.viewModel.categories;
-
-    [self.viewModel refreshLocations];
-}
-
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [super prepareForSegue:segue sender:sender];
-
-    __weak typeof(self) weakSelf = self;
-
-    if ([segue.identifier isEqualToString:@"chooseCategories"]) {
-        CategoriesViewController *destination = (CategoriesViewController *) segue.destinationViewController;
-        destination.viewModel = self.viewModel;
-        destination.locationType = self.viewModel.locationType;
-
-        MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *) segue;
-        MZFormSheetController *formSheet = formSheetSegue.formSheetController;
-        formSheet.presentedFormSheetSize = CGSizeMake(self.view.size.width * 0.8f, self.view.size.height * 0.8f);
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        formSheet.presentedFormSheetSize= CGSizeMake(CGRectGetWidth(screenRect)*0.8, CGRectGetHeight(screenRect)*0.8);
         formSheet.transitionStyle = MZFormSheetTransitionStyleBounce;
         formSheet.cornerRadius = 8.0;
-        formSheet.shouldDismissOnBackgroundViewTap = YES;
+        formSheet.shouldDismissOnBackgroundViewTap = true;
         formSheet.didDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
-            [weakSelf setCountLabelText];
+            [self.categoryView setCountLabelText];
         };
-    }
+
+        [self mz_presentFormSheetController:formSheet animated:YES completionHandler:nil];
+    }];
+
 }
 
-#pragma mark - UINavigationBarDelegate
++ (instancetype)controllerWithViewModel:(LocationViewModel *)viewModel {
+    return [[self alloc] initWithViewModel:viewModel];
+}
 
-- (UIBarPosition)positionForBar:(id <UIBarPositioning>)bar {
-    return UIBarPositionTopAttached;
+
+- (void)setDistanceLabelText {
+        if (self.distanceSlider.value != 20) {
+            self.distanceLabel.text = [NSString stringWithFormat:@"%i km", (int) self.distanceSlider.value];
+        } else {
+            self.distanceLabel.text = NSLocalizedString(@"unlimited", nil);
+        }
+}
+
+- (void)updateViewConstraints {
+
+
+    [self.toolbar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.height.equalTo(@(64));
+    }];
+
+    [self.distanceHeadline mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.toolbar.mas_bottom).offset(20);
+        make.left.equalTo(self.view).offset(8);
+        make.right.equalTo(self.view.mas_centerX);
+    }];
+
+    [self.distanceLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.toolbar.mas_bottom).offset(20);
+        make.right.equalTo(self.view).offset(-8);
+    }];
+
+    [self.distanceSlider mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.distanceLabel.mas_bottom).offset(8);
+        make.left.equalTo(self.view).offset(8);
+        make.right.equalTo(self.view).offset(-8);
+    }];
+
+    [self.switchView mas_updateConstraints:^(MASConstraintMaker *make) {
+
+        if (self.viewModel.locationType != LocationTypeDining) {
+            make.top.equalTo(self.view.mas_bottom);
+        } else {
+            make.top.equalTo(self.distanceSlider.mas_bottom).offset(8);
+            make.left.equalTo(self.view);
+            make.right.equalTo(self.view);
+        }
+    }];
+
+    [self.categoryView mas_updateConstraints:^(MASConstraintMaker *make) {
+        if (self.viewModel.locationType != LocationTypeDining) {
+            make.top.equalTo(self.distanceSlider.mas_bottom).offset(8);
+            make.left.equalTo(self.view);
+            make.right.equalTo(self.view);
+        } else {
+            make.top.equalTo(self.switchView.mas_bottom).offset(8);
+            make.left.equalTo(self.view);
+            make.right.equalTo(self.view);
+        }
+    }];
+
+    [super updateViewConstraints];
 }
 
 
 @end
+

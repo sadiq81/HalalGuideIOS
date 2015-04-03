@@ -27,8 +27,29 @@
     }];
 }
 
+- (void)createUserData {
+    self.preferences = [NSDictionary new];
+    self.favorites = [NSDictionary new];
+}
+
 - (NSDictionary *)facebookUserData {
     return [self valueForKey:@"userData"];
+}
+
+- (NSDictionary *)preferences {
+    return [self valueForKey:@"preferences"];
+}
+
+- (void)setPreferences:(NSDictionary *)preferences {
+    [self setObject:preferences forKey:@"preferences"];
+}
+
+- (NSDictionary *)favorites {
+    return [self valueForKey:@"favorites"];
+}
+
+- (void)setFavorites:(NSDictionary *)favorites {
+    [self setObject:favorites forKey:@"favorites"];
 }
 
 - (NSString *)facebookID {
@@ -62,7 +83,6 @@
     return pictureURL;
 }
 
-//TODO different sizes for cell and view
 - (NSURL *)facebookProfileUrl {
     NSString *facebookID = [self facebookID];
     NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal&return_ssl_resources=1", facebookID]];

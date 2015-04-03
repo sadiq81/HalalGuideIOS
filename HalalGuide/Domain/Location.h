@@ -33,7 +33,7 @@ typedef enum DiningCategory : int16_t {
 
 } DiningCategory;
 
-#define categoryString(enum) [@{@(DiningCategoryAfghan) : @"afghan",@(DiningCategoryAfrican) : @"african",@(DiningCategoryAmerican) : @"american",@(DiningCategoryAmerican) : @"american",@(DiningCategoryArgentine) :@"argentine",\
+#define CategoryString(enum) [@{@(DiningCategoryAfghan) : @"afghan",@(DiningCategoryAfrican) : @"african",@(DiningCategoryAmerican) : @"american",@(DiningCategoryAmerican) : @"american",@(DiningCategoryArgentine) :@"argentine",\
 @(DiningCategoryAsian):@"asian", @(DiningCategoryBelgian) :@"belgian",@( DiningCategoryBrazilian ):@"brazilian",@( DiningCategoryBritish ):@"british",\
 @(DiningCategoryBuffet ):@"buffet",@( DiningCategoryBurger ):@"burger",@( DiningCategoryBakery ):@"bakery",@( DiningCategoryBagel ):@"bagel",\
 @(DiningCategoryBubbleThea ):@"bubbleThea",@( DiningCategoryArabic ):@"arabic",@( DiningCategoryCafe ):@"cafe",@( DiningCategoryCaribbean ):@"caribbean",\
@@ -73,6 +73,15 @@ typedef enum WeekDay : int16_t {
 @(WeekDayFriday) : @"friday",\
 @(WeekDaySaturday) :@"saturday",}  objectForKey :@(enum)]
 
+#define kDiningReuseIdentifier @"dining"
+#define kShopReuseIdentifier @"shop"
+#define kMosqueReuseIdentifier @"mosque"
+
+#define kDiningImageIdentifier @"FrontPageViewController.button.dining"
+#define kShopImageIdentifier @"FrontPageViewController.button.shop\""
+#define kMosqueImageIdentifier @"FrontPageViewController.button.mosque"
+
+
 @interface Location : BaseEntity
 
 @property(nonatomic, retain) NSString *addressCity;
@@ -93,7 +102,7 @@ typedef enum WeekDay : int16_t {
 @property(nonatomic, retain) NSString *telephone;
 @property(nonatomic, retain) NSArray *categories;
 @property(nonatomic) CLLocation *location;
-@property(nonatomic) BOOL open;
+//@property(nonatomic) BOOL open;
 
 @property(nonatomic, retain) NSDictionary *openingHours;
 
@@ -107,6 +116,9 @@ typedef enum WeekDay : int16_t {
 
 - (NSDictionary *)openCloseForWeekDay:(WeekDay)weekDay;
 
+- (NSString *)reuseIdentifier;
+
+- (NSString *)imageForType;
 
 @end
 

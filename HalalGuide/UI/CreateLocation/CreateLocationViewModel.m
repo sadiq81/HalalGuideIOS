@@ -10,6 +10,13 @@
 #import "HGLocationService.h"
 #import "AppDelegate.h"
 #import "HGPictureService.h"
+#import "HGGeoLocationService.h"
+
+@interface CreateLocationViewModel ()
+@property(nonatomic) LocationType locationType;
+@property(nonatomic, strong) NSDictionary *streetNumbers;
+@property(nonatomic, strong) Location *createdLocation;
+@end
 
 @implementation CreateLocationViewModel {
 
@@ -17,9 +24,10 @@
 
 @synthesize locationType, streetNumbers, categories, shopCategories, language;
 
-- (instancetype)init {
+- (instancetype)initWithLocationType:(LocationType)type {
     self = [super init];
     if (self) {
+        locationType = type;
         streetNumbers = [NSDictionary new];
         categories = [[NSMutableArray alloc] init];
         shopCategories = [[NSMutableArray alloc] init];
@@ -45,8 +53,9 @@
 }
 
 - (void)loadAddressesNearPositionOnCompletion:(void (^)(void))completion {
-    CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
-    [HGAddressService addressNearPosition:manager.location onCompletion:^(NSArray *addresses) {
+    CLLocation *location = [HGGeoLocationService instance].currentLocation;
+
+    [HGAddressService addressNearPosition:location onCompletion:^(NSArray *addresses) {
 
         NSMutableDictionary *streetNumbersTemp = [NSMutableDictionary new];
         for (HGAdgangsadresse *key in addresses) {

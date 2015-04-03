@@ -36,14 +36,9 @@
 @property(nonatomic, readonly, strong) NSURL *submitterImage;
 @property(nonatomic, readonly, strong) NSString *submitterName;
 
-
-@property(nonatomic) NSInteger indexOfSelectedImage;
-
 - (instancetype)initWithLocation:(Location *)aLocation;
 
 + (instancetype)modelWithLocation:(Location *)location;
-
-- (NSNumber *)averageRating;
 
 - (ReviewDetailViewModel *)getReviewDetailViewModel:(NSUInteger)index;
 

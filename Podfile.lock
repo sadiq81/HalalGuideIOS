@@ -25,7 +25,7 @@ PODS:
     - AFNetworking/NSURLSession
   - ALActionBlocks (1.0.3)
   - AsyncImageView (1.5.1)
-  - Bolts (1.1.3)
+  - Bolts (1.1.4)
   - CTAssetsPickerController (2.9.3)
   - DCKeyValueObjectMapping (1.4)
   - EDStarRating (1.1)
@@ -80,12 +80,12 @@ PODS:
   - MZFormSheetController/Core (2.3.6):
     - MZAppearance (~> 1.1.3)
   - pop (1.0.7)
-  - ReactiveCocoa (2.4.4):
-    - ReactiveCocoa/UI (= 2.4.4)
-  - ReactiveCocoa/Core (2.4.4):
+  - ReactiveCocoa (2.4.7):
+    - ReactiveCocoa/UI (= 2.4.7)
+  - ReactiveCocoa/Core (2.4.7):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.4.4)
-  - ReactiveCocoa/UI (2.4.4):
+  - ReactiveCocoa/no-arc (2.4.7)
+  - ReactiveCocoa/UI (2.4.7):
     - ReactiveCocoa/Core
   - RMStore (0.7.1):
     - RMStore/Core (= 0.7.1)
@@ -94,8 +94,8 @@ PODS:
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - SevenSwitch (1.4.0)
-  - SVProgressHUD (1.1.2)
-  - SZTextView (1.1.10)
+  - SVProgressHUD (1.1.3)
+  - SZTextView (1.2.0)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
   - UIAlertController+Blocks (0.8)
@@ -111,23 +111,23 @@ DEPENDENCIES:
   - EDStarRating (= 1.1)
   - Facebook-iOS-SDK (= 3.23.0)
   - HTAutocompleteTextField (= 1.3.1)
-  - iCarousel
+  - iCarousel (= 1.8.1)
   - IQKeyboardManager (= 3.2.0.2)
   - JSBadgeView (= 1.3.2)
   - KASlideShow (= 2.0.0)
-  - libextobjc
+  - libextobjc (= 0.4.1)
   - LinqToObjectiveC (= 2.0.0)
-  - Masonry
+  - Masonry (= 0.6.1)
   - MZFormSheetController (= 2.3.6)
   - pop (~> 1.0)
-  - ReactiveCocoa
+  - ReactiveCocoa (= 2.4.7)
   - RMStore (~> 0.7)
   - SDWebImage (= 3.7.1)
-  - SevenSwitch
-  - SVProgressHUD
-  - SZTextView
-  - UIActivityIndicator-for-SDWebImage
-  - UIAlertController+Blocks
+  - SevenSwitch (= 1.4.0)
+  - SVProgressHUD (= 1.1.3)
+  - SZTextView (= 1.2.0)
+  - UIActivityIndicator-for-SDWebImage (= 1.2)
+  - UIAlertController+Blocks (= 0.8)
   - ZLPromptUserReview (~> 1.0.0)
 
 SPEC CHECKSUMS:
@@ -135,7 +135,7 @@ SPEC CHECKSUMS:
   AFNetworking-RACExtensions: 501ab1564f5be65e01fe3017cda7bba25764c20d
   ALActionBlocks: ac91b1a37b60a8004fb687ddade0600446f3d3fa
   AsyncImageView: db9433939160710b34a5c249479e03af2a2121b0
-  Bolts: e431c88fd02115d4a34016c2100bbfa4d2d5b146
+  Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
   CTAssetsPickerController: 56a4a228dcb48a9375ab8d4922e82ac74af74aa1
   DCKeyValueObjectMapping: 04cd5a338c03ce1c02488926cab6e1d1f704a093
   EDStarRating: a41a6440a945020745d0e9ff8ada7d1afa952114
@@ -151,12 +151,12 @@ SPEC CHECKSUMS:
   MZAppearance: c2937318234fd782e900fb178942278881ac5490
   MZFormSheetController: e3c0accfab12ed1f9ddf2c61bb8c0abfc6b3f87b
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
-  ReactiveCocoa: cbe3b5eae464aa72a348a7323996b171728a9e71
+  ReactiveCocoa: eb38dee0a0e698f73a9b25e5c1faea2bb4c79240
   RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
   SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
   SevenSwitch: e992e56e2e7f401eb00538b9fa92bf848bacbe27
-  SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
-  SZTextView: c814e6dcb2303e3e79feb0fd27cf44d74e3c59a6
+  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+  SZTextView: a51ef616064ed07ca44403de1e125bb6f4d4f1fa
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   UIAlertController+Blocks: 45787b973b5f2f4ca4f01bc76f4175481ce059b3
   ZLPromptUserReview: 5bdd576d6d85db223579c5ace7583e0b77da63be

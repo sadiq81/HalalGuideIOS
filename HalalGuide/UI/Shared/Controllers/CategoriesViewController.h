@@ -8,11 +8,12 @@
 #import "HGBaseViewModel.h"
 
 
-@interface CategoriesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface CategoriesViewController : UIViewController {
 
 }
-@property (nonatomic) LocationType locationType;
-@property(strong, nonatomic) IBOutlet UITableView *categoriesTableView;
-@property(weak, nonatomic) id<CategoriesViewModel> viewModel;
+- (instancetype)initWithViewModel:(id <CategoriesViewModel>)viewModel;
+
++ (instancetype)controllerWithViewModel:(id <CategoriesViewModel>)viewModel;
+
 
 @end

@@ -34,15 +34,9 @@
 
 @end
 
-/*
-
-
-
-*/
-
 @implementation AppDelegate
 
-@synthesize locationManager, navigationController;
+@synthesize navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
@@ -50,7 +44,7 @@
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
 
     //Location Services
-    [self startStandardUpdates];
+    [HGLocationService instance];
 
     //Appearance
     [[MZFormSheetBackgroundWindow appearance] setBackgroundBlurEffect:YES];
@@ -110,11 +104,16 @@
     [Fabric with:@[CrashlyticsKit]];
 #endif
 
+    //Defaults
+    NSString *defaultPrefsFile = [[NSBundle mainBundle] pathForResource:@"dk.eazyit.halalguide.preferences" ofType:@"plist"];
+    NSDictionary *defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:defaultPrefsFile];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPreferences];
+
     //Setup view controller
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     FrontPageViewController *viewController = [FrontPageViewController controllerWithViewModel:[[FrontPageViewModel alloc] init]];
-    UINavigationController *nav = [[UINavigationController alloc]  initWithRootViewController:viewController];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
     nav.navigationBar.translucent = NO;
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
@@ -139,27 +138,6 @@
         // The application was just brought from the background to the foreground,
         // so we consider the app as having been "opened by a push notification."
         [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
-    }
-}
-
-- (void)startStandardUpdates {
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    self.locationManager.distanceFilter = 500;
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    [self.locationManager startUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    // If it's a relatively recent event, turn off updates to save power.
-    CLLocation *currentLocation = [locations lastObject];
-    NSDate *eventDate = currentLocation.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"locationManager:didUpdateLocations" object:self userInfo:@{@"lastObject" : currentLocation}];
     }
 }
 
@@ -190,7 +168,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-    [self saveContext];
 }
 
 #pragma mark URL handling
@@ -198,7 +175,6 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:[PFFacebookUtils session]];
 }
-
 
 
 @end

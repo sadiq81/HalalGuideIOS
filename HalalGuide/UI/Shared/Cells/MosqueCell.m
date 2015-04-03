@@ -8,6 +8,7 @@
 #import "HGPictureService.h"
 #import "LocationPicture.h"
 #import "UIImageView+WebCache.h"
+#import "Location.h"
 
 @interface MosqueCell ()
 
@@ -69,7 +70,11 @@
 }
 
 + (NSString *)placeholderImageName {
-    return @"mosque";
+    return kMosqueImageIdentifier;
+}
+
++(NSString *)reuseIdentifier {
+    return kMosqueReuseIdentifier;
 }
 
 @end

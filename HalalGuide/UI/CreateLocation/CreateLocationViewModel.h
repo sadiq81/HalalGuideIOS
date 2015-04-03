@@ -11,9 +11,11 @@
 
 @interface CreateLocationViewModel : HGBaseViewModel <CategoriesViewModel>
 
-@property (nonatomic) LocationType locationType;
-@property(nonatomic, retain) NSDictionary *streetNumbers;
-@property(nonatomic, retain) Location *createdLocation;
+@property(nonatomic, readonly) LocationType locationType;
+@property(nonatomic, strong, readonly) NSDictionary *streetNumbers;
+@property(nonatomic, strong, readonly) Location *createdLocation;
+
+- (instancetype)initWithLocationType:(LocationType)type;
 
 - (NSArray *)streetNameForPrefix:(NSString *)prefix;
 

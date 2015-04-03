@@ -11,6 +11,7 @@
 #import "HGErrorReporting.h"
 #import "HGSettings.h"
 #import "LocationDetailViewModel.h"
+#import "HGGeoLocationService.h"
 
 @interface LocationViewModel () {
 }
@@ -22,26 +23,17 @@
 @implementation LocationViewModel {
 
 }
+@synthesize mapLocations, listLocations, locationType, page, searchText, locationPresentation, southWest, northEast;
+@dynamic maximumDistance, showNonHalal, showAlcohol, showPork, categories, shopCategories, language;
 
-
-@synthesize mapLocations, listLocations, locationType, maximumDistance, showNonHalal, showAlcohol, showPork, categories, shopCategories, language, page, searchText, locationPresentation, southWest, northEast;
-
-- (instancetype)initWithLocationType:(LocationType)aLocationType {
+- (instancetype)initWithLocationType:(LocationType)type {
     self = [super init];
     if (self) {
-        self.locationType = aLocationType;
+        self.locationType = type;
 
-        maximumDistance = (int) [HGSettings instance].distanceFilter;
-        showPork = [HGSettings instance].porkFilter;
-        showAlcohol = [HGSettings instance].alcoholFilter;
-        showNonHalal = [HGSettings instance].halalFilter;
-        categories = [HGSettings instance].categoriesFilter;
-        shopCategories = [HGSettings instance].shopCategoriesFilter;
         mapLocations = [NSArray new];
         listLocations = [NSArray new];
         page = 0;
-
-        [self configureLocation];
 
         [self refreshLocations];
     }
@@ -49,14 +41,8 @@
     return self;
 }
 
-+ (instancetype)modelWithLocationType:(LocationType)locationType {
-    return [[self alloc] initWithLocationType:locationType];
-}
-
-- (void)configureLocation {
-    [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"locationManager:didUpdateLocations" object:nil] subscribeNext:^(NSNotification *notification) {
-        self.userLocation = [notification.userInfo objectForKey:@"lastObject"];
-    }];
++ (instancetype)modelWithLocationType:(LocationType)type {
+    return [[self alloc] initWithLocationType:type];
 }
 
 - (PFQuery *)query {
@@ -67,19 +53,18 @@
 
     if (self.locationPresentation == LocationPresentationList) {
 
-
         if (self.locationType == LocationTypeDining) {
 
-            if (!self.showPork) {
-                [query whereKey:@"pork" equalTo:@(self.showPork)];
+            if ([self.showPork isEqualToNumber:@(0)]) {
+                [query whereKey:@"pork" equalTo:@(self.showPork.boolValue)];
             }
 
-            if (!self.showAlcohol) {
-                [query whereKey:@"alcohol" equalTo:@(self.showAlcohol)];
+            if ([self.showAlcohol isEqualToNumber:@(0)]) {
+                [query whereKey:@"alcohol" equalTo:@(self.showAlcohol.boolValue)];
             }
 
-            if (!self.showNonHalal) {
-                [query whereKey:@"nonHalal" equalTo:@(self.showNonHalal)];
+            if ([self.showNonHalal isEqualToNumber:@(0)]) {
+                [query whereKey:@"nonHalal" equalTo:@(self.showNonHalal.boolValue)];
             }
 
             if ([self.categories count] > 0) {
@@ -128,9 +113,10 @@
             listLocations = [NSArray new];
             return or;
         }
+        CLLocation *location = [HGGeoLocationService instance].currentLocation;
 
-        if (self.userLocation) {
-            [query whereKey:@"point" nearGeoPoint:[PFGeoPoint geoPointWithLocation:self.userLocation] withinKilometers:self.maximumDistance < 20 ? self.maximumDistance : 20000]; //TODO
+        if (location) {
+            [query whereKey:@"point" nearGeoPoint:[PFGeoPoint geoPointWithLocation:location] withinKilometers:self.maximumDistance.intValue < 20 ? self.maximumDistance.intValue : 20000]; //TODO
         }
 
         //Paging controls
@@ -166,11 +152,11 @@
     }];
 }
 
-- (void)setLocationType:(LocationType)locationType1 {
+- (void)setLocationType:(LocationType)type {
     mapLocations = [NSArray new];
     listLocations = [NSArray new];
     page = 0;
-    locationType = locationType1;
+    locationType = type;
 }
 
 - (void)setSearchText:(NSString *)searchText1 {
@@ -179,6 +165,94 @@
     page = 0;
     [self refreshLocations];
 }
+
+- (NSNumber *)maximumDistance {
+    switch (self.locationType) {
+        case LocationTypeShop:
+            return [HGSettings instance].maximumDistanceShop;
+        case LocationTypeDining:
+            return [HGSettings instance].maximumDistanceDining;
+        case LocationTypeMosque:
+            return [HGSettings instance].maximumDistanceMosque;
+        default:
+            return nil;
+    }
+}
+
+- (void)setMaximumDistance:(NSNumber *)maximumDistance {
+    [self willChangeValueForKey:@"maximumDistance"];
+    switch (self.locationType) {
+        case LocationTypeShop:
+            [HGSettings instance].maximumDistanceShop = maximumDistance;
+        case LocationTypeDining:
+            [HGSettings instance].maximumDistanceDining = maximumDistance;
+        case LocationTypeMosque:
+            [HGSettings instance].maximumDistanceMosque = maximumDistance;
+    }
+    [self didChangeValueForKey:@"maximumDistance"];
+}
+
+- (NSNumber *)showNonHalal {
+    return [HGSettings instance].halalFilter;
+}
+
+- (void)setShowNonHalal:(NSNumber *)showNonHalal {
+    [self willChangeValueForKey:@"showNonHalal"];
+    [HGSettings instance].halalFilter = showNonHalal;
+    [self didChangeValueForKey:@"showNonHalal"];
+}
+
+- (NSNumber *)showAlcohol {
+    return [HGSettings instance].alcoholFilter;
+}
+
+- (void)setShowAlcohol:(NSNumber *)showAlcohol {
+    [self willChangeValueForKey:@"showAlcohol"];
+    [HGSettings instance].alcoholFilter = showAlcohol;
+    [self didChangeValueForKey:@"showAlcohol"];
+}
+
+- (NSNumber *)showPork {
+    return [HGSettings instance].porkFilter;
+}
+
+- (void)setShowPork:(NSNumber *)showPork {
+    [self willChangeValueForKey:@"showPork"];
+    [HGSettings instance].porkFilter = showPork;
+    [self didChangeValueForKey:@"showPork"];
+}
+
+
+- (NSMutableArray *)categories {
+    return [HGSettings instance].categoriesFilter;
+}
+
+- (void)setCategories:(NSMutableArray *)categories {
+    [self willChangeValueForKey:@"categories"];
+    [HGSettings instance].categoriesFilter = categories;
+    [self didChangeValueForKey:@"categories"];
+}
+
+- (NSMutableArray *)shopCategories {
+    return [HGSettings instance].shopCategoriesFilter;
+}
+
+- (void)setShopCategories:(NSMutableArray *)shopCategories {
+    [self willChangeValueForKey:@"shopCategories"];
+    [HGSettings instance].shopCategoriesFilter = shopCategories;
+    [self didChangeValueForKey:@"shopCategories"];
+}
+
+- (Language)language {
+    return [HGSettings instance].language;
+}
+
+- (void)setLanguage:(Language)language {
+    [self willChangeValueForKey:@"language"];
+    [HGSettings instance].language = language;
+    [self didChangeValueForKey:@"language"];
+}
+
 
 @end
 

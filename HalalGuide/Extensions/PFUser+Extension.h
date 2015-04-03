@@ -7,9 +7,16 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
+
+
 @interface PFUser (Extension)
 
+@property (nonatomic, strong) NSDictionary *preferences;
+@property (nonatomic, strong) NSDictionary *favorites;
+
 + (void)storeProfileInfoForLoggedInUser:(PFBooleanResultBlock)completion;
+
+- (void)createUserData;
 
 - (NSString *)facebookID;
 

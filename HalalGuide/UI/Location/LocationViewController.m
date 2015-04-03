@@ -24,6 +24,7 @@
 #import "MosqueCell.h"
 #import "ShopCell.h"
 #import "UITableView+Header.h"
+#import "HGGeoLocationService.h"
 
 @interface LocationViewController () <UISearchBarDelegate>
 //@property(strong, nonatomic) UISegmentedControl *segmentControl;
@@ -155,8 +156,20 @@
         //TODO animate
         self.mapView.alpha = self.tableView.alpha;
         self.tableView.alpha = abs(self.tableView.alpha - 1);
+
+        [self.presentationMode setTitle:(self.mapView.alpha == 1 ? NSLocalizedString(@"LocationViewController.button.list", nil) : NSLocalizedString(@"LocationViewController.button.map", nil))];
+
+        self.viewModel.locationPresentation = self.mapView.alpha == 1 ? LocationPresentationMap : LocationPresentationList;
+        [self.viewModel refreshLocations];
     }];
 
+    [self.filter setBlock:^(id weakSender) {
+        @strongify(self)
+        FilterLocationViewController *viewController = [FilterLocationViewController controllerWithViewModel:self.viewModel];
+        viewController.modalPresentationStyle = UIModalPresentationFullScreen;
+        viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentViewController:viewController animated:true completion:nil];
+    }];
 
 }
 
@@ -244,8 +257,8 @@
 
     } else if ([segue.identifier isEqualToString:@"CreateLocation"]) {
 
-        CreateLocationViewModel *_viewModel = [[CreateLocationViewModel alloc] init];
-        _viewModel.locationType = self.viewModel.locationType;
+//        CreateLocationViewModel *_viewModel = [[CreateLocationViewModel alloc] init];
+//        _viewModel.locationType = self.viewModel.locationType;
 
         UINavigationController *_navigationController = (UINavigationController *) segue.destinationViewController;
         CreateLocationViewController *_controller = [_navigationController.viewControllers objectAtIndex:0];
@@ -253,7 +266,7 @@
 
     } else if ([segue.identifier isEqualToString:@"Filter"]) {
         FilterLocationViewController *controller = segue.destinationViewController;
-        controller.viewModel = self.viewModel;
+//        controller.viewModel = self.viewModel;
     }
 }
 
@@ -265,9 +278,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
-    [self.tableView registerClass:[DiningCell class] forCellReuseIdentifier:[DiningCell placeholderImageName]];
-    [self.tableView registerClass:[MosqueCell class] forCellReuseIdentifier:[MosqueCell placeholderImageName]];
-    [self.tableView registerClass:[ShopCell class] forCellReuseIdentifier:[ShopCell placeholderImageName]];
+    [self.tableView registerClass:[DiningCell class] forCellReuseIdentifier:[DiningCell reuseIdentifier]];
+    [self.tableView registerClass:[MosqueCell class] forCellReuseIdentifier:[MosqueCell reuseIdentifier]];
+    [self.tableView registerClass:[ShopCell class] forCellReuseIdentifier:[ShopCell reuseIdentifier]];
 
     RACSignal *disappear = [self rac_signalForSelector:@selector(viewWillDisappear:)];
     @weakify(self)
@@ -305,9 +318,7 @@
 
     LocationDetailViewModel *cellModel = [self.viewModel viewModelForLocationAtIndex:indexPath.row];
 
-    NSString *identifier = LocationTypeString([cellModel.location.locationType integerValue]);
-
-    LocationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    LocationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellModel.location.reuseIdentifier forIndexPath:indexPath];
 
     [cell configureForViewModel:cellModel];
 
@@ -348,8 +359,8 @@
 #pragma mark MapView
 
 - (void)setupMapView {
-    CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
-    [self.mapView setRegion:MKCoordinateRegionMake(manager.location.coordinate, MKCoordinateSpanMake(0.02, 0.02))];
+
+    [self.mapView setRegion:MKCoordinateRegionMake([HGGeoLocationService instance].currentLocation.coordinate, MKCoordinateSpanMake(0.02, 0.02))];
     self.mapView.showsUserLocation = true;
 
     @weakify(self)
@@ -446,7 +457,11 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 
-    [self performSegueWithIdentifier:@"DiningDetail" sender:self];
+    Location *location = ((LocationAnnotation *) view.annotation).location;
+    LocationDetailViewModel *lViewModel = [LocationDetailViewModel modelWithLocation:location];
+    LocationDetailViewController *detailViewController = [LocationDetailViewController controllerWithViewModel:lViewModel];
+    [self.navigationController pushViewController:detailViewController animated:true];
+
 }
 
 - (MKCoordinateRegion)regionForAnnotations:(NSArray *)annotations {

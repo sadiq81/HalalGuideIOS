@@ -3,25 +3,68 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
+#import <Masonry/View+MASAdditions.h>
+#import <ALActionBlocks/UIControl+ALActionBlocks.h>
+#import <MZFormSheetController/MZFormSheetController.h>
 #import "CategoriesViewController.h"
 #import "Location.h"
 #import "LocationViewModel.h"
 
-//TODO Categories should also be searchable
+@interface CategoriesViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property(strong, nonatomic) UIButton *close;
+
+@property(strong, nonatomic) UITableView *categories;
+@property(strong, nonatomic) id <CategoriesViewModel> viewModel;
+
+@end
+
 @implementation CategoriesViewController {
 
 }
 
-@synthesize locationType;
+- (instancetype)initWithViewModel:(id <CategoriesViewModel>)viewModel {
+    self = [super init];
+    if (self) {
+        self.viewModel = viewModel;
+        [self setupViews];
+        [self setupTableView];
+        [self updateViewConstraints];
+    }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    self.categoriesTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    return self;
 }
 
++ (instancetype)controllerWithViewModel:(id <CategoriesViewModel>)viewModel {
+    return [[self alloc] initWithViewModel:viewModel];
+}
+
+
+- (void)setupViews {
+
+    self.categories = [[UITableView alloc] initWithFrame:CGRectZero];
+    self.categories.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.categories];
+
+    self.close = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.close setImage:[UIImage imageNamed:@"CategoriesViewController.button.close"] forState:UIControlStateNormal];
+    @weakify(self)
+    [self.close handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
+        @strongify(self)
+        [self mz_dismissFormSheetControllerAnimated:YES completionHandler:nil];
+    }];
+    [self.view addSubview:self.close];
+
+}
+
+- (void)setupTableView {
+    self.categories.delegate = self;
+    self.categories.dataSource = self;
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (self.locationType) {
+    switch (self.viewModel.locationType) {
         case LocationTypeDining: {
             return DiningCategoryWok + 1;
         }
@@ -42,9 +85,9 @@
 
     NSString *catString = nil;
 
-    switch (self.locationType) {
+    switch (self.viewModel.locationType) {
         case LocationTypeDining: {
-            catString = (NSString *) categoryString(indexPath.row);
+            catString = (NSString *) CategoryString(indexPath.row);
             break;
         }
         case LocationTypeShop: {
@@ -65,7 +108,7 @@
 
     cell.textLabel.text = NSLocalizedString(catString, nil);
 
-    switch (self.locationType) {
+    switch (self.viewModel.locationType) {
         case LocationTypeDining: {
             cell.accessoryType = [self.viewModel.categories containsObject:@(indexPath.row)] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
             break;
@@ -86,7 +129,7 @@
 
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
-    switch (self.locationType) {
+    switch (self.viewModel.locationType) {
         case LocationTypeDining: {
             if ([self.viewModel.categories containsObject:@(indexPath.row)]) {
 
@@ -111,7 +154,7 @@
             break;
         }
         case LocationTypeMosque: {
-            for (UITableViewCell *cell in [self.categoriesTableView visibleCells]) {
+            for (UITableViewCell *cell in [self.categories visibleCells]) {
                 cell.accessoryType = UITableViewCellAccessoryNone;
             }
 
@@ -124,5 +167,22 @@
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 
 }
+
+- (void)updateViewConstraints {
+
+    [self.categories mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+
+    [self.close mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view.mas_top);
+        make.center.equalTo(self.view.mas_left);
+        make.width.equalTo(@(31));
+        make.height.equalTo(@(31));
+    }];
+
+    [super updateViewConstraints];
+}
+
 
 @end

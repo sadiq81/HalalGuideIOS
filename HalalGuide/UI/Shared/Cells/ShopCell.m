@@ -15,7 +15,11 @@
 
 
 + (NSString *)placeholderImageName {
-    return @"shop";
+    return kShopImageIdentifier;
+}
+
++(NSString *)reuseIdentifier {
+    return kShopReuseIdentifier;
 }
 
 

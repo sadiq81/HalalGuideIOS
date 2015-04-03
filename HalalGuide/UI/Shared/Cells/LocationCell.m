@@ -93,10 +93,8 @@
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
-    [self.thumbnail cancelCurrentImageLoad];
+    [self.thumbnail sd_cancelCurrentImageLoad];
 }
-
-static const int standardLabelWidth = 100;
 
 - (void)updateConstraints {
 
@@ -150,5 +148,10 @@ static const int standardLabelWidth = 100;
 + (NSString *)placeholderImageName {
     @throw @"Should be overriden";
 }
+
++ (NSString *)reuseIdentifier {
+    @throw @"Should be overriden";
+}
+
 
 @end

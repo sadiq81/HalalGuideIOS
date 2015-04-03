@@ -107,17 +107,22 @@
         case 1:
             switch (indexPath.row) {
                 case 0:
-                    [HGSettings instance].distanceFilter = 5;
-                    [HGSettings instance].porkFilter = true;
-                    [HGSettings instance].alcoholFilter = true;
-                    [HGSettings instance].halalFilter = true;
+                    [HGSettings instance].maximumDistanceShop= @(5);
+                    [HGSettings instance].maximumDistanceDining= @(5);
+                    [HGSettings instance].maximumDistanceMosque= @(5);
+                    [HGSettings instance].porkFilter = @(false);
+                    [HGSettings instance].alcoholFilter = @(false);
+                    [HGSettings instance].halalFilter = @(false);
                     [HGSettings instance].categoriesFilter = [NSMutableArray new];
                     [HGSettings instance].shopCategoriesFilter = [NSMutableArray new];
+                    break;
                 case 1:
                     [[HGOnboarding instance] resetOnBoarding];
+                    break;
                 case 2:
                     [[SDImageCache sharedImageCache] clearMemory];
                     [[SDImageCache sharedImageCache] clearDisk];
+                    break;
             }
     }
 

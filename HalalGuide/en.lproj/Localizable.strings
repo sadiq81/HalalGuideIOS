@@ -148,7 +148,7 @@
 
 "diningCellPorkOnBoarding" = "Is pork also served";
 "diningCellAlcoholOnBoarding" = "Is alcohol also served";
-"diningCellHalalOnBoarding" =  "Is chicken/beef exclusively halal meat";
+"diningCellHalalOnBoarding" =  "Is there non halal meat";
 
 "diningDetailAddressTelephoneOptionsOnBoarding" = "Press the address to get directions or call the place";
 
@@ -283,3 +283,17 @@
 "SettingsViewController.button.reset.intro" = "Reset introduktion";
 "SettingsViewController.section.title.support" = "Support";
 "SettingsViewController.section.title.reset" = "Reset";
+
+"HGCategoriesView.button.reset" = "Reset";
+"HGCategoriesView.button.chose" = "Choose";
+"HGCategoriesView.label.categories" = "Categories:";
+"HGCategoriesView.label.language" = "Language";
+"HGSwitchView.label.pork" = "Show with pork";
+"HGSwitchView.label.alcohol" = "Show with alcohol";
+"HGSwitchView.label.halal" = "Show with non halal meat halal";
+"HGSwitchView.switch.on" = "Yes";
+"HGSwitchView.switch.off" = "No";
+
+"FilterLocationViewController.button.dismiss" = "Done";
+"FilterLocationViewController.label.max.distance" = "Maximum distance";
+"FilterLocationViewController.label.km" = "km";

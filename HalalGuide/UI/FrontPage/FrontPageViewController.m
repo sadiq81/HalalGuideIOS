@@ -70,22 +70,22 @@
     self.topView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.topView];
 
-    self.shopView = [[ButtonView alloc] initWithButtonImageName:@"shop" andLabelText:@"FrontPageViewController.label.shop" andTapHandler:[self tapHandlerForType:LocationTypeShop]];
+    self.shopView = [[ButtonView alloc] initWithButtonImageName:@"FrontPageViewController.button.shop" andLabelText:@"FrontPageViewController.label.shop" andTapHandler:[self tapHandlerForType:LocationTypeShop]];
     [self.topView addSubview:self.shopView];
 
-    self.eNumberView = [[ButtonView alloc] initWithButtonImageName:@"ENumber" andLabelText:@"FrontPageViewController.label.enumber" andTapHandler:^{
+    self.eNumberView = [[ButtonView alloc] initWithButtonImageName:@"FrontPageViewController.button.enumber" andLabelText:@"FrontPageViewController.label.enumber" andTapHandler:^{
         ENumberViewController *controller = [[ENumberViewController alloc] init];
         [self.navigationController pushViewController:controller animated:true];
     }];
     [self.topView addSubview:self.eNumberView];
 
-    self.eatView = [[ButtonView alloc] initWithButtonImageName:@"dining" andLabelText:@"FrontPageViewController.label.eat" andTapHandler:[self tapHandlerForType:LocationTypeDining]];
+    self.eatView = [[ButtonView alloc] initWithButtonImageName:@"FrontPageViewController.button.dining" andLabelText:@"FrontPageViewController.label.eat" andTapHandler:[self tapHandlerForType:LocationTypeDining]];
     [self.topView addSubview:self.eatView];
 
-    self.mosqueView = [[ButtonView alloc] initWithButtonImageName:@"mosque" andLabelText:@"FrontPageViewController.label.mosque" andTapHandler:[self tapHandlerForType:LocationTypeMosque]];
+    self.mosqueView = [[ButtonView alloc] initWithButtonImageName:@"FrontPageViewController.button.mosque" andLabelText:@"FrontPageViewController.label.mosque" andTapHandler:[self tapHandlerForType:LocationTypeMosque]];
     [self.topView addSubview:self.mosqueView];
 
-    self.settingsView = [[ButtonView alloc] initWithButtonImageName:@"Indstillinger" andLabelText:@"FrontPageViewController.label.settings" andTapHandler:^{
+    self.settingsView = [[ButtonView alloc] initWithButtonImageName:@"FrontPageViewController.button.settings" andLabelText:@"FrontPageViewController.label.settings" andTapHandler:^{
         SettingsViewController *controller = [[SettingsViewController alloc] init];
         [self.navigationController pushViewController:controller animated:true];
     }];
@@ -144,9 +144,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
-    [self.tableView registerClass:[DiningCell class] forCellReuseIdentifier:[DiningCell placeholderImageName]];
-    [self.tableView registerClass:[MosqueCell class] forCellReuseIdentifier:[MosqueCell placeholderImageName]];
-    [self.tableView registerClass:[ShopCell class] forCellReuseIdentifier:[ShopCell placeholderImageName]];
+    [self.tableView registerClass:[DiningCell class] forCellReuseIdentifier:[DiningCell reuseIdentifier]];
+    [self.tableView registerClass:[MosqueCell class] forCellReuseIdentifier:[MosqueCell reuseIdentifier]];
+    [self.tableView registerClass:[ShopCell class] forCellReuseIdentifier:[ShopCell reuseIdentifier]];
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableViewController = [[UITableViewController alloc] init];
@@ -179,9 +179,7 @@
 
     LocationDetailViewModel *cellModel = [self.viewModel viewModelForLocationAtIndex:indexPath.row];
 
-    NSString *identifier = LocationTypeString([cellModel.location.locationType integerValue]);
-
-    LocationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    LocationCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellModel.location.reuseIdentifier forIndexPath:indexPath];
 
     [cell configureForViewModel:cellModel];
 

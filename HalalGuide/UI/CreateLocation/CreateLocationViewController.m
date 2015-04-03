@@ -163,7 +163,6 @@
     }];
 
     [[RACObserve(self.viewModel, progress) skip:1] subscribeNext:^(NSNumber *progress) {
-        NSLog(progress.stringValue);
         if (progress.intValue != 0 && progress.intValue != 100) {
             if ([SVProgressHUD isVisible]){
                 [SVProgressHUD setStatus:[self percentageString:progress.floatValue]];
@@ -286,8 +285,8 @@
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"chooseCategories"]) {
         CategoriesViewController *destination = (CategoriesViewController *) segue.destinationViewController;
-        destination.locationType = self.viewModel.locationType;
-        destination.viewModel = self.viewModel;
+//        destination.locationType = self.viewModel.locationType;
+//        destination.viewModel = self.viewModel;
 
         MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *) segue;
         MZFormSheetController *formSheet = formSheetSegue.formSheetController;

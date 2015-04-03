@@ -12,19 +12,10 @@
 
 @interface FilterLocationViewController : UIViewController<UINavigationBarDelegate>
 
-@property(strong, nonatomic) IBOutlet UILabel *distanceLabel;
-@property(strong, nonatomic) IBOutlet UISlider *distanceSlider;
-@property(strong, nonatomic) IBOutlet UISwitch *halalSwitch;
-@property(strong, nonatomic) IBOutlet UISwitch *alcoholSwitch;
-@property(strong, nonatomic) IBOutlet UISwitch *porkSwitch;
-@property (strong, nonatomic) IBOutlet UIView *switchView;
-@property(strong, nonatomic) IBOutlet UIButton *choose;
-@property(strong, nonatomic) IBOutlet UIButton *reset;
-@property (strong, nonatomic) IBOutlet UILabel *categories;
+@property (strong, nonatomic, readonly) LocationViewModel *viewModel;
 
-@property (strong, nonatomic) IBOutlet UILabel *countLabel;
-@property (strong, nonatomic) IBOutlet UIView *categoryView;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *done;
+- (instancetype)initWithViewModel:(LocationViewModel *)model;
 
-@property (strong, nonatomic) LocationViewModel *viewModel;
++ (instancetype)controllerWithViewModel:(LocationViewModel *)viewModel;
+
 @end

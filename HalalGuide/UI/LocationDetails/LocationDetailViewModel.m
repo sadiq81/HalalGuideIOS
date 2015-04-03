@@ -92,9 +92,9 @@
     self.category = [self.location categoriesString];
 
     if (self.location.locationType.intValue == LocationTypeDining) {
-        self.porkImage = [UIImage imageNamed:self.location.pork.boolValue ? @"PigTrue" : @"PigFalse"];
-        self.alcoholImage = [UIImage imageNamed:self.location.alcohol.boolValue ? @"AlcoholTrue" : @"AlcoholFalse"];
-        self.halalImage = [UIImage imageNamed:self.location.nonHalal.boolValue ? @"NonHalalTrue" : @"NonHalalFalse"];
+        self.porkImage = [UIImage imageNamed:self.location.pork.boolValue ? @"DiningCell.pork.true" : @"DiningCell.pork.false"];
+        self.alcoholImage = [UIImage imageNamed:self.location.alcohol.boolValue ? @"DiningCell.alcohol.true" : @"DiningCell.alcohol.false"];
+        self.halalImage = [UIImage imageNamed:self.location.nonHalal.boolValue ? @"DiningCell.non.halal.true" : @"DiningCell.non.halal.false"];
 
         self.porkString = [self stringForBool:self.location.pork.boolValue];
         self.alcoholString = [self stringForBool:self.location.alcohol.boolValue];

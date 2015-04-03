@@ -15,6 +15,7 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "NSArray+Extensions.h"
+#import "HGGeoLocationService.h"
 
 @implementation HGAddressService {
 
@@ -33,8 +34,8 @@
 }
 
 + (CLLocationDistance)distanceInMetersToPoint:(CLLocation *)location {
-    CLLocationManager *manager = ((AppDelegate *) [UIApplication sharedApplication].delegate).locationManager;
-    return [location distanceFromLocation:manager.location];
+    CLLocation *currentLocation = [HGGeoLocationService instance].currentLocation;
+    return [location distanceFromLocation:currentLocation];
 }
 
 + (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postnummer))completion {
