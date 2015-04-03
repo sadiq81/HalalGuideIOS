@@ -78,7 +78,7 @@ typedef enum WeekDay : int16_t {
 #define kMosqueReuseIdentifier @"mosque"
 
 #define kDiningImageIdentifier @"FrontPageViewController.button.dining"
-#define kShopImageIdentifier @"FrontPageViewController.button.shop\""
+#define kShopImageIdentifier @"FrontPageViewController.button.shop"
 #define kMosqueImageIdentifier @"FrontPageViewController.button.mosque"
 
 

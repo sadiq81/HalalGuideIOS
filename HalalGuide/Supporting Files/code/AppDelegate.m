@@ -51,6 +51,8 @@
     [[MZFormSheetBackgroundWindow appearance] setBlurRadius:5.0];
     [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
 
+    [[UIView appearance] setTintColor:[UIColor blackColor]];
+
     //IQKeyboard
     [IQKeyboardManager sharedManager].toolbarManageBehaviour = IQAutoToolbarByTag;
 

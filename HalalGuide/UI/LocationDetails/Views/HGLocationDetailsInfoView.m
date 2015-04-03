@@ -90,6 +90,11 @@
     [self addSubview:self.halalImage];
     self.halalLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
     [self addSubview:self.halalLabel];
+
+    self.languageImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self addSubview:self.languageImage];
+    self.languageLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
+    [self addSubview:self.languageLabel];
 }
 
 -(void)setupViewModel{
@@ -190,6 +195,21 @@
         make.centerX.equalTo(self.halalImage);
         make.top.equalTo(self.halalImage.mas_bottom).offset(8);
     }];
+
+    if (self.viewModel.location.locationType.intValue == LocationTypeMosque){
+
+        [self.languageImage mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.rating.mas_bottom);
+            make.right.equalTo(self).offset(-8);
+            make.width.equalTo(@(31));
+            make.height.equalTo(@(31));
+        }];
+
+        [self.languageLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.languageImage);
+            make.top.equalTo(self.languageImage.mas_bottom).offset(8);
+        }];
+    }
 
     [super updateConstraints];
 }

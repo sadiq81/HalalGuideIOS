@@ -102,7 +102,7 @@
 
     } else if (self.location.locationType.intValue == LocationTypeMosque) {
         self.languageImage = [UIImage imageNamed:LanguageString([self.location.language integerValue])];
-        self.languageString = NSLocalizedString(LanguageString([self.location.language integerValue]), nil);
+        self.languageString = [self.location.language integerValue] != 0 ? NSLocalizedString(LanguageString([self.location.language integerValue]), nil) : @"";
     }
 
     self.locationPictures = [NSArray new];

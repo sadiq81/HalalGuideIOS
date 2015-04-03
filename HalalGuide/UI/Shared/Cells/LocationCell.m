@@ -93,7 +93,6 @@
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
-    [self.thumbnail sd_cancelCurrentImageLoad];
 }
 
 - (void)updateConstraints {
