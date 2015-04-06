@@ -12,11 +12,11 @@
 #import "SZTextView.h"
 #import "CreateReviewViewModel.h"
 
-@interface CreateReviewViewController : UIViewController <EDStarRatingProtocol>
-@property(strong, nonatomic) IBOutlet EDStarRating *rating;
-@property(strong, nonatomic) IBOutlet SZTextView *review;
-@property(strong, nonatomic) IBOutlet UIBarButtonItem *regret;
-@property(strong, nonatomic) IBOutlet UIBarButtonItem *save;
-@property(strong, nonatomic) CreateReviewViewModel *viewModel;
+@interface CreateReviewViewController : UIViewController
+
+- (instancetype)initWithViewModel:(CreateReviewViewModel *)viewModel;
+
++ (instancetype)controllerWithViewModel:(CreateReviewViewModel *)viewModel;
+
 
 @end

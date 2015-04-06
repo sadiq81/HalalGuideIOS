@@ -42,8 +42,6 @@
 
 - (ReviewDetailViewModel *)getReviewDetailViewModel:(NSUInteger)index;
 
-- (void)report:(UIViewController *)viewController;
-
 - (void)saveMultiplePictures:(NSArray *)images;
 
 @end

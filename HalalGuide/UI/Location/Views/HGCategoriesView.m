@@ -80,9 +80,9 @@
     if (self.viewModel.locationType == LocationTypeMosque) {
         self.countLabel.text = NSLocalizedString(LanguageString(self.viewModel.language), nil);
     } else if (self.viewModel.locationType == LocationTypeShop) {
-        self.countLabel.text = [NSString stringWithFormat:@"%i", [self.viewModel.shopCategories count]];
+        self.countLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long) [self.viewModel.shopCategories count]];
     } else if (self.viewModel.locationType == LocationTypeDining) {
-        self.countLabel.text = [NSString stringWithFormat:@"%i", [self.viewModel.categories count]];
+        self.countLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long) [self.viewModel.categories count]];
     }
 }
 

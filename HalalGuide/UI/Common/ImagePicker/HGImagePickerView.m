@@ -119,7 +119,7 @@
         [self.pictures deselectItemAtIndexPath:indexPath animated:NO];
     }
     for (NSIndexPath *indexPath in [self.pictures indexPathsForVisibleItems]) {
-        HGPictureCollectionViewCell *cell = (HGPictureCollectionViewCell*)[self.pictures cellForItemAtIndexPath:indexPath];
+        HGPictureCollectionViewCell *cell = (HGPictureCollectionViewCell *) [self.pictures cellForItemAtIndexPath:indexPath];
         [cell setChosen:false animated:false];
     }
 
@@ -150,13 +150,16 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:true];
-    HGPictureCollectionViewCell *cell = (HGPictureCollectionViewCell *) [self.pictures cellForItemAtIndexPath:indexPath];
-    [cell setChosen:true animated:true];
 
-    self.selectedItems = [[collectionView indexPathsForSelectedItems] linq_select:^id(NSIndexPath *indexPath) {
-        return [self imageForIndexPath:indexPath];
-    }];
+    if (!self.maxReached) {
+        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:true];
+        HGPictureCollectionViewCell *cell = (HGPictureCollectionViewCell *) [self.pictures cellForItemAtIndexPath:indexPath];
+        [cell setChosen:true animated:true];
+
+        self.selectedItems = [[collectionView indexPathsForSelectedItems] linq_select:^id(NSIndexPath *indexPath) {
+            return [self imageForIndexPath:indexPath];
+        }];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {

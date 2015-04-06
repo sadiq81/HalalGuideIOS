@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
+#import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import "LocationDetailViewController.h"
 #import "UITableView+Header.h"
 #import "HGLocationDetailsInfoView.h"
-#import "HGLocationDetailsSubmitterView.h"
 #import "HGLocationDetailsPictureView.h"
-#import "UIView+Extensions.h"
 #import "HGLocationDetailsHeaderView.h"
+#import "HGImagePickerController.h"
 
-@interface LocationDetailViewController ()
+@interface LocationDetailViewController () <HGImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 //-------------------------------------------
 @property(strong) HGLocationDetailsHeaderView *header;
 
@@ -59,9 +59,14 @@
     [self.header.headerTopView.name addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
     [self.header.headerTopView.road addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
     [self.header.headerTopView.postalCode addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
-    self.header.frame = CGRectMake(0, 0, self.view.frame.size.width, 428);
+//    self.header.frame = CGRectMake(0, 0, self.view.frame.size.width, 428);
     self.reviews.tableHeaderView = self.header;
-    self.reviews.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    self.noReviewsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.noReviewsLabel.text = NSLocalizedString(@"LocationDetailViewController.label.footer", nil);
+    self.noReviewsLabel.numberOfLines = 0;
+    self.noReviewsLabel.textAlignment = NSTextAlignmentCenter;
+    self.reviews.tableFooterView = self.noReviewsLabel;
 
 
 }
@@ -111,17 +116,18 @@
         }
     }];
 
-//    @weakify(self)
-//    [[self.pictureView.addPicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        @strongify(self)
-//        //[self.viewModel getPictures:self];
-//    }];
-//
-//    [[self.pictureView.report rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        @strongify(self)
-//        [self.viewModel report:self];
-//    }];
 }
+
+- (void)HGImagePickerControllerDidCancel:(HGImagePickerController *)controller {
+    [controller.presentingViewController dismissViewControllerAnimated:true completion:nil];
+}
+
+- (void)HGImagePickerControllerDidConfirm:(HGImagePickerController *)controller pictures:(NSArray *)pictures {
+    [controller.presentingViewController dismissViewControllerAnimated:true completion:^{
+        [self.viewModel saveMultiplePictures:pictures];
+    }];
+}
+
 
 #pragma mark - Reviews
 
@@ -144,6 +150,26 @@
         return @([reviews count]);
     }];
 
+    [self.header.pictureView.addReview handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
+        @strongify(self)
+        [self createReviewForLocation:self.viewModel.location viewModel:self.viewModel];
+    }];
+
+    [[self.header.pictureView.addPicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+        [self getPicturesWithDelegate:self viewModel:self.viewModel];
+    }];
+
+    [self.header.pictureView.report handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
+        @strongify(self)
+
+        MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+        [mailController setToRecipients:@[@"tommy@eazyit.dk"]];
+        [mailController setSubject:[NSString stringWithFormat:@"%@", self.viewModel.location.objectId]];
+        [mailController setMessageBody:NSLocalizedString(@"LocationDetailViewController.mail.text", nil) isHTML:false];
+        mailController.mailComposeDelegate = self;
+        [self presentViewController:mailController animated:true completion:nil];
+    }];
 
 }
 
@@ -225,55 +251,11 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-#pragma mark - Navigation
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-
-    if ([identifier isEqualToString:@"CreateLocation"] || [identifier isEqualToString:@"CreateReview"]) {
-
-        if (![self.viewModel isAuthenticated]) {
-
-            [self.viewModel authenticate:self];
-
-            return false;
-        } else {
-            return true;
-        }
-    } else {
-        return true;
-    }
-}
-
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-    [super prepareForSegue:segue sender:sender];
-
-    if ([segue.identifier isEqualToString:@"CreateReview"]) {
-
-        CreateReviewViewModel *viewModel1 = [[CreateReviewViewModel alloc] initWithReviewedLocation:self.viewModel.location];
-        UINavigationController *_navigationController = (UINavigationController *) segue.destinationViewController;
-
-        CreateReviewViewController *controller = [_navigationController.viewControllers objectAtIndex:0];
-        controller.viewModel = viewModel1;
-    }
-    else if ([segue.identifier isEqualToString:@"ReviewDetails"]) {
-
-    }
-}
-
 #pragma mark - Mail composer
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
 
     [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - ImagePicker
-
-- (void)finishedPickingImages {
-    [super finishedPickingImages];
-    [self.viewModel saveMultiplePictures:self.images];
 }
 
 - (void)updateViewConstraints {
@@ -292,12 +274,13 @@
         make.edges.equalTo(self.view);
     }];
 
-//    [self.noReviewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.headerView.mas_bottom).offset(8);
-//        make.centerX.equalTo(self.view);
-//        make.width.equalTo(self.view).offset(8);
-//    }];
-//
+    [self.noReviewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.reviews).offset(-8);
+        make.left.equalTo(self.reviews).offset(8);
+        make.top.equalTo(self.header.mas_bottom);
+        make.height.equalTo(@(60));
+    }];
+
 
     [super updateViewConstraints];
 

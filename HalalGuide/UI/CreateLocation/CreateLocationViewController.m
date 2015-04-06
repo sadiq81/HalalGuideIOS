@@ -21,7 +21,6 @@
 #import "NSTimer+Block.h"
 #import "SevenSwitch.h"
 #import "OpeningsHoursViewController.h"
-#import <EXTScope.h>
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 
 @implementation CreateLocationViewController {
@@ -79,6 +78,7 @@
 
 - (void)setupUI {
 
+    @throw @"not yet localized";
     self.porkSwitch.offLabel.text = self.alcoholSwitch.offLabel.text = self.halalSwitch.offLabel.text = NSLocalizedString(@"no", nil);
     self.porkSwitch.onLabel.text = self.alcoholSwitch.onLabel.text = self.halalSwitch.onLabel.text = NSLocalizedString(@"yes", nil);
     self.porkSwitch.onTintColor = self.alcoholSwitch.onTintColor = self.halalSwitch.onTintColor = [UIColor redColor];
@@ -94,7 +94,7 @@
 
     @weakify(self)
     [[self.pickImage rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self)
+        //@strongify(self)
         //[self.viewModel getPictures:self];
     }];
 
@@ -152,8 +152,8 @@
     }];
 
     [self.save setBlock:^(id weakSender) {
-        @strongify(self)
-        [self.viewModel saveEntity:self.name.text road:self.road.text roadNumber:self.roadNumber.text postalCode:self.postalCode.text city:self.city.text telephone:self.telephone.text website:self.website.text pork:self.porkSwitch.on alcohol:self.alcoholSwitch.on nonHalal:self.halalSwitch.on images:self.images];
+        //@strongify(self)
+//        [self.viewModel saveEntity:self.name.text road:self.road.text roadNumber:self.roadNumber.text postalCode:self.postalCode.text city:self.city.text telephone:self.telephone.text website:self.website.text pork:self.porkSwitch.on alcohol:self.alcoholSwitch.on nonHalal:self.halalSwitch.on images:self.images];
     }];
 
     [[RACObserve(self.viewModel, createdLocation) skip:1] subscribeNext:^(Location *location) {
@@ -193,24 +193,24 @@
 }
 
 - (void)finishedPickingImages {
-    [super finishedPickingImages];
-
-    [badgeView removeFromSuperview];
-
-    NSUInteger count = [self.images count];
-    if (count > 0) {
-        badgeView = [[JSBadgeView alloc] initWithParentView:self.pickImage alignment:JSBadgeViewAlignmentTopRight];
-        badgeView.badgeText = [NSString stringWithFormat:@"%d", (int) count];
-    }
-    @weakify(self)
-    timer = [NSTimer scheduledTimerWithTimeInterval:2 repeats:true block:^{
-        @strongify(self)
-        index++;
-        if (index >= [self.images count]) {
-            index = 0;
-        }
-        [self.pickImage setImage:[self.images objectAtIndex:index] forState:UIControlStateNormal];
-    }];
+//   [super finishedPickingImages];
+//
+//    [badgeView removeFromSuperview];
+//
+//    NSUInteger count = [self.images count];
+//    if (count > 0) {
+//        badgeView = [[JSBadgeView alloc] initWithParentView:self.pickImage alignment:JSBadgeViewAlignmentTopRight];
+//        badgeView.badgeText = [NSString stringWithFormat:@"%d", (int) count];
+//    }
+//    @weakify(self)
+//    timer = [NSTimer scheduledTimerWithTimeInterval:2 repeats:true block:^{
+//        @strongify(self)
+//        index++;
+//        if (index >= [self.images count]) {
+//            index = 0;
+//        }
+//        [self.pickImage setImage:[self.images objectAtIndex:index] forState:UIControlStateNormal];
+//    }];
 }
 
 #pragma mark UIUpdates
@@ -281,12 +281,12 @@
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+/*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"chooseCategories"]) {
         CategoriesViewController *destination = (CategoriesViewController *) segue.destinationViewController;
-//        destination.locationType = self.viewModel.locationType;
-//        destination.viewModel = self.viewModel;
+        destination.locationType = self.viewModel.locationType;
+        destination.viewModel = self.viewModel;
 
         MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *) segue;
         MZFormSheetController *formSheet = formSheetSegue.formSheetController;
@@ -301,7 +301,7 @@
         OpeningsHoursViewController *viewController = (OpeningsHoursViewController *) segue.destinationViewController;
         viewController.viewModel = self.viewModel;
     }
-}
+}*/
 
 - (void)dealloc {
     returnKeyHandler = nil;

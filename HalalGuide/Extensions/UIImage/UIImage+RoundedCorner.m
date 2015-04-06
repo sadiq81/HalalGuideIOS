@@ -32,10 +32,10 @@
 
     // Create a clipping path with rounded corners
     CGContextBeginPath(context);
-    [self addRoundedRectToPath:CGRectMake(borderSize, borderSize, image.size.width - borderSize * 2, image.size.height - borderSize * 2)
-                       context:context
-                     ovalWidth:cornerSize
-                    ovalHeight:cornerSize];
+    [self addRoundedRectToPathCustom:CGRectMake(borderSize, borderSize, image.size.width - borderSize * 2, image.size.height - borderSize * 2)
+                       contextCustom:context
+                     ovalWidthCustom:cornerSize
+                    ovalHeightCustom:cornerSize];
     CGContextClosePath(context);
     CGContextClip(context);
 
@@ -58,7 +58,7 @@
 
 // Adds a rectangular path to the given context and rounds its corners by the given extents
 // Original author: BjÃ¶rn SÃ¥llarp. Used with permission. See: http://blog.sallarp.com/iphone-uiimage-round-corners/
-- (void)addRoundedRectToPath:(CGRect)rect context:(CGContextRef)context ovalWidth:(CGFloat)ovalWidth ovalHeight:(CGFloat)ovalHeight {
+- (void)addRoundedRectToPathCustom:(CGRect)rect contextCustom:(CGContextRef)context ovalWidthCustom:(CGFloat)ovalWidth ovalHeightCustom:(CGFloat)ovalHeight {
     if (ovalWidth == 0 || ovalHeight == 0) {
         CGContextAddRect(context, rect);
         return;

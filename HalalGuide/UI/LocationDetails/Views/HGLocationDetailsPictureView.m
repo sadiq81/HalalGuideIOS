@@ -44,7 +44,7 @@
 
 - (void)setupViews {
     self.report = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.report setTitle:NSLocalizedString(@"LocationDetailViewController.button.report", nil) forState:UIControlStateNormal];
+    [self.report setTitle:NSLocalizedString(@"HGLocationDetailsPictureView.button.report", nil) forState:UIControlStateNormal];
     [self addSubview:self.report];
 
     self.pictures = [[iCarousel alloc] initWithFrame:CGRectZero];
@@ -55,11 +55,11 @@
     [self addSubview:self.pictures];
 
     self.addReview = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.addReview setTitle:NSLocalizedString(@"LocationDetailViewController.button.add.review", nil) forState:UIControlStateNormal];
+    [self.addReview setTitle:NSLocalizedString(@"HGLocationDetailsPictureView.button.add.review", nil) forState:UIControlStateNormal];
     [self addSubview:self.addReview];
 
     self.addPicture = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.addPicture setTitle:NSLocalizedString(@"LocationDetailViewController.button.add.picture", nil) forState:UIControlStateNormal];
+    [self.addPicture setTitle:NSLocalizedString(@"HGLocationDetailsPictureView.button.add.picture", nil) forState:UIControlStateNormal];
     [self addSubview:self.addPicture];
 
     self.noPicturesLabel = [[UILabel alloc] initWithFrame:CGRectZero];

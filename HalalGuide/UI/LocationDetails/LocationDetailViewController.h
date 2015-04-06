@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "EDStarRating.h"
-#import "HGImageViews.h"
 #import "HGLabels.h"
 #import "iCarousel.h"
 #import "LocationDetailViewModel.h"
@@ -34,10 +33,7 @@
 #import "HGLabels.h"
 #import "Location.h"
 
-@interface LocationDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, iCarouselDataSource, iCarouselDelegate>
-
-
-@property (strong, nonatomic, readonly) LocationDetailViewModel *viewModel;
+@interface LocationDetailViewController : UIViewController
 
 - (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel;
 

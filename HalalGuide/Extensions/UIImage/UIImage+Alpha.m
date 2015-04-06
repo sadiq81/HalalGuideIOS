@@ -5,10 +5,11 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImage+Alpha.h"
+#import "NSObject+MethodExchange.h"
 
 // Private helper methods
 @interface UIImage ()
-- (CGImageRef)newBorderMask:(NSUInteger)borderSize size:(CGSize)size;
+- (CGImageRef)newBorderMasCustom:(NSUInteger)borderSize sizeCustom:(CGSize)size;
 @end
 
 @implementation UIImage (Alpha)
@@ -76,7 +77,7 @@
     CGImageRef borderImageRef = CGBitmapContextCreateImage(bitmap);
 
     // Create a mask to make the border transparent, and combine it with the image
-    CGImageRef maskImageRef = [self newBorderMask:borderSize size:newRect.size];
+    CGImageRef maskImageRef = [self newBorderMaskCustom:borderSize sizeCustom:newRect.size];
     CGImageRef transparentBorderImageRef = CGImageCreateWithMask(borderImageRef, maskImageRef);
     UIImage *transparentBorderImage = [UIImage imageWithCGImage:transparentBorderImageRef];
 
@@ -95,7 +96,7 @@
 // Creates a mask that makes the outer edges transparent and everything else opaque
 // The size must include the entire mask (opaque part + transparent border)
 // The caller is responsible for releasing the returned reference by calling CGImageRelease
-- (CGImageRef)newBorderMask:(NSUInteger)borderSize size:(CGSize)size {
+- (CGImageRef)newBorderMaskCustom:(NSUInteger)borderSize sizeCustom:(CGSize)size {
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
 
     // Build a context that's the same dimensions as the new size

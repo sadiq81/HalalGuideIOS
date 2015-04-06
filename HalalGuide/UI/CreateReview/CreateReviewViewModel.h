@@ -12,13 +12,15 @@
 
 @interface CreateReviewViewModel : HGBaseViewModel
 
-@property Location *location;
-@property Review *createdReview;
+@property (nonatomic, strong, readonly) Location *location;
+@property (nonatomic, strong, readonly) Review *createdReview;
+@property (nonatomic, strong) NSString *reviewText;
+@property (nonatomic, strong) NSNumber *rating;
 
 - (instancetype)initWithReviewedLocation:(Location *)reviewedLocation;
 
 + (instancetype)modelWithReviewedLocation:(Location *)reviewedLocation;
 
-- (void)saveEntity:(NSString *)reviewText rating:(int)rating;
+- (void)saveReview;
 
 @end

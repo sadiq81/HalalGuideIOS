@@ -9,12 +9,16 @@
 #import "HGReviewService.h"
 #import "HGErrorReporting.h"
 
+@interface CreateReviewViewModel()
+
+@property (nonatomic, strong) Location *location;
+@property (nonatomic, strong) Review *createdReview;
+
+@end
 
 @implementation CreateReviewViewModel {
 
 }
-
-@synthesize location, createdReview;
 
 - (instancetype)initWithReviewedLocation:(Location *)reviewedLocation {
     self = [super init];
@@ -29,11 +33,11 @@
     return [[self alloc] initWithReviewedLocation:reviewedLocation];
 }
 
-- (void)saveEntity:(NSString *)reviewText rating:(int)rating {
+- (void)saveReview{
 
     Review *review = [Review object];
-    review.review = reviewText;
-    review.rating = @(rating);
+    review.review = self.reviewText;
+    review.rating = self.rating;
     review.submitterId = [PFUser currentUser].objectId;
     review.locationId = self.location.objectId;
     review.creationStatus = @(CreationStatusAwaitingApproval);

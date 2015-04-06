@@ -96,7 +96,6 @@
 "addressdoesnotexists" = "Address does not exists ";
 "error" = "Unknown error";
 "errorText" = "An unknown error occured, try again later.";
-"reviewMinimum" = "A review should at least be 30 characters";
 "reviewMinimum2" = "A review should at least be 30 characters and at least one star";
 
 "awaiting" = "Awaiting approval";
@@ -141,14 +140,14 @@
 "newPicture" = "Take picture";
 "choosePicture" = "Choose from library";
 
-"errorMailText" = "The following information is incorrect: \nElaborate here!";
+
 
 "addNewOnBoardingButton" = "Press '+' to add suggestions";
 "filterOnBoardingButton" = "Press 'Filter' to filter your results";
 
 "diningCellPorkOnBoarding" = "Is pork also served";
 "diningCellAlcoholOnBoarding" = "Is alcohol also served";
-"diningCellHalalOnBoarding" =  "Is there non halal meat";
+"diningCellHalalOnBoarding" =  "Is there non halal chicken/beef meat";
 
 "diningDetailAddressTelephoneOptionsOnBoarding" = "Press the address to get directions or call the place";
 
@@ -262,20 +261,27 @@
 "LocationViewController.button.list" = "List";
 "LocationViewController.searchbar.placeholder" = "Search text";
 
-"LocationDetailViewController.label.km" = "km";
-"LocationDetailViewController.label.submitterHeadLine" = "Submitted by:";
-"LocationDetailViewController.button.report" = "Report error";
-"LocationDetailViewController.button.add.review" = "Add review";
-"LocationDetailViewController.button.add.picture" = "Add picture";
-"LocationDetailViewController.label.no.reviews" = "There are no reviews for this location yet, you could be the first?";
+"HGLocationDetailsSubmitterView.label.submitterHeadLine" = "Submitted by:";
+"HGLocationDetailsPictureView.button.report" = "Report error";
+"HGLocationDetailsPictureView.button.add.review" = "Add review";
+"HGLocationDetailsPictureView.button.add.picture" = "Add picture";
 
 "HGLocationDetailsPictureView.label.no.pictures" = "There are no pictures for this location yet, you could be the first?";
+
+"LocationDetailViewController.label.km" = "km";
+"LocationDetailViewController.mail.text" = "The following information is incorrect: \nElaborate here!";
+"LocationDetailViewController.label.footer" = "There are no reviews for this location yet, you could be the first?";
 
 "HGImagePickerView.button.approve" = "Add 1 picture";
 "HGImagePickerView.button.approve.multiple" = "Add %lu pictures";
 "HGImagePickerView.button.photoLibrary" = "Photo library";
 "HGImagePickerView.button.takePicture" = "Take picture";
-"HGImagePickerView.button.cancel" = "Regreet";
+"HGImagePickerView.button.cancel" = "Regret";
+
+"HGImagePickerController.button.confirm" = "Approve";
+"HGImagePickerController.button.cancel" = "Regret";
+"HGImagePickerController.label.no.pictures" = "You have not added any pictures, press the camera to add pictures";
+"HGImagePickerController.label.max.pictures" = "You can choose a maximum of %i picture(s)";
 
 "SettingsViewController.button.clear.cache" = "Clear image cache";
 "SettingsViewController.button.support" = "Support Halalguide";
@@ -297,3 +303,19 @@
 "FilterLocationViewController.button.dismiss" = "Done";
 "FilterLocationViewController.label.max.distance" = "Maximum distance";
 "FilterLocationViewController.label.km" = "km";
+
+"CreateReviewViewController.button.regret" = "Regret";
+"CreateReviewViewController.button.save" = "Save";
+"CreateReviewViewController.hud.saving" = "Saving in the cloud";
+"CreateReviewViewController.hud.error" = "An unknown error has occoured";
+"CreateReviewViewController.hud.saved" = "Your review has been submitted for approval";
+"CreateReviewViewController.textview.placeholder" = "A review must be at least be 30 characters";
+
+"ClusterPrePermissions.photo.title" = "Access your photos";
+"ClusterPrePermissions.photo.message" = "We need access to your photos for you to send pictures to HalalGuide";
+"ClusterPrePermissions.photo.deny" = "Not now";
+"ClusterPrePermissions.photo.grant" = "Allow";
+
+"ClusterPrePermissions.access.denied.title" = "Missing access";
+"ClusterPrePermissions.access.denied.ok" = "Ok";
+"ClusterPrePermissions.access.denied.message" = "You have to manuelly allow Halalguide to photos in settings";

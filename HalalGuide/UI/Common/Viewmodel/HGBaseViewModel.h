@@ -32,6 +32,6 @@
 
 - (BOOL)isAuthenticated;
 
-- (void)authenticate:(UIViewController *)viewController;
+
 
 @end

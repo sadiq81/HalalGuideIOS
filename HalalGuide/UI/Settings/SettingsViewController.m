@@ -42,20 +42,20 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.tableView.backgroundColor = [UIColor whiteColor];
 
-    self.clearCache = [[UITableViewCell alloc] init];
-    self.clearCache.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
+    self.clearCache = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@""];
+//    self.clearCache.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
     self.clearCache.textLabel.text = NSLocalizedString(@"SettingsViewController.button.clear.cache", nil);
 
     self.support = [[UITableViewCell alloc] init];
-    self.support.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
+//    self.support.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
     self.support.textLabel.text = NSLocalizedString(@"SettingsViewController.button.support", nil);
 
     self.resetFilter = [[UITableViewCell alloc] init];
-    self.resetFilter.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
+//    self.resetFilter.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
     self.resetFilter.textLabel.text = NSLocalizedString(@"SettingsViewController.button.reset.filter", nil);
 
     self.resetIntro = [[UITableViewCell alloc] init];
-    self.resetIntro.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
+//    self.resetIntro.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
     self.resetIntro.textLabel.text = NSLocalizedString(@"SettingsViewController.button.reset.intro", nil);
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];

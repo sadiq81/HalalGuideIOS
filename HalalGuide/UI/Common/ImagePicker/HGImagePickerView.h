@@ -15,6 +15,8 @@
 @property(nonatomic, strong, readonly) UIButton *secondAction;
 @property(nonatomic, strong, readonly) UIButton *thirdAction;
 
+@property(nonatomic) BOOL maxReached;
+
 @property(nonatomic, strong) NSArray *selectedItems;
 
 - (void)clearSelected;

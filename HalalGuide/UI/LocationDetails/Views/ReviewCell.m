@@ -52,8 +52,8 @@
 }
 
 - (void)setupRating {
-    self.rating.starImage = [UIImage imageNamed:@"starSmall"];
-    self.rating.starHighlightedImage = [UIImage imageNamed:@"starSmallSelected"];
+    self.rating.starImage = [UIImage imageNamed:@"HGLocationDetailsInfoView.star.unselected"];
+    self.rating.starHighlightedImage = [UIImage imageNamed:@"HGLocationDetailsInfoView.star.selected"];
     self.rating.backgroundColor = [UIColor whiteColor];
 }
 

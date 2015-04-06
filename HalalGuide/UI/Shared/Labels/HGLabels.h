@@ -12,17 +12,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame andFontSize:(CGFloat)size;
 
-- (void)configureViewForLocation:(Location *)location;
-
-@end
-
-@interface PorkLabel : HGLabel
-@end
-
-@interface AlcoholLabel : HGLabel
-@end
-
-@interface HalalLabel : HGLabel
 @end
 
 @interface OpenLabel : HGLabel

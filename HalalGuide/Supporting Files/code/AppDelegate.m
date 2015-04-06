@@ -52,6 +52,7 @@
     [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
 
     [[UIView appearance] setTintColor:[UIColor blackColor]];
+    [[UINavigationBar appearance] setTranslucent:false];
 
     //IQKeyboard
     [IQKeyboardManager sharedManager].toolbarManageBehaviour = IQAutoToolbarByTag;
@@ -116,7 +117,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     FrontPageViewController *viewController = [FrontPageViewController controllerWithViewModel:[[FrontPageViewModel alloc] init]];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
-    nav.navigationBar.translucent = NO;
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
 

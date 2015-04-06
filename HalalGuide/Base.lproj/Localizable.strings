@@ -94,8 +94,6 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "addressdoesnotexists" = "Adressen findes ikke ";
 "error" = "Ukendt fejl";
 "errorText" = "Der skete en ukendt fejl, prøv igen senere.";
-"reviewMinimum" = "En anmeldelse skal minimum være 30 tegn";
-"reviewMinimum2" = "En anmeldelse skal minimum være 30 tegn og mindst en stjerne";
 
 "awaiting" = "Venter godkendelse";
 "approved" = "Godkendt";
@@ -140,14 +138,14 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "newPicture" = "Tag nyt billede";
 "choosePicture" = "Vælg billede";
 
-"errorMailText" = "Der er følgende forkerte oplysninger: \nUDDYB HER!";
+
 
 "addNewOnBoardingButton" = "Tryk på '+' for at indsende nye forslag";
 "filterOnBoardingButton" = "Tryk på 'Filter' for at filtrere de viste forslag";
 
 "diningCellPorkOnBoarding" = "Viser om der også serveres gris";
 "diningCellAlcoholOnBoarding" = "Viser om der også serveres alkohol";
-"diningCellHalalOnBoarding" =  "Viser om der serveres ikke halal kød";
+"diningCellHalalOnBoarding" =  "Viser om der serveres ikke halal kyllinge/okse kød";
 
 "diningDetailAddressTelephoneOptionsOnBoarding" = "Tryk på adressen for at få rutevejledning eller ringe til stedet";
 
@@ -263,19 +261,28 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "LocationViewController.button.list" = "Liste";
 "LocationViewController.searchbar.placeholder" = "Søgetekst";
 
-"LocationDetailViewController.label.km" = "km";
-"LocationDetailViewController.label.submitterHeadLine" = "Indsendt af:";
-"LocationDetailViewController.button.report" = "Rapporter fejl";
-"LocationDetailViewController.button.add.review" = "Tilføj anmeldelse";
-"LocationDetailViewController.button.add.picture" = "Tilføj billede";
-"LocationDetailViewController.label.no.reviews" = "Der findes ingen anmeldelser for dette sted endnu. Skal du være den første?";
+
+"HGLocationDetailsSubmitterView.label.submitterHeadLine" = "Indsendt af:";
+
+"HGLocationDetailsPictureView.button.report" = "Rapporter fejl";
+"HGLocationDetailsPictureView.button.add.review" = "Tilføj anmeldelse";
+"HGLocationDetailsPictureView.button.add.picture" = "Tilføj billede";
 "HGLocationDetailsPictureView.label.no.pictures" = "Der findes ingen billeder for dette sted endnu. Skal du være den første?";
+
+"LocationDetailViewController.label.km" = "km";
+"LocationDetailViewController.mail.text" = "Der er følgende forkerte oplysninger: \nUDDYB HER!";
+"LocationDetailViewController.label.footer" = "Der findes ingen anmeldelser for dette sted endnu. Skal du være den første?";
 
 "HGImagePickerView.button.approve" = "Tilføj 1 billed";
 "HGImagePickerView.button.approve.multiple" = "Tilføj %lu billeder";
 "HGImagePickerView.button.photoLibrary" = "Fotobibliotek";
 "HGImagePickerView.button.takePicture" = "Tag billede";
 "HGImagePickerView.button.cancel" = "Fortryd";
+
+"HGImagePickerController.button.confirm" = "Godkend";
+"HGImagePickerController.button.cancel" = "Fotryd";
+"HGImagePickerController.label.no.pictures" = "Du har ikke tilføjet nogle billeder endnu, tryk på kameraet for at vælge billeder";
+"HGImagePickerController.label.max.pictures" = "Du kan maximalt vælge %i billede(r)";
 
 "SettingsViewController.button.clear.cache" = "Ryd billedcache";
 "SettingsViewController.button.support" = "Støt Halalguide";
@@ -297,3 +304,19 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "FilterLocationViewController.button.dismiss" = "Færdig";
 "FilterLocationViewController.label.max.distance" = "Maksimal afstand";
 "FilterLocationViewController.label.km" = "km";
+
+"CreateReviewViewController.button.regret" = "Fortryd";
+"CreateReviewViewController.button.save" = "Gem";
+"CreateReviewViewController.hud.saving" = "Gemmer i skyen";
+"CreateReviewViewController.hud.error" = "Der skete en ukendt fejl";
+"CreateReviewViewController.hud.saved" = "Din anmeldelse indsendt til godkendelse";
+"CreateReviewViewController.textview.placeholder" = "En anmeldelse skal minimum være 30 tegn";
+
+"ClusterPrePermissions.photo.title" = "Adgang til dine fotos";
+"ClusterPrePermissions.photo.message" = "Vi har brug for adgang til dine fotos, dette giver dig mulighed for at sende billeder til Halalguide";
+"ClusterPrePermissions.photo.deny" = "Ikke nu";
+"ClusterPrePermissions.photo.grant" = "Tillad";
+
+"ClusterPrePermissions.access.denied.title" = "Manglede adgang";
+"ClusterPrePermissions.access.denied.ok" = "Ok";
+"ClusterPrePermissions.access.denied.message" = "Du skal gå ind i indstillinger og give tilladelse til Halalguide manuel";

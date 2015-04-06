@@ -130,9 +130,9 @@
             [self calculateAverageRating];
         }
     }];
-
-
 }
+
+//TODO Graphical elements should not be in view model
 
 - (NSMutableAttributedString *)stringForBool:(BOOL)value {
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:value ? NSLocalizedString(@"yes", nil) : NSLocalizedString(@"no", nil)];
@@ -140,16 +140,7 @@
     return string;
 }
 
-- (void)report:(UIViewController <MFMailComposeViewControllerDelegate> *)viewController {
 
-    MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
-    [mailController setToRecipients:@[@"tommy@eazyit.dk"]];
-    [mailController setSubject:[NSString stringWithFormat:@"%@", self.location.objectId]];
-    [mailController setMessageBody:NSLocalizedString(@"errorMailText", nil) isHTML:false];
-    mailController.mailComposeDelegate = viewController;
-    [viewController presentViewController:mailController animated:true completion:nil];
-
-}
 
 - (void)saveMultiplePictures:(NSArray *)images {
     self.saving = true;

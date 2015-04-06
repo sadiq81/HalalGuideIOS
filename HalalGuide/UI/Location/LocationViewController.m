@@ -225,51 +225,6 @@
 
 }
 
-#pragma mark - Navigation
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-
-    if ([identifier isEqualToString:@"CreateLocation"] || [identifier isEqualToString:@"CreateReview"]) {
-
-        if (![self.viewModel isAuthenticated]) {
-
-            [self.viewModel authenticate:self];
-
-            return false;
-        } else {
-            return true;
-        }
-    } else {
-        return true;
-    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [super prepareForSegue:segue sender:sender];
-
-    if (([segue.identifier isEqualToString:@"DiningDetail"] || [segue.identifier isEqualToString:@"ShopDetail"] || [segue.identifier isEqualToString:@"MosqueDetail"])) {
-
-        Location *location = (self.viewModel.locationPresentation == LocationPresentationList) ? [self.viewModel.listLocations objectAtIndex:[self.tableView indexPathForSelectedRow].row] : ((LocationAnnotation *) [[self.mapView selectedAnnotations] objectAtIndex:0]).location;
-        LocationDetailViewModel *detailViewModel = [LocationDetailViewModel modelWithLocation:location];
-
-        LocationDetailViewController *detailViewController = (LocationDetailViewController *) segue.destinationViewController;
-        //detailViewController.viewModel = detailViewModel;
-
-    } else if ([segue.identifier isEqualToString:@"CreateLocation"]) {
-
-//        CreateLocationViewModel *_viewModel = [[CreateLocationViewModel alloc] init];
-//        _viewModel.locationType = self.viewModel.locationType;
-
-        UINavigationController *_navigationController = (UINavigationController *) segue.destinationViewController;
-        CreateLocationViewController *_controller = [_navigationController.viewControllers objectAtIndex:0];
-        _controller.viewModel = _viewModel;
-
-    } else if ([segue.identifier isEqualToString:@"Filter"]) {
-        FilterLocationViewController *controller = segue.destinationViewController;
-//        controller.viewModel = self.viewModel;
-    }
-}
-
 #pragma mark - TableView
 
 - (void)setupTableView {

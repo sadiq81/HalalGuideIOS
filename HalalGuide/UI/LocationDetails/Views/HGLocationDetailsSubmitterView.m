@@ -42,7 +42,7 @@
     [self addSubview:self.submitterImage];
 
     self.submitterHeadLine = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
-    self.submitterHeadLine.text = NSLocalizedString(@"LocationDetailViewController.label.submitterHeadLine", nil);
+    self.submitterHeadLine.text = NSLocalizedString(@"HGLocationDetailsSubmitterView.label.submitterHeadLine", nil);
     [self addSubview:self.submitterHeadLine];
 
     self.submitterName = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:17];

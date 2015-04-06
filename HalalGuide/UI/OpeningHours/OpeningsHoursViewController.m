@@ -66,6 +66,7 @@
 
     [self.rightBarButton setBlock:^(id weakSender) {
 
+        @throw @"not yet localized";
         [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"ok", nil) message:NSLocalizedString(@"locationSaved", <#comment#>) cancelButtonTitle:NSLocalizedString(@"done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"addReview", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
             if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
@@ -109,8 +110,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     if ([segue.identifier isEqualToString:@"CreateReview"]) {
-        CreateReviewViewController *viewController = (CreateReviewViewController *) segue.destinationViewController;
-        viewController.viewModel = [[CreateReviewViewModel alloc] initWithReviewedLocation:self.viewModel.createdLocation];
+       // CreateReviewViewController *viewController = (CreateReviewViewController *) segue.destinationViewController;
+//        viewController.viewModel = [[CreateReviewViewModel alloc] initWithReviewedLocation:self.viewModel.createdLocation];
     }
 }
 
