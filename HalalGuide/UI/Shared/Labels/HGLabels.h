@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "Location.h"
+#import "HGLocation.h"
 
 
 @interface HGLabel : UILabel

@@ -183,9 +183,9 @@
 }
 
 - (void)setupToolbar {
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UIBarButtonImage.Camera"] style:UIBarButtonItemStylePlain target:self action:@selector(showImagePickerView)];
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"HGImagePickerController.UIBarButtonImage.Camera"] style:UIBarButtonItemStylePlain target:self action:@selector(showImagePickerView)];
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"UIBarButtonImage.Trash"] style:UIBarButtonItemStylePlain target:self action:@selector(deleteSelected)];
+    UIBarButtonItem *delete = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"HGImagePickerController.UIBarButtonImage.Trash"] style:UIBarButtonItemStylePlain target:self action:@selector(deleteSelected)];
 
     RAC(add, enabled) = [RACObserve(self, pictures) map:^id(NSArray *pictures) {
         return @((([pictures count] < self.maximumPictures) || self.maximumPictures == 0));
@@ -202,10 +202,17 @@
     @weakify(self)
     [self.confirm setBlock:^(id weakSender) {
         @strongify(self)
+        [self dismissImagePickerView];
         [self.delegate HGImagePickerControllerDidConfirm:self pictures:self.pictures];
     }];
+
+    RAC(self.confirm, enabled) = [RACObserve(self, pictures) map:^id(NSArray *pictures) {
+        return @([pictures count] > 0);
+    }];
+
     [self.cancel setBlock:^(id weakSender) {
         @strongify(self)
+        [self dismissImagePickerView];
         [self.delegate HGImagePickerControllerDidCancel:self];
     }];
 }

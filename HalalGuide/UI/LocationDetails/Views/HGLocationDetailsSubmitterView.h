@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "LocationDetailViewModel.h"
+#import "HGLocationDetailViewModel.h"
 
 
 @interface HGLocationDetailsSubmitterView : UIView
@@ -13,11 +13,11 @@
 @property(strong, readonly) UILabel *submitterHeadLine;
 @property(strong, readonly) UILabel *submitterName;
 @property(strong, readonly) UIImageView *submitterImage;
-@property(strong, readonly) LocationDetailViewModel *viewModel;
+@property(strong, readonly) HGLocationDetailViewModel *viewModel;
 
-- (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel;
+- (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel;
 
-+ (instancetype)viewWithViewModel:(LocationDetailViewModel *)viewModel;
++ (instancetype)viewWithViewModel:(HGLocationDetailViewModel *)viewModel;
 
 
 @end

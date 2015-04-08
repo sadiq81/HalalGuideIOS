@@ -5,15 +5,15 @@
 
 #import <Foundation/Foundation.h>
 #import "UIKit/UIKit.h"
-#import "Location.h"
+#import "HGLocation.h"
 #import "HGSettings.h"
-#import "Review.h"
+#import "HGReview.h"
 
 @interface HGReviewService : NSObject
 + (HGReviewService *)instance;
 
-- (void)saveReview:(Review *)review onCompletion:(PFBooleanResultBlock)completion;
+- (void)saveReview:(HGReview *)review onCompletion:(PFBooleanResultBlock)completion;
 
-- (void)reviewsForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion;
+- (void)reviewsForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion;
 
 @end

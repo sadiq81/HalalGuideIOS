@@ -6,139 +6,87 @@ Created by Privat on 05/12/14.
 Copyright (c) 2014 Eazy It. All rights reserved.
 */
 
-"afghan" = "Afghansk";
-"african"= "Afrikansk";
-"american" = "Amerikansk";
-"argentine" = "Argentinsk";
-"asian" = "Asiatisk";
-"belgian" = "Belgisk";
-"brazilian" = "Brasiliansk";
-"british" = "Engelsk";
-"buffet" = "Buffet";
-"burger" = "Burger";
-"bakery" = "Bager";
-"bagel" = "Bagel";
-"bubbleThea" = "Bubble thea";
-"arabic" = "Arabisk";
-"cafe" = "Cafe";
-"caribbean" = "Caribisk";
-"cupcake" = "Cupkage";
-"candy" = "Slik";
-"chinese" = "Kinesisk";
-"danish" = "Dansk";
-"dessert" = "Dessert";
-"fish" = "Fisk";
-"fruit" = "Frugt";
-"fastfood" = "Fast food";
-"french" = "Fransk";
-"german" = "Tysk";
-"grill" = "Grill";
-"greek" = "Græsk";
-"iceCream" = "Is";
-"juice" = "Juice";
-"kiosk" = "Kiosk";
-"indian" = "Indisk";
-"indonesian" = "Indonesisk";
-"irish" = "Irsk";
-"italian" = "Italiensk";
-"iranian" = "Iransk";
-"japanese" = "Japansk";
-"kebab" = "Kebab";
-"korean" = "Koreansk";
-"kosher" = "Kosher";
-"lebanese" = "Libanesisk";
-"mediterranean" = "Middelhavs";
-"malaysian" = "Malaysisk";
-"moroccan" = "Marokansk";
-"mexican" = "Mexikansk";
-"nordic" = "Nordisk";
-"nepalese" = "Nepalesisk";
-"pastry" = "Kager";
-"pakistani" = "Pakistansk";
-"persian" = "Persisk";
-"pizza" = "Pizza";
-"portuguese" = "Portugesisk";
-"russian" = "Russisk";
-"seafood" = "Skaldyr";
-"salad" = "Salat";
-"sandwich" = "Sandwich";
-"spanish" = "Spansk";
-"steak" = "Steak";
-"soup" = "Suppe";
-"sushi" = "Sushi";
-"tapas" = "Tapas";
-"thai" = "Thai";
-"tibetan" = "Tibetansk";
-"turkish" = "Tyrkisk";
-"vegan" = "Vegetar";
-"vietnamese" = "Vietnamesisk";
-"wok" = "Wok";
+"DiningCategory.afghan" = "Afghansk";
+"DiningCategory.african"= "Afrikansk";
+"DiningCategory.american" = "Amerikansk";
+"DiningCategory.argentine" = "Argentinsk";
+"DiningCategory.asian" = "Asiatisk";
+"DiningCategory.belgian" = "Belgisk";
+"DiningCategory.brazilian" = "Brasiliansk";
+"DiningCategory.british" = "Engelsk";
+"DiningCategory.buffet" = "Buffet";
+"DiningCategory.burger" = "Burger";
+"DiningCategory.bakery" = "Bager";
+"DiningCategory.bagel" = "Bagel";
+"DiningCategory.bubbleThea" = "Bubble thea";
+"DiningCategory.arabic" = "Arabisk";
+"DiningCategory.cafe" = "Cafe";
+"DiningCategory.caribbean" = "Caribisk";
+"DiningCategory.cupcake" = "Cupkage";
+"DiningCategory.candy" = "Slik";
+"DiningCategory.chinese" = "Kinesisk";
+"DiningCategory.danish" = "Dansk";
+"DiningCategory.dessert" = "Dessert";
+"DiningCategory.fish" = "Fisk";
+"DiningCategory.fruit" = "Frugt";
+"DiningCategory.fastfood" = "Fast food";
+"DiningCategory.french" = "Fransk";
+"DiningCategory.german" = "Tysk";
+"DiningCategory.grill" = "Grill";
+"DiningCategory.greek" = "Græsk";
+"DiningCategory.iceCream" = "Is";
+"DiningCategory.juice" = "Juice";
+"DiningCategory.kiosk" = "Kiosk";
+"DiningCategory.indian" = "Indisk";
+"DiningCategory.indonesian" = "Indonesisk";
+"DiningCategory.irish" = "Irsk";
+"DiningCategory.italian" = "Italiensk";
+"DiningCategory.iranian" = "Iransk";
+"DiningCategory.japanese" = "Japansk";
+"DiningCategory.kebab" = "Kebab";
+"DiningCategory.korean" = "Koreansk";
+"DiningCategory.kosher" = "Kosher";
+"DiningCategory.lebanese" = "Libanesisk";
+"DiningCategory.mediterranean" = "Middelhavs";
+"DiningCategory.malaysian" = "Malaysisk";
+"DiningCategory.moroccan" = "Marokansk";
+"DiningCategory.mexican" = "Mexikansk";
+"DiningCategory.nordic" = "Nordisk";
+"DiningCategory.nepalese" = "Nepalesisk";
+"DiningCategory.pastry" = "Kager";
+"DiningCategory.pakistani" = "Pakistansk";
+"DiningCategory.persian" = "Persisk";
+"DiningCategory.pizza" = "Pizza";
+"DiningCategory.portuguese" = "Portugesisk";
+"DiningCategory.russian" = "Russisk";
+"DiningCategory.seafood" = "Skaldyr";
+"DiningCategory.salad" = "Salat";
+"DiningCategory.sandwich" = "Sandwich";
+"DiningCategory.spanish" = "Spansk";
+"DiningCategory.steak" = "Steak";
+"DiningCategory.soup" = "Suppe";
+"DiningCategory.sushi" = "Sushi";
+"DiningCategory.tapas" = "Tapas";
+"DiningCategory.thai" = "Thai";
+"DiningCategory.tibetan" = "Tibetansk";
+"DiningCategory.turkish" = "Tyrkisk";
+"DiningCategory.vegan" = "Vegetar";
+"DiningCategory.vietnamese" = "Vietnamesisk";
+"DiningCategory.wok" = "Wok";
 
-"ok" = "OK";
-"save"= "Gem";
-"done" = "Færdig";
-"addReview" = "Tilføj anmeldelse";
-"regret" = "Fortryd";
-"no" = "Nej";
-"yes" = "Ja";
-"action"= "Handling";
-"directions" = "Find vej";
-"call" = "Ring til stedet";
-"homepage" = "Hjemmeside";
-"warning" = "Advarsel";
-"directionsText" = "Vil du åbne Kort og få vist vejen til";
-"callNotAvaileble"= "Enheden understøtter ikke opringning";
+"ShopType.groceries" = "Dagligvarer";
+"ShopType.furniture" = "Møbler";
+"ShopType.butcher" = "Slagter";
 
-"couldnotcreateindb" = "Kunne ikke kontakte databasen, prøv igen?";
-"couldnotuploadfile" = "Kunne ikke uploade billede, prøv igen?";
-"addressdoesnotexists" = "Adressen findes ikke ";
-"error" = "Ukendt fejl";
-"errorText" = "Der skete en ukendt fejl, prøv igen senere.";
+"Language.none" = "Intet";
+"Language.danish" ="Dansk";
+"Language.arabic" = "Arabisk";
+"Language.urdu" = "Urdu";
+"Language.english" = "Engelsk";
 
-"awaiting" = "Venter godkendelse";
-"approved" = "Godkendt";
-"notapproved" = "Ikke godkendt";
-
-"shoptype" = "Butiktype";
-"groceries" = "Dagligvarer";
-"furniture" = "Møbler";
-"butcher" = "Slagter";
-
-"language" = "Sprog";
-"none" = "Intet";
-"danish" ="Dansk";
-"arabic" = "Arabisk";
-"urdu" = "Urdu";
-"english" = "Engelsk";
-
-
-"dining" = "Spisesteder";
-"mosque" = "Moske";
-"shop" = "Handle";
-
-
-"loggingIn" = "Logger ind";
-"login" = "Log ind";
-"fetching"  = "Henter";
-"unlimited" = "Ubegrænset";
-"savingToTheCloud" = "Gemmer i skyen";
-"reviewSaved" = "Din anmeldelse er gemt og afventer godkendelse";
-"locationSaved" = "Dit forslag er indsendt til godkendelse";
-"imageSaved" = "Dit billede er indsendt til godkendelse";
-"imagesSaved" = "Dine billeder er indsendt til godkendelse";
-"estimatingAddress" = "Gætter din adresse";
-"invalidAddress" = "Ikke en gyldig adresse";
-"GPSNotPreciseEnough" = "GPS punkt for adressen er upræcist, vil du selv vælge den på kortet?";
-"manuelGPSPosition" = "Træk og slip for vælge ny position";
-"authenticate" = "Autentifikation";
-"authenticateText" = "For at kunne indsende forslag til HalalGuide, så skal du bekræfte din identitet via facebook";
-"authenticateSuccessfull" = "Du er nu logget ind, prøv din handling igen";
-
-"addPicture" = "Tilføj billede";
-"newPicture" = "Tag nyt billede";
-"choosePicture" = "Vælg billede";
-
-"errorMailText" = "Der er følgende forkerte oplysninger: \nUDDYB HER!";
+"LocationType.dining" = "Spisesteder";
+"LocationType.mosque" = "Moske";
+"LocationType.shop" = "Handle";
 
 "addNewOnBoardingButton" = "Tryk på '+' for at indsende nye forslag";
 "filterOnBoardingButton" = "Tryk på 'Filter' for at filtrere de viste forslag";
@@ -153,71 +101,16 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "slideShowViewSwipeToViewMore" = "Swipe for at se flere billeder";
 
-"supportOnBoarding" = "Støt den gratis app med et lille beløb";
+"WeekDay.sunday" ="Søndag";
+"WeekDay.monday"="Mandag";
+"WeekDay.tuesday"="Tirsdag";
+"WeekDay.wednesday"="Onsdag";
+"WeekDay.thursdag"="Torsdag";
+"WeekDay.friday"="Fredag";
+"WeekDay.saturday"="Lørdag";
 
-"thank" = "Tak";
-"thankText" = "Tak for dit bidrag";
-
-/* Navigation bar buttons */
-"Cancel" = "Fortryd";
-"Done" = "Færdig";
-
-/* Default title */
-"Photos" = "Billeder";
-
-/* No. of selected */
-"%ld Photo Selected" = "%ld Billed valgt";
-"%ld Photos Selected" = "%ld Bileder valgt";
-"%ld Video Selected" = "%ld Video valgt";
-"%ld Videos Selected" = "%ld Videoer valgt";
-"%ld Items Selected" = "%ld Emner valgt";
-
-/* Album's footer */
-"%ld Photos" = "%ld Billeder";
-"%ld Videos" = "%ld Videoer";
-"%ld Photos, %ld Videos" = "%1$ld Billeder, %2$ld Videoer";
-
-/* Assets index */
-"%ld of %ld" = "%1$ld af %2$ld";
-
-/* Messages if privacy is not granted */
-"This app does not have access to your photos or videos." = "Denne app har ikke adgangs til dine billeder eller videoer.";
-"You can enable access in Privacy Settings." = "Du kan tildele adgang under Privatlivs indstillinger.";
-
-/* Messages if no assets */
-"No Photos or Videos" = "Ingen billeder eller videoer";
-
-/* The parameter will be replaced by the device model name */
-"You can take photos and videos using the camera, or sync photos and videos onto your %@\nusing iTunes." = "Du kan tage billeder med kameraet, eller synkronisere billeder og videoer til din %@\nmed iTunes.";
-"You can sync photos and videos onto your %@ using iTunes." = "Du kan synkronisere billeder eller videoer til din %@ med iTunes.";
-
-/* Accessibility labels */
-"Photo" = "Billed";
-"Video" = "Video";
-"Portrait" = "Portræt";
-"Landscape" = "Landskap";
-"Play" = "Afspil";
-"Not available" = "Ikke tilgængelig";
-
-/* Video duration spell out */
-"hours" = "timer";
-"hour" = "time";
-"minutes" = "minutter";
-"minute" = "minut";
-"seconds" = "sekunder";
-"second" = "sekund";
-
-"sunday" ="Søndag";
-"monday"="Mandag";
-"tuesday"="Tirsdag";
-"wednesday"="Onsdag";
-"thursdag"="Torsdag";
-"friday"="Fredag";
-"saturday"="Lørdag";
 "closed"= "Lukket";
 "open"= "Åben";
-
-
 
 "Pull down to refresh..." ="Træk ned for genopfriske...";
 "Release to refresh..."= "Slip for at genopfriske...";
@@ -228,54 +121,56 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "MM/dd/yyyy hh:mm:a"= "MM/dd/yyyy hh:mm:a";
 "Last Updated: %@"= "Sidst opdateret: %@";
 
-"uploading" = "Sender...";
-"downloading" = "Henter...";
-"percentageComplete"= "færdig";
-
-// ZLPromptUserReview - Begin
-
 "ZLPromptUserReview.title"="Anmeld";
 "ZLPromptUserReview.message"="Vi håber du nyder HalalGuide, måske kunne du tænke dig at give os en anmeldelse?";
 "ZLPromptUserReview.confirm"="Ja";
 "ZLPromptUserReview.cancel"="Nej tak";
 "ZLPromptUserReview.remind"="Påmind mig senere";
 
-// ZLPromptUserReview - End
+"HGFrontPageViewController.title"  = "HalalGuide";
+"HGFrontPageViewController.label.shop"= "Handle";
+"HGFrontPageViewController.label.enumber"= "Enummer";
+"HGFrontPageViewController.label.eat"= "Spise";
+"HGFrontPageViewController.label.mosque"= "Moske";
+"HGFrontPageViewController.label.settings"= "Indstillinger";
+"HGFrontPageViewController.label.latest.updates" = "Seneste opdateringer";
+"HGFrontPageViewController.hud.fetching" = "Opdaterer";
+"HGFrontPageViewController.hud.error" = "Fejl!";
 
-"FrontPageViewController.title"  = "HalalGuide";
-"FrontPageViewController.label.shop"= "Handle";
-"FrontPageViewController.label.enumber"= "Enummer";
-"FrontPageViewController.label.eat"= "Spise";
-"FrontPageViewController.label.mosque"= "Moske";
-"FrontPageViewController.label.settings"= "Indstillinger";
-"FrontPageViewController.label.latest.updates" = "Seneste opdateringer";
+"HGLocationDetailViewModel.yes"= "Ja";
+"HGLocationDetailViewModel.no"= "Nej";
 
-"DiningCell.yes"= "Ja";
-"DiningCell.no"= "Nej";
-
-"MosqueCell.language.none"= "";
-"MosqueCell.language.danish"= "Dansk";
-"MosqueCell.language.arabic"= "Arabisk";
-"MosqueCell.language.urdu"= "Urdu";
-"MosqueCell.language.english"= "Engelsk";
-
-"LocationViewController.title.dining" = "Spisesteder";
-"LocationViewController.title.mosque" = "Moskeer";
-"LocationViewController.title.shop" = "Butikker";
-"LocationViewController.button.filter" = "Filter";
-"LocationViewController.button.map" = "Kort";
-"LocationViewController.button.list" = "Liste";
-"LocationViewController.searchbar.placeholder" = "Søgetekst";
+"HGLocationViewController.title.LocationType.dining" = "Spisesteder";
+"HGLocationViewController.title.LocationType.mosque" = "Moskeer";
+"HGLocationViewController.title.LocationType.shop" = "Butikker";
+"HGLocationViewController.button.filter" = "Filter";
+"HGLocationViewController.button.map" = "Kort";
+"HGLocationViewController.button.list" = "Liste";
+"HGLocationViewController.searchbar.placeholder" = "Søgetekst";
+"HGLocationViewController.hud.error" = "Fejl!";
+"HGLocationViewController.hud.fetching" = "Opdaterer";
 
 "HGLocationDetailsSubmitterView.label.submitterHeadLine" = "Indsendt af:";
+
 "HGLocationDetailsPictureView.button.report" = "Rapporter fejl";
 "HGLocationDetailsPictureView.button.add.review" = "Tilføj anmeldelse";
 "HGLocationDetailsPictureView.button.add.picture" = "Tilføj billede";
 "HGLocationDetailsPictureView.label.no.pictures" = "Der findes ingen billeder for dette sted endnu. Skal du være den første?";
 
-"LocationDetailViewController.mail.text" = "Der er følgende forkerte oplysninger: \nUDDYB HER!";
-"LocationDetailViewController.label.km" = "km";
-"LocationDetailViewController.label.footer" = "There are no reviews for this location yet, you could be the first?";
+"HGLocationDetailsInfoView.label.km" = "km";
+
+"HGLocationDetailViewController.mail.text" = "Der er følgende forkerte oplysninger: \nUDDYB HER!";
+"HGLocationDetailViewController.label.footer" = "Der findes ingen anmeldelser for dette sted endnu. Skal du være den første?";
+"HGLocationDetailViewController.alert.action" = "Handling";
+"HGLocationDetailViewController.alert.directions" = "Find vej";
+"HGLocationDetailViewController.alert.call" = "Ring til stedet";
+"HGLocationDetailViewController.alert.warning" = "Advarsel!";
+"HGLocationDetailViewController.alert.call.not.availeble" = "Enheden understøtter ikke opringning";
+"HGLocationDetailViewController.alert.regret" = "Fortryd";
+"HGLocationDetailViewController.alert.homepage" = "Hjemmeside";
+"HGLocationDetailViewController.hud.images.saved" = "Dine billeder indsendt til godkendelse";
+"HGLocationDetailViewController.hud.fetching" = "Opdaterer";
+"HGLocationDetailViewController.hud.error" = "Fejl!";
 
 "HGImagePickerView.button.approve" = "Tilføj 1 billed";
 "HGImagePickerView.button.approve.multiple" = "Tilføj %lu billeder";
@@ -288,39 +183,57 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGImagePickerController.label.no.pictures" = "Du har ikke tilføjet nogle billeder endnu, tryk på kameraet for at vælge billeder";
 "HGImagePickerController.label.max.pictures" = "Du kan maximalt vælge %i billede(r)";
 
-"SettingsViewController.button.clear.cache" = "Ryd billedcache";
-"SettingsViewController.button.support" = "Støt Halalguide";
-"SettingsViewController.button.reset.filter" = "Nulstil søgefilter";
-"SettingsViewController.button.reset.intro" = "Nulstil introduktion";
-"SettingsViewController.section.title.support" = "Støt";
-"SettingsViewController.section.title.reset" = "Nulstil";
+"HGSettingsViewController.button.clear.cache" = "Ryd billedcache";
+"HGSettingsViewController.button.support" = "Støt Halalguide";
+"HGSettingsViewController.button.reset.filter" = "Nulstil søgefilter";
+"HGSettingsViewController.button.reset.intro" = "Nulstil introduktion";
+"HGSettingsViewController.section.title.support" = "Støt";
+"HGSettingsViewController.section.title.reset" = "Nulstil";
 
 "HGCategoriesView.button.reset" = "Nulstil";
 "HGCategoriesView.button.chose" = "Vælg";
 "HGCategoriesView.label.categories" = "Kategorier:";
 "HGCategoriesView.label.language" = "Sprog";
-"HGSwitchView.label.pork" = "Vis med gris";
-"HGSwitchView.label.alcohol" = "Vis med alkohol";
-"HGSwitchView.label.halal" = "Vis med ikke halal kød";
-"HGSwitchView.switch.on" = "Ja";
-"HGSwitchView.switch.off" = "Nej";
 
-"FilterLocationViewController.button.dismiss" = "Færdig";
-"FilterLocationViewController.label.max.distance" = "Maksimal afstand";
-"FilterLocationViewController.label.km" = "km";
+"HGFilterSwitchView.label.pork" = "Vis med gris";
+"HGFilterSwitchView.label.alcohol" = "Vis med alkohol";
+"HGFilterSwitchView.label.halal" = "Vis med ikke halal kød";
+"HGFilterSwitchView.switch.on" = "Ja";
+"HGFilterSwitchView.switch.off" = "Nej";
 
-"CreateReviewViewController.button.regret" = "Fortryd";
-"CreateReviewViewController.button.save" = "Gem";
-"CreateReviewViewController.hud.saving" = "Gemmer i skyen";
-"CreateReviewViewController.hud.error" = "Der skete en ukendt fejl";
-"CreateReviewViewController.hud.saved" = "Din anmeldelse indsendt til godkendelse";
-"CreateReviewViewController.textview.placeholder" = "En anmeldelse skal minimum være 30 tegn";
+"HGFilterLocationViewController.button.dismiss" = "Færdig";
+"HGFilterLocationViewController.label.max.distance" = "Maksimal afstand";
+"HGFilterLocationViewController.label.km" = "km";
+"HGFilterLocationViewController.label.unlimited" = "Ubegrænset";
+
+"HGCreateReviewViewController.button.regret" = "Fortryd";
+"HGCreateReviewViewController.button.save" = "Gem";
+"HGCreateReviewViewController.hud.saving" = "Gemmer i skyen";
+"HGCreateReviewViewController.hud.error" = "Der skete en ukendt fejl";
+"HGCreateReviewViewController.hud.saved" = "Din anmeldelse indsendt til godkendelse";
+"HGCreateReviewViewController.textview.placeholder" = "En anmeldelse skal minimum være 30 tegn";
 
 "ClusterPrePermissions.photo.title" = "Adgang til dine fotos";
 "ClusterPrePermissions.photo.message" = "Vi har brug for adgang til dine fotos, dette giver dig mulighed for at sende billeder til Halalguide";
 "ClusterPrePermissions.photo.deny" = "Ikke nu";
 "ClusterPrePermissions.photo.grant" = "Tillad";
-
 "ClusterPrePermissions.access.denied.title" = "Manglede adgang";
 "ClusterPrePermissions.access.denied.ok" = "Ok";
 "ClusterPrePermissions.access.denied.message" = "Du skal gå ind i indstillinger og give tilladelse til Halalguide manuel";
+
+"HGLogInViewController.button.login" = "Login";
+"HGLogInViewController.label.authenticate" = "For at kunne indsende forslag til HalalGuide, så skal du bekræfte din identitet via facebook";
+
+"UIViewController.extension.hud.percentage" = "færdig";
+"UIViewController.extension.alert.error.title" = "Ukendt fejl";
+"UIViewController.extension.alert.error.message" = "";
+"UIViewController.extension.alert.error.ok" = "Ok";
+"UIViewController.extension.alert.warning.title" = "Advarsel";
+"UIViewController.extension.alert.warning.message" = "For at kunne indsende forslag til HalalGuide, så skal du bekræfte din identitet via facebook";
+"UIViewController.extension.alert.warning.ok" = "Ok";
+
+"HGCreateSwitchView.label.pork" = "Vis med gris";
+"HGCreateSwitchView.label.alcohol" = "Serveres der alkohol?";
+"HGCreateSwitchView.label.halal" = "Serveres der ikke halal kød?";
+"HGCreateSwitchView.switch.on" = "Ja";
+"HGCreateSwitchView.switch.off" = "Nej";

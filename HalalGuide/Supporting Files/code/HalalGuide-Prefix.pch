@@ -10,7 +10,7 @@
 #define HalalGuide_PrefixHeader_pch
 
 #ifdef __OBJC__
-#import "Common.h"
+#import "HGCommon.h"
 #import "NSLocale+iOS8.h"
 
 #endif

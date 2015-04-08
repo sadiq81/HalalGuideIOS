@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
-#import "LocationDetailViewModel.h"
+#import "HGLocationDetailViewModel.h"
 
 
 @interface HGLocationDetailsPictureView : UIView
@@ -17,11 +17,11 @@
 @property(strong, readonly) iCarousel *pictures;
 @property(strong, nonatomic, readonly) UILabel *noPicturesLabel;
 
-@property(strong, readonly) LocationDetailViewModel *viewModel;
+@property(strong, readonly) HGLocationDetailViewModel *viewModel;
 
-- (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel ;
+- (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel ;
 
-+ (instancetype)viewWithViewModel:(LocationDetailViewModel *)viewModel ;
++ (instancetype)viewWithViewModel:(HGLocationDetailViewModel *)viewModel ;
 
 
 @end

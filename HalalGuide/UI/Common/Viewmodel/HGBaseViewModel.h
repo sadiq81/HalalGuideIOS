@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "Location.h"
+#import "HGLocation.h"
 #import "NSArray+LinqExtensions.h"
-#import "Common.h"
+#import "HGCommon.h"
 #import <ParseUI/ParseUI.h>
 
 @protocol CategoriesViewModel <NSObject>

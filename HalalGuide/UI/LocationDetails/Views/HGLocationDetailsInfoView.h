@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "LocationDetailViewModel.h"
+#import "HGLocationDetailViewModel.h"
 #import "EDStarRating/EDStarRating.h"
 
 
@@ -27,11 +27,11 @@
 @property(strong, readonly) UIImageView *languageImage;
 @property(strong, readonly) UILabel *languageLabel;
 
-@property(strong, readonly, nonatomic) LocationDetailViewModel *viewModel;
+@property(strong, readonly, nonatomic) HGLocationDetailViewModel *viewModel;
 
-- (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel;
+- (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel;
 
-+ (instancetype)viewWithViewModel:(LocationDetailViewModel *)viewModel;
++ (instancetype)viewWithViewModel:(HGLocationDetailViewModel *)viewModel;
 
 
 @end

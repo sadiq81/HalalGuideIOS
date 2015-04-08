@@ -23,7 +23,7 @@
         <!--Indstillinger-->
         <scene sceneID="881-5g-POQ">
             <objects>
-                <tableViewController id="kPQ-ua-Atg" customClass="SettingsViewController" sceneMemberID="viewController">
+                <tableViewController id="kPQ-ua-Atg" customClass="HGSettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EbQ-4d-bdx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,7 +113,7 @@
         <!--Enummer-->
         <scene sceneID="B9N-SI-uzq">
             <objects>
-                <viewController id="aKA-Iy-qfY" customClass="ENumberViewController" sceneMemberID="viewController">
+                <viewController id="aKA-Iy-qfY" customClass="HGENumberViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dl1-uO-96E"/>
                         <viewControllerLayoutGuide type="bottom" id="Snc-6H-M2F"/>
@@ -144,7 +144,7 @@
         <!--HalalGuide-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="FrontPage" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="FrontPageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FrontPage" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="HGFrontPageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eqL-lJ-qNp"/>
                         <viewControllerLayoutGuide type="bottom" id="GEz-H2-jBz"/>
@@ -229,7 +229,7 @@
                                             <segue destination="hS1-S9-1PQ" kind="push" identifier="DiningDetail" id="GC0-Re-rx7"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="mosque" rowHeight="62" id="3pL-qF-Vxs" customClass="MosqueCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="mosque" rowHeight="62" id="3pL-qF-Vxs" customClass="HGMosqueCell">
                                         <rect key="frame" x="0.0" y="84" width="320" height="62"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="3pL-qF-Vxs" id="JSf-FI-PWH">
@@ -439,7 +439,7 @@
         <!--Filter Location View Controller-->
         <scene sceneID="uPH-HV-Hgd">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="WIe-Rx-R0t" customClass="FilterLocationViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="WIe-Rx-R0t" customClass="HGFilterLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fTI-fQ-3YZ"/>
                         <viewControllerLayoutGuide type="bottom" id="IRz-fQ-0qR"/>
@@ -580,7 +580,7 @@
         <!--Tilføj-->
         <scene sceneID="NUC-ui-TRp">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="0jE-H3-xoT" customClass="CreateLocationViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="0jE-H3-xoT" customClass="HGCreateLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bmn-Ge-qiP"/>
                         <viewControllerLayoutGuide type="bottom" id="RLQ-Uj-cwn"/>
@@ -804,7 +804,7 @@
         <!--Åbningstider-->
         <scene sceneID="2OO-hG-kKG">
             <objects>
-                <viewController id="9ce-xo-jqX" customClass="OpeningsHoursViewController" sceneMemberID="viewController">
+                <viewController id="9ce-xo-jqX" customClass="HGOpeningsHoursViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LQL-HK-n7V"/>
                         <viewControllerLayoutGuide type="bottom" id="ppv-Km-H1X"/>
@@ -998,7 +998,7 @@
         <!--Categories View Controller-->
         <scene sceneID="Aqc-0q-5Oi">
             <objects>
-                <viewController id="XuG-hU-MhN" customClass="CategoriesViewController" sceneMemberID="viewController">
+                <viewController id="XuG-hU-MhN" customClass="HGCategoriesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g3Z-nU-G1j"/>
                         <viewControllerLayoutGuide type="bottom" id="HHT-c8-iCz"/>
@@ -1029,7 +1029,7 @@
         <!--Location Detail View Controller-->
         <scene sceneID="2MC-dU-cbc">
             <objects>
-                <viewController id="hS1-S9-1PQ" customClass="LocationDetailViewController" sceneMemberID="viewController">
+                <viewController id="hS1-S9-1PQ" customClass="HGLocationDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RU1-d9-EYA"/>
                         <viewControllerLayoutGuide type="bottom" id="wNO-6t-2Lo"/>
@@ -1179,7 +1179,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Review" id="B6a-fa-QWh" customClass="ReviewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Review" id="B6a-fa-QWh" customClass="HGReviewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B6a-fa-QWh" id="OAT-RV-1Un">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1254,7 +1254,7 @@
         <!--Location View Controller-->
         <scene sceneID="NqT-7N-PKa">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="csa-vg-Cr6" customClass="LocationViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="csa-vg-Cr6" customClass="HGLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kzl-0M-KmH"/>
                         <viewControllerLayoutGuide type="bottom" id="lZb-Ts-WWn"/>
@@ -1353,7 +1353,7 @@
                                                     <segue destination="hS1-S9-1PQ" kind="push" identifier="DiningDetail" id="HqZ-Wv-YJV"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="mosque" rowHeight="62" id="mre-Da-GFg" customClass="MosqueCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="mosque" rowHeight="62" id="mre-Da-GFg" customClass="HGMosqueCell">
                                                 <rect key="frame" x="0.0" y="177" width="320" height="62"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="mre-Da-GFg" id="S7x-Wa-3dm">
@@ -1529,7 +1529,7 @@
         <!--Anmeldelse-->
         <scene sceneID="0bw-g1-XoB">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="lhS-xz-cRY" customClass="CreateReviewViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="lhS-xz-cRY" customClass="HGCreateReviewViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ut8-VB-YgQ"/>
                         <viewControllerLayoutGuide type="bottom" id="fg8-lE-VrV"/>
@@ -1538,13 +1538,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DG6-y0-3nf" customClass="SZTextView">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DG6-y0-3nf" customClass="SZTextView">
                                 <rect key="frame" x="20" y="82" width="280" height="314"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29V-nV-v4C" customClass="EDStarRating">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29V-nV-v4C" customClass="EDStarRating">
                                 <rect key="frame" x="20" y="20" width="280" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1627,7 +1627,7 @@
         <!--Review Detail View Controller-->
         <scene sceneID="kH9-Rl-4td">
             <objects>
-                <viewController id="kLW-bC-3IZ" customClass="ReviewDetailViewController" sceneMemberID="viewController">
+                <viewController id="kLW-bC-3IZ" customClass="HGReviewDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vzg-kX-ZX2"/>
                         <viewControllerLayoutGuide type="bottom" id="9vR-aD-MyT"/>
@@ -1681,7 +1681,7 @@
         <!--Adresse-->
         <scene sceneID="00p-sT-kH6">
             <objects>
-                <viewController id="DaP-tA-8PM" customClass="CoordinatePickerViewController" sceneMemberID="viewController">
+                <viewController id="DaP-tA-8PM" customClass="HGCoordinatePickerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1iH-iu-F3e"/>
                         <viewControllerLayoutGuide type="bottom" id="93f-cL-qJm"/>

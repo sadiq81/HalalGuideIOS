@@ -16,18 +16,18 @@
 @property(strong) iCarousel *pictures;
 @property(strong, nonatomic) UILabel *noPicturesLabel;
 
-@property(strong) LocationDetailViewModel *viewModel;
+@property(strong) HGLocationDetailViewModel *viewModel;
 
-- (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel;
+- (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel;
 
-+ (instancetype)viewWithViewModel:(LocationDetailViewModel *)viewModel;
++ (instancetype)viewWithViewModel:(HGLocationDetailViewModel *)viewModel;
 @end
 
 @implementation HGLocationDetailsPictureView {
 
 }
 
-- (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel {
+- (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel {
     self = [super init];
     if (self) {
         self.viewModel = viewModel;
@@ -38,7 +38,7 @@
     return self;
 }
 
-+ (instancetype)viewWithViewModel:(LocationDetailViewModel *)viewModel {
++ (instancetype)viewWithViewModel:(HGLocationDetailViewModel *)viewModel {
     return [[self alloc] initWithViewModel:viewModel];
 }
 
@@ -93,7 +93,7 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
 
-    LocationPicture *picture = [self.viewModel.locationPictures objectAtIndex:index];
+    HGLocationPicture *picture = [self.viewModel.locationPictures objectAtIndex:index];
 
     if (view == nil) {
         view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];

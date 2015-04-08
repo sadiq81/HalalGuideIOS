@@ -112,7 +112,7 @@
 
 - (NSMutableArray *)categoriesFilter {
     if (!_categoriesFilter) {
-        _categoriesFilter = [self.defaults valueForKey:kDiningFilter];
+        _categoriesFilter = [[NSMutableArray alloc] initWithArray:[self.defaults valueForKey:kDiningFilter]];
     }
     return _categoriesFilter;
 }
@@ -123,7 +123,7 @@
 
 - (NSMutableArray *)shopCategoriesFilter {
     if (!_shopCategoriesFilter) {
-        _shopCategoriesFilter = [self.defaults valueForKey:kShopFilter];
+        _shopCategoriesFilter = [[NSMutableArray alloc] initWithArray:[self.defaults valueForKey:kShopFilter]];
     }
     return _shopCategoriesFilter;
 }

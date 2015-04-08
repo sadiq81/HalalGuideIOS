@@ -3,18 +3,9 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#import <ParseFacebookUtils/PFFacebookUtils.h>
-#import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import "HGPictureService.h"
-#import "Location.h"
-#import "LocationPicture.h"
+#import "HGLocationPicture.h"
 #import "UIImage+Transformation.h"
-#import "ProfileInfo.h"
-#import "FBSession.h"
-#import "HGErrorReporting.h"
-#import "FBAccessTokenData.h"
-#import "FBRequest.h"
-#import "PFUser+Extension.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation HGPictureService {
@@ -33,14 +24,14 @@
     return _instance;
 }
 
-- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion {
+- (void)saveMultiplePictures:(NSArray *)images forLocation:(HGLocation *)location completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion {
 
     NSError *uploadError;
     __block int counter = 0;
 
     for (int i = 0; i < [images count]; i++) {
         UIImage *image = [images objectAtIndex:i];
-        LocationPicture *picture = [self prepareImageForUpload:image forLocation:location];
+        HGLocationPicture *picture = [self prepareImageForUpload:image forLocation:location];
 
         @weakify(uploadError)
         [picture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -58,10 +49,10 @@
 
 }
 
-- (LocationPicture *)prepareImageForUpload:(UIImage *)image forLocation:(Location *)location {
+- (HGLocationPicture *)prepareImageForUpload:(UIImage *)image forLocation:(HGLocation *)location {
 
     UIImage *compressed = [image compressForUpload];
-    LocationPicture *picture = [LocationPicture object];
+    HGLocationPicture *picture = [HGLocationPicture object];
     picture.creationStatus = @(CreationStatusAwaitingApproval);
     picture.locationId = location.objectId;
     picture.submitterId = [PFUser currentUser].objectId;
@@ -88,7 +79,7 @@
     [query findObjectsInBackgroundWithBlock:completion];
 }
 
-- (void)locationPicturesForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion {
+- (void)locationPicturesForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion {
     PFQuery *query = [PFQuery queryWithClassName:kLocationPictureTableName];
     //query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
@@ -96,7 +87,7 @@
     [query findObjectsInBackgroundWithBlock:completion];
 }
 
-- (void)thumbnailForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion {
+- (void)thumbnailForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion {
     PFQuery *query = [PFQuery queryWithClassName:kLocationPictureTableName];
     //query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];

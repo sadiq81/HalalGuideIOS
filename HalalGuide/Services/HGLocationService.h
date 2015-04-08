@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Location.h"
+#import "HGLocation.h"
 
 @class RACSignal;
 
@@ -12,7 +12,7 @@
 @interface HGLocationService : NSObject
 + (HGLocationService *)instance;
 
-- (void)saveLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion;
+- (void)saveLocation:(HGLocation *)location onCompletion:(PFBooleanResultBlock)completion;
 
 - (void)locationsByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion;
 

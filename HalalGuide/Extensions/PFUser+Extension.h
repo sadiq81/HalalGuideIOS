@@ -8,7 +8,6 @@
 #import <Parse/Parse.h>
 
 
-
 @interface PFUser (Extension)
 
 @property (nonatomic, strong) NSDictionary *preferences;

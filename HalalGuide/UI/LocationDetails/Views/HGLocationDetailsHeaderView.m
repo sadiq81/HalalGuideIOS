@@ -16,7 +16,7 @@
 
 }
 
-- (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel {
+- (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel {
     self = [super init];
     if (self) {
         self.viewModel = viewModel;
@@ -26,7 +26,7 @@
     return self;
 }
 
-+ (instancetype)viewWithViewModel:(LocationDetailViewModel *)viewModel {
++ (instancetype)viewWithViewModel:(HGLocationDetailViewModel *)viewModel {
     return [[self alloc] initWithViewModel:viewModel];
 }
 

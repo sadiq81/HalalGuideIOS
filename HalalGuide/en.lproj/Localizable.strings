@@ -1,6 +1,4 @@
 /*
-  TODO Translate
-
   Localizable.strings
   HalalGuide
 
@@ -8,139 +6,87 @@
   Copyright (c) 2014 Eazy It. All rights reserved.
 */
 
-"afghan" = "Afghan";
-"african"= "African";
-"american" = "American";
-"argentine" = "Argentine";
-"asian" = "Asian";
-"belgian" = "Belgian";
-"brazilian" = "Brazilian";
-"british" = "British";
-"buffet" = "Buffet";
-"burger" = "Burger";
-"bakery" = "Bakery";
-"bagel" = "Bagel";
-"bubbleThea" = "Bubble thea";
-"arabic" = "Arabic";
-"cafe" = "Cafe";
-"caribbean" = "Caribbean";
-"cupcake" = "Cupcake";
-"candy" = "Candy";
-"chinese" = "Chinese";
-"danish" = "Danish";
-"dessert" = "Dessert";
-"fish" = "Fish";
-"fruit" = "Fruit";
-"fastfood" = "Fast food";
-"french" = "French";
-"german" = "German";
-"grill" = "Grill";
-"greek" = "Greek";
-"iceCream" = "Icecream";
-"juice" = "Juice";
-"kiosk" = "Kiosk";
-"indian" = "Indian";
-"indonesian" = "Indonesian";
-"irish" = "Irish";
-"italian" = "Italian";
-"iranian" = "Iranian";
-"japanese" = "Japanese";
-"kebab" = "Kebab";
-"korean" = "Korean";
-"kosher" = "Kosher";
-"lebanese" = "Libanese";
-"mediterranean" = "Mediterranean";
-"malaysian" = "Malaysian";
-"moroccan" = "Moroccan";
-"mexican" = "Mexican";
-"nordic" = "Nordic";
-"nepalese" = "Nepalese";
-"pastry" = "Pastry";
-"pakistani" = "Pakistani";
-"persian" = "Persian";
-"pizza" = "Pizza";
-"portuguese" = "Portuguese";
-"russian" = "Russian";
-"seafood" = "Seafood";
-"salad" = "Salad";
-"sandwich" = "Sandwich";
-"spanish" = "Spanish";
-"steak" = "Steak";
-"soup" = "Soup";
-"sushi" = "Sushi";
-"tapas" = "Tapas";
-"thai" = "Thai";
-"tibetan" = "Tibetan";
-"turkish" = "Turkish";
-"vegan" = "Vegan";
-"vietnamese" = "Vietnamese";
-"wok" = "Wok";
+"DiningCategory.afghan" = "Afghan";
+"DiningCategory.african"= "African";
+"DiningCategory.american" = "American";
+"DiningCategory.argentine" = "Argentine";
+"DiningCategory.asian" = "Asian";
+"DiningCategory.belgian" = "Belgian";
+"DiningCategory.brazilian" = "Brazilian";
+"DiningCategory.british" = "British";
+"DiningCategory.buffet" = "Buffet";
+"DiningCategory.burger" = "Burger";
+"DiningCategory.bakery" = "Bakery";
+"DiningCategory.bagel" = "Bagel";
+"DiningCategory.bubbleThea" = "Bubble thea";
+"DiningCategory.arabic" = "Arabic";
+"DiningCategory.cafe" = "Cafe";
+"DiningCategory.caribbean" = "Caribbean";
+"DiningCategory.cupcake" = "Cupcake";
+"DiningCategory.candy" = "Candy";
+"DiningCategory.chinese" = "Chinese";
+"DiningCategory.danish" = "Danish";
+"DiningCategory.dessert" = "Dessert";
+"DiningCategory.fish" = "Fish";
+"DiningCategory.fruit" = "Fruit";
+"DiningCategory.fastfood" = "Fast food";
+"DiningCategory.french" = "French";
+"DiningCategory.german" = "German";
+"DiningCategory.grill" = "Grill";
+"DiningCategory.greek" = "Greek";
+"DiningCategory.iceCream" = "Icecream";
+"DiningCategory.juice" = "Juice";
+"DiningCategory.kiosk" = "Kiosk";
+"DiningCategory.indian" = "Indian";
+"DiningCategory.indonesian" = "Indonesian";
+"DiningCategory.irish" = "Irish";
+"DiningCategory.italian" = "Italian";
+"DiningCategory.iranian" = "Iranian";
+"DiningCategory.japanese" = "Japanese";
+"DiningCategory.kebab" = "Kebab";
+"DiningCategory.korean" = "Korean";
+"DiningCategory.kosher" = "Kosher";
+"DiningCategory.lebanese" = "Libanese";
+"DiningCategory.mediterranean" = "Mediterranean";
+"DiningCategory.malaysian" = "Malaysian";
+"DiningCategory.moroccan" = "Moroccan";
+"DiningCategory.mexican" = "Mexican";
+"DiningCategory.nordic" = "Nordic";
+"DiningCategory.nepalese" = "Nepalese";
+"DiningCategory.pastry" = "Pastry";
+"DiningCategory.pakistani" = "Pakistani";
+"DiningCategory.persian" = "Persian";
+"DiningCategory.pizza" = "Pizza";
+"DiningCategory.portuguese" = "Portuguese";
+"DiningCategory.russian" = "Russian";
+"DiningCategory.seafood" = "Seafood";
+"DiningCategory.salad" = "Salad";
+"DiningCategory.sandwich" = "Sandwich";
+"DiningCategory.spanish" = "Spanish";
+"DiningCategory.steak" = "Steak";
+"DiningCategory.soup" = "Soup";
+"DiningCategory.sushi" = "Sushi";
+"DiningCategory.tapas" = "Tapas";
+"DiningCategory.thai" = "Thai";
+"DiningCategory.tibetan" = "Tibetan";
+"DiningCategory.turkish" = "Turkish";
+"DiningCategory.vegan" = "Vegan";
+"DiningCategory.vietnamese" = "Vietnamese";
+"DiningCategory.wok" = "Wok";
 
-"ok" = "Ok";
-"save"= "Save";
-"done" = "Done";
-"addReview" = "Add review";
-"regret" = "Regret";
-"no" = "No";
-"yes" = "Yes";
-"action"= "Action";
-"directions" = "Get directions";
-"call" = "Call place";
-"homepage" = "Website";
-"directionsText" = "Do you want to open maps and get directions for";
-"warning" = "Warning";
-"callNotAvaileble"= "The device does not support calling";
+"ShopType.groceries" = "Groceries";
+"ShopType.furniture" = "Furniture";
+"ShopType.butcher" = "Butcher";
 
-"couldnotcreateindb" = "Could not reach the database, try again?";
-"couldnotuploadfile" = "Could not upload image, try again?";
-"addressdoesnotexists" = "Address does not exists ";
-"error" = "Unknown error";
-"errorText" = "An unknown error occured, try again later.";
-"reviewMinimum2" = "A review should at least be 30 characters and at least one star";
+"Language.none" = "None";
+"Language.danish" ="Danish";
+"aLanguage.rabic" = "Arabic";
+"Language.urdu" = "Urdu";
+"Language.english" = "English";
 
-"awaiting" = "Awaiting approval";
-"approved" = "Approved";
-"notapproved" = "Not approved";
-
-"shoptype" = "Shop type";
-"groceries" = "Groceries";
-"furniture" = "Furniture";
-"butcher" = "Butcher";
-
-"language" = "Language";
-"none" = "None";
-"danish" ="Danish";
-"arabic" = "Arabic";
-"urdu" = "Urdu";
-"english" = "English";
-
-"dining" = "Dining";
-"mosque" = "Mosque";
-"shop" = "Shop";
-
-
-"loggingIn" = "Logging in";
-"login" = "Login";
-"fetching"  = "Fetching";
-"unlimited" = "Unlimited";
-"savingToTheCloud" = "Saving in the cloud";
-"reviewSaved" = "Your review has been saved, and awaits approval";
-"locationSaved" = "Your suggestion has been submitted to approval";
-"imageSaved" = "Your image has been submitted for approval";
-"imagesSaved" = "Your images has been submitted for approval";
-"estimatingAddress" = "Guessing your address";
-"invalidAddress" = "Not a valid address";
-"GPSNotPreciseEnough" = "GPS point for the address could not be located, do you want to choose on a map?";
-"manuelGPSPosition" = "Pull and let go to choose position different";
-"authenticate" = "Autentifikation";
-"authenticateText" = "In order to submit suggestions to HalalGuide, you need to confirm your identify via Facebook";
-"authenticateSuccessfull" = "You are now logged in, try your action again";
-
-"addPicture" = "Add picture";
-"newPicture" = "Take picture";
-"choosePicture" = "Choose from library";
-
-
+"LocationType.dining" = "Dining";
+"LocationType.mosque" = "Mosque";
+"LocationType.shop" = "Shop";
 
 "addNewOnBoardingButton" = "Press '+' to add suggestions";
 "filterOnBoardingButton" = "Press 'Filter' to filter your results";
@@ -158,62 +104,14 @@
 "thank" = "Thanks";
 "thankText" = "Thank you for your contribution";
 
-/* Navigation bar buttons */
-"Cancel" = "Cancel";
-"Done" = "Done";
+"WeekDay.sunday" ="Sunday";
+"WeekDay.monday"="Monday";
+"WeekDay.tuesday"="Tuesday";
+"WeekDay.wednesday"="Wednesday";
+"WeekDay.thursdag"="Thursday";
+"WeekDay.friday"="Friday";
+"WeekDay.saturday"="Saturday";
 
-/* Default title */
-"Photos" = "Photos";
-
-/* No. of selected */
-"%ld Photo Selected" = "%ld Photo Selected";
-"%ld Photos Selected" = "%ld Photos Selected";
-"%ld Video Selected" = "%ld Video Selected";
-"%ld Videos Selected" = "%ld Videos Selected";
-"%ld Items Selected" = "%ld Items Selected";
-
-/* Album's footer */
-"%ld Photos" = "%ld Photos";
-"%ld Videos" = "%ld Videos";
-"%ld Photos, %ld Videos" = "%1$ld Photos, %2$ld Videos";
-
-/* Assets index */
-"%ld of %ld" = "%1$ld of %2$ld";
-
-/* Messages if privacy is not granted */
-"This app does not have access to your photos or videos." = "This app does not have access to your photos or videos.";
-"You can enable access in Privacy Settings." = "You can enable access in Privacy Settings.";
-
-/* Messages if no assets */
-"No Photos or Videos" = "No Photos or Videos";
-
-/* The parameter will be replaced by the device model name */
-"You can take photos and videos using the camera, or sync photos and videos onto your %@\nusing iTunes." = "You can take photos and videos using the camera, or sync photos and videos onto your %@\nusing iTunes.";
-"You can sync photos and videos onto your %@ using iTunes." = "You can sync photos and videos onto your %@ using iTunes.";
-
-/* Accessibility labels */
-"Photo" = "Photo";
-"Video" = "Video";
-"Portrait" = "Portrait";
-"Landscape" = "Landscape";
-"Play" = "Play";
-"Not available" = "Not available";
-
-/* Video duration spell out */
-"hours" = "hours";
-"hour" = "hour";
-"minutes" = "minutes";
-"minute" = "minute";
-"seconds" = "seconds";
-"second" = "second";
-
-"sunday" ="Sunday";
-"monday"="Monday";
-"tuesday"="Tuesday";
-"wednesday"="Wednesday";
-"thursdag"="Thursday";
-"friday"="Friday";
-"saturday"="Saturday";
 "closed"= "Closed";
 "open"= "Open";
 
@@ -226,40 +124,34 @@
 //"MM/dd/yyyy hh:mm:a"= "MM/dd/yyyy hh:mm:a";
 //"Last Updated: %@"= "Last Updated: %@";
 
-"uploading" = "Uploading...";
-"downloading" = "Downloading...";
-"percentageComplete"= "finished";
-
 "ZLPromptUserReview.title"="Review";
 "ZLPromptUserReview.message"="We hope you are enjoying HalalGuide, perhaps you would like to review it?";
 "ZLPromptUserReview.confirm"="Yes";
 "ZLPromptUserReview.cancel"="No thank you";
 "ZLPromptUserReview.remind"="Remind me";
 
-"FrontPageViewController.title"  = "HalalGuide";
-"FrontPageViewController.label.shop"= "Shop";
-"FrontPageViewController.label.enumber"= "Enumber";
-"FrontPageViewController.label.eat"= "Eat";
-"FrontPageViewController.label.mosque"= "Mosque";
-"FrontPageViewController.label.settings"= "Settings";
-"FrontPageViewController.label.latest.updates" = "Latest updates";
+"HGFrontPageViewController.title"  = "HalalGuide";
+"HGFrontPageViewController.label.shop"= "Shop";
+"HGFrontPageViewController.label.enumber"= "Enumber";
+"HGFrontPageViewController.label.eat"= "Eat";
+"HGFrontPageViewController.label.mosque"= "Mosque";
+"HGFrontPageViewController.label.settings"= "Settings";
+"HGFrontPageViewController.label.latest.updates" = "Latest updates";
+"HGFrontPageViewController.hud.fetching" = "Updating";
+"HGFrontPageViewController.hud.error" = "Error!";
 
-"DiningCell.yes"= "Yes";
-"DiningCell.no"= "No";
+"HGLocationDetailViewModel.yes"= "Yes";
+"HGLocationDetailViewModel.no"= "No";
 
-"MosqueCell.language.none"= "";
-"MosqueCell.language.danish"= "Danish";
-"MosqueCell.language.arabic"= "Arabic";
-"MosqueCell.language.urdu"= "Urdu";
-"MosqueCell.language.english"= "English";
-
-"LocationViewController.title.dining" = "Dining places";
-"LocationViewController.title.mosque" = "Mosques";
-"LocationViewController.title.shop" = "Shops";
-"LocationViewController.button.filter" = "Filter";
-"LocationViewController.button.map" = "Map";
-"LocationViewController.button.list" = "List";
-"LocationViewController.searchbar.placeholder" = "Search text";
+"HGLocationViewController.title.LocationType.dining" = "Dining places";
+"HGLocationViewController.title.LocationType.mosque" = "Mosques";
+"HGLocationViewController.title.LocationType.shop" = "Shops";
+"HGLocationViewController.button.filter" = "Filter";
+"HGLocationViewController.button.map" = "Map";
+"HGLocationViewController.button.list" = "List";
+"HGLocationViewController.searchbar.placeholder" = "Search text";
+"HGLocationViewController.hud.error" = "Error!";
+"HGLocationViewController.hud.fetching" = "Updating";
 
 "HGLocationDetailsSubmitterView.label.submitterHeadLine" = "Submitted by:";
 "HGLocationDetailsPictureView.button.report" = "Report error";
@@ -268,9 +160,20 @@
 
 "HGLocationDetailsPictureView.label.no.pictures" = "There are no pictures for this location yet, you could be the first?";
 
-"LocationDetailViewController.label.km" = "km";
-"LocationDetailViewController.mail.text" = "The following information is incorrect: \nElaborate here!";
-"LocationDetailViewController.label.footer" = "There are no reviews for this location yet, you could be the first?";
+"HGLocationDetailsInfoView.label.km" = "km";
+
+"HGLocationDetailViewController.mail.text" = "The following information is incorrect: \nElaborate here!";
+"HGLocationDetailViewController.label.footer" = "There are no reviews for this location yet, you could be the first?";
+"HGLocationDetailViewController.alert.action" = "Action";
+"HGLocationDetailViewController.alert.directions" = "Get directions";
+"HGLocationDetailViewController.alert.call" = "Call the place";
+"HGLocationDetailViewController.alert.warning" = "Warning!";
+"HGLocationDetailViewController.alert.call.not.availeble" = "Your device does not support call features";
+"HGLocationDetailViewController.alert.regret" = "Regret";
+"HGLocationDetailViewController.alert.homepage" = "Website";
+"HGLocationDetailViewController.hud.images.saved" = "Your images has been submitted for approval";
+"HGLocationDetailViewController.hud.fetching" = "Updating";
+"HGLocationDetailViewController.hud.error" = "Error!";
 
 "HGImagePickerView.button.approve" = "Add 1 picture";
 "HGImagePickerView.button.approve.multiple" = "Add %lu pictures";
@@ -283,39 +186,57 @@
 "HGImagePickerController.label.no.pictures" = "You have not added any pictures, press the camera to add pictures";
 "HGImagePickerController.label.max.pictures" = "You can choose a maximum of %i picture(s)";
 
-"SettingsViewController.button.clear.cache" = "Clear image cache";
-"SettingsViewController.button.support" = "Support Halalguide";
-"SettingsViewController.button.reset.filter" = "Reset search filter";
-"SettingsViewController.button.reset.intro" = "Reset introduktion";
-"SettingsViewController.section.title.support" = "Support";
-"SettingsViewController.section.title.reset" = "Reset";
+"HGSettingsViewController.button.clear.cache" = "Clear image cache";
+"HGSettingsViewController.button.support" = "Support Halalguide";
+"HGSettingsViewController.button.reset.filter" = "Reset search filter";
+"HGSettingsViewController.button.reset.intro" = "Reset introduktion";
+"HGSettingsViewController.section.title.support" = "Support";
+"HGSettingsViewController.section.title.reset" = "Reset";
 
 "HGCategoriesView.button.reset" = "Reset";
 "HGCategoriesView.button.chose" = "Choose";
 "HGCategoriesView.label.categories" = "Categories:";
 "HGCategoriesView.label.language" = "Language";
-"HGSwitchView.label.pork" = "Show with pork";
-"HGSwitchView.label.alcohol" = "Show with alcohol";
-"HGSwitchView.label.halal" = "Show with non halal meat halal";
-"HGSwitchView.switch.on" = "Yes";
-"HGSwitchView.switch.off" = "No";
 
-"FilterLocationViewController.button.dismiss" = "Done";
-"FilterLocationViewController.label.max.distance" = "Maximum distance";
-"FilterLocationViewController.label.km" = "km";
+"HGFilterSwitchView.label.pork" = "Show with pork";
+"HGFilterSwitchView.label.alcohol" = "Show with alcohol";
+"HGFilterSwitchView.label.halal" = "Show with non halal meat";
+"HGFilterSwitchView.switch.on" = "Yes";
+"HGFilterSwitchView.switch.off" = "No";
 
-"CreateReviewViewController.button.regret" = "Regret";
-"CreateReviewViewController.button.save" = "Save";
-"CreateReviewViewController.hud.saving" = "Saving in the cloud";
-"CreateReviewViewController.hud.error" = "An unknown error has occoured";
-"CreateReviewViewController.hud.saved" = "Your review has been submitted for approval";
-"CreateReviewViewController.textview.placeholder" = "A review must be at least be 30 characters";
+"HGFilterLocationViewController.button.dismiss" = "Done";
+"HGFilterLocationViewController.label.max.distance" = "Maximum distance";
+"HGFilterLocationViewController.label.km" = "km";
+"HGFilterLocationViewController.label.unlimited" = "Unlimited";
+
+"HGCreateReviewViewController.button.regret" = "Regret";
+"HGCreateReviewViewController.button.save" = "Save";
+"HGCreateReviewViewController.hud.saving" = "Saving in the cloud";
+"HGCreateReviewViewController.hud.error" = "An unknown error has occoured";
+"HGCreateReviewViewController.hud.saved" = "Your review has been submitted for approval";
+"HGCreateReviewViewController.textview.placeholder" = "A review must be at least be 30 characters";
 
 "ClusterPrePermissions.photo.title" = "Access your photos";
 "ClusterPrePermissions.photo.message" = "We need access to your photos for you to send pictures to HalalGuide";
 "ClusterPrePermissions.photo.deny" = "Not now";
 "ClusterPrePermissions.photo.grant" = "Allow";
-
 "ClusterPrePermissions.access.denied.title" = "Missing access";
 "ClusterPrePermissions.access.denied.ok" = "Ok";
-"ClusterPrePermissions.access.denied.message" = "You have to manuelly allow Halalguide to photos in settings";
+"ClusterPrePermissions.access.denied.message" = "You have to manuelly allow HalalGuide to photos in settings";
+
+"HGLogInViewController.button.login" = "Login";
+"HGLogInViewController.label.authenticate" = "In order to submit suggestions to HalalGuide, you need to confirm your identify via Facebook";
+
+"UIViewController.extension.hud.percentage" = "finished";
+"UIViewController.extension.alert.error.title" = "Unknown error";
+"UIViewController.extension.alert.error.message" = "An unknown error occured, try again later.";
+"UIViewController.extension.alert.error.ok" = "Ok";
+"UIViewController.extension.alert.warning.title" = "Warning";
+"UIViewController.extension.alert.warning.message" = "In order to submit suggestions to HalalGuide, you need to confirm your identify via Facebook";
+"UIViewController.extension.alert.warning.ok" = "Ok";
+
+"HGCreateSwitchView.label.pork" = "Is pork served?";
+"HGCreateSwitchView.label.alcohol" = "Is alcohol served?";
+"HGCreateSwitchView.label.halal" = "Is non halal meat served";
+"HGCreateSwitchView.switch.on" = "Yes";
+"HGCreateSwitchView.switch.off" = "No";

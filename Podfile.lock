@@ -30,8 +30,22 @@ PODS:
   - CTAssetsPickerController (2.9.3)
   - DCKeyValueObjectMapping (1.4)
   - EDStarRating (1.1)
-  - Facebook-iOS-SDK (3.23.0):
+  - Facebook-iOS-SDK (4.0.1):
     - Bolts (~> 1.0)
+    - Facebook-iOS-SDK/CoreKit (= 4.0.1)
+    - Facebook-iOS-SDK/LoginKit (= 4.0.1)
+    - Facebook-iOS-SDK/ShareKit (= 4.0.1)
+  - Facebook-iOS-SDK/CoreKit (4.0.1):
+    - Bolts (~> 1.0)
+    - Facebook-iOS-SDK/CoreKit/no-arc (= 4.0.1)
+  - Facebook-iOS-SDK/CoreKit/no-arc (4.0.1):
+    - Bolts (~> 1.0)
+  - Facebook-iOS-SDK/LoginKit (4.0.1):
+    - Bolts (~> 1.0)
+    - Facebook-iOS-SDK/CoreKit
+  - Facebook-iOS-SDK/ShareKit (4.0.1):
+    - Bolts (~> 1.0)
+    - Facebook-iOS-SDK/CoreKit
   - HTAutocompleteTextField (1.3.1)
   - iCarousel (1.8.1)
   - IQKeyboardManager (3.2.0.2)
@@ -45,6 +59,13 @@ PODS:
     - MZFormSheetController/Core (= 2.3.6)
   - MZFormSheetController/Core (2.3.6):
     - MZAppearance (~> 1.1.3)
+  - Parse (1.7.1):
+    - Bolts (~> 1.1)
+  - ParseFacebookUtilsV4 (1.7.1):
+    - Facebook-iOS-SDK/LoginKit (~> 4.0)
+    - Parse (~> 1.7.1)
+  - ParseUI (1.1.3):
+    - Parse (~> 1.7)
   - pop (1.0.7)
   - ReactiveCocoa (2.4.7):
     - ReactiveCocoa/UI (= 2.4.7)
@@ -76,7 +97,7 @@ DEPENDENCIES:
   - CTAssetsPickerController (~> 2.9.3)
   - DCKeyValueObjectMapping (= 1.4)
   - EDStarRating (= 1.1)
-  - Facebook-iOS-SDK (= 3.23.0)
+  - Facebook-iOS-SDK (= 4.0.1)
   - HTAutocompleteTextField (= 1.3.1)
   - iCarousel (= 1.8.1)
   - IQKeyboardManager (= 3.2.0.2)
@@ -85,6 +106,9 @@ DEPENDENCIES:
   - LinqToObjectiveC (= 2.0.0)
   - Masonry (= 0.6.1)
   - MZFormSheetController (= 2.3.6)
+  - Parse (= 1.7.1)
+  - ParseFacebookUtilsV4 (= 1.7.1)
+  - ParseUI (= 1.1.3)
   - pop (~> 1.0)
   - ReactiveCocoa (= 2.4.7)
   - RMStore (~> 0.7)
@@ -106,7 +130,7 @@ SPEC CHECKSUMS:
   CTAssetsPickerController: 56a4a228dcb48a9375ab8d4922e82ac74af74aa1
   DCKeyValueObjectMapping: 04cd5a338c03ce1c02488926cab6e1d1f704a093
   EDStarRating: a41a6440a945020745d0e9ff8ada7d1afa952114
-  Facebook-iOS-SDK: fcb0fd5bcdb50f1fe9ce27bf6b8cdf1aa5b2b0ed
+  Facebook-iOS-SDK: 6d05532c97e9c542f8d87f94b7f6ee217493d00b
   HTAutocompleteTextField: 40b3680e7986d8ed70e41452bce6c82ffa401f9d
   iCarousel: dace1cb858e3f4dc2614bee3201041247f82feda
   IQKeyboardManager: 437647780f4de0947e798df33e3e8ae208d718a5
@@ -116,6 +140,9 @@ SPEC CHECKSUMS:
   Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
   MZAppearance: c2937318234fd782e900fb178942278881ac5490
   MZFormSheetController: e3c0accfab12ed1f9ddf2c61bb8c0abfc6b3f87b
+  Parse: fa8ec29de6d82035635986c11946299fb1b38316
+  ParseFacebookUtilsV4: fc44a339e38513fb6fc0bafbef34f69df6559e06
+  ParseUI: 1a68e9cebc3bd458eed9605ce7b33d7cc082f473
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   ReactiveCocoa: eb38dee0a0e698f73a9b25e5c1faea2bb4c79240
   RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5

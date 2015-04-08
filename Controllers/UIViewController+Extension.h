@@ -32,7 +32,7 @@ typedef enum HintPosition : int16_t {
 
 - (NSString *)percentageString:(float)progress;
 
-- (void)createReviewForLocation:(Location *)location viewModel:(HGBaseViewModel *)viewModel;
+- (void)createReviewForLocation:(HGLocation *)location viewModel:(HGBaseViewModel *)viewModel;
 
 - (void)getPicturesWithDelegate:(id <HGImagePickerControllerDelegate>)delegate viewModel:(HGBaseViewModel *)viewModel;
 

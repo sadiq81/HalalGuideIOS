@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
-#import <ParseFacebookUtils/PFFacebookUtils.h>
 #import <CTAssetsPickerController/CTAssetsPickerController.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -21,7 +20,7 @@
 #import "UIViewController+Extension.h"
 #import "PFUser+Extension.h"
 #import "HGLogInViewController.h"
-#import "AppDelegate.h"
+#import "HGAppDelegate.h"
 
 @implementation HGBaseViewModel {
     UIViewController *presentingViewController;

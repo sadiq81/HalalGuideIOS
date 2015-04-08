@@ -24,7 +24,7 @@
     return _instance;
 }
 
-- (void)saveLocation:(Location *)location onCompletion:(PFBooleanResultBlock)completion {
+- (void)saveLocation:(HGLocation *)location onCompletion:(PFBooleanResultBlock)completion {
     [location saveInBackgroundWithBlock:completion];
 }
 

@@ -1,83 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="Move away from storyboard #89&#10;Use autolayot with Masonry #66&#10;Styling of app #55&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Acknowledgements.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Root.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Root.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/en.lproj/Root.strings" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Base/HGBaseViewModel.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/ImageViews/HGImageViews.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/ImageViews/HGImageViews.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Textfield/HGTextField.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Textfield/HGTextField.m" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HGImagePickerButton.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerButton.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HGImagePickerButton.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerButton.m" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HGImagePickerController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HGImagePickerController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.m" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HGImagePickerView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerView.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HGImagePickerView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerView.m" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HGPictureCollectionViewCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGPictureCollectionViewCell.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HGPictureCollectionViewCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGPictureCollectionViewCell.m" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/star.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.unselected.imageset/Contents.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/star.imageset/star.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.unselected.imageset/star.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/star.imageset/star@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.unselected.imageset/star@2x.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/starSelected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.selected.imageset/Contents.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/starSelected.imageset/starSelected.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.selected.imageset/starSelected.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/starSelected.imageset/starSelected@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.selected.imageset/starSelected@2x.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/starSmall.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.unselected.imageset/Contents.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/starSmall.imageset/starSmall.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.unselected.imageset/starSmall.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/starSmall.imageset/starSmall@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.unselected.imageset/starSmall@2x.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/starSmallSelected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.selected.imageset/Contents.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/starSmallSelected.imageset/starSmallSelected.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.selected.imageset/starSmallSelected.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/starSmallSelected.imageset/starSmallSelected@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.selected.imageset/starSmallSelected@2x.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Base/HGBaseViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.h" afterPath="$PROJECT_DIR$/Controllers/UIViewController+Extension.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.m" afterPath="$PROJECT_DIR$/Controllers/UIViewController+Extension.m" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/DiningCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/DiningCell.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/DiningCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/DiningCell.m" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/LocationCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/LocationCell.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/LocationCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/LocationCell.m" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/MosqueCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/MosqueCell.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/MosqueCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/MosqueCell.m" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/ShopCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/ShopCell.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/ShopCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/ShopCell.m" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Controllers/CategoriesViewController.h" afterPath="$PROJECT_DIR$/Controllers/CategoriesViewController.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Controllers/CategoriesViewController.m" afterPath="$PROJECT_DIR$/Controllers/CategoriesViewController.m" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Controllers/HGLogInViewController.h" afterPath="$PROJECT_DIR$/Controllers/HGLogInViewController.h" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Controllers/HGLogInViewController.m" afterPath="$PROJECT_DIR$/Controllers/HGLogInViewController.m" />
+    <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="Move away from storyboard #89&#10;Use autolayot with Masonry #66&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGBaseEntity.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/HGCreateReviewViewModel.h" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFACL.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFAnalytics.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFAnonymousUtils.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFCloud.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFConfig.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFConstants.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFFile.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFGeoPoint.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFInstallation.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFNetworkActivityIndicatorManager.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFObject+Subclass.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFObject.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFProduct.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFPurchase.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFPush.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFQuery.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFRelation.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFRole.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFSubclassing.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFTwitterUtils.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PFUser.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/PF_Twitter.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Headers/Parse.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Modules/module.modulemap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Parse" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/Resources/Localizable.strings" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/Parse.framework/third_party_licenses.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseCrashReporting.framework/Headers/ParseCrashReporting.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseCrashReporting.framework/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseCrashReporting.framework/Modules/module.modulemap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseCrashReporting.framework/ParseCrashReporting" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseCrashReporting.framework/third_party_licenses.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseFacebookUtils.framework/Headers/PFFacebookUtils.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseFacebookUtils.framework/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseFacebookUtils.framework/ParseFacebookUtils" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseFacebookUtils.framework/Resources/Localizable.strings" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseFacebookUtils.framework/third_party_licenses.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/PFImageView.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/PFLogInView.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/PFLogInViewController.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/PFProductTableViewController.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/PFPurchaseTableViewCell.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/PFQueryTableViewController.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/PFSignUpView.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/PFSignUpViewController.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/PFTableViewCell.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/ParseUI.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Headers/ParseUIConstants.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/Modules/module.modulemap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Frameworks/ParseUI.framework/ParseUI" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/BaseEntity.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGENumber.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGENumber.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/ProfileInfo.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/ProfileInfo.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/autocompleteButton.imageset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/autocompleteButton.imageset/autocompleteButton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/autocompleteButton.imageset/autocompleteButton@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/divider.imageset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/divider.imageset/divider.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewModel.h" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Controllers/CategoriesViewController.h" afterPath="$PROJECT_DIR$/Controllers/HGCategoriesViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Controllers/CategoriesViewController.m" afterPath="$PROJECT_DIR$/Controllers/HGCategoriesViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/BaseEntity.m" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGBaseEntity.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/Location.h" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGLocation.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/Location.m" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGLocation.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/LocationPicture.h" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGLocationPicture.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/LocationPicture.m" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGLocationPicture.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/Review.h" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGReview.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Domain/Review.m" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGReview.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/AppDelegate.h" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/AppDelegate.m" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/NSLocale+iOS8.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSLocale+iOS8.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/NSLocale+iOS8.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSLocale+iOS8.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/CategoriesViewController.button.close.imageset/CategoriesViewController.button.close.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/CategoriesViewController.button.close.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/CategoriesViewController.button.close.imageset/CategoriesViewController.button.close@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/CategoriesViewController.button.close@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/CategoriesViewController.button.close.imageset/CategoriesViewController.button.close@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/CategoriesViewController.button.close@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/CategoriesViewController.button.close.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.alcohol.false.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.alcohol.false.imageset/DiningCell.alcohol.false.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/DiningCell.alcohol.false.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.alcohol.false.imageset/DiningCell.alcohol.false@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/DiningCell.alcohol.false@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.alcohol.false.imageset/DiningCell.alcohol.false@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/DiningCell.alcohol.false@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.alcohol.true.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.alcohol.true.imageset/DiningCell.alcohol.true.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/DiningCell.alcohol.true.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.alcohol.true.imageset/DiningCell.alcohol.true@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/DiningCell.alcohol.true@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.alcohol.true.imageset/DiningCell.alcohol.true@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/DiningCell.alcohol.true@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.non.halal.false.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.non.halal.false.imageset/DiningCell.non.halal.false.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/DiningCell.non.halal.false.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.non.halal.false.imageset/DiningCell.non.halal.false@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/DiningCell.non.halal.false@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.non.halal.false.imageset/DiningCell.non.halal.false@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/DiningCell.non.halal.false@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.non.halal.true.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.non.halal.true.imageset/DiningCell.non.halal.true.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/DiningCell.non.halal.true.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.non.halal.true.imageset/DiningCell.non.halal.true@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/DiningCell.non.halal.true@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.non.halal.true.imageset/DiningCell.non.halal.true@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/DiningCell.non.halal.true@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.pork.false.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.pork.false.imageset/DiningCell.pork.false.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/DiningCell.pork.false.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.pork.false.imageset/DiningCell.pork.false@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/DiningCell.pork.false@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.pork.false.imageset/DiningCell.pork.false@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/DiningCell.pork.false@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.pork.true.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.pork.true.imageset/DiningCell.pork.true.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/DiningCell.pork.true.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.pork.true.imageset/DiningCell.pork.true@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/DiningCell.pork.true@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/DiningCell.pork.true.imageset/DiningCell.pork.true@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/DiningCell.pork.true@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.selected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.selected.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.selected.imageset/starSelected.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.selected.imageset/starSelected.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.selected.imageset/starSelected@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.selected.imageset/starSelected@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.unselected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.unselected.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.unselected.imageset/star.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.unselected.imageset/star.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/EDStarRating.star.unselected.imageset/star@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.unselected.imageset/star@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.dining.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.enumber.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.mosque.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.settings.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.shop.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/FrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/UIBarButtonImage.Camera.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/UIBarButtonImage.Trash.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/arabic.imageset/Arabic.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.arabic.imageset/Arabic.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/arabic.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.arabic.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/danish.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.danish.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/danish.imageset/Danish.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.danish.imageset/Danish.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/english.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.english.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/english.imageset/English.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.english.imageset/English.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/urdu.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.urdu.imageset/Contents.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/urdu.imageset/Urdu.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.urdu.imageset/Urdu.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/DiningCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGDiningCell.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/DiningCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGDiningCell.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/LocationCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGLocationCell.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/LocationCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGLocationCell.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/MosqueCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGMosqueCell.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/MosqueCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGMosqueCell.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/ShopCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGShopCell.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/ShopCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGShopCell.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CoordinatePickerViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCoordinatePickerViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CoordinatePickerViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCoordinatePickerViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewModel.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewModel.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/HGCreateReviewViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/HGCreateReviewViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/HGCreateReviewViewModel.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/ENumber/HGENumberViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/ENumber/HGENumberViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/HGFrontPageViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/HGFrontPageViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/HGFrontPageViewModel.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/HGFrontPageViewModel.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Views/ButtonView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Views/HGButtonView.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Views/ButtonView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Views/HGButtonView.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/FilterLocationViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/HGFilterLocationViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/FilterLocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/HGFilterLocationViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationAnnotation.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationAnnotation.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationAnnotation.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationAnnotation.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationAnnotationView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationAnnotationView.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationAnnotationView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationAnnotationView.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationViewModel.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationViewModel.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGCategoriesView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Views/HGCategoriesView.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGCategoriesView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Views/HGCategoriesView.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGSwitchView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGFilterSwitchView.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGSwitchView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGFilterSwitchView.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/HGLocationDetailViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/HGLocationDetailViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/HGLocationDetailViewModel.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/HGLocationDetailViewModel.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/ReviewCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGReviewCell.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/ReviewCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGReviewCell.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/OpeningHours/OpeningsHoursViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/OpeningHours/HGOpeningsHoursViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/OpeningHours/OpeningsHoursViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/OpeningHours/HGOpeningsHoursViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/ReviewDetailViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/HGReviewDetailViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/ReviewDetailViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/HGReviewDetailViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/ReviewDetailViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/HGReviewDetailViewModel.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/ReviewDetailViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/HGReviewDetailViewModel.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Settings/HGSettingsViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Settings/HGSettingsViewController.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/HalalGuide/Util/Common.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGCommon.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/AppDelegate.m" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/AppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CoordinatePickerViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CoordinatePickerViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGCategoriesView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGCategoriesView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Acknowledgements.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Acknowledgements.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGAddressService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGAddressService.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGKeyChainService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGKeyChainService.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsHeaderView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsHeaderView.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsHeaderView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsHeaderView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGLocationService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGLocationService.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGLocationService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGLocationService.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/HGLogInViewController.m" afterPath="$PROJECT_DIR$/Controllers/HGLogInViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGReviewService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGReviewService.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGReviewService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGReviewService.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGSettings.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGSettings.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGSettings.m" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGSettings.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HalalGuide-Prefix.pch" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HalalGuide-Prefix.pch" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/MainStoryboard.storyboard" afterPath="$PROJECT_DIR$/HalalGuide/UI/MainStoryboard.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/OpeningHours/OpeningsHoursViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/OpeningHours/OpeningsHoursViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/ReviewCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/ReviewCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Alpha.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Alpha.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+ImageEffects.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+ImageEffects.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+RoundedCorner.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+RoundedCorner.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/UIViewController+Extension.h" afterPath="$PROJECT_DIR$/Controllers/UIViewController+Extension.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/UIViewController+Extension.m" afterPath="$PROJECT_DIR$/Controllers/UIViewController+Extension.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/main.m" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/main.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -107,40 +271,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LocationDetailViewModel.m" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m">
+      <file leaf-file-name="HGCreateLocationViewModel.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewModel.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3381555" vertical-offset="1808" max-vertical-offset="2565">
-              <caret line="144" column="8" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="2565">
+              <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HGCreateLocationViewController.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewController.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.27522936" vertical-offset="2655" max-vertical-offset="6705">
+              <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
               <folding>
-                <element signature="e#5220#5250#0" expanded="true" />
-                <element signature="e#5253#5282#0" expanded="true" />
+                <element signature="e#150#201#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationDetailViewController.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m">
+      <file leaf-file-name="HGCreateSwitchView.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGCreateSwitchView.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1574" max-vertical-offset="4425">
-              <caret line="126" column="38" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
-              <folding>
-                <element signature="e#148#205#0" expanded="true" />
-                <element signature="e#2650#2718#0" expanded="true" />
-                <element signature="e#3921#3959#0" expanded="true" />
-                <element signature="e#4307#4342#0" expanded="true" />
-                <element signature="e#4520#4552#0" expanded="true" />
-                <element signature="e#6493#6558#0" expanded="true" />
-                <element signature="e#7973#8010#0" expanded="true" />
-                <element signature="e#8138#8175#0" expanded="true" />
-                <element signature="e#9417#9448#0" expanded="true" />
-                <element signature="e#9868#9902#0" expanded="true" />
-                <element signature="e#9911#9954#0" expanded="true" />
-                <element signature="e#9986#10015#0" expanded="true" />
-                <element signature="e#10284#10319#0" expanded="true" />
-                <element signature="e#10727#10760#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="2400">
+              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,57 +320,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/Controllers/CategoriesViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/FilterLocationViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/LocationCell.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/FrontPage/FrontPageViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/MosqueCell.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/DiningCell.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/ShopCell.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/MosqueCell.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Domain/Location.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/LocationAnnotationView.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/Cells/LocationCell.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Domain/Location.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/Root.plist" />
-        <option value="$PROJECT_DIR$/HalalGuide/Settings.bundle/Root.plist" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/HGBaseViewModel.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/HGBaseViewModel.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewModel.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewModel.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/Supporting Files/code/AppDelegate.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/ReviewCell.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGCategoriesView.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Base/UIViewController+Extension.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Alpha.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+RoundedCorner.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+ImageEffects.m" />
-        <option value="$PROJECT_DIR$/Controllers/UIViewController+Extension.h" />
-        <option value="$PROJECT_DIR$/Podfile" />
-        <option value="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/ReviewDetailViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/OpeningHours/OpeningsHoursViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
-        <option value="$PROJECT_DIR$/Controllers/UIViewController+Extension.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerView.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerView.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Domain/BaseEntity.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/Domain/Location.h" />
+        <option value="$PROJECT_DIR$/Pods/HTAutocompleteTextField/Classes/HTAutocompleteTextField.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/ENumber/ENumberViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/ENumber/HGENumberViewController.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/HGFilterLocationViewController.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGReviewCell.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HalalGuide-Prefix.pch" />
+        <option value="$PROJECT_DIR$/HalalGuide/Domain/HGLocation.h" />
+        <option value="$PROJECT_DIR$/Controllers/HGCategoriesViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationViewModel.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Util/HGSettings.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/HGCreateReviewViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/HGLocationDetailViewModel.m" />
+        <option value="$PROJECT_DIR$/ParseFacebookUtils.framework/Headers/PFFacebookUtils.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/Services/HGKeyChainService.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Domain/HGLocation.m" />
+        <option value="$PROJECT_DIR$/Podfile" />
+        <option value="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Domain/HGBaseEntity.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/Domain/HGBaseEntity.m" />
+        <option value="$PROJECT_DIR$/Controllers/UIViewController+Extension.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewController.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/HGReviewDetailViewController.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/HGReviewDetailViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/HGLocationDetailViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGFilterCategoriesView.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGFilterSwitchView.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGCreateSwitchView.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/Common/Views/HGCategoriesView.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/Common/Views/HGCategoriesView.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
+        <option value="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
+        <option value="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGCreateSwitchView.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewController.m" />
       </list>
     </option>
   </component>
@@ -221,10 +379,10 @@
   </component>
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="51" />
-    <option name="y" value="23" />
-    <option name="width" value="1389" />
-    <option name="height" value="877" />
+    <option name="x" value="-227" />
+    <option name="y" value="-1177" />
+    <option name="width" value="1920" />
+    <option name="height" value="1177" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -233,10 +391,16 @@
           <State>
             <id />
           </State>
+          <State>
+            <id>C/C++</id>
+          </State>
+          <State>
+            <id>GeneralC/C++</id>
+          </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>C/C++</id>
+            <id>FormatSpecifiers</id>
           </State>
         </selected-state>
       </profile-state>
@@ -307,6 +471,20 @@
               <option name="myItemId" value="HalalGuide" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Products" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -362,6 +540,186 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Location" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CreateLocation" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CreateLocation" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Common" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Supporting Files" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Supporting Files" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localization" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Localizable.strings" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Domain" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Cidr.FilesView" />
@@ -370,7 +728,7 @@
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
-    <property name="options.lastSelected" value="preferences.keymap" />
+    <property name="options.lastSelected" value="editor.preferences.tabs" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -391,10 +749,13 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="918" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.m" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGCreateSwitchView.m" />
     <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/HalalGuide/UI/Common/Views" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/HalalGuide/UI/Common" />
       <recent name="$PROJECT_DIR$/HalalGuide/UI/CreateReview" />
@@ -507,20 +868,6 @@
       <method />
     </configuration>
     <configuration default="false" name="Pods-EDStarRating" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-EDStarRating" CONFIG_NAME="Debug" SCHEME_NAME="Pods-EDStarRating" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-      <method />
-    </configuration>
-    <configuration default="false" name="Pods-Bolts" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-Bolts" CONFIG_NAME="Debug" SCHEME_NAME="Pods-Bolts" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-      <method />
-    </configuration>
-    <configuration default="false" name="Pods-Facebook-iOS-SDK" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-Facebook-iOS-SDK" CONFIG_NAME="Debug" SCHEME_NAME="Pods-Facebook-iOS-SDK" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
       <envs />
       <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
         <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
@@ -653,7 +1000,28 @@
       </EXTENSION>
       <method />
     </configuration>
-    <list size="32">
+    <configuration default="false" name="Pods-Bolts" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-Bolts" CONFIG_NAME="Debug" SCHEME_NAME="Pods-Bolts" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-Facebook-iOS-SDK" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-Facebook-iOS-SDK" CONFIG_NAME="Debug" SCHEME_NAME="Pods-Facebook-iOS-SDK" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="Pods-ParseUI" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-ParseUI" CONFIG_NAME="Debug" SCHEME_NAME="Pods-ParseUI" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <list size="33">
       <item index="0" class="java.lang.String" itemvalue="Application.HalalGuide" />
       <item index="1" class="java.lang.String" itemvalue="Application.Pods" />
       <item index="2" class="java.lang.String" itemvalue="Application.Pods-LinqToObjectiveC" />
@@ -666,26 +1034,27 @@
       <item index="9" class="java.lang.String" itemvalue="Application.Pods-HTAutocompleteTextField" />
       <item index="10" class="java.lang.String" itemvalue="Application.Pods-UIAlertController+Blocks" />
       <item index="11" class="java.lang.String" itemvalue="Application.Pods-EDStarRating" />
-      <item index="12" class="java.lang.String" itemvalue="Application.Pods-Bolts" />
-      <item index="13" class="java.lang.String" itemvalue="Application.Pods-Facebook-iOS-SDK" />
-      <item index="14" class="java.lang.String" itemvalue="Application.Pods-DCKeyValueObjectMapping" />
-      <item index="15" class="java.lang.String" itemvalue="Application.Pods-ReactiveCocoa" />
-      <item index="16" class="java.lang.String" itemvalue="Application.Pods-iCarousel" />
-      <item index="17" class="java.lang.String" itemvalue="Application.Pods-UIActivityIndicator-for-SDWebImage" />
-      <item index="18" class="java.lang.String" itemvalue="Application.Pods-JSBadgeView" />
-      <item index="19" class="java.lang.String" itemvalue="Application.Pods-CTAssetsPickerController" />
-      <item index="20" class="java.lang.String" itemvalue="Application.Pods-SZTextView" />
-      <item index="21" class="java.lang.String" itemvalue="Application.Pods-AFNetworking-RACExtensions" />
-      <item index="22" class="java.lang.String" itemvalue="Application.Pods-KASlideShow" />
-      <item index="23" class="java.lang.String" itemvalue="Application.Pods-Masonry" />
-      <item index="24" class="java.lang.String" itemvalue="Application.Pods-SVProgressHUD" />
-      <item index="25" class="java.lang.String" itemvalue="Application.Pods-RMStore" />
-      <item index="26" class="java.lang.String" itemvalue="Application.Pods-ZLPromptUserReview" />
-      <item index="27" class="java.lang.String" itemvalue="Application.Pods-CTAssetsPickerController-CTAssetsPickerController" />
-      <item index="28" class="java.lang.String" itemvalue="Application.Pods-pop" />
-      <item index="29" class="java.lang.String" itemvalue="Application.Pods-AsyncImageView" />
-      <item index="30" class="java.lang.String" itemvalue="Application.Pods-SevenSwitch" />
-      <item index="31" class="java.lang.String" itemvalue="Application.Pods-ClusterPrePermissions" />
+      <item index="12" class="java.lang.String" itemvalue="Application.Pods-DCKeyValueObjectMapping" />
+      <item index="13" class="java.lang.String" itemvalue="Application.Pods-ReactiveCocoa" />
+      <item index="14" class="java.lang.String" itemvalue="Application.Pods-iCarousel" />
+      <item index="15" class="java.lang.String" itemvalue="Application.Pods-UIActivityIndicator-for-SDWebImage" />
+      <item index="16" class="java.lang.String" itemvalue="Application.Pods-JSBadgeView" />
+      <item index="17" class="java.lang.String" itemvalue="Application.Pods-CTAssetsPickerController" />
+      <item index="18" class="java.lang.String" itemvalue="Application.Pods-SZTextView" />
+      <item index="19" class="java.lang.String" itemvalue="Application.Pods-AFNetworking-RACExtensions" />
+      <item index="20" class="java.lang.String" itemvalue="Application.Pods-KASlideShow" />
+      <item index="21" class="java.lang.String" itemvalue="Application.Pods-Masonry" />
+      <item index="22" class="java.lang.String" itemvalue="Application.Pods-SVProgressHUD" />
+      <item index="23" class="java.lang.String" itemvalue="Application.Pods-RMStore" />
+      <item index="24" class="java.lang.String" itemvalue="Application.Pods-ZLPromptUserReview" />
+      <item index="25" class="java.lang.String" itemvalue="Application.Pods-CTAssetsPickerController-CTAssetsPickerController" />
+      <item index="26" class="java.lang.String" itemvalue="Application.Pods-pop" />
+      <item index="27" class="java.lang.String" itemvalue="Application.Pods-AsyncImageView" />
+      <item index="28" class="java.lang.String" itemvalue="Application.Pods-SevenSwitch" />
+      <item index="29" class="java.lang.String" itemvalue="Application.Pods-ClusterPrePermissions" />
+      <item index="30" class="java.lang.String" itemvalue="Application.Pods-Bolts" />
+      <item index="31" class="java.lang.String" itemvalue="Application.Pods-Facebook-iOS-SDK" />
+      <item index="32" class="java.lang.String" itemvalue="Application.Pods-ParseUI" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -975,7 +1344,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428103472888</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Move away from storyboard #89&#10;Use autolayot with Masonry #66&#10;Styling of app #55&#10;">
+      <created>1428339454088</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1428339454088</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -999,22 +1374,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="51" y="23" width="1389" height="877" extended-state="6" />
+    <frame x="-227" y="-1177" width="1920" height="1177" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25987262" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32738853" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50063694" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43057325" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49044585" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33503184" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25898618" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32738853" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35023043" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43041474" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49044585" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27741936" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24853802" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26535088" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.178515" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26382306" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17070064" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="142" y="123" width="1198" height="677" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1024,29 +1399,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="142" y="123" width="1198" height="677" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.355414" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32738853" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44585988" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32866243" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32738853" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37419355" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2489019" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25510204" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32920793" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1109,15 +1461,25 @@
           <option name="timeStamp" value="834" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewModel.m</url>
+          <url>file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewModel.m</url>
           <line>90</line>
           <option name="timeStamp" value="879" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Controllers/HGCategoriesViewController.m</url>
+          <line>150</line>
+          <option name="timeStamp" value="1106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.m</url>
+          <line>14</line>
+          <option name="timeStamp" value="1108" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="1105" />
+      <option name="time" value="1111" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="AppleRunConfiguration">
@@ -1127,457 +1489,435 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewModel.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Util/HGSettings.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1994382" vertical-offset="184" max-vertical-offset="930">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pods/ReactiveCocoa/ReactiveCocoa/RACSignal.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Util/HGSettings.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13596492" vertical-offset="3928" max-vertical-offset="6630">
-          <caret line="280" column="19" selection-start-line="280" selection-start-column="19" selection-end-line="280" selection-end-column="19" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="316" max-vertical-offset="2175">
+          <caret line="125" column="111" selection-start-line="125" selection-start-column="111" selection-end-line="125" selection-end-column="111" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGGeoLocationService.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/HGLocationDetailViewModel.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="870">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="989" max-vertical-offset="2700">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.h">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="735">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsHeaderView.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="456">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsHeaderView.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1185">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2844" max-vertical-offset="3300">
-          <caret line="61" column="83" selection-start-line="61" selection-start-column="83" selection-end-line="61" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1260">
-          <caret line="44" column="84" selection-start-line="44" selection-start-column="84" selection-end-line="44" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/ReviewCell.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1104" max-vertical-offset="1560">
-          <caret line="54" column="91" selection-start-line="54" selection-start-column="91" selection-end-line="54" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSAttributedString.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5107914" vertical-offset="0" max-vertical-offset="1110">
-          <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="2325">
-          <caret line="65" column="80" selection-start-line="65" selection-start-column="80" selection-end-line="65" selection-end-column="80" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
           <folding>
-            <element signature="e#1301#1370#0" expanded="false" />
-            <element signature="e#1801#1874#0" expanded="false" />
-            <element signature="e#2044#2118#0" expanded="false" />
+            <element signature="e#142#175#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/LocationViewController.m">
+    <entry file="file://$PROJECT_DIR$/Pods/ParseUI/ParseUI/Classes/Internal/Views/Buttons/PFPrimaryButton.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2019" max-vertical-offset="4920">
-          <caret line="169" column="26" selection-start-line="169" selection-start-column="26" selection-end-line="169" selection-end-column="26" />
-          <folding>
-            <element signature="e#2049#2148#0" expanded="false" />
-            <element signature="e#6520#7022#0" expanded="false" />
-            <element signature="e#7024#7357#0" expanded="false" />
-            <element signature="e#7385#8581#0" expanded="false" />
-            <element signature="e#10419#10560#0" expanded="false" />
-            <element signature="e#10971#11084#0" expanded="false" />
-            <element signature="e#11554#12689#0" expanded="false" />
-            <element signature="e#12713#13546#0" expanded="false" />
-            <element signature="e#13548#15680#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Extensions/UITableView+Header.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIImagePickerController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1076" max-vertical-offset="2130">
-          <caret line="83" column="100" selection-start-line="83" selection-start-column="100" selection-end-line="83" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGCategoriesView.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1076" max-vertical-offset="1890">
-          <caret line="84" column="81" selection-start-line="0" selection-start-column="0" selection-end-line="121" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2145">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Settings/SettingsViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="2340">
-          <caret line="44" column="88" selection-start-line="44" selection-start-column="88" selection-end-line="44" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CoordinatePickerViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="873" max-vertical-offset="1290">
-          <caret line="75" column="29" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="appcode.project-settings://ee93cb17">
-      <provider selected="true" editor-type-id="AppCode.ProjectSettings">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Extensions/NSObject+MethodExchange.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="417">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Extensions/NSObject+MethodExchange.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vImage.framework/Headers/vImage_Types.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33279222" vertical-offset="1145" max-vertical-offset="12960">
-          <caret line="94" column="24" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Accelerate.framework/Frameworks/vImage.framework/Headers/Convolution.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35714287" vertical-offset="2870" max-vertical-offset="3555">
-          <caret line="206" column="162" selection-start-line="206" selection-start-column="162" selection-end-line="206" selection-end-column="162" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+RoundedCorner.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6208791" vertical-offset="644" max-vertical-offset="1500">
-          <caret line="60" column="157" selection-start-line="60" selection-start-column="157" selection-end-line="60" selection-end-column="157" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+ImageEffects.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.125" vertical-offset="1800" max-vertical-offset="2895">
-          <caret line="120" column="97" selection-start-line="120" selection-start-column="97" selection-end-line="120" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Alpha.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.08042896" vertical-offset="165" max-vertical-offset="1980">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Alpha.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="417">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateReview/CreateReviewViewController.m">
+    <entry file="file://$PROJECT_DIR$/Pods/ParseUI/ParseUI/Classes/LogInViewController/PFLogInViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.85204756" vertical-offset="1290" max-vertical-offset="2400">
-          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGPictureCollectionViewCell.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1095">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.h">
+    <entry file="file://$PROJECT_DIR$/Pods/ParseUI/ParseUI/Classes/SignUpViewController/PFSignUpViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+        <state vertical-scroll-proportion="-8.404452" vertical-offset="4530" max-vertical-offset="7650">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/UIViewController+Extension.h">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGKeyChainService.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="226" max-vertical-offset="750">
-          <caret line="34" column="92" selection-start-line="34" selection-start-column="92" selection-end-line="34" selection-end-column="92" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="8" max-vertical-offset="765">
+          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
           <folding>
-            <element signature="e#93#126#0" expanded="false" />
+            <element signature="e#93#122#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pods/ClusterPrePermissions/ClusterPrePermissions/ClusterPrePermissions/ClusterPrePermissions.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4771" max-vertical-offset="10905">
-          <caret line="307" column="9" selection-start-line="307" selection-start-column="9" selection-end-line="307" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="4980">
-          <caret line="147" column="84" selection-start-line="147" selection-start-column="84" selection-end-line="147" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/OpeningHours/OpeningsHoursViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="824" max-vertical-offset="1770">
-          <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1545">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="e#2549#2578#0" expanded="false" />
-            <element signature="e#2587#2635#0" expanded="false" />
-            <element signature="e#2654#2685#0" expanded="false" />
-            <element signature="e#2733#2769#0" expanded="false" />
+            <element signature="e#93#121#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.h">
+    <entry file="file://$PROJECT_DIR$/Pods/Parse/Parse.framework/Headers/PFObject+Subclass.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41208792" vertical-offset="0" max-vertical-offset="364">
-          <caret line="12" column="70" selection-start-line="12" selection-start-column="70" selection-end-line="12" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1391" max-vertical-offset="2070">
+          <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/CreateLocationViewController.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Domain/HGLocationPicture.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1109" max-vertical-offset="4755">
-          <caret line="82" column="121" selection-start-line="82" selection-start-column="121" selection-end-line="82" selection-end-column="121" />
-          <folding>
-            <element signature="e#148#199#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="31" max-vertical-offset="450">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Podfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="98" max-vertical-offset="825">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/ComOpenThreadOTScreenshotHelperSwizzleHelper.h">
+    <entry file="file://$PROJECT_DIR$/Pods/Headers/Public/ParseFacebookUtilsV4/PFFacebookUtils.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="364">
+        <state vertical-scroll-proportion="-5.734694" vertical-offset="3316" max-vertical-offset="3855">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2123" max-vertical-offset="2850">
+          <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+          <folding>
+            <element signature="e#134#159#0" expanded="false" />
+            <element signature="e#1871#1931#0" expanded="false" />
+            <element signature="e#2249#3488#0" expanded="false" />
+            <element signature="e#3791#3842#0" expanded="false" />
+            <element signature="e#3897#3950#0" expanded="false" />
+            <element signature="e#4015#4068#0" expanded="false" />
+            <element signature="e#4132#4184#0" expanded="false" />
+            <element signature="e#4248#4300#0" expanded="false" />
+            <element signature="e#4337#4369#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Domain/HGLocation.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="871" max-vertical-offset="1905">
+          <caret line="84" column="30" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Domain/HGLocation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2490">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/include/objc/NSObject.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3322034" vertical-offset="29" max-vertical-offset="1650">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Domain/HGBaseEntity.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Domain/HGAdgangsadresse.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1740">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/UIViewController+Extension.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Domain/HGBaseEntity.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3330">
-          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7711864" vertical-offset="385" max-vertical-offset="975">
+          <caret line="56" column="50" selection-start-line="56" selection-start-column="50" selection-end-line="56" selection-end-column="50" />
           <folding>
-            <element signature="e#93#131#0" expanded="true" />
-            <element signature="e#350#395#0" expanded="true" />
-            <element signature="e#2670#2730#0" expanded="true" />
-            <element signature="e#2739#2801#0" expanded="true" />
-            <element signature="e#2818#2877#0" expanded="true" />
-            <element signature="e#2895#2955#0" expanded="true" />
-            <element signature="e#3375#3443#0" expanded="true" />
-            <element signature="e#3452#3522#0" expanded="true" />
-            <element signature="e#3638#3703#0" expanded="true" />
-            <element signature="e#4734#4766#0" expanded="true" />
-            <element signature="e#4775#4811#0" expanded="true" />
-            <element signature="e#4923#4952#0" expanded="true" />
-            <element signature="e#5326#5360#0" expanded="true" />
-            <element signature="e#5369#5412#0" expanded="true" />
-            <element signature="e#5524#5553#0" expanded="true" />
+            <element signature="e#132#165#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="83" max-vertical-offset="840">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.44194108" vertical-offset="90" max-vertical-offset="5070">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings">
+    <entry file="file://$PROJECT_DIR$/Pods/Parse/Parse.framework/Headers/PFObject.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1028" max-vertical-offset="4920">
-          <caret line="137" column="29" selection-start-line="137" selection-start-column="29" selection-end-line="137" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.89260143" vertical-offset="4021" max-vertical-offset="4905">
-          <caret line="293" column="13" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5704057" vertical-offset="61" max-vertical-offset="495">
-          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Pods/Headers/Public/CTAssetsPickerController/CTAssetsPickerController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.035799522" vertical-offset="0" max-vertical-offset="5040">
-          <caret line="1" column="25" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSArray.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="41" max-vertical-offset="2520">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.3322034" vertical-offset="4454" max-vertical-offset="21405">
+          <caret line="312" column="12" selection-start-line="312" selection-start-column="12" selection-end-line="312" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/main.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42959428" vertical-offset="0" max-vertical-offset="419">
+        <state vertical-scroll-proportion="0.30508474" vertical-offset="0" max-vertical-offset="590">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerView.h">
+    <entry file="file://$PROJECT_DIR$/Controllers/HGLogInViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3559322" vertical-offset="0" max-vertical-offset="590">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerView.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6778043" vertical-offset="1981" max-vertical-offset="3135">
-          <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2542373" vertical-offset="0" max-vertical-offset="1395">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding>
+            <element signature="e#93#121#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/UIViewController+Extension.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="28" column="2" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewController.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.078759" vertical-offset="2325" max-vertical-offset="4965">
-          <caret line="250" column="0" selection-start-line="250" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="360">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/HGReviewDetailViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25396827" vertical-offset="3" max-vertical-offset="1920">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/HGLocationDetailViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77380955" vertical-offset="0" max-vertical-offset="756">
+          <caret line="39" column="16" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
           <folding>
-            <element signature="e#3813#3882#0" expanded="true" />
+            <element signature="e#150#173#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewController.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/HGReviewDetailViewController.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1574" max-vertical-offset="4425">
-          <caret line="126" column="38" selection-start-line="126" selection-start-column="38" selection-end-line="126" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.3968254" vertical-offset="0" max-vertical-offset="756">
+          <caret line="24" column="61" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateReview/HGCreateReviewViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1657" max-vertical-offset="2400">
+          <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGFilterSwitchView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="677">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateReview/HGCreateReviewViewModel.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="677">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
           <folding>
-            <element signature="e#148#205#0" expanded="true" />
-            <element signature="e#2650#2718#0" expanded="true" />
-            <element signature="e#3921#3959#0" expanded="true" />
-            <element signature="e#4307#4342#0" expanded="true" />
-            <element signature="e#4520#4552#0" expanded="true" />
-            <element signature="e#6493#6558#0" expanded="true" />
-            <element signature="e#7973#8010#0" expanded="true" />
-            <element signature="e#8138#8175#0" expanded="true" />
-            <element signature="e#9417#9448#0" expanded="true" />
-            <element signature="e#9868#9902#0" expanded="true" />
-            <element signature="e#9911#9954#0" expanded="true" />
-            <element signature="e#9986#10015#0" expanded="true" />
-            <element signature="e#10284#10319#0" expanded="true" />
-            <element signature="e#10727#10760#0" expanded="true" />
+            <element signature="e#135#196#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/LocationDetailViewModel.m">
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3381555" vertical-offset="1808" max-vertical-offset="2565">
-          <caret line="144" column="8" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationViewModel.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="677">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGCreateSwitchView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
+          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGFilterSwitchView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5317578" vertical-offset="660" max-vertical-offset="2160">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/HGFilterLocationViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2203" max-vertical-offset="2985">
+          <caret line="192" column="7" selection-start-line="171" selection-start-column="3" selection-end-line="192" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/HGLocationDetailViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1672" max-vertical-offset="4395">
+          <caret line="152" column="26" selection-start-line="152" selection-start-column="26" selection-end-line="152" selection-end-column="26" />
           <folding>
-            <element signature="e#5220#5250#0" expanded="true" />
-            <element signature="e#5253#5282#0" expanded="true" />
+            <element signature="e#150#207#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/UIViewController+Extension.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="278" max-vertical-offset="3315">
+          <caret line="50" column="5" selection-start-line="39" selection-start-column="4" selection-end-line="50" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewModel.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/HGLocationViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1884" max-vertical-offset="7245">
+          <caret line="159" column="66" selection-start-line="159" selection-start-column="66" selection-end-line="159" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/Views/HGCategoriesView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3100" max-vertical-offset="3765">
+          <caret line="236" column="66" selection-start-line="235" selection-start-column="0" selection-end-line="236" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3115" max-vertical-offset="3705">
+          <caret line="202" column="60" selection-start-line="202" selection-start-column="60" selection-end-line="202" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Common/Views/HGCategoriesView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1300" max-vertical-offset="1890">
+          <caret line="108" column="34" selection-start-line="108" selection-start-column="34" selection-end-line="108" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.89830506" vertical-offset="3010" max-vertical-offset="3660">
+          <caret line="236" column="66" selection-start-line="236" selection-start-column="66" selection-end-line="236" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewModel.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2565">
+          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGCreateSwitchView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="2400">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/HGCreateLocationViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27522936" vertical-offset="2655" max-vertical-offset="6705">
+          <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+          <folding>
+            <element signature="e#150#201#0" expanded="true" />
           </folding>
         </state>
       </provider>

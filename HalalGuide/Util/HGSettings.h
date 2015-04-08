@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseEntity.h"
+#import "HGBaseEntity.h"
 
 
 @interface HGSettings : NSObject

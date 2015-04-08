@@ -4,7 +4,7 @@
 //
 
 #import "HGReviewService.h"
-#import "Location.h"
+#import "HGLocation.h"
 
 @implementation HGReviewService {
 
@@ -22,11 +22,11 @@
     return _instance;
 }
 
-- (void)saveReview:(Review *)review onCompletion:(PFBooleanResultBlock)completion {
+- (void)saveReview:(HGReview *)review onCompletion:(PFBooleanResultBlock)completion {
     [review saveInBackgroundWithBlock:completion];
 }
 
-- (void)reviewsForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion {
+- (void)reviewsForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion {
     PFQuery *query = [PFQuery queryWithClassName:kReviewTableName];
     //query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];

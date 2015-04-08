@@ -20,7 +20,7 @@
 
 @implementation OpenLabel
 
-- (void)configureViewForLocation:(Location *)location {
+- (void)configureViewForLocation:(HGLocation *)location {
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSDate *now = [[NSDate alloc] init];
     NSDateComponents *components = [cal components:NSCalendarUnitWeekday fromDate:now];

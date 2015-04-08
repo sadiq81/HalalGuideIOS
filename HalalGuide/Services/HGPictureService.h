@@ -5,22 +5,22 @@
 
 #import <Foundation/Foundation.h>
 #import "UIKit/UIKit.h"
-#import "Location.h"
+#import "HGLocation.h"
 #import "HGSettings.h"
 
-@class LocationPicture;
+@class HGLocationPicture;
 
 @interface HGPictureService : NSObject
 
 + (HGPictureService *)instance;
 
-- (void)saveMultiplePictures:(NSArray *)images forLocation:(Location *)location completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion;
+- (void)saveMultiplePictures:(NSArray *)images forLocation:(HGLocation *)location completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion;
 
 - (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion;
 
-- (void)locationPicturesForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion;
+- (void)locationPicturesForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion;
 
-- (void)thumbnailForLocation:(Location *)location onCompletion:(PFArrayResultBlock)completion;
+- (void)thumbnailForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion;
 
 
 @end

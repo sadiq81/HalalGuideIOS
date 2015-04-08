@@ -4,14 +4,14 @@
 //
 
 #import "UIViewController+Extension.h"
-#import "CreateReviewViewController.h"
+#import "HGCreateReviewViewController.h"
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 
 
 @implementation UIViewController (Extension)
 
 - (NSString *)percentageString:(float)progress {
-    NSString *localised = NSLocalizedString(@"percentageComplete", nil);
+    NSString *localised = NSLocalizedString(@"UIViewController.extension.hud.percentage", nil);
     NSString *text = [NSString stringWithFormat:@"%i%% %@", (int) progress, localised];
     return text;
 }
@@ -35,11 +35,11 @@
     objc_setAssociatedObject(self, @selector(loginHandler), loginHandler, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)createReviewForLocation:(Location *)location viewModel:(HGBaseViewModel *)viewModel {
+- (void)createReviewForLocation:(HGLocation *)location viewModel:(HGBaseViewModel *)viewModel {
 
     void (^completion)(void) = ^void(void) {
-        CreateReviewViewModel *reviewViewModel = [[CreateReviewViewModel alloc] initWithReviewedLocation:location];
-        CreateReviewViewController *controller = [CreateReviewViewController controllerWithViewModel:reviewViewModel];
+        HGCreateReviewViewModel *reviewViewModel = [[HGCreateReviewViewModel alloc] initWithReviewedLocation:location];
+        HGCreateReviewViewController *controller = [HGCreateReviewViewController controllerWithViewModel:reviewViewModel];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
         [self presentViewController:navigationController animated:true completion:nil];
     };
@@ -102,16 +102,16 @@
 
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
     [self dismissViewControllerAnimated:true completion:^{
-        UIAlertController *errorController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"error", nil) message:NSLocalizedString(@"errorText", nil) preferredStyle:UIAlertControllerStyleAlert];
-        [errorController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"ok", nil) style:UIAlertActionStyleCancel handler:nil]];
+        UIAlertController *errorController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"UIViewController.extension.alert.error.title", nil) message:NSLocalizedString(@"UIViewController.extension.alert.error.message", nil) preferredStyle:UIAlertControllerStyleAlert];
+        [errorController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"UIViewController.extension.alert.error.ok", nil) style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:errorController animated:true completion:nil];
     }];
 }
 
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
     [self dismissViewControllerAnimated:true completion:^{
-        UIAlertController *errorController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"warning", nil) message:NSLocalizedString(@"authenticateText", nil) preferredStyle:UIAlertControllerStyleAlert];
-        [errorController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"ok", nil) style:UIAlertActionStyleCancel handler:nil]];
+        UIAlertController *errorController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"UIViewController.extension.alert.warning.title", nil) message:NSLocalizedString(@"UIViewController.extension.alert.warning.message", nil) preferredStyle:UIAlertControllerStyleAlert];
+        [errorController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"UIViewController.extension.alert.warning.ok", nil) style:UIAlertActionStyleCancel handler:nil]];
     }];
 }
 
@@ -159,6 +159,7 @@
     UILabel *hintLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     hintLabel.textColor = [UIColor whiteColor];
     hintLabel.text = NSLocalizedString(hintKey, nil);
+    hintLabel.textAlignment = NSTextAlignmentCenter;
     hintLabel.numberOfLines = 0;
     //TODO align text start according with element
 

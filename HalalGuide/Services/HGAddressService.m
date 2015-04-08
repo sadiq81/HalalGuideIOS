@@ -13,7 +13,7 @@
 #import "HGNumberFormatter.h"
 #import <AddressBook/ABPerson.h>
 #import <Parse/Parse.h>
-#import "AppDelegate.h"
+#import "HGAppDelegate.h"
 #import "NSArray+Extensions.h"
 #import "HGGeoLocationService.h"
 

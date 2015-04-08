@@ -26,14 +26,14 @@
 @property(strong) UIImageView *languageImage;
 @property(strong) UILabel *languageLabel;
 
-@property(strong, nonatomic) LocationDetailViewModel *viewModel;
+@property(strong, nonatomic) HGLocationDetailViewModel *viewModel;
 @end
 
 @implementation HGLocationDetailsInfoView {
 
 }
 
-- (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel {
+- (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel {
     self = [super init];
     if (self) {
         self.viewModel = viewModel;
@@ -44,7 +44,7 @@
     return self;
 }
 
-+ (instancetype)viewWithViewModel:(LocationDetailViewModel *)viewModel {
++ (instancetype)viewWithViewModel:(HGLocationDetailViewModel *)viewModel {
     return [[self alloc] initWithViewModel:viewModel];
 }
 
@@ -73,7 +73,7 @@
     self.distance = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];
     [self addSubview:self.distance];
     self.km = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-    self.km.text = NSLocalizedString(@"LocationDetailViewController.label.km", nil);
+    self.km.text = NSLocalizedString(@"HGLocationDetailsInfoView.label.km", nil);
     [self addSubview:self.km];
 
     self.porkImage = [[UIImageView alloc] initWithFrame:CGRectZero];

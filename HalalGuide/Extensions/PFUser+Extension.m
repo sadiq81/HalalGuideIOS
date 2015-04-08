@@ -4,23 +4,18 @@
 //
 
 #import "PFUser+Extension.h"
-#import "FBRequest.h"
-#import "ProfileInfo.h"
-
+#import "FBSDKGraphRequest.h"
 
 @implementation PFUser (Extension)
 
 + (void)storeProfileInfoForLoggedInUser:(PFBooleanResultBlock)completion {
 
-    FBRequest *request = [FBRequest requestForMe];
-
-    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        // result is a dictionary with the user's Facebook data
         if (!error) {
-            // result is a dictionary with the user's Facebook data
             NSDictionary *userData = (NSDictionary *) result;
             [[PFUser currentUser] setObject:userData forKey:@"userData"];
             [[PFUser currentUser] saveInBackground];
-
         } else {
             completion(false, error);
         }

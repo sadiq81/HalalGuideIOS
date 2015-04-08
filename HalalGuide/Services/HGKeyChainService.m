@@ -5,8 +5,8 @@
 
 #import "HGKeyChainService.h"
 #import "KeychainWrapper.h"
+#import "PFFacebookUtils.h"
 #import <Parse/Parse.h>
-#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 #define kUserKey @"userid"
 #define kUserToken @"token"

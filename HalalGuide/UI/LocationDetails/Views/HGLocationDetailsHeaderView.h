@@ -5,7 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "LocationDetailViewModel.h"
+#import "HGLocationDetailViewModel.h"
 #import "HGLocationDetailsInfoView.h"
 #import "HGLocationDetailsSubmitterView.h"
 #import "HGLocationDetailsPictureView.h"
@@ -17,10 +17,10 @@
 @property(strong, nonatomic, readonly) HGLocationDetailsSubmitterView *submitterView;
 @property(strong, nonatomic, readonly) HGLocationDetailsPictureView *pictureView;
 
-@property(strong, nonatomic) LocationDetailViewModel *viewModel;
+@property(strong, nonatomic) HGLocationDetailViewModel *viewModel;
 
-- (instancetype)initWithViewModel:(LocationDetailViewModel *)viewModel;
+- (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel;
 
-+ (instancetype)viewWithViewModel:(LocationDetailViewModel *)viewModel;
++ (instancetype)viewWithViewModel:(HGLocationDetailViewModel *)viewModel;
 
 @end
