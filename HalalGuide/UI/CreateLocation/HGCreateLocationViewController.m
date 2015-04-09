@@ -24,6 +24,7 @@
 #import "HGFilterSwitchView.h"
 #import "HGCategoriesView.h"
 #import "HGCreateSwitchView.h"
+#import "UITextField+HGTextFieldStyling.h"
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import <Masonry/View+MASAdditions.h>
 
@@ -74,6 +75,7 @@
     [super viewDidLoad];
 
     [self setupViews];
+    [self setupNavigationBar];
     [self setupViewModel];
     [self setupIQKeyboardReturnKeyHandler];
     [self updateViewConstraints];
@@ -82,30 +84,43 @@
 
 - (void)setupViews {
 
+    self.view.backgroundColor = [UIColor whiteColor];
+
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.scrollView];
 
+    self.pickImage = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.pickImage setImage:[UIImage imageNamed:@"HGCreateLocationViewController.button.pick.image"] forState:UIControlStateNormal];
+    [self.scrollView addSubview:self.pickImage];
+
     self.name = [[UITextField alloc] initWithFrame:CGRectZero];
+    [self.name styleWithPlaceHolder:NSLocalizedString(@"HGCreateLocationViewController.placeholder.name", nil) andKeyBoardType:UIKeyboardTypeDefault andAutocapitalizationType:UITextAutocapitalizationTypeWords];
     [self.scrollView addSubview:self.name];
 
     self.road = [[HTAutocompleteTextField alloc] initWithFrame:CGRectZero];
+    [self.road styleWithPlaceHolder:NSLocalizedString(@"HGCreateLocationViewController.placeholder.road", nil) andKeyBoardType:UIKeyboardTypeDefault andAutocapitalizationType:UITextAutocapitalizationTypeWords];
     self.road.autocompleteDataSource = self;
     [self.scrollView addSubview:self.road];
 
     self.roadNumber = [[HTAutocompleteTextField alloc] initWithFrame:CGRectZero];
+    [self.roadNumber styleWithPlaceHolder:NSLocalizedString(@"HGCreateLocationViewController.placeholder.road.number", nil) andKeyBoardType:UIKeyboardTypeDefault andAutocapitalizationType:UITextAutocapitalizationTypeWords];
     self.roadNumber.autocompleteDataSource = self;
     [self.scrollView addSubview:self.roadNumber];
 
     self.postalCode = [[UITextField alloc] initWithFrame:CGRectZero];
+    [self.postalCode styleWithPlaceHolder:NSLocalizedString(@"HGCreateLocationViewController.placeholder.postal.code", nil) andKeyBoardType:UIKeyboardTypeNumberPad andAutocapitalizationType:UITextAutocapitalizationTypeNone];
     [self.scrollView addSubview:self.postalCode];
 
     self.city = [[UITextField alloc] initWithFrame:CGRectZero];
+    [self.city styleWithPlaceHolder:NSLocalizedString(@"HGCreateLocationViewController.placeholder.city", nil) andKeyBoardType:UIKeyboardTypeDefault andAutocapitalizationType:UITextAutocapitalizationTypeWords];
     [self.scrollView addSubview:self.city];
 
     self.telephone = [[UITextField alloc] initWithFrame:CGRectZero];
+    [self.telephone styleWithPlaceHolder:NSLocalizedString(@"HGCreateLocationViewController.placeholder.telephone", nil) andKeyBoardType:UIKeyboardTypePhonePad andAutocapitalizationType:UITextAutocapitalizationTypeNone];
     [self.scrollView addSubview:self.telephone];
 
     self.website = [[UITextField alloc] initWithFrame:CGRectZero];
+    [self.website styleWithPlaceHolder:NSLocalizedString(@"HGCreateLocationViewController.placeholder.website", nil) andKeyBoardType:UIKeyboardTypeURL andAutocapitalizationType:UITextAutocapitalizationTypeNone];
     [self.scrollView addSubview:self.website];
 
     self.switchView = [[HGCreateSwitchView alloc] initWithViewModel:self.viewModel];
@@ -114,6 +129,11 @@
     self.categoriesView = [[HGCategoriesView alloc] initWithViewModel:self.viewModel];
     [self.scrollView addSubview:self.categoriesView];
 
+    self.regret = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGCreateLocationViewController.button.regret", nil) style:UIBarButtonItemStylePlain block:nil];
+    self.navigationItem.leftBarButtonItem = self.regret;
+
+    self.save = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGCreateLocationViewController.button.save", nil) style:UIBarButtonItemStylePlain block:nil];
+    self.navigationItem.rightBarButtonItem = self.save;
 }
 
 - (void)setupViewModel {
@@ -144,75 +164,6 @@
         }];
     }];
 
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-
-    [self onBoarding];
-}
-
-- (void)setupIQKeyboardReturnKeyHandler {
-    returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
-}
-
-- (void)onBoarding {
-    if (![[HGOnboarding instance] wasOnBoardingShow:kCreateLocationPickImageOnBoardingKey]) {
-        [self displayHintForView:self.pickImage withHintKey:kCreateLocationPickImageOnBoardingKey preferedPositionOfText:HintPositionAbove];
-    }
-}
-
-- (void)setupEvents {
-
-    [self.viewModel loadAddressesNearPositionOnCompletion:nil];
-
-    @weakify(self)
-    [[self.pickImage rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        //@strongify(self)
-        //[self.viewModel getPictures:self];
-    }];
-
-    [[self.road rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(id x) {
-        @strongify(self)
-        Postnummer *postnummer = [self.viewModel postalCodeFor:self.road.text];
-        if (postnummer) {
-            [self.postalCode insertText:postnummer.nr];
-            [self.city insertText:postnummer.navn];
-        }
-    }];
-
-    [[self.postalCode rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(id x) {
-        @strongify(self)
-        [self.viewModel cityNameFor:self.postalCode.text onCompletion:^(Postnummer *postnummer) {
-            if (postnummer) {
-                [self.city insertText:postnummer.navn];
-            }
-        }];
-    }];
-
-    [self.regret setBlock:^(id weakSender) {
-        @strongify(self)
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    }];
-
-    [[RACSignal combineLatest:@[self.name.rac_textSignal, self.road.rac_textSignal, self.roadNumber.rac_textSignal, self.postalCode.rac_textSignal, self.city.rac_textSignal]
-                       reduce:^(NSString *name, NSString *road, NSString *roadNumber, NSString *postalCode, NSString *city) {
-                           return @((name.length > 0) && (road.length > 0) && (roadNumber.length > 0) && (postalCode.length > 0) && (city.length > 0));
-                       }] subscribeNext:^(NSNumber *enabled) {
-        @strongify(self)
-        self.save.enabled = enabled.boolValue;
-    }];
-
-    [self.save setBlock:^(id weakSender) {
-        //@strongify(self)
-//        [self.viewModel saveEntity:self.name.text road:self.road.text roadNumber:self.roadNumber.text postalCode:self.postalCode.text city:self.city.text telephone:self.telephone.text website:self.website.text pork:self.porkSwitch.on alcohol:self.alcoholSwitch.on nonHalal:self.halalSwitch.on images:self.images];
-    }];
-
-    [[RACObserve(self.viewModel, createdLocation) skip:1] subscribeNext:^(HGLocation *location) {
-        if (!self.viewModel.error && location.objectId) {
-            [self performSegueWithIdentifier:@"OpeningHours" sender:self];
-        }
-    }];
 
     [[RACObserve(self.viewModel, progress) skip:1] subscribeNext:^(NSNumber *progress) {
         if (progress.intValue != 0 && progress.intValue != 100) {
@@ -242,6 +193,45 @@
         }
     }];
 
+    [[RACObserve(self.viewModel, createdLocation) skip:1] subscribeNext:^(HGLocation *location) {
+        if (!self.viewModel.error && location.objectId) {
+            [self performSegueWithIdentifier:@"OpeningHours" sender:self];
+        }
+    }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self onBoarding];
+}
+
+- (void)setupIQKeyboardReturnKeyHandler {
+    returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
+}
+
+- (void)onBoarding {
+    if (![[HGOnboarding instance] wasOnBoardingShow:kCreateLocationPickImageOnBoardingKey]) {
+        [self displayHintForView:self.pickImage withHintKey:kCreateLocationPickImageOnBoardingKey preferedPositionOfText:HintPositionAbove];
+    }
+}
+
+- (void)setupNavigationBar {
+    @weakify(self)
+    [self.regret setBlock:^(id weakSender) {
+        @strongify(self)
+        [self.presentingViewController dismissViewControllerAnimated:true completion:nil];
+    }];
+
+
+    [self.save setBlock:^(id weakSender) {
+        @strongify(self)
+//        [self.viewModel saveEntity:self.name.text road:self.road.text roadNumber:self.roadNumber.text postalCode:self.postalCode.text city:self.city.text telephone:self.telephone.text website:self.website.text pork:self.porkSwitch.on alcohol:self.alcoholSwitch.on nonHalal:self.halalSwitch.on images:self.images];
+    }];
+
+    RAC(self.save, enabled) = [RACSignal combineLatest:@[self.name.rac_textSignal, self.road.rac_textSignal, self.roadNumber.rac_textSignal, self.postalCode.rac_textSignal, self.city.rac_textSignal]
+                                                reduce:^(NSString *name, NSString *road, NSString *roadNumber, NSString *postalCode, NSString *city) {
+                                                    return @((name.length > 0) && (road.length > 0) && (roadNumber.length > 0) && (postalCode.length > 0) && (city.length > 0));
+                                                }];
 }
 
 - (void)finishedPickingImages {
@@ -265,28 +255,6 @@
 //    }];
 }
 
-#pragma mark UIUpdates
-
-//- (void)setUILabels {
-//
-//    switch (self.viewModel.locationType) {
-//        case LocationTypeDining: {
-//            int count = (int) [self.viewModel.categories count];
-//            self.categoriesCount.text = [NSString stringWithFormat:@"%i", count];
-//            break;
-//        };
-//        case LocationTypeShop: {
-//            int count = (int) [self.viewModel.shopCategories count];
-//            self.categoriesCount.text = [NSString stringWithFormat:@"%i", count];
-//            break;
-//        };
-//        case LocationTypeMosque: {
-//            self.categoriesCount.text = NSLocalizedString(LanguageString(self.viewModel.language), nil);
-//            break;
-//        };
-//    }
-//}
-
 #pragma mark - AutoComplete
 
 - (NSString *)textField:(HTAutocompleteTextField *)textField completionForPrefix:(NSString *)prefix ignoreCase:(BOOL)ignoreCase {
@@ -307,28 +275,6 @@
         return @"";
     }
 
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-
-    if (textField == self.name) {
-        [self.road becomeFirstResponder];
-        return false;
-    } else if (textField == self.road) {
-        [self.roadNumber becomeFirstResponder];
-        return false;
-    } else if (textField == self.roadNumber) {
-        [self.postalCode becomeFirstResponder];
-        return false;
-    } else if (textField == self.postalCode) {
-        [self.city becomeFirstResponder];
-        return false;
-    } else if (textField == self.telephone) {
-        [self.website becomeFirstResponder];
-        return false;
-    } else {
-        return true;
-    }
 }
 
 #pragma mark - Navigation
@@ -359,6 +305,13 @@
 
     [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
+    }];
+
+    [self.pickImage mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.scrollView).offset(8);
+        make.top.equalTo(self.scrollView).offset(8);
+        make.width.equalTo(@(104));
+        make.height.equalTo(@(104));
     }];
 
     [self.name mas_updateConstraints:^(MASConstraintMaker *make) {

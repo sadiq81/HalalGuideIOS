@@ -237,6 +237,15 @@
 
 "HGCreateSwitchView.label.pork" = "Is pork served?";
 "HGCreateSwitchView.label.alcohol" = "Is alcohol served?";
-"HGCreateSwitchView.label.halal" = "Is non halal meat served";
+"HGCreateSwitchView.label.halal" = "Is non halal chicken/beef served?";
 "HGCreateSwitchView.switch.on" = "Yes";
 "HGCreateSwitchView.switch.off" = "No";
+"HGCreateLocationViewController.button.regret" = "Regret";
+"HGCreateLocationViewController.button.save" = "Save";
+"HGCreateLocationViewController.placeholder.name" = "Name*";
+"HGCreateLocationViewController.placeholder.road" = "Road*";
+"HGCreateLocationViewController.placeholder.road.number" = "Number*";
+"HGCreateLocationViewController.placeholder.postal.code" = "Postal code*";
+"HGCreateLocationViewController.placeholder.city" = "City*";
+"HGCreateLocationViewController.placeholder.telephone" = "Telephone";
+"HGCreateLocationViewController.placeholder.website" = "Website";

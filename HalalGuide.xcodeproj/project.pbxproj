@@ -113,6 +113,7 @@
 		C596BDE32DA14B42EA352467 /* HGLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BF1CC236CE195558FC23 /* HGLocation.m */; };
 		C596BDE3925F38D540F18CE7 /* HGCategoriesView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BAE94699DB6E3B2754DE /* HGCategoriesView.m */; };
 		C596BE22F26B79E7CBB7BB10 /* HGReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B73877CA533CA6591101 /* HGReviewDetailViewController.m */; };
+		C596BE2FDE791CBFD3534FC1 /* UITextField+HGTextFieldStyling.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B4347D0E938F92BE5B8F /* UITextField+HGTextFieldStyling.m */; };
 		C596BE3E29F80B4D4E15DF01 /* HGAddressService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B84A08E3F2B1D860AFFB /* HGAddressService.m */; };
 		C596BE3F86C6A8EB1EFA87EB /* HGCoordinatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BF9581A8E814E1A7FCED /* HGCoordinatePickerViewController.m */; };
 		C596BE48371716EFD5C2C3EE /* HGCreateSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B77D557A2BCE5052EA80 /* HGCreateSwitchView.m */; };
@@ -206,6 +207,7 @@
 		C596B0CAC46D5333388FB1F7 /* HGReviewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGReviewDetailViewController.h; sourceTree = "<group>"; };
 		C596B0D816F76F252C2A7FFC /* global.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = global.json; sourceTree = "<group>"; };
 		C596B0E086AE50B236C357AE /* NSObject+MethodExchange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodExchange.m"; sourceTree = "<group>"; };
+		C596B0E4766AE6FADEEF1EC2 /* UITextField+HGTextFieldStyling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+HGTextFieldStyling.h"; sourceTree = "<group>"; };
 		C596B0F6491409F9FB257D0D /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		C596B10671F66BE5CA315DA1 /* HGFilterLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFilterLocationViewController.m; sourceTree = "<group>"; };
 		C596B10C7FAB88D80A2501EA /* HGLocationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationDetailViewController.h; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		C596B3B9B67A50AA098B0D07 /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
 		C596B3F36D3764DC53AF2C4C /* HGReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGReviewCell.h; sourceTree = "<group>"; };
 		C596B4131193FC10EF5D97ED /* HGKeyChainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGKeyChainService.h; sourceTree = "<group>"; };
+		C596B4347D0E938F92BE5B8F /* UITextField+HGTextFieldStyling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+HGTextFieldStyling.m"; sourceTree = "<group>"; };
 		C596B43DA040C153F39C9847 /* NSMutableString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Extensions.m"; sourceTree = "<group>"; };
 		C596B448202B5ACA4E2E3C56 /* HGENumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGENumberViewController.m; sourceTree = "<group>"; };
 		C596B45290F26EA1EDD5FCCC /* HGFrontPageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGFrontPageViewModel.h; sourceTree = "<group>"; };
@@ -769,6 +772,8 @@
 				C596B63A5A8D68252431C209 /* POPAnimatableProperty+Masonry.m */,
 				C596B54E9B5201950377B45B /* NSLocale+iOS8.m */,
 				C596BDC67C12F52B1A76E2AE /* NSLocale+iOS8.h */,
+				C596B4347D0E938F92BE5B8F /* UITextField+HGTextFieldStyling.m */,
+				C596B0E4766AE6FADEEF1EC2 /* UITextField+HGTextFieldStyling.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1291,6 +1296,7 @@
 				C596BDE3925F38D540F18CE7 /* HGCategoriesView.m in Sources */,
 				C596B64B6A10D844596C8AB1 /* HGFilterSwitchView.m in Sources */,
 				C596BE48371716EFD5C2C3EE /* HGCreateSwitchView.m in Sources */,
+				C596BE2FDE791CBFD3534FC1 /* UITextField+HGTextFieldStyling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

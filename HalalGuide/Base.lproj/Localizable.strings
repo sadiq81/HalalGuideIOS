@@ -234,12 +234,16 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "HGCreateSwitchView.label.pork" = "Serveres der gris?";
 "HGCreateSwitchView.label.alcohol" = "Serveres der alkohol?";
-"HGCreateSwitchView.label.halal" = "Serveres der ikke halal kød?";
+"HGCreateSwitchView.label.halal" = "Serveres der ikke halal kylling/okse kød?";
 "HGCreateSwitchView.switch.on" = "Ja";
 "HGCreateSwitchView.switch.off" = "Nej";
 
-
-
-
-
-
+"HGCreateLocationViewController.button.regret" = "Fortryd";
+"HGCreateLocationViewController.button.save" = "Gem";
+"HGCreateLocationViewController.placeholder.name" = "Navn*";
+"HGCreateLocationViewController.placeholder.road" = "Vej*";
+"HGCreateLocationViewController.placeholder.road.number" = "Nr*";
+"HGCreateLocationViewController.placeholder.postal.code" = "Postnummer*";
+"HGCreateLocationViewController.placeholder.city" = "By*";
+"HGCreateLocationViewController.placeholder.telephone" = "Telefon";
+"HGCreateLocationViewController.placeholder.website" = "Hjemmeside";
