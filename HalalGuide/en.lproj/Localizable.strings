@@ -80,7 +80,7 @@
 
 "Language.none" = "None";
 "Language.danish" ="Danish";
-"aLanguage.rabic" = "Arabic";
+"Language.arabic" = "Arabic";
 "Language.urdu" = "Urdu";
 "Language.english" = "English";
 
@@ -91,9 +91,9 @@
 "addNewOnBoardingButton" = "Press '+' to add suggestions";
 "filterOnBoardingButton" = "Press 'Filter' to filter your results";
 
-"diningCellPorkOnBoarding" = "Is pork also served";
-"diningCellAlcoholOnBoarding" = "Is alcohol also served";
-"diningCellHalalOnBoarding" =  "Is there non halal chicken/beef meat";
+"diningCellPorkOnBoarding" = "Tells if pork is served";
+"diningCellAlcoholOnBoarding" = "Tells if alcohol is served";
+"diningCellHalalOnBoarding" =  "Tells if non halal chicken or beef is served";
 
 "diningDetailAddressTelephoneOptionsOnBoarding" = "Press the address to get directions or call the place";
 
@@ -249,3 +249,6 @@
 "HGCreateLocationViewController.placeholder.city" = "City*";
 "HGCreateLocationViewController.placeholder.telephone" = "Telephone";
 "HGCreateLocationViewController.placeholder.website" = "Website";
+"HGCreateLocationViewController.hud.saving" = "Saving";
+"HGCreateLocationViewController.hud.error" = "An unknown error occured";
+"HGCreateLocationViewController.hud.location.saved" = "Your suggestion has been submitted for approval";

@@ -10,15 +10,15 @@
 
 @interface HGCreateSwitchView : UIView
 
-@property(strong, nonatomic, readonly) UIImage *halalImage;
+@property(strong, nonatomic, readonly) UIImageView *halalImage;
 @property(strong, nonatomic, readonly) SevenSwitch *halalSwitch;
 @property(strong, nonatomic, readonly) UILabel *halalLabel;
 
-@property(strong, nonatomic, readonly) UIImage *alcoholImage;
+@property(strong, nonatomic, readonly) UIImageView *alcoholImage;
 @property(strong, nonatomic, readonly) SevenSwitch *alcoholSwitch;
 @property(strong, nonatomic, readonly) UILabel *alcoholLabel;
 
-@property(strong, nonatomic, readonly) UIImage *porkImage;
+@property(strong, nonatomic, readonly) UIImageView *porkImage;
 @property(strong, nonatomic, readonly) SevenSwitch *porkSwitch;
 @property(strong, nonatomic, readonly) UILabel *porkLabel;
 

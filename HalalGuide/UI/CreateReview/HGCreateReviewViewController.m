@@ -132,7 +132,7 @@
     self.review.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.review.layer.borderWidth = 0.5;
     self.review.layer.cornerRadius = 5;
-    self.review.ClipsToBounds = true;
+    self.review.clipsToBounds = true;
 }
 
 - (void)updateViewConstraints {

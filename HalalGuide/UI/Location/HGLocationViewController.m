@@ -155,7 +155,7 @@
         @strongify(self)
         //TODO animate
         self.mapView.alpha = self.tableView.alpha;
-        self.tableView.alpha = abs(self.tableView.alpha - 1);
+        self.tableView.alpha = fabs(self.tableView.alpha - 1);
 
         [self.presentationMode setTitle:(self.mapView.alpha == 1 ? NSLocalizedString(@"HGLocationViewController.button.list", nil) : NSLocalizedString(@"HGLocationViewController.button.map", nil))];
 

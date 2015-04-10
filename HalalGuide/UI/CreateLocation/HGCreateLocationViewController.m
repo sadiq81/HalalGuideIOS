@@ -9,29 +9,25 @@
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import <LinqToObjectiveC/NSArray+LinqExtensions.h>
 #import "HGCreateLocationViewController.h"
-#import "HGCategoriesViewController.h"
-#import "HGCreateLocationViewModel.h"
-#import "MZFormSheetSegue.h"
-#import "IQUIView+Hierarchy.h"
 #import "IQKeyboardReturnKeyHandler.h"
 #import "HGOnboarding.h"
 #import "UIViewController+Extension.h"
 #import "JSBadgeView.h"
-#import "HGCreateReviewViewController.h"
 #import "NSTimer+Block.h"
-#import "SevenSwitch.h"
 #import "HGOpeningsHoursViewController.h"
-#import "HGFilterSwitchView.h"
 #import "HGCategoriesView.h"
 #import "HGCreateSwitchView.h"
 #import "UITextField+HGTextFieldStyling.h"
+#import "KASlideShow.h"
+#import "HGCategoriesViewController.h"
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import <Masonry/View+MASAdditions.h>
+#import <MZFormSheetController/MZFormSheetController.h>
 
-@interface HGCreateLocationViewController () <UINavigationControllerDelegate, HTAutocompleteDataSource, UITextFieldDelegate>
+@interface HGCreateLocationViewController () <UINavigationControllerDelegate, HTAutocompleteDataSource, UITextFieldDelegate, HGImagePickerControllerDelegate>
 
 @property(strong, nonatomic) UIScrollView *scrollView;
-@property(strong, nonatomic) UIButton *pickImage;
+@property(strong, nonatomic) KASlideShow *pickImage;
 @property(strong, nonatomic) UITextField *name;
 @property(strong, nonatomic) HTAutocompleteTextField *road;
 @property(strong, nonatomic) HTAutocompleteTextField *roadNumber;
@@ -43,16 +39,17 @@
 @property(strong, nonatomic) HGCategoriesView *categoriesView;
 @property(strong, nonatomic) UIBarButtonItem *regret;
 @property(strong, nonatomic) UIBarButtonItem *save;
+@property(strong, nonatomic) IQKeyboardReturnKeyHandler *returnKeyHandler;
+@property(nonatomic) NSUInteger index;
+@property(strong, nonatomic) NSTimer *timer;
+@property(strong, nonatomic) JSBadgeView *badgeView;
 
 @property(strong, nonatomic) HGCreateLocationViewModel *viewModel;
 
 @end
 
 @implementation HGCreateLocationViewController {
-    IQKeyboardReturnKeyHandler *returnKeyHandler;
-    NSUInteger index; //Index of show picture
-    NSTimer *timer; //Used for imageslideshow
-    JSBadgeView *badgeView;
+
 }
 
 @synthesize viewModel;
@@ -89,8 +86,9 @@
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.scrollView];
 
-    self.pickImage = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self.pickImage setImage:[UIImage imageNamed:@"HGCreateLocationViewController.button.pick.image"] forState:UIControlStateNormal];
+    self.pickImage = [[KASlideShow alloc] initWithFrame:CGRectZero];
+    self.pickImage.imagesContentMode = UIViewContentModeScaleAspectFill;
+    [self.pickImage addImage:[UIImage imageNamed:@"HGCreateLocationViewController.button.pick.image"]];
     [self.scrollView addSubview:self.pickImage];
 
     self.name = [[UITextField alloc] initWithFrame:CGRectZero];
@@ -140,15 +138,22 @@
 
     [self.viewModel loadAddressesNearPositionOnCompletion:nil];
 
+    RAC(self.viewModel, name) = RACObserve(self, name.text);
+    RAC(self.viewModel, road) = RACObserve(self, road.text);
+    RAC(self.viewModel, roadNumber) = RACObserve(self, roadNumber.text);
+    RAC(self.viewModel, postalCode) = RACObserve(self, postalCode.text);
+    RAC(self.viewModel, city) = RACObserve(self, city.text);
+    RAC(self.viewModel, website) = RACObserve(self, website.text);
+
+
     @weakify(self)
-    [[self.pickImage rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        //@strongify(self)
-        //[self.viewModel getPictures:self];
-    }];
+    [self.pickImage addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
+        [self getPicturesWithDelegate:self viewModel:self.viewModel];
+    }]];
 
     [[self.road rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(id x) {
         @strongify(self)
-        Postnummer *postnummer = [self.viewModel postalCodeFor:self.road.text];
+        Postnummer *postnummer = [self.viewModel postalCodeForRoad];
         if (postnummer) {
             [self.postalCode insertText:postnummer.nr];
             [self.city insertText:postnummer.navn];
@@ -157,9 +162,9 @@
 
     [[self.postalCode rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(id x) {
         @strongify(self)
-        [self.viewModel cityNameFor:self.postalCode.text onCompletion:^(Postnummer *postnummer) {
-            if (postnummer) {
-                [self.city insertText:postnummer.navn];
+        [self.viewModel cityNameForPostalCode:^(Postnummer *postNummer) {
+            if (postNummer) {
+                [self.city insertText:postNummer.navn];
             }
         }];
     }];
@@ -173,7 +178,7 @@
                 [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
             }
         } else if (progress.intValue == 100) {
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"imagesSaved", nil)];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"HGCreateLocationViewController.hud.location.saved", nil)];
         } else {
             [SVProgressHUD dismiss];
         }
@@ -181,7 +186,7 @@
 
     [RACObserve(self.viewModel, saving) subscribeNext:^(NSNumber *saving) {
         if (saving.boolValue) {
-            [SVProgressHUD showWithStatus:NSLocalizedString(@"savingToTheCloud", nil) maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"HGCreateLocationViewController.hud.saving", nil) maskType:SVProgressHUDMaskTypeBlack];
         } else {
             [SVProgressHUD dismiss];
         }
@@ -189,14 +194,32 @@
 
     [[RACObserve(self.viewModel, error) throttle:0.5] subscribeNext:^(NSError *error) {
         if (error) {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"error", nil)];
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"HGCreateLocationViewController.hud.error", nil)];
         }
     }];
 
     [[RACObserve(self.viewModel, createdLocation) skip:1] subscribeNext:^(HGLocation *location) {
         if (!self.viewModel.error && location.objectId) {
-            [self performSegueWithIdentifier:@"OpeningHours" sender:self];
+
         }
+    }];
+
+    [[self.categoriesView.choose rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self)
+
+        HGCategoriesViewController *viewController = [HGCategoriesViewController controllerWithViewModel:self.viewModel];
+        MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:viewController];
+        formSheet.presentedFSViewController.view.clipsToBounds = false;
+
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        formSheet.presentedFormSheetSize= CGSizeMake(CGRectGetWidth(screenRect)*0.8, CGRectGetHeight(screenRect)*0.8);
+        formSheet.transitionStyle = MZFormSheetTransitionStyleBounce;
+        formSheet.cornerRadius = 8.0;
+        formSheet.shouldDismissOnBackgroundViewTap = true;
+        formSheet.didDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
+            [self.categoriesView setCountLabelText];
+        };
+        [self mz_presentFormSheetController:formSheet animated:YES completionHandler:nil];
     }];
 }
 
@@ -206,7 +229,7 @@
 }
 
 - (void)setupIQKeyboardReturnKeyHandler {
-    returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
+    self.returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
 }
 
 - (void)onBoarding {
@@ -225,7 +248,7 @@
 
     [self.save setBlock:^(id weakSender) {
         @strongify(self)
-//        [self.viewModel saveEntity:self.name.text road:self.road.text roadNumber:self.roadNumber.text postalCode:self.postalCode.text city:self.city.text telephone:self.telephone.text website:self.website.text pork:self.porkSwitch.on alcohol:self.alcoholSwitch.on nonHalal:self.halalSwitch.on images:self.images];
+        [self.viewModel saveLocation];
     }];
 
     RAC(self.save, enabled) = [RACSignal combineLatest:@[self.name.rac_textSignal, self.road.rac_textSignal, self.roadNumber.rac_textSignal, self.postalCode.rac_textSignal, self.city.rac_textSignal]
@@ -234,26 +257,6 @@
                                                 }];
 }
 
-- (void)finishedPickingImages {
-//   [super finishedPickingImages];
-//
-//    [badgeView removeFromSuperview];
-//
-//    NSUInteger count = [self.images count];
-//    if (count > 0) {
-//        badgeView = [[JSBadgeView alloc] initWithParentView:self.pickImage alignment:JSBadgeViewAlignmentTopRight];
-//        badgeView.badgeText = [NSString stringWithFormat:@"%d", (int) count];
-//    }
-//    @weakify(self)
-//    timer = [NSTimer scheduledTimerWithTimeInterval:2 repeats:true block:^{
-//        @strongify(self)
-//        index++;
-//        if (index >= [self.images count]) {
-//            index = 0;
-//        }
-//        [self.pickImage setImage:[self.images objectAtIndex:index] forState:UIControlStateNormal];
-//    }];
-}
 
 #pragma mark - AutoComplete
 
@@ -264,7 +267,7 @@
     if (textField == self.road) {
         suggestions = [self.viewModel streetNameForPrefix:prefix];
     } else if (textField == self.roadNumber) {
-        suggestions = [self.viewModel streetNumbersFor:self.road.text];
+        suggestions = [self.viewModel streetNumbersForRoad];
     }
 
     NSString *suggestion = [suggestions linq_firstOrNil];
@@ -278,6 +281,20 @@
 }
 
 #pragma mark - Navigation
+
+- (void)HGImagePickerControllerDidCancel:(HGImagePickerController *)controller {
+    [controller.presentingViewController dismissViewControllerAnimated:true completion:nil];
+}
+
+- (void)HGImagePickerControllerDidConfirm:(HGImagePickerController *)controller pictures:(NSArray *)pictures {
+    [controller.presentingViewController dismissViewControllerAnimated:true completion:^{
+        self.viewModel.images = pictures;
+        [self.pickImage emptyAndAddImages:self.viewModel.images];
+        if ([self.viewModel.images count] > 1) {
+            [self.pickImage start];
+        }
+    }];
+}
 
 /*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
@@ -300,6 +317,7 @@
         viewController.viewModel = self.viewModel;
     }
 }*/
+
 
 - (void)updateViewConstraints {
 
@@ -387,8 +405,8 @@
 }
 
 - (void)dealloc {
-    returnKeyHandler = nil;
-    [timer invalidate];
+    self.returnKeyHandler = nil;
+    [self.timer invalidate];
 }
 
 @end

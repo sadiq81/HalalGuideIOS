@@ -8,15 +8,15 @@
 
 @interface HGCreateSwitchView ()
 
-@property(strong, nonatomic) UIImage *halalImage;
+@property(strong, nonatomic) UIImageView *halalImage;
 @property(strong, nonatomic) SevenSwitch *halalSwitch;
 @property(strong, nonatomic) UILabel *halalLabel;
 
-@property(strong, nonatomic) UIImage *alcoholImage;
+@property(strong, nonatomic) UIImageView *alcoholImage;
 @property(strong, nonatomic) SevenSwitch *alcoholSwitch;
 @property(strong, nonatomic) UILabel *alcoholLabel;
 
-@property(strong, nonatomic) UIImage *porkImage;
+@property(strong, nonatomic) UIImageView *porkImage;
 @property(strong, nonatomic) SevenSwitch *porkSwitch;
 @property(strong, nonatomic) UILabel *porkLabel;
 
@@ -41,6 +41,10 @@
 
 - (void)setupViews {
 
+    self.halalImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.halalImage.image = [UIImage imageNamed:@"HGCreateSwitchView.non.halal.false"];
+    [self addSubview:self.halalImage];
+
     self.halalLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.halalLabel.text = NSLocalizedString(@"HGCreateSwitchView.label.halal", nil);
     self.halalLabel.adjustsFontSizeToFitWidth = true;
@@ -53,6 +57,10 @@
     self.halalSwitch.onTintColor = [UIColor redColor];
     self.halalSwitch.inactiveColor = [UIColor greenColor];
     [self addSubview:self.halalSwitch];
+
+    self.alcoholImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.alcoholImage.image = [UIImage imageNamed:@"HGCreateSwitchView.alcohol.false"];
+    [self addSubview:self.alcoholImage];
 
     self.alcoholLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.alcoholLabel.text = NSLocalizedString(@"HGCreateSwitchView.label.alcohol", nil);
@@ -67,6 +75,10 @@
     self.alcoholSwitch.inactiveColor = [UIColor greenColor];
     [self addSubview:self.alcoholSwitch];
 
+    self.porkImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.porkImage.image = [UIImage imageNamed:@"HGCreateSwitchView.pork.false"];
+    [self addSubview:self.porkImage];
+
     self.porkLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.porkLabel.text = NSLocalizedString(@"HGCreateSwitchView.label.pork", nil);
     self.porkLabel.adjustsFontSizeToFitWidth = true;
@@ -79,31 +91,31 @@
     self.porkSwitch.onTintColor = [UIColor redColor];
     self.porkSwitch.inactiveColor = [UIColor greenColor];
     [self addSubview:self.porkSwitch];
-
 }
 
 - (void)setupViewModel {
 
-    //TODO is this MVVM?
-//    RAC(self.viewModel, showNonHalal) = [RACObserve(self, halalSwitch.on) skip:1];
-//    RAC(self.viewModel, showAlcohol) = [RACObserve(self, alcoholSwitch.on) skip:1];
-//    RAC(self.viewModel, showPork) = [RACObserve(self, porkSwitch.on) skip:1];
+    RAC(self.viewModel, nonHalal) = RACObserve(self, halalSwitch.on);
+    RAC(self.viewModel, alcohol) = RACObserve(self, alcoholSwitch.on);
+    RAC(self.viewModel, pork) = RACObserve(self, porkSwitch.on);
 
-    //    [[self.porkSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
-//        @strongify(self)
-//        self.porkImage.image = [UIImage imageNamed:self.porkSwitch.on ? @"PigTrue" : @"PigFalse"];
-//    }];
-//
-//    [[self.alcoholSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
-//        @strongify(self)
-//        self.alcoholImage.image = [UIImage imageNamed:self.alcoholSwitch.on ? @"AlcoholTrue" : @"AlcoholFalse"];
-//    }];
-//
-//
-//    [[self.halalSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
-//        @strongify(self)
-//        self.halalImage.image = [UIImage imageNamed:self.halalSwitch.on ? @"NonHalalTrue" : @"NonHalalFalse"];
-//    }];
+    @weakify(self)
+    [[self.porkSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
+        @strongify(self)
+        self.porkImage.image = [UIImage imageNamed:self.porkSwitch.on ? @"HGCreateSwitchView.pork.true" : @"HGCreateSwitchView.pork.false"];
+    }];
+
+    [[self.alcoholSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
+        @strongify(self)
+        self.alcoholImage.image = [UIImage imageNamed:self.alcoholSwitch.on ? @"HGCreateSwitchView.alcohol.true" : @"HGCreateSwitchView.alcohol.false"];
+    }];
+
+
+    [[self.halalSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
+        @strongify(self)
+        self.halalImage.image = [UIImage imageNamed:self.halalSwitch.on ? @"HGCreateSwitchView.non.halal.true" : @"HGCreateSwitchView.non.halal.false"];
+    }];
+
 
 }
 
@@ -111,9 +123,16 @@
 
     self.translatesAutoresizingMaskIntoConstraints = false;
 
+    [self.halalImage mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(8);
+        make.width.equalTo(@(31));
+        make.height.equalTo(@31);
+        make.centerY.equalTo(self.halalSwitch.mas_centerY);
+    }];
+
     [self.halalLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.halalSwitch.mas_centerY);
-        make.left.equalTo(self).offset(8);
+        make.left.equalTo(self.halalImage.mas_right).offset(8);
         make.right.equalTo(self.halalSwitch.mas_left).offset(-8);
     }];
 
@@ -124,9 +143,16 @@
         make.right.equalTo(self).offset(-8);
     }];
 
+    [self.alcoholImage mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(8);
+        make.width.equalTo(@(31));
+        make.height.equalTo(@31);
+        make.centerY.equalTo(self.alcoholSwitch.mas_centerY);
+    }];
+
     [self.alcoholLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.alcoholSwitch.mas_centerY);
-        make.left.equalTo(self).offset(8);
+        make.left.equalTo(self.alcoholImage.mas_right).offset(8);
         make.right.equalTo(self.alcoholSwitch.mas_left).offset(-8);
     }];
 
@@ -137,9 +163,16 @@
         make.right.equalTo(self).offset(-8);
     }];
 
+    [self.porkImage mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(8);
+        make.width.equalTo(@(31));
+        make.height.equalTo(@31);
+        make.centerY.equalTo(self.porkSwitch.mas_centerY);
+    }];
+
     [self.porkLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.porkSwitch.mas_centerY);
-        make.left.equalTo(self).offset(8);
+        make.left.equalTo(self.porkImage.mas_right).offset(8);
         make.right.equalTo(self.porkSwitch.mas_left).offset(-8);
     }];
 

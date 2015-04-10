@@ -12,21 +12,33 @@
 @interface HGCreateLocationViewModel : HGBaseViewModel <CategoriesViewModel>
 
 @property(nonatomic, readonly) LocationType locationType;
-@property(nonatomic, strong, readonly) NSDictionary *streetNumbers;
+@property(nonatomic, strong, readonly) NSDictionary *streetDictionary;
 @property(nonatomic, strong, readonly) HGLocation *createdLocation;
+@property(nonatomic, strong) NSString *name;
+@property(nonatomic, strong) NSString *road;
+@property(nonatomic, strong) NSString *roadNumber;
+@property(nonatomic, strong) NSString *postalCode;
+@property(nonatomic, strong) NSString *city;
+@property(nonatomic, strong) NSString *telephone;
+@property(nonatomic, strong) NSString *website;
+@property(nonatomic, strong) NSNumber *pork;
+@property(nonatomic, strong) NSNumber *alcohol;
+@property(nonatomic, strong) NSNumber *nonHalal;
+@property(nonatomic, strong) NSArray *images;
+
 
 - (instancetype)initWithLocationType:(LocationType)type;
 
 - (NSArray *)streetNameForPrefix:(NSString *)prefix;
 
-- (NSArray *)streetNumbersFor:(NSString *)road;
+- (NSArray *)streetNumbersForRoad;
 
-- (Postnummer *)postalCodeFor:(NSString *)road;
+- (Postnummer *)postalCodeForRoad;
 
 - (void)loadAddressesNearPositionOnCompletion:(void (^)(void))completion;
 
-- (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postnummer))completion;
+- (void)cityNameForPostalCode:(void (^)(Postnummer *postNummer))completion;
 
-- (void)saveEntity:(NSString *)name road:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode city:(NSString *)city telephone:(NSString *)telephone website:(NSString *)website pork:(BOOL)pork alcohol:(BOOL)alcohol nonHalal:(BOOL)nonHalal images:(NSArray *)images;
+- (void)saveLocation;
 
 @end

@@ -47,7 +47,7 @@
     CLLocation *lastLocation = [locations lastObject];
     NSDate *eventDate = lastLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0) {
+    if (fabs(howRecent) < 15.0) {
         self.currentLocation = lastLocation;
     }
 }

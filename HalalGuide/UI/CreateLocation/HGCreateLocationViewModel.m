@@ -8,27 +8,28 @@
 #import "HGCreateLocationViewModel.h"
 #import "HGAddressService.h"
 #import "HGLocationService.h"
-#import "HGAppDelegate.h"
 #import "HGPictureService.h"
 #import "HGGeoLocationService.h"
 
 @interface HGCreateLocationViewModel ()
 @property(nonatomic) LocationType locationType;
-@property(nonatomic, strong) NSDictionary *streetNumbers;
+@property(nonatomic, strong) NSDictionary *streetDictionary;
 @property(nonatomic, strong) HGLocation *createdLocation;
+
 @end
 
 @implementation HGCreateLocationViewModel {
 
 }
 
-@synthesize locationType, streetNumbers, categories, shopCategories, language;
+@synthesize locationType, streetDictionary, categories, shopCategories, language;
+@synthesize name, road, roadNumber, postalCode, city, telephone, website, pork, alcohol, nonHalal, images;
 
 - (instancetype)initWithLocationType:(LocationType)type {
     self = [super init];
     if (self) {
         locationType = type;
-        streetNumbers = [NSDictionary new];
+        streetDictionary = [NSDictionary new];
         categories = [[NSMutableArray alloc] init];
         shopCategories = [[NSMutableArray alloc] init];
     }
@@ -37,18 +38,18 @@
 }
 
 - (NSArray *)streetNameForPrefix:(NSString *)prefix {
-    return [[self.streetNumbers allKeys] linq_where:^BOOL(NSString *item) {
+    return [[self.streetDictionary allKeys] linq_where:^BOOL(NSString *item) {
         return [item hasPrefix:prefix];
     }];
 }
 
-- (NSArray *)streetNumbersFor:(NSString *)road {
-    SimpleAddress *address = [self.streetNumbers valueForKey:road];
+- (NSArray *)streetNumbersForRoad {
+    SimpleAddress *address = [self.streetDictionary valueForKey:self.road];
     return address.numbers;
 }
 
-- (Postnummer *)postalCodeFor:(NSString *)road {
-    SimpleAddress *address = [self.streetNumbers valueForKey:road];
+- (Postnummer *)postalCodeForRoad {
+    SimpleAddress *address = [self.streetDictionary valueForKey:self.road];
     return address.postnummer;
 }
 
@@ -68,7 +69,7 @@
                 [address.numbers addObject:key.husnr];
             }
         }
-        self.streetNumbers = streetNumbersTemp;
+        self.streetDictionary = streetNumbersTemp;
 
         if (completion) {
             completion();
@@ -76,28 +77,27 @@
     }];
 }
 
-- (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postNummer))completion {
-    [HGAddressService cityNameFor:postalCode onCompletion:completion];
+- (void)cityNameForPostalCode:(void (^)(Postnummer *postNummer))completion {
+    [HGAddressService cityNameFor:self.postalCode onCompletion:completion];
 }
 
-- (void)saveEntity:(NSString *)name road:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode city:(NSString *)city telephone:(NSString *)telephone website:(NSString *)website pork:(BOOL)pork alcohol:(BOOL)alcohol nonHalal:(BOOL)nonHalal images:(NSArray *)images {
+- (void)saveLocation {
 
     self.error = nil;
     self.saving = true;
 
-    HGLocation *location = [HGLocation locationWithAddressCity:city addressPostalCode:postalCode addressRoad:road addressRoadNumber:roadNumber alcohol:@(alcohol) creationStatus:@(CreationStatusAwaitingApproval) homePage:website language:@(self.language) locationType:@(self.locationType) name:name nonHalal:@(nonHalal) pork:@(pork) submitterId:[PFUser currentUser].objectId telephone:telephone categories:self.typeBaseCategories];
+    HGLocation *location = [HGLocation locationWithAddressCity:self.city addressPostalCode:self.postalCode addressRoad:self.road addressRoadNumber:self.roadNumber alcohol:@(self.alcohol.boolValue) creationStatus:@(CreationStatusAwaitingApproval) homePage:self.website language:@(self.language) locationType:@(self.locationType) name:self.name nonHalal:@(self.nonHalal.boolValue) pork:@(self.pork.boolValue) submitterId:[PFUser currentUser].objectId telephone:self.telephone categories:self.typeBaseCategories];
 
-    [[[[[self doesAddressExist:road roadNumber:roadNumber postalCode:postalCode] flattenMap:^RACStream *(HGAdgangsadresse *value) {
+    [[[[[self doesAddressExist] flattenMap:^RACStream *(HGAdgangsadresse *value) {
         location.point = [self pointForAddress:value];
         return [self saveLocation:location];
     }] then:^RACSignal * {
-        return images ? [self saveImages:images forLocation:location] : [RACSignal empty];
+        return self.images ? [self saveImagesForLocation:location] : [RACSignal empty];
     }] finally:^{
         self.createdLocation = location;
         self.saving = false;
     }] subscribeError:^(NSError *error) {
         self.error = error;
-        self.createdLocation = nil;
         [location deleteEventually];
     }];
 }
@@ -127,9 +127,9 @@
     }
 }
 
-- (RACSignal *)doesAddressExist:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode {
+- (RACSignal *)doesAddressExist {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        [HGAddressService doesAddressExist:road roadNumber:roadNumber postalCode:postalCode onCompletion:^(HGAdgangsadresse *address) {
+        [HGAddressService doesAddressExist:self.road roadNumber:self.roadNumber postalCode:self.postalCode onCompletion:^(HGAdgangsadresse *address) {
             [subscriber sendNext:address];
             [subscriber sendCompleted];
         }];
@@ -151,9 +151,9 @@
     }];
 }
 
-- (RACSignal *)saveImages:(NSArray *)images forLocation:(HGLocation *)location {
+- (RACSignal *)saveImagesForLocation:(HGLocation *)location {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        [[HGPictureService instance] saveMultiplePictures:images forLocation:location completion:^(BOOL completed, NSError *error, NSNumber *progress) {
+        [[HGPictureService instance] saveMultiplePictures:self.images forLocation:location completion:^(BOOL completed, NSError *error, NSNumber *progress) {
             if (progress) {
                 self.progress = progress.floatValue;
                 [subscriber sendNext:progress];

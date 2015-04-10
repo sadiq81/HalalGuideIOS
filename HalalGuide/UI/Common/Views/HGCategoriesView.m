@@ -36,7 +36,7 @@
 - (void)setupViews {
 
     self.categories = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.categories.text = NSLocalizedString(@"HGCategoriesView.label.categories", nil);
+    self.categories.text = self.viewModel.locationType != LocationTypeMosque ? NSLocalizedString(@"HGCategoriesView.label.categories", nil) : NSLocalizedString(@"HGCategoriesView.label.language", nil);
     [self addSubview:self.categories];
 
     self.countLabel = [[UILabel alloc] initWithFrame:CGRectZero];

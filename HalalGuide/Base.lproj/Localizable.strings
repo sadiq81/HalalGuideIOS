@@ -247,3 +247,6 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGCreateLocationViewController.placeholder.city" = "By*";
 "HGCreateLocationViewController.placeholder.telephone" = "Telefon";
 "HGCreateLocationViewController.placeholder.website" = "Hjemmeside";
+"HGCreateLocationViewController.hud.saving" = "Gemmer";
+"HGCreateLocationViewController.hud.error" = "Der er sket en ukendt fejl";
+"HGCreateLocationViewController.hud.location.saved" = "Dit forslag er blevet indsendt til godkendelse";
