@@ -229,7 +229,7 @@
 
 "UIViewController.extension.hud.percentage" = "finished";
 "UIViewController.extension.alert.error.title" = "Unknown error";
-"UIViewController.extension.alert.error.message" = "An unknown error occured, try again later.";
+"UIViewController.extension.alert.error.message" = "An unknown error occured, try again.";
 "UIViewController.extension.alert.error.ok" = "Ok";
 "UIViewController.extension.alert.warning.title" = "Warning";
 "UIViewController.extension.alert.warning.message" = "In order to submit suggestions to HalalGuide, you need to confirm your identify via Facebook";
@@ -252,3 +252,7 @@
 "HGCreateLocationViewController.hud.saving" = "Saving";
 "HGCreateLocationViewController.hud.error" = "An unknown error occured";
 "HGCreateLocationViewController.hud.location.saved" = "Your suggestion has been submitted for approval";
+"HGCreateLocationViewController.alert.title.action" = "Action";
+"HGCreateLocationViewController.alert.message.location.saved" = "Your suggestion has been submitted for approval, would you like to add a review";
+"HGCreateLocationViewController.alert.cancel.done" = "No thank you";
+"HGCreateLocationViewController.alert.add.review" = "Yes please";

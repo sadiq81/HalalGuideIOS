@@ -44,7 +44,7 @@
 
     self.rating = self.review.rating;
     self.reviewText = self.review.review;
-    self.date = [[HGDateFormatter instance] stringFromDate:self.review.createdAt];
+    self.date = [HGDateFormatter shortDateFormat:self.review.createdAt];
 
     [[PFUser query] getObjectInBackgroundWithId:self.review.submitterId block:^(PFObject *object, NSError *error) {
         PFUser *user = (PFUser *) object;

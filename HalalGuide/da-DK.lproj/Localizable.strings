@@ -226,7 +226,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "UIViewController.extension.hud.percentage" = "færdig";
 "UIViewController.extension.alert.error.title" = "Ukendt fejl";
-"UIViewController.extension.alert.error.message" = "";
+"UIViewController.extension.alert.error.message" = "Der skete desværre en fejl, Prøv igen";
 "UIViewController.extension.alert.error.ok" = "Ok";
 "UIViewController.extension.alert.warning.title" = "Advarsel";
 "UIViewController.extension.alert.warning.message" = "For at kunne indsende forslag til HalalGuide, så skal du bekræfte din identitet via facebook";
@@ -250,3 +250,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGCreateLocationViewController.hud.saving" = "Gemmer";
 "HGCreateLocationViewController.hud.error" = "Der er sket en ukendt fejl";
 "HGCreateLocationViewController.hud.location.saved" = "Dit forslag er blevet indsendt til godkendelse";
+"HGCreateLocationViewController.alert.title.action" = "Handling";
+"HGCreateLocationViewController.alert.message.location.saved" = "Dit forslag er blevet indsendt til godkendelse, vil du tilføje en anmeldelse";
+"HGCreateLocationViewController.alert.cancel.done" = "Nej tak";
+"HGCreateLocationViewController.alert.add.review" = "Jo tak";

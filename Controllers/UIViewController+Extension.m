@@ -5,7 +5,9 @@
 
 #import "UIViewController+Extension.h"
 #import "HGCreateReviewViewController.h"
+#import "HGCreateReviewViewModel.h"
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
 
 @implementation UIViewController (Extension)
@@ -35,13 +37,17 @@
     objc_setAssociatedObject(self, @selector(loginHandler), loginHandler, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)createReviewForLocation:(HGLocation *)location viewModel:(HGBaseViewModel *)viewModel {
+- (void)createReviewForLocation:(HGLocation *)location viewModel:(HGBaseViewModel *)viewModel pushToStack:(BOOL)push {
 
     void (^completion)(void) = ^void(void) {
         HGCreateReviewViewModel *reviewViewModel = [[HGCreateReviewViewModel alloc] initWithReviewedLocation:location];
         HGCreateReviewViewController *controller = [HGCreateReviewViewController controllerWithViewModel:reviewViewModel];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-        [self presentViewController:navigationController animated:true completion:nil];
+        if (push) {
+            [self.navigationController pushViewController:controller animated:true];
+        } else {
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:navigationController animated:true completion:nil];
+        }
     };
 
     if ([viewModel isAuthenticated]) {
@@ -102,6 +108,7 @@
 
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
     [self dismissViewControllerAnimated:true completion:^{
+        [[PFFacebookUtils facebookLoginManager] logOut];
         UIAlertController *errorController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"UIViewController.extension.alert.error.title", nil) message:NSLocalizedString(@"UIViewController.extension.alert.error.message", nil) preferredStyle:UIAlertControllerStyleAlert];
         [errorController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"UIViewController.extension.alert.error.ok", nil) style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:errorController animated:true completion:nil];

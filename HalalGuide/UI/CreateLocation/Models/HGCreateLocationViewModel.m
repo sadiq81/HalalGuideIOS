@@ -5,6 +5,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <ReactiveCocoa/RACSubscriber.h>
 #import "HGCreateLocationViewModel.h"
 #import "HGAddressService.h"
 #import "HGLocationService.h"

@@ -23,6 +23,7 @@
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import <Masonry/View+MASAdditions.h>
 #import <MZFormSheetController/MZFormSheetController.h>
+#import "UIAlertController+Blocks.m"
 
 @interface HGCreateLocationViewController () <UINavigationControllerDelegate, HTAutocompleteDataSource, UITextFieldDelegate, HGImagePickerControllerDelegate>
 
@@ -41,8 +42,6 @@
 @property(strong, nonatomic) UIBarButtonItem *save;
 @property(strong, nonatomic) IQKeyboardReturnKeyHandler *returnKeyHandler;
 @property(nonatomic) NSUInteger index;
-@property(strong, nonatomic) NSTimer *timer;
-@property(strong, nonatomic) JSBadgeView *badgeView;
 
 @property(strong, nonatomic) HGCreateLocationViewModel *viewModel;
 
@@ -178,7 +177,7 @@
                 [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
             }
         } else if (progress.intValue == 100) {
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"HGCreateLocationViewController.hud.location.saved", nil)];
+            //[SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"HGCreateLocationViewController.hud.location.saved", nil)];
         } else {
             [SVProgressHUD dismiss];
         }
@@ -200,7 +199,13 @@
 
     [[RACObserve(self.viewModel, createdLocation) skip:1] subscribeNext:^(HGLocation *location) {
         if (!self.viewModel.error && location.objectId) {
-
+            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.title.action", nil) message:NSLocalizedString(@"HGCreateLocationViewController.alert.message.location.saved", nil) cancelButtonTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.cancel.done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"HGCreateLocationViewController.alert.add.review", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+                if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
+                    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
+                    [self createReviewForLocation:self.viewModel.createdLocation viewModel:self.viewModel pushToStack:true];
+                }
+            }];
         }
     }];
 
@@ -296,29 +301,6 @@
     }];
 }
 
-/*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [super prepareForSegue:segue sender:sender];
-    if ([segue.identifier isEqualToString:@"chooseCategories"]) {
-        HGCategoriesViewController *destination = (HGCategoriesViewController *) segue.destinationViewController;
-        destination.locationType = self.viewModel.locationType;
-        destination.viewModel = self.viewModel;
-
-        MZFormSheetSegue *formSheetSegue = (MZFormSheetSegue *) segue;
-        MZFormSheetController *formSheet = formSheetSegue.formSheetController;
-        formSheet.presentedFormSheetSize = CGSizeMake(self.view.size.width * 0.8, self.view.size.height * 0.8);
-        formSheet.transitionStyle = MZFormSheetTransitionStyleBounce;
-        formSheet.cornerRadius = 8.0;
-        formSheet.shouldDismissOnBackgroundViewTap = YES;
-        formSheet.didDismissCompletionHandler = ^(UIViewController *presentedFSViewController) {
-            [self setUILabels];
-        };
-    } else if ([segue.identifier isEqualToString:@"OpeningHours"]) {
-        HGOpeningsHoursViewController *viewController = (HGOpeningsHoursViewController *) segue.destinationViewController;
-        viewController.viewModel = self.viewModel;
-    }
-}*/
-
-
 - (void)updateViewConstraints {
 
     [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -406,7 +388,6 @@
 
 - (void)dealloc {
     self.returnKeyHandler = nil;
-    [self.timer invalidate];
 }
 
 @end

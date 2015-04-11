@@ -10,16 +10,16 @@
 
 }
 
-+ (HGDateFormatter *)instance {
-    static HGDateFormatter *_instance = nil;
-
-    @synchronized (self) {
-        if (_instance == nil) {
-            _instance = [[self alloc] init];
-            [_instance setDateFormat:@"dd-MM-yyyy"];
-        }
-    }
-
-    return _instance;
++ (NSString *)shortDateFormat:(NSDate *)date {
+    NSDateFormatter *shortDateFormat = [[NSDateFormatter alloc] init];
+    [shortDateFormat setDateFormat:@"dd-MM-yyyy"];
+    return [shortDateFormat stringFromDate:date];
 }
+
++ (NSString *)shortTimeFormat:(NSDate *)date {
+    NSDateFormatter *shortTimeFormat = [[NSDateFormatter alloc] init];
+    [shortTimeFormat setDateFormat:@"HH:mm"];
+    return [shortTimeFormat stringFromDate:date];
+}
+
 @end

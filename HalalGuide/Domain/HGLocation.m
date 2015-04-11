@@ -40,7 +40,6 @@
     return [[self alloc] initWithAddressCity:addressCity addressPostalCode:addressPostalCode addressRoad:addressRoad addressRoadNumber:addressRoadNumber alcohol:alcohol creationStatus:creationStatus homePage:homePage language:language locationType:locationType name:name nonHalal:nonHalal pork:pork submitterId:submitterId telephone:telephone categories:categories];
 }
 
-
 + (void)load {
     [self registerSubclass];
 }

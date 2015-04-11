@@ -6,8 +6,11 @@
 #import <Foundation/Foundation.h>
 
 
-@interface HGDateFormatter : NSDateFormatter
+@interface HGDateFormatter : NSObject
 
-+ (HGDateFormatter *)instance;
++ (NSString *)shortDateFormat:(NSDate *)date;
+
++ (NSString *)shortTimeFormat:(NSDate *)date;
+
 
 @end

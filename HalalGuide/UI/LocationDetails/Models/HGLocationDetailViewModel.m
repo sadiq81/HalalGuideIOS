@@ -12,9 +12,7 @@
 #import "HGAddressService.h"
 #import "HGNumberFormatter.h"
 #import "PFUser+Extension.h"
-
-
-@import MessageUI;
+#import "HGReviewDetailViewModel.h"
 
 @interface HGLocationDetailViewModel () {
 

@@ -150,7 +150,7 @@
 
     [self.header.pictureView.addReview handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
         @strongify(self)
-        [self createReviewForLocation:self.viewModel.location viewModel:self.viewModel];
+        [self createReviewForLocation:self.viewModel.location viewModel:self.viewModel pushToStack:false];
     }];
 
     [[self.header.pictureView.addPicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

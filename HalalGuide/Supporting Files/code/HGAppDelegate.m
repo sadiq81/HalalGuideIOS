@@ -29,6 +29,7 @@
 #import "PFFacebookUtils.h"
 #import "FBSDKAppEvents.h"
 #import "FBSDKApplicationDelegate.h"
+#import "HGFrontPageViewModel.h"
 
 @interface HGAppDelegate ()
 
