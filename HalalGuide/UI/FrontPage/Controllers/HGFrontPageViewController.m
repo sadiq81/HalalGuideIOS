@@ -68,6 +68,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.topView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.topView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.topView.layer.borderWidth = 0.5;
     [self.view addSubview:self.topView];
 
     self.shopView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.shop" andLabelText:@"HGFrontPageViewController.label.shop" andTapHandler:[self tapHandlerForType:LocationTypeShop]];

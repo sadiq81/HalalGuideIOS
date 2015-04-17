@@ -7,7 +7,6 @@
 #import "HGCoordinatePickerViewController.h"
 #import "HGCreateLocationViewModel.h"
 #import "HGOnboarding.h"
-#import "UIView+Extensions.h"
 #import <AddressBook/ABPerson.h>
 #import <AddressBookUI/AddressBookUI.h>
 

@@ -16,5 +16,4 @@
 
 - (void)configureForSmiley:(HGSmiley *)hgSmiley;
 
--(void)openSmileyReport;
 @end

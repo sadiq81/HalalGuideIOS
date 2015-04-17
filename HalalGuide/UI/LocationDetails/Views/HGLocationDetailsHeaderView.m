@@ -34,12 +34,18 @@
 - (void)setupViews {
 
     self.headerTopView = [HGLocationDetailsInfoView viewWithViewModel:self.viewModel];
+    self.headerTopView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.headerTopView.layer.borderWidth = 0.5;
     [self addSubview:self.headerTopView];
 
     self.submitterView = [HGLocationDetailsSubmitterView viewWithViewModel:self.viewModel];
+    self.submitterView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.submitterView.layer.borderWidth = 0.5;
     [self addSubview:self.submitterView];
 
     self.pictureView = [HGLocationDetailsPictureView viewWithViewModel:self.viewModel];
+    self.pictureView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.pictureView.layer.borderWidth = 0.5;
     [self addSubview:self.pictureView];
 }
 

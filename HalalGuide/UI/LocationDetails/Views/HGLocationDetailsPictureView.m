@@ -82,6 +82,8 @@
     self.layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 
     self.smileys = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.layout];
+    self.smileys.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.smileys.layer.borderWidth = 0.5;
     [self addSubview:self.smileys];
 
     self.noSmileysLabel = [[UILabel alloc] initWithFrame:CGRectZero];

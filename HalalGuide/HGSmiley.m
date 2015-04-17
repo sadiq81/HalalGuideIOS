@@ -13,12 +13,12 @@
 
 @synthesize report, smiley, date;
 
-- (instancetype)initWithReport:(NSString *)report smiley:(NSString *)smiley date:(NSString *)date {
+- (instancetype)initWithReport:(NSString *)aReport smiley:(NSString *)aSmiley date:(NSString *)aDate {
     self = [super init];
     if (self) {
-        self.report = report;
-        self.smiley = smiley;
-        self.date = date;
+        self.report = aReport;
+        self.smiley = aSmiley;
+        self.date = aDate;
     }
 
     return self;

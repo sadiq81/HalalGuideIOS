@@ -11,7 +11,7 @@
 @property(nonatomic, strong) NSString *smiley;
 @property(nonatomic, strong) NSString *date;
 
-- (instancetype)initWithReport:(NSString *)report smiley:(NSString *)smiley date:(NSString *)date;
+- (instancetype)initWithReport:(NSString *)aReport smiley:(NSString *)aSmiley date:(NSString *)aDate;
 
 + (instancetype)smileyWithReport:(NSString *)report smiley:(NSString *)smiley date:(NSString *)date;
 
