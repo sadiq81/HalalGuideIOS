@@ -36,6 +36,8 @@
 @property(nonatomic, readonly, strong) NSURL *submitterImage;
 @property(nonatomic, readonly, strong) NSString *submitterName;
 
+@property (nonatomic, strong, readonly) NSArray *smileys;
+
 - (instancetype)initWithLocation:(HGLocation *)aLocation;
 
 + (instancetype)modelWithLocation:(HGLocation *)location;

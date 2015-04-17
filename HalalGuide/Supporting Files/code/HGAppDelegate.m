@@ -30,6 +30,7 @@
 #import "FBSDKAppEvents.h"
 #import "FBSDKApplicationDelegate.h"
 #import "HGFrontPageViewModel.h"
+#import "HGSmileyScraper.h"
 
 @interface HGAppDelegate ()
 

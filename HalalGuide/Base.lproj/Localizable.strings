@@ -156,6 +156,10 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGLocationDetailsPictureView.button.add.review" = "Tilføj anmeldelse";
 "HGLocationDetailsPictureView.button.add.picture" = "Tilføj billede";
 "HGLocationDetailsPictureView.label.no.pictures" = "Der findes ingen billeder for dette sted endnu. Skal du være den første?";
+"HGLocationDetailsPictureView.alert.smiley.warning" = "Advarsel";
+"HGLocationDetailsPictureView.alert.smiley.message" = "Smiley rapporten vil blive åbnet i Safari";
+"HGLocationDetailsPictureView.label.no.smiley" = "Der findes ingen smiley rapporter for dette sted endnu";
+"HGLocationDetailViewController.alert.ok"="Ok";
 
 "HGLocationDetailsInfoView.label.km" = "km";
 
@@ -179,7 +183,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGImagePickerView.button.cancel" = "Fortryd";
 
 "HGImagePickerController.button.confirm" = "Godkend";
-"HGImagePickerController.button.cancel" = "Fotryd";
+"HGImagePickerController.button.cancel" = "Fortryd";
 "HGImagePickerController.label.no.pictures" = "Du har ikke tilføjet nogle billeder endnu, tryk på kameraet for at vælge billeder";
 "HGImagePickerController.label.max.pictures" = "Du kan maximalt vælge %i billede(r)";
 
@@ -254,3 +258,4 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGCreateLocationViewController.alert.message.location.saved" = "Dit forslag er blevet indsendt til godkendelse, vil du tilføje en anmeldelse";
 "HGCreateLocationViewController.alert.cancel.done" = "Nej tak";
 "HGCreateLocationViewController.alert.add.review" = "Jo tak";
+

@@ -157,6 +157,10 @@
 "HGLocationDetailsPictureView.button.report" = "Report error";
 "HGLocationDetailsPictureView.button.add.review" = "Add review";
 "HGLocationDetailsPictureView.button.add.picture" = "Add picture";
+"HGLocationDetailsPictureView.alert.smiley.warning" = "Warning";
+"HGLocationDetailsPictureView.alert.smiley.message" = "The smiley report will be opened in Safari";
+"HGLocationDetailsPictureView.label.no.smiley" = "There are no smiley reports for this location";
+"HGLocationDetailViewController.alert.ok"="Ok";
 
 "HGLocationDetailsPictureView.label.no.pictures" = "There are no pictures for this location yet, you could be the first?";
 

@@ -7,13 +7,21 @@
 #import "HGLocationDetailsPictureView.h"
 #import "ReactiveCocoa.h"
 #import "Masonry.h"
+#import "HGSmileyCell.h"
+#import "HGSmiley.h"
+#import "UIView+HGBorders.h"
 
-@interface HGLocationDetailsPictureView ()<iCarouselDataSource, iCarouselDelegate>
+@interface HGLocationDetailsPictureView () <iCarouselDataSource, iCarouselDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property(strong) UIButton *report;
-@property(strong) UIButton *addReview;
-@property(strong) UIButton *addPicture;
-@property(strong) iCarousel *pictures;
+@property(strong, nonatomic) UIButton *report;
+@property(strong, nonatomic) UIButton *addReview;
+@property(strong, nonatomic) UIButton *addPicture;
+@property(strong, nonatomic) iCarousel *pictures;
+
+@property(strong, nonatomic) UICollectionView *smileys;
+@property(strong, nonatomic) UICollectionViewFlowLayout *layout;
+@property(strong, nonatomic) UILabel *noSmileysLabel;
+
 @property(strong, nonatomic) UILabel *noPicturesLabel;
 
 @property(strong) HGLocationDetailViewModel *viewModel;
@@ -32,6 +40,7 @@
     if (self) {
         self.viewModel = viewModel;
         [self setupViews];
+        [self setupCollectionView];
         [self setupViewModel];
     }
 
@@ -64,25 +73,101 @@
 
     self.noPicturesLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.noPicturesLabel.text = NSLocalizedString(@"HGLocationDetailsPictureView.label.no.pictures", nil);
-    self.noPicturesLabel.numberOfLines =0;
+    self.noPicturesLabel.numberOfLines = 0;
     self.noPicturesLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.noPicturesLabel];
+
+    self.layout = [[UICollectionViewFlowLayout alloc] init];
+    self.layout.minimumInteritemSpacing = 0.0f;
+    self.layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+
+    self.smileys = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.layout];
+    [self addSubview:self.smileys];
+
+    self.noSmileysLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.noSmileysLabel.text = NSLocalizedString(@"HGLocationDetailsPictureView.label.no.smiley", nil);
+    self.noSmileysLabel.numberOfLines = 0;
+    self.noSmileysLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.noSmileysLabel];
 }
 
 - (void)setupViewModel {
 
     @weakify(self)
     RACSignal *pictures = RACObserve(self.viewModel, locationPictures);
-
+    RAC(self.noPicturesLabel, hidden) = [pictures map:^(NSArray *pictures) {
+        return @([pictures count]);
+    }];
     [pictures subscribeNext:^(NSArray *locations) {
         @strongify(self)
         [self.pictures reloadData];
     }];
 
-    RAC(self.noPicturesLabel, hidden) = [pictures map:^(NSArray *pictures) {
-        return @([pictures count]);
+    RACSignal *smileysSignal = RACObserve(self.viewModel, smileys);
+    RAC(self.noSmileysLabel, hidden) = [smileysSignal map:^(NSArray *smileys) {
+        return @([smileys count]);
+    }];
+    [smileysSignal subscribeNext:^(NSArray *smileys) {
+        @strongify(self)
+        [self.smileys reloadData];
     }];
 
+}
+
+
+#pragma mark - CollectionView - Smiley
+
+- (void)setupCollectionView {
+
+    [self.smileys registerClass:[HGSmileyCell class] forCellWithReuseIdentifier:@"HGSmileyCell"];
+    self.smileys.delegate = self;
+    self.smileys.dataSource = self;
+
+    self.smileys.backgroundColor = [UIColor whiteColor];
+    self.smileys.bounces = YES;
+    [self.smileys setShowsHorizontalScrollIndicator:YES];
+    [self.smileys setShowsVerticalScrollIndicator:NO];
+
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self.viewModel.smileys count];
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    HGSmileyCell *cell = [self.smileys dequeueReusableCellWithReuseIdentifier:@"HGSmileyCell" forIndexPath:indexPath];
+    [cell configureForSmiley:[self.viewModel.smileys objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(76, 76);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self.smileys deselectItemAtIndexPath:indexPath animated:true];
+    HGSmileyCell *cell = (HGSmileyCell *) [self.smileys cellForItemAtIndexPath:indexPath];
+
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"HGLocationDetailsPictureView.alert.smiley.warning", nil) message:NSLocalizedString(@"HGLocationDetailsPictureView.alert.smiley.message", nil) preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:NSLocalizedString(@"HGLocationDetailViewController.alert.ok", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", cell.smiley.report]];
+        [[UIApplication sharedApplication] openURL:url];
+    }];
+    [alertController addAction:ok];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"HGLocationDetailViewController.alert.regret", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    }];
+    [alertController addAction:cancel];
+    id rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        rootViewController = [((UINavigationController *) rootViewController).viewControllers objectAtIndex:0];
+    }
+    [rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - CollectionView - Pictures
@@ -135,7 +220,7 @@
         make.left.equalTo(self);
         make.right.equalTo(self.mas_centerX);
         make.height.equalTo(@(30));
-        make.bottom.equalTo(self);
+        make.bottom.equalTo(self.smileys.mas_top);
     }];
 
     [self.addPicture mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -143,8 +228,23 @@
         make.left.equalTo(self.mas_centerX);
         make.right.equalTo(self);
         make.height.equalTo(@(30));
+        make.bottom.equalTo(self.smileys.mas_top);
+    }];
+
+    [self.smileys mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.addPicture.mas_bottom);
+        make.left.equalTo(self);
+        make.right.equalTo(self);
         make.bottom.equalTo(self);
     }];
+
+    [self.noSmileysLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.smileys);
+        make.centerY.equalTo(self.smileys);
+        make.left.equalTo(self).offset(8);
+        make.right.equalTo(self).offset(-8);
+    }];
+
 
     [super updateConstraints];
 }

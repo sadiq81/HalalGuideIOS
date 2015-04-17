@@ -67,9 +67,9 @@
 		C596B2BD0845AD9D857B3996 /* HGErrorReporting.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BBC0139A3CEE553489DA /* HGErrorReporting.m */; };
 		C596B2F55EBBDED43797DB3D /* HGLocationDetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE68C9B7BA266DB045B5 /* HGLocationDetailsHeaderView.m */; };
 		C596B334F2DDC08F410EF70F /* HGReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B49C10458AF4FFB9C6E5 /* HGReviewCell.m */; };
-		C596B33A1A99E0D42D05D503 /* UIView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BE5F6DD11AEFA20FA2B6 /* UIView+Extensions.m */; };
 		C596B349F4DEBD461660DAAC /* HGLocationAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BAF9643D9C63C711312A /* HGLocationAnnotationView.m */; };
 		C596B36B7F44215D90DB74C4 /* POPAnimatableProperty+Masonry.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B63A5A8D68252431C209 /* POPAnimatableProperty+Masonry.m */; };
+		C596B3E527E6EC8DA70915D9 /* UIView+HGBorders.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B74B5EC0E8EAB1C14A19 /* UIView+HGBorders.m */; };
 		C596B4133E7ABD997532686F /* CAGradientLayer+SJSGradients.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BD134AE9DB81291BCE73 /* CAGradientLayer+SJSGradients.m */; };
 		C596B425E6EF0E5E356F830D /* HGReviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BDFE3A3D8F8CE6E706BE /* HGReviewService.m */; };
 		C596B476112C101DC544D6C4 /* HGImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B7FAC825644E24FBC2AF /* HGImagePickerController.m */; };
@@ -91,8 +91,10 @@
 		C596B841C855C3E4B0349262 /* HGLocationDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B5A7FF014D805B5594AA /* HGLocationDetailViewModel.m */; };
 		C596B84535BA2C02AB15A896 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B619AECBB263C4ED02FE /* UIImage+Alpha.m */; };
 		C596B86E7083F827F608D51B /* HGENumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B448202B5ACA4E2E3C56 /* HGENumberViewController.m */; };
+		C596B89E90697DE6DB39E171 /* HGSmileyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B187D2221CA78514EC44 /* HGSmileyCell.m */; };
 		C596B8DB34E2B6381812F8AE /* HGPictureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B17A107554CDFDA1F5E1 /* HGPictureCollectionViewCell.m */; };
 		C596B9230EA78FF87B90E5AF /* HGLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1DD04247DEB9EC797A7 /* HGLocationService.m */; };
+		C596B9CC3BC6BC47C70C21A6 /* HGSmiley.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B275205585E9FF0FECFB /* HGSmiley.m */; };
 		C596B9D6E86AECF2D2AE9317 /* HGDateLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B92001947C1176C5FEB3 /* HGDateLabel.m */; };
 		C596B9F844193490D9A6B3E7 /* UILabel+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BF9C4BB1DDEF86A7E229 /* UILabel+Extensions.m */; };
 		C596BA0D65267A5757B31A37 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8DD34F850AE20E4F562 /* UIImage+ImageEffects.m */; };
@@ -109,6 +111,7 @@
 		C596BC90F2C215AF04009886 /* HGReview.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B76374759947E3D1466D /* HGReview.m */; };
 		C596BCA61AE9B3ACF9CC00E0 /* HGImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC195B9B37F1198B4D79 /* HGImagePickerView.m */; };
 		C596BD2F3DEA743000DA7441 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3B9B67A50AA098B0D07 /* NSString+Extensions.m */; };
+		C596BD5BEDB4879CA62737F8 /* HGSmileyScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8A74423F9861DA20FFF /* HGSmileyScraper.m */; };
 		C596BD96EFEBDDC2BA7E3281 /* HGSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3738DE751A198964235 /* HGSettings.m */; };
 		C596BDAC4B5938C40198E797 /* UIImage+Transformation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1D6467AD502887DAFEF /* UIImage+Transformation.m */; };
 		C596BDE32DA14B42EA352467 /* HGLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BF1CC236CE195558FC23 /* HGLocation.m */; };
@@ -200,7 +203,6 @@
 		C596B095770506EA4316DE8D /* HGFrontPageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFrontPageViewModel.m; sourceTree = "<group>"; };
 		C596B0A931E86C1B73D6E908 /* HGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSettingsViewController.h; sourceTree = "<group>"; };
 		C596B0AFEC3AEE49BF3A7532 /* HGLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationViewController.h; sourceTree = "<group>"; };
-		C596B0B2234F73C113DDD366 /* UIView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extensions.h"; sourceTree = "<group>"; };
 		C596B0B2D708ED5DDD9CF7F2 /* HGCoordinatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCoordinatePickerViewController.m; sourceTree = "<group>"; };
 		C596B0C9E16AC723AAF99F07 /* HGLocationDetailsSubmitterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationDetailsSubmitterView.m; sourceTree = "<group>"; };
 		C596B0CBBBCB9C23B43783DB /* HGLocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationViewModel.h; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		C596B14687F17D8DA6504B1F /* HGLocationAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationAnnotation.m; sourceTree = "<group>"; };
 		C596B1751D01A6846D554782 /* UIView+FrameAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameAdditions.m"; sourceTree = "<group>"; };
 		C596B17A107554CDFDA1F5E1 /* HGPictureCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGPictureCollectionViewCell.m; sourceTree = "<group>"; };
+		C596B187D2221CA78514EC44 /* HGSmileyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGSmileyCell.m; sourceTree = "<group>"; };
 		C596B1AF7855BBEEA7BE9732 /* HGOpeningsHoursViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGOpeningsHoursViewController.h; sourceTree = "<group>"; };
 		C596B1AFC308D5211D4CEA65 /* MKMapView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Extension.m"; sourceTree = "<group>"; };
 		C596B1B38F687254F037AF7C /* UIImage+ScreenShot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ScreenShot.h"; sourceTree = "<group>"; };
@@ -228,10 +231,12 @@
 		C596B23F498DFA97229038F5 /* HGLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationViewController.m; sourceTree = "<group>"; };
 		C596B24BA9AE85B76AA003C0 /* HGNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGNumberFormatter.m; sourceTree = "<group>"; };
 		C596B273D820776DA57C5F57 /* HGLocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationAnnotation.h; sourceTree = "<group>"; };
+		C596B275205585E9FF0FECFB /* HGSmiley.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGSmiley.m; sourceTree = "<group>"; };
 		C596B28573B51DC85F7230CE /* HalalGuide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = file.entitlements; name = HalalGuide.entitlements; path = "Supporting Files/plist/HalalGuide.entitlements"; sourceTree = "<group>"; };
 		C596B2ACE6102450B39A65E6 /* HGCreateLocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCreateLocationViewModel.h; sourceTree = "<group>"; };
 		C596B2BA6F6131F744978A73 /* HGLocationDetailsInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationDetailsInfoView.h; sourceTree = "<group>"; };
 		C596B33B6242998154B15CBF /* HalalGuide-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HalalGuide-Prefix.pch"; path = "Supporting Files/code/HalalGuide-Prefix.pch"; sourceTree = "<group>"; };
+		C596B34C96397EE2273E9CC5 /* xmlreader.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = xmlreader.js; sourceTree = "<group>"; };
 		C596B3738DE751A198964235 /* HGSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGSettings.m; sourceTree = "<group>"; };
 		C596B3765487E371C7DCBB68 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; name = Info.plist; path = "Supporting Files/plist/Info.plist"; sourceTree = "<group>"; };
 		C596B37C974A36273C30938C /* UIImage+Combine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Combine.h"; sourceTree = "<group>"; };
@@ -248,11 +253,13 @@
 		C596B45B399CCC48EFCFCD43 /* MKMapView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Extension.h"; sourceTree = "<group>"; };
 		C596B45EAB3AEC712E027226 /* HGCreateLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCreateLocationViewController.m; sourceTree = "<group>"; };
 		C596B468E13FD94FC11B4E0C /* HGBaseViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGBaseViewModel.h; sourceTree = "<group>"; };
+		C596B482B167B5B78398AC42 /* HGSmileyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSmileyCell.h; sourceTree = "<group>"; };
 		C596B4996A1C52303B7429B2 /* HGKeyChainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGKeyChainService.m; sourceTree = "<group>"; };
 		C596B49C10458AF4FFB9C6E5 /* HGReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGReviewCell.m; sourceTree = "<group>"; };
 		C596B4A198810C56C2A98F59 /* NSArray+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extensions.h"; sourceTree = "<group>"; };
 		C596B4BFCA1F9A4B4A62FCD7 /* HGFrontPageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGFrontPageViewModel.h; sourceTree = "<group>"; };
 		C596B4EACC3587F19182BB9C /* HGCreateReviewViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCreateReviewViewModel.h; sourceTree = "<group>"; };
+		C596B510FD8FEF0BD5B18F29 /* HGSmileyScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSmileyScraper.h; sourceTree = "<group>"; };
 		C596B52A18C9EA37FA3BDF13 /* HGImagePickerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGImagePickerButton.m; sourceTree = "<group>"; };
 		C596B54E9B5201950377B45B /* NSLocale+iOS8.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+iOS8.m"; sourceTree = "<group>"; };
 		C596B55081DEB101226EB5D5 /* HGBaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HGBaseEntity.h; path = Domain/HGBaseEntity.h; sourceTree = "<group>"; };
@@ -267,8 +274,10 @@
 		C596B6AEE98BF10F36A5EE4F /* HGDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDateFormatter.h; sourceTree = "<group>"; };
 		C596B6C0CFD3342E24E5456B /* HGFrontPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGFrontPageViewController.h; sourceTree = "<group>"; };
 		C596B6C54266ADCF90699C2C /* HGReviewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGReviewDetailViewController.h; sourceTree = "<group>"; };
+		C596B6CE739E70F382513989 /* UIView+HGBorders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HGBorders.h"; sourceTree = "<group>"; };
 		C596B6E88BC59CF7CAF632D0 /* HGPictureService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGPictureService.m; sourceTree = "<group>"; };
 		C596B719810DC8F17EF75BD2 /* HGCreateLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCreateLocationViewController.h; sourceTree = "<group>"; };
+		C596B74B5EC0E8EAB1C14A19 /* UIView+HGBorders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HGBorders.m"; sourceTree = "<group>"; };
 		C596B759FB6E7651FAF91D0B /* HGFilterSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGFilterSwitchView.h; sourceTree = "<group>"; };
 		C596B7619E576919FDF26FB0 /* PFUser+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFUser+Extension.h"; sourceTree = "<group>"; };
 		C596B7628F37A7B9650DC6B7 /* HGMosqueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMosqueCell.h; sourceTree = "<group>"; };
@@ -289,6 +298,7 @@
 		C596B84D6CF331927CB6F91A /* HGLocationDetailsSubmitterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationDetailsSubmitterView.h; sourceTree = "<group>"; };
 		C596B89248EE903E929F79B1 /* HGDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGDateFormatter.m; sourceTree = "<group>"; };
 		C596B89567F277E9BB803103 /* HGLocationDetailsPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationDetailsPictureView.m; sourceTree = "<group>"; };
+		C596B8A74423F9861DA20FFF /* HGSmileyScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGSmileyScraper.m; sourceTree = "<group>"; };
 		C596B8A90FFE51DC4D903EEE /* HGLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HGLabels.h; path = HalalGuide/UI/Shared/Labels/HGLabels.h; sourceTree = SOURCE_ROOT; };
 		C596B8B206E72424A29EC190 /* HGAdgangsadresse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HGAdgangsadresse.m; path = Domain/HGAdgangsadresse.m; sourceTree = "<group>"; };
 		C596B8B64DBAA6F42C225067 /* NSArray+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extensions.m"; sourceTree = "<group>"; };
@@ -296,6 +306,7 @@
 		C596B8DD34F850AE20E4F562 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		C596B91B5FF119E8A161E558 /* HGDiningCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDiningCell.h; sourceTree = "<group>"; };
 		C596B92001947C1176C5FEB3 /* HGDateLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGDateLabel.m; sourceTree = "<group>"; };
+		C596B93B04F46BEA58B37FB8 /* sax.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sax.js; sourceTree = "<group>"; };
 		C596B95502F0A2B21EAE6D4A /* HGReviewDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGReviewDetailViewModel.m; sourceTree = "<group>"; };
 		C596B99CB389710885488A19 /* NSMutableString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Extensions.h"; sourceTree = "<group>"; };
 		C596B9ABFC2B3E6D74D16247 /* HGImagePickerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGImagePickerButton.h; sourceTree = "<group>"; };
@@ -303,6 +314,7 @@
 		C596B9FA8C4C7AB9D33D88F1 /* MSSPopMasonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSSPopMasonry.h; path = ../../../../Github/MSSPopMasonry/Classes/MSSPopMasonry.h; sourceTree = "<group>"; };
 		C596BA09ECBA2516C11358B3 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		C596BA0BC9FF2DA48BCABE6E /* HGCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCategoriesViewController.m; sourceTree = "<group>"; };
+		C596BA133044651C9811633E /* HGSmiley.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSmiley.h; sourceTree = "<group>"; };
 		C596BA3840188B7930916CCD /* HGCreateReviewViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCreateReviewViewModel.m; sourceTree = "<group>"; };
 		C596BA5C7595B8418317B5AC /* HGPictureService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGPictureService.h; sourceTree = "<group>"; };
 		C596BA5ED91DEC7A1B0347BB /* HGLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HGLabels.m; path = HalalGuide/UI/Shared/Labels/HGLabels.m; sourceTree = SOURCE_ROOT; };
@@ -348,7 +360,6 @@
 		C596BDFE3A3D8F8CE6E706BE /* HGReviewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGReviewService.m; sourceTree = "<group>"; };
 		C596BE034F8F983A93A75D48 /* HGLocationDetailsInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationDetailsInfoView.m; sourceTree = "<group>"; };
 		C596BE526991A39426245E61 /* UITableView+Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Header.h"; sourceTree = "<group>"; };
-		C596BE5F6DD11AEFA20FA2B6 /* UIView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extensions.m"; sourceTree = "<group>"; };
 		C596BE6210FC1BF0A609A040 /* HGImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGImagePickerController.h; sourceTree = "<group>"; };
 		C596BE68C9B7BA266DB045B5 /* HGLocationDetailsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationDetailsHeaderView.m; sourceTree = "<group>"; };
 		C596BE71AE285B679A9C7D10 /* HGButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGButtonView.h; sourceTree = "<group>"; };
@@ -461,6 +472,8 @@
 				C596B5996D6B67D100CC24DD /* HGLocationPicture.m */,
 				C596BC8A814B688825276644 /* HGReview.h */,
 				C596B76374759947E3D1466D /* HGReview.m */,
+				C596B275205585E9FF0FECFB /* HGSmiley.m */,
+				C596BA133044651C9811633E /* HGSmiley.h */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -652,6 +665,8 @@
 				C596B3F36D3764DC53AF2C4C /* HGReviewCell.h */,
 				C596BE68C9B7BA266DB045B5 /* HGLocationDetailsHeaderView.m */,
 				C596BA8004BECAA2E713F10C /* HGLocationDetailsHeaderView.h */,
+				C596B187D2221CA78514EC44 /* HGSmileyCell.m */,
+				C596B482B167B5B78398AC42 /* HGSmileyCell.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -659,10 +674,10 @@
 		C596B36E230B87C39254F512 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				C596B0B2234F73C113DDD366 /* UIView+Extensions.h */,
-				C596BE5F6DD11AEFA20FA2B6 /* UIView+Extensions.m */,
 				C596BC3AC75A1F1DBDFEBF31 /* UIView+FrameAdditions.h */,
 				C596B1751D01A6846D554782 /* UIView+FrameAdditions.m */,
+				C596B74B5EC0E8EAB1C14A19 /* UIView+HGBorders.m */,
+				C596B6CE739E70F382513989 /* UIView+HGBorders.h */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -728,6 +743,8 @@
 			isa = PBXGroup;
 			children = (
 				C596B0F6491409F9FB257D0D /* main.js */,
+				C596B93B04F46BEA58B37FB8 /* sax.js */,
+				C596B34C96397EE2273E9CC5 /* xmlreader.js */,
 			);
 			path = cloud;
 			sourceTree = "<group>";
@@ -890,6 +907,8 @@
 				C596B6AEE98BF10F36A5EE4F /* HGDateFormatter.h */,
 				C596BBFB5C5F15D132E4FB8E /* HGOnboarding.m */,
 				C596BD68040F320233372101 /* HGOnboarding.h */,
+				C596B8A74423F9861DA20FFF /* HGSmileyScraper.m */,
+				C596B510FD8FEF0BD5B18F29 /* HGSmileyScraper.h */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1344,7 +1363,6 @@
 				C596BA3ED5A6B10A6DC63692 /* UIImage+RoundedCorner.m in Sources */,
 				C596BFA8BA47A59868814CF7 /* UIImage+ScreenShot.m in Sources */,
 				C596BDAC4B5938C40198E797 /* UIImage+Transformation.m in Sources */,
-				C596B33A1A99E0D42D05D503 /* UIView+Extensions.m in Sources */,
 				C596B21DBED9853B6609D924 /* UIView+FrameAdditions.m in Sources */,
 				C596BF53FA7367BE40FD9E78 /* HGAPHelper.m in Sources */,
 				C596BFE8B975D7943F96E335 /* HGButtonView.m in Sources */,
@@ -1393,6 +1411,10 @@
 				C596B9D6E86AECF2D2AE9317 /* HGDateLabel.m in Sources */,
 				C596B5F6EC318FC1FE7E3438 /* HGOpeningsHoursViewController.m in Sources */,
 				C596B7B1A39FD1AFA4CC60EE /* HGCoordinatePickerViewController.m in Sources */,
+				C596B9CC3BC6BC47C70C21A6 /* HGSmiley.m in Sources */,
+				C596BD5BEDB4879CA62737F8 /* HGSmileyScraper.m in Sources */,
+				C596B89E90697DE6DB39E171 /* HGSmileyCell.m in Sources */,
+				C596B3E527E6EC8DA70915D9 /* UIView+HGBorders.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

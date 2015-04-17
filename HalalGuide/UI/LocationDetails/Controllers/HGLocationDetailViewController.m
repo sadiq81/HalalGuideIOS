@@ -12,6 +12,7 @@
 #import "HGLocationDetailsInfoView.h"
 #import "HGLocationDetailsPictureView.h"
 #import "HGLocationDetailsHeaderView.h"
+#import "HGReviewDetailViewController.h"
 
 @interface HGLocationDetailViewController () <HGImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 //-------------------------------------------
@@ -87,13 +88,13 @@
 - (void)setupViewModel {
 
     [[RACObserve(self.viewModel, progress) skip:1] subscribeNext:^(NSNumber *progress) {
-        if (progress.intValue != 0 && progress.intValue != 100) {
+        if (progress.intValue != 0 && progress.intValue < 99) {
             if ([SVProgressHUD isVisible]) {
                 [SVProgressHUD setStatus:[self percentageString:progress.floatValue]];
             } else {
                 [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
             }
-        } else if (progress.intValue == 100) {
+        } else if (progress.intValue >= 99) {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"HGLocationDetailViewController.hud.images.saved", nil)];
         } else {
             [SVProgressHUD dismiss];
@@ -263,7 +264,7 @@
         make.right.equalTo(self.reviews);
         make.left.equalTo(self.reviews);
         make.width.equalTo(self.view);
-        make.height.equalTo(@(428));
+        make.height.equalTo(@(428+76));
     }];
 
     [self.reviews sizeHeaderToFit];
@@ -279,6 +280,7 @@
         make.height.equalTo(@(60));
     }];
 
+    [self.reviews sizeFooterToFit];
 
     [super updateViewConstraints];
 

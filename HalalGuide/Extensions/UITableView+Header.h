@@ -8,6 +8,8 @@
 
 @interface UITableView (Header)
 
-- (void) sizeHeaderToFit;
+- (void)sizeHeaderToFit;
+
+- (void)sizeFooterToFit;
 
 @end

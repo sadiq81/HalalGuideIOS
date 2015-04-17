@@ -13,6 +13,7 @@
 #import "HGNumberFormatter.h"
 #import "PFUser+Extension.h"
 #import "HGReviewDetailViewModel.h"
+#import "HGSmileyScraper.h"
 
 @interface HGLocationDetailViewModel () {
 
@@ -43,6 +44,8 @@
 @property(nonatomic, strong) NSURL *submitterImage;
 @property(nonatomic, strong) NSString *submitterName;
 
+@property (nonatomic, strong) NSArray *smileys;
+
 @end
 
 @implementation HGLocationDetailViewModel {
@@ -66,6 +69,8 @@
 - (void)setup {
     self.locationPictures = [NSArray new];
     self.reviews = [NSArray new];
+
+    self.smileys = [NSArray new];
 
     @weakify(self)
     [[PFUser query] getObjectInBackgroundWithId:self.location.submitterId block:^(PFObject *object, NSError *error) {
@@ -127,6 +132,13 @@
             self.reviews = objects;
             [self calculateAverageRating];
         }
+    }];
+
+    self.fetchCount++;
+
+    [HGSmileyScraper smileyLinksForLocation:self.location onCompletion:^(NSArray *smileys) {
+        self.fetchCount--;
+        self.smileys = smileys;
     }];
 }
 

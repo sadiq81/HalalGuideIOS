@@ -1,7 +1,5 @@
 var Image = require("parse-image");
 
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-
 Parse.Cloud.beforeSave("LocationPicture", function (request, response) {
 
     Parse.Cloud.useMasterKey();
@@ -89,10 +87,28 @@ Parse.Cloud.beforeSave("LocationPicture", function (request, response) {
         });
     });
 
-    if (!locationPicture.get("createdAt")) {
-
-
-    }
-
 });
+
+//Parse.Cloud.job("importSmileyData", function (request, status) {
+//
+//    Parse.Cloud.useMasterKey();
+//
+//    Parse.Cloud.httpRequest({
+//        url: 'http://www.findsmiley.dk/xml/allekontrolresultater.xml',
+//        success: function (httpResponse) {
+//
+//            console.log(httpResponse.headers);
+//
+//
+//
+//            request.success();
+//        },
+//        error: function (httpResponse) {
+//            console.error('Request failed with response code ' + httpResponse.status);
+//            request.error();
+//        }
+//    })
+//});
+
+
 

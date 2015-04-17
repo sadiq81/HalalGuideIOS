@@ -10,7 +10,6 @@
 #import "HGSettings.h"
 #import "SDImageCache.h"
 #import "HGOnboarding.h"
-#import "UIView+Extensions.h"
 #import "UIAlertController+Blocks.h"
 #import "UIViewController+Extension.h"
 #import "RMStore.h"

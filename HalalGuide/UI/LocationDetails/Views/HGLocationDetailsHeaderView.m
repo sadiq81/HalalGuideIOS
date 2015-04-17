@@ -5,6 +5,7 @@
 
 #import "HGLocationDetailsHeaderView.h"
 #import "Masonry/Masonry.h"
+#import "UIView+HGBorders.h"
 
 @interface HGLocationDetailsHeaderView ()
 @property(strong, nonatomic) HGLocationDetailsInfoView *headerTopView;
@@ -64,7 +65,7 @@
         make.top.equalTo(self.submitterView.mas_bottom);
         make.left.equalTo(self);
         make.right.equalTo(self);
-        make.height.equalTo(@(260));
+        make.height.equalTo(@(260+76));
         make.bottom.equalTo(self);
     }];
 
