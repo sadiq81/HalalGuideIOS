@@ -26,8 +26,13 @@
 }
 
 - (BOOL)wasOnBoardingShow:(NSString *)onBoardingKey {
+#ifndef SNAPSHOT
     BOOL shown = [self.defaults boolForKey:onBoardingKey];
+#else
+    BOOL shown = true;
+#endif
     return shown;
+
 }
 
 - (void)setOnBoardingShown:(NSString *)onBoardingKey {
