@@ -1,0 +1,12 @@
+HalalGuide hjælper dig med at finde: 
+- De nærmeste butikker hvor du kan købe halal produkter. 
+- De nærmeste spisesteder hvor du kan spise halal tilberedt/slagtet mad 
+- De nærmeste og moskeer hvor du kan bede dine bønner sammen med andre.
+
+Spisesteder kan sorteres efter fx afstand, om der serveres alkohol på stedet og efter kategorier. Du kan tilføje billeder og dele anmeldelser med andre.
+
+Moskeer kan sorteres efter sprog, her tænkes der på hvilken region/land moskeen tilhører samt hvilken sprog du kan forvente khutba udføres på.
+
+HalalGuide er baseret på crow data, dvs det er op til brugerne selv at holde HalalGuide vedlige, dette kan gøres med anmeldelser men også ved at tilføje nye steder til guiden.
+
+Appen virker i nuværende version kun i online tilstand
