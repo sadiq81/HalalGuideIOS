@@ -72,7 +72,7 @@
     self.confirm = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGImagePickerController.button.confirm", nil) style:UIBarButtonItemStylePlain block:nil];
     self.cancel = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGImagePickerController.button.cancel", nil) style:UIBarButtonItemStylePlain block:nil];
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    [self.navigationBar setItems:@[self.confirm, flexibleItem, self.cancel]];
+    [self.navigationBar setItems:@[self.cancel, flexibleItem, self.confirm]];
 
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.toolbar];
