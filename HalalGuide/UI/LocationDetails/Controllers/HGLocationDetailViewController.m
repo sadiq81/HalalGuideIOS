@@ -91,18 +91,23 @@
         @strongify(self)
         [self.viewModel setFavorised:self.favorite.selected = !self.favorite.selected];
     }];
+
+    [self.options setBlock:^(id weakSender) {
+        @strongify(self)
+        [self openOptions];
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    [self setupHints];
+    [self setupHints];
 }
 
 #pragma mark - Hints
 
 - (void)setupHints {
     if (![[HGOnboarding instance] wasOnBoardingShow:kDiningDetailAddressTelephoneOptionsOnBoardingKey]) {
-        [self displayHintForView:self.header.headerTopView.road withHintKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey preferedPositionOfText:HintPositionBelow];
+        [self displayHintForView:[self.options valueForKey:@"view"] withHintKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey preferedPositionOfText:HintPositionAbove];
     }
 }
 
@@ -222,7 +227,7 @@
     [self.navigationController pushViewController:controller animated:true];
 }
 
-- (void)openMaps{
+- (void)openOptions {
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"HGLocationDetailViewController.alert.action", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 

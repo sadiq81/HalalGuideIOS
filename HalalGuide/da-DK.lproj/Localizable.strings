@@ -95,7 +95,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "diningCellAlcoholOnBoarding" = "Viser om der også serveres alkohol";
 "diningCellHalalOnBoarding" =  "Viser om der serveres ikke halal kyllinge/okse kød";
 
-"diningDetailAddressTelephoneOptionsOnBoarding" = "Tryk på adressen for at få rutevejledning eller ringe til stedet";
+"diningDetailAddressTelephoneOptionsOnBoarding" = "Tryk her for at få rutevejledning eller ringe til stedet";
 
 "createLocationPickImageOnBoarding" = "Tryk på kameraet for at tilføje billeder";
 
@@ -192,6 +192,8 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGSettingsViewController.button.reset.intro" = "Nulstil introduktion";
 "HGSettingsViewController.section.title.support" = "Støt";
 "HGSettingsViewController.section.title.reset" = "Nulstil";
+"HGSettingsViewController.section.title.profile" = "Profil";
+"HGSettingsViewController.button.log.out" = "Log ud";
 
 "HGCategoriesView.button.reset" = "Nulstil";
 "HGCategoriesView.button.chose" = "Vælg";
