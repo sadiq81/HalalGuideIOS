@@ -95,7 +95,7 @@
 "diningCellAlcoholOnBoarding" = "Tells if alcohol is served";
 "diningCellHalalOnBoarding" =  "Tells if non halal chicken or beef is served";
 
-"diningDetailAddressTelephoneOptionsOnBoarding" = "Press the address to get directions or call the place";
+"diningDetailAddressTelephoneOptionsOnBoarding" = "Press here to get directions or call the place";
 
 "createLocationPickImageOnBoarding" = "Press the camera to add pictures";
 
@@ -197,6 +197,8 @@
 "HGSettingsViewController.button.reset.intro" = "Reset introduktion";
 "HGSettingsViewController.section.title.support" = "Support";
 "HGSettingsViewController.section.title.reset" = "Reset";
+"HGSettingsViewController.section.title.profile" = "Profile";
+"HGSettingsViewController.button.log.out" = "Log out";
 
 "HGCategoriesView.button.reset" = "Reset";
 "HGCategoriesView.button.chose" = "Choose";

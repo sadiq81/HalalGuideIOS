@@ -20,6 +20,7 @@
 @property(strong, nonatomic) UITableViewCell *support;
 @property(strong, nonatomic) UITableViewCell *resetFilter;
 @property(strong, nonatomic) UITableViewCell *resetIntro;
+@property(strong, nonatomic) UITableViewCell *logOut;
 @end
 
 @implementation HGSettingsViewController {
@@ -42,26 +43,27 @@
     self.tableView.backgroundColor = [UIColor whiteColor];
 
     self.clearCache = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@""];
-//    self.clearCache.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
     self.clearCache.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.clear.cache", nil);
 
     self.support = [[UITableViewCell alloc] init];
-//    self.support.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
     self.support.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.support", nil);
 
     self.resetFilter = [[UITableViewCell alloc] init];
-//    self.resetFilter.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
     self.resetFilter.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.reset.filter", nil);
 
     self.resetIntro = [[UITableViewCell alloc] init];
-//    self.resetIntro.textLabel.textColor = [UIColor colorWithRed:0.0 green:122.0 / 255.0 blue:1.0 alpha:1.0];
     self.resetIntro.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.reset.intro", nil);
+
+    self.logOut = [[UITableViewCell alloc] init];
+    self.logOut.selectionStyle = [[PFUser currentUser] isAuthenticated] ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
+    self.logOut.textLabel.textColor = [[PFUser currentUser] isAuthenticated] ? [UIColor blackColor] : [UIColor lightGrayColor];
+    self.logOut.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.log.out", nil);
 
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -70,6 +72,8 @@
             return 1;
         case 1:
             return 3;
+        case 2:
+            return 1;
         default:
             return 0;
     };
@@ -90,6 +94,11 @@
                     return self.resetIntro;
                 case 2:
                     return self.clearCache;
+            }
+        case 2:
+            switch (indexPath.row) {
+                case 0:
+                    return self.logOut;
             }
     }
     return nil;
@@ -123,6 +132,11 @@
                     [[SDImageCache sharedImageCache] clearDisk];
                     break;
             }
+        case 2:
+            switch (indexPath.row) {
+                case 0:
+                    [PFUser logOut];
+            }
     }
 
     [tableView deselectRowAtIndexPath:indexPath animated:true];
@@ -134,6 +148,8 @@
             return NSLocalizedString(@"HGSettingsViewController.section.title.support", nil);
         case 1:
             return NSLocalizedString(@"HGSettingsViewController.section.title.reset", nil);
+        case 2:
+            return NSLocalizedString(@"HGSettingsViewController.section.title.profile", nil);
         default:
             return nil;
     }
