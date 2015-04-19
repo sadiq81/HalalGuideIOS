@@ -99,8 +99,6 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "createLocationPickImageOnBoarding" = "Tryk på kameraet for at tilføje billeder";
 
-"slideShowViewSwipeToViewMore" = "Swipe for at se flere billeder";
-
 "WeekDay.sunday" ="Søndag";
 "WeekDay.monday"="Mandag";
 "WeekDay.tuesday"="Tirsdag";
@@ -132,6 +130,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGFrontPageViewController.label.enumber"= "Enummer";
 "HGFrontPageViewController.label.eat"= "Spise";
 "HGFrontPageViewController.label.mosque"= "Moske";
+"HGFrontPageViewController.label.favorite"= "Favoritter";
 "HGFrontPageViewController.label.settings"= "Indstillinger";
 "HGFrontPageViewController.label.latest.updates" = "Seneste opdateringer";
 "HGFrontPageViewController.hud.fetching" = "Opdaterer";
@@ -260,3 +259,8 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGCreateLocationViewController.alert.add.review" = "Jo tak";
 "HGLocationDetailsPictureView.alert.smiley.warning" = "HGLocationDetailsPictureView.alert.smiley.warning";
 "HGLocationDetailsPictureView.alert.smiley.message" = "HGLocationDetailsPictureView.alert.smiley.message";
+
+"HGFavoriteViewController.label.no.favorites" = "Du har ikke tilføjet nogen favoritter";
+"HGFavoriteViewController.title" = "Favoritter";
+"HGFavoriteViewController.hud.fetching" = "Opdaterer";
+"HGFavoriteViewController.hud.error" = "Der er sket en ukendt fejl";

@@ -22,29 +22,8 @@
     }];
 }
 
-- (void)createUserData {
-    self.preferences = [NSDictionary new];
-    self.favorites = [NSDictionary new];
-}
-
 - (NSDictionary *)facebookUserData {
     return [self valueForKey:@"userData"];
-}
-
-- (NSDictionary *)preferences {
-    return [self valueForKey:@"preferences"];
-}
-
-- (void)setPreferences:(NSDictionary *)preferences {
-    [self setObject:preferences forKey:@"preferences"];
-}
-
-- (NSDictionary *)favorites {
-    return [self valueForKey:@"favorites"];
-}
-
-- (void)setFavorites:(NSDictionary *)favorites {
-    [self setObject:favorites forKey:@"favorites"];
 }
 
 - (NSString *)facebookID {

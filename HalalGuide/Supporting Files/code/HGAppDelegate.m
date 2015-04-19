@@ -62,7 +62,7 @@
     [IQKeyboardManager sharedManager].toolbarManageBehaviour = IQAutoToolbarByTag;
 
     //Configure Parse
-    //[Parse enableLocalDatastore]; //TODO
+    [Parse enableLocalDatastore]; //TODO
     [Parse setApplicationId:kParseApplicationId clientKey:kParseClientKey];
 #if !DEBUG
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

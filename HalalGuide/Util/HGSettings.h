@@ -24,6 +24,8 @@
 
 @property (nonatomic) Language language;
 
+@property(nonatomic, strong) NSMutableArray *favorites;
+
 + (HGSettings *)instance;
 
 @end

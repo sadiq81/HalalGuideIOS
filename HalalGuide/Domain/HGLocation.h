@@ -81,6 +81,7 @@ typedef enum WeekDay : int16_t {
 #define kShopImageIdentifier @"HGFrontPageViewController.button.shop"
 #define kMosqueImageIdentifier @"HGFrontPageViewController.button.mosque"
 
+#define kFavoritesPin @"local.data.store.favorite.pin"
 
 @interface HGLocation : HGBaseEntity
 
