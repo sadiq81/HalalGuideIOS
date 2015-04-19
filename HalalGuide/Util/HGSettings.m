@@ -18,19 +18,18 @@
 
 #define kLanguageFilter @"dk.eazyit.halalguide.filter.language"
 
-@interface HGSettings ()
-
-@end
-
+#define kFavorites @"dk.eazyit.halalguide.favorites"
 
 @implementation HGSettings {
 
 }
 
-@synthesize defaults, maximumDistanceShop = _maximumDistanceShop, maximumDistanceDining = _maximumDistanceDining, maximumDistanceMosque = _maximumDistanceMosque;
+@synthesize defaults;
+@synthesize maximumDistanceShop = _maximumDistanceShop, maximumDistanceDining = _maximumDistanceDining, maximumDistanceMosque = _maximumDistanceMosque;
 @synthesize halalFilter = _halalFilter, alcoholFilter = _alcoholFilter, porkFilter = _porkFilter;
 @synthesize categoriesFilter = _categoriesFilter, shopCategoriesFilter = _shopCategoriesFilter;
 @synthesize language = _language;
+@synthesize favorites= _favorites;
 
 + (HGSettings *)instance {
     static HGSettings *_instance = nil;
@@ -138,6 +137,17 @@
 
 - (void)setLanguage:(Language)language {
     [self.defaults setInteger:_language = language forKey:kLanguageFilter];
+}
+
+- (NSMutableArray *)favorites {
+    if (!_favorites) {
+        _favorites = [[NSMutableArray alloc] initWithArray:[self.defaults valueForKey:kFavorites]];
+    }
+    return _favorites;
+}
+
+- (void)setFavorites:(NSMutableArray *)favorites {
+    [self.defaults setValue:_favorites = favorites forKey:kFavorites];
 }
 
 @end

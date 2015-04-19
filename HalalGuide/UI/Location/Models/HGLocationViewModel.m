@@ -162,6 +162,7 @@
 - (void)setSearchText:(NSString *)searchText1 {
     searchText = searchText1;
     listLocations = [NSArray new];
+    listLocations = [NSArray new];
     page = 0;
     [self refreshLocations];
 }

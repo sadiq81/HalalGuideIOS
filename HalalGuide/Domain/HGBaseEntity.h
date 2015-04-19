@@ -42,7 +42,7 @@ typedef enum LocationType : int16_t {
 
 #define LocationTypeString(enum) [@{@(LocationTypeDining) : @"LocationType.dining",\
 @(LocationTypeMosque) : @"LocationType.mosque",\
-@(LocationTypeShop) :@"LocationType.shop",}  objectForKey :@(enum)]
+@(LocationTypeShop) : @"LocationType.shop",}  objectForKey :@(enum)]
 
 typedef enum ShopType : int16_t {
     ShopTypeGroceries = 0,

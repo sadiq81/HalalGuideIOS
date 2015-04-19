@@ -44,7 +44,9 @@
 @property(nonatomic, strong) NSURL *submitterImage;
 @property(nonatomic, strong) NSString *submitterName;
 
-@property (nonatomic, strong) NSArray *smileys;
+@property(nonatomic, strong) NSArray *smileys;
+
+@property(nonatomic, strong) NSNumber *favorite;
 
 @end
 
@@ -107,6 +109,8 @@
         self.languageImage = [UIImage imageNamed:LanguageString([self.location.language integerValue])];
         self.languageString = [self.location.language integerValue] != 0 ? NSLocalizedString(LanguageString([self.location.language integerValue]), nil) : @"";
     }
+
+        self.favorite = @([[HGSettings instance].favorites containsObject:self.location.objectId]);
 
     self.locationPictures = [NSArray new];
     self.reviews = [NSArray new];
@@ -174,6 +178,24 @@
             average += [review.rating floatValue];
         }
         self.rating = average / [self.reviews count];
+    }
+}
+
+-(void) setFavorised:(BOOL) favorized{
+    if (favorized){
+        NSMutableArray *favorites = [HGSettings instance].favorites;
+        [favorites addObject:self.location.objectId];
+        [HGSettings instance].favorites = favorites;
+
+        [self.location pinInBackgroundWithName:kFavoritesPin];
+
+    } else{
+        NSMutableArray *favorites = [HGSettings instance].favorites;
+        [favorites removeObject:self.location.objectId];
+        [HGSettings instance].favorites = favorites;
+
+        [self.location unpinInBackgroundWithName:kFavoritesPin];
+
     }
 }
 

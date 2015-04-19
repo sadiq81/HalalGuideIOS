@@ -39,6 +39,4 @@
 
 + (instancetype)controllerWithViewModel:(HGLocationDetailViewModel *)viewModel;
 
-- (void)openMaps:(UITapGestureRecognizer *)recognizer;
-
 @end

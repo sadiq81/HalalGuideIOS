@@ -17,6 +17,8 @@
 #import "HGImagePickerController.h"
 #import "HGENumberViewController.h"
 #import "HGSettingsViewController.h"
+#import "HGFavoriteViewModel.h"
+#import "HGFavoriteViewController.h"
 
 @interface HGFrontPageViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) UIView *topView;
@@ -24,6 +26,7 @@
 @property(nonatomic, strong) HGButtonView *eNumberView;
 @property(nonatomic, strong) HGButtonView *eatView;
 @property(nonatomic, strong) HGButtonView *mosqueView;
+@property(nonatomic, strong) HGButtonView *favoritesView;
 @property(nonatomic, strong) HGButtonView *settingsView;
 
 @property(nonatomic, strong) UILabel *latest;
@@ -86,6 +89,13 @@
 
     self.mosqueView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.mosque" andLabelText:@"HGFrontPageViewController.label.mosque" andTapHandler:[self tapHandlerForType:LocationTypeMosque]];
     [self.topView addSubview:self.mosqueView];
+
+    self.favoritesView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.favorite" andLabelText:@"HGFrontPageViewController.label.favorite" andTapHandler:^{
+        HGFavoriteViewModel *model = [[HGFavoriteViewModel alloc] init];
+        HGFavoriteViewController *viewController = [HGFavoriteViewController controllerWithViewModel:model];
+        [self.navigationController pushViewController:viewController animated:true];
+    }];
+    [self.topView addSubview:self.favoritesView];
 
     self.settingsView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.settings" andLabelText:@"HGFrontPageViewController.label.settings" andTapHandler:^{
         HGSettingsViewController *controller = [[HGSettingsViewController alloc] init];
@@ -235,6 +245,12 @@
         make.width.equalTo(@48);
         make.centerX.equalTo(self.shopView);
         make.top.equalTo(self.shopView.mas_bottom).offset(20);
+    }];
+
+    [self.favoritesView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@48);
+        make.centerX.equalTo(self.eNumberView);
+        make.top.equalTo(self.eNumberView.mas_bottom).offset(20);
     }];
 
     [self.settingsView mas_updateConstraints:^(MASConstraintMaker *make) {

@@ -13,15 +13,19 @@
 #import "HGLocationDetailsPictureView.h"
 #import "HGLocationDetailsHeaderView.h"
 #import "HGReviewDetailViewController.h"
+#import "HGSettings.h"
 
 @interface HGLocationDetailViewController () <HGImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 //-------------------------------------------
 @property(strong) HGLocationDetailsHeaderView *header;
-
-//-------------------------------------------
 //-------------------------------------------
 @property(strong) UITableView *reviews;
 @property(strong, nonatomic) UILabel *noReviewsLabel;
+//-------------------------------------------
+@property(strong, nonatomic) UIToolbar *toolBar;
+//@property(strong, nonatomic) UIBarButtonItem *favorite;
+@property(strong, nonatomic) UIButton *favorite;
+@property(strong, nonatomic) UIBarButtonItem *options;
 //-------------------------------------------
 @property(strong, nonatomic) HGLocationDetailViewModel *viewModel;
 @end
@@ -35,6 +39,7 @@
         self.viewModel = viewModel;
         [self setupViews];
         [self setupViewModel];
+        [self setupToolBar];
         [self setupTableView];
         [self updateViewConstraints];
     }
@@ -56,9 +61,6 @@
     [self.view addSubview:self.reviews];
 
     self.header = [HGLocationDetailsHeaderView viewWithViewModel:self.viewModel];
-    [self.header.headerTopView.name addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
-    [self.header.headerTopView.road addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
-    [self.header.headerTopView.postalCode addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMaps:)]];
     self.reviews.tableHeaderView = self.header;
 
     self.noReviewsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -67,12 +69,33 @@
     self.noReviewsLabel.textAlignment = NSTextAlignmentCenter;
     self.reviews.tableFooterView = self.noReviewsLabel;
 
+    self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.toolBar];
 
+    UIBarButtonItem *spacer1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    self.favorite = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 22, 22)];
+    UIBarButtonItem *favoriteContainer = [[UIBarButtonItem alloc] initWithCustomView:self.favorite];
+    UIBarButtonItem *spacer2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    self.options = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.options"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    [self.toolBar setItems:@[spacer1, favoriteContainer,spacer2, self.options]];
+
+
+}
+
+-(void) setupToolBar{
+    [self.favorite setImage:[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.false"] forState:UIControlStateNormal];
+    [self.favorite setImage:[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.true"] forState:UIControlStateSelected];
+
+    @weakify(self)
+    [self.favorite handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
+        @strongify(self)
+        [self.viewModel setFavorised:self.favorite.selected = !self.favorite.selected];
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setupHints];
+//    [self setupHints];
 }
 
 #pragma mark - Hints
@@ -114,6 +137,8 @@
             [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"HGLocationDetailViewController.hud.error", nil)];
         }
     }];
+
+    RAC(self.favorite, selected) = RACObserve(self, viewModel.favorite);
 
 }
 
@@ -197,7 +222,7 @@
     [self.navigationController pushViewController:controller animated:true];
 }
 
-- (void)openMaps:(UITapGestureRecognizer *)recognizer {
+- (void)openMaps{
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"HGLocationDetailViewController.alert.action", nil) message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 
@@ -270,7 +295,10 @@
     [self.reviews sizeHeaderToFit];
 
     [self.reviews mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.toolBar.mas_top);
     }];
 
     [self.noReviewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -281,6 +309,13 @@
     }];
 
     [self.reviews sizeFooterToFit];
+
+    [self.toolBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@44);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+    }];
 
     [super updateViewConstraints];
 
