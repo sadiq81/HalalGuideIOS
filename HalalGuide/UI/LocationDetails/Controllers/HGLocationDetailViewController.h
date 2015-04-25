@@ -21,7 +21,6 @@
 #import "HGNumberFormatter.h"
 #import "HGReviewCell.h"
 #import "HGReviewDetailViewModel.h"
-#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "HGOnboarding.h"
 #import "UIViewController+Extension.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>

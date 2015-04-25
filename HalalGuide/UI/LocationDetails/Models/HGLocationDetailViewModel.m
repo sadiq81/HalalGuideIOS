@@ -155,9 +155,8 @@
 }
 
 - (void)saveMultiplePictures:(NSArray *)images {
-    self.saving = true;
-    self.progress = 1;
 
+    self.progress = 1;
     @weakify(self)
     [[HGPictureService instance] saveMultiplePictures:images forLocation:self.location completion:^(BOOL completed, NSError *error, NSNumber *progress) {
         @strongify(self)
@@ -165,7 +164,7 @@
         self.progress = progress.intValue;
         self.error = error;
         if (completed) {
-            self.saving = false;
+            self.progress = 100;
         }
     }];
 }

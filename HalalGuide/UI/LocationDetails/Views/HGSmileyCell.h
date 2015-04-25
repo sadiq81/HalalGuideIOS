@@ -10,7 +10,7 @@
 
 @interface HGSmileyCell : UICollectionViewCell
 
-@property (strong, nonatomic, readonly) UIImageView *smileyType;
+@property (strong, nonatomic, readonly) AsyncImageView *smileyType;
 @property (strong, nonatomic, readonly) UILabel *date;
 @property (strong, nonatomic, readonly) HGSmiley *smiley;
 

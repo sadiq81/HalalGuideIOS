@@ -113,6 +113,7 @@
 		C596BBEDF00B04239985401D /* UITableView+Header.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1252B5FEC446A55A856 /* UITableView+Header.m */; };
 		C596BC90F2C215AF04009886 /* HGReview.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B76374759947E3D1466D /* HGReview.m */; };
 		C596BCA61AE9B3ACF9CC00E0 /* HGImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC195B9B37F1198B4D79 /* HGImagePickerView.m */; };
+		C596BCBA4F06AF804F955E72 /* HGReviewPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BFC13FDD842568AE1E0B /* HGReviewPictureCell.m */; };
 		C596BD2F3DEA743000DA7441 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3B9B67A50AA098B0D07 /* NSString+Extensions.m */; };
 		C596BD5BEDB4879CA62737F8 /* HGSmileyScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8A74423F9861DA20FFF /* HGSmileyScraper.m */; };
 		C596BD96EFEBDDC2BA7E3281 /* HGSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B3738DE751A198964235 /* HGSettings.m */; };
@@ -203,6 +204,7 @@
 		C596B01FCA8EAA7669298C44 /* HGAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGAPHelper.m; sourceTree = "<group>"; };
 		C596B052C4B3E08E8299DC05 /* HGCategoriesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCategoriesView.h; sourceTree = "<group>"; };
 		C596B095770506EA4316DE8D /* HGFrontPageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFrontPageViewModel.m; sourceTree = "<group>"; };
+		C596B0A2CA9DD28C467B278C /* HGReviewPictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGReviewPictureCell.h; sourceTree = "<group>"; };
 		C596B0A931E86C1B73D6E908 /* HGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSettingsViewController.h; sourceTree = "<group>"; };
 		C596B0B2D708ED5DDD9CF7F2 /* HGCoordinatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCoordinatePickerViewController.m; sourceTree = "<group>"; };
 		C596B0C9E16AC723AAF99F07 /* HGLocationDetailsSubmitterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationDetailsSubmitterView.m; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 		C596BF7F7D39059B8F297255 /* HGAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HGAppDelegate.m; path = "Supporting Files/code/HGAppDelegate.m"; sourceTree = "<group>"; };
 		C596BF9C4BB1DDEF86A7E229 /* UILabel+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extensions.m"; sourceTree = "<group>"; };
 		C596BFA876BBAF113A92B8A8 /* HGCreateReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCreateReviewViewController.h; sourceTree = "<group>"; };
+		C596BFC13FDD842568AE1E0B /* HGReviewPictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGReviewPictureCell.m; sourceTree = "<group>"; };
 		C596BFC26C9D118C4F31F00A /* HGLocationViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationViewModel.m; sourceTree = "<group>"; };
 		C596BFE4A69F7AE471246693 /* HGLocationAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationAnnotationView.m; sourceTree = "<group>"; };
 		C596BFFF24C78F6A21345D98 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -637,6 +640,15 @@
 			path = public;
 			sourceTree = "<group>";
 		};
+		C596B1C1FAC235D8685D2A92 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C596BFC13FDD842568AE1E0B /* HGReviewPictureCell.m */,
+				C596B0A2CA9DD28C467B278C /* HGReviewPictureCell.h */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C596B1CD747AC6DD7785CA57 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +663,7 @@
 			children = (
 				C596B685A4EF19499928CD3E /* Controllers */,
 				C596B695AC8F60BF9DED9F29 /* Models */,
+				C596B1C1FAC235D8685D2A92 /* Views */,
 			);
 			path = CreateReview;
 			sourceTree = "<group>";
@@ -1449,6 +1462,7 @@
 				C596B751412583E7E56A5148 /* HGLocationViewModel.m in Sources */,
 				C596B49C7E9B66F3AE3DC89D /* HGFavoriteViewController.m in Sources */,
 				C596B74D28E3B7D8A49EB868 /* HGFavoriteViewModel.m in Sources */,
+				C596BCBA4F06AF804F955E72 /* HGReviewPictureCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

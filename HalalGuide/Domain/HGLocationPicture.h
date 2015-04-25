@@ -19,6 +19,7 @@
 @property (nonatomic, retain) PFFile * thumbnail;
 @property (nonatomic, retain) PFFile * mediumPicture;
 @property (nonatomic, retain) NSString * locationId;
+@property (nonatomic, retain) NSString * reviewId;
 @property (nonatomic, retain) NSString * submitterId;
 
 @end

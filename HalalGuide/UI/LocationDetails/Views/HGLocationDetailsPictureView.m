@@ -3,13 +3,15 @@
 // Copyright (c) 2015 Eazy It. All rights reserved.
 //
 
-#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import <AsyncImageView/AsyncImageView.h>
 #import "HGLocationDetailsPictureView.h"
 #import "ReactiveCocoa.h"
 #import "Masonry.h"
 #import "HGSmileyCell.h"
 #import "HGSmiley.h"
 #import "UIView+HGBorders.h"
+#import "UIImageView+AFNetworking.h"
+#import "NSString+Extensions.h"
 
 @interface HGLocationDetailsPictureView () <iCarouselDataSource, iCarouselDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -54,21 +56,35 @@
 - (void)setupViews {
     self.report = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.report setTitle:NSLocalizedString(@"HGLocationDetailsPictureView.button.report", nil) forState:UIControlStateNormal];
+    self.report.layer.cornerRadius = 5;
+    self.report.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.report.layer.borderWidth = 0.5;
+
     [self addSubview:self.report];
 
     self.pictures = [[iCarousel alloc] initWithFrame:CGRectZero];
     self.pictures.type = iCarouselTypeCoverFlow2;
     self.pictures.delegate = self;
     self.pictures.dataSource = self;
+    self.pictures.decelerationRate = 0.0f;
+    self.pictures.scrollSpeed = 0.5f;
+    self.pictures.bounces=  false;
+    self.pictures.pagingEnabled = true;
     self.pictures.clipsToBounds = true;
     [self addSubview:self.pictures];
 
     self.addReview = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.addReview setTitle:NSLocalizedString(@"HGLocationDetailsPictureView.button.add.review", nil) forState:UIControlStateNormal];
+    self.addReview.layer.cornerRadius = 5;
+    self.addReview.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.addReview.layer.borderWidth = 0.5;
     [self addSubview:self.addReview];
 
     self.addPicture = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.addPicture setTitle:NSLocalizedString(@"HGLocationDetailsPictureView.button.add.picture", nil) forState:UIControlStateNormal];
+    self.addPicture.layer.cornerRadius = 5;
+    self.addPicture.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.addPicture.layer.borderWidth = 0.5;
     [self addSubview:self.addPicture];
 
     self.noPicturesLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -147,7 +163,6 @@
     return cell;
 }
 
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(76, 76);
 }
@@ -183,12 +198,11 @@
     HGLocationPicture *picture = [self.viewModel.locationPictures objectAtIndex:index];
 
     if (view == nil) {
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
+        view = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
         view.contentMode = UIViewContentModeScaleAspectFit;
     }
     //TODO Adjust frame so that portrait and landspace pictures are both max height
-
-    [(UIImageView *) view setImageWithURL:[[NSURL alloc] initWithString:picture.mediumPicture.url] placeholderImage:[UIImage imageNamed:@"dining"] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [((AsyncImageView *) view) setImageWithURL:[picture.mediumPicture.url toURL] placeholderImage:[UIImage imageNamed:@"dining"]];
     return view;
 }
 
@@ -197,9 +211,9 @@
     self.translatesAutoresizingMaskIntoConstraints = false;
 
     [self.report mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self);
-        make.left.equalTo(self);
-        make.right.equalTo(self);
+        make.top.equalTo(self).offset(8);
+        make.left.equalTo(self).offset(8);
+        make.right.equalTo(self).offset(-8);
         make.height.equalTo(@(30));
     }];
 
@@ -219,22 +233,20 @@
 
     [self.addReview mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.pictures.mas_bottom);
-        make.left.equalTo(self);
-        make.right.equalTo(self.mas_centerX);
+        make.left.equalTo(self).offset(8);
+        make.right.equalTo(self.mas_centerX).offset(-8);
         make.height.equalTo(@(30));
-        make.bottom.equalTo(self.smileys.mas_top);
     }];
 
     [self.addPicture mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.pictures.mas_bottom);
-        make.left.equalTo(self.mas_centerX);
-        make.right.equalTo(self);
+        make.left.equalTo(self.mas_centerX).offset(8);
+        make.right.equalTo(self).offset(-8);
         make.height.equalTo(@(30));
-        make.bottom.equalTo(self.smileys.mas_top);
     }];
 
     [self.smileys mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.addPicture.mas_bottom);
+        make.top.equalTo(self.addPicture.mas_bottom).offset(8);
         make.left.equalTo(self);
         make.right.equalTo(self);
         make.bottom.equalTo(self);

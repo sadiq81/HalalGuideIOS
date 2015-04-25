@@ -5,10 +5,10 @@
 
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import <Masonry/View+MASAdditions.h>
+#import <AsyncImageView/AsyncImageView.h>
 #import "HGSettingsViewController.h"
 #import "HGLocationViewModel.h"
 #import "HGSettings.h"
-#import "SDImageCache.h"
 #import "HGOnboarding.h"
 #import "UIAlertController+Blocks.h"
 #import "UIViewController+Extension.h"
@@ -128,8 +128,7 @@
                     [[HGOnboarding instance] resetOnBoarding];
                     break;
                 case 2:
-                    [[SDImageCache sharedImageCache] clearMemory];
-                    [[SDImageCache sharedImageCache] clearDisk];
+                    [[AsyncImageLoader sharedLoader].cache removeAllObjects];
                     break;
             }
         case 2:

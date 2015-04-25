@@ -8,12 +8,14 @@
 
 @interface HGReviewDetailViewModel : NSObject
 
-@property(strong, nonatomic, readonly) UIImage *submitterImage;
-@property(strong, nonatomic, readonly) UIImage *submitterImageLarge;
+@property(strong, nonatomic, readonly) NSURL *submitterImage;
+@property(strong, nonatomic, readonly) NSURL *submitterImageLarge;
 @property(strong, nonatomic, readonly) NSString *submitterName;
 @property(strong, nonatomic, readonly) NSNumber *rating;
 @property(strong, nonatomic, readonly) NSString *reviewText;
 @property(strong, nonatomic, readonly) NSString *date;
+
+@property(strong, nonatomic, readonly) NSArray *reviewImages;
 
 - (instancetype)initWithReview:(HGReview *)review;
 

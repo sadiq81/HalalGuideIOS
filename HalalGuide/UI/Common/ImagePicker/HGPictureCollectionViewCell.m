@@ -8,7 +8,7 @@
 #import "Masonry/Masonry.h"
 
 @interface HGPictureCollectionViewCell ()
-@property(strong, nonatomic) UIImageView *imageView;
+@property(strong, nonatomic) AsyncImageView *imageView;
 @property(strong, nonatomic) UIImageView *status;
 @end
 
@@ -27,7 +27,7 @@
 }
 
 - (void)setupViews {
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.imageView = [[AsyncImageView alloc] initWithFrame:CGRectZero];
     [self addSubview:self.imageView];
 
     self.status = [[UIImageView alloc] initWithFrame:CGRectZero];

@@ -170,35 +170,12 @@
 
 
     [[RACObserve(self.viewModel, progress) skip:1] subscribeNext:^(NSNumber *progress) {
-        if (progress.intValue != 0 && progress.intValue != 100) {
-            if ([SVProgressHUD isVisible]) {
-                [SVProgressHUD setStatus:[self percentageString:progress.floatValue]];
-            } else {
-                [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
-            }
-        } else if (progress.intValue == 100) {
-            //[SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"HGCreateLocationViewController.hud.location.saved", nil)];
-        } else {
-            [SVProgressHUD dismiss];
-        }
-    }];
-
-    [RACObserve(self.viewModel, saving) subscribeNext:^(NSNumber *saving) {
-        if (saving.boolValue) {
+        if (progress.intValue == 1) {
             [SVProgressHUD showWithStatus:NSLocalizedString(@"HGCreateLocationViewController.hud.saving", nil) maskType:SVProgressHUDMaskTypeBlack];
-        } else {
+        } else if (progress.intValue > 1 && progress.intValue < 100) {
+            [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
+        } else if (progress.intValue == 100) {
             [SVProgressHUD dismiss];
-        }
-    }];
-
-    [[RACObserve(self.viewModel, error) throttle:0.5] subscribeNext:^(NSError *error) {
-        if (error) {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"HGCreateLocationViewController.hud.error", nil)];
-        }
-    }];
-
-    [[RACObserve(self.viewModel, createdLocation) skip:1] subscribeNext:^(HGLocation *location) {
-        if (!self.viewModel.error && location.objectId) {
             [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.title.action", nil) message:NSLocalizedString(@"HGCreateLocationViewController.alert.message.location.saved", nil) cancelButtonTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.cancel.done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"HGCreateLocationViewController.alert.add.review", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
                 if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
                     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
@@ -206,6 +183,12 @@
                     [self createReviewForLocation:self.viewModel.createdLocation viewModel:self.viewModel pushToStack:true];
                 }
             }];
+        }
+    }];
+
+    [[RACObserve(self.viewModel, error) throttle:0.5] subscribeNext:^(NSError *error) {
+        if (error) {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"HGCreateLocationViewController.hud.error", nil)];
         }
     }];
 
@@ -217,7 +200,7 @@
         formSheet.presentedFSViewController.view.clipsToBounds = false;
 
         CGRect screenRect = [[UIScreen mainScreen] bounds];
-        formSheet.presentedFormSheetSize= CGSizeMake(CGRectGetWidth(screenRect)*0.8, CGRectGetHeight(screenRect)*0.8);
+        formSheet.presentedFormSheetSize = CGSizeMake(CGRectGetWidth(screenRect) * 0.8, CGRectGetHeight(screenRect) * 0.8);
         formSheet.transitionStyle = MZFormSheetTransitionStyleBounce;
         formSheet.cornerRadius = 8.0;
         formSheet.shouldDismissOnBackgroundViewTap = true;

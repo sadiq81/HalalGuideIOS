@@ -174,6 +174,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGLocationDetailViewController.hud.images.saved" = "Dine billeder indsendt til godkendelse";
 "HGLocationDetailViewController.hud.fetching" = "Opdaterer";
 "HGLocationDetailViewController.hud.error" = "Fejl!";
+"HGLocationDetailViewController.hud.saving" = "Gemmer";
 
 "HGImagePickerView.button.approve" = "Tilføj 1 billed";
 "HGImagePickerView.button.approve.multiple" = "Tilføj %lu billeder";
@@ -217,6 +218,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGCreateReviewViewController.hud.error" = "Der skete en ukendt fejl";
 "HGCreateReviewViewController.hud.saved" = "Din anmeldelse indsendt til godkendelse";
 "HGCreateReviewViewController.textview.placeholder" = "En anmeldelse skal minimum være 30 tegn";
+"HGCreateReviewViewController.button.add.picture" = "Tilføj billeder";
 
 "ClusterPrePermissions.photo.title" = "Adgang til dine fotos";
 "ClusterPrePermissions.photo.message" = "Vi har brug for adgang til dine fotos, dette giver dig mulighed for at sende billeder til Halalguide";
@@ -266,3 +268,4 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGFavoriteViewController.title" = "Favoritter";
 "HGFavoriteViewController.hud.fetching" = "Opdaterer";
 "HGFavoriteViewController.hud.error" = "Der er sket en ukendt fejl";
+

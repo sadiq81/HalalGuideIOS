@@ -78,14 +78,9 @@ PODS:
   - RMStore (0.7.1):
     - RMStore/Core (= 0.7.1)
   - RMStore/Core (0.7.1)
-  - SDWebImage (3.7.1):
-    - SDWebImage/Core (= 3.7.1)
-  - SDWebImage/Core (3.7.1)
   - SevenSwitch (1.4.0)
   - SVProgressHUD (1.1.3)
   - SZTextView (1.2.0)
-  - UIActivityIndicator-for-SDWebImage (1.2):
-    - SDWebImage (~> 3.7)
   - UIAlertController+Blocks (0.8)
   - ZLPromptUserReview (1.0.2)
 
@@ -114,11 +109,9 @@ DEPENDENCIES:
   - pop (~> 1.0)
   - ReactiveCocoa (= 2.4.7)
   - RMStore (~> 0.7)
-  - SDWebImage (= 3.7.1)
   - SevenSwitch (= 1.4.0)
   - SVProgressHUD (= 1.1.3)
   - SZTextView (= 1.2.0)
-  - UIActivityIndicator-for-SDWebImage (= 1.2)
   - UIAlertController+Blocks (= 0.8)
   - ZLPromptUserReview (~> 1.0.0)
 
@@ -158,11 +151,9 @@ SPEC CHECKSUMS:
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   ReactiveCocoa: eb38dee0a0e698f73a9b25e5c1faea2bb4c79240
   RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
-  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
   SevenSwitch: e992e56e2e7f401eb00538b9fa92bf848bacbe27
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   SZTextView: a51ef616064ed07ca44403de1e125bb6f4d4f1fa
-  UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   UIAlertController+Blocks: 45787b973b5f2f4ca4f01bc76f4175481ce059b3
   ZLPromptUserReview: 5bdd576d6d85db223579c5ace7583e0b77da63be
 

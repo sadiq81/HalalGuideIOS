@@ -12,7 +12,7 @@
 
 @implementation HGLocationPicture
 
-@dynamic creationStatus, picture, thumbnail, mediumPicture, locationId, submitterId;
+@dynamic creationStatus, picture, thumbnail, mediumPicture, locationId, reviewId,submitterId;
 
 + (void)load {
     [self registerSubclass];

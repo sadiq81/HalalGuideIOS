@@ -5,11 +5,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AsyncImageView/AsyncImageView.h>
 
 
 @interface HGPictureCollectionViewCell : UICollectionViewCell
 
-@property(strong, nonatomic, readonly) UIImageView *imageView;
+@property(strong, nonatomic, readonly) AsyncImageView *imageView;
 @property(strong, nonatomic, readonly) UIImageView *status;
 
 -(void) setChosen:(BOOL) chosen animated:(BOOL) animated;

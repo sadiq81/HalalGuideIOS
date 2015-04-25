@@ -4,21 +4,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SDWebImage/SDWebImageManager.h>
 #import "HGReviewDetailViewModel.h"
 #import "HGPictureService.h"
 #import "PFUser+Extension.h"
 #import "HGDateFormatter.h"
+#import "HGErrorReporting.h"
+#import "HGLocationPicture.h"
 
 @interface HGReviewDetailViewModel () {
 }
 @property(nonatomic) HGReview *review;
-@property(strong, nonatomic) UIImage *submitterImage;
-@property(strong, nonatomic) UIImage *submitterImageLarge;
+@property(strong, nonatomic) NSURL *submitterImage;
+@property(strong, nonatomic) NSURL *submitterImageLarge;
 @property(strong, nonatomic) NSString *submitterName;
 @property(strong, nonatomic) NSNumber *rating;
 @property(strong, nonatomic) NSString *reviewText;
 @property(strong, nonatomic) NSString *date;
+
+@property(strong, nonatomic) NSArray *reviewImages;
+
 
 @end
 
@@ -48,19 +52,13 @@
 
     [[PFUser query] getObjectInBackgroundWithId:self.review.submitterId block:^(PFObject *object, NSError *error) {
         PFUser *user = (PFUser *) object;
-        SDWebImageManager *manager = [SDWebImageManager sharedManager];
-        [manager downloadImageWithURL:[user facebookProfileUrlSmall] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            if (image) {
-                self.submitterImage = image;
-            }
-        }];
-
-        [manager downloadImageWithURL:[user facebookProfileUrl] options:0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            if (image) {
-                self.submitterImageLarge = image;
-            }
-        }];
+        self.submitterImage = [user facebookProfileUrlSmall];
+        self.submitterImageLarge = [user facebookProfileUrl];
         self.submitterName = [user facebookName];
+    }];
+
+    [[HGPictureService instance] locationPicturesForReview:self.review onCompletion:^(NSArray *pictures, NSError *error) {
+        self.reviewImages = pictures;
     }];
 
 }

@@ -6,7 +6,6 @@
 #import "HGShopCell.h"
 #import "HGLocationPicture.h"
 #import "HGPictureService.h"
-#import "UIImageView+WebCache.h"
 
 
 @implementation HGShopCell {

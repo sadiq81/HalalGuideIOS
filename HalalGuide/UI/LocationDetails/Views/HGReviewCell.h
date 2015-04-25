@@ -4,6 +4,7 @@
 //
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AsyncImageView/AsyncImageView.h>
 #import "HGReview.h"
 #import "EDStarRating.h"
 
@@ -11,10 +12,15 @@
 
 @interface HGReviewCell : UITableViewCell
 
-@property(strong, nonatomic, readonly) UIImageView *submitterImage;
+@property(strong, nonatomic, readonly) AsyncImageView *submitterImage;
 @property(strong, nonatomic, readonly) UILabel *submitterName;
 @property(strong, nonatomic, readonly) EDStarRating *rating;
 @property(strong, nonatomic, readonly) UILabel *review;
+
+@property(strong, nonatomic, readonly) AsyncImageView *image1;
+@property(strong, nonatomic, readonly) AsyncImageView *image2;
+@property(strong, nonatomic, readonly) AsyncImageView *image3;
+
 @property(strong, nonatomic) HGReviewDetailViewModel *viewModel;
 
 @end

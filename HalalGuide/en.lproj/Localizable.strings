@@ -179,6 +179,7 @@
 "HGLocationDetailViewController.hud.images.saved" = "Your images has been submitted for approval";
 "HGLocationDetailViewController.hud.fetching" = "Updating";
 "HGLocationDetailViewController.hud.error" = "Error!";
+"HGLocationDetailViewController.hud.saving" = "Saving";
 
 "HGImagePickerView.button.approve" = "Add 1 picture";
 "HGImagePickerView.button.approve.multiple" = "Add %lu pictures";
@@ -222,6 +223,7 @@
 "HGCreateReviewViewController.hud.error" = "An unknown error has occoured";
 "HGCreateReviewViewController.hud.saved" = "Your review has been submitted for approval";
 "HGCreateReviewViewController.textview.placeholder" = "A review must be at least be 30 characters";
+"HGCreateReviewViewController.button.add.picture" = "Add pictures";
 
 "ClusterPrePermissions.photo.title" = "Access your photos";
 "ClusterPrePermissions.photo.message" = "We need access to your photos for you to send pictures to HalalGuide";
@@ -268,3 +270,5 @@
 "HGFavoriteViewController.title" = "Favorites";
 "HGFavoriteViewController.hud.fetching" = "Updating";
 "HGFavoriteViewController.hud.error" = "An unknown error has occured";
+
+
