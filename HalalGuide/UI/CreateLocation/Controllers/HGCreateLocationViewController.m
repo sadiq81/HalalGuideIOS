@@ -232,19 +232,8 @@
     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self onBoarding];
-}
-
 - (void)setupIQKeyboardReturnKeyHandler {
     self.returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
-}
-
-- (void)onBoarding {
-    if (![[HGOnboarding instance] wasOnBoardingShow:kCreateLocationPickImageOnBoardingKey]) {
-        [self displayHintForView:self.pickImage withHintKey:kCreateLocationPickImageOnBoardingKey preferedPositionOfText:HintPositionAbove];
-    }
 }
 
 - (void)setupNavigationBar {

@@ -11,7 +11,6 @@
 #define kDiningCellAlcoholOnBoardingKey @"diningCellAlcoholOnBoarding"
 #define kDiningCellHalalOnBoardingKey @"diningCellHalalOnBoarding"
 
-#define kCreateLocationPickImageOnBoardingKey @"createLocationPickImageOnBoarding"
 #define kDiningDetailAddressTelephoneOptionsOnBoardingKey @"diningDetailAddressTelephoneOptionsOnBoarding"
 
 #import <Foundation/Foundation.h>

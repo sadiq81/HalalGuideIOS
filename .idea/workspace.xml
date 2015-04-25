@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGNewLocationPictureCell.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGNewLocationPictureCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGOnboarding.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGOnboarding.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HalalGuide.iws" />
@@ -27,12 +24,12 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_iPhone_5s_8.3_x86_64_1" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos" />
   <component name="FavoritesManager">
     <favorites_list name="HalalGuide" />
   </component>
@@ -41,8 +38,8 @@
       <file leaf-file-name="HGCreateLocationViewController.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4770" max-vertical-offset="6345">
-              <caret line="349" column="53" selection-start-line="349" selection-start-column="53" selection-end-line="349" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2955" max-vertical-offset="6180">
+              <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
               <folding>
                 <element signature="e#3382#3458#0" expanded="true" />
                 <element signature="e#8492#8560#0" expanded="true" />
@@ -55,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Localizable.strings" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings">
+      <file leaf-file-name="HGOnboarding.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/Util/HGOnboarding.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3452" max-vertical-offset="4230">
-              <caret line="180" column="54" selection-start-line="180" selection-start-column="54" selection-end-line="180" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -68,48 +65,29 @@
       <file leaf-file-name="Localizable.strings" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2072" max-vertical-offset="4170">
-              <caret line="158" column="63" selection-start-line="158" selection-start-column="63" selection-end-line="158" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1080" max-vertical-offset="4140">
+              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Localizable.strings" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2177" max-vertical-offset="4155">
-              <caret line="176" column="55" selection-start-line="176" selection-start-column="55" selection-end-line="176" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="4200">
+              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HGNewLocationPictureCell.m" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGNewLocationPictureCell.m">
+      <file leaf-file-name="Localizable.strings" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1182519" vertical-offset="0" max-vertical-offset="960">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding>
-                <element signature="e#93#129#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HGCreateReviewViewController.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateReview/Controllers/HGCreateReviewViewController.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1425" max-vertical-offset="3870">
-              <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="139" selection-end-column="7" />
-              <folding>
-                <element signature="e#2855#2929#0" expanded="true" />
-                <element signature="e#3462#3530#0" expanded="true" />
-                <element signature="e#4037#4102#0" expanded="true" />
-                <element signature="e#4464#4529#0" expanded="true" />
-                <element signature="e#4803#4868#0" expanded="true" />
-                <element signature="e#6301#6377#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.57840616" vertical-offset="1035" max-vertical-offset="4125">
+              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -131,7 +109,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGLocationViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Location/Models/HGLocationViewModel.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Controllers/HGFrontPageViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Favorites/Models/HGFavoriteViewModel.h" />
@@ -177,11 +154,12 @@
         <option value="$PROJECT_DIR$/HalalGuideTests/HalalGuideTests.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Controllers/HGLocationDetailViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGNewLocationPictureCell.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
-        <option value="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
-        <option value="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGNewLocationPictureCell.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Util/HGOnboarding.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
+        <option value="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
+        <option value="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
       </list>
     </option>
   </component>
@@ -307,6 +285,10 @@
               <option name="myItemId" value="HalalGuide" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Util" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -471,6 +453,64 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Supporting Files" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Supporting Files" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="localization" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Localizable.strings" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -813,12 +853,6 @@
       <option name="number" value="Default" />
       <updated>1415568686926</updated>
     </task>
-    <task id="LOCAL-00008" summary="Bottom spinner sometimes remain #41&#10;Location VC scroll to top when going back from detail view. #42">
-      <created>1420819600722</created>
-      <option name="number" value="00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1420819600722</updated>
-    </task>
     <task id="LOCAL-00009" summary="Location VC scroll to top when going back from detail view. #42&#10;App sometimes crashes when using filter #40 (maybe fixed)">
       <created>1420886933842</created>
       <option name="number" value="00009" />
@@ -1107,7 +1141,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429987918023</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="new Location image picker like review image picker #96">
+      <created>1429988632508</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1429988632508</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1172,7 +1212,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Move butcher to shopping #48" />
     <MESSAGE value="Mapview of locations #31" />
     <MESSAGE value="Opening hours #18" />
     <MESSAGE value="Dont track debug app install/open #84" />
@@ -1197,7 +1236,8 @@
     <MESSAGE value="Possible to have favourites locations #56&#10;Create toolbar for locationdetails #92" />
     <MESSAGE value="Add log out button to settings #59" />
     <MESSAGE value="Review can contain pictures #35" />
-    <option name="LAST_COMMIT_MESSAGE" value="Review can contain pictures #35" />
+    <MESSAGE value="new Location image picker like review image picker #96" />
+    <option name="LAST_COMMIT_MESSAGE" value="new Location image picker like review image picker #96" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1233,22 +1273,9 @@
       </breakpoints-dialog>
       <option name="time" value="1183" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="AppleRunConfiguration">
-        <watch expression="MIN((float)string.length*0.06 + 0.5, 5.0)" language="ObjectiveC" />
-        <watch expression="string.length*0.06 + 0.5" language="ObjectiveC" />
-        <watch expression="string.length" language="ObjectiveC" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Photos.framework/Headers/PHFetchOptions.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25700936" vertical-offset="0" max-vertical-offset="642">
-          <caret line="12" column="53" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Photos.framework/Headers/PHAsset.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23364486" vertical-offset="15" max-vertical-offset="960">
@@ -1583,7 +1610,7 @@
         <state vertical-scroll-proportion="0.023529412" vertical-offset="1392" max-vertical-offset="4860">
           <caret line="101" column="35" selection-start-line="101" selection-start-column="35" selection-end-line="101" selection-end-column="35" />
           <folding>
-            <element signature="e#5218#5292#0" expanded="true" />
+            <element signature="e#5218#5292#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1614,56 +1641,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2072" max-vertical-offset="4170">
-          <caret line="158" column="63" selection-start-line="158" selection-start-column="63" selection-end-line="158" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2177" max-vertical-offset="4155">
-          <caret line="176" column="55" selection-start-line="176" selection-start-column="55" selection-end-line="176" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2462" max-vertical-offset="4230">
-          <caret line="180" column="54" selection-start-line="180" selection-start-column="54" selection-end-line="180" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateReview/Controllers/HGCreateReviewViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1425" max-vertical-offset="3870">
+        <state vertical-scroll-proportion="0.6940874" vertical-offset="1425" max-vertical-offset="3870">
           <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="139" selection-end-column="7" />
           <folding>
-            <element signature="e#2855#2929#0" expanded="true" />
-            <element signature="e#3462#3530#0" expanded="true" />
-            <element signature="e#4037#4102#0" expanded="true" />
-            <element signature="e#4464#4529#0" expanded="true" />
-            <element signature="e#4803#4868#0" expanded="true" />
-            <element signature="e#6301#6377#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4770" max-vertical-offset="6345">
-          <caret line="349" column="53" selection-start-line="349" selection-start-column="53" selection-end-line="349" selection-end-column="53" />
-          <folding>
-            <element signature="e#3382#3458#0" expanded="true" />
-            <element signature="e#8492#8560#0" expanded="true" />
-            <element signature="e#8950#9026#0" expanded="true" />
-            <element signature="e#9035#9121#0" expanded="true" />
-            <element signature="e#9140#9215#0" expanded="true" />
-            <element signature="e#9263#9337#0" expanded="true" />
+            <element signature="e#2855#2929#0" expanded="false" />
+            <element signature="e#3462#3530#0" expanded="false" />
+            <element signature="e#4037#4102#0" expanded="false" />
+            <element signature="e#4464#4529#0" expanded="false" />
+            <element signature="e#4803#4868#0" expanded="false" />
+            <element signature="e#6301#6377#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1675,6 +1663,53 @@
           <folding>
             <element signature="e#93#129#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2955" max-vertical-offset="6180">
+          <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
+          <folding>
+            <element signature="e#3382#3458#0" expanded="true" />
+            <element signature="e#8492#8560#0" expanded="true" />
+            <element signature="e#8950#9026#0" expanded="true" />
+            <element signature="e#9035#9121#0" expanded="true" />
+            <element signature="e#9140#9215#0" expanded="true" />
+            <element signature="e#9263#9337#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Util/HGOnboarding.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1080" max-vertical-offset="4140">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="4200">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57840616" vertical-offset="1035" max-vertical-offset="4125">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
