@@ -8,17 +8,20 @@
 #import <EDStarRating.h>
 #import "HGReview.h"
 #import <ParseUI/ParseUI.h>
+#import <AsyncImageView/AsyncImageView.h>
 
 @class HGReviewDetailViewModel;
 
 @interface HGReviewDetailViewController : UIViewController {
 }
 
-@property(strong, nonatomic, readonly) UIImageView *submitterImage;
+@property(strong, nonatomic, readonly) AsyncImageView *submitterImage;
 @property(strong, nonatomic, readonly) UILabel *submitterName;
 @property(strong, nonatomic, readonly) EDStarRating *rating;
 @property(strong, nonatomic, readonly) UITextView *review;
 @property(strong, nonatomic, readonly) UILabel *date;
+
+@property(strong, nonatomic, readonly) UICollectionView *images;
 
 @property(strong, nonatomic, readonly) HGReviewDetailViewModel *viewModel;
 

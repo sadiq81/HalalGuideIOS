@@ -71,7 +71,7 @@
         make.top.equalTo(self.submitterView.mas_bottom);
         make.left.equalTo(self);
         make.right.equalTo(self);
-        make.height.equalTo(@(260+76));
+        make.height.equalTo(@(260+76+16));
         make.bottom.equalTo(self);
     }];
 

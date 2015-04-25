@@ -27,7 +27,7 @@
 }
 
 
-@synthesize saving, progress, fetchCount, error;
+@synthesize progress, fetchCount, error;
 
 - (instancetype)init {
     self = [super init];

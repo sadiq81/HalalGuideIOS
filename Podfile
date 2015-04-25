@@ -14,9 +14,7 @@ pod 'ReactiveCocoa', '2.4.7'
 #Networking
 pod 'AFNetworking', '2.5.0'
 pod 'AFNetworking-RACExtensions', '0.1.6'
-pod 'SDWebImage', '3.7.1'
 pod 'AsyncImageView', '1.5.1'
-pod 'UIActivityIndicator-for-SDWebImage', '1.2'
 
 # UI
 pod 'MZFormSheetController', '2.3.6'

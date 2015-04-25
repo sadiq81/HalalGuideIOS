@@ -15,4 +15,6 @@
 
 #endif
 
+#define kStandardOffsetToEdges 8
+
 #endif

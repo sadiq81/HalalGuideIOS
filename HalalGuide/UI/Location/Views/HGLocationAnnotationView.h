@@ -8,7 +8,8 @@
 
 
 @interface HGLocationAnnotationView : MKAnnotationView
-@property UIImageView *thumbnail;
+
+@property AsyncImageView *thumbnail;
 
 - (void)configureLocation;
 @end

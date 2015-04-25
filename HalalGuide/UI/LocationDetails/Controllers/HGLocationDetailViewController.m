@@ -116,16 +116,12 @@
 - (void)setupViewModel {
 
     [[RACObserve(self.viewModel, progress) skip:1] subscribeNext:^(NSNumber *progress) {
-        if (progress.intValue != 0 && progress.intValue < 99) {
-            if ([SVProgressHUD isVisible]) {
-                [SVProgressHUD setStatus:[self percentageString:progress.floatValue]];
-            } else {
+        if (progress.intValue == 1) {
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"HGLocationDetailViewController.hud.saving", nil) maskType:SVProgressHUDMaskTypeBlack];
+        } else if (progress.intValue > 1 && progress.intValue < 99) {
                 [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
-            }
-        } else if (progress.intValue >= 99) {
+        } else if (progress.intValue == 100) {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"HGLocationDetailViewController.hud.images.saved", nil)];
-        } else {
-            [SVProgressHUD dismiss];
         }
     }];
 
@@ -215,7 +211,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90;
+    return 90+41-16-8;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -294,7 +290,7 @@
         make.right.equalTo(self.reviews);
         make.left.equalTo(self.reviews);
         make.width.equalTo(self.view);
-        make.height.equalTo(@(428+76));
+        make.height.equalTo(@(428+76+16));
     }];
 
     [self.reviews sizeHeaderToFit];

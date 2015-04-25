@@ -7,7 +7,6 @@
 #import "HGMosqueCell.h"
 #import "HGPictureService.h"
 #import "HGLocationPicture.h"
-#import "UIImageView+WebCache.h"
 #import "HGLocation.h"
 
 @interface HGMosqueCell ()

@@ -8,11 +8,11 @@
 #import "HGReview.h"
 #import "HGReviewService.h"
 #import "HGErrorReporting.h"
+#import "HGPictureService.h"
 
 @interface HGCreateReviewViewModel ()
 
 @property (nonatomic, strong) HGLocation *location;
-@property (nonatomic, strong) HGReview *createdReview;
 
 @end
 
@@ -24,6 +24,7 @@
     self = [super init];
     if (self) {
         self.location = reviewedLocation;
+        self.images = [NSArray new];
     }
 
     return self;
@@ -42,14 +43,48 @@
     review.locationId = self.location.objectId;
     review.creationStatus = @(CreationStatusAwaitingApproval);
 
-    self.saving = true;
-    [[HGReviewService instance] saveReview:review onCompletion:^(BOOL succeeded, NSError *error) {
-        self.saving = false;
-        if ((self.error = error)) {
-            [[HGErrorReporting instance] reportError:error];
-        } else {
-            self.createdReview = review;
-        }
+    self.progress = 1;
+
+    [[[[self saveReview:review] then:^RACSignal * {
+        return ([self.images count] > 0) ? [self saveImagesForReview:review] :[RACSignal empty];
+    }] finally:^{
+        self.progress = 100;
+    }] subscribeError:^(NSError *error) {
+        self.error = error;
+        [review deleteEventually];
+    }];
+
+}
+
+- (RACSignal *)saveReview:(HGReview *)review {
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        [[HGReviewService instance] saveReview:review onCompletion:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                [subscriber sendNext:@(succeeded)];
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError:error];
+            }
+        }];
+        return nil;
+    }];
+}
+
+- (RACSignal *)saveImagesForReview:(HGReview *)review {
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        [[HGPictureService instance] saveMultiplePictures:self.images forReview:review completion:^(BOOL completed, NSError *error, NSNumber *progress) {
+            if (progress) {
+                self.progress = progress.intValue;
+                [subscriber sendNext:progress];
+            }
+            if (completed) {
+                [subscriber sendCompleted];
+            }
+            if (error) {
+                [subscriber sendError:error];
+            }
+        }];
+        return nil;
     }];
 }
 

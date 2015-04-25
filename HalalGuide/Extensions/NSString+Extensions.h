@@ -8,4 +8,6 @@
 @interface NSString (Extensions)
 
 - (NSString *)urlEncode;
+
+- (NSURL *)toURL;
 @end

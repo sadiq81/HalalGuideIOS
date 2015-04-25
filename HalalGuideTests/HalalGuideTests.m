@@ -10,6 +10,21 @@
 #import <XCTest/XCTest.h>
 #import "HGAddressService.h"
 
+/*
+
+Lav ny lokation uden billeder -> intet review
+Lav ny lokation uden billeder -> lav review uden billeder
+Lav ny lokation med billeder -> intet review
+Lav ny lokation med billeder -> lav review med billeder
+
+Lav nyt review uden billeder
+Lav nyt review med billeder
+
+Tilføj billeder til eksisterende lokation$12345678901234567890
+
+ */
+
+
 @interface HalalGuideTests : XCTestCase
 
 @end
@@ -39,6 +54,8 @@
 
     }];
 }
+
+
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.

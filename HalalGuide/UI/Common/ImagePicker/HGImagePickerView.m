@@ -22,7 +22,6 @@
 
 @property(strong) PHCachingImageManager *imageManager;
 @property(strong) PHFetchResult *assetsFetchResult;
-@property(strong) PHAssetCollection *assetCollection;
 @end
 
 @implementation HGImagePickerView {
@@ -74,10 +73,9 @@
 
     self.imageManager = (PHCachingImageManager *) [PHCachingImageManager defaultManager];
 
-    PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil];
-    PHCollection *collection = smartAlbums.firstObject;
-    self.assetCollection = (PHAssetCollection *) collection;
-    self.assetsFetchResult = [PHAsset fetchAssetsInAssetCollection:self.assetCollection options:nil];
+    PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
+    fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+    self.assetsFetchResult= [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:fetchOptions];
 
     @weakify(self)
     [[RACObserve(self, selectedItems) ignore:nil] subscribeNext:^(NSArray *selectedItems) {

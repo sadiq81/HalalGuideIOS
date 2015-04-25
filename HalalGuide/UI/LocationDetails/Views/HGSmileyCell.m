@@ -5,13 +5,14 @@
 
 #import <Masonry/MASConstraintMaker.h>
 #import <Masonry/View+MASAdditions.h>
+#import <AsyncImageView/AsyncImageView.h>
 #import "HGSmileyCell.h"
 #import "HGSmiley.h"
-#import "UIImageView+WebCache.h"
+#import "NSString+Extensions.h"
 
 @interface HGSmileyCell()
 
-@property (strong, nonatomic) UIImageView *smileyType;
+@property (strong, nonatomic) AsyncImageView *smileyType;
 @property (strong, nonatomic) UILabel *date;
 @property (strong, nonatomic) HGSmiley *smiley;
 
@@ -32,7 +33,7 @@
 }
 
 - (void)setupViews {
-    self.smileyType = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.smileyType = [[AsyncImageView alloc] initWithFrame:CGRectZero];
     [self addSubview:self.smileyType];
 
     self.date = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -44,7 +45,7 @@
 
     self.smiley = hgSmiley;
 
-    [self.smileyType sd_setImageWithURL:[[NSURL alloc] initWithString:hgSmiley.smiley]];
+    self.smileyType.imageURL = hgSmiley.smiley.toURL;
 
     self.date.font = [UIFont systemFontOfSize:10];
     self.date.textAlignment = NSTextAlignmentCenter;

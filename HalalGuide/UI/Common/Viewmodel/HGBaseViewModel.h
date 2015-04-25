@@ -25,7 +25,6 @@
 @interface HGBaseViewModel : NSObject <PFLogInViewControllerDelegate> {
 }
 
-@property(nonatomic) BOOL saving;
 @property(nonatomic) int progress;
 @property(nonatomic) NSUInteger fetchCount;
 @property(nonatomic) NSError *error;

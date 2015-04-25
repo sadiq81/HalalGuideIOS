@@ -13,9 +13,9 @@
 @interface HGCreateReviewViewModel : HGBaseViewModel
 
 @property (nonatomic, strong, readonly) HGLocation *location;
-@property (nonatomic, strong, readonly) HGReview *createdReview;
 @property (nonatomic, strong) NSString *reviewText;
 @property (nonatomic, strong) NSNumber *rating;
+@property (nonatomic, strong) NSArray *images;
 
 - (instancetype)initWithReviewedLocation:(HGLocation *)reviewedLocation;
 
