@@ -261,11 +261,12 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGCreateLocationViewController.alert.message.location.saved" = "Dit forslag er blevet indsendt til godkendelse, vil du tilføje en anmeldelse";
 "HGCreateLocationViewController.alert.cancel.done" = "Nej tak";
 "HGCreateLocationViewController.alert.add.review" = "Jo tak";
-
+"HGCreateLocationViewController.button.add.picture" = "Tilføj billede";
 
 "HGFavoriteViewController.label.no.favorites" = "Du har ikke tilføjet nogen favoritter";
 "HGFavoriteViewController.title" = "Favoritter";
 "HGFavoriteViewController.hud.fetching" = "Opdaterer";
 "HGFavoriteViewController.hud.error" = "Der er sket en ukendt fejl";
+
 
 

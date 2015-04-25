@@ -265,10 +265,12 @@
 "HGCreateLocationViewController.alert.message.location.saved" = "Your suggestion has been submitted for approval, would you like to add a review";
 "HGCreateLocationViewController.alert.cancel.done" = "No thank you";
 "HGCreateLocationViewController.alert.add.review" = "Yes please";
+"HGCreateLocationViewController.button.add.picture" = "Add pictures";
 
 "HGFavoriteViewController.label.no.favorites" = "You have not added any favorites";
 "HGFavoriteViewController.title" = "Favorites";
 "HGFavoriteViewController.hud.fetching" = "Updating";
 "HGFavoriteViewController.hud.error" = "An unknown error has occured";
+
 
 
