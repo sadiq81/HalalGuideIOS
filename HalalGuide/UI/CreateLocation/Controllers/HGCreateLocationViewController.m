@@ -24,11 +24,17 @@
 #import <Masonry/View+MASAdditions.h>
 #import <MZFormSheetController/MZFormSheetController.h>
 #import "UIAlertController+Blocks.m"
+#import "HGReviewPictureCell.h"
+#import "HGNewLocationPictureCell.h"
 
-@interface HGCreateLocationViewController () <UINavigationControllerDelegate, HTAutocompleteDataSource, UITextFieldDelegate, HGImagePickerControllerDelegate>
+@interface HGCreateLocationViewController () <UINavigationControllerDelegate, HTAutocompleteDataSource, UITextFieldDelegate, HGImagePickerControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property(strong, nonatomic) UIScrollView *scrollView;
-@property(strong, nonatomic) KASlideShow *pickImage;
+
+@property(strong, nonatomic) UICollectionViewFlowLayout *layout;
+@property(strong, nonatomic) UICollectionView *images;
+
+@property(strong, nonatomic) UIButton *pickImage;
 @property(strong, nonatomic) UITextField *name;
 @property(strong, nonatomic) HTAutocompleteTextField *road;
 @property(strong, nonatomic) HTAutocompleteTextField *roadNumber;
@@ -71,6 +77,7 @@
     [super viewDidLoad];
 
     [self setupViews];
+    [self setupCollectionView];
     [self setupNavigationBar];
     [self setupViewModel];
     [self setupIQKeyboardReturnKeyHandler];
@@ -85,9 +92,19 @@
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.scrollView];
 
-    self.pickImage = [[KASlideShow alloc] initWithFrame:CGRectZero];
-    self.pickImage.imagesContentMode = UIViewContentModeScaleAspectFill;
-    [self.pickImage addImage:[UIImage imageNamed:@"HGCreateLocationViewController.button.pick.image"]];
+    self.layout = [[UICollectionViewFlowLayout alloc] init];
+    self.layout.minimumInteritemSpacing = 0.0f;
+    self.layout.minimumLineSpacing = 0.0f;
+
+    self.images = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.layout];
+    [self.scrollView addSubview:self.images];
+
+    self.pickImage = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.pickImage setTitle:NSLocalizedString(@"HGCreateLocationViewController.button.add.picture", nil) forState:UIControlStateNormal];
+    [self.pickImage setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.pickImage.layer.cornerRadius = 5;
+    self.pickImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.pickImage.layer.borderWidth = 0.5;
     [self.scrollView addSubview:self.pickImage];
 
     self.name = [[UITextField alloc] initWithFrame:CGRectZero];
@@ -209,6 +226,10 @@
         };
         [self mz_presentFormSheetController:formSheet animated:YES completionHandler:nil];
     }];
+
+    RAC(self.pickImage, hidden) = [[RACObserve(self.viewModel, images) ignore:nil] map:^id(NSArray *value) {
+        return @([value count]);
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -245,6 +266,41 @@
                                                 }];
 }
 
+- (void)setupCollectionView {
+
+    self.images.delegate = self;
+    self.images.dataSource = self;
+
+    self.layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+
+    self.images.backgroundColor = [UIColor clearColor];
+    [self.images registerClass:[HGNewLocationPictureCell class] forCellWithReuseIdentifier:@"HGNewLocationPictureCell"];
+
+}
+
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
+    return [self.viewModel.images count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    HGNewLocationPictureCell *cell = (HGNewLocationPictureCell *) [self.images dequeueReusableCellWithReuseIdentifier:@"HGNewLocationPictureCell" forIndexPath:indexPath];
+    cell.imageView.image = [self.viewModel.images objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:true];
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.viewModel.images];
+    [array removeObjectAtIndex:indexPath.item];
+    self.viewModel.images = array;
+    [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+}
+
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(100, 100);
+}
+
 
 #pragma mark - AutoComplete
 
@@ -277,10 +333,7 @@
 - (void)HGImagePickerControllerDidConfirm:(HGImagePickerController *)controller pictures:(NSArray *)pictures {
     [controller.presentingViewController dismissViewControllerAnimated:true completion:^{
         self.viewModel.images = pictures;
-        [self.pickImage emptyAndAddImages:self.viewModel.images];
-        if ([self.viewModel.images count] > 1) {
-            [self.pickImage start];
-        }
+        [self.images reloadData];
     }];
 }
 
@@ -288,6 +341,13 @@
 
     [self.scrollView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
+    }];
+
+    [self.images mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.scrollView).offset(8);
+        make.top.equalTo(self.scrollView).offset(8);
+        make.width.equalTo(@(104));
+        make.bottom.equalTo(self.website.mas_bottom);
     }];
 
     [self.pickImage mas_updateConstraints:^(MASConstraintMaker *make) {
