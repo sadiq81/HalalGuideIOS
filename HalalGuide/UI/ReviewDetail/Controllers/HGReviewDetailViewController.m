@@ -45,6 +45,8 @@
         [self setupViewModel];
         [self setupCollectionView];
         [self updateViewConstraints];
+
+        [PFAnalytics trackEvent:@"ReviewDetailView" dimensions:@{@"Review" :self.viewModel.review.objectId}];
     }
 
     return self;

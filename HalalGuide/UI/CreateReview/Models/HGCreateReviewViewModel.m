@@ -23,6 +23,7 @@
 - (instancetype)initWithReviewedLocation:(HGLocation *)reviewedLocation {
     self = [super init];
     if (self) {
+
         self.location = reviewedLocation;
         self.images = [NSArray new];
     }
@@ -49,6 +50,7 @@
         return ([self.images count] > 0) ? [self saveImagesForReview:review] :[RACSignal empty];
     }] finally:^{
         self.progress = 100;
+        [PFAnalytics trackEvent:@"CreateReviewView" dimensions:@{@"Location":review.locationId}];
     }] subscribeError:^(NSError *error) {
         self.error = error;
         [review deleteEventually];

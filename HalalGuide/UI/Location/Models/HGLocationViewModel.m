@@ -160,6 +160,7 @@
 }
 
 - (void)setSearchText:(NSString *)searchText1 {
+    [PFAnalytics trackEvent:@"LocationTextSearch" dimensions:@{@"searchText":searchText1}];
     searchText = searchText1;
     listLocations = [NSArray new];
     listLocations = [NSArray new];
@@ -181,6 +182,7 @@
 }
 
 - (void)setMaximumDistance:(NSNumber *)maximumDistance {
+    [PFAnalytics trackEvent:@"LocationMaximumDistanceSearch" dimensions:@{@"maximumDistance":maximumDistance}];
     [self willChangeValueForKey:@"maximumDistance"];
     switch (self.locationType) {
         case LocationTypeShop:
@@ -198,6 +200,7 @@
 }
 
 - (void)setShowNonHalal:(NSNumber *)showNonHalal {
+    [PFAnalytics trackEvent:@"LocationNonHalalSearch" dimensions:@{@"showNonHalal":showNonHalal}];
     [self willChangeValueForKey:@"showNonHalal"];
     [HGSettings instance].halalFilter = showNonHalal;
     [self didChangeValueForKey:@"showNonHalal"];
@@ -208,6 +211,7 @@
 }
 
 - (void)setShowAlcohol:(NSNumber *)showAlcohol {
+    [PFAnalytics trackEvent:@"LocationshowAlcoholSearch" dimensions:@{@"showAlcohol":showAlcohol}];
     [self willChangeValueForKey:@"showAlcohol"];
     [HGSettings instance].alcoholFilter = showAlcohol;
     [self didChangeValueForKey:@"showAlcohol"];
@@ -218,6 +222,7 @@
 }
 
 - (void)setShowPork:(NSNumber *)showPork {
+    [PFAnalytics trackEvent:@"LocationShowPorkSearch" dimensions:@{@"showPork":showPork}];
     [self willChangeValueForKey:@"showPork"];
     [HGSettings instance].porkFilter = showPork;
     [self didChangeValueForKey:@"showPork"];
@@ -229,6 +234,7 @@
 }
 
 - (void)setCategories:(NSMutableArray *)categories {
+    [PFAnalytics trackEvent:@"LocationCategoriesSearch" dimensions:@{@"categories":categories}];
     [self willChangeValueForKey:@"categories"];
     [HGSettings instance].categoriesFilter = categories;
     [self didChangeValueForKey:@"categories"];
@@ -239,6 +245,7 @@
 }
 
 - (void)setShopCategories:(NSMutableArray *)shopCategories {
+    [PFAnalytics trackEvent:@"LocationShopCategoriesSearch" dimensions:@{@"shopCategories":shopCategories}];
     [self willChangeValueForKey:@"shopCategories"];
     [HGSettings instance].shopCategoriesFilter = shopCategories;
     [self didChangeValueForKey:@"shopCategories"];
@@ -249,6 +256,7 @@
 }
 
 - (void)setLanguage:(Language)language {
+    [PFAnalytics trackEvent:@"LocationLanguageSearch" dimensions:@{@"language":@(language)}];
     [self willChangeValueForKey:@"language"];
     [HGSettings instance].language = language;
     [self didChangeValueForKey:@"language"];

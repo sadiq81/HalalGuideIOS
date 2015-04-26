@@ -47,8 +47,6 @@
     [self.defaults setBool:false forKey:kDiningCellAlcoholOnBoardingKey];
     [self.defaults setBool:false forKey:kDiningCellHalalOnBoardingKey];
 
-    [self.defaults setBool:false forKey:kCreateLocationPickImageOnBoardingKey];
-
     [self.defaults setBool:false forKey:kDiningDetailAddressTelephoneOptionsOnBoardingKey];
 
 

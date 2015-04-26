@@ -17,10 +17,9 @@ Lav ny lokation uden billeder -> lav review uden billeder
 Lav ny lokation med billeder -> intet review
 Lav ny lokation med billeder -> lav review med billeder
 
-Lav nyt review uden billeder
-Lav nyt review med billeder
-
-Tilføj billeder til eksisterende lokation$12345678901234567890
+Tilføj billeder til eksisterende lokation
+Tilføj review til eksisterende lokation uden billeder
+Tilføj review til eksisterende lokation med billeder
 
  */
 
@@ -43,16 +42,7 @@ Tilføj billeder til eksisterende lokation$12345678901234567890
 
 - (void)testExample {
     // This is an example of a functional test case.
-//    [[HGAddressService instance] doesAddressExist:@"Humlebækgade" :@"16" :@"2200" :^(HGAdgangsadresse *address) {
-//
-//    }];
-//    [[HGAddressService instance] cityNameFor:@"2200" :^(NSString *cityName) {
-//
-//    }];
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:55.690392 longitude:12.542331];
-    [HGAddressService addressNearPosition:loc onCompletion:^(NSArray *address) {
 
-    }];
 }
 
 

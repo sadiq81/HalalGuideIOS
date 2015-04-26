@@ -8,6 +8,7 @@
 
 @interface HGReviewDetailViewModel : NSObject
 
+@property(strong, nonatomic, readonly) HGReview *review;
 @property(strong, nonatomic, readonly) NSURL *submitterImage;
 @property(strong, nonatomic, readonly) NSURL *submitterImageLarge;
 @property(strong, nonatomic, readonly) NSString *submitterName;

@@ -58,6 +58,7 @@
     self = [super init];
     if (self) {
         self.location = location;
+
         [self setup];
     }
 
@@ -181,6 +182,9 @@
 }
 
 -(void) setFavorised:(BOOL) favorized{
+
+    [PFAnalytics trackEvent:@"Favorised" dimensions:@{@"favorized":@(favorized), @"Location":self.location.objectId}];
+
     if (favorized){
         NSMutableArray *favorites = [HGSettings instance].favorites;
         [favorites addObject:self.location.objectId];
