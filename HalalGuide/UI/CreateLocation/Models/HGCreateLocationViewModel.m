@@ -29,6 +29,7 @@
 - (instancetype)initWithLocationType:(LocationType)type {
     self = [super init];
     if (self) {
+
         locationType = type;
         streetDictionary = [NSDictionary new];
         categories = [[NSMutableArray alloc] init];
@@ -97,6 +98,7 @@
     }] finally:^{
         self.createdLocation = location;
         self.progress= 100;
+        [PFAnalytics trackEvent:@"CreateLocation" dimensions:@{@"LocationType":@(locationType)}];
     }] subscribeError:^(NSError *error) {
         self.error = error;
         [location deleteEventually];

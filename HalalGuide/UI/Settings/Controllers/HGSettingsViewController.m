@@ -32,6 +32,8 @@
     if (self) {
         [self setupViews];
         [self updateViewConstraints];
+
+        [PFAnalytics trackEvent:@"SettingsView" dimensions:nil];
     }
 
     return self;
