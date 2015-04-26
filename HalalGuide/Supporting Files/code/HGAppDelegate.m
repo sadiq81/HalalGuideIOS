@@ -25,14 +25,17 @@
 #import "ZLPromptUserReview.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <ALActionBlocks/UIGestureRecognizer+ALActionBlocks.h>
 #import "Constants.h"
 #import "PFFacebookUtils.h"
 #import "FBSDKAppEvents.h"
 #import "FBSDKApplicationDelegate.h"
 #import "HGFrontPageViewModel.h"
 #import "HGSmileyScraper.h"
+#import "HGChatViewController.h"
+#import "HGChatViewModel.h"
 
-@interface HGAppDelegate ()
+@interface HGAppDelegate () <UIGestureRecognizerDelegate>
 
 @property(strong, nonatomic) UINavigationController *navigationController;
 
@@ -124,7 +127,19 @@
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
 
+    UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
+        HGChatViewController *vc = [HGChatViewController controllerWithViewModel:[[HGChatViewModel alloc] init]];
+        UINavigationController *navChat = [[UINavigationController alloc] initWithRootViewController:vc];
+        [nav presentViewController:navChat animated:true completion:nil];
+    }];
+    tripleTap.delegate = self;
+    tripleTap.numberOfTapsRequired = 3;
+    [nav.navigationBar addGestureRecognizer:tripleTap];
     return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return (![[[touch view] class] isSubclassOfClass:[UIControl class]]);
 }
 
 

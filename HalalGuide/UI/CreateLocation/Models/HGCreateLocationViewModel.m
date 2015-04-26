@@ -98,7 +98,7 @@
     }] finally:^{
         self.createdLocation = location;
         self.progress= 100;
-        [PFAnalytics trackEvent:@"CreateLocation" dimensions:@{@"LocationType":@(locationType)}];
+        [PFAnalytics trackEvent:@"CreateLocation" dimensions:@{@"LocationType":@(locationType).stringValue}];
     }] subscribeError:^(NSError *error) {
         self.error = error;
         [location deleteEventually];

@@ -261,9 +261,10 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGCreateLocationViewController.alert.add.review" = "Jo tak";
 "HGCreateLocationViewController.button.add.picture" = "Tilføj billede";
 
-
 "HGFavoriteViewController.label.no.favorites" = "Du har ikke tilføjet nogen favoritter";
 "HGFavoriteViewController.title" = "Favoritter";
 "HGFavoriteViewController.hud.fetching" = "Opdaterer";
 "HGFavoriteViewController.hud.error" = "Der er sket en ukendt fejl";
 
+"HGChatViewController.button.close" = "Luk";
+"HGChatViewController.button.new.subject" = "Nyt emne";

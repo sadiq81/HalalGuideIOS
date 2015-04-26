@@ -158,7 +158,7 @@
         self.tableView.alpha = fabs(self.tableView.alpha - 1);
 
         [self.presentationMode setTitle:(self.mapView.alpha == 1 ? NSLocalizedString(@"HGLocationViewController.button.list", nil) : NSLocalizedString(@"HGLocationViewController.button.map", nil))];
-        [PFAnalytics trackEvent:@"PresentationMode" dimensions:self.presentationMode.title];
+        [PFAnalytics trackEvent:@"PresentationMode" dimensions:@{@"PresentationMode" : self.presentationMode.title}];
         self.viewModel.locationPresentation = self.mapView.alpha == 1 ? LocationPresentationMap : LocationPresentationList;
         [self.viewModel refreshLocations];
     }];

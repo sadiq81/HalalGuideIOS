@@ -19,6 +19,7 @@
 #import "HGSettingsViewController.h"
 #import "HGFavoriteViewModel.h"
 #import "HGFavoriteViewController.h"
+#import "HGFloatingChatButton.h"
 
 @interface HGFrontPageViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) UIView *topView;
@@ -112,6 +113,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero];
 
     [self.view addSubview:self.tableView];
+
 
 }
 

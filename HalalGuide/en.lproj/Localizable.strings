@@ -270,5 +270,5 @@
 "HGFavoriteViewController.hud.fetching" = "Updating";
 "HGFavoriteViewController.hud.error" = "An unknown error has occured";
 
-
-
+"HGChatViewController.button.close" = "Close";
+"HGChatViewController.button.new.subject" = "New subject";
