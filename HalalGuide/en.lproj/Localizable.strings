@@ -272,3 +272,5 @@
 
 "HGChatViewController.button.close" = "Close";
 "HGChatViewController.button.new.subject" = "New subject";
+"HGChatViewController.cell.detail.text.label.single" = "%@ message (%@)";
+"HGChatViewController.cell.detail.text.label.multiple" = "%@ messages (last message: %@)";

@@ -9,6 +9,7 @@
 #import "HGChatViewModel.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "HGSubject.h"
+#import "DateTools.h"
 
 
 @interface HGChatViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -51,7 +52,7 @@
         [self dismissViewControllerAnimated:true completion:nil];
     }];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGChatViewController.button.new.subject", nil) style:UIBarButtonItemStylePlain block:^(id weakSender) {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"HGChatViewController.button.new.subject"] style:UIBarButtonItemStylePlain block:^(id weakSender) {
 
     }];
 
@@ -102,7 +103,15 @@ static NSString *cellIdentifier = @"сellIdentifier";
     }
     HGSubject *subject = [self.viewModel.subjects objectAtIndex:indexPath.row];
     cell.textLabel.text =subject.title;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",subject.count,subject.lastMessage];
+
+    if (subject.count.intValue > 1){
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGChatViewController.cell.detail.text.label.multiple", nil),subject.count,subject.lastMessage.timeAgoSinceNow];
+    } else{
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGChatViewController.cell.detail.text.label.single", nil),subject.count,subject.lastMessage.timeAgoSinceNow];
+    }
+
+
+
 
     return cell;
 }
