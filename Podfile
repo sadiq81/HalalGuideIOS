@@ -43,6 +43,7 @@ pod 'ParseFacebookUtilsV4', '1.7.1'
 pod 'RMStore', '~> 0.7'
 
 pod 'HTMLReader'
+pod 'DateTools'
 
 post_install do | installer |
   require 'fileutils'
