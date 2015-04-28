@@ -3,17 +3,17 @@
 // Copyright (c) 2015 Eazy It. All rights reserved.
 //
 
-#import "HGChatViewModel.h"
+#import "HGSubjectsViewModel.h"
 #import "HGErrorReporting.h"
 #import "HGChatService.h"
 
-@interface HGChatViewModel()
+@interface HGSubjectsViewModel ()
 
 @property (nonatomic, strong) NSArray *subjects;
 
 @end
 
-@implementation HGChatViewModel {
+@implementation HGSubjectsViewModel {
 
 }
 

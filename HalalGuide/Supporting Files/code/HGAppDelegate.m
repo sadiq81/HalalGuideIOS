@@ -32,8 +32,8 @@
 #import "FBSDKApplicationDelegate.h"
 #import "HGFrontPageViewModel.h"
 #import "HGSmileyScraper.h"
-#import "HGChatViewController.h"
-#import "HGChatViewModel.h"
+#import "HGSubjectsChatViewController.h"
+#import "HGSubjectsViewModel.h"
 
 @interface HGAppDelegate () <UIGestureRecognizerDelegate>
 
@@ -128,7 +128,7 @@
     [self.window makeKeyAndVisible];
 
     UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
-        HGChatViewController *vc = [HGChatViewController controllerWithViewModel:[[HGChatViewModel alloc] init]];
+        HGSubjectsChatViewController *vc = [HGSubjectsChatViewController controllerWithViewModel:[[HGSubjectsViewModel alloc] init]];
         UINavigationController *navChat = [[UINavigationController alloc] initWithRootViewController:vc];
         [nav presentViewController:navChat animated:true completion:nil];
     }];
