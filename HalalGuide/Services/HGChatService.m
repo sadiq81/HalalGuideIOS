@@ -5,6 +5,7 @@
 
 #import "HGChatService.h"
 #import "HGSubject.h"
+#import "HGMessage.h"
 
 @implementation HGChatService {
 
@@ -25,6 +26,15 @@
 
     PFQuery *query = [PFQuery queryWithClassName:kSubjectTableName];
     [query orderByDescending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:completion];
+
+}
+
+- (void)getMessagesForSubject:(HGSubject *)subject withCompletion:(void (^)(NSArray *, NSError *))completion {
+
+    PFQuery *query = [PFQuery queryWithClassName:kMessageTableName];
+    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"subjectId" equalTo:subject.objectId];
     [query findObjectsInBackgroundWithBlock:completion];
 
 }

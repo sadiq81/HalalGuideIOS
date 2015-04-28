@@ -266,7 +266,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGFavoriteViewController.hud.fetching" = "Opdaterer";
 "HGFavoriteViewController.hud.error" = "Der er sket en ukendt fejl";
 
-"HGChatViewController.button.close" = "Luk";
-"HGChatViewController.button.new.subject" = "Nyt emne";
-"HGChatViewController.cell.detail.text.label.single" = "%@ besked (%@)";
-"HGChatViewController.cell.detail.text.label.multiple" = "%@ beskeder (sidste besked: %@)";
+"HGSubjectsChatViewController.button.close" = "Luk";
+"HGSubjectsChatViewController.button.new.subject" = "Nyt emne";
+"HGSubjectsChatViewController.cell.detail.text.label.single" = "%@ besked (%@)";
+"HGSubjectsChatViewController.cell.detail.text.label.multiple" = "%@ beskeder (sidste besked: %@)";

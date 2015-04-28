@@ -7,7 +7,7 @@
 #import "HGBaseViewModel.h"
 
 
-@interface HGChatViewModel : HGBaseViewModel
+@interface HGSubjectsViewModel : HGBaseViewModel
 
 @property (nonatomic, strong, readonly) NSArray *subjects;
 
