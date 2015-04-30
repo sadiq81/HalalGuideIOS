@@ -4,23 +4,23 @@
 //
 
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
-#import "HGSubjectsChatViewController.h"
+#import "HGSubjectsViewController.h"
 #import "Masonry.h"
 #import "HGSubjectsViewModel.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "HGSubject.h"
 #import "DateTools.h"
-#import "HGMessagesChatViewController.h"
+#import "HGMessagesViewController.h"
 
 
-@interface HGSubjectsChatViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HGSubjectsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property(strong, nonatomic) UITableView *subjects;
 @property(strong, nonatomic) HGSubjectsViewModel *viewModel;
 
 @end
 
-@implementation HGSubjectsChatViewController {
+@implementation HGSubjectsViewController {
 
 }
 
@@ -49,7 +49,7 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGSubjectsChatViewController.button.close", nil) style:UIBarButtonItemStylePlain block:^(id weakSender) {
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGSubjectsViewController.button.close", nil) style:UIBarButtonItemStylePlain block:^(id weakSender) {
         [self dismissViewControllerAnimated:true completion:nil];
     }];
 
@@ -106,9 +106,9 @@ static NSString *cellIdentifier = @"сellIdentifier";
     cell.textLabel.text =subject.title;
 
     if (subject.count.intValue > 1){
-        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsChatViewController.cell.detail.text.label.multiple", nil),subject.count,subject.lastMessage.timeAgoSinceNow];
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsViewController.cell.detail.text.label.multiple", nil),subject.count,subject.lastMessage.timeAgoSinceNow];
     } else{
-        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsChatViewController.cell.detail.text.label.single", nil),subject.count,subject.lastMessage.timeAgoSinceNow];
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsViewController.cell.detail.text.label.single", nil),subject.count,subject.lastMessage.timeAgoSinceNow];
     }
 
     return cell;
@@ -116,7 +116,7 @@ static NSString *cellIdentifier = @"сellIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    HGMessagesChatViewController *vc = [[HGMessagesChatViewController alloc] initWithViewModel:[[HGMessagesViewModel alloc] initWithSubject:self.viewModel.subjects[indexPath.row]]];
+    HGMessagesViewController *vc = [[HGMessagesViewController alloc] initWithViewModel:[[HGMessagesViewModel alloc] initWithSubject:self.viewModel.subjects[indexPath.row]]];
     [self.navigationController pushViewController:vc animated:true];
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }

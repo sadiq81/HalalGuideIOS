@@ -69,7 +69,7 @@
 
     [self.chooseButton handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
         [UIView animateWithDuration:1 animations:^{
-            [self.datePickerView setY:self.view.height - self.datePickerView.height];
+            //[self.datePickerView setY:self.view.frame.size.height - self.datePickerView.frame.size.height];
         }];
     }];
 
@@ -100,7 +100,7 @@
 
     [self.finished handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
         [UIView animateWithDuration:1 animations:^{
-            [self.datePickerView setY:self.view.height];
+            //[self.datePickerView setY:self.view.height];
         }];
     }];
 
@@ -151,7 +151,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [self.datePickerView setY:self.view.height];
+    //[self.datePickerView setY:self.view.height];
 }
 
 - (void)updateViewConstraints {

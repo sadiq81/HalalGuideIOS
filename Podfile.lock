@@ -25,7 +25,12 @@ PODS:
     - AFNetworking/NSURLSession
   - ALActionBlocks (1.0.3)
   - AsyncImageView (1.5.1)
-  - Bolts (1.1.4)
+  - Bolts (1.1.5):
+    - Bolts/AppLinks (= 1.1.5)
+    - Bolts/Tasks (= 1.1.5)
+  - Bolts/AppLinks (1.1.5):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.1.5)
   - ClusterPrePermissions (0.5.0)
   - CTAssetsPickerController (2.9.3)
   - DateTools (1.5.0)
@@ -50,8 +55,11 @@ PODS:
   - HTAutocompleteTextField (1.3.1)
   - HTMLReader (0.7.1)
   - iCarousel (1.8.1)
-  - IQKeyboardManager (3.2.0.2)
+  - IQKeyboardManager (3.2.3)
   - JSBadgeView (1.3.2)
+  - JSQMessagesViewController (7.0.1):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - KASlideShow (2.2)
   - LinqToObjectiveC (2.0.0)
   - Masonry (0.6.1)
@@ -99,8 +107,9 @@ DEPENDENCIES:
   - HTAutocompleteTextField (= 1.3.1)
   - HTMLReader
   - iCarousel (= 1.8.1)
-  - IQKeyboardManager (= 3.2.0.2)
+  - IQKeyboardManager (= 3.2.3)
   - JSBadgeView (= 1.3.2)
+  - JSQMessagesViewController (= 7.0.1)
   - KASlideShow (from `https://github.com/sadiq81/KASlideShow.git`)
   - LinqToObjectiveC (= 2.0.0)
   - Masonry (= 0.6.1)
@@ -123,7 +132,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   KASlideShow:
-    :commit: c6362b2ba94a125e9d5b7fde53c8b874fa71d37b
+    :commit: dd5df54d6ce80bd53a01c7144b79f8908d8d36a1
     :git: https://github.com/sadiq81/KASlideShow.git
 
 SPEC CHECKSUMS:
@@ -131,7 +140,7 @@ SPEC CHECKSUMS:
   AFNetworking-RACExtensions: 501ab1564f5be65e01fe3017cda7bba25764c20d
   ALActionBlocks: ac91b1a37b60a8004fb687ddade0600446f3d3fa
   AsyncImageView: db9433939160710b34a5c249479e03af2a2121b0
-  Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
+  Bolts: aac24961496d504aa56fc267cde95162a71bac39
   ClusterPrePermissions: f7c18aed36022662a05048fffb44b24b9e796cff
   CTAssetsPickerController: 56a4a228dcb48a9375ab8d4922e82ac74af74aa1
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
@@ -141,8 +150,10 @@ SPEC CHECKSUMS:
   HTAutocompleteTextField: 40b3680e7986d8ed70e41452bce6c82ffa401f9d
   HTMLReader: e6ba09514d125f45e810b6c6c1cebf3542f04d89
   iCarousel: dace1cb858e3f4dc2614bee3201041247f82feda
-  IQKeyboardManager: 437647780f4de0947e798df33e3e8ae208d718a5
+  IQKeyboardManager: 6ca5c54e3776eb54af4c7caf515833f3cd761d59
   JSBadgeView: 08284afc9d0eb60069674e517cac2d37d4319208
+  JSQMessagesViewController: 03fba8a3021a3ddc1c91847f180ffe549f2e8cf2
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   KASlideShow: 380f5ecee5f14370c9435ecedccee5b35fb69c5f
   LinqToObjectiveC: 768f98c62d5b57cb6bdb7ab869e33d0a7a2da29c
   Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
@@ -160,4 +171,4 @@ SPEC CHECKSUMS:
   UIAlertController+Blocks: 45787b973b5f2f4ca4f01bc76f4175481ce059b3
   ZLPromptUserReview: 5bdd576d6d85db223579c5ace7583e0b77da63be
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.36.4

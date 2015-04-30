@@ -77,7 +77,9 @@
 		C596B476112C101DC544D6C4 /* HGImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B7FAC825644E24FBC2AF /* HGImagePickerController.m */; };
 		C596B49078BB7FEFC087204A /* HGDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B89248EE903E929F79B1 /* HGDateFormatter.m */; };
 		C596B49C7E9B66F3AE3DC89D /* HGFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B758D5C968C60DCAE4FE /* HGFavoriteViewController.m */; };
-		C596B4ED700B8990DA7DDB9D /* HGSubjectsChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B306BC600A0D7739254B /* HGSubjectsChatViewController.m */; };
+		C596B4E94DE8A6001BE579FD /* HGMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B616FD4379FA5D119141 /* HGMessageViewModel.m */; };
+		C596B4ED700B8990DA7DDB9D /* HGSubjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B306BC600A0D7739254B /* HGSubjectsViewController.m */; };
+		C596B55303B21A4E7CF50346 /* HGMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BF2E81CF851D67CCA0BA /* HGMessageCell.m */; };
 		C596B5F6EC318FC1FE7E3438 /* HGOpeningsHoursViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BC520960B7B7AC91AF2C /* HGOpeningsHoursViewController.m */; };
 		C596B623DE9A9F4CF2B5A628 /* NSArray+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8B64DBAA6F42C225067 /* NSArray+Extensions.m */; };
 		C596B6AB3FEB0CCFBB49E279 /* HGOnboarding.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BBFB5C5F15D132E4FB8E /* HGOnboarding.m */; };
@@ -98,6 +100,7 @@
 		C596B86E7083F827F608D51B /* HGENumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B448202B5ACA4E2E3C56 /* HGENumberViewController.m */; };
 		C596B89E90697DE6DB39E171 /* HGSmileyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B187D2221CA78514EC44 /* HGSmileyCell.m */; };
 		C596B8A7F989CE95D0F7A2D8 /* HGNewLocationPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BCF68BD03C0F421117C8 /* HGNewLocationPictureCell.m */; };
+		C596B8B650EEBB72DE350255 /* HGMessageComposeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B9761EFACE04B9BF4F07 /* HGMessageComposeView.m */; };
 		C596B8DB34E2B6381812F8AE /* HGPictureCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B17A107554CDFDA1F5E1 /* HGPictureCollectionViewCell.m */; };
 		C596B9230EA78FF87B90E5AF /* HGLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1DD04247DEB9EC797A7 /* HGLocationService.m */; };
 		C596B94FB042EB32C89F82D2 /* HGMessagesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B83C13D33039115B99A5 /* HGMessagesViewModel.m */; };
@@ -106,7 +109,7 @@
 		C596B9D6E86AECF2D2AE9317 /* HGDateLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B92001947C1176C5FEB3 /* HGDateLabel.m */; };
 		C596B9F844193490D9A6B3E7 /* UILabel+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BF9C4BB1DDEF86A7E229 /* UILabel+Extensions.m */; };
 		C596BA0D65267A5757B31A37 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8DD34F850AE20E4F562 /* UIImage+ImageEffects.m */; };
-		C596BA339006C41F617167A9 /* HGMessagesChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B01BA33E355ADF9A084A /* HGMessagesChatViewController.m */; };
+		C596BA339006C41F617167A9 /* HGMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B01BA33E355ADF9A084A /* HGMessagesViewController.m */; };
 		C596BA3ED5A6B10A6DC63692 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8311948C4208A914392 /* UIImage+RoundedCorner.m */; };
 		C596BA4C168B98CBDD69F14C /* HGFrontPageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B095770506EA4316DE8D /* HGFrontPageViewModel.m */; };
 		C596BA7CA9398A331DCB5B14 /* HGAdgangsadresse.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8B206E72424A29EC190 /* HGAdgangsadresse.m */; };
@@ -210,7 +213,7 @@
 		A1E0C0571A17D15C00757427 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A1FB7A3B1A225BD6005C10A9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A996AC24EC4EDA46C0F7FC51 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		C596B01BA33E355ADF9A084A /* HGMessagesChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMessagesChatViewController.m; sourceTree = "<group>"; };
+		C596B01BA33E355ADF9A084A /* HGMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMessagesViewController.m; sourceTree = "<group>"; };
 		C596B01FCA8EAA7669298C44 /* HGAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGAPHelper.m; sourceTree = "<group>"; };
 		C596B052C4B3E08E8299DC05 /* HGCategoriesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCategoriesView.h; sourceTree = "<group>"; };
 		C596B095770506EA4316DE8D /* HGFrontPageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFrontPageViewModel.m; sourceTree = "<group>"; };
@@ -249,8 +252,8 @@
 		C596B2BA6F6131F744978A73 /* HGLocationDetailsInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationDetailsInfoView.h; sourceTree = "<group>"; };
 		C596B2BEE34D47BD07513115 /* HGFavoriteViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFavoriteViewModel.m; sourceTree = "<group>"; };
 		C596B2D399745022ABCAE3BF /* HGMessagesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMessagesViewModel.h; sourceTree = "<group>"; };
-		C596B2DD3B93140985042D51 /* HGMessagesChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMessagesChatViewController.h; sourceTree = "<group>"; };
-		C596B306BC600A0D7739254B /* HGSubjectsChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGSubjectsChatViewController.m; sourceTree = "<group>"; };
+		C596B2DD3B93140985042D51 /* HGMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMessagesViewController.h; sourceTree = "<group>"; };
+		C596B306BC600A0D7739254B /* HGSubjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGSubjectsViewController.m; sourceTree = "<group>"; };
 		C596B33B6242998154B15CBF /* HalalGuide-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "HalalGuide-Prefix.pch"; path = "Supporting Files/code/HalalGuide-Prefix.pch"; sourceTree = "<group>"; };
 		C596B36C0FD63D256B3F2DCB /* HGSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSubject.h; sourceTree = "<group>"; };
 		C596B3738DE751A198964235 /* HGSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGSettings.m; sourceTree = "<group>"; };
@@ -272,6 +275,7 @@
 		C596B4996A1C52303B7429B2 /* HGKeyChainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGKeyChainService.m; sourceTree = "<group>"; };
 		C596B49C10458AF4FFB9C6E5 /* HGReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGReviewCell.m; sourceTree = "<group>"; };
 		C596B4A198810C56C2A98F59 /* NSArray+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extensions.h"; sourceTree = "<group>"; };
+		C596B4B834FF6132B4D39923 /* HGMessageComposeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMessageComposeView.h; sourceTree = "<group>"; };
 		C596B4BFCA1F9A4B4A62FCD7 /* HGFrontPageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGFrontPageViewModel.h; sourceTree = "<group>"; };
 		C596B4EACC3587F19182BB9C /* HGCreateReviewViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCreateReviewViewModel.h; sourceTree = "<group>"; };
 		C596B510FD8FEF0BD5B18F29 /* HGSmileyScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSmileyScraper.h; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 		C596B5C4D2BA58493F20E91A /* UILabel+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extensions.h"; sourceTree = "<group>"; };
 		C596B5D58E07AF8F389F05CC /* HGLocationAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationAnnotationView.h; sourceTree = "<group>"; };
 		C596B5D843DA177E94E9C854 /* HGSubjectsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSubjectsViewModel.h; sourceTree = "<group>"; };
+		C596B616FD4379FA5D119141 /* HGMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMessageViewModel.m; sourceTree = "<group>"; };
 		C596B617B13179A872FB16C4 /* HGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGSettingsViewController.m; sourceTree = "<group>"; };
 		C596B619AECBB263C4ED02FE /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		C596B61E35EBAAF16E0A862C /* PFUser+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+Extension.m"; sourceTree = "<group>"; };
@@ -291,6 +296,7 @@
 		C596B63A5A8D68252431C209 /* POPAnimatableProperty+Masonry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "POPAnimatableProperty+Masonry.m"; path = "../../../../Github/MSSPopMasonry/Classes/POPAnimatableProperty+Masonry.m"; sourceTree = "<group>"; };
 		C596B63FF637CC5C378F65BD /* HGNewLocationPictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGNewLocationPictureCell.h; sourceTree = "<group>"; };
 		C596B6AEE98BF10F36A5EE4F /* HGDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDateFormatter.h; sourceTree = "<group>"; };
+		C596B6B3DA4C6A3F7EC01132 /* HGMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMessageViewModel.h; sourceTree = "<group>"; };
 		C596B6C0CFD3342E24E5456B /* HGFrontPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGFrontPageViewController.h; sourceTree = "<group>"; };
 		C596B6C54266ADCF90699C2C /* HGReviewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGReviewDetailViewController.h; sourceTree = "<group>"; };
 		C596B6CE739E70F382513989 /* UIView+HGBorders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HGBorders.h"; sourceTree = "<group>"; };
@@ -306,6 +312,7 @@
 		C596B780F08F48C8D0B678AC /* HGDateLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDateLabel.h; sourceTree = "<group>"; };
 		C596B79E0059E6A5BCD8FF94 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C596B7C97FD0BD93897A2C74 /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
+		C596B7DB586A258AAE4B5934 /* HGMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMessageCell.h; sourceTree = "<group>"; };
 		C596B7E5734E8EADA485E174 /* HGLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationViewController.h; sourceTree = "<group>"; };
 		C596B7F7192CA4ADB4DCF721 /* HGNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGNumberFormatter.h; sourceTree = "<group>"; };
 		C596B7FAC825644E24FBC2AF /* HGImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGImagePickerController.m; sourceTree = "<group>"; };
@@ -331,6 +338,7 @@
 		C596B92001947C1176C5FEB3 /* HGDateLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGDateLabel.m; sourceTree = "<group>"; };
 		C596B93B04F46BEA58B37FB8 /* sax.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sax.js; sourceTree = "<group>"; };
 		C596B95502F0A2B21EAE6D4A /* HGReviewDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGReviewDetailViewModel.m; sourceTree = "<group>"; };
+		C596B9761EFACE04B9BF4F07 /* HGMessageComposeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMessageComposeView.m; sourceTree = "<group>"; };
 		C596B99CB389710885488A19 /* NSMutableString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Extensions.h"; sourceTree = "<group>"; };
 		C596B9ABFC2B3E6D74D16247 /* HGImagePickerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGImagePickerButton.h; sourceTree = "<group>"; };
 		C596B9BAE9FFF82DAA77ED1A /* HGSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSettings.h; sourceTree = "<group>"; };
@@ -395,7 +403,7 @@
 		C596BE68C9B7BA266DB045B5 /* HGLocationDetailsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationDetailsHeaderView.m; sourceTree = "<group>"; };
 		C596BE71AE285B679A9C7D10 /* HGButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGButtonView.h; sourceTree = "<group>"; };
 		C596BE8363C114D0457835B3 /* HGLocationDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationDetailViewModel.h; sourceTree = "<group>"; };
-		C596BE98B6BE1722C5EEFC4C /* HGSubjectsChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSubjectsChatViewController.h; sourceTree = "<group>"; };
+		C596BE98B6BE1722C5EEFC4C /* HGSubjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSubjectsViewController.h; sourceTree = "<group>"; };
 		C596BEBB98E1B438C022990F /* HGCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCommon.h; sourceTree = "<group>"; };
 		C596BECF7F558954528F4BEC /* CAGradientLayer+SJSGradients.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAGradientLayer+SJSGradients.h"; sourceTree = "<group>"; };
 		C596BED8D27B05805C46A120 /* HGLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGLocationViewController.m; sourceTree = "<group>"; };
@@ -403,6 +411,7 @@
 		C596BF0E11647A3F0842BBDD /* HGGeoLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGGeoLocationService.h; sourceTree = "<group>"; };
 		C596BF133C61F68DC4AAA55E /* HGReviewDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGReviewDetailViewController.m; sourceTree = "<group>"; };
 		C596BF1CC236CE195558FC23 /* HGLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HGLocation.m; path = Domain/HGLocation.m; sourceTree = "<group>"; };
+		C596BF2E81CF851D67CCA0BA /* HGMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMessageCell.m; sourceTree = "<group>"; };
 		C596BF4C54F1AFBED592C59A /* HGButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGButtonView.m; sourceTree = "<group>"; };
 		C596BF6500D6B20A1B885A6B /* HGErrorReporting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGErrorReporting.h; sourceTree = "<group>"; };
 		C596BF7B9C2B8B0B9E24BB66 /* HGLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationCell.h; sourceTree = "<group>"; };
@@ -856,6 +865,17 @@
 			path = ENumber;
 			sourceTree = "<group>";
 		};
+		C596B64241D4EE8972CA2379 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C596BF2E81CF851D67CCA0BA /* HGMessageCell.m */,
+				C596B7DB586A258AAE4B5934 /* HGMessageCell.h */,
+				C596B9761EFACE04B9BF4F07 /* HGMessageComposeView.m */,
+				C596B4B834FF6132B4D39923 /* HGMessageComposeView.h */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C596B649E8B1C47F807A9977 /* config */ = {
 			isa = PBXGroup;
 			children = (
@@ -1073,6 +1093,7 @@
 			children = (
 				C596BD77580179B365C57E51 /* Controllers */,
 				C596BFF0115E8F6D17DDEBD5 /* Models */,
+				C596B64241D4EE8972CA2379 /* Views */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1211,10 +1232,10 @@
 		C596BD77580179B365C57E51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C596BE98B6BE1722C5EEFC4C /* HGSubjectsChatViewController.h */,
-				C596B306BC600A0D7739254B /* HGSubjectsChatViewController.m */,
-				C596B01BA33E355ADF9A084A /* HGMessagesChatViewController.m */,
-				C596B2DD3B93140985042D51 /* HGMessagesChatViewController.h */,
+				C596BE98B6BE1722C5EEFC4C /* HGSubjectsViewController.h */,
+				C596B306BC600A0D7739254B /* HGSubjectsViewController.m */,
+				C596B01BA33E355ADF9A084A /* HGMessagesViewController.m */,
+				C596B2DD3B93140985042D51 /* HGMessagesViewController.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1257,6 +1278,8 @@
 				C596B5D843DA177E94E9C854 /* HGSubjectsViewModel.h */,
 				C596B83C13D33039115B99A5 /* HGMessagesViewModel.m */,
 				C596B2D399745022ABCAE3BF /* HGMessagesViewModel.h */,
+				C596B616FD4379FA5D119141 /* HGMessageViewModel.m */,
+				C596B6B3DA4C6A3F7EC01132 /* HGMessageViewModel.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1536,11 +1559,14 @@
 				C596BEA6FE24FE4F37BED95E /* HGFloatingChatButton.m in Sources */,
 				C596B0B5077A4508DD2DA330 /* HGSubject.m in Sources */,
 				C596BC3DFC7C35232C069E38 /* HGMessage.m in Sources */,
-				C596B4ED700B8990DA7DDB9D /* HGSubjectsChatViewController.m in Sources */,
+				C596B4ED700B8990DA7DDB9D /* HGSubjectsViewController.m in Sources */,
 				C596BF70D7B9D2EAB314D202 /* HGSubjectsViewModel.m in Sources */,
 				C596B7FC88F57B25F5FF934A /* HGChatService.m in Sources */,
-				C596BA339006C41F617167A9 /* HGMessagesChatViewController.m in Sources */,
+				C596BA339006C41F617167A9 /* HGMessagesViewController.m in Sources */,
 				C596B94FB042EB32C89F82D2 /* HGMessagesViewModel.m in Sources */,
+				C596B55303B21A4E7CF50346 /* HGMessageCell.m in Sources */,
+				C596B4E94DE8A6001BE579FD /* HGMessageViewModel.m in Sources */,
+				C596B8B650EEBB72DE350255 /* HGMessageComposeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
