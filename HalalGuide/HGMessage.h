@@ -7,6 +7,7 @@
 #import "HGBaseEntity.h"
 
 #define kMessageTableName @"Message"
+#import <JSQMessagesViewController/JSQMessages.h>
 
 @interface HGMessage : HGBaseEntity
 

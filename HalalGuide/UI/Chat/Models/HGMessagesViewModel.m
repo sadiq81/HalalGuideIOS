@@ -7,6 +7,7 @@
 #import "HGChatService.h"
 #import "HGErrorReporting.h"
 #import "HGSubject.h"
+#import "HGMessageViewModel.h"
 
 @interface HGMessagesViewModel()
 
@@ -29,6 +30,9 @@
     return self;
 }
 
+-(HGMessageViewModel *)viewModelForMessage:(NSUInteger) index{
+    return [HGMessageViewModel modelWithMessage:self.messages[index]];
+}
 
 - (void)refreshSubjects {
 

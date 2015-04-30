@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 #import "HGBaseViewModel.h"
 #import "HGSubject.h"
+#import "HGMessageViewModel.h"
 
 
 @interface HGMessagesViewModel : HGBaseViewModel
@@ -14,6 +15,9 @@
 
 @property (nonatomic, strong, readonly) NSArray *messages;
 
+-(HGMessageViewModel *)viewModelForMessage:(NSUInteger) index;
+
 - (void)refreshSubjects;
+
 
 @end

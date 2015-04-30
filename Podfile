@@ -18,7 +18,7 @@ pod 'AsyncImageView', '1.5.1'
 
 # UI
 pod 'MZFormSheetController', '2.3.6'
-pod 'IQKeyboardManager', '3.2.0.2'
+pod 'IQKeyboardManager', '3.2.3'
 pod 'ClusterPrePermissions', '~> 0.1'
 pod 'HTAutocompleteTextField', '1.3.1'
 pod 'EDStarRating', '1.1'
@@ -32,6 +32,7 @@ pod 'SZTextView', '1.2.0'
 pod "ZLPromptUserReview", "~>1.0.0"
 pod 'Masonry', '0.6.1'
 pod 'pop', '~> 1.0'
+pod 'JSQMessagesViewController', '7.0.1'
 
 #Parse
 pod 'Facebook-iOS-SDK', '4.0.1'

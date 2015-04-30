@@ -8,7 +8,7 @@
 #import "HGSubjectsViewModel.h"
 
 
-@interface HGSubjectsChatViewController : UIViewController
+@interface HGSubjectsViewController : UIViewController
 
 @property (strong, nonatomic, readonly) UITableView *subjects;
 @property (strong, nonatomic, readonly) HGSubjectsViewModel *viewModel;

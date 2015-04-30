@@ -32,8 +32,9 @@
 #import "FBSDKApplicationDelegate.h"
 #import "HGFrontPageViewModel.h"
 #import "HGSmileyScraper.h"
-#import "HGSubjectsChatViewController.h"
+#import "HGSubjectsViewController.h"
 #import "HGSubjectsViewModel.h"
+#import "HGMessagesViewController.h"
 
 @interface HGAppDelegate () <UIGestureRecognizerDelegate>
 
@@ -63,6 +64,8 @@
 
     //IQKeyboard
     [IQKeyboardManager sharedManager].toolbarManageBehaviour = IQAutoToolbarByTag;
+    [[IQKeyboardManager sharedManager] disableInViewControllerClass:[HGMessagesViewController class]];
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = true;
 
     //Configure Parse
     [Parse enableLocalDatastore]; //TODO
@@ -128,7 +131,7 @@
     [self.window makeKeyAndVisible];
 
     UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
-        HGSubjectsChatViewController *vc = [HGSubjectsChatViewController controllerWithViewModel:[[HGSubjectsViewModel alloc] init]];
+        HGSubjectsViewController *vc = [HGSubjectsViewController controllerWithViewModel:[[HGSubjectsViewModel alloc] init]];
         UINavigationController *navChat = [[UINavigationController alloc] initWithRootViewController:vc];
         [nav presentViewController:navChat animated:true completion:nil];
     }];

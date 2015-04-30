@@ -7,11 +7,13 @@
 #import <UIKit/UIKit.h>
 #import "HGSubjectsViewModel.h"
 #import "HGMessagesViewModel.h"
+#import "HGMessageComposeView.h"
 
 
-@interface HGMessagesChatViewController : UIViewController
+@interface HGMessagesViewController : UIViewController
 
 @property (strong, nonatomic, readonly) UITableView *messages;
+@property(strong, nonatomic, readonly) HGMessageComposeView *composeView;
 @property (strong, nonatomic, readonly) HGMessagesViewModel *viewModel;
 
 - (instancetype)initWithViewModel:(HGMessagesViewModel *)viewModel;

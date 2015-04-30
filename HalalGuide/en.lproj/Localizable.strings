@@ -270,7 +270,10 @@
 "HGFavoriteViewController.hud.fetching" = "Updating";
 "HGFavoriteViewController.hud.error" = "An unknown error has occured";
 
-"HGSubjectsChatViewController.button.close" = "Close";
-"HGSubjectsChatViewController.button.new.subject" = "New subject";
-"HGSubjectsChatViewController.cell.detail.text.label.single" = "%@ message (%@)";
-"HGSubjectsChatViewController.cell.detail.text.label.multiple" = "%@ messages (last message: %@)";
+"HGSubjectsViewController.button.close" = "Close";
+"HGSubjectsViewController.button.new.subject" = "New subject";
+"HGSubjectsViewController.cell.detail.text.label.single" = "%@ message (%@)";
+"HGSubjectsViewController.cell.detail.text.label.multiple" = "%@ messages (last message: %@)";
+
+"HGMessageComposeView.button.submit" = "Send";
+"HGMessageComposeView.text.placeholder" = "New message";
