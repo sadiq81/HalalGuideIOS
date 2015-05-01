@@ -9,6 +9,7 @@
 #import "Masonry.h"
 #import "ReactiveCocoa.h"
 
+
 @interface HGMessageCell ()
 
 @property(nonatomic, strong) AsyncImageView *image;
@@ -16,7 +17,6 @@
 //@property (nonatomic, strong) UIImageView *videoView;
 @property(nonatomic, strong) UILabel *submitterName;
 @property(nonatomic, strong) UITextView *textView;
-
 
 @end
 
@@ -56,18 +56,21 @@
     [self.contentView addSubview:self.submitterName];
 
     self.textView = [[UITextView alloc] initWithFrame:CGRectZero];
-    self.textView.backgroundColor = [UIColor colorWithRed:0.34 green:0.75 blue:1 alpha:1];
-
     self.textView.layer.cornerRadius = 5;
     [self.contentView addSubview:self.textView];
-
 }
 
 - (void)configureViewModel {
 
+    [RACObserve(self, viewModel) subscribeNext:^(HGMessageViewModel *viewModel) {
+        bool isCurrentUSer = [viewModel.message.userId isEqualToString:[PFUser currentUser].objectId];
+        self.textView.backgroundColor = isCurrentUSer ? HGCurrentUserMessageColor : HGOtherUserMessageColor;
+        self.alignment = isCurrentUSer ? HGChatCellAlignmentRight : HGChatCellAlignmentLeft;
+        [self updateConstraints];
+    }];
+
     RAC(self.image, imageURL) = RACObserve(self, viewModel.image);
     RAC(self.avatar, imageURL) = RACObserve(self, viewModel.avatar);
-
     RAC(self.submitterName, text) = RACObserve(self, viewModel.submitter);
     RAC(self.textView, text) = RACObserve(self, viewModel.text);
 
@@ -83,13 +86,17 @@
         make.bottom.equalTo(self.contentView).offset(-5);
     }];
 
-    [self.avatar mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.avatar mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(20));
         make.width.equalTo(@(20));
-        make.left.equalTo(self.contentView).offset(5);
         make.bottom.equalTo(self.contentView).offset(-5);
-    }];
 
+        if (self.alignment == HGChatCellAlignmentLeft) {
+            make.left.equalTo(self.contentView).offset(5);
+        } else if (self.alignment == HGChatCellAlignmentRight) {
+            make.right.equalTo(self.contentView).offset(-5);
+        }
+    }];
 
     [self.submitterName mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(5);
@@ -97,6 +104,12 @@
         make.right.equalTo(self.textView);
         make.bottom.equalTo(self.textView.mas_top).offset(-5);
     }];
+
+    if (self.alignment == HGChatCellAlignmentLeft) {
+        self.submitterName.textAlignment = NSTextAlignmentLeft;
+    } else if (self.alignment == HGChatCellAlignmentRight) {
+        self.submitterName.textAlignment = NSTextAlignmentRight;
+    }
 
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(20);

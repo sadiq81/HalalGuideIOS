@@ -26,7 +26,8 @@
     if (self) {
         self.message = message;
 
-        if (message.image){
+
+        if (message.image) {
             self.image = [[NSURL alloc] initWithString:message.image.url];
         }
 
