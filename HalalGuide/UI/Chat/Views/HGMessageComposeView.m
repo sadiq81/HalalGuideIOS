@@ -33,7 +33,7 @@
 
 - (void)setupViews {
 
-    self.backgroundColor = [UIColor lightGrayColor];
+    self.backgroundColor = [UIColor colorWithRed:201.0f/255.0f green:201.0f/255.0f blue:206.0f/255.0f alpha:1.0f];
 
     self.mediaChooser = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.mediaChooser setImage:[UIImage imageNamed:@"HGMessageComposeView.button.mediaChooser"] forState:UIControlStateNormal];
@@ -53,14 +53,14 @@
 - (void)updateConstraints {
 
     [self.mediaChooser mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(5);
+        make.left.equalTo(self).offset(10);
         make.bottom.equalTo(self).offset(-5);
         make.height.equalTo(@(33));
         make.width.equalTo(@(33));
     }];
 
     [self.text mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mediaChooser.mas_right).offset(5);
+        make.left.equalTo(self.mediaChooser.mas_right).offset(10);
         make.bottom.equalTo(self).offset(-5);
         make.height.equalTo(@(33));
         make.right.equalTo(self.submit.mas_left).offset(-5);
