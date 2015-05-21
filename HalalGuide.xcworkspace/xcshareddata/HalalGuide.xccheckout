@@ -12,6 +12,8 @@
 	<dict>
 		<key>F4CCFBF2D940C4A4BA863D1348FBD423793355E1</key>
 		<string>https://github.com/sadiq81/HalalGuideNative</string>
+		<key>F745AE015A0DB3881CF34093CF12B5775B773019</key>
+		<string>https://github.com/adam-siton/AUIAutoGrowingTextView</string>
 		<key>FF130102FF65DF31AED5E84D403FF47B27E79183</key>
 		<string>https://github.com/miklselsoe/MSSPopMasonry</string>
 	</dict>
@@ -21,6 +23,8 @@
 	<dict>
 		<key>F4CCFBF2D940C4A4BA863D1348FBD423793355E1</key>
 		<string>..</string>
+		<key>F745AE015A0DB3881CF34093CF12B5775B773019</key>
+		<string>../../Github/AUIAutoGrowingTextView</string>
 		<key>FF130102FF65DF31AED5E84D403FF47B27E79183</key>
 		<string>../../Github/MSSPopMasonry</string>
 	</dict>
@@ -32,6 +36,14 @@
 	<string>F4CCFBF2D940C4A4BA863D1348FBD423793355E1</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F745AE015A0DB3881CF34093CF12B5775B773019</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AUIAutoGrowingTextView</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
