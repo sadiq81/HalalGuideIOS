@@ -20,11 +20,14 @@
 #import "HGFavoriteViewModel.h"
 #import "HGFavoriteViewController.h"
 #import "HGFloatingChatButton.h"
+#import "HGSubjectsViewModel.h"
+#import "HGSubjectsViewController.h"
 
 @interface HGFrontPageViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) UIView *topView;
 @property(nonatomic, strong) HGButtonView *shopView;
-@property(nonatomic, strong) HGButtonView *eNumberView;
+@property(nonatomic, strong) HGButtonView *chatView;
+//@property(nonatomic, strong) HGButtonView *eNumberView;
 @property(nonatomic, strong) HGButtonView *eatView;
 @property(nonatomic, strong) HGButtonView *mosqueView;
 @property(nonatomic, strong) HGButtonView *favoritesView;
@@ -79,11 +82,17 @@
     self.shopView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.shop" andLabelText:@"HGFrontPageViewController.label.shop" andTapHandler:[self tapHandlerForType:LocationTypeShop]];
     [self.topView addSubview:self.shopView];
 
-    self.eNumberView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.enumber" andLabelText:@"HGFrontPageViewController.label.enumber" andTapHandler:^{
-        HGENumberViewController *controller = [[HGENumberViewController alloc] init];
-        [self.navigationController pushViewController:controller animated:true];
+    self.chatView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.chat" andLabelText:@"HGFrontPageViewController.label.chat" andTapHandler:^{
+        HGSubjectsViewController *vc = [HGSubjectsViewController controllerWithViewModel:[[HGSubjectsViewModel alloc] init]];
+        [self.navigationController pushViewController:vc animated:true];
     }];
-    [self.topView addSubview:self.eNumberView];
+    [self.topView addSubview:self.chatView];
+
+//    self.eNumberView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.enumber" andLabelText:@"HGFrontPageViewController.label.enumber" andTapHandler:^{
+//        HGENumberViewController *controller = [[HGENumberViewController alloc] init];
+//        [self.navigationController pushViewController:controller animated:true];
+//    }];
+//    [self.topView addSubview:self.eNumberView];
 
     self.eatView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.dining" andLabelText:@"HGFrontPageViewController.label.eat" andTapHandler:[self tapHandlerForType:LocationTypeDining]];
     [self.topView addSubview:self.eatView];
@@ -231,7 +240,7 @@
         make.top.equalTo(self.topView).offset(20);
     }];
 
-    [self.eNumberView mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.chatView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@48);
         make.centerX.equalTo(self.topView);
         make.top.equalTo(self.topView).offset(20);
@@ -246,13 +255,13 @@
     [self.mosqueView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@48);
         make.centerX.equalTo(self.shopView);
-        make.top.equalTo(self.shopView.mas_bottom).offset(20);
+        make.top.equalTo(self.chatView.mas_bottom).offset(20);
     }];
 
     [self.favoritesView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@48);
-        make.centerX.equalTo(self.eNumberView);
-        make.top.equalTo(self.eNumberView.mas_bottom).offset(20);
+        make.centerX.equalTo(self.chatView);
+        make.top.equalTo(self.chatView.mas_bottom).offset(20);
     }];
 
     [self.settingsView mas_updateConstraints:^(MASConstraintMaker *make) {

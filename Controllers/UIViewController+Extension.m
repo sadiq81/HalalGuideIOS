@@ -6,6 +6,8 @@
 #import "UIViewController+Extension.h"
 #import "HGCreateReviewViewController.h"
 #import "HGCreateReviewViewModel.h"
+#import "HGSubjectsViewController.h"
+#import "HGMessagesViewController.h"
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
@@ -122,7 +124,6 @@
     }];
 }
 
-
 - (void)dismissHintView:(NSString *)hintKey {
 
     [[HGOnboarding instance] setOnBoardingShown:hintKey];
@@ -221,5 +222,10 @@
     objc_setAssociatedObject(self, @selector(hintView), hintView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+//- (void)handleChatNotification:(NSNotification *)notification {
+//    HGSubject *subject = (HGSubject *) notification.object;
+//    HGMessagesViewController *messagesViewController = [[HGMessagesViewController alloc] initWithViewModel:[[HGMessagesViewModel alloc] initWithSubject:subject]];
+//    [self.navigationController presentViewController:messagesViewController animated:true completion:nil];
+//}
 
 @end

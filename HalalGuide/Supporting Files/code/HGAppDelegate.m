@@ -79,7 +79,7 @@
     [defaultACL setWriteAccess:true forRoleWithName:@"admin"];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:true];
 
-#if !DEBUG
+#if !TARGET_IPHONE_SIMULATOR
     //Push notifications
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
@@ -156,13 +156,53 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
+
 
     if (application.applicationState == UIApplicationStateInactive) {
-        // The application was just brought from the background to the foreground,
-        // so we consider the app as having been "opened by a push notification."
         [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
     }
+
+    NSString *context = [userInfo valueForKey:@"context"];
+
+    if ([context isEqualToString:@"HGChat"]) {
+        NSString *contextData = [userInfo valueForKey:@"contextData"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kChatNotificationConstant object:contextData userInfo:userInfo];
+    }
+    /*if ([context isEqualToString:@"HGChat"]) {
+
+            UIViewController *root = self.window.rootViewController;
+
+            if ([root isKindOfClass:[UINavigationController class]]) {
+                UIViewController *viewController = ((UINavigationController *) root).viewControllers.lastObject;
+
+                if ([viewController isKindOfClass:[HGMessagesViewController class]]) {
+                    [((UINavigationController *) root) popViewControllerAnimated:true];
+                    [((UINavigationController *) root) pushViewController:messagesViewController animated:true];
+                } else if ([viewController isKindOfClass:[HGSubjectsViewController class]]) {
+                    [((UINavigationController *) root) pushViewController:messagesViewController animated:true];
+                } else {
+                    UINavigationController *navChat = [[UINavigationController alloc] initWithRootViewController:[HGSubjectsViewController controllerWithViewModel:[[HGSubjectsViewModel alloc] init]]];
+                    [navChat pushViewController:messagesViewController animated:false];
+                    [((UINavigationController *) root) presentViewController:navChat animated:true completion:nil];
+                }
+            }
+    }
+
+ if (application.applicationState == UIApplicationStateActive) {
+
+    if ([context hasPrefix:@"subject"]) {
+        UIViewController *root = self.window.rootViewController;
+        if ([root isKindOfClass:[UINavigationController class]]) {
+            UIViewController *viewController = ((UINavigationController *) root).viewControllers.lastObject;
+            if ([viewController isKindOfClass:[HGMessagesViewController class]]) {
+                HGMessagesViewModel *viewModel = ((HGMessagesViewController *) viewController).viewModel;
+                if ([context hasSuffix:viewModel.subject.objectId]) {
+                    [viewModel refreshSubjects];
+                }
+            }
+        }
+    }
+}*/
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

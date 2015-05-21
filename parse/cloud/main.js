@@ -89,6 +89,74 @@ Parse.Cloud.beforeSave("LocationPicture", function (request, response) {
 
 });
 
+Parse.Cloud.beforeSave("Message", function (request, response) {
+
+    Parse.Cloud.useMasterKey();
+
+    var message = request.object;
+    if (message.get("objectId") == null) {
+
+        var Subject = Parse.Object.extend("Subject");
+        var query = new Parse.Query(Subject);
+
+        query.get(message.get("subjectId"), {
+            success: function (subject) {
+
+                subject.increment("count");
+                subject.set("lastMessage", new Date())
+                subject.save();
+
+                var User = Parse.Object.extend("User");
+                var query = new Parse.Query(User);
+
+                query.get(message.get("userId"), {
+                    success: function (user) {
+
+                        //Channels must start with letter, ids can start with numbers
+                        var parsePushChannel = "subject-" + message.get("subjectId");
+
+                        var userData = user.get("userData");
+                        var name = userData['name'];
+
+                        var pushMessage = name + " : " + message.get("text");
+
+                        var query = new Parse.Query(Parse.Installation);
+                        query.equalTo('channels', parsePushChannel);
+                        query.notEqualTo('user', user);
+
+                        Parse.Push.send({
+                            where: query,
+                            data: {
+                                alert: pushMessage,
+                                context: "HGChat",
+                                contextData: message.get("subjectId")
+                            }
+                        }, {
+                            success: function () {
+                                response.success();
+                            },
+                            error: function (error) {
+                                response.success();
+                                console.log(error);
+                            }
+                        });
+
+                    },
+                    error: function (error) {
+                        response.success();
+                        console.log(error);
+                    }
+                });
+            },
+            error: function (object, error) {
+                response.success();
+                console.log(error);
+            }
+        });
+    }
+});
+
+
 //Parse.Cloud.job("importSmileyData", function (request, status) {
 //
 //    Parse.Cloud.useMasterKey();

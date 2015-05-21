@@ -57,6 +57,7 @@
 
     self.textView = [[UITextView alloc] initWithFrame:CGRectZero];
     self.textView.layer.cornerRadius = 5;
+    self.textView.editable = false;
     [self.contentView addSubview:self.textView];
 }
 
@@ -79,7 +80,7 @@
 
 - (void)updateConstraints {
 
-    [self.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.image mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(20);
         make.left.equalTo(self.contentView).offset(30);
         make.right.equalTo(self.contentView).offset(-30);
@@ -113,8 +114,15 @@
 
     [self.textView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(20);
-        make.left.equalTo(self.contentView).offset(30);
-        make.right.equalTo(self.contentView).offset(-30);
+
+        if (self.alignment == HGChatCellAlignmentLeft) {
+            make.left.equalTo(self.contentView).offset(30);
+            make.right.equalTo(self.contentView).offset(-60);;
+        } else if (self.alignment == HGChatCellAlignmentRight) {
+            make.left.equalTo(self.contentView).offset(60);
+            make.right.equalTo(self.contentView).offset(-30);
+        }
+
         make.bottom.equalTo(self.contentView).offset(-5);
     }];
 

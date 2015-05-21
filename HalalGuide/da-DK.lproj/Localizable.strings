@@ -133,6 +133,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGFrontPageViewController.label.latest.updates" = "Seneste opdateringer";
 "HGFrontPageViewController.hud.fetching" = "Opdaterer";
 "HGFrontPageViewController.hud.error" = "Fejl!";
+"HGFrontPageViewController.label.chat" = "Chat";
 
 "HGLocationDetailViewModel.yes"= "Ja";
 "HGLocationDetailViewModel.no"= "Nej";
@@ -273,3 +274,6 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "HGMessageComposeView.button.submit" = "Send";
 "HGMessageComposeView.text.placeholder" = "Ny besked";
+
+"HGMessagesViewController.notification.on" = "Notifikationer slået til";
+"HGMessagesViewController.notification.off" = "Notifikationer slået fra";

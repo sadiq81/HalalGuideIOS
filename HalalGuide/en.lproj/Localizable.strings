@@ -138,6 +138,7 @@
 "HGFrontPageViewController.label.latest.updates" = "Latest updates";
 "HGFrontPageViewController.hud.fetching" = "Updating";
 "HGFrontPageViewController.hud.error" = "Error!";
+"HGFrontPageViewController.label.chat" = "Chat";
 
 "HGLocationDetailViewModel.yes"= "Yes";
 "HGLocationDetailViewModel.no"= "No";
@@ -277,3 +278,6 @@
 
 "HGMessageComposeView.button.submit" = "Send";
 "HGMessageComposeView.text.placeholder" = "New message";
+
+"HGMessagesViewController.notification.on" = "Notifications enabled";
+"HGMessagesViewController.notification.off" = "Notifications disabled";

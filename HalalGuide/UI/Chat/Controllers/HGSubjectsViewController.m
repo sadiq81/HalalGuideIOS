@@ -28,6 +28,7 @@
     self = [super init];
     if (self) {
         _viewModel = viewModel;
+        [self.viewModel refreshSubjects];
     }
 
     return self;
@@ -39,7 +40,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
     [self.viewModel refreshSubjects];
 }
 
@@ -49,9 +49,11 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGSubjectsViewController.button.close", nil) style:UIBarButtonItemStylePlain block:^(id weakSender) {
-        [self dismissViewControllerAnimated:true completion:nil];
-    }];
+    if ([self.navigationController.viewControllers count] == 1) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGSubjectsViewController.button.close", nil) style:UIBarButtonItemStylePlain block:^(id weakSender) {
+            [self dismissViewControllerAnimated:true completion:nil];
+        }];
+    }
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"HGChatViewController.button.new.subject"] style:UIBarButtonItemStylePlain block:^(id weakSender) {
 
@@ -86,9 +88,8 @@ static NSString *cellIdentifier = @"сellIdentifier";
 
     //[self.subjects registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
 
-    self.subjects.tableFooterView  = [[UIView alloc] initWithFrame:CGRectZero];
+    self.subjects.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -103,12 +104,12 @@ static NSString *cellIdentifier = @"сellIdentifier";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     HGSubject *subject = self.viewModel.subjects[indexPath.row];
-    cell.textLabel.text =subject.title;
+    cell.textLabel.text = subject.title;
 
-    if (subject.count.intValue > 1){
-        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsViewController.cell.detail.text.label.multiple", nil),subject.count,subject.lastMessage.timeAgoSinceNow];
-    } else{
-        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsViewController.cell.detail.text.label.single", nil),subject.count,subject.lastMessage.timeAgoSinceNow];
+    if (subject.count.intValue > 1) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsViewController.cell.detail.text.label.multiple", nil), subject.count, subject.lastMessage.timeAgoSinceNow];
+    } else {
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsViewController.cell.detail.text.label.single", nil), subject.count, subject.lastMessage.timeAgoSinceNow];
     }
 
     return cell;

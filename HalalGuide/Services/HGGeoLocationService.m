@@ -48,6 +48,7 @@
     NSDate *eventDate = lastLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
     if (fabs(howRecent) < 15.0) {
+        //[NSNotificationCenter defaultCenter] TODO Broadcast signal to update distance labels
         self.currentLocation = lastLocation;
     }
 }

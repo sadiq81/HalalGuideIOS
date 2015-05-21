@@ -5,6 +5,7 @@
 
 #import <Masonry/View+MASAdditions.h>
 #import "HGLocationCell.h"
+#import "HGLabels.h"
 
 
 @interface HGLocationCell ()
@@ -40,6 +41,7 @@
     self.thumbnail.activityIndicatorStyle = UIActivityIndicatorViewStyleGray;
     [self.contentView addSubview:self.thumbnail];
 
+    //TODO update label when current position changes, perhaps using NSNotification
     self.distance = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];
     self.distance.textAlignment = NSTextAlignmentRight;
     self.distance.adjustsFontSizeToFitWidth = true;

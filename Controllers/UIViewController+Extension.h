@@ -17,6 +17,7 @@
 #import <Parse/Parse.h>
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "HGImagePickerController.h"
+#import "HGSubject.h"
 #import <Crashlytics/Crashlytics.h>
 #import <objc/runtime.h>
 #import <ALActionBlocks/UIGestureRecognizer+ALActionBlocks.h>
@@ -41,5 +42,7 @@ typedef enum HintPosition : int16_t {
 - (void)hintWasDismissedByUser:(NSString *)hintKey;
 
 - (void)displayHintForView:(UIView *)viewWithHint withHintKey:(NSString *)hintKey preferedPositionOfText:(HintPosition)position;
+
+//- (void) handleChatNotification:(NSNotification *) notification;
 
 @end
