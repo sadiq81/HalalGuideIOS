@@ -7,9 +7,9 @@
 
 @interface HGSmiley : NSObject
 
-@property(nonatomic, strong) NSString *report;
-@property(nonatomic, strong) NSString *smiley;
-@property(nonatomic, strong) NSString *date;
+@property(nonatomic, copy) NSString *report;
+@property(nonatomic, copy) NSString *smiley;
+@property(nonatomic, copy) NSString *date;
 
 - (instancetype)initWithReport:(NSString *)aReport smiley:(NSString *)aSmiley date:(NSString *)aDate;
 

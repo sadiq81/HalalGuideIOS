@@ -138,6 +138,7 @@
 "HGFrontPageViewController.label.latest.updates" = "Latest updates";
 "HGFrontPageViewController.hud.fetching" = "Updating";
 "HGFrontPageViewController.hud.error" = "Error!";
+"HGFrontPageViewController.label.chat" = "Chat";
 
 "HGLocationDetailViewModel.yes"= "Yes";
 "HGLocationDetailViewModel.no"= "No";
@@ -274,6 +275,16 @@
 "HGSubjectsViewController.button.new.subject" = "New subject";
 "HGSubjectsViewController.cell.detail.text.label.single" = "%@ message (%@)";
 "HGSubjectsViewController.cell.detail.text.label.multiple" = "%@ messages (last message: %@)";
+"HGSubjectsViewController.alert.new.subject.title" = "New subject";
+"HGSubjectsViewController.alert.new.subject.message" = "Write a title for the new subject";
+"HGSubjectsViewController.alert.new.subject.ok" = "OK";
+"HGSubjectsViewController.alert.new.subject.regret" = "Regret";
+"HGSubjectsViewController.alert.new.subject.name.placeholder" = "Minimum 5 characters";
 
 "HGMessageComposeView.button.submit" = "Send";
 "HGMessageComposeView.text.placeholder" = "New message";
+
+"HGMessagesViewController.notification.on" = "Notifications enabled";
+"HGMessagesViewController.notification.off" = "Notifications disabled";
+
+"HGChatViewController.title" = "Subjects";

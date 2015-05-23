@@ -6,6 +6,8 @@
 #import "UIViewController+Extension.h"
 #import "HGCreateReviewViewController.h"
 #import "HGCreateReviewViewModel.h"
+#import "HGSubjectsViewController.h"
+#import "HGMessagesViewController.h"
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
@@ -94,8 +96,8 @@
         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
         currentInstallation[@"user"] = user;
         [currentInstallation saveInBackground];
-        [Crashlytics setUserIdentifier:user.objectId];
-        [Crashlytics setUserName:user.facebookName];
+        [[Crashlytics sharedInstance] setUserIdentifier:user.objectId];
+        [[Crashlytics sharedInstance] setUserName:user.facebookName];
 
         if (user.isNew) {
             [PFUser storeProfileInfoForLoggedInUser:nil];
@@ -122,7 +124,6 @@
     }];
 }
 
-
 - (void)dismissHintView:(NSString *)hintKey {
 
     [[HGOnboarding instance] setOnBoardingShown:hintKey];
@@ -143,7 +144,7 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     self.hintView = [[UIView alloc] initWithFrame:screenRect];
     self.hintView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
-    self.hintView.autoresizingMask = 0;
+    self.hintView.autoresizingMask = UIViewAutoresizingNone;
     self.hintView.alpha = 0;
     [[UIApplication sharedApplication].keyWindow addSubview:self.hintView];
 
@@ -220,6 +221,5 @@
 - (void)setHintView:(UIView *)hintView {
     objc_setAssociatedObject(self, @selector(hintView), hintView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
 
 @end

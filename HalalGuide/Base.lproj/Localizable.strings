@@ -133,6 +133,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGFrontPageViewController.label.latest.updates" = "Seneste opdateringer";
 "HGFrontPageViewController.hud.fetching" = "Opdaterer";
 "HGFrontPageViewController.hud.error" = "Fejl!";
+"HGFrontPageViewController.label.chat" = "Chat";
 
 "HGLocationDetailViewModel.yes"= "Ja";
 "HGLocationDetailViewModel.no"= "Nej";
@@ -270,6 +271,16 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGSubjectsViewController.button.new.subject" = "Nyt emne";
 "HGSubjectsViewController.cell.detail.text.label.single" = "%@ besked (%@)";
 "HGSubjectsViewController.cell.detail.text.label.multiple" = "%@ beskeder (sidste besked: %@)";
+"HGSubjectsViewController.alert.new.subject.title" = "Nyt emne";
+"HGSubjectsViewController.alert.new.subject.message" = "Skriv title på det nye emne";
+"HGSubjectsViewController.alert.new.subject.ok" = "OK";
+"HGSubjectsViewController.alert.new.subject.regret" = "Fortryd";
+"HGSubjectsViewController.alert.new.subject.name.placeholder" = "Minimum 5 tegn";
 
 "HGMessageComposeView.button.submit" = "Send";
 "HGMessageComposeView.text.placeholder" = "Ny besked";
+
+"HGMessagesViewController.notification.on" = "Notifikationer slået til";
+"HGMessagesViewController.notification.off" = "Notifikationer slået fra";
+
+"HGChatViewController.title" = "Emner";

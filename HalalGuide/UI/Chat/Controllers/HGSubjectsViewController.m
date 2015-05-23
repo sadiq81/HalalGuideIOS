@@ -11,9 +11,11 @@
 #import "HGSubject.h"
 #import "DateTools.h"
 #import "HGMessagesViewController.h"
+#import "HGChatService.h"
+#import "UIAlertView+Blocks.h"
 
 
-@interface HGSubjectsViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HGSubjectsViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property(strong, nonatomic) UITableView *subjects;
 @property(strong, nonatomic) HGSubjectsViewModel *viewModel;
@@ -21,13 +23,13 @@
 @end
 
 @implementation HGSubjectsViewController {
-
 }
 
 - (instancetype)initWithViewModel:(HGSubjectsViewModel *)viewModel {
     self = [super init];
     if (self) {
         _viewModel = viewModel;
+        [self.viewModel refreshSubjects];
     }
 
     return self;
@@ -39,8 +41,11 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
     [self.viewModel refreshSubjects];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 
@@ -48,13 +53,42 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = NSLocalizedString(@"HGChatViewController.title", nil);
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGSubjectsViewController.button.close", nil) style:UIBarButtonItemStylePlain block:^(id weakSender) {
-        [self dismissViewControllerAnimated:true completion:nil];
-    }];
+    @weakify(self)
+    if ([self.navigationController.viewControllers count] == 1) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGSubjectsViewController.button.close", nil) style:UIBarButtonItemStylePlain block:^(id weakSender) {
+            @strongify(self)
+            [self dismissViewControllerAnimated:true completion:nil];
+        }];
+    }
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"HGChatViewController.button.new.subject"] style:UIBarButtonItemStylePlain block:^(id weakSender) {
+        @strongify(self)
 
+        UIAlertController *newSubject = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"HGSubjectsViewController.alert.new.subject.title", nil) message:NSLocalizedString(@"HGSubjectsViewController.alert.new.subject.message", nil) preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:NSLocalizedString(@"HGSubjectsViewController.alert.new.subject.ok", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [newSubject dismissViewControllerAnimated:YES completion:nil];
+            UITextField *name = newSubject.textFields[0];
+            [self.viewModel createSubject:name.text];
+        }];
+        ok.enabled = false;
+        [newSubject addAction:ok];
+
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"HGSubjectsViewController.alert.new.subject.regret", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [newSubject dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [newSubject addAction:cancel];
+
+        [newSubject addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+            textField.placeholder = NSLocalizedString(@"HGSubjectsViewController.alert.new.subject.name.placeholder", nil);
+            textField.delegate = self;
+            [textField.rac_textSignal subscribeNext:^(NSString *name) {
+                ok.enabled = [name length] >= 5;
+            }];
+        }];
+        [self presentViewController:newSubject animated:true completion:nil];
     }];
 
     [self setupViews];
@@ -62,6 +96,10 @@
     [self setupViewModel];
     [self updateViewConstraints];
 
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    return textField.text.length >= 5;
 }
 
 - (void)setupViews {
@@ -73,8 +111,17 @@
 
 - (void)setupViewModel {
 
+    @weakify(self)
     [[RACObserve(self.viewModel, subjects) ignore:nil] subscribeNext:^(id x) {
+        @strongify(self)
         [self.subjects reloadData];
+    }];
+
+    [[RACObserve(self.viewModel, subject) ignore:nil] subscribeNext:^(HGSubject *subject) {
+        @strongify(self)
+        HGMessagesViewModel *model = [[HGMessagesViewModel alloc] initWithSubject:subject];
+        HGMessagesViewController *vc = [[HGMessagesViewController alloc] initWithViewModel:model];
+        [self.navigationController pushViewController:vc animated:true];
     }];
 }
 
@@ -86,9 +133,8 @@ static NSString *cellIdentifier = @"сellIdentifier";
 
     //[self.subjects registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
 
-    self.subjects.tableFooterView  = [[UIView alloc] initWithFrame:CGRectZero];
+    self.subjects.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -103,12 +149,12 @@ static NSString *cellIdentifier = @"сellIdentifier";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     HGSubject *subject = self.viewModel.subjects[indexPath.row];
-    cell.textLabel.text =subject.title;
+    cell.textLabel.text = subject.title;
 
-    if (subject.count.intValue > 1){
-        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsViewController.cell.detail.text.label.multiple", nil),subject.count,subject.lastMessage.timeAgoSinceNow];
-    } else{
-        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsViewController.cell.detail.text.label.single", nil),subject.count,subject.lastMessage.timeAgoSinceNow];
+    if (subject.count.intValue > 1) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsViewController.cell.detail.text.label.multiple", nil), subject.count, subject.lastMessage.timeAgoSinceNow];
+    } else {
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"HGSubjectsViewController.cell.detail.text.label.single", nil), subject.count, subject.lastMessage.timeAgoSinceNow];
     }
 
     return cell;
@@ -116,7 +162,9 @@ static NSString *cellIdentifier = @"сellIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    HGMessagesViewController *vc = [[HGMessagesViewController alloc] initWithViewModel:[[HGMessagesViewModel alloc] initWithSubject:self.viewModel.subjects[indexPath.row]]];
+    HGSubject *subject = self.viewModel.subjects[indexPath.row];
+    HGMessagesViewModel *model = [[HGMessagesViewModel alloc] initWithSubject:subject];
+    HGMessagesViewController *vc = [[HGMessagesViewController alloc] initWithViewModel:model];
     [self.navigationController pushViewController:vc animated:true];
     [tableView deselectRowAtIndexPath:indexPath animated:true];
 }

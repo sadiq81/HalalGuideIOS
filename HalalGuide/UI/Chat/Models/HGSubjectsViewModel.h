@@ -5,12 +5,15 @@
 
 #import <Foundation/Foundation.h>
 #import "HGBaseViewModel.h"
+#import "HGSubject.h"
 
 
 @interface HGSubjectsViewModel : HGBaseViewModel
 
-@property (nonatomic, strong, readonly) NSArray *subjects;
+@property(nonatomic, strong, readonly) NSArray *subjects;
+@property(nonatomic, strong, readonly) HGSubject *subject;
 
 - (void)refreshSubjects;
 
+- (void)createSubject:(NSString *) subjectTitle;
 @end

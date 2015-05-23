@@ -8,16 +8,28 @@
 #import "HGSubject.h"
 #import "HGMessageViewModel.h"
 
+typedef void (^UpdateMessagesHandler)(void);
 
 @interface HGMessagesViewModel : HGBaseViewModel
 
 - (instancetype)initWithSubject:(HGSubject *)subject;
 
-@property (nonatomic, strong, readonly) NSArray *messages;
+@property(nonatomic, retain, readonly) NSMutableArray *messages;
+@property(nonatomic, retain, readonly) HGMessage *sentMessage;
+@property(nonatomic, retain, readonly) HGSubject *subject;
+@property(nonatomic, retain, readonly) NSNumber *subscribing;
 
--(HGMessageViewModel *)viewModelForMessage:(NSUInteger) index;
+@property(nonatomic, retain, readonly) NSMutableArray  *receivedMessages;
+
+- (HGMessageViewModel *)viewModelForMessage:(NSUInteger)index;
 
 - (void)refreshSubjects;
 
+- (void)sendMessage:(NSString *)text;
 
+- (void)toggleSubscription;
+
+- (void)startTimer;
+
+- (void)stopTimer;
 @end

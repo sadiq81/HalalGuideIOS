@@ -33,6 +33,7 @@ pod "ZLPromptUserReview", "~>1.0.0"
 pod 'Masonry', '0.6.1'
 pod 'pop', '~> 1.0'
 pod 'JSQMessagesViewController', '7.0.1'
+pod "TSMessages", '0.9.12'
 
 #Parse
 pod 'Facebook-iOS-SDK', '4.0.1'
@@ -43,7 +44,7 @@ pod 'ParseFacebookUtilsV4', '1.7.1'
 # In App
 pod 'RMStore', '~> 0.7'
 
-pod 'HTMLReader'
+pod 'hpple'
 pod 'DateTools'
 
 post_install do | installer |

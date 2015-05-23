@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, HGChatCellAlignment) {
 
 @interface HGMessageCell : UITableViewCell
 
-@property(nonatomic, strong, readonly) AsyncImageView *image;
+//@property(nonatomic, strong, readonly) AsyncImageView *image;
 @property(nonatomic, strong, readonly) AsyncImageView *avatar;
 //@property (nonatomic, strong, readonly) UIImageView *videoView;
 @property(nonatomic, strong, readonly) UILabel *submitterName;

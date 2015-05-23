@@ -13,28 +13,17 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "MZFormSheetBackgroundWindow.h"
 #import "IQKeyboardManager.h"
-#import "HGKeyChainService.h"
-#import "HGErrorReporting.h"
-#import "HGPictureService.h"
-#import "UIAlertController+Blocks.h"
-#import "IQUIWindow+Hierarchy.h"
-#import "HGLocationPicture.h"
-#import "RACTuple.h"
 #import "HGFrontPageViewController.h"
 #import "HGAPHelper.h"
 #import "ZLPromptUserReview.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 #import <ALActionBlocks/UIGestureRecognizer+ALActionBlocks.h>
 #import "Constants.h"
 #import "PFFacebookUtils.h"
 #import "FBSDKAppEvents.h"
 #import "FBSDKApplicationDelegate.h"
-#import "HGFrontPageViewModel.h"
-#import "HGSmileyScraper.h"
 #import "HGSubjectsViewController.h"
-#import "HGSubjectsViewModel.h"
 #import "HGMessagesViewController.h"
+#import "HGNavigationController.h"
 
 @interface HGAppDelegate () <UIGestureRecognizerDelegate>
 
@@ -79,7 +68,7 @@
     [defaultACL setWriteAccess:true forRoleWithName:@"admin"];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:true];
 
-#if !DEBUG
+#if !TARGET_IPHONE_SIMULATOR
     //Push notifications
     UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
@@ -126,7 +115,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     HGFrontPageViewController *viewController = [HGFrontPageViewController controllerWithViewModel:[[HGFrontPageViewModel alloc] init]];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
+    HGNavigationController *nav = [[HGNavigationController alloc] initWithRootViewController:viewController];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
 
@@ -138,6 +127,12 @@
     tripleTap.delegate = self;
     tripleTap.numberOfTapsRequired = 3;
     [nav.navigationBar addGestureRecognizer:tripleTap];
+
+
+    if (launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]) {
+        [self application:application didReceiveRemoteNotification:launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]];
+    }
+
     return YES;
 }
 
@@ -156,12 +151,16 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
 
     if (application.applicationState == UIApplicationStateInactive) {
-        // The application was just brought from the background to the foreground,
-        // so we consider the app as having been "opened by a push notification."
         [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
+    }
+
+    NSString *context = [userInfo valueForKey:@"context"];
+
+    if ([context isEqualToString:@"HGChat"]) {
+        NSString *contextData = [userInfo valueForKey:@"contextData"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kChatNotificationConstant object:contextData userInfo:userInfo];
     }
 }
 

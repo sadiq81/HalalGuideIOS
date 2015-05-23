@@ -4,11 +4,8 @@
 //
 
 #import "HGSmileyScraper.h"
-#import "HTMLElement.h"
-#import "HTMLDocument.h"
-#import "HTMLSelector.h"
 #import "HGSmiley.h"
-#import "HTMLTextNode.h"
+#import "TFHpple.h"
 
 
 @implementation HGSmileyScraper {
@@ -20,45 +17,37 @@
     NSMutableArray *smileys = [[NSMutableArray alloc] init];
     if (location.navneloebenummer != nil && [location.navneloebenummer count] > 0) {
         for (int i = 0; i < [location.navneloebenummer count]; i++) {
-            NSString *urlString = [NSString stringWithFormat:@"%@%@", @"http://www.findsmiley.dk/da-DK/Searching/DetailsView.htm?virk=", [location.navneloebenummer objectAtIndex:i]];
+            NSString *urlString = [NSString stringWithFormat:@"%@%@", @"http://www.findsmiley.dk/da-DK/Searching/DetailsView.htm?virk=", location.navneloebenummer[i]];
             NSURL *URL = [NSURL URLWithString:urlString];
-            NSURLSession *session = [NSURLSession sharedSession];
-            [[session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                NSString *contentType = nil;
-                if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                    NSDictionary *headers = [(NSHTTPURLResponse *) response allHeaderFields];
-                    contentType = headers[@"Content-Type"];
-                }
+            NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+            NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
+            NSURLSessionDataTask *task = [session dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
-                HTMLDocument *home = [HTMLDocument documentWithData:data contentTypeHeader:contentType];
-                NSArray *nodesMatchingSelector = [home nodesMatchingSelector:@"a[href^=\"http://www.findsmiley.dk/KontrolRapport.aspx\"]"];
-                for (HTMLElement *element in nodesMatchingSelector) {
+                TFHpple *parser = [TFHpple hppleWithHTMLData:data];
 
+                NSString *tutorialsXpathQueryString = @"//a[@class='link_pdf']";
+                NSArray *tutorialsNodes = [parser searchWithXPathQuery:tutorialsXpathQueryString];
+
+                for (TFHppleElement *element in tutorialsNodes) {
                     NSString *report = [element.attributes valueForKey:@"href"];
-                    NSString *smileyType = nil;
-                    NSString *date = nil;
-
-                    NSOrderedSet *children = element.children;
-
-                    for (id inner in children) {
-                        if ([inner isKindOfClass:[HTMLElement class]] && [((HTMLElement *) inner).tagName isEqualToString:@"img"]) {
-                            smileyType = [NSString stringWithFormat:@"%@%@", @"http://www.findsmiley.dk", [((HTMLElement *) inner).attributes valueForKey:@"src"]];
-                        }
-                        else if ([inner isKindOfClass:[HTMLTextNode class]]) {
-                            date = ((HTMLTextNode *) inner).data;
-                        }
-                    }
-
+                    TFHppleElement *imageElement = element.children[0];
+                    NSString *image = [imageElement.attributes valueForKey:@"src"];
+                    NSString *smileyType = [NSString stringWithFormat:@"%@%@", @"http://www.findsmiley.dk", image];
+                    TFHppleElement *dateElement = element.children[2];
+                    NSString *date = dateElement.content;
                     HGSmiley *smiley = [[HGSmiley alloc] initWithReport:report smiley:smileyType date:date];
                     [smileys addObject:smiley];
                 }
+
                 completion(smileys);
-            }] resume];
+
+            }];
+            [task resume];
+            [session finishTasksAndInvalidate];
         }
     } else {
         completion(smileys);
     }
-
 }
 
 @end
