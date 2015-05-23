@@ -34,42 +34,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fabric.framework/run" afterPath="$PROJECT_DIR$/Fabric.framework/run" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crashlytics.framework/submit" afterPath="$PROJECT_DIR$/Crashlytics.framework/submit" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Info.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Info.plist" />
-    </list>
-    <list id="aa2750a1-70d0-4f62-b7b7-cd48937f0312" name="Failed commit: Default" comment="Notice board funtion #29">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Controllers/HGNavigationController.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Controllers/HGNavigationController.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIAlertView+Blocks.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIAlertView+Blocks.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Acknowledgements.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Acknowledgements.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Views/HGButtonView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Views/HGButtonView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGChatService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGChatService.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGChatService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGChatService.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Controllers/HGFrontPageViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Controllers/HGFrontPageViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Models/HGLocationDetailViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Models/HGLocationDetailViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Models/HGLocationDetailViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Models/HGLocationDetailViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGMessagesViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGMessagesViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/HGSmiley.h" afterPath="$PROJECT_DIR$/HalalGuide/HGSmiley.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGSmileyScraper.m" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGSmileyScraper.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGSubjectsViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGSubjectsViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGSubjectsViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGSubjectsViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGSubjectsViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGSubjectsViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/HalalGuide.iml" afterPath="$PROJECT_DIR$/.idea/HalalGuide.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/xcshareddata/HalalGuide.xccheckout" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/xcshareddata/HalalGuide.xccheckout" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcshareddata/HalalGuide.xccheckout" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcshareddata/HalalGuide.xccheckout" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/UIViewController+Extension.m" afterPath="$PROJECT_DIR$/Controllers/UIViewController+Extension.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HalalGuide.iws" />
@@ -79,7 +43,6 @@
     <ignored path="HalalGuide/Constants.h" />
     <ignored path="HalalGuide/Supporting Files/plist/Info.plist" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <file path="$PROJECT_DIR$/.idea/workspace.xml" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -990,12 +953,6 @@
       <option name="number" value="Default" />
       <updated>1415568686926</updated>
     </task>
-    <task id="LOCAL-00017" summary="Enumber HUD should not block page. #60">
-      <created>1421653105353</created>
-      <option name="number" value="00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1421653105353</updated>
-    </task>
     <task id="LOCAL-00018" summary="Enumber HUD should not block page. #60">
       <created>1421653118051</created>
       <option name="number" value="00018" />
@@ -1284,7 +1241,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432241642121</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Notice board funtion #29">
+      <created>1432413900559</created>
+      <option name="number" value="00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1432413900560</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
