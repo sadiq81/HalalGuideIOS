@@ -82,9 +82,21 @@
     self.shopView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.shop" andLabelText:@"HGFrontPageViewController.label.shop" andTapHandler:[self tapHandlerForType:LocationTypeShop]];
     [self.topView addSubview:self.shopView];
 
+    @weakify(self)
     self.chatView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.chat" andLabelText:@"HGFrontPageViewController.label.chat" andTapHandler:^{
-        HGSubjectsViewController *vc = [HGSubjectsViewController controllerWithViewModel:[[HGSubjectsViewModel alloc] init]];
-        [self.navigationController pushViewController:vc animated:true];
+        @strongify(self)
+
+        void (^completion)(void) = ^void(void) {
+            HGSubjectsViewController *vc = [HGSubjectsViewController controllerWithViewModel:[[HGSubjectsViewModel alloc] init]];
+            [self.navigationController pushViewController:vc animated:true];
+        };
+
+        if ([self.viewModel isAuthenticated]) {
+            completion();
+        } else {
+            [self authenticate:completion];
+        }
+
     }];
     [self.topView addSubview:self.chatView];
 

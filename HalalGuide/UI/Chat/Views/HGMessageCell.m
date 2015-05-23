@@ -12,7 +12,7 @@
 
 @interface HGMessageCell ()
 
-@property(nonatomic, strong) AsyncImageView *image;
+//@property(nonatomic, strong) AsyncImageView *image;
 @property(nonatomic, strong) AsyncImageView *avatar;
 //@property (nonatomic, strong) UIImageView *videoView;
 @property(nonatomic, strong) UILabel *submitterName;
@@ -37,11 +37,11 @@
 
 - (void)setupViews {
 
-    self.image = [[AsyncImageView alloc] initWithFrame:CGRectZero];
+/*    self.image = [[AsyncImageView alloc] initWithFrame:CGRectZero];
     self.image.clipsToBounds = true;
     self.image.contentMode = UIViewContentModeScaleAspectFill;
     self.image.layer.cornerRadius = 5;
-    [self.contentView addSubview:self.image];
+    [self.contentView addSubview:self.image];*/
 
     self.avatar = [[AsyncImageView alloc] initWithFrame:CGRectZero];
     self.avatar.clipsToBounds = true;
@@ -70,7 +70,7 @@
         [self updateConstraints];
     }];
 
-    RAC(self.image, imageURL) = RACObserve(self, viewModel.image);
+    //RAC(self.image, imageURL) = RACObserve(self, viewModel.image);
     RAC(self.avatar, imageURL) = RACObserve(self, viewModel.avatar);
     RAC(self.submitterName, text) = RACObserve(self, viewModel.submitter);
     RAC(self.textView, text) = RACObserve(self, viewModel.text);
@@ -80,12 +80,12 @@
 
 - (void)updateConstraints {
 
-    [self.image mas_updateConstraints:^(MASConstraintMaker *make) {
+/*    [self.image mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(20);
         make.left.equalTo(self.contentView).offset(30);
         make.right.equalTo(self.contentView).offset(-30);
         make.bottom.equalTo(self.contentView).offset(-5);
-    }];
+    }];*/
 
     [self.avatar mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(20));

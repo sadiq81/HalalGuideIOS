@@ -4,7 +4,6 @@
 //
 
 #import "HGLocationDetailViewModel.h"
-#import "HGLocationPicture.h"
 #import "HGPictureService.h"
 #import "HGErrorReporting.h"
 #import "HGLocationViewModel.h"
@@ -12,41 +11,40 @@
 #import "HGAddressService.h"
 #import "HGNumberFormatter.h"
 #import "PFUser+Extension.h"
-#import "HGReviewDetailViewModel.h"
 #import "HGSmileyScraper.h"
 
 @interface HGLocationDetailViewModel () {
 
 }
 @property(nonatomic, retain) HGLocation *location;
-@property(nonatomic) NSArray *locationPictures;
-@property(nonatomic) NSArray *reviews;
-@property(nonatomic) PFUser *user;
+@property(nonatomic, copy) NSArray *locationPictures;
+@property(nonatomic, copy) NSArray *reviews;
+@property(nonatomic, retain) PFUser *user;
 
-@property(nonatomic, strong) NSURL *thumbnail;
-@property(nonatomic, strong) NSString *distance;
-@property(nonatomic, strong) NSString *address;
-@property(nonatomic, strong) NSString *postalCode;
+@property(nonatomic, copy) NSURL *thumbnail;
+@property(nonatomic, copy) NSString *distance;
+@property(nonatomic, copy) NSString *address;
+@property(nonatomic, copy) NSString *postalCode;
 
 @property(nonatomic) float rating;
-@property(nonatomic, strong) NSString *category;
+@property(nonatomic, copy) NSString *category;
 
-@property(nonatomic, strong) UIImage *porkImage;
-@property(nonatomic, strong) NSAttributedString *porkString;
-@property(nonatomic, strong) UIImage *alcoholImage;
-@property(nonatomic, strong) NSAttributedString *alcoholString;
-@property(nonatomic, strong) UIImage *halalImage;
-@property(nonatomic, strong) NSAttributedString *halalString;
+@property(nonatomic, copy) UIImage *porkImage;
+@property(nonatomic, copy) NSAttributedString *porkString;
+@property(nonatomic, copy) UIImage *alcoholImage;
+@property(nonatomic, copy) NSAttributedString *alcoholString;
+@property(nonatomic, copy) UIImage *halalImage;
+@property(nonatomic, copy) NSAttributedString *halalString;
 
-@property(nonatomic, strong) UIImage *languageImage;
-@property(nonatomic, strong) NSString *languageString;
+@property(nonatomic, copy) UIImage *languageImage;
+@property(nonatomic, copy) NSString *languageString;
 
-@property(nonatomic, strong) NSURL *submitterImage;
-@property(nonatomic, strong) NSString *submitterName;
+@property(nonatomic, copy) NSURL *submitterImage;
+@property(nonatomic, copy) NSString *submitterName;
 
-@property(nonatomic, strong) NSArray *smileys;
+@property(nonatomic, copy) NSArray *smileys;
 
-@property(nonatomic, strong) NSNumber *favorite;
+@property(nonatomic, copy) NSNumber *favorite;
 
 @end
 
@@ -118,6 +116,7 @@
 
     self.fetchCount++;
     [[HGPictureService instance] locationPicturesForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
+        @strongify(self)
         self.fetchCount--;
 
         if ((self.error = error)) {
@@ -129,6 +128,7 @@
 
     self.fetchCount++;
     [[HGReviewService instance] reviewsForLocation:self.location onCompletion:^(NSArray *objects, NSError *error) {
+        @strongify(self)
         self.fetchCount--;
 
         if ((self.error = error)) {
@@ -142,6 +142,7 @@
     self.fetchCount++;
 
     [HGSmileyScraper smileyLinksForLocation:self.location onCompletion:^(NSArray *smileys) {
+        @strongify(self)
         self.fetchCount--;
         self.smileys = smileys;
     }];
@@ -203,7 +204,7 @@
 }
 
 - (HGReviewDetailViewModel *)getReviewDetailViewModel:(NSUInteger)index {
-    return [[HGReviewDetailViewModel alloc] initWithReview:[self.reviews objectAtIndex:index]];
+    return [[HGReviewDetailViewModel alloc] initWithReview:self.reviews[index]];
 }
 
 

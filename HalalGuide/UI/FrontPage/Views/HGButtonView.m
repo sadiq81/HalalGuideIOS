@@ -7,9 +7,9 @@
 #import "HGButtonView.h"
 
 @interface HGButtonView ()
-@property(nonatomic, strong) UIButton *button;
-@property(nonatomic, strong) UILabel *label;
-@property(nonatomic, strong) ButtonViewTapHandler tapHandler;
+@property(nonatomic, retain) UIButton *button;
+@property(nonatomic, retain) UILabel *label;
+@property(nonatomic, retain) ButtonViewTapHandler tapHandler;
 @end
 
 

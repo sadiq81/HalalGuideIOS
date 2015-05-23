@@ -9,7 +9,8 @@
 
 @interface HGSubjectsViewModel ()
 
-@property (nonatomic, strong) NSArray *subjects;
+@property(nonatomic, strong) NSArray *subjects;
+@property(nonatomic, strong) HGSubject *subject;
 
 @end
 
@@ -39,6 +40,24 @@
         } else {
             self.subjects = objects;
         }
+    }];
+}
+
+- (void)createSubject:(NSString *)subjectTitle {
+    HGSubject *subject = [HGSubject object];
+    subject.lastMessage = [NSDate dateWithTimeIntervalSinceNow:0];
+    subject.title = subjectTitle;
+    subject.count = @0;
+    subject.userId = [PFUser currentUser].objectId;
+
+    [[HGChatService instance] saveSubject:(HGSubject *) subject withCompletion:^(BOOL success, NSError *error) {
+        if ((self.error = error)) {
+            [[HGErrorReporting instance] reportError:error];
+        } else {
+            self.subject = subject;
+            [[HGChatService instance] toggleSubscription:self.subject];
+        }
+
     }];
 }
 @end

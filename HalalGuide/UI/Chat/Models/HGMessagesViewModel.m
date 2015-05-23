@@ -12,16 +12,17 @@
 
 @interface HGMessagesViewModel ()
 
-@property(nonatomic, strong) NSMutableArray *messages;
-@property(nonatomic, strong) HGMessage *sentMessage;
-@property(nonatomic, strong) HGSubject *subject;
-@property(nonatomic, strong) NSNumber *subscribing;
+@property(nonatomic, retain) NSMutableArray *messages;
+@property(nonatomic, retain) HGMessage *sentMessage;
+@property(nonatomic, retain) HGSubject *subject;
+@property(nonatomic, retain) NSNumber *subscribing;
 
-@property(nonatomic, strong) HGMessage *receivedMessage;
-@property(strong, nonatomic) NSTimer *updatingTimer;
+@property(nonatomic, retain) NSMutableArray *receivedMessages;
+@property(nonatomic, retain) NSTimer *updatingTimer;
 
 @end
 
+//TODO never gets de-allocated, memory leak somewhere!!!!!
 @implementation HGMessagesViewModel {
 
 }
@@ -29,14 +30,11 @@
 - (instancetype)initWithSubject:(HGSubject *)subject {
     self = [super init];
     if (self) {
-        self.messages = [NSMutableArray new];
-        self.subject = subject;
-        self.subscribing = [[HGChatService instance] subscribingToSubject:subject];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleChatNotification:) name:kChatNotificationConstant object:nil];
+        _messages = [NSMutableArray new];
+        _subject = subject;
+        _subscribing = [[HGChatService instance] subscribingToSubject:subject];
 
-        if (![[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) {
-            self.updatingTimer = [NSTimer scheduledTimerWithTimeInterval:15.0 target:self selector:@selector(handleChatNotification:) userInfo:nil repeats:YES];
-        }
+
     }
 
     return self;
@@ -48,53 +46,47 @@
 
 - (void)handleChatNotification:(NSNotification *)notification {
 
-    @weakify(self)
-    UpdateMessagesHandler handler = ^void(void) {
-        @strongify(self)
-        [[HGChatService instance] getMessagesForSubject:self.subject withCompletion:^(NSArray *objects, NSError *error) {
-            if ((self.error = error)) {
-                [[HGErrorReporting instance] reportError:error];
-            } else {
-                for (HGMessage *message in objects) {
-                    if (![self.messages containsObject:message]) {
-                        [self.messages addObject:message];
-                        self.receivedMessage = message;
-                    }
-                }
-            }
-        }];
-    };
-
-    if (notification == nil) {
-        handler();
-    } else {
-        //TODO Optimize to only fetch messages after last message
-        NSString *subjectId = (NSString *) notification.object;
-        if ([subjectId isEqualToString:self.subject.objectId]){
-            handler();
-        }
+    NSString *subjectId = (NSString *) notification.object;
+    if ([subjectId isEqualToString:self.subject.objectId]) {
+        [self refreshSubjects];
     }
 }
 
 - (void)refreshSubjects {
 
+    //TODO Optimize to only fetch messages after last message
     self.fetchCount++;
+    @weakify(self)
     [[HGChatService instance] getMessagesForSubject:self.subject withCompletion:^(NSArray *objects, NSError *error) {
-
+        @strongify(self)
         self.fetchCount--;
 
         if ((self.error = error)) {
             [[HGErrorReporting instance] reportError:error];
         } else {
-            self.messages = [[NSMutableArray alloc] initWithArray:objects];
+            NSMutableArray *new = [[NSMutableArray alloc] init];
+            for (HGMessage *message in objects) {
+                if (![self.messages containsObject:message]) {
+                    [new addObject:message];
+                }
+            }
+            [self.messages addObjectsFromArray:new];
+            self.receivedMessages = new;
+
         }
     }];
 }
 
 - (void)sendMessage:(NSString *)text {
 
-    [[HGChatService instance] sendMessage:text forSubject:self.subject withCompletion:^(HGMessage *message, BOOL succeeded, NSError *error) {
+    if ([self.subscribing isEqualToNumber:@0]) {
+        [[HGChatService instance] toggleSubscription:self.subject];
+        self.subscribing = @1;
+    }
 
+    @weakify(self)
+    [[HGChatService instance] sendMessage:text forSubject:self.subject withCompletion:^(HGMessage *message, BOOL succeeded, NSError *error) {
+        @strongify(self)
         if ((self.error = error)) {
             [[HGErrorReporting instance] reportError:error];
         } else {
@@ -109,10 +101,16 @@
     self.subscribing = [[HGChatService instance] subscribingToSubject:self.subject];
 }
 
+- (void)startTimer {
+    if (![[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) {
+        _updatingTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(refreshSubjects) userInfo:nil repeats:YES];
+    } else {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleChatNotification:) name:kChatNotificationConstant object:nil];
+    }
+}
 
-- (void)dealloc {
+- (void)stopTimer {
     [self.updatingTimer invalidate];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
 @end

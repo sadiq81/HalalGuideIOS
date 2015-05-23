@@ -22,6 +22,10 @@
     return _instance;
 }
 
+- (void)saveSubject:(HGSubject *)subject withCompletion:(PFBooleanResultBlock)completion {
+    [subject saveInBackgroundWithBlock:completion];
+}
+
 - (void)getSubjectsWithCompletion:(PFArrayResultBlock)completion {
 
 /*    PFQuery *local = [PFQuery queryWithClassName:kSubjectTableName];
@@ -30,7 +34,7 @@
     [local findObjectsInBackgroundWithBlock:completion];*/
 
     PFQuery *query = [PFQuery queryWithClassName:kSubjectTableName];
-    [query orderByAscending:@"createdAt"];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
 //            [PFObject pinAllInBackground:objects];
@@ -66,11 +70,11 @@
     message.text = text;
     message.subjectId = subject.objectId;
 
-    [message pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [message pinInBackground];
+
+    [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         completion(message, succeeded, error);
     }];
-
-    [message saveEventually];
 }
 
 - (NSString *)keyForSubscription:(HGSubject *)subject {

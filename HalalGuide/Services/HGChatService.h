@@ -12,6 +12,8 @@
 
 + (HGChatService *)instance;
 
+- (void)saveSubject:(HGSubject *)subject withCompletion:(PFBooleanResultBlock)completion;
+
 - (void)getSubjectsWithCompletion:(PFArrayResultBlock)completion;
 
 - (void)getMessagesForSubject:(HGSubject *)subject withCompletion:(void (^)(NSArray *, NSError *))completion;

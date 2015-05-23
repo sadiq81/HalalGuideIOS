@@ -14,12 +14,12 @@ typedef void (^UpdateMessagesHandler)(void);
 
 - (instancetype)initWithSubject:(HGSubject *)subject;
 
-@property(nonatomic, strong, readonly) NSMutableArray *messages;
-@property(nonatomic, strong, readonly) HGMessage *sentMessage;
-@property(nonatomic, strong, readonly) HGSubject *subject;
-@property(nonatomic, strong, readonly) NSNumber *subscribing;
+@property(nonatomic, retain, readonly) NSMutableArray *messages;
+@property(nonatomic, retain, readonly) HGMessage *sentMessage;
+@property(nonatomic, retain, readonly) HGSubject *subject;
+@property(nonatomic, retain, readonly) NSNumber *subscribing;
 
-@property(nonatomic, strong, readonly) HGMessage *receivedMessage;
+@property(nonatomic, retain, readonly) NSMutableArray  *receivedMessages;
 
 - (HGMessageViewModel *)viewModelForMessage:(NSUInteger)index;
 
@@ -28,4 +28,8 @@ typedef void (^UpdateMessagesHandler)(void);
 - (void)sendMessage:(NSString *)text;
 
 - (void)toggleSubscription;
+
+- (void)startTimer;
+
+- (void)stopTimer;
 @end

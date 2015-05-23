@@ -10,35 +10,35 @@
 
 @interface HGLocationDetailViewModel : HGBaseViewModel
 
-@property(nonatomic, retain, readonly) HGLocation *location;
-@property(nonatomic, readonly) NSArray *locationPictures;
-@property(nonatomic, readonly) NSArray *reviews;
-@property(nonatomic, readonly) PFUser *user;
+@property(nonatomic, readonly, retain) HGLocation *location;
+@property(nonatomic, readonly, copy) NSArray *locationPictures;
+@property(nonatomic, readonly, copy) NSArray *reviews;
+@property(nonatomic, readonly, retain) PFUser *user;
 
-@property(nonatomic, strong, readonly) NSURL *thumbnail;
-@property(nonatomic, strong, readonly) NSString *distance;
-@property(nonatomic, strong, readonly) NSString *address;
-@property(nonatomic, strong, readonly) NSString *postalCode;
+@property(nonatomic, readonly, copy) NSURL *thumbnail;
+@property(nonatomic, readonly, copy) NSString *distance;
+@property(nonatomic, readonly, copy) NSString *address;
+@property(nonatomic, readonly, copy) NSString *postalCode;
 
 @property(nonatomic, readonly) float rating;
-@property(nonatomic, strong, readonly) NSString *category;
+@property(nonatomic, readonly, copy) NSString *category;
 
-@property(nonatomic, readonly, strong) UIImage *porkImage;
-@property(nonatomic, readonly, strong) NSAttributedString *porkString;
-@property(nonatomic, readonly, strong) UIImage *alcoholImage;
-@property(nonatomic, readonly, strong) NSAttributedString *alcoholString;
-@property(nonatomic, readonly, strong) UIImage *halalImage;
-@property(nonatomic, readonly, strong) NSAttributedString *halalString;
+@property(nonatomic, readonly, copy) UIImage *porkImage;
+@property(nonatomic, readonly, copy) NSAttributedString *porkString;
+@property(nonatomic, readonly, copy) UIImage *alcoholImage;
+@property(nonatomic, readonly, copy) NSAttributedString *alcoholString;
+@property(nonatomic, readonly, copy) UIImage *halalImage;
+@property(nonatomic, readonly, copy) NSAttributedString *halalString;
 
-@property(nonatomic, readonly, strong) UIImage *languageImage;
-@property(nonatomic, readonly, strong) NSString *languageString;
+@property(nonatomic, readonly, copy) UIImage *languageImage;
+@property(nonatomic, readonly, copy) NSString *languageString;
 
-@property(nonatomic, readonly, strong) NSURL *submitterImage;
-@property(nonatomic, readonly, strong) NSString *submitterName;
+@property(nonatomic, readonly, copy) NSURL *submitterImage;
+@property(nonatomic, readonly, copy) NSString *submitterName;
 
-@property(nonatomic, strong, readonly) NSArray *smileys;
+@property(nonatomic, readonly, copy) NSArray *smileys;
 
-@property(nonatomic, strong, readonly) NSNumber *favorite;
+@property(nonatomic, readonly, copy) NSNumber *favorite;
 
 - (instancetype)initWithLocation:(HGLocation *)aLocation;
 

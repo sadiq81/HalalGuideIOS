@@ -13,28 +13,17 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "MZFormSheetBackgroundWindow.h"
 #import "IQKeyboardManager.h"
-#import "HGKeyChainService.h"
-#import "HGErrorReporting.h"
-#import "HGPictureService.h"
-#import "UIAlertController+Blocks.h"
-#import "IQUIWindow+Hierarchy.h"
-#import "HGLocationPicture.h"
-#import "RACTuple.h"
 #import "HGFrontPageViewController.h"
 #import "HGAPHelper.h"
 #import "ZLPromptUserReview.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 #import <ALActionBlocks/UIGestureRecognizer+ALActionBlocks.h>
 #import "Constants.h"
 #import "PFFacebookUtils.h"
 #import "FBSDKAppEvents.h"
 #import "FBSDKApplicationDelegate.h"
-#import "HGFrontPageViewModel.h"
-#import "HGSmileyScraper.h"
 #import "HGSubjectsViewController.h"
-#import "HGSubjectsViewModel.h"
 #import "HGMessagesViewController.h"
+#import "HGNavigationController.h"
 
 @interface HGAppDelegate () <UIGestureRecognizerDelegate>
 
@@ -126,7 +115,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     HGFrontPageViewController *viewController = [HGFrontPageViewController controllerWithViewModel:[[HGFrontPageViewModel alloc] init]];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewController];
+    HGNavigationController *nav = [[HGNavigationController alloc] initWithRootViewController:viewController];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
 
@@ -138,6 +127,12 @@
     tripleTap.delegate = self;
     tripleTap.numberOfTapsRequired = 3;
     [nav.navigationBar addGestureRecognizer:tripleTap];
+
+
+    if (launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]) {
+        [self application:application didReceiveRemoteNotification:launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]];
+    }
+
     return YES;
 }
 
@@ -157,7 +152,6 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 
-
     if (application.applicationState == UIApplicationStateInactive) {
         [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
     }
@@ -168,41 +162,6 @@
         NSString *contextData = [userInfo valueForKey:@"contextData"];
         [[NSNotificationCenter defaultCenter] postNotificationName:kChatNotificationConstant object:contextData userInfo:userInfo];
     }
-    /*if ([context isEqualToString:@"HGChat"]) {
-
-            UIViewController *root = self.window.rootViewController;
-
-            if ([root isKindOfClass:[UINavigationController class]]) {
-                UIViewController *viewController = ((UINavigationController *) root).viewControllers.lastObject;
-
-                if ([viewController isKindOfClass:[HGMessagesViewController class]]) {
-                    [((UINavigationController *) root) popViewControllerAnimated:true];
-                    [((UINavigationController *) root) pushViewController:messagesViewController animated:true];
-                } else if ([viewController isKindOfClass:[HGSubjectsViewController class]]) {
-                    [((UINavigationController *) root) pushViewController:messagesViewController animated:true];
-                } else {
-                    UINavigationController *navChat = [[UINavigationController alloc] initWithRootViewController:[HGSubjectsViewController controllerWithViewModel:[[HGSubjectsViewModel alloc] init]]];
-                    [navChat pushViewController:messagesViewController animated:false];
-                    [((UINavigationController *) root) presentViewController:navChat animated:true completion:nil];
-                }
-            }
-    }
-
- if (application.applicationState == UIApplicationStateActive) {
-
-    if ([context hasPrefix:@"subject"]) {
-        UIViewController *root = self.window.rootViewController;
-        if ([root isKindOfClass:[UINavigationController class]]) {
-            UIViewController *viewController = ((UINavigationController *) root).viewControllers.lastObject;
-            if ([viewController isKindOfClass:[HGMessagesViewController class]]) {
-                HGMessagesViewModel *viewModel = ((HGMessagesViewController *) viewController).viewModel;
-                if ([context hasSuffix:viewModel.subject.objectId]) {
-                    [viewModel refreshSubjects];
-                }
-            }
-        }
-    }
-}*/
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
