@@ -69,6 +69,9 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain block:^(id weakSender) {
         @strongify(self)
         [self.viewModel toggleSubscription];
+        [SVProgressHUD showInfoWithStatus:self.viewModel.subscribing.boolValue ? NSLocalizedString(@"HGMessagesViewController.notification.on", nil) : NSLocalizedString(@"HGMessagesViewController.notification.off", nil) maskType:SVProgressHUDMaskTypeNone];
+        UIImage *image = [UIImage imageNamed:self.viewModel.subscribing.boolValue ? @"HGMessagesViewController.notification.on" : @"HGMessagesViewController.notification.off"];
+        [self.navigationItem.rightBarButtonItem setImage:image];
     }];
 
     self.messages = [[UITableView alloc] initWithFrame:CGRectZero];
@@ -111,18 +114,6 @@
 - (void)setupViewModel {
 
     [self.viewModel refreshSubjects];
-
-//    [[RACObserve(self.viewModel, messages) ignore:nil] subscribeNext:^(NSArray *messages) {
-//        [self.messages reloadData];
-//        [self scrollToBottom:false];
-//    }];
-
-    [[RACObserve(self.viewModel, subscribing) ignore:nil] subscribeNext:^(NSNumber *subscribing) {
-        UIImage *image = [UIImage imageNamed:subscribing.boolValue ? @"HGMessagesViewController.notification.on" : @"HGMessagesViewController.notification.off"];
-        [SVProgressHUD showInfoWithStatus:subscribing.boolValue ? NSLocalizedString(@"HGMessagesViewController.notification.on", nil) : NSLocalizedString(@"HGMessagesViewController.notification.off", nil) maskType:SVProgressHUDMaskTypeNone];
-        [self.navigationItem.rightBarButtonItem setImage:image];
-    }];
-
 
     [[[RACObserve(self.viewModel, sentMessage) ignore:nil] deliverOnMainThread] subscribeNext:^(HGMessage *message) {
         NSIndexPath *newMessage = [NSIndexPath indexPathForRow:[self.viewModel.messages count] - 1 inSection:0];
@@ -184,7 +175,7 @@ static NSString *cellIdentifier = @"сellIdentifier";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     HGMessage *message = (HGMessage *) self.viewModel.messages[indexPath.row];;
     CGRect rect = [message.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 60, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12]} context:nil];
-    return 35 + rect.size.height + 10;
+    return 35 + rect.size.height + 20;
 }
 
 

@@ -41,7 +41,7 @@
     self.backgroundColor = [UIColor colorWithRed:201.0f / 255.0f green:201.0f / 255.0f blue:206.0f / 255.0f alpha:1.0f];
 
     self.mediaChooser = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.mediaChooser setImage:[UIImage imageNamed:@"HGMessageComposeView.button.mediaChooser"] forState:UIControlStateNormal];
+//    [self.mediaChooser setImage:[UIImage imageNamed:@"HGMessageComposeView.button.mediaChooser"] forState:UIControlStateNormal];
     [self addSubview:self.mediaChooser];
 
     self.text = [[AUIAutoGrowingTextView alloc] initWithFrame:CGRectZero];
