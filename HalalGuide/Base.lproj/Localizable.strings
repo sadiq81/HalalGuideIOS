@@ -190,10 +190,14 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGSettingsViewController.button.support" = "Støt Halalguide";
 "HGSettingsViewController.button.reset.filter" = "Nulstil søgefilter";
 "HGSettingsViewController.button.reset.intro" = "Nulstil introduktion";
+"HGSettingsViewController.button.enumber" = "E-numre";
 "HGSettingsViewController.section.title.support" = "Støt";
 "HGSettingsViewController.section.title.reset" = "Nulstil";
 "HGSettingsViewController.section.title.profile" = "Profil";
+"HGSettingsViewController.section.title.misc" = "Diverse";
 "HGSettingsViewController.button.log.out" = "Log ud";
+
+
 
 "HGCategoriesView.button.reset" = "Nulstil";
 "HGCategoriesView.button.chose" = "Vælg";
