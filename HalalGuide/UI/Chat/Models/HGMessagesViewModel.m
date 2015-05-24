@@ -44,14 +44,6 @@
     return [HGMessageViewModel modelWithMessage:self.messages[index]];
 }
 
-- (void)handleChatNotification:(NSNotification *)notification {
-
-    NSString *subjectId = (NSString *) notification.object;
-    if ([subjectId isEqualToString:self.subject.objectId]) {
-        [self refreshSubjects];
-    }
-}
-
 - (void)refreshSubjects {
 
     //TODO Optimize to only fetch messages after last message
@@ -104,13 +96,10 @@
 - (void)startTimer {
     if (![[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) {
         _updatingTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(refreshSubjects) userInfo:nil repeats:YES];
-    } else {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleChatNotification:) name:kChatNotificationConstant object:nil];
     }
 }
 
 - (void)stopTimer {
     [self.updatingTimer invalidate];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end
