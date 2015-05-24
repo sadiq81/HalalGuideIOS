@@ -13,6 +13,7 @@
 #import "UIAlertController+Blocks.h"
 #import "UIViewController+Extension.h"
 #import "RMStore.h"
+#import "HGENumberViewController.h"
 
 @interface HGSettingsViewController ()
 
@@ -21,6 +22,7 @@
 @property(strong, nonatomic) UITableViewCell *resetFilter;
 @property(strong, nonatomic) UITableViewCell *resetIntro;
 @property(strong, nonatomic) UITableViewCell *logOut;
+@property(strong, nonatomic) UITableViewCell *enumber;
 @end
 
 @implementation HGSettingsViewController {
@@ -61,11 +63,14 @@
     self.logOut.textLabel.textColor = [[PFUser currentUser] isAuthenticated] ? [UIColor blackColor] : [UIColor lightGrayColor];
     self.logOut.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.log.out", nil);
 
+    self.enumber = [[UITableViewCell alloc] init];
+    self.enumber.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.enumber", nil);
+
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -75,6 +80,8 @@
         case 1:
             return 3;
         case 2:
+            return 1;
+        case 3:
             return 1;
         default:
             return 0;
@@ -101,6 +108,11 @@
             switch (indexPath.row) {
                 case 0:
                     return self.logOut;
+            }
+        case 3:
+            switch (indexPath.row) {
+                case 0:
+                    return self.enumber;
             }
     }
     return nil;
@@ -138,6 +150,13 @@
                 case 0:
                     [PFUser logOut];
             }
+        case 3:
+            switch (indexPath.row) {
+                case 0:{
+                    HGENumberViewController *controller = [[HGENumberViewController alloc] init];
+                    [self.navigationController pushViewController:controller animated:true];
+                }
+            }
     }
 
     [tableView deselectRowAtIndexPath:indexPath animated:true];
@@ -151,6 +170,8 @@
             return NSLocalizedString(@"HGSettingsViewController.section.title.reset", nil);
         case 2:
             return NSLocalizedString(@"HGSettingsViewController.section.title.profile", nil);
+        case 3:
+            return NSLocalizedString(@"HGSettingsViewController.section.title.misc", nil);
         default:
             return nil;
     }

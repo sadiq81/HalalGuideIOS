@@ -199,6 +199,8 @@
 "HGSettingsViewController.section.title.reset" = "Reset";
 "HGSettingsViewController.section.title.profile" = "Profile";
 "HGSettingsViewController.button.log.out" = "Log out";
+"HGSettingsViewController.button.enumber" = "E-numbers";
+"HGSettingsViewController.section.title.misc" = "Miscellaneous";
 
 "HGCategoriesView.button.reset" = "Reset";
 "HGCategoriesView.button.chose" = "Choose";

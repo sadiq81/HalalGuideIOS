@@ -194,6 +194,8 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGSettingsViewController.section.title.reset" = "Nulstil";
 "HGSettingsViewController.section.title.profile" = "Profil";
 "HGSettingsViewController.button.log.out" = "Log ud";
+"HGSettingsViewController.button.enumber" = "E-numre";
+"HGSettingsViewController.section.title.misc" = "Diverse";
 
 "HGCategoriesView.button.reset" = "Nulstil";
 "HGCategoriesView.button.chose" = "Vælg";
