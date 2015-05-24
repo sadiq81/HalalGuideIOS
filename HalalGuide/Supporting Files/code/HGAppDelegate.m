@@ -160,7 +160,9 @@
 
     if ([context isEqualToString:@"HGChat"]) {
         NSString *contextData = [userInfo valueForKey:@"contextData"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kChatNotificationConstant object:contextData userInfo:userInfo];
+        NSMutableDictionary *userInfoWithApplicationState = [[NSMutableDictionary alloc] initWithDictionary:userInfo];
+        [userInfoWithApplicationState setValue:@(application.applicationState) forKey:@"UIApplicationState"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kChatNotificationConstant object:contextData userInfo:userInfoWithApplicationState];
     }
 }
 

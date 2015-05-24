@@ -31,9 +31,10 @@
 - (void)handleChatNotification:(NSNotification *)notification {
 
     UIViewController *currentViewController = self.viewControllers.lastObject;
-    UIApplication *application = [UIApplication sharedApplication];
     NSString *subjectId = (NSString *) notification.object;
     NSString *text = [[notification.userInfo valueForKey:@"aps"] valueForKey:@"alert"];
+
+    UIApplicationState state = (UIApplicationState) ((NSNumber *) [notification.userInfo valueForKey:@"UIApplicationState"]).intValue;
 
     @weakify(self)
     [[[PFQuery queryWithClassName:kSubjectTableName] getObjectInBackgroundWithId:subjectId] continueWithBlock:^id(BFTask *task) {
@@ -41,42 +42,50 @@
         HGSubject *subject = task.result;
 
         void (^completion)(void) = ^void(void) {
-            HGMessagesViewModel *model = [[HGMessagesViewModel alloc] initWithSubject:subject];
-            HGMessagesViewController *messagesViewController = [HGMessagesViewController controllerWithViewModel:model];
-            [self pushViewController:messagesViewController animated:true];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                HGMessagesViewModel *model = [[HGMessagesViewModel alloc] initWithSubject:subject];
+                HGMessagesViewController *messagesViewController = [HGMessagesViewController controllerWithViewModel:model];
+                [self pushViewController:messagesViewController animated:true];
+            });
         };
 
-        if (application.applicationState == UIApplicationStateActive) {
+        void (^showChatNotification)(void) = ^void(void) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [TSMessage showNotificationInViewController:self
+                                                      title:NSLocalizedString(@"HGNavigationController.new.message", nil)
+                                                   subtitle:text
+                                                      image:nil
+                                                       type:TSMessageNotificationTypeMessage
+                                                   duration:TSMessageNotificationDurationAutomatic
+                                                   callback:^{
+                                                       completion();
+                                                   }
+                                                buttonTitle:nil
+                                             buttonCallback:nil
+                                                 atPosition:TSMessageNotificationPositionTop
+                                       canBeDismissedByUser:YES];
+            });
+        };
 
-            if (![currentViewController isKindOfClass:[HGMessagesViewController class]]) {
-
-                // Add a button inside the message
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [TSMessage showNotificationInViewController:self
-                                                          title:NSLocalizedString(@"HGNavigationController.new.message", nil)
-                                                       subtitle:text
-                                                          image:nil
-                                                           type:TSMessageNotificationTypeMessage
-                                                       duration:TSMessageNotificationDurationAutomatic
-                                                       callback:^{
-                                                           completion();
-                                                       }
-                                                    buttonTitle:nil
-                                                 buttonCallback:nil
-                                                     atPosition:TSMessageNotificationPositionTop
-                                           canBeDismissedByUser:YES];
-                });
-            }
-
-        } else if (application.applicationState == UIApplicationStateInactive) {
-
-            if ([currentViewController isKindOfClass:[HGMessagesViewController class]]) {
-                HGMessagesViewModel *viewModel = ((HGMessagesViewController *) currentViewController).viewModel;
-                if ([subjectId isEqualToString:viewModel.subject.objectId]) {
-                    [viewModel refreshSubjects];
-                }
+        if (![currentViewController isKindOfClass:[HGMessagesViewController class]]) {
+            // Add a button inside the message
+            if (state == UIApplicationStateActive) {
+                showChatNotification();
             } else {
                 completion();
+            }
+        } else {
+            HGMessagesViewModel *viewModel = ((HGMessagesViewController *) currentViewController).viewModel;
+            if (![subjectId isEqualToString:viewModel.subject.objectId]) {
+
+                if (state == UIApplicationStateActive) {
+                    showChatNotification();
+                } else {
+                    completion();
+                }
+
+            } else {
+                [viewModel refreshSubjects];
             }
         }
         return task;

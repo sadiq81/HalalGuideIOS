@@ -9,7 +9,7 @@
 @interface HGButtonView ()
 @property(nonatomic, retain) UIButton *button;
 @property(nonatomic, retain) UILabel *label;
-@property(nonatomic, retain) ButtonViewTapHandler tapHandler;
+@property(nonatomic, copy) ButtonViewTapHandler tapHandler;
 @end
 
 
