@@ -288,3 +288,4 @@
 "HGMessagesViewController.notification.off" = "Notifications disabled";
 
 "HGChatViewController.title" = "Subjects";
+"HGNavigationController.new.message" = "New message";

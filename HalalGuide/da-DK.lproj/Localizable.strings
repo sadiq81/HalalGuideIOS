@@ -284,3 +284,4 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGMessagesViewController.notification.off" = "Notifikationer slået fra";
 
 "HGChatViewController.title" = "Emner";
+"HGNavigationController.new.message" = "Ny besked";

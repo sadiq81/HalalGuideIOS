@@ -33,44 +33,54 @@
     UIViewController *currentViewController = self.viewControllers.lastObject;
     UIApplication *application = [UIApplication sharedApplication];
     NSString *subjectId = (NSString *) notification.object;
+    NSString *text = [[notification.userInfo valueForKey:@"aps"] valueForKey:@"alert"];
 
-    if (application.applicationState == UIApplicationStateActive) {
+    @weakify(self)
+    [[[PFQuery queryWithClassName:kSubjectTableName] getObjectInBackgroundWithId:subjectId] continueWithBlock:^id(BFTask *task) {
+        @strongify(self)
+        HGSubject *subject = task.result;
 
-        if (![currentViewController isKindOfClass:[HGMessagesViewController class]]) {
-            // Add a button inside the message
-            [TSMessage showNotificationInViewController:currentViewController
-                                                  title:@"Update available"
-                                               subtitle:@"Please update the app"
-                                                  image:nil
-                                                   type:TSMessageNotificationTypeMessage
-                                               duration:TSMessageNotificationDurationAutomatic
-                                               callback:^{
-                                                   NSLog(@"User tapped the button");
-                                               }
-                                            buttonTitle:nil
-                                         buttonCallback:nil
-                                             atPosition:TSMessageNotificationPositionTop
-                                   canBeDismissedByUser:YES];
+        void (^completion)(void) = ^void(void) {
+            HGMessagesViewModel *model = [[HGMessagesViewModel alloc] initWithSubject:subject];
+            HGMessagesViewController *messagesViewController = [HGMessagesViewController controllerWithViewModel:model];
+            [self pushViewController:messagesViewController animated:true];
+        };
 
-        }
+        if (application.applicationState == UIApplicationStateActive) {
 
-    } else if (application.applicationState == UIApplicationStateInactive) {
+            if (![currentViewController isKindOfClass:[HGMessagesViewController class]]) {
 
-        if ([currentViewController isKindOfClass:[HGMessagesViewController class]]) {
-            HGMessagesViewModel *viewModel = ((HGMessagesViewController *) currentViewController).viewModel;
-            if ([subjectId isEqualToString:viewModel.subject.objectId]) {
-                [viewModel refreshSubjects];
+                // Add a button inside the message
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [TSMessage showNotificationInViewController:self
+                                                          title:NSLocalizedString(@"HGNavigationController.new.message", nil)
+                                                       subtitle:text
+                                                          image:nil
+                                                           type:TSMessageNotificationTypeMessage
+                                                       duration:TSMessageNotificationDurationAutomatic
+                                                       callback:^{
+                                                           completion();
+                                                       }
+                                                    buttonTitle:nil
+                                                 buttonCallback:nil
+                                                     atPosition:TSMessageNotificationPositionTop
+                                           canBeDismissedByUser:YES];
+                });
             }
-        } else {
-            [[[PFQuery queryWithClassName:kSubjectTableName] getObjectInBackgroundWithId:subjectId] continueWithBlock:^id(BFTask *task) {
-                HGSubject *subject = task.result;
-                HGMessagesViewModel *model = [[HGMessagesViewModel alloc] initWithSubject:subject];
-                HGMessagesViewController *messagesViewController = [HGMessagesViewController controllerWithViewModel:model];
-                [self pushViewController:messagesViewController animated:true];
-                return task;
-            }];
+
+        } else if (application.applicationState == UIApplicationStateInactive) {
+
+            if ([currentViewController isKindOfClass:[HGMessagesViewController class]]) {
+                HGMessagesViewModel *viewModel = ((HGMessagesViewController *) currentViewController).viewModel;
+                if ([subjectId isEqualToString:viewModel.subject.objectId]) {
+                    [viewModel refreshSubjects];
+                }
+            } else {
+                completion();
+            }
         }
-    }
+        return task;
+    }];
 }
 
 - (void)dealloc {
