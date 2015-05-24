@@ -24,6 +24,7 @@
 #import "HGSubjectsViewController.h"
 #import "HGMessagesViewController.h"
 #import "HGNavigationController.h"
+#import <Fabric/Fabric.h>
 
 @interface HGAppDelegate () <UIGestureRecognizerDelegate>
 
