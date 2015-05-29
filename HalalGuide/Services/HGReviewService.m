@@ -3,8 +3,10 @@
 // Copyright (c) 2014 Eazy It. All rights reserved.
 //
 
+#import <AFNetworking/AFNetworkReachabilityManager.h>
 #import "HGReviewService.h"
 #import "HGLocation.h"
+
 
 @implementation HGReviewService {
 
@@ -23,15 +25,23 @@
 }
 
 - (void)saveReview:(HGReview *)review onCompletion:(PFBooleanResultBlock)completion {
+    //TODO Offline handling
     [review saveInBackgroundWithBlock:completion];
 }
 
 - (void)reviewsForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion {
-    PFQuery *query = [PFQuery queryWithClassName:kReviewTableName];
-    //query.cachePolicy = kPFCachePolicyNetworkElseCache;
+
+    completion(@[],nil);
+
+    /*PFQuery *query = [PFQuery queryWithClassName:kReviewTableName];
+
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
+        [query fromLocalDatastore];
+    }
+
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
     [query whereKey:@"locationId" equalTo:location.objectId];
-    [query findObjectsInBackgroundWithBlock:completion];
+    [query findObjectsInBackgroundWithBlock:completion];*/
 }
 
 @end

@@ -9,7 +9,7 @@
 #define kMessageTableName @"Message"
 #import <JSQMessagesViewController/JSQMessages.h>
 
-@interface HGMessage : HGBaseEntity
+@interface HGMessage : HGBaseEntity<PFSubclassing>
 
 @property (nonatomic, strong) NSString *subjectId;
 @property (nonatomic, strong) NSString *userId;

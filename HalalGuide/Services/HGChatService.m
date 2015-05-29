@@ -21,11 +21,12 @@
 
     return _instance;
 }
-
+//TODO Offline handling
 - (void)saveSubject:(HGSubject *)subject withCompletion:(PFBooleanResultBlock)completion {
     [subject saveInBackgroundWithBlock:completion];
 }
 
+//TODO Offline handling
 - (void)getSubjectsWithCompletion:(PFArrayResultBlock)completion {
 
 /*    PFQuery *local = [PFQuery queryWithClassName:kSubjectTableName];
@@ -45,6 +46,7 @@
 
 }
 
+//TODO Offline handling
 - (void)getMessagesForSubject:(HGSubject *)subject withCompletion:(void (^)(NSArray *, NSError *))completion {
 
 /*    PFQuery *local = [PFQuery queryWithClassName:kMessageTableName];
@@ -64,6 +66,7 @@
     }];
 }
 
+//TODO Offline handling
 - (void)sendMessage:(NSString *)text forSubject:(HGSubject *)subject withCompletion:(void (^)(HGMessage *message, BOOL succeeded, NSError *error))completion {
     HGMessage *message = [HGMessage object];
     message.userId = [PFUser currentUser].objectId;

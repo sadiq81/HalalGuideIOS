@@ -12,7 +12,7 @@
 
 #define kReviewTableName @"Review"
 
-@interface HGReview : HGBaseEntity
+@interface HGReview : HGBaseEntity<PFSubclassing>
 
 @property (nonatomic, retain) NSNumber * creationStatus;
 @property (nonatomic, retain) NSString * locationId;

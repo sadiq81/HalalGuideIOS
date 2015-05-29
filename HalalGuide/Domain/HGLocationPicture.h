@@ -12,7 +12,7 @@
 
 #define kLocationPictureTableName  @"LocationPicture"
 
-@interface HGLocationPicture : HGBaseEntity
+@interface HGLocationPicture : HGBaseEntity<PFSubclassing>
 
 @property (nonatomic, retain) NSNumber * creationStatus;
 @property (nonatomic, retain) PFFile * picture;

@@ -4,6 +4,7 @@
 //
 
 #import <AsyncImageView/AsyncImageView.h>
+#import <ALActionBlocks/UIGestureRecognizer+ALActionBlocks.h>
 #import "HGLocationDetailsPictureView.h"
 #import "ReactiveCocoa.h"
 #import "Masonry.h"
@@ -12,13 +13,14 @@
 #import "UIView+HGBorders.h"
 #import "UIImageView+AFNetworking.h"
 #import "NSString+Extensions.h"
+#import "UIView+FrameAdditions.h"
 
 @interface HGLocationDetailsPictureView () <iCarouselDataSource, iCarouselDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property(strong, nonatomic) UIButton *report;
-@property(strong, nonatomic) UIButton *addReview;
-@property(strong, nonatomic) UIButton *addPicture;
-@property(strong, nonatomic) iCarousel *pictures;
+@property(strong) UIButton *report;
+@property(strong) UIButton *addReview;
+@property(strong) UIButton *addPicture;
+@property(strong) iCarousel *pictures;
 
 @property(strong, nonatomic) UICollectionView *smileys;
 @property(strong, nonatomic) UICollectionViewFlowLayout *layout;
@@ -68,7 +70,7 @@
     self.pictures.dataSource = self;
     self.pictures.decelerationRate = 0.0f;
     self.pictures.scrollSpeed = 0.5f;
-    self.pictures.bounces=  false;
+    self.pictures.bounces = false;
     self.pictures.pagingEnabled = true;
     self.pictures.clipsToBounds = true;
     [self addSubview:self.pictures];
@@ -114,7 +116,7 @@
     @weakify(self)
     RACSignal *pictures = RACObserve(self.viewModel, locationPictures);
     RAC(self.noPicturesLabel, hidden) = [pictures map:^(NSArray *pictures) {
-        return @([pictures count]);
+        return @true;//@([pictures count]);
     }];
     [pictures subscribeNext:^(NSArray *locations) {
         @strongify(self)
@@ -190,20 +192,69 @@
 #pragma mark - CollectionView - Pictures
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
-    return [self.viewModel.locationPictures count];
+    return 2;//[self.viewModel.locationPictures count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
 
-    HGLocationPicture *picture = [self.viewModel.locationPictures objectAtIndex:index];
+    //HGLocationPicture *picture = self.viewModel.locationPictures[index];
 
     if (view == nil) {
-        view = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
+        view = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 101.0f, 180.0f)];
+        view.userInteractionEnabled = true;
         view.contentMode = UIViewContentModeScaleAspectFit;
     }
     //TODO Adjust frame so that portrait and landspace pictures are both max height
-    [((AsyncImageView *) view) setImageWithURL:[picture.mediumPicture.url toURL] placeholderImage:[UIImage imageNamed:@"dining"]];
+    //[((AsyncImageView *) view) setImageWithURL:[picture.mediumPicture.url toURL] placeholderImage:[UIImage imageNamed:@"dining"]];
+    ((AsyncImageView *) view).image = [UIImage imageNamed:@"temp"];
     return view;
+}
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
+
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+
+    AsyncImageView *originalPictureView = (AsyncImageView *) [carousel itemViewAtIndex:index];
+    CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
+
+    UIScrollView *zoomView = [[UIScrollView alloc] initWithFrame:frame];
+
+    [window addSubview:zoomView];
+
+    UIImageView *fullPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(zoomView.frame), CGRectGetHeight(zoomView.frame))];
+    fullPictureView.userInteractionEnabled = true;
+    fullPictureView.clipsToBounds = true;
+    fullPictureView.contentMode = UIViewContentModeScaleAspectFill;
+    fullPictureView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    fullPictureView.image = originalPictureView.image;
+
+    [zoomView addSubview:fullPictureView];
+
+    [UIView animateWithDuration:1 animations:^{
+        zoomView.frame = window.frame;
+        fullPictureView.frame = CGRectInset(window.frame, 0, 80);
+        zoomView.backgroundColor = [UIColor blackColor];
+    }];
+
+    @weakify(zoomView)
+    @weakify(originalPictureView)
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
+        @strongify(zoomView)
+        @strongify(originalPictureView)
+
+        CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
+
+        [UIView animateWithDuration:1
+                         animations:^{
+                             zoomView.frame = frame;
+                             zoomView.alpha = 0;
+                         } completion:^(BOOL finished) {
+                    [((UIView *) zoomView) removeFromSuperview];
+                }];
+
+    }];
+    [fullPictureView addGestureRecognizer:tapGestureRecognizer];
+
 }
 
 - (void)updateConstraints {

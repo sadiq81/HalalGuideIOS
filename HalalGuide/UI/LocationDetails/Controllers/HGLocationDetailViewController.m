@@ -43,7 +43,7 @@
         [self setupTableView];
         [self updateViewConstraints];
 
-        [PFAnalytics trackEvent:@"LocationDetailView" dimensions:@{@"Location" :self.viewModel.location.objectId}];
+        //[PFAnalytics trackEvent:@"LocationDetailView" dimensions:@{@"Location" :self.viewModel.location.objectId}];
     }
 
     return self;

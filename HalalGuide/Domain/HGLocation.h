@@ -83,7 +83,7 @@ typedef enum WeekDay : int16_t {
 
 #define kFavoritesPin @"local.data.store.favorite.pin"
 
-@interface HGLocation : HGBaseEntity
+@interface HGLocation : HGBaseEntity <PFSubclassing>
 
 @property(nonatomic, retain) NSString *addressCity;
 @property(nonatomic, retain) NSString *addressPostalCode;

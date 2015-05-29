@@ -8,6 +8,7 @@
 #import "UIImage+Transformation.h"
 #import "HGReview.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <AFNetworking/AFNetworkReachabilityManager.h>
 
 @implementation HGPictureService {
 
@@ -24,7 +25,7 @@
 
     return _instance;
 }
-
+//TODO Offline handling
 - (void)saveMultiplePictures:(NSArray *)images forLocation:(HGLocation *)location completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion {
 
     NSError *uploadError;
@@ -48,7 +49,7 @@
         }];
     }
 }
-
+//TODO Offline handling
 - (void)saveMultiplePictures:(NSArray *)images forReview:(HGReview *)review completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion {
 
     NSError *uploadError;
@@ -127,21 +128,34 @@
 
 
 - (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion {
-    //query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
+        [query fromLocalDatastore];
+    }
     [query findObjectsInBackgroundWithBlock:completion];
 }
 
 - (void)locationPicturesForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion {
-    PFQuery *query = [PFQuery queryWithClassName:kLocationPictureTableName];
-    //query.cachePolicy = kPFCachePolicyNetworkElseCache;
+
+    completion(@[],nil);
+
+    /*PFQuery *query = [PFQuery queryWithClassName:kLocationPictureTableName];
+
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
+        [query fromLocalDatastore];
+    }
+
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
     [query whereKey:@"locationId" equalTo:location.objectId];
-    [query findObjectsInBackgroundWithBlock:completion];
+    [query findObjectsInBackgroundWithBlock:completion];*/
 }
 
 - (void)locationPicturesForReview:(HGReview *)review onCompletion:(PFArrayResultBlock)completion {
     PFQuery *query = [PFQuery queryWithClassName:kLocationPictureTableName];
-    //query.cachePolicy = kPFCachePolicyNetworkElseCache;
+
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
+        [query fromLocalDatastore];
+    }
+
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
     [query whereKey:@"locationId" equalTo:review.locationId];
     [query whereKey:@"reviewId" equalTo:review.objectId];
@@ -151,11 +165,14 @@
 
 
 - (void)thumbnailForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion {
-    PFQuery *query = [PFQuery queryWithClassName:kLocationPictureTableName];
+
+    completion(@[],nil);
+
+    /*PFQuery *query = [PFQuery queryWithClassName:kLocationPictureTableName];
     //query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
     [query whereKey:@"locationId" equalTo:location.objectId];
     query.limit = 1;
-    [query findObjectsInBackgroundWithBlock:completion];
+    [query findObjectsInBackgroundWithBlock:completion];*/
 }
 @end
