@@ -15,7 +15,7 @@
 #import "NSString+Extensions.h"
 #import "UIView+FrameAdditions.h"
 
-@interface HGLocationDetailsPictureView () <iCarouselDataSource, iCarouselDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HGLocationDetailsPictureView () <iCarouselDataSource, iCarouselDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 
 @property(strong) UIButton *report;
 @property(strong) UIButton *addReview;
@@ -36,7 +36,7 @@
 @end
 
 @implementation HGLocationDetailsPictureView {
-
+    UIImageView *fullPictureView;
 }
 
 - (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel {
@@ -218,14 +218,16 @@
     CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
 
     UIScrollView *zoomView = [[UIScrollView alloc] initWithFrame:frame];
+    zoomView.minimumZoomScale = 1;
+    zoomView.maximumZoomScale = 6;
+    zoomView.delegate = self;
 
     [window addSubview:zoomView];
 
-    UIImageView *fullPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(zoomView.frame), CGRectGetHeight(zoomView.frame))];
+    fullPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(zoomView.frame), CGRectGetHeight(zoomView.frame))];
     fullPictureView.userInteractionEnabled = true;
     fullPictureView.clipsToBounds = true;
     fullPictureView.contentMode = UIViewContentModeScaleAspectFill;
-    fullPictureView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     fullPictureView.image = originalPictureView.image;
 
     [zoomView addSubview:fullPictureView];
@@ -234,6 +236,12 @@
         zoomView.frame = window.frame;
         fullPictureView.frame = CGRectInset(window.frame, 0, 80);
         zoomView.backgroundColor = [UIColor blackColor];
+    }                completion:^(BOOL finished) {
+        UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        [closeButton setImage:[[UIImage imageNamed:@"HGLocationDetailsPictureView.button.close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+        closeButton.tintColor = [UIColor whiteColor];
+        closeButton.frame = CGRectMake(fullPictureView.frame.size.width - 31 + 15, 20, 31, 31);
+        [zoomView addSubview:closeButton];
     }];
 
     @weakify(zoomView)
@@ -243,6 +251,7 @@
         @strongify(originalPictureView)
 
         CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
+        fullPictureView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
         [UIView animateWithDuration:1
                          animations:^{
@@ -255,7 +264,13 @@
     }];
     [fullPictureView addGestureRecognizer:tapGestureRecognizer];
 
+
 }
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return fullPictureView;
+}
+
 
 - (void)updateConstraints {
 
