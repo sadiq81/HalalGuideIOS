@@ -6,6 +6,7 @@
 #import "HGSubjectsViewModel.h"
 #import "HGErrorReporting.h"
 #import "HGChatService.h"
+#import "HGUser.h"
 
 @interface HGSubjectsViewModel ()
 
@@ -48,7 +49,7 @@
     subject.lastMessage = [NSDate dateWithTimeIntervalSinceNow:0];
     subject.title = subjectTitle;
     subject.count = @0;
-    subject.userId = [PFUser currentUser].objectId;
+    subject.userId = [HGUser currentUser].objectId;
 
     [[HGChatService instance] saveSubject:(HGSubject *) subject withCompletion:^(BOOL success, NSError *error) {
         if ((self.error = error)) {

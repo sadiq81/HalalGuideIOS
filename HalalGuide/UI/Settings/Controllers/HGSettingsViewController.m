@@ -14,6 +14,7 @@
 #import "UIViewController+Extension.h"
 #import "RMStore.h"
 #import "HGENumberViewController.h"
+#import "HGUser.h"
 
 @interface HGSettingsViewController ()
 
@@ -59,8 +60,8 @@
     self.resetIntro.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.reset.intro", nil);
 
     self.logOut = [[UITableViewCell alloc] init];
-    self.logOut.selectionStyle = [[PFUser currentUser] isAuthenticated] ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
-    self.logOut.textLabel.textColor = [[PFUser currentUser] isAuthenticated] ? [UIColor blackColor] : [UIColor lightGrayColor];
+    self.logOut.selectionStyle = [[HGUser currentUser] isAuthenticated] ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
+    self.logOut.textLabel.textColor = [[HGUser currentUser] isAuthenticated] ? [UIColor blackColor] : [UIColor lightGrayColor];
     self.logOut.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.log.out", nil);
 
     self.enumber = [[UITableViewCell alloc] init];
@@ -148,7 +149,7 @@
         case 2:
             switch (indexPath.row) {
                 case 0:
-                    [PFUser logOut];
+                    [HGUser logOut];
             }
         case 3:
             switch (indexPath.row) {

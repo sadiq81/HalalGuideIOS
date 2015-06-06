@@ -5,7 +5,6 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 #import "HGMessage.h"
-#import "PFUser+Extension.h"
 
 
 @implementation HGMessage {

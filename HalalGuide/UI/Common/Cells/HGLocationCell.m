@@ -6,6 +6,7 @@
 #import <Masonry/View+MASAdditions.h>
 #import "HGLocationCell.h"
 #import "HGLabels.h"
+#import "HGReachabilityManager.h"
 
 
 @interface HGLocationCell ()
@@ -37,7 +38,11 @@
 - (void)setupViews {
     self.thumbnail = [[AsyncImageView alloc] initWithFrame:CGRectZero];
     self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
-    self.thumbnail.showActivityIndicator = true;
+
+    if (![HGReachabilityManager isReachable]) {
+        self.thumbnail.showActivityIndicator = false;
+    }
+
     self.thumbnail.activityIndicatorStyle = UIActivityIndicatorViewStyleGray;
     [self.contentView addSubview:self.thumbnail];
 

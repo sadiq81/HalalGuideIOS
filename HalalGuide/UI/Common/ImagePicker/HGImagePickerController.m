@@ -5,12 +5,11 @@
 
 #import <CTAssetsPickerController/CTAssetsPickerController.h>
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
-#import <sys/select.h>
+#import "MSSPopMasonry.h"
 #import "HGImagePickerController.h"
 #import "Masonry.h"
 #import "HGImagePickerView.h"
 #import "POPBasicAnimation.h"
-#import "POPAnimatableProperty+Masonry.h"
 #import "HGPictureCollectionViewCell.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 

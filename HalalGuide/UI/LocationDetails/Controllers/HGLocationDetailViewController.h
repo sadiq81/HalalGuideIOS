@@ -28,7 +28,6 @@
 #import "HGReviewDetailViewController.h"
 #import "HGCreateReviewViewController.h"
 #import "HGAppDelegate.h"
-#import "PFUser+Extension.h"
 #import "HGLabels.h"
 #import "HGLocation.h"
 

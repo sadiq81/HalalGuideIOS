@@ -15,6 +15,7 @@ pod 'ReactiveCocoa', '2.4.7'
 pod 'AFNetworking', '2.5.0'
 pod 'AFNetworking-RACExtensions', '0.1.6'
 pod 'AsyncImageView', '1.5.1'
+pod 'Reachability', '3.2'
 
 # UI
 pod 'MZFormSheetController', '2.3.6'
@@ -25,14 +26,14 @@ pod 'EDStarRating', '1.1'
 pod 'SVProgressHUD', '1.1.3'
 pod 'iCarousel', '1.8.1'
 pod 'CTAssetsPickerController', '~> 2.9.3'
-pod 'KASlideShow', :git => 'https://github.com/sadiq81/KASlideShow.git'
+pod 'KASlideShow'
 pod 'JSBadgeView', '1.3.2'
 pod 'SevenSwitch', '1.4.0'
 pod 'SZTextView', '1.2.0'
 pod "ZLPromptUserReview", "~>1.0.0"
 pod 'Masonry', '0.6.1'
 pod 'pop', '~> 1.0'
-pod 'JSQMessagesViewController', '7.0.1'
+pod 'MSSPopMasonry','0.0.1'
 pod "TSMessages", '0.9.12'
 
 #Parse
@@ -44,8 +45,8 @@ pod 'ParseFacebookUtilsV4', '1.7.1'
 # In App
 pod 'RMStore', '~> 0.7'
 
-pod 'hpple'
-pod 'DateTools'
+pod 'hpple', '0.2.0'
+pod 'DateTools', '1.5.0'
 
 post_install do | installer |
   require 'fileutils'

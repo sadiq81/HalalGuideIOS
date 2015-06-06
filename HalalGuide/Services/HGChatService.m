@@ -6,6 +6,8 @@
 #import "HGChatService.h"
 #import "HGSubject.h"
 #import "HGMessage.h"
+#import "HGQuery.h"
+#import "HGUser.h"
 
 @implementation HGChatService {
 
@@ -26,41 +28,26 @@
     [subject saveInBackgroundWithBlock:completion];
 }
 
-//TODO Offline handling
 - (void)getSubjectsWithCompletion:(PFArrayResultBlock)completion {
 
-/*    PFQuery *local = [PFQuery queryWithClassName:kSubjectTableName];
-    [local fromLocalDatastore];
-    [local orderByAscending:@"createdAt"];
-    [local findObjectsInBackgroundWithBlock:completion];*/
-
-    PFQuery *query = [PFQuery queryWithClassName:kSubjectTableName];
+    HGQuery *query = [HGQuery queryWithClassName:kSubjectTableName];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-//            [PFObject pinAllInBackground:objects];
+            [PFObject pinAllInBackground:objects];
         }
         completion(objects, error);
     }];
-
-
 }
 
-//TODO Offline handling
 - (void)getMessagesForSubject:(HGSubject *)subject withCompletion:(void (^)(NSArray *, NSError *))completion {
 
-/*    PFQuery *local = [PFQuery queryWithClassName:kMessageTableName];
-    [local fromLocalDatastore];
-    [local orderByAscending:@"createdAt"];
-    [local whereKey:@"subjectId" equalTo:subject.objectId];
-    [local findObjectsInBackgroundWithBlock:completion];*/
-
-    PFQuery *query = [PFQuery queryWithClassName:kMessageTableName];
+    HGQuery *query = [HGQuery queryWithClassName:kMessageTableName];
     [query orderByAscending:@"createdAt"];
     [query whereKey:@"subjectId" equalTo:subject.objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-//            [PFObject pinAllInBackground:objects];
+            [PFObject pinAllInBackground:objects];
         }
         completion(objects, error);
     }];
@@ -69,7 +56,7 @@
 //TODO Offline handling
 - (void)sendMessage:(NSString *)text forSubject:(HGSubject *)subject withCompletion:(void (^)(HGMessage *message, BOOL succeeded, NSError *error))completion {
     HGMessage *message = [HGMessage object];
-    message.userId = [PFUser currentUser].objectId;
+    message.userId = [HGUser currentUser].objectId;
     message.text = text;
     message.subjectId = subject.objectId;
 

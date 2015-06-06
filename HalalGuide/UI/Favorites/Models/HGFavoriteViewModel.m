@@ -8,6 +8,7 @@
 #import "BFTask.h"
 #import "HGErrorReporting.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
+#import "HGQuery.h"
 
 @interface HGFavoriteViewModel ()
 
@@ -30,7 +31,7 @@
 
 - (void)setupFavorites {
 
-    PFQuery *query = [PFQuery queryWithClassName:kLocationTableName];
+    HGQuery *query = [HGQuery queryWithClassName:kLocationTableName];
     [query fromPinWithName:kFavoritesPin];
 
     self.fetchCount++;
@@ -47,7 +48,7 @@
 }
 
 - (HGLocationDetailViewModel *)viewModelForLocationAtIndex:(NSUInteger)index {
-    return [HGLocationDetailViewModel modelWithLocation:[self.favorites objectAtIndex:index]];
+    return [HGLocationDetailViewModel modelWithLocation:self.favorites[index]];
 }
 
 @end

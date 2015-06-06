@@ -30,7 +30,7 @@
 }
 
 - (HGLocationDetailViewModel *)viewModelForLocationAtIndex:(NSUInteger)index {
-    return [HGLocationDetailViewModel modelWithLocation:[self.locations objectAtIndex:index]];
+    return [HGLocationDetailViewModel modelWithLocation:self.locations[index]];
 }
 
 - (void)refreshLocations {

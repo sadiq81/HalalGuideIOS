@@ -11,6 +11,7 @@
 #import "HGLocationService.h"
 #import "HGPictureService.h"
 #import "HGGeoLocationService.h"
+#import "HGUser.h"
 
 @interface HGCreateLocationViewModel ()
 @property(nonatomic) LocationType locationType;
@@ -88,7 +89,7 @@
     self.error = nil;
     self.progress = 1;
 
-    HGLocation *location = [HGLocation locationWithAddressCity:self.city addressPostalCode:self.postalCode addressRoad:self.road addressRoadNumber:self.roadNumber alcohol:@(self.alcohol.boolValue) creationStatus:@(CreationStatusAwaitingApproval) homePage:self.website language:@(self.language) locationType:@(self.locationType) name:self.name nonHalal:@(self.nonHalal.boolValue) pork:@(self.pork.boolValue) submitterId:[PFUser currentUser].objectId telephone:self.telephone categories:self.typeBaseCategories];
+    HGLocation *location = [HGLocation locationWithAddressCity:self.city addressPostalCode:self.postalCode addressRoad:self.road addressRoadNumber:self.roadNumber alcohol:@(self.alcohol.boolValue) creationStatus:@(CreationStatusAwaitingApproval) homePage:self.website language:@(self.language) locationType:@(self.locationType) name:self.name nonHalal:@(self.nonHalal.boolValue) pork:@(self.pork.boolValue) submitterId:[HGUser currentUser].objectId telephone:self.telephone categories:self.typeBaseCategories];
 
     [[[[[self doesAddressExist] flattenMap:^RACStream *(HGAdgangsadresse *value) {
         location.point = [self pointForAddress:value];

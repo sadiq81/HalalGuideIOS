@@ -9,6 +9,7 @@
 #import "HGReviewService.h"
 #import "HGErrorReporting.h"
 #import "HGPictureService.h"
+#import "HGUser.h"
 
 @interface HGCreateReviewViewModel ()
 
@@ -40,7 +41,7 @@
     HGReview *review = [HGReview object];
     review.review = self.reviewText;
     review.rating = self.rating;
-    review.submitterId = [PFUser currentUser].objectId;
+    review.submitterId = [HGUser currentUser].objectId;
     review.locationId = self.location.objectId;
     review.creationStatus = @(CreationStatusAwaitingApproval);
 

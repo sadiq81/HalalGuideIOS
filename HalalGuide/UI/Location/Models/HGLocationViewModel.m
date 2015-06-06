@@ -12,6 +12,7 @@
 #import "HGSettings.h"
 #import "HGLocationDetailViewModel.h"
 #import "HGGeoLocationService.h"
+#import "HGQuery.h"
 
 @interface HGLocationViewModel () {
 }
@@ -47,7 +48,7 @@
 
 - (PFQuery *)query {
 
-    PFQuery *query = [PFQuery queryWithClassName:kLocationTableName];
+    HGQuery *query = [HGQuery queryWithClassName:kLocationTableName];
     [query whereKey:@"locationType" equalTo:@(self.locationType)];
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
 
@@ -87,28 +88,28 @@
 
         if (self.searchText && [self.searchText length] > 0) {
 
-            PFQuery *name = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *name = [HGQuery orQueryWithSubqueries:@[query]];
             [name whereKey:@"name" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *addressCity = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *addressCity = [HGQuery orQueryWithSubqueries:@[query]];
             [addressCity whereKey:@"addressCity" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *addressPostalCode = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *addressPostalCode = [HGQuery orQueryWithSubqueries:@[query]];
             [addressPostalCode whereKey:@"addressPostalCode" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *addressRoad = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *addressRoad = [HGQuery orQueryWithSubqueries:@[query]];
             [addressRoad whereKey:@"addressRoad" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *addressRoadNumber = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *addressRoadNumber = [HGQuery orQueryWithSubqueries:@[query]];
             [addressRoadNumber whereKey:@"addressRoadNumber" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *homePage = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *homePage = [HGQuery orQueryWithSubqueries:@[query]];
             [homePage whereKey:@"homePage" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *telephone = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *telephone = [HGQuery orQueryWithSubqueries:@[query]];
             [telephone whereKey:@"telephone" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *or = [PFQuery orQueryWithSubqueries:@[name, addressCity, addressPostalCode, addressRoad, addressRoadNumber, homePage, telephone]];
+            HGQuery *or = [HGQuery orQueryWithSubqueries:@[name, addressCity, addressPostalCode, addressRoad, addressRoadNumber, homePage, telephone]];
             //Or queries do not support geo location and limit/skip
             listLocations = [NSArray new];
             return or;

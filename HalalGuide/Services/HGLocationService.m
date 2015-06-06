@@ -5,6 +5,7 @@
 
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import "HGLocationService.h"
+#import "HGQuery.h"
 
 
 @implementation HGLocationService {
@@ -29,42 +30,28 @@
 }
 
 - (void)locationsByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion {
-    if (![AFNetworkReachabilityManager sharedManager].reachable) {
-        [query fromLocalDatastore];
-    }
-    [query findObjectsInBackgroundWithBlock:completion];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [PFObject pinAllInBackground:objects];
+        }
+        completion(objects, error);
+    }];
 }
 
 - (void)lastTenLocations:(PFArrayResultBlock)completion {
 
-
-/*    PFQuery *query = [PFQuery queryWithClassName:kLocationTableName];
-
-    if (![AFNetworkReachabilityManager sharedManager].reachable) {
-        [query fromLocalDatastore];
-    }
-
+    HGQuery *query = [HGQuery queryWithClassName:kLocationTableName];
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
     [query orderByDescending:@"updatedAt"];
     query.limit = 10;
-    [query findObjectsInBackgroundWithBlock:completion];*/
 
-    HGLocation *location = [HGLocation object];
-    location.addressCity = @"København N";
-    location.addressPostalCode = @"2200";
-    location.addressRoad = @"Jagvej";
-    location.addressRoadNumber = @"32";
-    location.alcohol = @0;
-    location.creationStatus = @1;
-    location.point = [PFGeoPoint geoPointWithLatitude:52.0000 longitude:11.0000];
-    location.locationType = @0;
-    location.name = @"Mamma Mia";
-    location.nonHalal = @0;
-    location.pork = @0;
-    location.submitterId = @"123456";
-    location.telephone = @"+4512345678";
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [PFObject pinAllInBackground:objects];
+        }
+        completion(objects, error);
+    }];
 
-    completion(@[location], nil);
 
 }
 

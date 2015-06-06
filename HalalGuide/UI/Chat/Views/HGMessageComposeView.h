@@ -6,7 +6,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "SZTextView.h"
-#import "JSQMessagesComposerTextView.h"
 #import "AUIAutoGrowingTextView.h"
 #import "HGMessagesViewModel.h"
 

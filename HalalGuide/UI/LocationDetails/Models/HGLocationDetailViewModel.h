@@ -7,13 +7,14 @@
 #import "HGBaseViewModel.h"
 #import "HGLocationPicture.h"
 #import "HGReviewDetailViewModel.h"
+#import "HGUser.h"
 
 @interface HGLocationDetailViewModel : HGBaseViewModel
 
 @property(nonatomic, readonly, retain) HGLocation *location;
 @property(nonatomic, readonly, copy) NSArray *locationPictures;
 @property(nonatomic, readonly, copy) NSArray *reviews;
-@property(nonatomic, readonly, retain) PFUser *user;
+@property(nonatomic, readonly, retain) HGUser *user;
 
 @property(nonatomic, readonly, copy) NSURL *thumbnail;
 @property(nonatomic, readonly, copy) NSString *distance;

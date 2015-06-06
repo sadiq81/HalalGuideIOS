@@ -14,6 +14,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "NSString+Extensions.h"
 #import "UIView+FrameAdditions.h"
+#import "HGReachabilityManager.h"
 
 @interface HGLocationDetailsPictureView () <iCarouselDataSource, iCarouselDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 
@@ -161,7 +162,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HGSmileyCell *cell = [self.smileys dequeueReusableCellWithReuseIdentifier:@"HGSmileyCell" forIndexPath:indexPath];
-    [cell configureForSmiley:[self.viewModel.smileys objectAtIndex:indexPath.row]];
+    [cell configureForSmiley:self.viewModel.smileys[indexPath.row]];
     return cell;
 }
 
@@ -192,12 +193,12 @@
 #pragma mark - CollectionView - Pictures
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
-    return 2;//[self.viewModel.locationPictures count];
+    return [self.viewModel.locationPictures count];
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
 
-    //HGLocationPicture *picture = self.viewModel.locationPictures[index];
+    HGLocationPicture *picture = self.viewModel.locationPictures[index];
 
     if (view == nil) {
         view = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 101.0f, 180.0f)];
@@ -205,8 +206,11 @@
         view.contentMode = UIViewContentModeScaleAspectFit;
     }
     //TODO Adjust frame so that portrait and landspace pictures are both max height
-    //[((AsyncImageView *) view) setImageWithURL:[picture.mediumPicture.url toURL] placeholderImage:[UIImage imageNamed:@"dining"]];
-    ((AsyncImageView *) view).image = [UIImage imageNamed:@"temp"];
+    [((AsyncImageView *) view) setImageWithURL:[picture.mediumPicture.url toURL] placeholderImage:[UIImage imageNamed:@"dining"]];
+    if (![HGReachabilityManager isReachable]) {
+        ((AsyncImageView *) view).showActivityIndicator = false;
+    }
+
     return view;
 }
 

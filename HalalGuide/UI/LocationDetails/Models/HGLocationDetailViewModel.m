@@ -10,8 +10,10 @@
 #import "HGReviewService.h"
 #import "HGAddressService.h"
 #import "HGNumberFormatter.h"
-#import "PFUser+Extension.h"
 #import "HGSmileyScraper.h"
+#import "HGUser.h"
+#import "HGUserService.h"
+#import "NSString+Extensions.h"
 
 @interface HGLocationDetailViewModel () {
 
@@ -19,7 +21,7 @@
 @property(nonatomic, retain) HGLocation *location;
 @property(nonatomic, copy) NSArray *locationPictures;
 @property(nonatomic, copy) NSArray *reviews;
-@property(nonatomic, retain) PFUser *user;
+@property(nonatomic, retain) HGUser *user;
 
 @property(nonatomic, copy) NSURL *thumbnail;
 @property(nonatomic, copy) NSString *distance;
@@ -74,9 +76,9 @@
     self.smileys = [NSArray new];
 
     @weakify(self)
-    [[PFUser query] getObjectInBackgroundWithId:self.location.submitterId block:^(PFObject *object, NSError *error) {
+    [[HGUserService instance] getUserInBackGround:self.location.submitterId onCompletion:^(PFObject *object, NSError *error) {
         @strongify(self)
-        self.user = (PFUser *) object;
+        self.user = (HGUser *) object;
         self.submitterName = self.user.facebookName;
         self.submitterImage = self.user.facebookProfileUrlSmall;
     }];
@@ -85,7 +87,7 @@
         @strongify(self)
         if (objects != nil && [objects count] == 1) {
             HGLocationPicture *picture = [objects firstObject];
-            self.thumbnail = [[NSURL alloc] initWithString:picture.thumbnail.url];
+            self.thumbnail = [picture.thumbnail.url toURL];
         }
     }];
 
@@ -109,7 +111,7 @@
         self.languageString = [self.location.language integerValue] != 0 ? NSLocalizedString(LanguageString([self.location.language integerValue]), nil) : @"";
     }
 
-        self.favorite = @([[HGSettings instance].favorites containsObject:self.location.objectId]);
+    self.favorite = @([[HGSettings instance].favorites containsObject:self.location.objectId]);
 
     self.locationPictures = [NSArray new];
     self.reviews = [NSArray new];
@@ -182,18 +184,18 @@
     }
 }
 
--(void) setFavorised:(BOOL) favorized{
+- (void)setFavorised:(BOOL)favorized {
 
-    [PFAnalytics trackEvent:@"Favorised" dimensions:@{@"favorized":@(favorized).stringValue, @"Location":self.location.objectId}];
+    [PFAnalytics trackEvent:@"Favorised" dimensions:@{@"favorized" : @(favorized).stringValue, @"Location" : self.location.objectId}];
 
-    if (favorized){
+    if (favorized) {
         NSMutableArray *favorites = [HGSettings instance].favorites;
         [favorites addObject:self.location.objectId];
         [HGSettings instance].favorites = favorites;
 
         [self.location pinInBackgroundWithName:kFavoritesPin];
 
-    } else{
+    } else {
         NSMutableArray *favorites = [HGSettings instance].favorites;
         [favorites removeObject:self.location.objectId];
         [HGSettings instance].favorites = favorites;

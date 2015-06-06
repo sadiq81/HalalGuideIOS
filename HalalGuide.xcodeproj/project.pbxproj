@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2A36923D8DC76F5D59BCF3B7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3953AC7E9F27FA436202F1C7 /* libPods.a */; };
+		8EFBA6A258A89C5374AFC61E /* HGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA16B417EE6E6D315972F /* HGUser.m */; };
+		8EFBA8A7373C9693E14D2029 /* HGReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA081A1A95E4AD3C73A34 /* HGReachabilityManager.m */; };
+		8EFBA8A752FDDDC9268F6D22 /* HGQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA2D86A8985BA1EDEB7A7 /* HGQuery.m */; };
+		8EFBAC0E67E9B1CDAC63804B /* HGUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA5277EFFB6B6B8B294B5 /* HGUserService.m */; };
 		A1072EB71A962E1300C3A2A3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1072EB51A962E1300C3A2A3 /* Crashlytics.framework */; };
 		A1072EB81A962E1300C3A2A3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1072EB61A962E1300C3A2A3 /* Fabric.framework */; };
 		A10CD7041A364D79001863B9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10CD7031A364D79001863B9 /* Accounts.framework */; };
@@ -71,7 +75,6 @@
 		C596B31AAF53C497C28C6CBE /* HGLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BED8D27B05805C46A120 /* HGLocationViewController.m */; };
 		C596B334F2DDC08F410EF70F /* HGReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B49C10458AF4FFB9C6E5 /* HGReviewCell.m */; };
 		C596B34E37712A177942BA7C /* HGFilterLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B157CF8694E0392C93A4 /* HGFilterLocationViewController.m */; };
-		C596B36B7F44215D90DB74C4 /* POPAnimatableProperty+Masonry.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B63A5A8D68252431C209 /* POPAnimatableProperty+Masonry.m */; };
 		C596B3E527E6EC8DA70915D9 /* UIView+HGBorders.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B74B5EC0E8EAB1C14A19 /* UIView+HGBorders.m */; };
 		C596B4133E7ABD997532686F /* CAGradientLayer+SJSGradients.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BD134AE9DB81291BCE73 /* CAGradientLayer+SJSGradients.m */; };
 		C596B425E6EF0E5E356F830D /* HGReviewService.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BDFE3A3D8F8CE6E706BE /* HGReviewService.m */; };
@@ -118,7 +121,6 @@
 		C596BA4C168B98CBDD69F14C /* HGFrontPageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B095770506EA4316DE8D /* HGFrontPageViewModel.m */; };
 		C596BA7CA9398A331DCB5B14 /* HGAdgangsadresse.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B8B206E72424A29EC190 /* HGAdgangsadresse.m */; };
 		C596BAD88EA37DD67A02C9C6 /* MKMapView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B1AFC308D5211D4CEA65 /* MKMapView+Extension.m */; };
-		C596BADBAD00EE3295E1D197 /* PFUser+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B61E35EBAAF16E0A862C /* PFUser+Extension.m */; };
 		C596BAE22B09BEB7AAB6485F /* HGCreateReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C596BB9A8C8CF5D822EA909D /* HGCreateReviewViewController.m */; };
 		C596BAE5EED75C62D3A018F1 /* NSLocale+iOS8.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B54E9B5201950377B45B /* NSLocale+iOS8.m */; };
 		C596BAE8A50E7BE5B46A433B /* HGLocationDetailsPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = C596B89567F277E9BB803103 /* HGLocationDetailsPictureView.m */; };
@@ -165,6 +167,14 @@
 /* Begin PBXFileReference section */
 		3953AC7E9F27FA436202F1C7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DC353505CC91F279E9EEF95 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8EFBA081A1A95E4AD3C73A34 /* HGReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGReachabilityManager.m; sourceTree = "<group>"; };
+		8EFBA16B417EE6E6D315972F /* HGUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGUser.m; sourceTree = "<group>"; };
+		8EFBA2D86A8985BA1EDEB7A7 /* HGQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGQuery.m; sourceTree = "<group>"; };
+		8EFBA5277EFFB6B6B8B294B5 /* HGUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGUserService.m; sourceTree = "<group>"; };
+		8EFBA59E4ED7202F32BB8A44 /* HGReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGReachabilityManager.h; sourceTree = "<group>"; };
+		8EFBA6EC36AC5A08DA3B37AB /* HGQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGQuery.h; sourceTree = "<group>"; };
+		8EFBAA56304C7300F16344EB /* HGUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGUserService.h; sourceTree = "<group>"; };
+		8EFBAF49E121B43268564521 /* HGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGUser.h; sourceTree = "<group>"; };
 		A1072EB51A962E1300C3A2A3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		A1072EB61A962E1300C3A2A3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		A10CD7031A364D79001863B9 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -302,9 +312,7 @@
 		C596B616FD4379FA5D119141 /* HGMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMessageViewModel.m; sourceTree = "<group>"; };
 		C596B617B13179A872FB16C4 /* HGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGSettingsViewController.m; sourceTree = "<group>"; };
 		C596B619AECBB263C4ED02FE /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
-		C596B61E35EBAAF16E0A862C /* PFUser+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+Extension.m"; sourceTree = "<group>"; };
 		C596B62A69B89CD0CDB5A2FD /* HGLocationViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationViewModel.h; sourceTree = "<group>"; };
-		C596B63A5A8D68252431C209 /* POPAnimatableProperty+Masonry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "POPAnimatableProperty+Masonry.m"; path = "../../../../Github/MSSPopMasonry/Classes/POPAnimatableProperty+Masonry.m"; sourceTree = "<group>"; };
 		C596B63FF637CC5C378F65BD /* HGNewLocationPictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGNewLocationPictureCell.h; sourceTree = "<group>"; };
 		C596B6AEE98BF10F36A5EE4F /* HGDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDateFormatter.h; sourceTree = "<group>"; };
 		C596B6B3DA4C6A3F7EC01132 /* HGMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMessageViewModel.h; sourceTree = "<group>"; };
@@ -316,7 +324,6 @@
 		C596B719810DC8F17EF75BD2 /* HGCreateLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCreateLocationViewController.h; sourceTree = "<group>"; };
 		C596B74B5EC0E8EAB1C14A19 /* UIView+HGBorders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HGBorders.m"; sourceTree = "<group>"; };
 		C596B758D5C968C60DCAE4FE /* HGFavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFavoriteViewController.m; sourceTree = "<group>"; };
-		C596B7619E576919FDF26FB0 /* PFUser+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFUser+Extension.h"; sourceTree = "<group>"; };
 		C596B7628F37A7B9650DC6B7 /* HGMosqueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMosqueCell.h; sourceTree = "<group>"; };
 		C596B76374759947E3D1466D /* HGReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HGReview.m; path = Domain/HGReview.m; sourceTree = "<group>"; };
 		C596B77D557A2BCE5052EA80 /* HGCreateSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCreateSwitchView.m; sourceTree = "<group>"; };
@@ -354,7 +361,6 @@
 		C596B99CB389710885488A19 /* NSMutableString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Extensions.h"; sourceTree = "<group>"; };
 		C596B9ABFC2B3E6D74D16247 /* HGImagePickerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGImagePickerButton.h; sourceTree = "<group>"; };
 		C596B9BAE9FFF82DAA77ED1A /* HGSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSettings.h; sourceTree = "<group>"; };
-		C596B9FA8C4C7AB9D33D88F1 /* MSSPopMasonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSSPopMasonry.h; path = ../../../../Github/MSSPopMasonry/Classes/MSSPopMasonry.h; sourceTree = "<group>"; };
 		C596BA09ECBA2516C11358B3 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		C596BA0BC9FF2DA48BCABE6E /* HGCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCategoriesViewController.m; sourceTree = "<group>"; };
 		C596BA133044651C9811633E /* HGSmiley.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSmiley.h; sourceTree = "<group>"; };
@@ -369,7 +375,6 @@
 		C596BAEED1399F29554B33EC /* HGFilterSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFilterSwitchView.m; sourceTree = "<group>"; };
 		C596BB05DFC6AE438EF841F4 /* HGMosqueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMosqueCell.m; sourceTree = "<group>"; };
 		C596BB32CD8567F492411069 /* HGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGNavigationController.h; sourceTree = "<group>"; };
-		C596BB37691EF0A00C10AD8D /* POPAnimatableProperty+Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "POPAnimatableProperty+Masonry.h"; path = "../../../../Github/MSSPopMasonry/Classes/POPAnimatableProperty+Masonry.h"; sourceTree = "<group>"; };
 		C596BB41F03199995D12BA45 /* HGMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMessage.h; sourceTree = "<group>"; };
 		C596BB4975DF2D6271626FEB /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		C596BB577D2DE7DD6C6769A2 /* HGLocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGLocationAnnotation.h; sourceTree = "<group>"; };
@@ -952,8 +957,6 @@
 				C596B3B9B67A50AA098B0D07 /* NSString+Extensions.m */,
 				A12FD69E1A8ECEDE00E2EEEC /* NSTimer+Block.h */,
 				A12FD69F1A8ECEDF00E2EEEC /* NSTimer+Block.m */,
-				C596B7619E576919FDF26FB0 /* PFUser+Extension.h */,
-				C596B61E35EBAAF16E0A862C /* PFUser+Extension.m */,
 				C596B36E2F82CB58618D3BA7 /* UIImage */,
 				C596B5C4D2BA58493F20E91A /* UILabel+Extensions.h */,
 				C596BF9C4BB1DDEF86A7E229 /* UILabel+Extensions.m */,
@@ -961,9 +964,6 @@
 				C596B36E230B87C39254F512 /* UIView */,
 				C596B1252B5FEC446A55A856 /* UITableView+Header.m */,
 				C596BE526991A39426245E61 /* UITableView+Header.h */,
-				C596B9FA8C4C7AB9D33D88F1 /* MSSPopMasonry.h */,
-				C596BB37691EF0A00C10AD8D /* POPAnimatableProperty+Masonry.h */,
-				C596B63A5A8D68252431C209 /* POPAnimatableProperty+Masonry.m */,
 				C596B54E9B5201950377B45B /* NSLocale+iOS8.m */,
 				C596BDC67C12F52B1A76E2AE /* NSLocale+iOS8.h */,
 				C596B4347D0E938F92BE5B8F /* UITextField+HGTextFieldStyling.m */,
@@ -974,6 +974,10 @@
 				C596B4726EF4A4D519F9C07F /* AUIAutoGrowingTextView.m */,
 				C596B60F0FF70DA632A26B65 /* UIAlertView+Blocks.m */,
 				C596BEF2305CCE68BF45D745 /* UIAlertView+Blocks.h */,
+				8EFBA2D86A8985BA1EDEB7A7 /* HGQuery.m */,
+				8EFBA6EC36AC5A08DA3B37AB /* HGQuery.h */,
+				8EFBA16B417EE6E6D315972F /* HGUser.m */,
+				8EFBAF49E121B43268564521 /* HGUser.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1168,6 +1172,10 @@
 				C596BF0E11647A3F0842BBDD /* HGGeoLocationService.h */,
 				C596BD63847F5841524A7E23 /* HGChatService.m */,
 				C596B6E82E11314BEBA6E2F6 /* HGChatService.h */,
+				8EFBA081A1A95E4AD3C73A34 /* HGReachabilityManager.m */,
+				8EFBA59E4ED7202F32BB8A44 /* HGReachabilityManager.h */,
+				8EFBA5277EFFB6B6B8B294B5 /* HGUserService.m */,
+				8EFBAA56304C7300F16344EB /* HGUserService.h */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1515,7 +1523,6 @@
 				C596BEF25A73910BB1A16C3A /* NSMutableString+Extensions.m in Sources */,
 				C596B0C14A222CF7176A43E0 /* NSObject+MethodExchange.m in Sources */,
 				C596BD2F3DEA743000DA7441 /* NSString+Extensions.m in Sources */,
-				C596BADBAD00EE3295E1D197 /* PFUser+Extension.m in Sources */,
 				C596B9F844193490D9A6B3E7 /* UILabel+Extensions.m in Sources */,
 				C596B244979C5E5FAA0344AD /* HGAppDelegate.m in Sources */,
 				C596B1788E992B50B6F8B31D /* main.m in Sources */,
@@ -1532,7 +1539,6 @@
 				C596B75AA02F22D07C4EA602 /* HGLocationDetailsInfoView.m in Sources */,
 				C596BF1E2EA59E41FC92E76E /* HGLocationDetailsSubmitterView.m in Sources */,
 				C596BAE8A50E7BE5B46A433B /* HGLocationDetailsPictureView.m in Sources */,
-				C596B36B7F44215D90DB74C4 /* POPAnimatableProperty+Masonry.m in Sources */,
 				C596B334F2DDC08F410EF70F /* HGReviewCell.m in Sources */,
 				C596B2F55EBBDED43797DB3D /* HGLocationDetailsHeaderView.m in Sources */,
 				C596BF1EF41F44C208668FA2 /* HGGeoLocationService.m in Sources */,
@@ -1597,6 +1603,10 @@
 				C596B89171141018861869BA /* UIAlertView+Blocks.m in Sources */,
 				C596B7467A50AB6C4198C390 /* HGEnumber.m in Sources */,
 				C596BC7E54D3CEE75DC36E76 /* HGENumberScraper.m in Sources */,
+				8EFBA8A752FDDDC9268F6D22 /* HGQuery.m in Sources */,
+				8EFBA8A7373C9693E14D2029 /* HGReachabilityManager.m in Sources */,
+				8EFBA6A258A89C5374AFC61E /* HGUser.m in Sources */,
+				8EFBAC0E67E9B1CDAC63804B /* HGUserService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1732,7 +1742,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "376dd400-d0ca-420e-a98d-7e850bd39ed4";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
@@ -1761,7 +1771,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "711c7bb6-b020-44bf-be6b-838e3e71e2b5";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;

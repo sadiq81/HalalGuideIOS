@@ -9,6 +9,7 @@
 #import "ReactiveCocoa.h"
 #import "BFTask.h"
 #import "TSMessage.h"
+#import "HGQuery.h"
 
 
 @implementation HGNavigationController {

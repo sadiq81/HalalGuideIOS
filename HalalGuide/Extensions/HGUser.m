@@ -1,12 +1,24 @@
 //
-// Created by Privat on 18/12/14.
-// Copyright (c) 2014 Eazy It. All rights reserved.
+// Created by Privat on 06/06/15.
+// Copyright (c) 2015 Eazy It. All rights reserved.
 //
 
-#import "PFUser+Extension.h"
-#import "FBSDKGraphRequest.h"
+#import <Facebook-iOS-SDK/FBSDKCoreKit/FBSDKGraphRequest.h>
+#import "HGUser.h"
+#import "HGReachabilityManager.h"
 
-@implementation PFUser (Extension)
+@implementation HGUser {
+
+}
+
++ (PF_NULLABLE PFQuery *)query {
+    PFQuery *query = [super query];
+    if (![HGReachabilityManager isReachable]) {
+        [query fromLocalDatastore];
+    }
+    return query;
+}
+
 
 + (void)storeProfileInfoForLoggedInUser:(PFBooleanResultBlock)completion {
 
@@ -61,6 +73,16 @@
     NSString *facebookID = [self facebookID];
     NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal&return_ssl_resources=1", facebookID]];
     return pictureURL;
+}
+
++ (void)load {
+    [super load];
+    [self registerSubclass];
+}
+
+
++ (void)registerSubclass {
+    [super registerSubclass];
 }
 
 

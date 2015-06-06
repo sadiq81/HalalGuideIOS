@@ -1,14 +1,12 @@
 //
-// Created by Privat on 18/12/14.
-// Copyright (c) 2014 Eazy It. All rights reserved.
+// Created by Privat on 06/06/15.
+// Copyright (c) 2015 Eazy It. All rights reserved.
 //
-#define kFacebookUserInfoKey @"facebookUserInfo"
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
-
-@interface PFUser (Extension)
+@interface HGUser : PFUser<PFSubclassing>
 
 + (void)storeProfileInfoForLoggedInUser:(PFBooleanResultBlock)completion;
 

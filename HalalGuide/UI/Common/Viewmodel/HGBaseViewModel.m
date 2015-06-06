@@ -15,10 +15,8 @@
 #import "HGPictureService.h"
 #import "HGKeyChainService.h"
 #import "HGErrorReporting.h"
-#import "PFUser+Extension.h"
 #import "UIAlertController+Blocks.h"
 #import "UIViewController+Extension.h"
-#import "PFUser+Extension.h"
 #import "HGLogInViewController.h"
 #import "HGAppDelegate.h"
 

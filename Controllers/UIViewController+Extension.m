@@ -8,6 +8,7 @@
 #import "HGCreateReviewViewModel.h"
 #import "HGSubjectsViewController.h"
 #import "HGMessagesViewController.h"
+#import "HGUser.h"
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
@@ -90,17 +91,19 @@
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
 
+    HGUser *casted = (HGUser*)user;
+
     [self dismissViewControllerAnimated:true completion:^{
 
         //TODO Move to viewmodel
         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
         currentInstallation[@"user"] = user;
         [currentInstallation saveInBackground];
-        [[Crashlytics sharedInstance] setUserIdentifier:user.objectId];
-        [[Crashlytics sharedInstance] setUserName:user.facebookName];
+        [[Crashlytics sharedInstance] setUserIdentifier:casted.objectId];
+        [[Crashlytics sharedInstance] setUserName:casted.facebookName];
 
-        if (user.isNew) {
-            [PFUser storeProfileInfoForLoggedInUser:nil];
+        if (casted.isNew) {
+            [HGUser storeProfileInfoForLoggedInUser:nil];
         }
 
         self.loginHandler();

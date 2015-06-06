@@ -8,6 +8,7 @@
 #import "HGMessageCell.h"
 #import "Masonry.h"
 #import "ReactiveCocoa.h"
+#import "HGUser.h"
 
 
 @interface HGMessageCell ()
@@ -64,7 +65,7 @@
 - (void)configureViewModel {
 
     [RACObserve(self, viewModel) subscribeNext:^(HGMessageViewModel *viewModel) {
-        bool isCurrentUSer = [viewModel.message.userId isEqualToString:[PFUser currentUser].objectId];
+        bool isCurrentUSer = [viewModel.message.userId isEqualToString:[HGUser currentUser].objectId];
         self.textView.backgroundColor = isCurrentUSer ? HGCurrentUserMessageColor : HGOtherUserMessageColor;
         self.alignment = isCurrentUSer ? HGChatCellAlignmentRight : HGChatCellAlignmentLeft;
         [self updateConstraints];

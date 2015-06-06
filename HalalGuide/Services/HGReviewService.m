@@ -6,6 +6,7 @@
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import "HGReviewService.h"
 #import "HGLocation.h"
+#import "HGQuery.h"
 
 
 @implementation HGReviewService {
@@ -31,17 +32,16 @@
 
 - (void)reviewsForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion {
 
-    completion(@[],nil);
-
-    /*PFQuery *query = [PFQuery queryWithClassName:kReviewTableName];
-
-    if (![AFNetworkReachabilityManager sharedManager].reachable) {
-        [query fromLocalDatastore];
-    }
-
+    HGQuery *query = [HGQuery queryWithClassName:kReviewTableName];
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
     [query whereKey:@"locationId" equalTo:location.objectId];
-    [query findObjectsInBackgroundWithBlock:completion];*/
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [PFObject pinAllInBackground:objects];
+        }
+        completion(objects, error);
+    }];
+
 }
 
 @end

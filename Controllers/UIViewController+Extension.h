@@ -13,7 +13,6 @@
 #import "HGOnboarding.h"
 #import "UILabel+Extensions.h"
 #import "HGLogInViewController.h"
-#import "PFUser+Extension.h"
 #import <Parse/Parse.h>
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "HGImagePickerController.h"
