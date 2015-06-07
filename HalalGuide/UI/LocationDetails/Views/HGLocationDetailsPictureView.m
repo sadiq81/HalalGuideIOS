@@ -5,6 +5,7 @@
 
 #import <AsyncImageView/AsyncImageView.h>
 #import <ALActionBlocks/UIGestureRecognizer+ALActionBlocks.h>
+#import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import "HGLocationDetailsPictureView.h"
 #import "ReactiveCocoa.h"
 #import "Masonry.h"
@@ -31,13 +32,17 @@
 
 @property(strong) HGLocationDetailViewModel *viewModel;
 
+@property(strong, nonatomic) UIScrollView *zoomView;
+@property(strong, nonatomic) UIImageView *fullPictureView;
+@property(strong, nonatomic) UIButton *closeButton;
+
 - (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel;
 
 + (instancetype)viewWithViewModel:(HGLocationDetailViewModel *)viewModel;
 @end
 
 @implementation HGLocationDetailsPictureView {
-    UIImageView *fullPictureView;
+
 }
 
 - (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel {
@@ -162,7 +167,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HGSmileyCell *cell = [self.smileys dequeueReusableCellWithReuseIdentifier:@"HGSmileyCell" forIndexPath:indexPath];
-    [cell configureForSmiley:self.viewModel.smileys[indexPath.row]];
+    [cell configureForSmiley:[self.viewModel.smileys objectAtIndex:indexPath.row]];
     return cell;
 }
 
@@ -221,58 +226,76 @@
     AsyncImageView *originalPictureView = (AsyncImageView *) [carousel itemViewAtIndex:index];
     CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
 
-    UIScrollView *zoomView = [[UIScrollView alloc] initWithFrame:frame];
-    zoomView.minimumZoomScale = 1;
-    zoomView.maximumZoomScale = 6;
-    zoomView.delegate = self;
+    self.zoomView = [[UIScrollView alloc] initWithFrame:frame];
+    self.zoomView.minimumZoomScale = 1;
+    self.zoomView.maximumZoomScale = 6;
+    self.zoomView.delegate = self;
 
-    [window addSubview:zoomView];
+    [window addSubview:self.zoomView];
 
-    fullPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(zoomView.frame), CGRectGetHeight(zoomView.frame))];
-    fullPictureView.userInteractionEnabled = true;
-    fullPictureView.clipsToBounds = true;
-    fullPictureView.contentMode = UIViewContentModeScaleAspectFill;
-    fullPictureView.image = originalPictureView.image;
+    self.fullPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.zoomView.frame), CGRectGetHeight(self.zoomView.frame))];
+    self.fullPictureView.userInteractionEnabled = true;
+    self.fullPictureView.clipsToBounds = true;
+    self.fullPictureView.contentMode = UIViewContentModeScaleAspectFill;
+    self.fullPictureView.image = originalPictureView.image;
 
-    [zoomView addSubview:fullPictureView];
+    [self.zoomView addSubview:self.fullPictureView];
 
-    [UIView animateWithDuration:1 animations:^{
-        zoomView.frame = window.frame;
-        fullPictureView.frame = CGRectInset(window.frame, 0, 80);
-        zoomView.backgroundColor = [UIColor blackColor];
-    }                completion:^(BOOL finished) {
-        UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [closeButton setImage:[[UIImage imageNamed:@"HGLocationDetailsPictureView.button.close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-        closeButton.tintColor = [UIColor whiteColor];
-        closeButton.frame = CGRectMake(fullPictureView.frame.size.width - 31 + 15, 20, 31, 31);
-        [zoomView addSubview:closeButton];
+    self.closeButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.closeButton setImage:[[UIImage imageNamed:@"HGLocationDetailsPictureView.button.close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.closeButton.tintColor = [UIColor whiteColor];
+
+    self.closeButton.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width - 31 - 15, 15, 31, 31);
+
+    RAC(self.closeButton, hidden) = [[RACSignal combineLatest:@[RACObserve(self.zoomView, zoomScale), RACObserve(self.zoomView, zooming)]] reduceEach:^(NSNumber *scale, NSNumber *zooming) {
+        return @(![scale isEqualToNumber:@1] || ![zooming isEqualToNumber:@0]);
     }];
 
-    @weakify(zoomView)
+    [UIView animateWithDuration:1
+                     animations:^{
+                         self.zoomView.frame = window.frame;
+                         self.fullPictureView.frame = CGRectInset(window.frame, 0, 80);
+                         self.zoomView.backgroundColor = [UIColor blackColor];
+                     }
+                     completion:^(BOOL finished) {
+                         [self.zoomView addSubview:self.closeButton];
+                     }];
+
+    @weakify(self)
     @weakify(originalPictureView)
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
-        @strongify(zoomView)
+    [self.closeButton handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
+        @strongify(self)
         @strongify(originalPictureView)
 
+        [self.closeButton removeFromSuperview];
+
         CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
-        fullPictureView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.fullPictureView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
         [UIView animateWithDuration:1
                          animations:^{
-                             zoomView.frame = frame;
-                             zoomView.alpha = 0;
-                         } completion:^(BOOL finished) {
-                    [((UIView *) zoomView) removeFromSuperview];
-                }];
-
+                             self.zoomView.frame = frame;
+                             self.zoomView.alpha = 0;
+                         }
+                         completion:^(BOOL finished) {
+                             [self.zoomView removeFromSuperview];
+                             self.zoomView = nil;
+                             self.fullPictureView = nil;
+                             self.closeButton = nil;
+                         }];
     }];
-    [fullPictureView addGestureRecognizer:tapGestureRecognizer];
-
-
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return fullPictureView;
+    return self.fullPictureView;
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
+    self.closeButton.hidden = true;
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+    self.closeButton.hidden = scale != 1;
 }
 
 

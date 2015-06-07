@@ -1,512 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="Notice board funtion #29">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/HGQuery.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/HGQuery.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGReachabilityManager.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGReachabilityManager.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/HGUser.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/HGUser.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGUserService.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGUserService.m" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/PFUser+Extension.m" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/320x480.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/320x480.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/640x960-1.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/640x960-1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/640x960.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/640x960.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.arabic.imageset/Arabic.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.arabic.imageset/Arabic.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/CategoriesViewController.button.close.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/CategoriesViewController.button.close.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsPictureView.button.close.imageset/CategoriesViewController.button.close.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsPictureView.button.close.imageset/CategoriesViewController.button.close.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/CategoriesViewController.button.close@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/CategoriesViewController.button.close@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsPictureView.button.close.imageset/CategoriesViewController.button.close@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsPictureView.button.close.imageset/CategoriesViewController.button.close@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/CategoriesViewController.button.close@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/CategoriesViewController.button.close@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsPictureView.button.close.imageset/CategoriesViewController.button.close@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsPictureView.button.close.imageset/CategoriesViewController.button.close@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.danish.imageset/Danish.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.danish.imageset/Danish.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.false.imageset/DiningCell.alcohol.false.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.false.imageset/DiningCell.alcohol.false.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/DiningCell.alcohol.false.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/DiningCell.alcohol.false.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.false.imageset/DiningCell.alcohol.false@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.false.imageset/DiningCell.alcohol.false@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/DiningCell.alcohol.false@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/DiningCell.alcohol.false@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.false.imageset/DiningCell.alcohol.false@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.false.imageset/DiningCell.alcohol.false@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/DiningCell.alcohol.false@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/DiningCell.alcohol.false@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.true.imageset/DiningCell.alcohol.true.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.true.imageset/DiningCell.alcohol.true.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/DiningCell.alcohol.true.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/DiningCell.alcohol.true.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.true.imageset/DiningCell.alcohol.true@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.true.imageset/DiningCell.alcohol.true@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/DiningCell.alcohol.true@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/DiningCell.alcohol.true@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.true.imageset/DiningCell.alcohol.true@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.true.imageset/DiningCell.alcohol.true@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/DiningCell.alcohol.true@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/DiningCell.alcohol.true@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.false.imageset/DiningCell.non.halal.false.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.false.imageset/DiningCell.non.halal.false.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/DiningCell.non.halal.false.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/DiningCell.non.halal.false.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.false.imageset/DiningCell.non.halal.false@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.false.imageset/DiningCell.non.halal.false@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/DiningCell.non.halal.false@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/DiningCell.non.halal.false@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.false.imageset/DiningCell.non.halal.false@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.false.imageset/DiningCell.non.halal.false@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/DiningCell.non.halal.false@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/DiningCell.non.halal.false@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.true.imageset/DiningCell.non.halal.true.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.true.imageset/DiningCell.non.halal.true.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/DiningCell.non.halal.true.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/DiningCell.non.halal.true.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.true.imageset/DiningCell.non.halal.true@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.true.imageset/DiningCell.non.halal.true@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/DiningCell.non.halal.true@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/DiningCell.non.halal.true@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.true.imageset/DiningCell.non.halal.true@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.true.imageset/DiningCell.non.halal.true@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/DiningCell.non.halal.true@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/DiningCell.non.halal.true@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.false.imageset/DiningCell.pork.false.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.false.imageset/DiningCell.pork.false.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/DiningCell.pork.false.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/DiningCell.pork.false.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.false.imageset/DiningCell.pork.false@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.false.imageset/DiningCell.pork.false@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/DiningCell.pork.false@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/DiningCell.pork.false@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.false.imageset/DiningCell.pork.false@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.false.imageset/DiningCell.pork.false@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/DiningCell.pork.false@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/DiningCell.pork.false@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.true.imageset/DiningCell.pork.true.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.true.imageset/DiningCell.pork.true.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/DiningCell.pork.true.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/DiningCell.pork.true.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.true.imageset/DiningCell.pork.true@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.true.imageset/DiningCell.pork.true@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/DiningCell.pork.true@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/DiningCell.pork.true@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.true.imageset/DiningCell.pork.true@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.true.imageset/DiningCell.pork.true@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/DiningCell.pork.true@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/DiningCell.pork.true@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.english.imageset/English.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.english.imageset/English.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/FrontPageViewController.button.dining@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/FrontPageViewController.button.enumber@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/FrontPageViewController.button.mosque@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/FrontPageViewController.button.settings@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/FrontPageViewController.button.shop@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGChatViewController.button.new.subject.imageset/HGChatViewController.button.new.subject.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGChatViewController.button.new.subject.imageset/HGChatViewController.button.new.subject.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGChatViewController.button.new.subject.imageset/HGChatViewController.button.new.subject@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGChatViewController.button.new.subject.imageset/HGChatViewController.button.new.subject@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGChatViewController.button.new.subject.imageset/HGChatViewController.button.new.subject@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGChatViewController.button.new.subject.imageset/HGChatViewController.button.new.subject@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateLocationViewController.button.pick.image.imageset/HGCreateLocationViewController.button.pick.image.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateLocationViewController.button.pick.image.imageset/HGCreateLocationViewController.button.pick.image.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateLocationViewController.button.pick.image.imageset/HGCreateLocationViewController.button.pick.image@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateLocationViewController.button.pick.image.imageset/HGCreateLocationViewController.button.pick.image@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateLocationViewController.button.pick.image.imageset/HGCreateLocationViewController.button.pick.image@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateLocationViewController.button.pick.image.imageset/HGCreateLocationViewController.button.pick.image@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFloatingChatButton.imageset/HGFloatingChatButton.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFloatingChatButton.imageset/HGFloatingChatButton.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFloatingChatButton.imageset/HGFloatingChatButton@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFloatingChatButton.imageset/HGFloatingChatButton@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFloatingChatButton.imageset/HGFloatingChatButton@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFloatingChatButton.imageset/HGFloatingChatButton@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.chat.imageset/HGFrontPageViewController.button.chat.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.chat.imageset/HGFrontPageViewController.button.chat.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.chat.imageset/HGFrontPageViewController.button.chat@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.chat.imageset/HGFrontPageViewController.button.chat@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.chat.imageset/HGFrontPageViewController.button.chat@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.chat.imageset/HGFrontPageViewController.button.chat@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.favorite.imageset/HGFrontPageViewController.button.favorite.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.favorite.imageset/HGFrontPageViewController.button.favorite.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.favorite.imageset/HGFrontPageViewController.button.favorite@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.favorite.imageset/HGFrontPageViewController.button.favorite@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.favorite.imageset/HGFrontPageViewController.button.favorite@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.favorite.imageset/HGFrontPageViewController.button.favorite@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.false.imageset/HGLocationDetailViewController.toolbar.favorite.false.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.false.imageset/HGLocationDetailViewController.toolbar.favorite.false.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.false.imageset/HGLocationDetailViewController.toolbar.favorite.false@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.false.imageset/HGLocationDetailViewController.toolbar.favorite.false@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.false.imageset/HGLocationDetailViewController.toolbar.favorite.false@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.false.imageset/HGLocationDetailViewController.toolbar.favorite.false@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.true.imageset/HGLocationDetailViewController.toolbar.favorite.true.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.true.imageset/HGLocationDetailViewController.toolbar.favorite.true.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.true.imageset/HGLocationDetailViewController.toolbar.favorite.true@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.true.imageset/HGLocationDetailViewController.toolbar.favorite.true@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.true.imageset/HGLocationDetailViewController.toolbar.favorite.true@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.true.imageset/HGLocationDetailViewController.toolbar.favorite.true@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.options.imageset/HGLocationDetailViewController.toolbar.options.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.options.imageset/HGLocationDetailViewController.toolbar.options.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.options.imageset/HGLocationDetailViewController.toolbar.options@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.options.imageset/HGLocationDetailViewController.toolbar.options@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.options.imageset/HGLocationDetailViewController.toolbar.options@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.options.imageset/HGLocationDetailViewController.toolbar.options@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessageComposeView.button.mediaChooser.imageset/HGMessageComposeView.button.mediaChooser.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessageComposeView.button.mediaChooser.imageset/HGMessageComposeView.button.mediaChooser.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessageComposeView.button.mediaChooser.imageset/HGMessageComposeView.button.mediaChooser@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessageComposeView.button.mediaChooser.imageset/HGMessageComposeView.button.mediaChooser@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessageComposeView.button.mediaChooser.imageset/HGMessageComposeView.button.mediaChooser@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessageComposeView.button.mediaChooser.imageset/HGMessageComposeView.button.mediaChooser@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.off.imageset/HGMessagesViewController.notification.off.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.off.imageset/HGMessagesViewController.notification.off.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.off.imageset/HGMessagesViewController.notification.off@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.off.imageset/HGMessagesViewController.notification.off@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.off.imageset/HGMessagesViewController.notification.off@3x.png.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.off.imageset/HGMessagesViewController.notification.off@3x.png.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.on.imageset/HGMessagesViewController.notification.on.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.on.imageset/HGMessagesViewController.notification.on.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.on.imageset/HGMessagesViewController.notification.on@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.on.imageset/HGMessagesViewController.notification.on@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.on.imageset/HGMessagesViewController.notification.on@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.on.imageset/HGMessagesViewController.notification.on@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGPictureCollectionViewCell.Selected.imageset/HGPictureCollectionViewCell.Selected.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGPictureCollectionViewCell.Selected.imageset/HGPictureCollectionViewCell.Selected.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGPictureCollectionViewCell.Selected.imageset/HGPictureCollectionViewCell.Selected@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGPictureCollectionViewCell.Selected.imageset/HGPictureCollectionViewCell.Selected@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGPictureCollectionViewCell.Selected.imageset/HGPictureCollectionViewCell.Selected@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGPictureCollectionViewCell.Selected.imageset/HGPictureCollectionViewCell.Selected@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewPictureCell.delete.imageset/HGReviewPictureCell.delete.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewPictureCell.delete.imageset/HGReviewPictureCell.delete.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewPictureCell.delete.imageset/HGReviewPictureCell.delete@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewPictureCell.delete.imageset/HGReviewPictureCell.delete@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewPictureCell.delete.imageset/HGReviewPictureCell.delete@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewPictureCell.delete.imageset/HGReviewPictureCell.delete@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Logo.logoist" afterPath="$PROJECT_DIR$/Logo.logoist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/Retina 4.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/Retina 4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/Retina HD 4.7.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/Retina HD 4.7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/Retina HD 5.5 Landscape.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/Retina HD 5.5 Landscape.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/Retina HD 5.5.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/Retina HD 5.5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/UIBarButtonImage.Camera@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash@3x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/UIBarButtonImage.Trash@3x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.urdu.imageset/Urdu.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.urdu.imageset/Urdu.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" />
+    <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/Resources/blueArrow.png" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/Resources/blueArrow.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/Resources/blueArrow@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/Resources/blueArrow@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone4-0-FrontPageScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone4-0-FrontPageScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone4-1-LocationScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone4-1-LocationScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone4-2-FilterScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone4-2-FilterScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone4-3-LocationDetailsScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone4-3-LocationDetailsScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone5-0-FrontPageScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone5-0-FrontPageScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone5-1-LocationScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone5-1-LocationScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone5-2-FilterScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone5-2-FilterScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone5-3-LocationDetailsScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone5-3-LocationDetailsScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6-0-FrontPageScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6-0-FrontPageScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6-1-LocationScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6-1-LocationScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6-2-FilterScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6-2-FilterScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6-3-LocationDetailsScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6-3-LocationDetailsScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6Plus-0-FrontPageScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6Plus-0-FrontPageScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6Plus-1-LocationScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6Plus-1-LocationScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6Plus-2-FilterScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6Plus-2-FilterScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6Plus-3-LocationDetailsScreen-portrait.png" afterPath="$PROJECT_DIR$/fastlane/screenshots/da-DK/da-DK-iPhone6Plus-3-LocationDetailsScreen-portrait.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/iPhone Retina 4.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/iPhone Retina 4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 120px-1.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 120px-1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 120px.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 120px.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 180px.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 180px.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 58px.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 58px.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 80px.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 80px.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 87px.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/icon 87px.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/shutterstock_227631544.jpg" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/shutterstock_227631544.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/shutterstock_234360571.jpg" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/shutterstock_234360571.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.unselected.imageset/star.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.unselected.imageset/star.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.unselected.imageset/star@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.unselected.imageset/star@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.selected.imageset/starSelected.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.selected.imageset/starSelected.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.selected.imageset/starSelected@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.selected.imageset/starSelected@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.unselected.imageset/starSmall.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.unselected.imageset/starSmall.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.unselected.imageset/starSmall.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.unselected.imageset/starSmall.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.unselected.imageset/starSmall.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.unselected.imageset/starSmall.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.unselected.imageset/starSmall@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.unselected.imageset/starSmall@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.unselected.imageset/starSmall@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.unselected.imageset/starSmall@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.unselected.imageset/starSmall@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.unselected.imageset/starSmall@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.selected.imageset/starSmallSelected.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.selected.imageset/starSmallSelected.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.selected.imageset/starSmallSelected.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.selected.imageset/starSmallSelected.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.selected.imageset/starSmallSelected.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.selected.imageset/starSmallSelected.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.selected.imageset/starSmallSelected@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.selected.imageset/starSmallSelected@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.selected.imageset/starSmallSelected@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.selected.imageset/starSmallSelected@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.selected.imageset/starSmallSelected@2x.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.selected.imageset/starSmallSelected@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/temp.imageset/temp.png" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/temp.imageset/temp.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/AUIAutoGrowingTextView.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/AUIAutoGrowingTextView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/AUIAutoGrowingTextView.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/AUIAutoGrowingTextView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Acknowledgements.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Acknowledgements.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/Appfile" afterPath="$PROJECT_DIR$/fastlane/Appfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/CAGradientLayer+SJSGradients.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/CAGradientLayer+SJSGradients.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/CAGradientLayer+SJSGradients.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/CAGradientLayer+SJSGradients.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crashlytics.framework/Headers/CLSLogging.h" afterPath="$PROJECT_DIR$/Crashlytics.framework/Headers/CLSLogging.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crashlytics.framework/Headers/CLSReport.h" afterPath="$PROJECT_DIR$/Crashlytics.framework/Headers/CLSReport.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crashlytics.framework/Headers/CLSStackFrame.h" afterPath="$PROJECT_DIR$/Crashlytics.framework/Headers/CLSStackFrame.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/ComOpenThreadOTScreenshotHelperSwizzleHelper.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/ComOpenThreadOTScreenshotHelperSwizzleHelper.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/ComOpenThreadOTScreenshotHelperSwizzleHelper.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/ComOpenThreadOTScreenshotHelperSwizzleHelper.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/AppIcon.appiconset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCategoriesViewController.button.close.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGChatViewController.button.new.subject.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGChatViewController.button.new.subject.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateLocationViewController.button.pick.image.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateLocationViewController.button.pick.image.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.selected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.selected.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.unselected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateReviewViewController.star.unselected.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.false.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.false.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.true.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.alcohol.true.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.false.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.false.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.true.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.non.halal.true.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.false.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.false.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.true.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGCreateSwitchView.pork.true.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFloatingChatButton.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFloatingChatButton.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.chat.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.chat.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.dining.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.enumber.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.favorite.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.favorite.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.mosque.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.settings.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGFrontPageViewController.button.shop.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Camera.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGImagePickerController.UIBarButtonImage.Trash.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.false.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.false.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.true.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.favorite.true.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.options.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewController.toolbar.options.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.false.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.alcohol.true.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.false.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.non.halal.true.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.false.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailViewModel.pork.true.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.selected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.selected.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.unselected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsInfoView.star.unselected.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsPictureView.button.close.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGLocationDetailsPictureView.button.close.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessageComposeView.button.mediaChooser.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessageComposeView.button.mediaChooser.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.off.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.off.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.on.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGMessagesViewController.notification.on.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGPictureCollectionViewCell.Selected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGPictureCollectionViewCell.Selected.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.selected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.selected.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.unselected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewCell.star.unselected.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.selected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.selected.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.unselected.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewDetailViewController.star.unselected.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewPictureCell.delete.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/HGReviewPictureCell.delete.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.arabic.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.arabic.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.danish.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.danish.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.english.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.english.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.urdu.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/Language.urdu.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/LaunchImage.launchimage/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/temp.imageset/Contents.json" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/data/Images.xcassets/temp.imageset/Contents.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crashlytics.framework/Headers/Crashlytics.h" afterPath="$PROJECT_DIR$/Crashlytics.framework/Headers/Crashlytics.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/Deliverfile" afterPath="$PROJECT_DIR$/fastlane/Deliverfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableDragState_ot.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableDragState_ot.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableFooterView_ot.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableFooterView_ot.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableFooterView_ot.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableFooterView_ot.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableGestureObserver_ot.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableGestureObserver_ot.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableGestureObserver_ot.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableGestureObserver_ot.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableHeaderView_ot.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableHeaderView_ot.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableHeaderView_ot.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/DragTableHeaderView_ot.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/xcdebugger/Expressions.xcexplist" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/xcdebugger/Expressions.xcexplist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fabric.framework/Headers/FABAttributes.h" afterPath="$PROJECT_DIR$/Fabric.framework/Headers/FABAttributes.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fabric.framework/Headers/Fabric.h" afterPath="$PROJECT_DIR$/Fabric.framework/Headers/Fabric.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/Fastfile" afterPath="$PROJECT_DIR$/fastlane/Fastfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGAPHelper.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGAPHelper.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGAPHelper.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGAPHelper.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGAddressService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGAddressService.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGAddressService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGAddressService.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGAdgangsadresse.h" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGAdgangsadresse.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGAdgangsadresse.m" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGAdgangsadresse.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.h" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGBaseEntity.h" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGBaseEntity.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGBaseEntity.m" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGBaseEntity.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Viewmodel/HGBaseViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Views/HGButtonView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Views/HGButtonView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Views/HGButtonView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Views/HGButtonView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Views/HGCategoriesView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Views/HGCategoriesView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Views/HGCategoriesView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Views/HGCategoriesView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/HGCategoriesViewController.h" afterPath="$PROJECT_DIR$/Controllers/HGCategoriesViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/HGCategoriesViewController.m" afterPath="$PROJECT_DIR$/Controllers/HGCategoriesViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGChatService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGChatService.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGChatService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGChatService.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGCommon.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGCommon.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/UnderDevelopment/HGCoordinatePickerViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/UnderDevelopment/HGCoordinatePickerViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/UnderDevelopment/HGCoordinatePickerViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/UnderDevelopment/HGCoordinatePickerViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Models/HGCreateLocationViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Models/HGCreateLocationViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Models/HGCreateLocationViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Models/HGCreateLocationViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Controllers/HGCreateReviewViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Controllers/HGCreateReviewViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Controllers/HGCreateReviewViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Controllers/HGCreateReviewViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGCreateSwitchView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGCreateSwitchView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGCreateSwitchView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGCreateSwitchView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGDateFormatter.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGDateFormatter.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGDateFormatter.m" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGDateFormatter.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGDateLabel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGDateLabel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGDateLabel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGDateLabel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGDiningCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGDiningCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGDiningCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGDiningCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/ENumber/HGENumberViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/ENumber/HGENumberViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/ENumber/HGENumberViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/ENumber/HGENumberViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/HGEnumber.h" afterPath="$PROJECT_DIR$/HalalGuide/HGEnumber.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/HGEnumber.m" afterPath="$PROJECT_DIR$/HalalGuide/HGEnumber.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGEnumberScraper.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGEnumberScraper.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGEnumberScraper.m" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGEnumberScraper.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGErrorReporting.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGErrorReporting.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGErrorReporting.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGErrorReporting.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Favorites/Controllers/HGFavoriteViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Favorites/Controllers/HGFavoriteViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Favorites/Controllers/HGFavoriteViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Favorites/Controllers/HGFavoriteViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Favorites/Models/HGFavoriteViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Favorites/Models/HGFavoriteViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Favorites/Models/HGFavoriteViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Favorites/Models/HGFavoriteViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGFilterLocationViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGFilterLocationViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGFilterLocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGFilterLocationViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGFilterSwitchView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGFilterSwitchView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGFilterSwitchView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGFilterSwitchView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/HGFloatingChatButton.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/HGFloatingChatButton.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/HGFloatingChatButton.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/HGFloatingChatButton.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Controllers/HGFrontPageViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Controllers/HGFrontPageViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Controllers/HGFrontPageViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Controllers/HGFrontPageViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Models/HGFrontPageViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Models/HGFrontPageViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Models/HGFrontPageViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Models/HGFrontPageViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGGeoLocationService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGGeoLocationService.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGGeoLocationService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGGeoLocationService.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerButton.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerButton.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerButton.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerButton.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGImagePickerView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGKeyChainService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGKeyChainService.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGKeyChainService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGKeyChainService.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Shared/Labels/HGLabels.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGLocation.h" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGLocation.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGLocation.m" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGLocation.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGLocationAnnotation.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGLocationAnnotation.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGLocationAnnotation.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGLocationAnnotation.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGLocationAnnotationView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGLocationAnnotationView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGLocationAnnotationView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Views/HGLocationAnnotationView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGLocationCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGLocationCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGLocationCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGLocationCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Controllers/HGLocationDetailViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Controllers/HGLocationDetailViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Controllers/HGLocationDetailViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Controllers/HGLocationDetailViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Models/HGLocationDetailViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Models/HGLocationDetailViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Models/HGLocationDetailViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Models/HGLocationDetailViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsHeaderView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsHeaderView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsHeaderView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsHeaderView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGLocationPicture.h" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGLocationPicture.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGLocationPicture.m" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGLocationPicture.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGLocationService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGLocationService.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGLocationService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGLocationService.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGLocationViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGLocationViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGLocationViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGLocationViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Models/HGLocationViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Models/HGLocationViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Location/Models/HGLocationViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Location/Models/HGLocationViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/HGLogInViewController.h" afterPath="$PROJECT_DIR$/Controllers/HGLogInViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/HGLogInViewController.m" afterPath="$PROJECT_DIR$/Controllers/HGLogInViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/HGMessage.h" afterPath="$PROJECT_DIR$/HalalGuide/HGMessage.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/HGMessage.m" afterPath="$PROJECT_DIR$/HalalGuide/HGMessage.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageComposeView.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageComposeView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageComposeView.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageComposeView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessageViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessageViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessageViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessageViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGMessagesViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGMessagesViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGMessagesViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGMessagesViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGMosqueCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGMosqueCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGMosqueCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGMosqueCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/HGNavigationController.h" afterPath="$PROJECT_DIR$/Controllers/HGNavigationController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/HGNavigationController.m" afterPath="$PROJECT_DIR$/Controllers/HGNavigationController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGNewLocationPictureCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGNewLocationPictureCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGNewLocationPictureCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Views/HGNewLocationPictureCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGNumberFormatter.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGNumberFormatter.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGNumberFormatter.m" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGNumberFormatter.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGOnboarding.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGOnboarding.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGOnboarding.m" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGOnboarding.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/UnderDevelopment/HGOpeningsHoursViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/UnderDevelopment/HGOpeningsHoursViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/UnderDevelopment/HGOpeningsHoursViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/UnderDevelopment/HGOpeningsHoursViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGPictureCollectionViewCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGPictureCollectionViewCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGPictureCollectionViewCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/ImagePicker/HGPictureCollectionViewCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGReview.h" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGReview.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Domain/HGReview.m" afterPath="$PROJECT_DIR$/HalalGuide/Domain/HGReview.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGReviewCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGReviewCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGReviewCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGReviewCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Controllers/HGReviewDetailViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Controllers/HGReviewDetailViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Controllers/HGReviewDetailViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Controllers/HGReviewDetailViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Models/HGReviewDetailViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Models/HGReviewDetailViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Models/HGReviewDetailViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Models/HGReviewDetailViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Views/HGReviewPictureCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Views/HGReviewPictureCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Views/HGReviewPictureCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Views/HGReviewPictureCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGReviewService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGReviewService.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGReviewService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGReviewService.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGSettings.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGSettings.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGSettings.m" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGSettings.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Settings/Controllers/HGSettingsViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Settings/Controllers/HGSettingsViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Settings/Controllers/HGSettingsViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Settings/Controllers/HGSettingsViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGShopCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGShopCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGShopCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGShopCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/HGSmiley.h" afterPath="$PROJECT_DIR$/HalalGuide/HGSmiley.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/HGSmiley.m" afterPath="$PROJECT_DIR$/HalalGuide/HGSmiley.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGSmileyCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGSmileyCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGSmileyCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGSmileyCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGSmileyScraper.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGSmileyScraper.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGSmileyScraper.m" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGSmileyScraper.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/HGSubject.h" afterPath="$PROJECT_DIR$/HalalGuide/HGSubject.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/HGSubject.m" afterPath="$PROJECT_DIR$/HalalGuide/HGSubject.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGSubjectsViewController.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGSubjectsViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGSubjectsViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGSubjectsViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGSubjectsViewModel.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGSubjectsViewModel.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGSubjectsViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGSubjectsViewModel.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HalalGuide-Prefix.pch" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HalalGuide-Prefix.pch" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/HalalGuide.entitlements" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/HalalGuide.entitlements" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/HalalGuide.iml" afterPath="$PROJECT_DIR$/.idea/HalalGuide.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/xcshareddata/HalalGuide.xccheckout" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/xcshareddata/HalalGuide.xccheckout" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcshareddata/HalalGuide.xccheckout" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcshareddata/HalalGuide.xccheckout" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/xcuserdata/privat.xcuserdatad/xcschemes/HalalGuide.xcscheme" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/xcuserdata/privat.xcuserdatad/xcschemes/HalalGuide.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuideTests/HalalGuideTests.m" afterPath="$PROJECT_DIR$/HalalGuideTests/HalalGuideTests.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/Blur/ILTranslucentView.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/Blur/ILTranslucentView.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/Blur/ILTranslucentView.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/Blur/ILTranslucentView.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crashlytics.framework/Info.plist" afterPath="$PROJECT_DIR$/Crashlytics.framework/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fabric.framework/Info.plist" afterPath="$PROJECT_DIR$/Fabric.framework/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Info.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuideTests/Info.plist" afterPath="$PROJECT_DIR$/HalalGuideTests/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/KeychainWrapper.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/KeychainWrapper.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/KeychainWrapper.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/KeychainWrapper.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/da-DK.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" afterPath="$PROJECT_DIR$/HalalGuide/en.lproj/Localizable.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/MKMapView+Extension.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/MKMapView+Extension.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/MKMapView+Extension.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/MKMapView+Extension.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Base.lproj/MainStoryboard.storyboard" afterPath="$PROJECT_DIR$/HalalGuide/Base.lproj/MainStoryboard.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/MainStoryboard.storyboard" afterPath="$PROJECT_DIR$/HalalGuide/UI/MainStoryboard.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSArray+Extensions.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSArray+Extensions.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSArray+Extensions.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSArray+Extensions.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSLocale+iOS8.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSLocale+iOS8.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSLocale+iOS8.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSLocale+iOS8.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSMutableString+Extensions.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSMutableString+Extensions.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSMutableString+Extensions.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSMutableString+Extensions.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSObject+MethodExchange.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSObject+MethodExchange.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSObject+MethodExchange.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSObject+MethodExchange.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSString+Extensions.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSString+Extensions.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSString+Extensions.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSString+Extensions.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSTimer+Block.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSTimer+Block.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/NSTimer+Block.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/NSTimer+Block.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Root.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Root.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Root.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Root.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/en.lproj/Root.strings" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/en.lproj/Root.strings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/Snapfile" afterPath="$PROJECT_DIR$/fastlane/Snapfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/SnapshotHelper.js" afterPath="$PROJECT_DIR$/fastlane/SnapshotHelper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIAlertView+Blocks.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIAlertView+Blocks.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIAlertView+Blocks.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIAlertView+Blocks.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Alpha.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Alpha.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Alpha.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Alpha.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Combine.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Combine.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Combine.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Combine.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+RoundedCorner.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+RoundedCorner.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+RoundedCorner.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+RoundedCorner.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+ScreenShot.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+ScreenShot.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+ScreenShot.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+ScreenShot.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Transformation.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Transformation.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Transformation.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIImage/UIImage+Transformation.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UILabel+Extensions.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UILabel+Extensions.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UILabel+Extensions.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UILabel+Extensions.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/UIScrollView+DragTableSafeAnimation.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/UIScrollView+DragTableSafeAnimation.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/UIScrollView+DragTableSafeAnimation.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PrivateClass/UIScrollView+DragTableSafeAnimation.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PublicClass/UITableView+DragLoad.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PublicClass/UITableView+DragLoad.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PublicClass/UITableView+DragLoad.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableViewDragLoad/PublicClass/UITableView+DragLoad.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableView+Header.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableView+Header.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITableView+Header.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITableView+Header.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITextField+HGTextFieldStyling.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITextField+HGTextFieldStyling.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UITextField+HGTextFieldStyling.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UITextField+HGTextFieldStyling.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIView/UIView+FrameAdditions.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIView/UIView+FrameAdditions.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIView/UIView+FrameAdditions.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIView/UIView+FrameAdditions.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIView/UIView+HGBorders.h" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIView/UIView+HGBorders.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Extensions/UIView/UIView+HGBorders.m" afterPath="$PROJECT_DIR$/HalalGuide/Extensions/UIView/UIView+HGBorders.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/UIViewController+Extension.h" afterPath="$PROJECT_DIR$/Controllers/UIViewController+Extension.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/UIViewController+Extension.m" afterPath="$PROJECT_DIR$/Controllers/UIViewController+Extension.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/WorkspaceSettings.xcsettings" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/WorkspaceSettings.xcsettings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.xcworkspace/contents.xcworkspacedata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/contents.xcworkspacedata" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/contents.xcworkspacedata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/metadata/da-DK/description.txt" afterPath="$PROJECT_DIR$/fastlane/metadata/da-DK/description.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/dk.eazyit.halalguide.preferences.plist" afterPath="$PROJECT_DIR$/HalalGuide/dk.eazyit.halalguide.preferences.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/find.xml" afterPath="$PROJECT_DIR$/.idea/find.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parse/public/index.html" afterPath="$PROJECT_DIR$/parse/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/metadata/da-DK/keywords.txt" afterPath="$PROJECT_DIR$/fastlane/metadata/da-DK/keywords.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parse/cloud/main.js" afterPath="$PROJECT_DIR$/parse/cloud/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/main.m" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/main.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Crashlytics.framework/Modules/module.modulemap" afterPath="$PROJECT_DIR$/Crashlytics.framework/Modules/module.modulemap" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fabric.framework/Modules/module.modulemap" afterPath="$PROJECT_DIR$/Fabric.framework/Modules/module.modulemap" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/metadata/da-DK/privacy_url.txt" afterPath="$PROJECT_DIR$/fastlane/metadata/da-DK/privacy_url.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/privat.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/privat.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/screenshots/screenshots.html" afterPath="$PROJECT_DIR$/fastlane/screenshots/screenshots.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/snapshot-iPad.js" afterPath="$PROJECT_DIR$/fastlane/snapshot-iPad.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/snapshot.js" afterPath="$PROJECT_DIR$/fastlane/snapshot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/metadata/da-DK/software_url.txt" afterPath="$PROJECT_DIR$/fastlane/metadata/da-DK/software_url.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/metadata/da-DK/support_url.txt" afterPath="$PROJECT_DIR$/fastlane/metadata/da-DK/support_url.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fastlane/metadata/da-DK/title.txt" afterPath="$PROJECT_DIR$/fastlane/metadata/da-DK/title.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/xcode.xml" afterPath="$PROJECT_DIR$/.idea/xcode.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/xcuserdata/privat.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/xcuserdata/privat.xcuserdatad/xcschemes/xcschememanagement.plist" />
     </list>
     <ignored path="HalalGuide.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -534,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HGUserService.m" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGUserService.m">
+      <file leaf-file-name="HGLocationDetailsPictureView.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.99506176" vertical-offset="0" max-vertical-offset="702">
-              <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.33215547" vertical-offset="3517" max-vertical-offset="4589">
+              <caret line="297" column="37" selection-start-line="297" selection-start-column="37" selection-end-line="297" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -606,12 +104,12 @@
         <option value="$PROJECT_DIR$/HalalGuide/HGMessage.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageComposeView.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Models/HGLocationDetailViewModel.m" />
         <option value="$PROJECT_DIR$/HalalGuide/Extensions/HGQuery.m" />
         <option value="$PROJECT_DIR$/HalalGuide/Services/HGReachabilityManager.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Models/HGReviewDetailViewModel.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessageViewModel.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m" />
       </list>
     </option>
   </component>
@@ -1505,12 +1003,6 @@
       <option name="number" value="Default" />
       <updated>1415568686926</updated>
     </task>
-    <task id="LOCAL-00019" summary="Support on boarding can't be dismissed. #47">
-      <created>1421654011015</created>
-      <option name="number" value="00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1421654011015</updated>
-    </task>
     <task id="LOCAL-00020" summary="Support on boarding can't be dismissed. #47">
       <created>1421661570531</created>
       <option name="number" value="00020" />
@@ -1799,7 +1291,13 @@
       <option name="project" value="LOCAL" />
       <updated>1432456912971</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Support offline data #3">
+      <created>1433628530891</created>
+      <option name="number" value="00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1433628530892</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1828,10 +1326,10 @@
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4641089" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12623763" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32738853" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4579208" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4170792" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26485148" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49044585" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1865,7 +1363,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="2" />
-    <MESSAGE value="Clear search text when changing location type #80" />
     <MESSAGE value="onboarding which will not be used, but saved because i spent so much time on it." />
     <MESSAGE value="Use RAC in viewmodels #86&#10;Change load more functionally of listview #85&#10;Replace technical feedback with user friendly feedback #82&#10;Only save location should block ui #69&#10;Filter onboarding shows up double on LocationVC if trying to add new and returns to LVC #54&#10;Progressinfo when uploading images #52&#10;Entities should be saved in the background when possible #45&#10;Locations Without images sometimes get another location image displayed #32" />
     <MESSAGE value="Fix in app purchases #88" />
@@ -1890,7 +1387,8 @@
     <MESSAGE value="Remove on boarding on create new location #97" />
     <MESSAGE value="More user behaviour tracking #99" />
     <MESSAGE value="Notice board funtion #29" />
-    <option name="LAST_COMMIT_MESSAGE" value="Notice board funtion #29" />
+    <MESSAGE value="Support offline data #3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Support offline data #3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1914,7 +1412,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="1338" />
+      <option name="time" value="1348" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="AppleRunConfiguration">
@@ -1923,18 +1421,12 @@
         <watch expression="[[[HGReachabilityManager sharedManager] reachability] isReachable]" language="ObjectiveC" />
         <watch expression="[[[HGReachabilityManager sharedManager] reachability] isReachableViaWiFi]" language="ObjectiveC" />
         <watch expression="[[[HGReachabilityManager sharedManager] reachability] isReachableViaWWAN]" language="ObjectiveC" />
+        <watch expression="CGRectMake(fullPictureView.frame.size.width - 31 + 15, 20, 31, 31)" language="ObjectiveC" />
+        <watch expression="closeButton.frame" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGReviewService.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="637">
-          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Pods/Parse/Parse.framework/Headers/PFObject.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33228347" vertical-offset="13751" max-vertical-offset="18551">
@@ -2213,14 +1705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3739" max-vertical-offset="4303">
-          <caret line="164" column="50" selection-start-line="164" selection-start-column="50" selection-end-line="164" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsSubmitterView.m">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="753" max-vertical-offset="1196">
@@ -2314,7 +1798,7 @@
         <state vertical-scroll-proportion="0.36879432" vertical-offset="429" max-vertical-offset="1014">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
-            <element signature="e#93#116#0" expanded="true" />
+            <element signature="e#93#116#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2332,7 +1816,7 @@
         <state vertical-scroll-proportion="0.82978725" vertical-offset="0" max-vertical-offset="767">
           <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
           <folding>
-            <element signature="e#93#123#0" expanded="true" />
+            <element signature="e#93#123#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2357,6 +1841,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.99506176" vertical-offset="0" max-vertical-offset="702">
           <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIScrollView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63656884" vertical-offset="836" max-vertical-offset="1846">
+          <caret line="90" column="38" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsPictureView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33215547" vertical-offset="3517" max-vertical-offset="4589">
+          <caret line="297" column="37" selection-start-line="297" selection-start-column="37" selection-end-line="297" selection-end-column="37" />
           <folding />
         </state>
       </provider>
