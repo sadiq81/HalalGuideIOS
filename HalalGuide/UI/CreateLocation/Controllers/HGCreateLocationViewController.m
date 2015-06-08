@@ -80,6 +80,9 @@
     [self setupCollectionView];
     [self setupNavigationBar];
     [self setupViewModel];
+
+    [self checkForExistingLocation];
+
     [self setupIQKeyboardReturnKeyHandler];
     [self updateViewConstraints];
 }
@@ -149,6 +152,29 @@
     self.save = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGCreateLocationViewController.button.save", nil) style:UIBarButtonItemStylePlain block:nil];
     self.navigationItem.rightBarButtonItem = self.save;
 }
+
+- (void)checkForExistingLocation {
+
+    if (self.viewModel.existingLocation) {
+
+        self.pickImage.hidden = true;
+
+        self.name.text = self.viewModel.existingLocation.name;
+        self.road.text = self.viewModel.existingLocation.addressRoad;
+        self.roadNumber.text = self.viewModel.existingLocation.addressRoadNumber;
+        self.postalCode.text = self.viewModel.existingLocation.addressPostalCode;
+        self.telephone.text = self.viewModel.existingLocation.telephone;
+        self.website.text = self.viewModel.existingLocation.homePage;
+
+        self.switchView.halalSwitch.on = [self.viewModel.existingLocation.nonHalal boolValue];
+        self.switchView.alcoholSwitch.on = [self.viewModel.existingLocation.alcohol boolValue];
+        self.switchView.porkSwitch.on = [self.viewModel.existingLocation.pork boolValue];
+        self.viewModel.categories = [[NSMutableArray alloc] initWithArray:self.viewModel.existingLocation.categories];
+        [self.categoriesView setCountLabelText];
+    }
+
+}
+
 
 - (void)setupViewModel {
 

@@ -18,6 +18,8 @@
 @property(nonatomic, strong) NSDictionary *streetDictionary;
 @property(nonatomic, strong) HGLocation *createdLocation;
 
+
+
 @end
 
 @implementation HGCreateLocationViewModel {
@@ -30,7 +32,6 @@
 - (instancetype)initWithLocationType:(LocationType)type {
     self = [super init];
     if (self) {
-
         locationType = type;
         streetDictionary = [NSDictionary new];
         categories = [[NSMutableArray alloc] init];
@@ -39,6 +40,19 @@
 
     return self;
 }
+
+- (instancetype)initWithExistingLocation:(HGLocation *)existingLocation {
+    self = [super init];
+    if (self) {
+        self.existingLocation = existingLocation;
+    }
+    return self;
+}
+
++ (instancetype)modelWithExistingLocation:(HGLocation *)existingLocation {
+    return [[self alloc] initWithExistingLocation:existingLocation];
+}
+
 
 - (NSArray *)streetNameForPrefix:(NSString *)prefix {
     return [[self.streetDictionary allKeys] linq_where:^BOOL(NSString *item) {

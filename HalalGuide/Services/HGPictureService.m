@@ -11,6 +11,7 @@
 #import "HGUser.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
+#import <Bolts/BFTask.h>
 
 @implementation HGPictureService {
 
@@ -131,14 +132,14 @@
 }
 
 
-- (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion {
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            [PFObject pinAllInBackground:objects];
-        }
-        completion(objects, error);
-    }];
-}
+//- (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion {
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            [PFObject pinAllInBackground:objects];
+//        }
+//        completion(objects, error);
+//    }];
+//}
 
 - (void)locationPicturesForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion {
 
@@ -148,7 +149,7 @@
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [PFObject pinAllInBackground:objects];
+            [PFObject pinAllInBackground:objects withName:@"locationPicturesForLocation"];
         }
         completion(objects, error);
     }];
@@ -164,7 +165,7 @@
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [PFObject pinAllInBackground:objects];
+            [PFObject pinAllInBackground:objects withName:@"locationPicturesForReview"];
         }
         completion(objects, error);
     }];
@@ -180,7 +181,7 @@
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [PFObject pinAllInBackground:objects];
+            [PFObject pinAllInBackground:objects withName:@"thumbnailForLocation"];
         }
         completion(objects, error);
     }];

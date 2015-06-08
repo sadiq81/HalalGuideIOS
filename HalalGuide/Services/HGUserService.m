@@ -32,7 +32,7 @@
 
         [[HGUser query] getObjectInBackgroundWithId:id block:^(PFObject *object, NSError *error) {
             if (object && !error) {
-                [object pinInBackground];
+                [object pinInBackgroundWithName:@"getUserInBackGround"];
             }
             completion(object, error);
         }];

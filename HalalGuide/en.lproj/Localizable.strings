@@ -154,7 +154,7 @@
 "HGLocationViewController.hud.fetching" = "Updating";
 
 "HGLocationDetailsSubmitterView.label.submitterHeadLine" = "Submitted by:";
-"HGLocationDetailsPictureView.button.report" = "Report error";
+"HGLocationDetailsPictureView.button.report" = "Suggest change";
 "HGLocationDetailsPictureView.button.add.review" = "Add review";
 "HGLocationDetailsPictureView.button.add.picture" = "Add picture";
 "HGLocationDetailsPictureView.alert.smiley.warning" = "Warning";

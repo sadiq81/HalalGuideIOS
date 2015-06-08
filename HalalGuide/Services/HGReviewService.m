@@ -37,7 +37,7 @@
     [query whereKey:@"locationId" equalTo:location.objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [PFObject pinAllInBackground:objects];
+            [PFObject pinAllInBackground:objects withName:@"reviewsForLocation"];
         }
         completion(objects, error);
     }];

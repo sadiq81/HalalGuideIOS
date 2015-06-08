@@ -34,7 +34,7 @@
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [PFObject pinAllInBackground:objects];
+            //[PFObject pinAllInBackground:objects];
         }
         completion(objects, error);
     }];
@@ -47,7 +47,7 @@
     [query whereKey:@"subjectId" equalTo:subject.objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [PFObject pinAllInBackground:objects];
+            //[PFObject pinAllInBackground:objects];
         }
         completion(objects, error);
     }];

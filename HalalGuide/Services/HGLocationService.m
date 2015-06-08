@@ -30,9 +30,10 @@
 }
 
 - (void)locationsByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion {
+
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [PFObject pinAllInBackground:objects];
+            [PFObject pinAllInBackground:objects withName:@"locationsByQuery"];
         }
         completion(objects, error);
     }];
@@ -47,7 +48,7 @@
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            [PFObject pinAllInBackground:objects];
+            [PFObject pinAllInBackground:objects withName:@"lastTenLocations"];
         }
         completion(objects, error);
     }];

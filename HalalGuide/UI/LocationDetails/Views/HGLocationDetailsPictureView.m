@@ -164,10 +164,9 @@
     return [self.viewModel.smileys count];
 }
 
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HGSmileyCell *cell = [self.smileys dequeueReusableCellWithReuseIdentifier:@"HGSmileyCell" forIndexPath:indexPath];
-    [cell configureForSmiley:[self.viewModel.smileys objectAtIndex:indexPath.row]];
+    [cell configureForSmiley:self.viewModel.smileys[(NSUInteger) indexPath.row]];
     return cell;
 }
 
