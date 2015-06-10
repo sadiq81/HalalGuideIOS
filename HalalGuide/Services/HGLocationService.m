@@ -6,6 +6,7 @@
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import "HGLocationService.h"
 #import "HGQuery.h"
+#import "HGChangeSuggestion.h"
 
 
 @implementation HGLocationService {
@@ -27,6 +28,11 @@
 //TODO Offline handling
 - (void)saveLocation:(HGLocation *)location onCompletion:(PFBooleanResultBlock)completion {
     [location saveInBackgroundWithBlock:completion];
+}
+
+//TODO Offline handling
+- (void)saveSuggestion:(HGChangeSuggestion *)suggestion onCompletion:(void (^)(BOOL, NSError *))completion {
+    [suggestion saveInBackgroundWithBlock:completion];
 }
 
 - (void)locationsByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion {
@@ -55,5 +61,6 @@
 
 
 }
+
 
 @end

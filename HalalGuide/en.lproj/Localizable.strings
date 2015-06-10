@@ -267,6 +267,9 @@
 "HGCreateLocationViewController.alert.cancel.done" = "No thank you";
 "HGCreateLocationViewController.alert.add.review" = "Yes please";
 "HGCreateLocationViewController.button.add.picture" = "Add pictures";
+"HGCreateLocationViewController.alert.title.ok" = "OK";
+"HGCreateLocationViewController.alert.message.location.change.saved" = "Your changes have been submitted for review";
+"HGCreateLocationViewController.alert.done" = "OK";
 
 "HGFavoriteViewController.label.no.favorites" = "You have not added any favorites";
 "HGFavoriteViewController.title" = "Favorites";
@@ -291,3 +294,5 @@
 
 "HGChatViewController.title" = "Subjects";
 "HGNavigationController.new.message" = "New message";
+
+

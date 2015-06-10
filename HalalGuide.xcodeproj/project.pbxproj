@@ -12,6 +12,7 @@
 		8EFBA8A7373C9693E14D2029 /* HGReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA081A1A95E4AD3C73A34 /* HGReachabilityManager.m */; };
 		8EFBA8A752FDDDC9268F6D22 /* HGQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA2D86A8985BA1EDEB7A7 /* HGQuery.m */; };
 		8EFBAC0E67E9B1CDAC63804B /* HGUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA5277EFFB6B6B8B294B5 /* HGUserService.m */; };
+		8EFBAE013B19FFBE71F36AB6 /* HGChangeSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA39DB1A7B414AD3C8C59 /* HGChangeSuggestion.m */; };
 		A1072EB71A962E1300C3A2A3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1072EB51A962E1300C3A2A3 /* Crashlytics.framework */; };
 		A1072EB81A962E1300C3A2A3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1072EB61A962E1300C3A2A3 /* Fabric.framework */; };
 		A10CD7041A364D79001863B9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10CD7031A364D79001863B9 /* Accounts.framework */; };
@@ -170,9 +171,11 @@
 		8EFBA081A1A95E4AD3C73A34 /* HGReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGReachabilityManager.m; sourceTree = "<group>"; };
 		8EFBA16B417EE6E6D315972F /* HGUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGUser.m; sourceTree = "<group>"; };
 		8EFBA2D86A8985BA1EDEB7A7 /* HGQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGQuery.m; sourceTree = "<group>"; };
+		8EFBA39DB1A7B414AD3C8C59 /* HGChangeSuggestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChangeSuggestion.m; sourceTree = "<group>"; };
 		8EFBA5277EFFB6B6B8B294B5 /* HGUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGUserService.m; sourceTree = "<group>"; };
 		8EFBA59E4ED7202F32BB8A44 /* HGReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGReachabilityManager.h; sourceTree = "<group>"; };
 		8EFBA6EC36AC5A08DA3B37AB /* HGQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGQuery.h; sourceTree = "<group>"; };
+		8EFBA89918203710C3739F7C /* HGChangeSuggestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChangeSuggestion.h; sourceTree = "<group>"; };
 		8EFBAA56304C7300F16344EB /* HGUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGUserService.h; sourceTree = "<group>"; };
 		8EFBAF49E121B43268564521 /* HGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGUser.h; sourceTree = "<group>"; };
 		A1072EB51A962E1300C3A2A3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -544,6 +547,8 @@
 				C596BB41F03199995D12BA45 /* HGMessage.h */,
 				C596B4C62F480FC099D87A24 /* HGEnumber.m */,
 				C596B4A56258C0C2D62A2E63 /* HGEnumber.h */,
+				8EFBA39DB1A7B414AD3C8C59 /* HGChangeSuggestion.m */,
+				8EFBA89918203710C3739F7C /* HGChangeSuggestion.h */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -1483,7 +1488,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n./Fabric.framework/run 412b38fc4b7f4e3bab82ec4ea7badbb3ecad9f30 8ae7028b2c1015d818ac8fbd9a469d248238b5d5278690075b0d5f16a850e545\n#fi";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n./Fabric.framework/run 412b38fc4b7f4e3bab82ec4ea7badbb3ecad9f30 8ae7028b2c1015d818ac8fbd9a469d248238b5d5278690075b0d5f16a850e545\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1607,6 +1612,7 @@
 				8EFBA8A7373C9693E14D2029 /* HGReachabilityManager.m in Sources */,
 				8EFBA6A258A89C5374AFC61E /* HGUser.m in Sources */,
 				8EFBAC0E67E9B1CDAC63804B /* HGUserService.m in Sources */,
+				8EFBAE013B19FFBE71F36AB6 /* HGChangeSuggestion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

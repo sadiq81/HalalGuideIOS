@@ -265,6 +265,9 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGCreateLocationViewController.alert.cancel.done" = "Nej tak";
 "HGCreateLocationViewController.alert.add.review" = "Jo tak";
 "HGCreateLocationViewController.button.add.picture" = "Tilføj billede";
+"HGCreateLocationViewController.alert.title.ok" = "Ok";
+"HGCreateLocationViewController.alert.message.location.change.saved" = "Dine ændringer er blevet indsendt til gennemgang";
+"HGCreateLocationViewController.alert.done" = "OK";
 
 "HGFavoriteViewController.label.no.favorites" = "Du har ikke tilføjet nogen favoritter";
 "HGFavoriteViewController.title" = "Favoritter";
@@ -289,3 +292,4 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "HGChatViewController.title" = "Emner";
 "HGNavigationController.new.message" = "Ny besked";
+

@@ -163,6 +163,7 @@
         self.road.text = self.viewModel.existingLocation.addressRoad;
         self.roadNumber.text = self.viewModel.existingLocation.addressRoadNumber;
         self.postalCode.text = self.viewModel.existingLocation.addressPostalCode;
+        self.city.text = self.viewModel.existingLocation.addressCity;
         self.telephone.text = self.viewModel.existingLocation.telephone;
         self.website.text = self.viewModel.existingLocation.homePage;
 
@@ -171,6 +172,8 @@
         self.switchView.porkSwitch.on = [self.viewModel.existingLocation.pork boolValue];
         self.viewModel.categories = [[NSMutableArray alloc] initWithArray:self.viewModel.existingLocation.categories];
         [self.categoriesView setCountLabelText];
+
+        self.save.enabled = true;
     }
 
 }
@@ -219,13 +222,21 @@
             [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
         } else if (progress.intValue == 100) {
             [SVProgressHUD dismiss];
-            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.title.action", nil) message:NSLocalizedString(@"HGCreateLocationViewController.alert.message.location.saved", nil) cancelButtonTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.cancel.done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"HGCreateLocationViewController.alert.add.review", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-                if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
+
+            if (!self.viewModel.existingLocation) {
+                [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.title.action", nil) message:NSLocalizedString(@"HGCreateLocationViewController.alert.message.location.saved", nil) cancelButtonTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.cancel.done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"HGCreateLocationViewController.alert.add.review", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+                    if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
+                        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                    } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
+                        [self createReviewForLocation:self.viewModel.createdLocation viewModel:self.viewModel pushToStack:true];
+                    }
+                }];
+            } else {
+                [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.title.ok", nil) message:NSLocalizedString(@"HGCreateLocationViewController.alert.message.location.change.saved", nil) cancelButtonTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.done", nil) destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
                     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-                } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
-                    [self createReviewForLocation:self.viewModel.createdLocation viewModel:self.viewModel pushToStack:true];
-                }
-            }];
+                }];
+            }
+
         }
     }];
 
@@ -275,7 +286,13 @@
         [self.viewModel saveLocation];
     }];
 
-    RAC(self.save, enabled) = [RACSignal combineLatest:@[self.name.rac_textSignal, self.road.rac_textSignal, self.roadNumber.rac_textSignal, self.postalCode.rac_textSignal, self.city.rac_textSignal]
+
+    RAC(self.save, enabled) = [RACSignal combineLatest:@[
+                    RACObserve(self, viewModel.name),
+                    RACObserve(self, viewModel.road),
+                    RACObserve(self, viewModel.roadNumber),
+                    RACObserve(self, viewModel.postalCode),
+                    RACObserve(self, viewModel.city)]
                                                 reduce:^(NSString *name, NSString *road, NSString *roadNumber, NSString *postalCode, NSString *city) {
                                                     return @((name.length > 0) && (road.length > 0) && (roadNumber.length > 0) && (postalCode.length > 0) && (city.length > 0));
                                                 }];
