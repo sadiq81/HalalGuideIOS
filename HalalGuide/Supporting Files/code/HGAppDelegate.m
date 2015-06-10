@@ -52,6 +52,8 @@
     [[UIView appearance] setTintColor:[UIColor blackColor]];
     [[UINavigationBar appearance] setTranslucent:false];
 
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:0.9]];
+
     //IQKeyboard
     [IQKeyboardManager sharedManager].toolbarManageBehaviour = IQAutoToolbarByTag;
     [[IQKeyboardManager sharedManager] disableInViewControllerClass:[HGMessagesViewController class]];
