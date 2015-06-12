@@ -24,6 +24,7 @@
 #import "HGSubjectsViewController.h"
 #import "HGMessagesViewController.h"
 #import "HGNavigationController.h"
+#import "HGPictureService.h"
 #import <Fabric/Fabric.h>
 
 @interface HGAppDelegate () <UIGestureRecognizerDelegate>
@@ -205,7 +206,9 @@
 }
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
-    int i = 0;
+    NSString *tmpDirectory = [NSTemporaryDirectory() stringByAppendingPathComponent:identifier];
+    [[NSFileManager defaultManager] removeItemAtPath:tmpDirectory error:nil];
+    [[HGPictureService instance].responsesData removeObjectForKey:identifier];
 }
 
 

@@ -6,6 +6,11 @@ Parse.Cloud.beforeSave("LocationPicture", function (request, response) {
 
     var locationPicture = request.object;
 
+    if (locationPicture.get("picture") == null){
+        response.success();
+        return;
+    }
+
     Parse.Cloud.httpRequest({
         url: locationPicture.get("picture").url()
 

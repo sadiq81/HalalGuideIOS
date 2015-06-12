@@ -14,6 +14,8 @@
 
 @interface HGPictureService : NSObject<NSURLSessionTaskDelegate>
 
+@property (nonatomic, strong) NSMutableDictionary *responsesData;
+
 + (HGPictureService *)instance;
 
 - (void)saveMultiplePictures:(NSArray *)images forLocation:(HGLocation *)location completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion;

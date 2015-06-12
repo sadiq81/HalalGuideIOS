@@ -20,6 +20,8 @@
 #import <Crashlytics/Crashlytics.h>
 #import <objc/runtime.h>
 #import <ALActionBlocks/UIGestureRecognizer+ALActionBlocks.h>
+#import "HGLocation.h"
+#import "HGBaseViewModel.h"
 
 typedef enum HintPosition : int16_t {
     HintPositionAbove = 0,

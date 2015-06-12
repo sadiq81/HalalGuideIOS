@@ -132,7 +132,7 @@
     RAC(self.viewModel, rating) = rating;
 
     RAC(self.save, enabled) = [RACSignal combineLatest:@[review, rating] reduce:^(NSString *reviewText, NSNumber *rating) {
-        return @([reviewText length] >= 30 && rating > 0);
+        return @([reviewText length] >= 0 && rating.integerValue > 0);
     }];
 
     RAC(self.addPictures, hidden) = [[RACObserve(self.viewModel, images) ignore:nil] map:^id(NSArray *value) {
