@@ -22,8 +22,6 @@
 
 - (void)saveMultiplePictures:(NSArray *)images forReview:(HGReview *)review completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion;
 
-- (void)saveMultiplePictures:(NSArray *)images forReview:(HGReview *)review;
-
 //- (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion;
 
 - (void)locationPicturesForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion;

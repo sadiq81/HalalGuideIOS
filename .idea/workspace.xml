@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Acknowledgements.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/Settings.bundle/Acknowledgements.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Controllers/HGCreateReviewViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Controllers/HGCreateReviewViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/UIViewController+Extension.h" afterPath="$PROJECT_DIR$/Controllers/UIViewController+Extension.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parse/cloud/main.js" afterPath="$PROJECT_DIR$/parse/cloud/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/HalalGuide.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HalalGuide.iws" />
@@ -43,7 +35,7 @@
       <file leaf-file-name="HGAppDelegate.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2126" max-vertical-offset="2639">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2730" max-vertical-offset="2873">
               <caret line="210" column="78" selection-start-line="210" selection-start-column="78" selection-end-line="210" selection-end-column="78" />
               <folding />
             </state>
@@ -53,22 +45,30 @@
       <file leaf-file-name="HGPictureService.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="481">
-              <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="455">
+              <caret line="24" column="15" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HGPictureService.m" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HGCreateReviewViewModel.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.37096775" vertical-offset="739" max-vertical-offset="1235">
+              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HGPictureService.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15852048" vertical-offset="1206" max-vertical-offset="3887">
-              <caret line="128" column="4" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="823" max-vertical-offset="2522">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
               <folding>
                 <element signature="e#93#121#0" expanded="true" />
-                <element signature="e#3196#4378#0" expanded="false" />
-                <element signature="e#4380#4798#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -132,16 +132,16 @@
         <option value="$PROJECT_DIR$/HalalGuide/HGChangeSuggestion.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/FrontPage/Controllers/HGFrontPageViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/Constants.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.m" />
         <option value="$PROJECT_DIR$/Podfile" />
         <option value="$PROJECT_DIR$/Controllers/UIViewController+Extension.h" />
         <option value="$PROJECT_DIR$/HalalGuide/Extensions/NSObject+HGJSON.h" />
         <option value="$PROJECT_DIR$/HalalGuide/Extensions/NSObject+HGJSON.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h" />
         <option value="$PROJECT_DIR$/parse/cloud/main.js" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Controllers/HGCreateReviewViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" />
         <option value="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.m" />
       </list>
     </option>
   </component>
@@ -203,6 +203,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Cidr.FilesView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -409,7 +410,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Cidr.FilesView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -816,12 +816,6 @@
       <option name="number" value="Default" />
       <updated>1415568686926</updated>
     </task>
-    <task id="LOCAL-00022" summary="Create thumbnail images for faster loading. #61">
-      <created>1421673292337</created>
-      <option name="number" value="00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1421673292337</updated>
-    </task>
     <task id="LOCAL-00023" summary="Move butcher to shopping #48">
       <created>1421673510651</created>
       <option name="number" value="00023" />
@@ -1110,7 +1104,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433958796029</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Upload image in background using Background Transfer Service #98">
+      <created>1434140318460</created>
+      <option name="number" value="00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1434140318460</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1135,17 +1135,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="23" width="1391" height="877" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="true" weight="0.24968153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24968153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32738853" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47643313" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.5044586" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33248407" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33248407" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17591925" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30364963" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
@@ -1176,7 +1176,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="2" />
-    <MESSAGE value="Use RAC in viewmodels #86&#10;Change load more functionally of listview #85&#10;Replace technical feedback with user friendly feedback #82&#10;Only save location should block ui #69&#10;Filter onboarding shows up double on LocationVC if trying to add new and returns to LVC #54&#10;Progressinfo when uploading images #52&#10;Entities should be saved in the background when possible #45&#10;Locations Without images sometimes get another location image displayed #32" />
     <MESSAGE value="Fix in app purchases #88" />
     <MESSAGE value="Add review reminder. #87" />
     <MESSAGE value="Location map should show 2 nearest locations #73" />
@@ -1201,7 +1200,8 @@
     <MESSAGE value="Notice board funtion #29" />
     <MESSAGE value="Support offline data #3" />
     <MESSAGE value="Users can submit changes like create new. #24" />
-    <option name="LAST_COMMIT_MESSAGE" value="Users can submit changes like create new. #24" />
+    <MESSAGE value="Upload image in background using Background Transfer Service #98" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upload image in background using Background Transfer Service #98" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1228,7 +1228,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m</url>
-          <line>128</line>
+          <line>43</line>
           <option name="timeStamp" value="1402" />
         </line-breakpoint>
       </breakpoints>
@@ -1332,9 +1332,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1712" max-vertical-offset="3757">
           <caret line="157" column="57" selection-start-line="157" selection-start-column="57" selection-end-line="157" selection-end-column="57" />
-          <folding>
-            <element signature="e#6755#6820#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1377,14 +1374,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21787709" vertical-offset="0" max-vertical-offset="537">
           <caret line="9" column="64" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="620" max-vertical-offset="1287">
-          <caret line="78" column="51" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1469,15 +1458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2028" max-vertical-offset="5915">
           <caret line="195" column="19" selection-start-line="195" selection-start-column="19" selection-end-line="195" selection-end-column="19" />
-          <folding>
-            <element signature="e#10171#10247#0" expanded="true" />
-            <element signature="e#10256#10342#0" expanded="true" />
-            <element signature="e#10361#10436#0" expanded="true" />
-            <element signature="e#10484#10558#0" expanded="true" />
-            <element signature="e#11201#11273#0" expanded="true" />
-            <element signature="e#11282#11375#0" expanded="true" />
-            <element signature="e#11394#11462#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1493,7 +1473,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="806">
           <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1501,7 +1480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="702">
           <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1509,7 +1487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="637">
           <caret line="39" column="78" selection-start-line="39" selection-start-column="78" selection-end-line="39" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1517,7 +1494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33242506" vertical-offset="1823" max-vertical-offset="5720">
           <caret line="163" column="8" selection-start-line="163" selection-start-column="8" selection-end-line="163" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1525,7 +1501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17711172" vertical-offset="0" max-vertical-offset="734">
           <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1533,7 +1508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15940054" vertical-offset="0" max-vertical-offset="734">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1541,7 +1515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="734">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1549,7 +1522,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1907357" vertical-offset="4033" max-vertical-offset="8619">
           <caret line="325" column="4" selection-start-line="325" selection-start-column="1" selection-end-line="325" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1557,7 +1529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.96413505" vertical-offset="3677" max-vertical-offset="18551">
           <caret line="320" column="8" selection-start-line="320" selection-start-column="8" selection-end-line="320" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1573,7 +1544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5063291" vertical-offset="397" max-vertical-offset="871">
           <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1581,7 +1551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24683544" vertical-offset="0" max-vertical-offset="2509">
           <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1589,15 +1558,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8227848" vertical-offset="0" max-vertical-offset="2327">
           <caret line="30" column="24" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="481">
-          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1613,7 +1573,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32911393" vertical-offset="0" max-vertical-offset="474">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1625,15 +1584,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGPictureService.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="455">
+          <caret line="24" column="15" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGPictureService.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15852048" vertical-offset="1206" max-vertical-offset="3887">
-          <caret line="128" column="4" selection-start-line="128" selection-start-column="4" selection-end-line="128" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1057" max-vertical-offset="2522">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
           <folding>
             <element signature="e#93#121#0" expanded="true" />
-            <element signature="e#3196#4378#0" expanded="false" />
-            <element signature="e#4380#4798#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/CreateReview/Models/HGCreateReviewViewModel.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37096775" vertical-offset="739" max-vertical-offset="1235">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
