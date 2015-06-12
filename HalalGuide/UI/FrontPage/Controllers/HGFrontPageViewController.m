@@ -113,9 +113,10 @@
     [self.topView addSubview:self.mosqueView];
 
     self.favoritesView = [[HGButtonView alloc] initWithButtonImageName:@"HGFrontPageViewController.button.favorite" andLabelText:@"HGFrontPageViewController.label.favorite" andTapHandler:^{
-        HGFavoriteViewModel *model = [[HGFavoriteViewModel alloc] init];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"halalguide://location/f0XEtHDgA5"]];
+        /*HGFavoriteViewModel *model = [[HGFavoriteViewModel alloc] init];
         HGFavoriteViewController *viewController = [HGFavoriteViewController controllerWithViewModel:model];
-        [self.navigationController pushViewController:viewController animated:true];
+        [self.navigationController pushViewController:viewController animated:true];*/
     }];
     [self.topView addSubview:self.favoritesView];
 

@@ -21,8 +21,11 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>dk.eazyit.halalguide</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>halalguide</string>
 				<string>fb1483371188600221</string>
 			</array>
 		</dict>

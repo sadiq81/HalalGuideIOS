@@ -30,6 +30,8 @@
 @interface HGAppDelegate () <UIGestureRecognizerDelegate>
 
 @property(strong, nonatomic) UINavigationController *navigationController;
+@property(strong, nonatomic) HGLocation *locationOpenedByUrl;
+@property(strong, nonatomic) HGReview *reviewOpenedByUrl;
 
 @end
 
@@ -202,7 +204,37 @@
 #pragma mark URL handling
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    if ([[url scheme] caseInsensitiveCompare:@"halalguide"] == NSOrderedSame) {
+
+        if ([[url host] isEqualToString:@"location"]) {
+
+            NSString *objectId = [[url path] stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@""];
+
+
+        } else if ([[url host] isEqualToString:@"review"]) {
+
+        }
+
+
+        return true;
+    } else {
+        return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    }
+
+}
+
+- (NSDictionary *)parseQueryString:(NSString *)query {
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:6];
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+
+    for (NSString *pair in pairs) {
+        NSArray *elements = [pair componentsSeparatedByString:@"="];
+        NSString *key = [elements[0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *val = [elements[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+        dict[key] = val;
+    }
+    return dict;
 }
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
