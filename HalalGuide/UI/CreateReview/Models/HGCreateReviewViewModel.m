@@ -75,7 +75,12 @@
 
 - (RACSignal *)saveImagesForReview:(HGReview *)review {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
-        [[HGPictureService instance] saveMultiplePictures:self.images forReview:review completion:^(BOOL completed, NSError *error, NSNumber *progress) {
+
+        [[HGPictureService instance] saveMultiplePictures:self.images forReview:review];
+
+        [subscriber sendCompleted];
+
+        /*[[HGPictureService instance] saveMultiplePictures:self.images forReview:review completion:^(BOOL completed, NSError *error, NSNumber *progress) {
             if (progress) {
                 self.progress = progress.intValue;
                 [subscriber sendNext:progress];
@@ -86,7 +91,7 @@
             if (error) {
                 [subscriber sendError:error];
             }
-        }];
+        }];*/
         return nil;
     }];
 }

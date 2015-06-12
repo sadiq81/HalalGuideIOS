@@ -12,13 +12,15 @@
 @class HGLocationPicture;
 @class BFTask;
 
-@interface HGPictureService : NSObject
+@interface HGPictureService : NSObject<NSURLSessionTaskDelegate>
 
 + (HGPictureService *)instance;
 
 - (void)saveMultiplePictures:(NSArray *)images forLocation:(HGLocation *)location completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion;
 
 - (void)saveMultiplePictures:(NSArray *)images forReview:(HGReview *)review completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion;
+
+- (void)saveMultiplePictures:(NSArray *)images forReview:(HGReview *)review;
 
 //- (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion;
 

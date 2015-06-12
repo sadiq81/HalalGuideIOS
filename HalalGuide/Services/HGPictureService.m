@@ -9,9 +9,12 @@
 #import "HGReview.h"
 #import "HGQuery.h"
 #import "HGUser.h"
+#import "Constants.h"
+#import "NSString+Extensions.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <Bolts/BFTask.h>
+#import <Parse/PFSubclassing.h>
 
 @implementation HGPictureService {
 
@@ -52,6 +55,85 @@
             }
         }];
     }
+}
+
+- (NSURLSession *)urlSessionWithIdentifier:(NSString *)identifier {
+
+    NSURLSessionConfiguration *backgroundConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:identifier];
+    backgroundConfiguration.networkServiceType = NSURLNetworkServiceTypeBackground;
+    backgroundConfiguration.discretionary = true;
+
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:backgroundConfiguration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+
+    return session;
+}
+
+- (void)saveMultiplePictures:(NSArray *)images forReview:(HGReview *)review {
+
+    NSURLSession *session = [self urlSessionWithIdentifier:review.objectId];
+
+    for (int i = 0; i < images.count; i++) {
+        NSString *fileName = [[NSString alloc] initWithFormat:@"%@-%i.png", review.objectId, i];
+        NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.parse.com/1/files/%@", fileName];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:urlString]];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:kParseApplicationId forHTTPHeaderField:@"X-Parse-Application-Id"];
+        [request setValue:kParseRestKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+        [request setValue:@"image/png" forHTTPHeaderField:@"Content-Type"];
+
+        UIImage *image = images[0];
+        image = [image compressForUpload];
+        NSData *data = UIImagePNGRepresentation(image);
+
+        NSString *tmpDirectory = [NSTemporaryDirectory() stringByAppendingPathComponent:review.objectId];
+        NSString *tmpFile = [tmpDirectory stringByAppendingPathComponent:fileName];
+        [[NSFileManager defaultManager] createDirectoryAtPath:tmpDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+
+        [data writeToFile:tmpFile atomically:true];
+
+        NSURL *tmpFileURL = [NSURL fileURLWithPath:tmpFile];
+        NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request fromFile:tmpFileURL];
+
+        [task resume];
+    }
+
+    [session finishTasksAndInvalidate];
+}
+
+- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler {
+    NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+    completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+}
+
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
+    NSString *tmpDirectory = [NSTemporaryDirectory() stringByAppendingPathComponent:session.configuration.identifier];
+    [[NSFileManager defaultManager] removeItemAtPath:tmpDirectory error:nil];
+}
+
+#define kAssociationSessionKey @"dk.eazyit.halalguide.association.session"
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+
+    NSString *sessionId = session.configuration.identifier;
+    if (![sessionId hasPrefix:kAssociationSessionKey]) {
+
+        NSString *identifier = [NSString stringWithFormat:@"%@-%@", kAssociationSessionKey, sessionId];
+        NSURLSession *associationSession = [self urlSessionWithIdentifier:identifier];
+
+        NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.parse.com/1/classes/%@/%@", kLocationPictureTableName, sessionId];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:urlString]];
+        [request setHTTPMethod:@"PUT"];
+        [request setValue:kParseApplicationId forHTTPHeaderField:@"X-Parse-Application-Id"];
+        [request setValue:kParseRestKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
+        NSDictionary *httpResponse = [response allHeaderFields];
+        NSString *url = [httpResponse valueForKey:@"Locatio"];
+
+        NSDictionary *dic = @{@"picture" : @{@"name" : url, @"__type" : @"File"}};
+    }
+
 }
 
 //TODO Offline handling
