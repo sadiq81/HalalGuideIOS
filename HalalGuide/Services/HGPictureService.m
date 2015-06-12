@@ -9,19 +9,13 @@
 #import "HGReview.h"
 #import "HGQuery.h"
 #import "HGUser.h"
-#import "Constants.h"
-#import "NSString+Extensions.h"
-#import "NSObject+HGJSON.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import <Bolts/BFTask.h>
-#import <Parse/PFSubclassing.h>
 
 @implementation HGPictureService {
 
 }
-
-@synthesize responsesData;
 
 + (HGPictureService *)instance {
     static HGPictureService *_instance = nil;
@@ -29,7 +23,6 @@
     @synchronized (self) {
         if (_instance == nil) {
             _instance = [[self alloc] init];
-            _instance.responsesData = [[NSMutableDictionary alloc] init];
         }
     }
 
@@ -59,130 +52,6 @@
             }
         }];
     }
-}
-
-- (void)saveMultiplePictures:(NSArray *)images forReview:(HGReview *)review {
-
-    for (int i = 0; i < [images count]; i++) {
-
-        HGLocationPicture *picture = [HGLocationPicture object];
-        picture.creationStatus = @(CreationStatusAwaitingApproval);
-        picture.reviewId = review.objectId;
-        picture.locationId = review.locationId;
-        picture.submitterId = [HGUser currentUser].objectId;
-
-        UIImage *image = images[i];
-        @weakify(self)
-        [picture saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            @strongify(self)
-            [self savePicture:image forHGLocationPicture:picture];
-        }];
-    }
-}
-
-- (NSURLSession *)urlSessionWithIdentifier:(NSString *)identifier {
-
-    NSMutableDictionary *sessionDictionary = self.responsesData[identifier];
-    if (!sessionDictionary) {
-        self.responsesData[identifier] = [[NSMutableDictionary alloc] init];
-    }
-
-    NSURLSessionConfiguration *backgroundConfiguration = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:identifier];
-    backgroundConfiguration.networkServiceType = NSURLNetworkServiceTypeBackground;
-    backgroundConfiguration.discretionary = true;
-
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:backgroundConfiguration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-    return session;
-}
-
-- (void)savePicture:(UIImage *)image forHGLocationPicture:(HGLocationPicture *)picture {
-
-    NSString *fileName = [[NSString alloc] initWithFormat:@"%@.png", picture.objectId];
-
-    NSURLSession *session = [self urlSessionWithIdentifier:fileName];
-
-    NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.parse.com/1/files/%@", fileName];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:urlString]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:kParseApplicationId forHTTPHeaderField:@"X-Parse-Application-Id"];
-    [request setValue:kParseRestKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
-    [request setValue:@"image/png" forHTTPHeaderField:@"Content-Type"];
-
-    NSData *data = UIImagePNGRepresentation([image compressForUpload]);
-
-    NSString *tmpFile = [NSTemporaryDirectory() stringByAppendingPathComponent:fileName];
-    [data writeToFile:tmpFile atomically:true];
-
-    NSURL *tmpFileURL = [NSURL fileURLWithPath:tmpFile];
-    NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request fromFile:tmpFileURL];
-
-    [task resume];
-    [session finishTasksAndInvalidate];
-}
-
-- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler {
-    NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-    completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
-}
-
-- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
-    NSString *tmpDirectory = [NSTemporaryDirectory() stringByAppendingPathComponent:session.configuration.identifier];
-    [[NSFileManager defaultManager] removeItemAtPath:tmpDirectory error:nil];
-    [self.responsesData removeObjectForKey:session.configuration.identifier];
-}
-
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    NSMutableData *responseData = self.responsesData[session.configuration.identifier][@(dataTask.taskIdentifier)];
-    if (!responseData && data) {
-        responseData = [NSMutableData dataWithData:data];
-        self.responsesData[session.configuration.identifier][@(dataTask.taskIdentifier)] = responseData;
-    } else if (data) {
-        [responseData appendData:data];
-    }
-}
-
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-
-    if (!error) {
-
-        NSString *sessionId = session.configuration.identifier;
-        if ([sessionId hasSuffix:@".png"]) {
-
-            NSString *objectId = [sessionId stringByReplacingOccurrencesOfString:@".png" withString:@""];
-            NSString *identifier = [sessionId stringByReplacingOccurrencesOfString:@".png" withString:@".json"];
-
-            NSHTTPURLResponse *response = (NSHTTPURLResponse *) task.response;
-            NSDictionary *httpResponse = [response allHeaderFields];
-
-            NSMutableData *responseData = self.responsesData[session.configuration.identifier][@(task.taskIdentifier)];
-            NSDictionary *notesJSON = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-
-            NSString *name = [notesJSON valueForKey:@"name"];
-
-            NSURLSession *associationSession = [self urlSessionWithIdentifier:identifier];
-
-            NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.parse.com/1/classes/%@/%@", kLocationPictureTableName, objectId];
-            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:urlString]];
-            [request setHTTPMethod:@"PUT"];
-            [request setValue:kParseApplicationId forHTTPHeaderField:@"X-Parse-Application-Id"];
-            [request setValue:kParseRestKey forHTTPHeaderField:@"X-Parse-REST-API-Key"];
-            [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-
-            NSDictionary *dic = @{@"picture" : @{@"name" : name, @"__type" : @"File"}};
-            NSString *jsonString = [dic bv_jsonDataWithPrettyPrint:false];
-            NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-
-            NSString *tmpFile = [NSTemporaryDirectory() stringByAppendingPathComponent:identifier];
-            [data writeToFile:tmpFile atomically:true];
-
-            NSURL *tmpFileURL = [NSURL fileURLWithPath:tmpFile];
-            NSURLSessionUploadTask *associationTask = [associationSession uploadTaskWithRequest:request fromFile:tmpFileURL];
-
-            [associationTask resume];
-            [associationSession finishTasksAndInvalidate];
-        }
-    }
-    [self.responsesData[session.configuration.identifier] removeObjectForKey:@(task.taskIdentifier)];
 }
 
 //TODO Offline handling
