@@ -11,6 +11,8 @@
 @interface HGLocationService : NSObject
 + (HGLocationService *)instance;
 
+- (void)locationById:(NSString *)objectId onCompletion:(PFIdResultBlock)completion;
+
 - (void)saveLocation:(HGLocation *)location onCompletion:(PFBooleanResultBlock)completion;
 
 - (void)locationsByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion;

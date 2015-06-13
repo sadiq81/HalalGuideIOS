@@ -270,6 +270,30 @@
         }];
         [alertController addAction:homepage];
     }
+    UIAlertAction *share = [UIAlertAction actionWithTitle:NSLocalizedString(@"HGLocationDetailViewController.alert.share", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+        NSMutableArray *sharingItems = [NSMutableArray new];
+
+        [sharingItems addObject:self.viewModel.location.name];
+
+        if (self.header.pictureView.pictures.numberOfItems > 0) {
+            AsyncImageView *thumbnail = (AsyncImageView *) [self.header.pictureView.pictures itemViewAtIndex:0];
+            [sharingItems addObject:thumbnail.image];
+        }
+
+        if (self.viewModel.location.homePage) {
+            [sharingItems addObject:[[NSURL alloc] initWithString:self.viewModel.location.homePage]];
+        }
+
+        NSString *appUrl = [NSString stringWithFormat:@"halalguide://location/%@", self.viewModel.location.objectId];
+        [sharingItems addObject:[[NSURL alloc] initWithString:appUrl]];
+
+        UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+        [self presentViewController:activityController animated:YES completion:nil];
+
+    }];
+    [alertController addAction:share];
+
 
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"HGLocationDetailViewController.alert.regret", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
     }];

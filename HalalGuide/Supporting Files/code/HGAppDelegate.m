@@ -25,13 +25,13 @@
 #import "HGMessagesViewController.h"
 #import "HGNavigationController.h"
 #import "HGPictureService.h"
+#import "HGReviewService.h"
+#import "HGLocationDetailViewController.h"
 #import <Fabric/Fabric.h>
 
 @interface HGAppDelegate () <UIGestureRecognizerDelegate>
 
 @property(strong, nonatomic) UINavigationController *navigationController;
-@property(strong, nonatomic) HGLocation *locationOpenedByUrl;
-@property(strong, nonatomic) HGReview *reviewOpenedByUrl;
 
 @end
 
@@ -120,19 +120,21 @@
     //Setup view controller
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+
     HGFrontPageViewController *viewController = [HGFrontPageViewController controllerWithViewModel:[[HGFrontPageViewModel alloc] init]];
-    HGNavigationController *nav = [[HGNavigationController alloc] initWithRootViewController:viewController];
-    self.window.rootViewController = nav;
+    self.navigationController = [[HGNavigationController alloc] initWithRootViewController:viewController];
+
+    self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
 
     UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
         HGSubjectsViewController *vc = [HGSubjectsViewController controllerWithViewModel:[[HGSubjectsViewModel alloc] init]];
         UINavigationController *navChat = [[UINavigationController alloc] initWithRootViewController:vc];
-        [nav presentViewController:navChat animated:true completion:nil];
+        [self.navigationController presentViewController:navChat animated:true completion:nil];
     }];
     tripleTap.delegate = self;
     tripleTap.numberOfTapsRequired = 3;
-    [nav.navigationBar addGestureRecognizer:tripleTap];
+    [self.navigationController.navigationBar addGestureRecognizer:tripleTap];
 
 
     if (launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]) {
@@ -204,18 +206,33 @@
 #pragma mark URL handling
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    @weakify(self)
     if ([[url scheme] caseInsensitiveCompare:@"halalguide"] == NSOrderedSame) {
 
         if ([[url host] isEqualToString:@"location"]) {
 
             NSString *objectId = [[url path] stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@""];
-
+            [[HGLocationService instance] locationById:objectId onCompletion:^(HGLocation *object, NSError *error) {
+                @strongify(self)
+                HGLocationDetailViewModel *model = [HGLocationDetailViewModel modelWithLocation:object];
+                HGLocationDetailViewController *vc = [HGLocationDetailViewController controllerWithViewModel:model];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationController pushViewController:vc animated:true];
+                });
+            }];
 
         } else if ([[url host] isEqualToString:@"review"]) {
 
+            NSString *objectId = [[url path] stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@""];
+            [[HGReviewService instance] reviewById:objectId onCompletion:^(HGReview *object, NSError *error) {
+                @strongify(self)
+                HGReviewDetailViewModel *model = [HGReviewDetailViewModel modelWithReview:object];
+                HGReviewDetailViewController *vc = [HGReviewDetailViewController controllerWithViewModel:model];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationController pushViewController:vc animated:true];
+                });
+            }];
         }
-
-
         return true;
     } else {
         return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];

@@ -25,6 +25,10 @@
     return _instance;
 }
 
+- (void)locationById:(NSString *)objectId onCompletion:(PFIdResultBlock)completion {
+    [[HGLocation query] getObjectInBackgroundWithId:objectId block:completion];
+}
+
 //TODO Offline handling
 - (void)saveLocation:(HGLocation *)location onCompletion:(PFBooleanResultBlock)completion {
     [location saveInBackgroundWithBlock:completion];

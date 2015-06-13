@@ -25,6 +25,10 @@
     return _instance;
 }
 
+- (void)reviewById:(NSString *)objectId onCompletion:(PFIdResultBlock)completion {
+    [[HGReview query] getObjectInBackgroundWithId:objectId block:completion];
+}
+
 - (void)saveReview:(HGReview *)review onCompletion:(PFBooleanResultBlock)completion {
     //TODO Offline handling
     [review saveInBackgroundWithBlock:completion];

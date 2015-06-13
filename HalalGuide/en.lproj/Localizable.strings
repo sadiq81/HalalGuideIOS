@@ -179,6 +179,7 @@
 "HGLocationDetailViewController.hud.fetching" = "Updating";
 "HGLocationDetailViewController.hud.error" = "Error!";
 "HGLocationDetailViewController.hud.saving" = "Saving";
+"HGLocationDetailViewController.alert.share" = "Share";
 
 "HGImagePickerView.button.approve" = "Add 1 picture";
 "HGImagePickerView.button.approve.multiple" = "Add %lu pictures";
@@ -294,5 +295,3 @@
 
 "HGChatViewController.title" = "Subjects";
 "HGNavigationController.new.message" = "New message";
-
-
