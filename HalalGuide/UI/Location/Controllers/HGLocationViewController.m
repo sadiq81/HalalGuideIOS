@@ -25,6 +25,8 @@
 #import "HGShopCell.h"
 #import "UITableView+Header.h"
 #import "HGGeoLocationService.h"
+#import "HGCategoriesFilterViewController.h"
+#import "HGCategoryViewModel.h"
 
 @interface HGLocationViewController () <UISearchBarDelegate>
 //@property(strong, nonatomic) UISegmentedControl *segmentControl;
@@ -32,6 +34,7 @@
 @property(strong, nonatomic) UITableView *tableView;
 @property(strong, nonatomic) UITableViewController *tableViewController;
 @property(strong, nonatomic) UIBarButtonItem *filter;
+@property(strong, nonatomic) UIBarButtonItem *categories;
 @property(strong, nonatomic) UIBarButtonItem *presentationMode;
 @property(strong, nonatomic) UIToolbar *toolbar;
 @property(strong, nonatomic) UISearchBar *searchBar;
@@ -91,6 +94,7 @@
     self.tableView.tableHeaderView = self.searchBar;
 
     self.noResults = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.noResults.text = NSLocalizedString(@"HGLocationViewController.label.no.results", nil);
     [self.tableView addSubview:self.noResults];
 
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];
@@ -98,8 +102,10 @@
 
     self.filter = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGLocationViewController.button.filter", nil) style:UIBarButtonItemStylePlain block:nil];
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    self.categories = [[UIBarButtonItem alloc] initWithTitle:(self.viewModel.locationType == LocationTypeMosque ? NSLocalizedString(@"HGLocationViewController.button.language", nil) : NSLocalizedString(@"HGLocationViewController.button.categories", nil)) style:UIBarButtonItemStylePlain block:nil];
+    UIBarButtonItem *spacer2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     self.presentationMode = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"HGLocationViewController.button.map", nil) style:UIBarButtonItemStylePlain block:nil];
-    [self.toolbar setItems:@[self.filter, spacer, self.presentationMode]];
+    [self.toolbar setItems:@[self.filter, spacer, self.categories, spacer2, self.presentationMode]];
 
 };
 
@@ -169,6 +175,12 @@
         viewController.modalPresentationStyle = UIModalPresentationFullScreen;
         viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentViewController:viewController animated:true completion:nil];
+    }];
+
+    [self.categories setBlock:^(id weakSender) {
+        @strongify(self)
+        HGCategoriesFilterViewController *vc = [HGCategoriesFilterViewController controllerWithLocationType:self.viewModel.locationType];
+        [self.navigationController pushViewController:vc animated:true];
     }];
 
     [self.addButton setBlock:^(id weakSender) {

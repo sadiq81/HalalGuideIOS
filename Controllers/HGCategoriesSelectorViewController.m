@@ -6,11 +6,11 @@
 #import <Masonry/View+MASAdditions.h>
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import <MZFormSheetController/MZFormSheetController.h>
-#import "HGCategoriesViewController.h"
+#import "HGCategoriesSelectorViewController.h"
 #import "HGLocation.h"
 #import "HGLocationViewModel.h"
 
-@interface HGCategoriesViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HGCategoriesSelectorViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property(strong, nonatomic) UIButton *close;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation HGCategoriesViewController {
+@implementation HGCategoriesSelectorViewController {
 
 }
 

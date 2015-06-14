@@ -8,7 +8,7 @@
 #import "HGBaseViewModel.h"
 
 
-@interface HGCategoriesViewController : UIViewController {
+@interface HGCategoriesSelectorViewController : UIViewController {
 
 }
 - (instancetype)initWithViewModel:(id <CategoriesViewModel>)viewModel;

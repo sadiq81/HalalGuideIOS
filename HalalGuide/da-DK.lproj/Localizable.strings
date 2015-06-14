@@ -291,3 +291,11 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "HGChatViewController.title" = "Emner";
 "HGNavigationController.new.message" = "Ny besked";
+
+"HGLocationViewController.button.categories" = "Kategorier";
+"HGLocationViewController.button.language" = "Sprog";
+"HGLocationViewController.label.no.results" = "Ingen resultater med de givne filtre";
+
+"HGCategoryViewController.label.no.results" = "Ingen lokationer med den valgte kategori";
+"HGCategoryViewController.hud.fetching" = "Henter";
+"HGCategoryViewController.hud.error" = "Ukendt fejl";

@@ -998,7 +998,7 @@
         <!--Categories View Controller-->
         <scene sceneID="Aqc-0q-5Oi">
             <objects>
-                <viewController id="XuG-hU-MhN" customClass="HGCategoriesViewController" sceneMemberID="viewController">
+                <viewController id="XuG-hU-MhN" customClass="HGCategoriesSelectorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g3Z-nU-G1j"/>
                         <viewControllerLayoutGuide type="bottom" id="HHT-c8-iCz"/>

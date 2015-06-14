@@ -19,7 +19,7 @@
 #import "HGCreateSwitchView.h"
 #import "UITextField+HGTextFieldStyling.h"
 #import "KASlideShow.h"
-#import "HGCategoriesViewController.h"
+#import "HGCategoriesSelectorViewController.h"
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import <Masonry/View+MASAdditions.h>
 #import <MZFormSheetController/MZFormSheetController.h>
@@ -249,7 +249,7 @@
     [[self.categoriesView.choose rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
 
-        HGCategoriesViewController *viewController = [HGCategoriesViewController controllerWithViewModel:self.viewModel];
+        HGCategoriesSelectorViewController *viewController = [HGCategoriesSelectorViewController controllerWithViewModel:self.viewModel];
         MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:viewController];
         formSheet.presentedFSViewController.view.clipsToBounds = false;
 

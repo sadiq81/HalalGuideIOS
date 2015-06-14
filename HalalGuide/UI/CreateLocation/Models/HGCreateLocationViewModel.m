@@ -19,7 +19,6 @@
 @property(nonatomic, strong) NSDictionary *streetDictionary;
 @property(nonatomic, strong) HGLocation *createdLocation;
 
-
 @end
 
 @implementation HGCreateLocationViewModel {

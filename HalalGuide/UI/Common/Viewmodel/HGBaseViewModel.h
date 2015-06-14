@@ -31,6 +31,4 @@
 
 - (BOOL)isAuthenticated;
 
-
-
 @end

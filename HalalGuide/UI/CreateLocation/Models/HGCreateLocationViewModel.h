@@ -32,7 +32,6 @@
 
 + (instancetype)modelWithExistingLocation:(HGLocation *)existingLocation;
 
-
 - (instancetype)initWithLocationType:(LocationType)type;
 
 - (NSArray *)streetNameForPrefix:(NSString *)prefix;

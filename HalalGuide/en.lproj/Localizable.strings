@@ -295,3 +295,11 @@
 
 "HGChatViewController.title" = "Subjects";
 "HGNavigationController.new.message" = "New message";
+
+"HGLocationViewController.button.categories" = "Categories";
+"HGLocationViewController.button.language" = "Language";
+"HGLocationViewController.label.no.results" = "No results with the applied filters";
+
+"HGCategoryViewController.label.no.results" = "No location with the selected category";
+"HGCategoryViewController.hud.fetching" = "Fetching";
+"HGCategoryViewController.hud.error" = "Unknown error";

@@ -20,7 +20,7 @@ typedef enum LocationPresentation : int16_t {
 @property(nonatomic) LocationType locationType;
 @property(nonatomic, copy, readonly) NSArray *listLocations;
 @property(nonatomic, copy, readonly) NSArray *mapLocations;
-@property(nonatomic) NSNumber * maximumDistance;
+@property(nonatomic) NSNumber *maximumDistance;
 @property(nonatomic) NSNumber *showNonHalal;
 @property(nonatomic) NSNumber *showAlcohol;
 @property(nonatomic) NSNumber *showPork;
