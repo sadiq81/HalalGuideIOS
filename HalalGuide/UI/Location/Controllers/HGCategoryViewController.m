@@ -62,6 +62,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Category";
+
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
     self.view.backgroundColor = [UIColor whiteColor];
 

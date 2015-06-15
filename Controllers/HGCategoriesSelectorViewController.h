@@ -5,10 +5,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
 #import "HGBaseViewModel.h"
 
 
-@interface HGCategoriesSelectorViewController : UIViewController {
+@interface HGCategoriesSelectorViewController : GAITrackedViewController {
 
 }
 - (instancetype)initWithViewModel:(id <CategoriesViewModel>)viewModel;

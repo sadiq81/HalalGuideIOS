@@ -76,6 +76,9 @@
 }
 
 - (void)setupViews {
+
+    self.screenName = @"Location";
+
     NSString *title = [NSString stringWithFormat:@"HGLocationViewController.title.%@", LocationTypeString(self.viewModel.locationType)];
     self.title = NSLocalizedString(title, nil);
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];

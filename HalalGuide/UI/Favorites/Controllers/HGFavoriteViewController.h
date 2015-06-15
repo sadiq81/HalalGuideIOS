@@ -5,10 +5,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
 #import "HGFavoriteViewModel.h"
 
 
-@interface HGFavoriteViewController : UIViewController
+@interface HGFavoriteViewController : GAITrackedViewController
 
 @property(strong, nonatomic, readonly) UITableView *tableView;
 @property(strong, nonatomic, readonly) UILabel *noFavorites;

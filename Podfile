@@ -49,6 +49,8 @@ pod 'RMStore', '~> 0.7'
 pod 'hpple', '0.2.0'
 pod 'DateTools', '1.5.0'
 
+pod 'GoogleAnalytics'
+
 post_install do | installer |
   require 'fileutils'
   FileUtils.cp_r('Pods/Target Support Files/Pods/Pods-Acknowledgements.plist', 'HalalGuide/Supporting Files/Settings.bundle/Acknowledgements.plist', :remove_destination => true)

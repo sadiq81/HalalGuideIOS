@@ -57,6 +57,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Location details";
+
     self.title = self.viewModel.location.name;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
     self.view.backgroundColor = [UIColor whiteColor];

@@ -31,6 +31,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Enumber";
+
     self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
     self.webView.scalesPageToFit = true;
     self.webView.delegate = self;

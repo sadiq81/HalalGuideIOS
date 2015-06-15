@@ -90,6 +90,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Location";
+
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];

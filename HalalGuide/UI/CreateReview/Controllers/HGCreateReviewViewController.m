@@ -67,6 +67,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Create review";
+
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.rating = [[EDStarRating alloc] initWithFrame:CGRectZero];

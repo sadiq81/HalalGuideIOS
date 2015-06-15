@@ -70,6 +70,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Front page";
+
     self.title = NSLocalizedString(@"HGFrontPageViewController.title", nil);
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
     self.view.backgroundColor = [UIColor whiteColor];

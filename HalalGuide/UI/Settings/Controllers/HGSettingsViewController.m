@@ -6,6 +6,7 @@
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import <Masonry/View+MASAdditions.h>
 #import <AsyncImageView/AsyncImageView.h>
+#import <GoogleAnalytics/GAI.h>
 #import "HGSettingsViewController.h"
 #import "HGLocationViewModel.h"
 #import "HGSettings.h"
@@ -15,6 +16,7 @@
 #import "RMStore.h"
 #import "HGENumberViewController.h"
 #import "HGUser.h"
+#import "GAIFields.h"
 
 @interface HGSettingsViewController ()
 
@@ -41,6 +43,14 @@
 
     return self;
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Settings"];
+}
+
 
 - (void)setupViews {
 

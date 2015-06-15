@@ -27,6 +27,7 @@
 #import "HGPictureService.h"
 #import "HGReviewService.h"
 #import "HGLocationDetailViewController.h"
+#import "GAI.h"
 #import <Fabric/Fabric.h>
 
 @interface HGAppDelegate () <UIGestureRecognizerDelegate>
@@ -111,6 +112,8 @@
 #if !DEBUG
     [Fabric with:@[CrashlyticsKit]];
 #endif
+
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-54901977-2"];
 
     //Defaults
     NSString *defaultPrefsFile = [[NSBundle mainBundle] pathForResource:@"dk.eazyit.halalguide.preferences" ofType:@"plist"];

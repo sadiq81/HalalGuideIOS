@@ -42,6 +42,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Categories selector";
+
     self.categories = [[UITableView alloc] initWithFrame:CGRectZero];
     self.categories.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.categories];

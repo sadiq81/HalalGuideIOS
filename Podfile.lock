@@ -52,6 +52,7 @@ PODS:
   - Facebook-iOS-SDK/ShareKit (4.0.1):
     - Bolts (~> 1.0)
     - Facebook-iOS-SDK/CoreKit
+  - GoogleAnalytics (3.12.0)
   - HexColors (2.2.1)
   - HGImagePicker (1.0.0):
     - ALActionBlocks (~> 1.0.3)
@@ -116,6 +117,7 @@ DEPENDENCIES:
   - DCKeyValueObjectMapping (= 1.4)
   - EDStarRating (= 1.1)
   - Facebook-iOS-SDK (= 4.0.1)
+  - GoogleAnalytics
   - HGImagePicker (from `https://github.com/sadiq81/HGImagePicker.git`)
   - hpple (= 0.2.0)
   - HTAutocompleteTextField (= 1.3.1)
@@ -162,6 +164,7 @@ SPEC CHECKSUMS:
   DCKeyValueObjectMapping: 04cd5a338c03ce1c02488926cab6e1d1f704a093
   EDStarRating: a41a6440a945020745d0e9ff8ada7d1afa952114
   Facebook-iOS-SDK: 6d05532c97e9c542f8d87f94b7f6ee217493d00b
+  GoogleAnalytics: ef2e0b800ef3c1e62688cdfc959e0d3132bc246c
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   HGImagePicker: 8c33845b1e654dae9058280a8da222ffcafe4138
   hpple: 3b765f96fc2cd56ad1a49aef6f7be5cb2aa64b57

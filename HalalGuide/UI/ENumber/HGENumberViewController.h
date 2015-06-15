@@ -5,9 +5,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
 #import "UIViewController+Extension.h"
 
-@interface HGENumberViewController : UIViewController{
+@interface HGENumberViewController : GAITrackedViewController{
     
 }
 

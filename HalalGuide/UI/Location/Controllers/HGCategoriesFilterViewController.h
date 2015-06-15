@@ -5,10 +5,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
 #import "HGLocationViewModel.h"
 
 
-@interface HGCategoriesFilterViewController : UIViewController {
+@interface HGCategoriesFilterViewController : GAITrackedViewController {
 
 }
 

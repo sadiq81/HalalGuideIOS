@@ -11,6 +11,7 @@
 #import "HGUser.h"
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import <GoogleAnalytics/GAI.h>
 
 
 @implementation UIViewController (Extension)
@@ -104,6 +105,8 @@
 
         if (casted.isNew) {
             [HGUser storeProfileInfoForLoggedInUser:nil];
+            id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+            [tracker set:@"&uid" value:user.objectId];
         }
 
         self.loginHandler();

@@ -55,6 +55,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Filter locations";
+
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectZero];

@@ -59,6 +59,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Review detail";
+
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.layout = [[UICollectionViewFlowLayout alloc] init];
