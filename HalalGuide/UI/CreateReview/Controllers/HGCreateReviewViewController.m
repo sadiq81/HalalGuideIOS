@@ -144,7 +144,7 @@
     @weakify(self)
     [[self.addPictures rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        [self getPicturesWithDelegate:self viewModel:self.viewModel];
+        [self getPictures:5 viewModel:self.viewModel WithDelegate:self];
     }];
 
 

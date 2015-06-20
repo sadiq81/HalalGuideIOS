@@ -67,6 +67,18 @@
     }];
 }
 
+- (void)sendImage:(UIImage *)image forSubject:(HGSubject *)subject withCompletion:(void (^)(HGMessage *message, BOOL succeeded, NSError *error))completion {
+    HGMessage *message = [HGMessage object];
+    message.userId = [HGUser currentUser].objectId;
+    message.subjectId = subject.objectId;
+    message.image = [PFFile fileWithName:subject.objectId data:UIImagePNGRepresentation(image)];
+    [message pinInBackground];
+
+    [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        completion(message, succeeded, error);
+    }];
+}
+
 - (NSString *)keyForSubscription:(HGSubject *)subject {
     return [NSString stringWithFormat:@"%@-%@", @"subject", subject.objectId];
 }

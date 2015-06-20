@@ -214,7 +214,7 @@
 
     [self.pickImage addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
         @strongify(self)
-        [self getPicturesWithDelegate:self viewModel:self.viewModel];
+        [self getPictures:5 viewModel:self.viewModel WithDelegate:self];
     }]];
 
     [[self.road rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(id x) {

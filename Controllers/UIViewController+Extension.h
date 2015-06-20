@@ -36,7 +36,7 @@ typedef enum HintPosition : int16_t {
 
 - (void)createReviewForLocation:(HGLocation *)location viewModel:(HGBaseViewModel *)viewModel pushToStack:(BOOL)push;
 
-- (void)getPicturesWithDelegate:(id <HGImagePickerControllerDelegate>)delegate viewModel:(HGBaseViewModel *)viewModel;
+- (void)getPictures:(NSUInteger)count viewModel:(HGBaseViewModel *)viewModel WithDelegate:(id <HGImagePickerControllerDelegate>)delegate;
 
 - (void)authenticate:(void (^)(void))loginHandler;
 

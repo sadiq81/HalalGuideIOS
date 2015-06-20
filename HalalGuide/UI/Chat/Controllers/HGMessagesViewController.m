@@ -14,7 +14,7 @@
 #import "HGMessageComposeView.h"
 #import "IQKeyboardManager.h"
 
-@interface HGMessagesViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HGMessagesViewController () <UITableViewDelegate, UITableViewDataSource, HGImagePickerControllerDelegate>
 
 @property(strong, nonatomic) UITableView *messages;
 @property(strong, nonatomic) HGMessageComposeView *composeView;
@@ -70,8 +70,8 @@
         @strongify(self)
         [self.viewModel toggleSubscription];
         [SVProgressHUD showInfoWithStatus:self.viewModel.subscribing.boolValue ? NSLocalizedString(@"HGMessagesViewController.notification.on", nil) : NSLocalizedString(@"HGMessagesViewController.notification.off", nil) maskType:SVProgressHUDMaskTypeNone];
-        UIImage *image = [UIImage imageNamed:self.viewModel.subscribing.boolValue ? @"HGMessagesViewController.notification.on" : @"HGMessagesViewController.notification.off"];
-        [self.navigationItem.rightBarButtonItem setImage:image];
+        UIImage *notificationImage = [UIImage imageNamed:self.viewModel.subscribing.boolValue ? @"HGMessagesViewController.notification.on" : @"HGMessagesViewController.notification.off"];
+        [self.navigationItem.rightBarButtonItem setImage:notificationImage];
     }];
 
     self.messages = [[UITableView alloc] initWithFrame:CGRectZero];
@@ -115,7 +115,9 @@
 
     [self.viewModel refreshSubjects];
 
+    @weakify(self)
     [[[RACObserve(self.viewModel, sentMessage) ignore:nil] deliverOnMainThread] subscribeNext:^(HGMessage *message) {
+        @strongify(self)
         NSIndexPath *newMessage = [NSIndexPath indexPathForRow:[self.viewModel.messages count] - 1 inSection:0];
         NSArray *indexArray = @[newMessage];
         [self.messages beginUpdates];
@@ -125,6 +127,7 @@
     }];
 
     [[[RACObserve(self.viewModel, receivedMessages) ignore:nil] deliverOnMainThread] subscribeNext:^(NSArray *messages) {
+        @strongify(self)
         NSMutableArray *indexPaths = [NSMutableArray new];
         for (int i = 0; i < [messages count]; i++) {
             NSIndexPath *path = [NSIndexPath indexPathForRow:([self.viewModel.messages count] - [messages count] + i) inSection:0];
@@ -136,8 +139,24 @@
         [self scrollToBottom:([self.viewModel.messages count] - [messages count] == 0) == 0 ? false : true];
     }];
 
+    [self.composeView.mediaChooser handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
+        @strongify(self)
+        [self getPictures:1 viewModel:self.viewModel WithDelegate:self];
+    }];
 
 }
+
+- (void)HGImagePickerControllerDidCancel:(HGImagePickerController *)controller {
+    [controller dismissViewControllerAnimated:true completion:nil];
+}
+
+- (void)HGImagePickerControllerDidConfirm:(HGImagePickerController *)controller pictures:(NSArray *)pictures {
+    [controller dismissViewControllerAnimated:true completion:^{
+        UIImage *image = pictures[0];
+        [self.viewModel sendImage:image];
+    }];
+}
+
 
 - (void)scrollToBottom:(BOOL)animated {
     int count = (int) [self.viewModel.messages count];
@@ -174,8 +193,12 @@ static NSString *cellIdentifier = @"сellIdentifier";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     HGMessage *message = (HGMessage *) self.viewModel.messages[indexPath.row];;
-    CGRect rect = [message.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 60, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12]} context:nil];
-    return 35 + rect.size.height + 20;
+    if (message.image){
+        return [UIScreen mainScreen].bounds.size.width - 60;
+    } else{
+        CGRect rect = [message.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 60, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12]} context:nil];
+        return 35 + rect.size.height + 20;
+    }
 }
 
 

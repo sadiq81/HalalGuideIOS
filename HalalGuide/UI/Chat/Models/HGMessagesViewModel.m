@@ -88,6 +88,25 @@
     }];
 }
 
+- (void)sendImage:(UIImage*)image{
+
+    if ([self.subscribing isEqualToNumber:@0]) {
+        [[HGChatService instance] toggleSubscription:self.subject];
+        self.subscribing = @1;
+    }
+
+    @weakify(self)
+    [[HGChatService instance] sendImage:image forSubject:self.subject withCompletion:^(HGMessage *message, BOOL succeeded, NSError *error) {
+        @strongify(self)
+        if ((self.error = error)) {
+            [[HGErrorReporting instance] reportError:error];
+        } else {
+            [self.messages addObject:message];
+            self.sentMessage = message;
+        }
+    }];
+}
+
 - (void)toggleSubscription {
     [[HGChatService instance] toggleSubscription:self.subject];
     self.subscribing = [[HGChatService instance] subscribingToSubject:self.subject];

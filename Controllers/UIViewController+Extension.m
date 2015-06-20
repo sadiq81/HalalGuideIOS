@@ -61,12 +61,13 @@
     }
 }
 
-- (void)getPicturesWithDelegate:(id <HGImagePickerControllerDelegate>)delegate viewModel:(HGBaseViewModel *)viewModel {
+- (void)getPictures:(NSUInteger)count viewModel:(HGBaseViewModel *)viewModel WithDelegate:(id <HGImagePickerControllerDelegate>)delegate {
 
     @weakify(self)
     void (^completion)(void) = ^void(void) {
         @strongify(self)
         HGImagePickerController *imagePickerController = [HGImagePickerController controllerWithDelegate:delegate];
+        imagePickerController.maximumPictures = count;
         imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
         imagePickerController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentViewController:imagePickerController animated:true completion:nil];

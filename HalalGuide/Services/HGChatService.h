@@ -20,6 +20,8 @@
 
 - (void)sendMessage:(NSString *)text forSubject:(HGSubject *)subject withCompletion:(void (^)(HGMessage *message, BOOL succeeded, NSError *error))completion;
 
+- (void)sendImage:(UIImage *)image forSubject:(HGSubject *)subject withCompletion:(void (^)(HGMessage *message, BOOL succeeded, NSError *error))completion;
+
 - (NSNumber *)subscribingToSubject:(HGSubject *)subject;
 
 - (void)toggleSubscription:(HGSubject *)subject;
