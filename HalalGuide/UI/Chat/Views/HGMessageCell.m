@@ -13,7 +13,7 @@
 
 @interface HGMessageCell ()
 
-@property(nonatomic, strong) AsyncImageView *image;
+@property(nonatomic, strong) AsyncImageView *chatImage;
 @property(nonatomic, strong) AsyncImageView *avatar;
 //@property (nonatomic, strong) UIImageView *videoView;
 @property(nonatomic, strong) UILabel *submitterName;
@@ -48,18 +48,20 @@
     self.submitterName.backgroundColor = [UIColor clearColor];
     self.submitterName.textColor = [UIColor lightGrayColor];
     self.submitterName.font = [UIFont systemFontOfSize:10];
+    self.submitterName.userInteractionEnabled = false;
     [self.contentView addSubview:self.submitterName];
 
     self.textView = [[UITextView alloc] initWithFrame:CGRectZero];
     self.textView.layer.cornerRadius = 5;
     self.textView.editable = false;
+    self.textView.userInteractionEnabled = false;
     [self.contentView addSubview:self.textView];
 
-    self.image = [[AsyncImageView alloc] initWithFrame:CGRectZero];
-    self.image.clipsToBounds = true;
-    self.image.contentMode = UIViewContentModeScaleAspectFill;
-    self.image.layer.cornerRadius = 5;
-    [self.contentView addSubview:self.image];
+    self.chatImage = [[AsyncImageView alloc] initWithFrame:CGRectZero];
+    self.chatImage.clipsToBounds = true;
+    self.chatImage.contentMode = UIViewContentModeScaleAspectFill;
+    self.chatImage.layer.cornerRadius = 5;
+    [self.contentView addSubview:self.chatImage];
 
 }
 
@@ -72,7 +74,7 @@
         [self updateConstraints];
     }];
 
-    RAC(self.image, imageURL) = RACObserve(self, viewModel.image);
+    RAC(self.chatImage, imageURL) = RACObserve(self, viewModel.image);
     RAC(self.avatar, imageURL) = RACObserve(self, viewModel.avatar);
     RAC(self.submitterName, text) = RACObserve(self, viewModel.submitter);
     RAC(self.textView, text) = RACObserve(self, viewModel.text);
@@ -82,7 +84,7 @@
 
 - (void)updateConstraints {
 
-    [self.image mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.chatImage mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(20);
         make.left.equalTo(self.contentView).offset(30);
         make.right.equalTo(self.contentView).offset(-30);
