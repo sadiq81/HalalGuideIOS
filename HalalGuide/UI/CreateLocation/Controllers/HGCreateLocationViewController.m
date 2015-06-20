@@ -26,6 +26,8 @@
 #import "UIAlertController+Blocks.m"
 #import "HGReviewPictureCell.h"
 #import "HGNewLocationPictureCell.h"
+#import "HGLocationService.h"
+#import "UITextField+Blocks.h"
 
 @interface HGCreateLocationViewController () <UINavigationControllerDelegate, HTAutocompleteDataSource, UITextFieldDelegate, HGImagePickerControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -192,9 +194,26 @@
     RAC(self.viewModel, city) = RACObserve(self, city.text);
     RAC(self.viewModel, website) = RACObserve(self, website.text);
 
-
     @weakify(self)
+
+    [[self.name rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(UITextField *name) {
+        @strongify(self)
+        [[HGLocationService instance] findExistingLocationsWithName:name.text onCompletion:^(NSArray *objects, NSError *error) {
+            if (objects && [objects count] > 0) {
+                [UIAlertController showAlertInViewController:self
+                                                   withTitle:NSLocalizedString(@"HGCreateLocationViewController.location.with.name.exists.title", nil)
+                                                     message:[NSString stringWithFormat:NSLocalizedString(@"HGCreateLocationViewController.location.with.name.exists.message", nil),name.text]
+                                           cancelButtonTitle:NSLocalizedString(@"HGCreateLocationViewController.location.with.name.exists.cancel", nil)
+                                      destructiveButtonTitle:nil
+                                           otherButtonTitles:nil
+                                                    tapBlock:nil];
+            }
+        }];
+
+    }];
+
     [self.pickImage addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
+        @strongify(self)
         [self getPicturesWithDelegate:self viewModel:self.viewModel];
     }]];
 

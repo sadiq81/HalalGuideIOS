@@ -303,3 +303,7 @@
 "HGCategoryViewController.label.no.results" = "No location with the selected category";
 "HGCategoryViewController.hud.fetching" = "Fetching";
 "HGCategoryViewController.hud.error" = "Unknown error";
+
+"HGCreateLocationViewController.location.with.name.exists.title" = "Duplicate";
+"HGCreateLocationViewController.location.with.name.exists.message" = "An existing location named %@ already exists, only continue if this a new location with the same name";
+"HGCreateLocationViewController.location.with.name.exists.cancel" = "OK";

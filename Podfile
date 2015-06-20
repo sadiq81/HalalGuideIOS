@@ -10,6 +10,7 @@ pod 'DCKeyValueObjectMapping', '1.4'
 pod 'ALActionBlocks', '1.0.3'
 pod 'UIAlertController+Blocks', '0.8'
 pod 'ReactiveCocoa', '2.4.7'
+pod 'UITextField+Blocks'
 
 #Networking
 pod 'AFNetworking', '2.5.0'

@@ -299,3 +299,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGCategoryViewController.label.no.results" = "Ingen lokationer med den valgte kategori";
 "HGCategoryViewController.hud.fetching" = "Henter";
 "HGCategoryViewController.hud.error" = "Ukendt fejl";
+
+"HGCreateLocationViewController.location.with.name.exists.title" = "Dublet";
+"HGCreateLocationViewController.location.with.name.exists.message" = "En ekstisterende lokation med navnet %@ eksisterer allerede, tilføj kun hvis der er tale om en anden lokation med samme navn";
+"HGCreateLocationViewController.location.with.name.exists.cancel" = "OK";

@@ -67,4 +67,17 @@
 }
 
 
+- (void)findExistingLocationsWithName:(NSString *)name onCompletion:(PFArrayResultBlock)completion {
+    HGQuery *query = [HGQuery queryWithClassName:kLocationTableName];
+    [query whereKey:@"name" equalTo:name];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [PFObject pinAllInBackground:objects withName:@"findExistingLocationsWithName"];
+        }
+        completion(objects, error);
+    }];
+
+
+}
 @end

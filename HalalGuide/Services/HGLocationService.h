@@ -20,4 +20,6 @@
 - (void)lastTenLocations:(PFArrayResultBlock)completion;
 
 - (void)saveSuggestion:(HGChangeSuggestion *)suggestion onCompletion:(void (^)(BOOL, NSError *))completion;
+
+- (void)findExistingLocationsWithName:(NSString *)name onCompletion:(PFArrayResultBlock)completion;
 @end

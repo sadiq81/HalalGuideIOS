@@ -104,6 +104,7 @@ PODS:
   - TSMessages (0.9.12):
     - HexColors
   - UIAlertController+Blocks (0.8)
+  - UITextField+Blocks (1.0.0)
   - ZLPromptUserReview (1.0.2)
 
 DEPENDENCIES:
@@ -141,6 +142,7 @@ DEPENDENCIES:
   - SZTextView (= 1.2.0)
   - TSMessages (= 0.9.12)
   - UIAlertController+Blocks (= 0.8)
+  - UITextField+Blocks
   - ZLPromptUserReview (~> 1.0.0)
 
 EXTERNAL SOURCES:
@@ -190,6 +192,7 @@ SPEC CHECKSUMS:
   SZTextView: a51ef616064ed07ca44403de1e125bb6f4d4f1fa
   TSMessages: 2a52642128d7ab15b46930c810b9c9403a2b58f3
   UIAlertController+Blocks: 45787b973b5f2f4ca4f01bc76f4175481ce059b3
+  UITextField+Blocks: 8cca9c6fb4520348c05821db49fda089367e85c6
   ZLPromptUserReview: 5bdd576d6d85db223579c5ace7583e0b77da63be
 
 COCOAPODS: 0.37.2
