@@ -19,11 +19,8 @@
 @property(strong, readonly) EDStarRating *rating;
 @property(strong, readonly) UILabel *category;
 @property(strong, readonly) UIImageView *porkImage;
-@property(strong, readonly) UILabel *porkLabel;
 @property(strong, readonly) UIImageView *alcoholImage;
-@property(strong, readonly) UILabel *alcoholLabel;
 @property(strong, readonly) UIImageView *halalImage;
-@property(strong, readonly) UILabel *halalLabel;
 @property(strong, readonly) UIImageView *languageImage;
 @property(strong, readonly) UILabel *languageLabel;
 

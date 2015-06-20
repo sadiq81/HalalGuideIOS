@@ -13,8 +13,4 @@
 @property(strong, nonatomic, readonly) UIImageView *alcoholImage;
 @property(strong, nonatomic, readonly) UIImageView *halalImage;
 
-@property(strong, nonatomic, readonly) UILabel *porkLabel;
-@property(strong, nonatomic, readonly) UILabel *alcoholLabel;
-@property(strong, nonatomic, readonly) UILabel *halalLabel;
-
 @end

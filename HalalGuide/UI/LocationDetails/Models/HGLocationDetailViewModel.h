@@ -25,11 +25,8 @@
 @property(nonatomic, readonly, copy) NSString *category;
 
 @property(nonatomic, readonly, copy) UIImage *porkImage;
-@property(nonatomic, readonly, copy) NSAttributedString *porkString;
 @property(nonatomic, readonly, copy) UIImage *alcoholImage;
-@property(nonatomic, readonly, copy) NSAttributedString *alcoholString;
 @property(nonatomic, readonly, copy) UIImage *halalImage;
-@property(nonatomic, readonly, copy) NSAttributedString *halalString;
 
 @property(nonatomic, readonly, copy) UIImage *languageImage;
 @property(nonatomic, readonly, copy) NSString *languageString;

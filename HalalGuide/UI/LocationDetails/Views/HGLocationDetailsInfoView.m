@@ -18,11 +18,8 @@
 @property(strong) EDStarRating *rating;
 @property(strong) UILabel *category;
 @property(strong) UIImageView *porkImage;
-@property(strong) UILabel *porkLabel;
 @property(strong) UIImageView *alcoholImage;
-@property(strong) UILabel *alcoholLabel;
 @property(strong) UIImageView *halalImage;
-@property(strong) UILabel *halalLabel;
 @property(strong) UIImageView *languageImage;
 @property(strong) UILabel *languageLabel;
 
@@ -77,19 +74,16 @@
     [self addSubview:self.km];
 
     self.porkImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.porkImage setTintColor:[UIColor redColor]];
     [self addSubview:self.porkImage];
-    self.porkLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
-    [self addSubview:self.porkLabel];
 
     self.alcoholImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.alcoholImage setTintColor:[UIColor redColor]];
     [self addSubview:self.alcoholImage];
-    self.alcoholLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
-    [self addSubview:self.alcoholLabel];
 
     self.halalImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.halalImage setTintColor:[UIColor redColor]];
     [self addSubview:self.halalImage];
-    self.halalLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];
-    [self addSubview:self.halalLabel];
 
     self.languageImage = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self addSubview:self.languageImage];
@@ -110,10 +104,6 @@
     RAC(self.porkImage, image) = RACObserve(self, viewModel.porkImage);
     RAC(self.alcoholImage, image) = RACObserve(self, viewModel.alcoholImage);
     RAC(self.halalImage, image) = RACObserve(self, viewModel.halalImage);
-
-    RAC(self.porkLabel, attributedText) = RACObserve(self, viewModel.porkString);
-    RAC(self.alcoholLabel, attributedText) = RACObserve(self, viewModel.alcoholString);
-    RAC(self.halalLabel, attributedText) = RACObserve(self, viewModel.halalString);
 
     RAC(self.languageImage, image) = RACObserve(self, viewModel.languageImage);
     RAC(self.languageLabel, text) = RACObserve(self, viewModel.languageString);
@@ -146,7 +136,6 @@
 
     [self.category mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.rating.mas_bottom).offset(4);
-        make.bottom.equalTo(self.porkLabel.mas_bottom);
         make.left.equalTo(self.mas_left).offset(8);
     }];
 
@@ -161,39 +150,24 @@
     }];
 
     [self.porkImage mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.alcoholImage.mas_top);
-        make.right.equalTo(self.alcoholImage.mas_left).offset(-8);
-        make.width.equalTo(@(31));
-        make.height.equalTo(@(31));
-    }];
-
-    [self.porkLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.porkImage);
-        make.top.equalTo(self.porkImage.mas_bottom).offset(8);
+        make.bottom.equalTo(self.rating.mas_bottom);
+        make.right.equalTo(self.alcoholImage.mas_left).offset(self.viewModel.alcoholImage ?  -8 : 0);
+        make.width.equalTo(@(self.viewModel.porkImage ? 31 : 0));
+        make.height.equalTo(@(self.viewModel.porkImage ? 31 : 0));
     }];
 
     [self.alcoholImage mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.halalImage.mas_top);
-        make.right.equalTo(self.halalImage.mas_left).offset(-8);
-        make.width.equalTo(@(31));
-        make.height.equalTo(@(31));
-    }];
-
-    [self.alcoholLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.alcoholImage);
-        make.top.equalTo(self.alcoholImage.mas_bottom).offset(8);
+        make.bottom.equalTo(self.rating.mas_bottom);
+        make.right.equalTo(self.halalImage.mas_left).offset(self.viewModel.halalImage ?  -8 : 0);
+        make.width.equalTo(@(self.viewModel.alcoholImage ? 31 : 0));
+        make.height.equalTo(@(self.viewModel.alcoholImage ? 31 : 0));
     }];
 
     [self.halalImage mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.rating.mas_bottom);
         make.right.equalTo(self).offset(-8);
-        make.width.equalTo(@(31));
-        make.height.equalTo(@(31));
-    }];
-
-    [self.halalLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.halalImage);
-        make.top.equalTo(self.halalImage.mas_bottom).offset(8);
+        make.width.equalTo(@(self.viewModel.halalImage ? 31 : 0));
+        make.height.equalTo(@(self.viewModel.halalImage ? 31 : 0));
     }];
 
     if (self.viewModel.location.locationType.intValue == LocationTypeMosque){

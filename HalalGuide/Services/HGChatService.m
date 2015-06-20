@@ -72,6 +72,7 @@
 }
 
 - (NSNumber *)subscribingToSubject:(HGSubject *)subject {
+
     NSArray *channels = [PFInstallation currentInstallation].channels;
     NSString *key = [self keyForSubscription:subject];
     return @([channels containsObject:key]);
