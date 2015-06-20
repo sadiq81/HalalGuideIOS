@@ -72,7 +72,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setupHints];
 }
 
 - (void)setupViews {
@@ -203,25 +202,6 @@
 
     }];;
 
-}
-
-#pragma mark - Hints
-
-- (void)setupHints {
-    if (![[HGOnboarding instance] wasOnBoardingShow:kAddNewOnBoardingButtonKey]) {
-        [self displayHintForView:[self.addButton valueForKey:@"view"] withHintKey:kAddNewOnBoardingButtonKey preferedPositionOfText:HintPositionBelow];
-    } else if (![[HGOnboarding instance] wasOnBoardingShow:kFilterOnBoardingButtonKey]) {
-        [self displayHintForView:[self.filter valueForKey:@"view"] withHintKey:kFilterOnBoardingButtonKey preferedPositionOfText:HintPositionAbove];
-    }
-}
-
-- (void)hintWasDismissedByUser:(NSString *)hintKey {
-
-    if ([hintKey isEqualToString:kAddNewOnBoardingButtonKey]) {
-        [self displayHintForView:[self.filter valueForKey:@"view"] withHintKey:kFilterOnBoardingButtonKey preferedPositionOfText:HintPositionAbove];
-    } else {
-        [self displayOnBoardingForFirstCell];
-    }
 }
 
 #pragma mark - SearchBar
