@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.h" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGMessagesViewController.m" afterPath="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGMessagesViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Services/HGChatService.m" afterPath="$PROJECT_DIR$/HalalGuide/Services/HGChatService.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Util/HGCommon.h" afterPath="$PROJECT_DIR$/HalalGuide/Util/HGCommon.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HalalGuide-Prefix.pch" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HalalGuide-Prefix.pch" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HalalGuide.iws" />
@@ -27,12 +29,33 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_iPhone_6_Plus_8.3_x86_64_1" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_6025076c6fc749332decbbb9d927ff1adf6a85c6" />
   <component name="FavoritesManager">
     <favorites_list name="HalalGuide" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="HGAppDelegate.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1664" max-vertical-offset="3289">
+              <caret line="158" column="71" selection-start-line="158" selection-start-column="71" selection-end-line="158" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HGChatService.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGChatService.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8180765" vertical-offset="321" max-vertical-offset="1378">
+              <caret line="83" column="1" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -49,8 +72,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/HalalGuide/UI/Location/Models/HGCategoryViewModel.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/UI/CreateLocation/Controllers/HGCreateLocationViewController.h" />
         <option value="$PROJECT_DIR$/Controllers/HGCategoriesSelectorViewController.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/CreateReview/Controllers/HGCreateReviewViewController.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/ENumber/HGENumberViewController.h" />
@@ -78,7 +99,6 @@
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Models/HGLocationDetailViewModel.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Common/Cells/HGDiningCell.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/LocationDetails/Views/HGLocationDetailsInfoView.m" />
-        <option value="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" />
         <option value="$PROJECT_DIR$/HalalGuide/Services/HGLocationService.h" />
         <option value="$PROJECT_DIR$/Podfile" />
         <option value="$PROJECT_DIR$/HalalGuide/Services/HGLocationService.m" />
@@ -94,12 +114,15 @@
         <option value="$PROJECT_DIR$/Pods/HGImagePicker/Pod/Classes/HGImagePickerController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.h" />
         <option value="$PROJECT_DIR$/HalalGuide/Services/HGChatService.h" />
-        <option value="$PROJECT_DIR$/HalalGuide/Services/HGChatService.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGLocationViewController.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.h" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Chat/Views/HGMessageCell.m" />
         <option value="$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGMessagesViewController.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Util/HGCommon.h" />
+        <option value="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HalalGuide-Prefix.pch" />
+        <option value="$PROJECT_DIR$/HalalGuide/Services/HGChatService.m" />
+        <option value="$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m" />
       </list>
     </option>
   </component>
@@ -108,10 +131,10 @@
   </component>
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="42" />
-    <option name="y" value="23" />
-    <option name="width" value="1398" />
-    <option name="height" value="877" />
+    <option name="x" value="-301" />
+    <option name="y" value="-1177" />
+    <option name="width" value="1920" />
+    <option name="height" value="1177" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -227,6 +250,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Util" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -511,6 +538,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Localizable.strings" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Supporting Files" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="code" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HalalGuide" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -932,12 +995,6 @@
       <option name="number" value="Default" />
       <updated>1415568686926</updated>
     </task>
-    <task id="LOCAL-00029" summary="Use RAC in viewmodels #86&#10;Change load more functionally of listview #85&#10;Replace technical feedback with user friendly feedback #82&#10;Only save location should block ui #69&#10;Filter onboarding shows up double on LocationVC if trying to add new and returns to LVC #54&#10;Progressinfo when uploading images #52&#10;Entities should be saved in the background when possible #45&#10;Locations Without images sometimes get another location image displayed #32">
-      <created>1424158346050</created>
-      <option name="number" value="00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1424158346050</updated>
-    </task>
     <task id="LOCAL-00030" summary="Fix in app purchases #88">
       <created>1424275895273</created>
       <option name="number" value="00030" />
@@ -1226,7 +1283,13 @@
       <option name="project" value="LOCAL" />
       <updated>1434828889586</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Images in Chat #105">
+      <created>1434836353965</created>
+      <option name="number" value="00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1434836353966</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1250,22 +1313,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="42" y="23" width="1398" height="877" extended-state="6" />
+    <frame x="-301" y="-1177" width="1920" height="1177" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17961784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17880185" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32738853" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3210191" sideWeight="0.4997367" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2700637" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2700461" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.5044586" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2965616" sideWeight="0.5007899" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33248407" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24055299" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17591241" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30210602" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21906267" sideWeight="0.49921012" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16815287" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="142" y="123" width="1198" height="677" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1292,7 +1355,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="2" />
-    <MESSAGE value="Label if no reviews like if no pictures #51" />
     <MESSAGE value="Submitter info on location #43" />
     <MESSAGE value="Implement image picker like sms attacher #91" />
     <MESSAGE value="Move away from storyboard #89&#10;Use autolayot with Masonry #66" />
@@ -1317,7 +1379,8 @@
     <MESSAGE value="Some authenticated users are not subscribed to global channel #118" />
     <MESSAGE value="when adding new location, user should be shown list of similar locations #83" />
     <MESSAGE value="Make Pork/Alcohol/NonHalal icons smaller, and only present if item is true. #115" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make Pork/Alcohol/NonHalal icons smaller, and only present if item is true. #115" />
+    <MESSAGE value="Images in Chat #105" />
+    <option name="LAST_COMMIT_MESSAGE" value="Images in Chat #105" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1339,7 +1402,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m</url>
-          <line>259</line>
+          <line>261</line>
           <option name="timeStamp" value="1401" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -1352,11 +1415,16 @@
           <line>237</line>
           <option name="timeStamp" value="1416" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.m</url>
+          <line>73</line>
+          <option name="timeStamp" value="1440" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="1439" />
+      <option name="time" value="1443" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="AppleRunConfiguration">
@@ -1365,30 +1433,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGLocationViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="338">
-          <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Controllers/HGReviewDetailViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="429">
-          <caret line="15" column="66" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/ReviewDetail/Controllers/HGReviewDetailViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42261904" vertical-offset="515" max-vertical-offset="2626">
-          <caret line="61" column="37" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Settings/Controllers/HGSettingsViewController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12896825" vertical-offset="468" max-vertical-offset="2613">
@@ -1517,14 +1561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52272725" vertical-offset="1459" max-vertical-offset="3263">
-          <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Pods/ReactiveCocoa/ReactiveCocoa/RACStream.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33211008" vertical-offset="1704" max-vertical-offset="4433">
@@ -1610,29 +1646,29 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2640" max-vertical-offset="6435">
           <caret line="216" column="57" selection-start-line="216" selection-start-column="57" selection-end-line="216" selection-end-column="57" />
           <folding>
-            <element signature="e#150#201#0" expanded="true" />
-            <element signature="e#3526#3602#0" expanded="true" />
-            <element signature="e#4032#4106#0" expanded="true" />
-            <element signature="e#4364#4438#0" expanded="true" />
-            <element signature="e#4753#4834#0" expanded="true" />
-            <element signature="e#5149#5230#0" expanded="true" />
-            <element signature="e#5483#5557#0" expanded="true" />
-            <element signature="e#5813#5892#0" expanded="true" />
-            <element signature="e#6149#6226#0" expanded="true" />
-            <element signature="e#6705#6776#0" expanded="true" />
-            <element signature="e#6934#7003#0" expanded="true" />
-            <element signature="e#9180#9269#0" expanded="true" />
-            <element signature="e#9358#9449#0" expanded="true" />
-            <element signature="e#9522#9612#0" expanded="true" />
-            <element signature="e#10895#10963#0" expanded="true" />
-            <element signature="e#11410#11486#0" expanded="true" />
-            <element signature="e#11495#11581#0" expanded="true" />
-            <element signature="e#11600#11675#0" expanded="true" />
-            <element signature="e#11723#11797#0" expanded="true" />
-            <element signature="e#12440#12512#0" expanded="true" />
-            <element signature="e#12521#12614#0" expanded="true" />
-            <element signature="e#12633#12701#0" expanded="true" />
-            <element signature="e#13153#13220#0" expanded="true" />
+            <element signature="e#150#201#0" expanded="false" />
+            <element signature="e#3526#3602#0" expanded="false" />
+            <element signature="e#4032#4106#0" expanded="false" />
+            <element signature="e#4364#4438#0" expanded="false" />
+            <element signature="e#4753#4834#0" expanded="false" />
+            <element signature="e#5149#5230#0" expanded="false" />
+            <element signature="e#5483#5557#0" expanded="false" />
+            <element signature="e#5813#5892#0" expanded="false" />
+            <element signature="e#6149#6226#0" expanded="false" />
+            <element signature="e#6705#6776#0" expanded="false" />
+            <element signature="e#6934#7003#0" expanded="false" />
+            <element signature="e#9180#9269#0" expanded="false" />
+            <element signature="e#9358#9449#0" expanded="false" />
+            <element signature="e#9522#9612#0" expanded="false" />
+            <element signature="e#10895#10963#0" expanded="false" />
+            <element signature="e#11410#11486#0" expanded="false" />
+            <element signature="e#11495#11581#0" expanded="false" />
+            <element signature="e#11600#11675#0" expanded="false" />
+            <element signature="e#11723#11797#0" expanded="false" />
+            <element signature="e#12440#12512#0" expanded="false" />
+            <element signature="e#12521#12614#0" expanded="false" />
+            <element signature="e#12633#12701#0" expanded="false" />
+            <element signature="e#13153#13220#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1695,26 +1731,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5487013" vertical-offset="0" max-vertical-offset="616">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGChatService.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40097404" vertical-offset="0" max-vertical-offset="616">
           <caret line="22" column="155" selection-start-line="22" selection-start-column="155" selection-end-line="22" selection-end-column="155" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGChatService.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6314935" vertical-offset="560" max-vertical-offset="1378">
-          <caret line="77" column="43" selection-start-line="77" selection-start-column="43" selection-end-line="77" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -1735,20 +1755,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49025974" vertical-offset="855" max-vertical-offset="1612">
-          <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Location/Controllers/HGLocationViewController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.030844" vertical-offset="0" max-vertical-offset="6188">
           <caret line="211" column="33" selection-start-line="211" selection-start-column="33" selection-end-line="211" selection-end-column="33" />
           <folding>
-            <element signature="e#8651#8724#0" expanded="true" />
+            <element signature="e#8651#8724#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1793,10 +1805,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Util/HGCommon.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.024597919" vertical-offset="0" max-vertical-offset="1057">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/HalalGuide-Prefix.pch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28287607" vertical-offset="0" max-vertical-offset="1057">
+          <caret line="23" column="44" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Constants.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="796">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="507">
+          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Chat/Models/HGMessagesViewModel.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="848" max-vertical-offset="1612">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HalalGuide/UI/Chat/Controllers/HGMessagesViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40550458" vertical-offset="2236" max-vertical-offset="3978">
-          <caret line="198" column="64" selection-start-line="198" selection-start-column="64" selection-end-line="198" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="556" max-vertical-offset="3978">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Supporting Files/code/HGAppDelegate.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1664" max-vertical-offset="3289">
+          <caret line="158" column="71" selection-start-line="158" selection-start-column="71" selection-end-line="158" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HalalGuide/Services/HGChatService.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8180765" vertical-offset="321" max-vertical-offset="1378">
+          <caret line="83" column="1" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
           <folding />
         </state>
       </provider>

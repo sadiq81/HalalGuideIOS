@@ -100,6 +100,6 @@
     } else {
         [current addUniqueObject:key forKey:@"channels"];
     }
-    [current saveEventually];
+    [current saveInBackground];
 }
 @end

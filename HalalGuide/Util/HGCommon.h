@@ -1,1 +1,2 @@
 #define kChatNotificationConstant @"HGChatNotification"
+

@@ -156,6 +156,7 @@
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation addUniqueObject:@"global" forKey:@"channels"];
     [currentInstallation saveInBackground];
 
 }
@@ -196,6 +197,7 @@
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     if (currentInstallation.badge != 0) {
         currentInstallation.badge = 0;
+
         [currentInstallation saveInBackground];
     }
 }
