@@ -11,6 +11,7 @@ pod 'ALActionBlocks', '1.0.3'
 pod 'UIAlertController+Blocks', '0.8'
 pod 'ReactiveCocoa', '2.4.7'
 pod 'UITextField+Blocks'
+pod "IntentKit"
 
 #Networking
 pod 'AFNetworking', '2.5.0'
@@ -40,6 +41,7 @@ pod 'HGImagePicker', :git => 'https://github.com/sadiq81/HGImagePicker.git'
 
 #Parse
 pod 'Facebook-iOS-SDK', '4.0.1'
+pod 'FBSDKShareKit', '4.0.1'
 pod 'Parse','1.7.1'
 pod 'ParseUI','1.1.3'
 pod 'ParseFacebookUtilsV4', '1.7.1'

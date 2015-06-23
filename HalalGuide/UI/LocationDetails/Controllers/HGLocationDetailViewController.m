@@ -7,6 +7,7 @@
 //
 
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
+#import <Facebook-iOS-SDK/FBSDKLoginKit/FBSDKLoginManager.h>
 #import "HGLocationDetailViewController.h"
 #import "UITableView+Header.h"
 #import "HGLocationDetailsInfoView.h"
@@ -16,6 +17,10 @@
 #import "HGSettings.h"
 #import "HGCreateLocationViewModel.h"
 #import "HGCreateLocationViewController.h"
+#import "NSString+Extensions.h"
+#import "FBSDKLoginManagerLoginResult.h"
+#import "FBSDKShareLinkContent.h"
+#import "FBSDKShareDialog.h"
 
 @interface HGLocationDetailViewController () <HGImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 //-------------------------------------------
@@ -274,6 +279,7 @@
     }
     UIAlertAction *share = [UIAlertAction actionWithTitle:NSLocalizedString(@"HGLocationDetailViewController.alert.share", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
 
+
         NSMutableArray *sharingItems = [NSMutableArray new];
 
         [sharingItems addObject:self.viewModel.location.name];
@@ -291,6 +297,7 @@
         [sharingItems addObject:[[NSURL alloc] initWithString:appUrl]];
 
         UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+        activityController.excludedActivityTypes = @[UIActivityTypePostToFacebook];
         [self presentViewController:activityController animated:YES completion:nil];
 
     }];

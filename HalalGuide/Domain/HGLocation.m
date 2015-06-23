@@ -8,10 +8,11 @@
 
 
 #import "HGLocation.h"
+#import "NSString+Extensions.h"
 
 @implementation HGLocation
 
-@dynamic addressCity, addressPostalCode, addressRoad, addressRoadNumber, alcohol, creationStatus, distance, homePage, language, locationType, name, nonHalal, pork, submitterId, telephone, categories, point, openingHours, navneloebenummer,location;
+@dynamic addressCity, addressPostalCode, addressRoad, addressRoadNumber, alcohol, creationStatus, distance, homePage, language, locationType, name, nonHalal, pork, submitterId, telephone, categories, point, openingHours, navneloebenummer, location, facebookId;
 
 - (instancetype)initWithAddressCity:(NSString *)addressCity addressPostalCode:(NSString *)addressPostalCode addressRoad:(NSString *)addressRoad addressRoadNumber:(NSString *)addressRoadNumber alcohol:(NSNumber *)alcohol creationStatus:(NSNumber *)creationStatus homePage:(NSString *)homePage language:(NSNumber *)language locationType:(NSNumber *)locationType name:(NSString *)name nonHalal:(NSNumber *)nonHalal pork:(NSNumber *)pork submitterId:(NSString *)submitterId telephone:(NSString *)telephone categories:(NSArray *)categories {
     self = [super init];
@@ -153,7 +154,6 @@
             return nil;
     }
 }
-
 
 @end
 
