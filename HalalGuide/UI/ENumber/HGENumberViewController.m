@@ -8,7 +8,7 @@
 #import "HGEnumber.h"
 #import "HGENumberScraper.h"
 
-@interface HGENumberViewController () <UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate>
+@interface HGENumberViewController () <UIWebViewDelegate/*, UITableViewDataSource, UITableViewDelegate*/>
 @property(nonatomic, strong) UIWebView *webView;
 /*@property(nonatomic, retain) UITableView *enumbers;
 @property(nonatomic, retain) NSArray *numbers;*/
@@ -30,6 +30,8 @@
 }
 
 - (void)setupViews {
+
+    self.screenName = @"Enumber";
 
     self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
     self.webView.scalesPageToFit = true;

@@ -154,7 +154,7 @@
 "HGLocationViewController.hud.fetching" = "Updating";
 
 "HGLocationDetailsSubmitterView.label.submitterHeadLine" = "Submitted by:";
-"HGLocationDetailsPictureView.button.report" = "Report error";
+"HGLocationDetailsPictureView.button.report" = "Suggest change";
 "HGLocationDetailsPictureView.button.add.review" = "Add review";
 "HGLocationDetailsPictureView.button.add.picture" = "Add picture";
 "HGLocationDetailsPictureView.alert.smiley.warning" = "Warning";
@@ -179,6 +179,7 @@
 "HGLocationDetailViewController.hud.fetching" = "Updating";
 "HGLocationDetailViewController.hud.error" = "Error!";
 "HGLocationDetailViewController.hud.saving" = "Saving";
+"HGLocationDetailViewController.alert.share" = "Share";
 
 "HGImagePickerView.button.approve" = "Add 1 picture";
 "HGImagePickerView.button.approve.multiple" = "Add %lu pictures";
@@ -267,6 +268,9 @@
 "HGCreateLocationViewController.alert.cancel.done" = "No thank you";
 "HGCreateLocationViewController.alert.add.review" = "Yes please";
 "HGCreateLocationViewController.button.add.picture" = "Add pictures";
+"HGCreateLocationViewController.alert.title.ok" = "OK";
+"HGCreateLocationViewController.alert.message.location.change.saved" = "Your changes have been submitted for review";
+"HGCreateLocationViewController.alert.done" = "OK";
 
 "HGFavoriteViewController.label.no.favorites" = "You have not added any favorites";
 "HGFavoriteViewController.title" = "Favorites";
@@ -291,3 +295,15 @@
 
 "HGChatViewController.title" = "Subjects";
 "HGNavigationController.new.message" = "New message";
+
+"HGLocationViewController.button.categories" = "Categories";
+"HGLocationViewController.button.language" = "Language";
+"HGLocationViewController.label.no.results" = "No results with the applied filters";
+
+"HGCategoryViewController.label.no.results" = "No location with the selected category";
+"HGCategoryViewController.hud.fetching" = "Fetching";
+"HGCategoryViewController.hud.error" = "Unknown error";
+
+"HGCreateLocationViewController.location.with.name.exists.title" = "Duplicate";
+"HGCreateLocationViewController.location.with.name.exists.message" = "An existing location named %@ already exists, only continue if this a new location with the same name";
+"HGCreateLocationViewController.location.with.name.exists.cancel" = "OK";

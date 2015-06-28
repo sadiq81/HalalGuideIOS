@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
 
 @class HGLocationViewModel;
 
-@interface HGFilterLocationViewController : UIViewController<UINavigationBarDelegate>
+@interface HGFilterLocationViewController : GAITrackedViewController<UINavigationBarDelegate>
 
 @property (strong, nonatomic, readonly) HGLocationViewModel *viewModel;
 

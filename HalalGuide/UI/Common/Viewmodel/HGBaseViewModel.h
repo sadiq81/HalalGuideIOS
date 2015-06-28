@@ -15,8 +15,8 @@
 
 @protocol CategoriesViewModel <NSObject>
 
-@property(nonatomic, strong, readonly) NSMutableArray *categories;
-@property(nonatomic, strong, readonly) NSMutableArray *shopCategories;
+@property(nonatomic, strong) NSMutableArray *categories;
+@property(nonatomic, strong) NSMutableArray *shopCategories;
 @property(nonatomic, readonly) LocationType locationType;
 @property(nonatomic) Language language;
 
@@ -30,7 +30,5 @@
 @property(nonatomic) NSError *error;
 
 - (BOOL)isAuthenticated;
-
-
 
 @end

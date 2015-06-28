@@ -8,7 +8,7 @@
 
 #define kSubjectTableName @"Subject"
 
-@interface HGSubject : HGBaseEntity
+@interface HGSubject : HGBaseEntity<PFSubclassing>
 
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *title;

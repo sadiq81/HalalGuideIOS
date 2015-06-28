@@ -12,12 +12,13 @@
 #import "HGSettings.h"
 #import "HGLocationDetailViewModel.h"
 #import "HGGeoLocationService.h"
+#import "HGQuery.h"
 
 @interface HGLocationViewModel () {
 }
 
-@property(nonatomic) NSArray *listLocations;
-@property(nonatomic) NSArray *mapLocations;
+@property(nonatomic, copy) NSArray *listLocations;
+@property(nonatomic, copy) NSArray *mapLocations;
 @end
 
 @implementation HGLocationViewModel {
@@ -47,7 +48,7 @@
 
 - (PFQuery *)query {
 
-    PFQuery *query = [PFQuery queryWithClassName:kLocationTableName];
+    HGQuery *query = [HGQuery queryWithClassName:kLocationTableName];
     [query whereKey:@"locationType" equalTo:@(self.locationType)];
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
 
@@ -87,28 +88,28 @@
 
         if (self.searchText && [self.searchText length] > 0) {
 
-            PFQuery *name = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *name = [HGQuery orQueryWithSubqueries:@[query]];
             [name whereKey:@"name" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *addressCity = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *addressCity = [HGQuery orQueryWithSubqueries:@[query]];
             [addressCity whereKey:@"addressCity" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *addressPostalCode = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *addressPostalCode = [HGQuery orQueryWithSubqueries:@[query]];
             [addressPostalCode whereKey:@"addressPostalCode" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *addressRoad = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *addressRoad = [HGQuery orQueryWithSubqueries:@[query]];
             [addressRoad whereKey:@"addressRoad" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *addressRoadNumber = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *addressRoadNumber = [HGQuery orQueryWithSubqueries:@[query]];
             [addressRoadNumber whereKey:@"addressRoadNumber" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *homePage = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *homePage = [HGQuery orQueryWithSubqueries:@[query]];
             [homePage whereKey:@"homePage" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *telephone = [PFQuery orQueryWithSubqueries:@[query]];
+            HGQuery *telephone = [HGQuery orQueryWithSubqueries:@[query]];
             [telephone whereKey:@"telephone" matchesRegex:self.searchText modifiers:@"i"];
 
-            PFQuery *or = [PFQuery orQueryWithSubqueries:@[name, addressCity, addressPostalCode, addressRoad, addressRoadNumber, homePage, telephone]];
+            HGQuery *or = [HGQuery orQueryWithSubqueries:@[name, addressCity, addressPostalCode, addressRoad, addressRoadNumber, homePage, telephone]];
             //Or queries do not support geo location and limit/skip
             listLocations = [NSArray new];
             return or;
@@ -160,7 +161,7 @@
 }
 
 - (void)setSearchText:(NSString *)searchText1 {
-    [PFAnalytics trackEvent:@"LocationTextSearch" dimensions:@{@"searchText":searchText1}];
+    [PFAnalytics trackEvent:@"LocationTextSearch" dimensions:@{@"searchText" : searchText1}];
     searchText = searchText1;
     listLocations = [NSArray new];
     listLocations = [NSArray new];
@@ -182,7 +183,7 @@
 }
 
 - (void)setMaximumDistance:(NSNumber *)maximumDistance {
-    [PFAnalytics trackEvent:@"LocationMaximumDistanceSearch" dimensions:@{@"maximumDistance":maximumDistance.stringValue}];
+    [PFAnalytics trackEvent:@"LocationMaximumDistanceSearch" dimensions:@{@"maximumDistance" : maximumDistance.stringValue}];
     [self willChangeValueForKey:@"maximumDistance"];
     switch (self.locationType) {
         case LocationTypeShop:
@@ -200,7 +201,7 @@
 }
 
 - (void)setShowNonHalal:(NSNumber *)showNonHalal {
-    [PFAnalytics trackEvent:@"LocationNonHalalSearch" dimensions:@{@"showNonHalal":showNonHalal.stringValue}];
+    [PFAnalytics trackEvent:@"LocationNonHalalSearch" dimensions:@{@"showNonHalal" : showNonHalal.stringValue}];
     [self willChangeValueForKey:@"showNonHalal"];
     [HGSettings instance].halalFilter = showNonHalal;
     [self didChangeValueForKey:@"showNonHalal"];
@@ -211,7 +212,7 @@
 }
 
 - (void)setShowAlcohol:(NSNumber *)showAlcohol {
-    [PFAnalytics trackEvent:@"LocationshowAlcoholSearch" dimensions:@{@"showAlcohol":showAlcohol.stringValue}];
+    [PFAnalytics trackEvent:@"LocationshowAlcoholSearch" dimensions:@{@"showAlcohol" : showAlcohol.stringValue}];
     [self willChangeValueForKey:@"showAlcohol"];
     [HGSettings instance].alcoholFilter = showAlcohol;
     [self didChangeValueForKey:@"showAlcohol"];
@@ -222,7 +223,7 @@
 }
 
 - (void)setShowPork:(NSNumber *)showPork {
-    [PFAnalytics trackEvent:@"LocationShowPorkSearch" dimensions:@{@"showPork":showPork.stringValue}];
+    [PFAnalytics trackEvent:@"LocationShowPorkSearch" dimensions:@{@"showPork" : showPork.stringValue}];
     [self willChangeValueForKey:@"showPork"];
     [HGSettings instance].porkFilter = showPork;
     [self didChangeValueForKey:@"showPork"];
@@ -254,7 +255,7 @@
 }
 
 - (void)setLanguage:(Language)language {
-    [PFAnalytics trackEvent:@"LocationLanguageSearch" dimensions:@{@"language":@(language).stringValue}];
+    [PFAnalytics trackEvent:@"LocationLanguageSearch" dimensions:@{@"language" : @(language).stringValue}];
     [self willChangeValueForKey:@"language"];
     [HGSettings instance].language = language;
     [self didChangeValueForKey:@"language"];

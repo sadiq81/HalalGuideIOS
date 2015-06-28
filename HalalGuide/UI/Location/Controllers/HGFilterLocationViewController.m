@@ -13,7 +13,7 @@
 #import "HGLocationViewModel.h"
 #import "HGCategoriesView.h"
 #import "HGFilterSwitchView.h"
-#import "HGCategoriesViewController.h"
+#import "HGCategoriesSelectorViewController.h"
 
 @interface HGFilterLocationViewController ()
 
@@ -54,6 +54,8 @@
 }
 
 - (void)setupViews {
+
+    self.screenName = @"Filter locations";
 
     self.view.backgroundColor = [UIColor whiteColor];
 
@@ -111,7 +113,7 @@
     [[self.categoryView.choose rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
 
-        HGCategoriesViewController *viewController = [HGCategoriesViewController controllerWithViewModel:self.viewModel];
+        HGCategoriesSelectorViewController *viewController = [HGCategoriesSelectorViewController controllerWithViewModel:self.viewModel];
         MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:viewController];
         formSheet.presentedFSViewController.view.clipsToBounds = false;
 

@@ -7,7 +7,11 @@
 #import "HGLocationPicture.h"
 #import "UIImage+Transformation.h"
 #import "HGReview.h"
+#import "HGQuery.h"
+#import "HGUser.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <AFNetworking/AFNetworkReachabilityManager.h>
+#import <Bolts/BFTask.h>
 
 @implementation HGPictureService {
 
@@ -25,6 +29,7 @@
     return _instance;
 }
 
+//TODO Offline handling
 - (void)saveMultiplePictures:(NSArray *)images forLocation:(HGLocation *)location completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion {
 
     NSError *uploadError;
@@ -49,6 +54,7 @@
     }
 }
 
+//TODO Offline handling
 - (void)saveMultiplePictures:(NSArray *)images forReview:(HGReview *)review completion:(void (^)(BOOL completed, NSError *error, NSNumber *progress))completion {
 
     NSError *uploadError;
@@ -80,7 +86,7 @@
     HGLocationPicture *picture = [HGLocationPicture object];
     picture.creationStatus = @(CreationStatusAwaitingApproval);
     picture.locationId = location.objectId;
-    picture.submitterId = [PFUser currentUser].objectId;
+    picture.submitterId = [HGUser currentUser].objectId;
 
     //TODO Move to category
     NSMutableString *asciiCharacters = [NSMutableString string];
@@ -106,7 +112,7 @@
     picture.creationStatus = @(CreationStatusAwaitingApproval);
     picture.reviewId = review.objectId;
     picture.locationId = review.locationId;
-    picture.submitterId = [PFUser currentUser].objectId;
+    picture.submitterId = [HGUser currentUser].objectId;
 
     //TODO Move to category
     NSMutableString *asciiCharacters = [NSMutableString string];
@@ -126,36 +132,58 @@
 }
 
 
-- (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion {
-    //query.cachePolicy = kPFCachePolicyNetworkElseCache;
-    [query findObjectsInBackgroundWithBlock:completion];
-}
+//- (void)locationPicturesByQuery:(PFQuery *)query onCompletion:(PFArrayResultBlock)completion {
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            [PFObject pinAllInBackground:objects];
+//        }
+//        completion(objects, error);
+//    }];
+//}
 
 - (void)locationPicturesForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion {
-    PFQuery *query = [PFQuery queryWithClassName:kLocationPictureTableName];
-    //query.cachePolicy = kPFCachePolicyNetworkElseCache;
+
+    HGQuery *query = [HGQuery queryWithClassName:kLocationPictureTableName];
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
     [query whereKey:@"locationId" equalTo:location.objectId];
-    [query findObjectsInBackgroundWithBlock:completion];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [PFObject pinAllInBackground:objects withName:@"locationPicturesForLocation"];
+        }
+        completion(objects, error);
+    }];
 }
 
 - (void)locationPicturesForReview:(HGReview *)review onCompletion:(PFArrayResultBlock)completion {
-    PFQuery *query = [PFQuery queryWithClassName:kLocationPictureTableName];
-    //query.cachePolicy = kPFCachePolicyNetworkElseCache;
+
+    HGQuery *query = [HGQuery queryWithClassName:kLocationPictureTableName];
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
     [query whereKey:@"locationId" equalTo:review.locationId];
     [query whereKey:@"reviewId" equalTo:review.objectId];
     query.limit = 4;
-    [query findObjectsInBackgroundWithBlock:completion];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [PFObject pinAllInBackground:objects withName:@"locationPicturesForReview"];
+        }
+        completion(objects, error);
+    }];
 }
 
 
 - (void)thumbnailForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion {
-    PFQuery *query = [PFQuery queryWithClassName:kLocationPictureTableName];
-    //query.cachePolicy = kPFCachePolicyNetworkElseCache;
+
+    HGQuery *query = [HGQuery queryWithClassName:kLocationPictureTableName];
     [query whereKey:@"creationStatus" equalTo:@(CreationStatusApproved)];
     [query whereKey:@"locationId" equalTo:location.objectId];
     query.limit = 1;
-    [query findObjectsInBackgroundWithBlock:completion];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [PFObject pinAllInBackground:objects withName:@"thumbnailForLocation"];
+        }
+        completion(objects, error);
+    }];
 }
 @end

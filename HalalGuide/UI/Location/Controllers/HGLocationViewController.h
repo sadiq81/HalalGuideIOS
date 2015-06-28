@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
 #import "HGLocationViewModel.h"
 #import "UIViewController+Extension.h"
 #import "UITableView+DragLoad.h"
 
-@interface HGLocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, UITableViewDragLoadDelegate>
+@interface HGLocationViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, UITableViewDragLoadDelegate>
 
 @property(strong, nonatomic, readonly) HGLocationViewModel *viewModel;
 

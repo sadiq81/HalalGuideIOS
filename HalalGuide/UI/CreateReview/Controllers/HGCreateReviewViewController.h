@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
 #import "EDStarRating.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "SZTextView.h"
 #import "HGCreateReviewViewModel.h"
 
-@interface HGCreateReviewViewController : UIViewController
+@interface HGCreateReviewViewController : GAITrackedViewController
 
 - (instancetype)initWithViewModel:(HGCreateReviewViewModel *)viewModel;
 

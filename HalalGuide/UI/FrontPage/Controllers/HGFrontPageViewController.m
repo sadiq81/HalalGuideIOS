@@ -22,6 +22,7 @@
 #import "HGFloatingChatButton.h"
 #import "HGSubjectsViewModel.h"
 #import "HGSubjectsViewController.h"
+#import "HGGeoLocationService.h"
 
 @interface HGFrontPageViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) UIView *topView;
@@ -69,6 +70,8 @@
 }
 
 - (void)setupViews {
+
+    self.screenName = @"Front page";
 
     self.title = NSLocalizedString(@"HGFrontPageViewController.title", nil);
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];

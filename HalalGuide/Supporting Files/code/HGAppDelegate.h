@@ -12,6 +12,8 @@
 #import "HGCommon.h"
 #import <Parse/Parse.h>
 
+typedef void (^NotificationHandler)(NSString *message);
+
 @interface HGAppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

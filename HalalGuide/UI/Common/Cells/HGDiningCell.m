@@ -13,9 +13,6 @@
 @property(strong, nonatomic) UIImageView *alcoholImage;
 @property(strong, nonatomic) UIImageView *halalImage;
 
-@property(strong, nonatomic) UILabel *porkLabel;
-@property(strong, nonatomic) UILabel *alcoholLabel;
-@property(strong, nonatomic) UILabel *halalLabel;
 @end
 
 @implementation HGDiningCell {
@@ -26,25 +23,17 @@
     [super setupViews];
 
     self.porkImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.porkImage setTintColor:[UIColor redColor]];
     [self.contentView addSubview:self.porkImage];
 
     self.alcoholImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.alcoholImage setTintColor:[UIColor redColor]];
     [self.contentView addSubview:self.alcoholImage];
 
     self.halalImage = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.halalImage setTintColor:[UIColor redColor]];
     [self.contentView addSubview:self.halalImage];
 
-    self.porkLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-    self.porkLabel.textAlignment = NSTextAlignmentCenter;
-    [self.contentView addSubview:self.porkLabel];
-
-    self.alcoholLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-    self.alcoholLabel.textAlignment = NSTextAlignmentCenter;
-    [self.contentView addSubview:self.alcoholLabel];
-
-    self.halalLabel = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:10];
-    self.halalLabel.textAlignment = NSTextAlignmentCenter;
-    [self.contentView addSubview:self.halalLabel];
 }
 
 - (void)setupViewModel {
@@ -54,9 +43,9 @@
     RAC(self.alcoholImage, image) = RACObserve(self, viewModel.alcoholImage);
     RAC(self.halalImage, image) = RACObserve(self, viewModel.halalImage);
 
-    RAC(self.porkLabel, attributedText) = RACObserve(self, viewModel.porkString);
-    RAC(self.alcoholLabel, attributedText) = RACObserve(self, viewModel.alcoholString);
-    RAC(self.halalLabel, attributedText) = RACObserve(self, viewModel.halalString);
+    [RACObserve(self, viewModel) subscribeNext:^(id x) {
+        [self updateConstraints];
+    }];
 
 }
 
@@ -64,44 +53,23 @@
 
     [self.halalImage mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(standardCellSpacing);
-        make.width.equalTo(@(31));
-        make.height.equalTo(@(31));
+        make.width.equalTo(@(12));
+        make.height.equalTo(@(self.viewModel.halalImage ? 12 : 0));
         make.right.equalTo(self.distance.mas_left).offset(-standardCellSpacing);
     }];
 
-    [self.halalLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.halalImage);
-        make.width.equalTo(@(31));
-        make.height.equalTo(@(13));
-        make.bottom.equalTo(self.contentView).offset(-standardCellSpacing);
-    }];
-
     [self.alcoholImage mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView).offset(standardCellSpacing);
-        make.width.equalTo(@(31));
-        make.height.equalTo(@(31));
-        make.right.equalTo(self.halalImage.mas_left).offset(-standardCellSpacing);
-    }];
-
-    [self.alcoholLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.alcoholImage);
-        make.width.equalTo(@(31));
-        make.height.equalTo(@(13));
-        make.bottom.equalTo(self.contentView).offset(-standardCellSpacing);
+        make.top.equalTo(self.halalImage.mas_bottom).offset(self.viewModel.halalImage ? 5 : 0);
+        make.width.equalTo(@(12));
+        make.height.equalTo(@(self.viewModel.alcoholImage ? 12 : 0));
+        make.right.equalTo(self.distance.mas_left).offset(-standardCellSpacing);
     }];
 
     [self.porkImage mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView).offset(standardCellSpacing);
-        make.width.equalTo(@(31));
-        make.height.equalTo(@(31));
-        make.right.equalTo(self.alcoholImage.mas_left).offset(-standardCellSpacing);
-    }];
-
-    [self.porkLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.porkImage);
-        make.width.equalTo(@(31));
-        make.height.equalTo(@(13));
-        make.bottom.equalTo(self.contentView).offset(-standardCellSpacing);
+        make.top.equalTo(self.alcoholImage.mas_bottom).offset(self.viewModel.alcoholImage ? 5 : 0);
+        make.width.equalTo(@(12));
+        make.height.equalTo(@(self.viewModel.porkImage ? 12 : 0));
+        make.right.equalTo(self.distance.mas_left).offset(-standardCellSpacing);
     }];
 
     [self.name mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -119,7 +87,7 @@
     return kDiningImageIdentifier;
 }
 
-+(NSString *)reuseIdentifier {
++ (NSString *)reuseIdentifier {
     return kDiningReuseIdentifier;
 }
 

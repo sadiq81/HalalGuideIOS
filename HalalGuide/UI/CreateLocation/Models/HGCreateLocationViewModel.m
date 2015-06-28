@@ -11,6 +11,8 @@
 #import "HGLocationService.h"
 #import "HGPictureService.h"
 #import "HGGeoLocationService.h"
+#import "HGUser.h"
+#import "HGChangeSuggestion.h"
 
 @interface HGCreateLocationViewModel ()
 @property(nonatomic) LocationType locationType;
@@ -29,7 +31,6 @@
 - (instancetype)initWithLocationType:(LocationType)type {
     self = [super init];
     if (self) {
-
         locationType = type;
         streetDictionary = [NSDictionary new];
         categories = [[NSMutableArray alloc] init];
@@ -38,6 +39,19 @@
 
     return self;
 }
+
+- (instancetype)initWithExistingLocation:(HGLocation *)existingLocation {
+    self = [super init];
+    if (self) {
+        self.existingLocation = existingLocation;
+    }
+    return self;
+}
+
++ (instancetype)modelWithExistingLocation:(HGLocation *)existingLocation {
+    return [[self alloc] initWithExistingLocation:existingLocation];
+}
+
 
 - (NSArray *)streetNameForPrefix:(NSString *)prefix {
     return [[self.streetDictionary allKeys] linq_where:^BOOL(NSString *item) {
@@ -88,21 +102,34 @@
     self.error = nil;
     self.progress = 1;
 
-    HGLocation *location = [HGLocation locationWithAddressCity:self.city addressPostalCode:self.postalCode addressRoad:self.road addressRoadNumber:self.roadNumber alcohol:@(self.alcohol.boolValue) creationStatus:@(CreationStatusAwaitingApproval) homePage:self.website language:@(self.language) locationType:@(self.locationType) name:self.name nonHalal:@(self.nonHalal.boolValue) pork:@(self.pork.boolValue) submitterId:[PFUser currentUser].objectId telephone:self.telephone categories:self.typeBaseCategories];
+    if (self.existingLocation) {
 
-    [[[[[self doesAddressExist] flattenMap:^RACStream *(HGAdgangsadresse *value) {
-        location.point = [self pointForAddress:value];
-        return [self saveLocation:location];
-    }] then:^RACSignal * {
-        return self.images ? [self saveImagesForLocation:location] : [RACSignal empty];
-    }] finally:^{
-        self.createdLocation = location;
-        self.progress= 100;
-        [PFAnalytics trackEvent:@"CreateLocation" dimensions:@{@"LocationType":@(locationType).stringValue}];
-    }] subscribeError:^(NSError *error) {
-        self.error = error;
-        [location deleteEventually];
-    }];
+        HGChangeSuggestion *suggestion = [HGChangeSuggestion suggestionWithAddressCity:self.city addressPostalCode:self.postalCode addressRoad:self.road addressRoadNumber:self.roadNumber alcohol:self.alcohol homePage:self.website language:@(self.language) name:self.name nonHalal:self.nonHalal pork:self.pork submitterId:[HGUser currentUser].objectId telephone:self.telephone categories:self.typeBaseCategories];
+        suggestion.existingLocation = self.existingLocation;
+
+        [[[self saveSuggestion:suggestion] finally:^{
+            self.progress = 100;
+        }] subscribeError:^(NSError *error) {
+            self.error = error;
+        }];
+
+    } else {
+
+        HGLocation *location = [HGLocation locationWithAddressCity:self.city addressPostalCode:self.postalCode addressRoad:self.road addressRoadNumber:self.roadNumber alcohol:@(self.alcohol.boolValue) creationStatus:@(CreationStatusAwaitingApproval) homePage:self.website language:@(self.language) locationType:@(self.locationType) name:self.name nonHalal:@(self.nonHalal.boolValue) pork:@(self.pork.boolValue) submitterId:[HGUser currentUser].objectId telephone:self.telephone categories:self.typeBaseCategories];
+
+        [[[[[self doesAddressExist] flattenMap:^RACStream *(HGAdgangsadresse *value) {
+            location.point = [self pointForAddress:value];
+            return [self saveLocation:location];
+        }] then:^RACSignal * {
+            return self.images ? [self saveImagesForLocation:location] : [RACSignal empty];
+        }] finally:^{
+            self.createdLocation = location;
+            self.progress = 100;
+        }] subscribeError:^(NSError *error) {
+            self.error = error;
+            [location deleteEventually];
+        }];
+    }
 }
 
 - (NSArray *)typeBaseCategories {
@@ -143,6 +170,20 @@
 - (RACSignal *)saveLocation:(HGLocation *)location {
     return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
         [[HGLocationService instance] saveLocation:location onCompletion:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                [subscriber sendNext:@(succeeded)];
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendError:error];
+            }
+        }];
+        return nil;
+    }];
+}
+
+- (RACSignal *)saveSuggestion:(HGChangeSuggestion *)suggestion {
+    return [RACSignal createSignal:^RACDisposable *(id <RACSubscriber> subscriber) {
+        [[HGLocationService instance] saveSuggestion:suggestion onCompletion:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 [subscriber sendNext:@(succeeded)];
                 [subscriber sendCompleted];

@@ -7,6 +7,7 @@
 //
 
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
+#import <Facebook-iOS-SDK/FBSDKLoginKit/FBSDKLoginManager.h>
 #import "HGLocationDetailViewController.h"
 #import "UITableView+Header.h"
 #import "HGLocationDetailsInfoView.h"
@@ -14,6 +15,13 @@
 #import "HGLocationDetailsHeaderView.h"
 #import "HGReviewDetailViewController.h"
 #import "HGSettings.h"
+#import "HGCreateLocationViewModel.h"
+#import "HGCreateLocationViewController.h"
+#import "NSString+Extensions.h"
+#import "FBSDKLoginManagerLoginResult.h"
+#import "FBSDKShareLinkContent.h"
+#import "FBSDKShareDialog.h"
+#import "HGColor.h"
 
 @interface HGLocationDetailViewController () <HGImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 //-------------------------------------------
@@ -43,7 +51,7 @@
         [self setupTableView];
         [self updateViewConstraints];
 
-        [PFAnalytics trackEvent:@"LocationDetailView" dimensions:@{@"Location" :self.viewModel.location.objectId}];
+        //[PFAnalytics trackEvent:@"LocationDetailView" dimensions:@{@"Location" :self.viewModel.location.objectId}];
     }
 
     return self;
@@ -54,6 +62,8 @@
 }
 
 - (void)setupViews {
+
+    self.screenName = @"Location details";
 
     self.title = self.viewModel.location.name;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -79,14 +89,15 @@
     UIBarButtonItem *favoriteContainer = [[UIBarButtonItem alloc] initWithCustomView:self.favorite];
     UIBarButtonItem *spacer2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     self.options = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.options"] style:UIBarButtonItemStylePlain target:nil action:nil];
-    [self.toolBar setItems:@[spacer1, favoriteContainer,spacer2, self.options]];
+    [self.toolBar setItems:@[spacer1, favoriteContainer, spacer2, self.options]];
 
 
 }
 
--(void) setupToolBar{
-    [self.favorite setImage:[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.false"] forState:UIControlStateNormal];
-    [self.favorite setImage:[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.true"] forState:UIControlStateSelected];
+- (void)setupToolBar {
+    [self.favorite setImage:[[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.false"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self.favorite setImage:[[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.true"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]forState:UIControlStateSelected];
+    self.favorite.tintColor = [HGColor greenTintColor];
 
     @weakify(self)
     [self.favorite handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
@@ -121,7 +132,7 @@
         if (progress.intValue == 1) {
             [SVProgressHUD showWithStatus:NSLocalizedString(@"HGLocationDetailViewController.hud.saving", nil) maskType:SVProgressHUDMaskTypeBlack];
         } else if (progress.intValue > 1 && progress.intValue < 99) {
-                [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
+            [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
         } else if (progress.intValue == 100) {
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"HGLocationDetailViewController.hud.images.saved", nil)];
         }
@@ -184,18 +195,16 @@
 
     [[self.header.pictureView.addPicture rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        [self getPicturesWithDelegate:self viewModel:self.viewModel];
+        [self getPictures:5 viewModel:self.viewModel WithDelegate:self];
     }];
+
 
     [self.header.pictureView.report handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
         @strongify(self)
-
-        MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
-        [mailController setToRecipients:@[@"tommy@eazyit.dk"]];
-        [mailController setSubject:[NSString stringWithFormat:@"%@", self.viewModel.location.objectId]];
-        [mailController setMessageBody:NSLocalizedString(@"HGLocationDetailViewController.mail.text", nil) isHTML:false];
-        mailController.mailComposeDelegate = self;
-        [self presentViewController:mailController animated:true completion:nil];
+        HGCreateLocationViewModel *editing = [HGCreateLocationViewModel modelWithExistingLocation:self.viewModel.location];
+        HGCreateLocationViewController *vc = [HGCreateLocationViewController controllerWithViewModel:editing];
+        UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:vc];
+        [self presentViewController:controller animated:true completion:nil];
     }];
 
 }
@@ -213,7 +222,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90+41-16-8;
+    return 90 + 41 - 16 - 8;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -270,6 +279,32 @@
         }];
         [alertController addAction:homepage];
     }
+    UIAlertAction *share = [UIAlertAction actionWithTitle:NSLocalizedString(@"HGLocationDetailViewController.alert.share", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+
+        NSMutableArray *sharingItems = [NSMutableArray new];
+
+        [sharingItems addObject:self.viewModel.location.name];
+
+        if (self.header.pictureView.pictures.numberOfItems > 0) {
+            AsyncImageView *thumbnail = (AsyncImageView *) [self.header.pictureView.pictures itemViewAtIndex:0];
+            [sharingItems addObject:thumbnail.image];
+        }
+
+        if (self.viewModel.location.homePage) {
+            [sharingItems addObject:[[NSURL alloc] initWithString:self.viewModel.location.homePage]];
+        }
+
+        NSString *appUrl = [NSString stringWithFormat:@"halalguide://location/%@", self.viewModel.location.objectId];
+        [sharingItems addObject:[[NSURL alloc] initWithString:appUrl]];
+
+        UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
+        activityController.excludedActivityTypes = @[UIActivityTypePostToFacebook];
+        [self presentViewController:activityController animated:YES completion:nil];
+
+    }];
+    [alertController addAction:share];
+
 
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:NSLocalizedString(@"HGLocationDetailViewController.alert.regret", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
     }];
@@ -292,7 +327,7 @@
         make.right.equalTo(self.reviews);
         make.left.equalTo(self.reviews);
         make.width.equalTo(self.view);
-        make.height.equalTo(@(428+76+16));
+        make.height.equalTo(@(428 + 76 + 16));
     }];
 
     [self.reviews sizeHeaderToFit];

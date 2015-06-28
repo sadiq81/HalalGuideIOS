@@ -5,12 +5,13 @@
 
 #import <Foundation/Foundation.h>
 #import "HGLocation.h"
-
-@class RACSignal;
-
+#import "HGChangeSuggestion.h"
+#import "ReactiveCocoa.h"
 
 @interface HGLocationService : NSObject
 + (HGLocationService *)instance;
+
+- (void)locationById:(NSString *)objectId onCompletion:(PFIdResultBlock)completion;
 
 - (void)saveLocation:(HGLocation *)location onCompletion:(PFBooleanResultBlock)completion;
 
@@ -18,4 +19,7 @@
 
 - (void)lastTenLocations:(PFArrayResultBlock)completion;
 
+- (void)saveSuggestion:(HGChangeSuggestion *)suggestion onCompletion:(void (^)(BOOL, NSError *))completion;
+
+- (void)findExistingLocationsWithName:(NSString *)name onCompletion:(PFArrayResultBlock)completion;
 @end

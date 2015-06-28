@@ -33,11 +33,6 @@
     return _instance;
 }
 
-+ (CLLocationDistance)distanceInMetersToPoint:(CLLocation *)location {
-    CLLocation *currentLocation = [HGGeoLocationService instance].currentLocation;
-    return [location distanceFromLocation:currentLocation];
-}
-
 + (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postnummer))completion {
 
     NSString *url = [[NSString stringWithFormat:@"http://dawa.aws.dk/postnumre?nr=%@", postalCode] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

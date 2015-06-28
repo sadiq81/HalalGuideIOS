@@ -8,11 +8,12 @@
 #import "HGMessageCell.h"
 #import "Masonry.h"
 #import "ReactiveCocoa.h"
+#import "HGUser.h"
 
 
 @interface HGMessageCell ()
 
-//@property(nonatomic, strong) AsyncImageView *image;
+@property(nonatomic, strong) AsyncImageView *chatImage;
 @property(nonatomic, strong) AsyncImageView *avatar;
 //@property (nonatomic, strong) UIImageView *videoView;
 @property(nonatomic, strong) UILabel *submitterName;
@@ -37,12 +38,6 @@
 
 - (void)setupViews {
 
-/*    self.image = [[AsyncImageView alloc] initWithFrame:CGRectZero];
-    self.image.clipsToBounds = true;
-    self.image.contentMode = UIViewContentModeScaleAspectFill;
-    self.image.layer.cornerRadius = 5;
-    [self.contentView addSubview:self.image];*/
-
     self.avatar = [[AsyncImageView alloc] initWithFrame:CGRectZero];
     self.avatar.clipsToBounds = true;
     self.avatar.contentMode = UIViewContentModeScaleAspectFill;
@@ -53,24 +48,33 @@
     self.submitterName.backgroundColor = [UIColor clearColor];
     self.submitterName.textColor = [UIColor lightGrayColor];
     self.submitterName.font = [UIFont systemFontOfSize:10];
+    self.submitterName.userInteractionEnabled = false;
     [self.contentView addSubview:self.submitterName];
 
     self.textView = [[UITextView alloc] initWithFrame:CGRectZero];
     self.textView.layer.cornerRadius = 5;
     self.textView.editable = false;
+    self.textView.userInteractionEnabled = false;
     [self.contentView addSubview:self.textView];
+
+    self.chatImage = [[AsyncImageView alloc] initWithFrame:CGRectZero];
+    self.chatImage.clipsToBounds = true;
+    self.chatImage.contentMode = UIViewContentModeScaleAspectFill;
+    self.chatImage.layer.cornerRadius = 5;
+    [self.contentView addSubview:self.chatImage];
+
 }
 
 - (void)configureViewModel {
 
     [RACObserve(self, viewModel) subscribeNext:^(HGMessageViewModel *viewModel) {
-        bool isCurrentUSer = [viewModel.message.userId isEqualToString:[PFUser currentUser].objectId];
+        bool isCurrentUSer = [viewModel.message.userId isEqualToString:[HGUser currentUser].objectId];
         self.textView.backgroundColor = isCurrentUSer ? HGCurrentUserMessageColor : HGOtherUserMessageColor;
         self.alignment = isCurrentUSer ? HGChatCellAlignmentRight : HGChatCellAlignmentLeft;
         [self updateConstraints];
     }];
 
-    //RAC(self.image, imageURL) = RACObserve(self, viewModel.image);
+    RAC(self.chatImage, imageURL) = RACObserve(self, viewModel.image);
     RAC(self.avatar, imageURL) = RACObserve(self, viewModel.avatar);
     RAC(self.submitterName, text) = RACObserve(self, viewModel.submitter);
     RAC(self.textView, text) = RACObserve(self, viewModel.text);
@@ -80,12 +84,12 @@
 
 - (void)updateConstraints {
 
-/*    [self.image mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.chatImage mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(20);
         make.left.equalTo(self.contentView).offset(30);
         make.right.equalTo(self.contentView).offset(-30);
         make.bottom.equalTo(self.contentView).offset(-5);
-    }];*/
+    }];
 
     [self.avatar mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(20));

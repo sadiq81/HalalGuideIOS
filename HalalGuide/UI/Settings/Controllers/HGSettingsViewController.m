@@ -6,6 +6,7 @@
 #import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import <Masonry/View+MASAdditions.h>
 #import <AsyncImageView/AsyncImageView.h>
+#import <GoogleAnalytics/GAI.h>
 #import "HGSettingsViewController.h"
 #import "HGLocationViewModel.h"
 #import "HGSettings.h"
@@ -14,6 +15,8 @@
 #import "UIViewController+Extension.h"
 #import "RMStore.h"
 #import "HGENumberViewController.h"
+#import "HGUser.h"
+#import "GAIFields.h"
 
 @interface HGSettingsViewController ()
 
@@ -41,6 +44,14 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Settings"];
+}
+
+
 - (void)setupViews {
 
     self.view.backgroundColor = [UIColor whiteColor];
@@ -59,8 +70,8 @@
     self.resetIntro.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.reset.intro", nil);
 
     self.logOut = [[UITableViewCell alloc] init];
-    self.logOut.selectionStyle = [[PFUser currentUser] isAuthenticated] ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
-    self.logOut.textLabel.textColor = [[PFUser currentUser] isAuthenticated] ? [UIColor blackColor] : [UIColor lightGrayColor];
+    self.logOut.selectionStyle = [[HGUser currentUser] isAuthenticated] ? UITableViewCellSelectionStyleDefault : UITableViewCellSelectionStyleNone;
+    self.logOut.textLabel.textColor = [[HGUser currentUser] isAuthenticated] ? [UIColor blackColor] : [UIColor lightGrayColor];
     self.logOut.textLabel.text = NSLocalizedString(@"HGSettingsViewController.button.log.out", nil);
 
     self.enumber = [[UITableViewCell alloc] init];
@@ -148,7 +159,7 @@
         case 2:
             switch (indexPath.row) {
                 case 0:
-                    [PFUser logOut];
+                    [HGUser logOut];
             }
         case 3:
             switch (indexPath.row) {

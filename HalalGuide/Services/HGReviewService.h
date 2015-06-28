@@ -12,6 +12,8 @@
 @interface HGReviewService : NSObject
 + (HGReviewService *)instance;
 
+- (void)reviewById:(NSString *)objectId onCompletion:(PFIdResultBlock)completion;
+
 - (void)saveReview:(HGReview *)review onCompletion:(PFBooleanResultBlock)completion;
 
 - (void)reviewsForLocation:(HGLocation *)location onCompletion:(PFArrayResultBlock)completion;

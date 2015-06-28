@@ -9,6 +9,8 @@
 #import <Masonry/View+MASAdditions.h>
 #import "HGPictureCollectionViewCell.h"
 #import "NSString+Extensions.h"
+#import "HGColor.h"
+#import "UIImage+Overlay.h"
 
 #define kHeaderHeight 250
 #define kStandardOffsetToEdges 8
@@ -59,6 +61,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Review detail";
+
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.layout = [[UICollectionViewFlowLayout alloc] init];
@@ -95,9 +99,8 @@
 
 - (void)setupRating {
 
-    self.rating.starImage = [UIImage imageNamed:@"HGReviewDetailViewController.star.unselected"];
-    self.rating.starHighlightedImage = [UIImage imageNamed:@"HGReviewDetailViewController.star.selected"];
-    self.rating.backgroundColor = [UIColor whiteColor];
+    self.rating.starHighlightedImage = [[UIImage imageNamed:@"HGLocationDetailsInfoView.star.selected"] imageWithColor:[HGColor greenTintColor]];
+    self.rating.backgroundColor = [UIColor clearColor];
 }
 
 - (void)setupViewModel {

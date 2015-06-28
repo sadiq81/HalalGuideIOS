@@ -7,13 +7,14 @@
 #import "HGBaseViewModel.h"
 #import "HGLocationPicture.h"
 #import "HGReviewDetailViewModel.h"
+#import "HGUser.h"
 
 @interface HGLocationDetailViewModel : HGBaseViewModel
 
 @property(nonatomic, readonly, retain) HGLocation *location;
 @property(nonatomic, readonly, copy) NSArray *locationPictures;
 @property(nonatomic, readonly, copy) NSArray *reviews;
-@property(nonatomic, readonly, retain) PFUser *user;
+@property(nonatomic, readonly, retain) HGUser *user;
 
 @property(nonatomic, readonly, copy) NSURL *thumbnail;
 @property(nonatomic, readonly, copy) NSString *distance;
@@ -24,11 +25,8 @@
 @property(nonatomic, readonly, copy) NSString *category;
 
 @property(nonatomic, readonly, copy) UIImage *porkImage;
-@property(nonatomic, readonly, copy) NSAttributedString *porkString;
 @property(nonatomic, readonly, copy) UIImage *alcoholImage;
-@property(nonatomic, readonly, copy) NSAttributedString *alcoholString;
 @property(nonatomic, readonly, copy) UIImage *halalImage;
-@property(nonatomic, readonly, copy) NSAttributedString *halalString;
 
 @property(nonatomic, readonly, copy) UIImage *languageImage;
 @property(nonatomic, readonly, copy) NSString *languageString;

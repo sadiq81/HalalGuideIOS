@@ -28,11 +28,10 @@
 #import "HGReviewDetailViewController.h"
 #import "HGCreateReviewViewController.h"
 #import "HGAppDelegate.h"
-#import "PFUser+Extension.h"
 #import "HGLabels.h"
 #import "HGLocation.h"
 
-@interface HGLocationDetailViewController : UIViewController
+@interface HGLocationDetailViewController : GAITrackedViewController
 
 - (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel;
 

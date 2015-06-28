@@ -27,6 +27,8 @@ typedef void (^UpdateMessagesHandler)(void);
 
 - (void)sendMessage:(NSString *)text;
 
+- (void)sendImage:(UIImage*)image;
+
 - (void)toggleSubscription;
 
 - (void)startTimer;

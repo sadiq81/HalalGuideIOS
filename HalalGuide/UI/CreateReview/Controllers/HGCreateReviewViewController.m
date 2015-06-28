@@ -13,6 +13,8 @@
 #import "HGReview.h"
 #import "HGPictureCollectionViewCell.h"
 #import "HGReviewPictureCell.h"
+#import "HGColor.h"
+#import "UIImage+Overlay.h"
 
 @interface HGCreateReviewViewController () <EDStarRatingProtocol, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HGImagePickerControllerDelegate>
 
@@ -66,6 +68,8 @@
 
 
 - (void)setupViews {
+
+    self.screenName = @"Create review";
 
     self.view.backgroundColor = [UIColor whiteColor];
 
@@ -132,7 +136,7 @@
     RAC(self.viewModel, rating) = rating;
 
     RAC(self.save, enabled) = [RACSignal combineLatest:@[review, rating] reduce:^(NSString *reviewText, NSNumber *rating) {
-        return @([reviewText length] >= 30 && rating > 0);
+        return @([reviewText length] >= 30 && rating.integerValue > 0);
     }];
 
     RAC(self.addPictures, hidden) = [[RACObserve(self.viewModel, images) ignore:nil] map:^id(NSArray *value) {
@@ -142,7 +146,7 @@
     @weakify(self)
     [[self.addPictures rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
-        [self getPicturesWithDelegate:self viewModel:self.viewModel];
+        [self getPictures:5 viewModel:self.viewModel WithDelegate:self];
     }];
 
 
@@ -150,8 +154,8 @@
 
 - (void)setupRating {
 
-    self.rating.starImage = [UIImage imageNamed:@"HGCreateReviewViewController.star.unselected"];
-    self.rating.starHighlightedImage = [UIImage imageNamed:@"HGCreateReviewViewController.star.selected"];
+    self.rating.starImage = [[UIImage imageNamed:@"HGCreateReviewViewController.star.selected"] imageWithColor:[UIColor blackColor]];
+    self.rating.starHighlightedImage = [[UIImage imageNamed:@"HGCreateReviewViewController.star.selected"] imageWithColor:[HGColor greenTintColor]];
     self.rating.maxRating = 5;
     self.rating.backgroundColor = [UIColor whiteColor];
     self.rating.delegate = self;

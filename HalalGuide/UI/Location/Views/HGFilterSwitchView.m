@@ -5,6 +5,7 @@
 
 #import <Masonry/View+MASAdditions.h>
 #import "HGFilterSwitchView.h"
+#import "HGColor.h"
 
 @interface HGFilterSwitchView ()
 
@@ -48,7 +49,7 @@
     self.halalSwitch.onLabel.text = NSLocalizedString(@"HGFilterSwitchView.switch.on", nil);
     self.halalSwitch.offLabel.text = NSLocalizedString(@"HGFilterSwitchView.switch.off", nil);
     self.halalSwitch.onTintColor = [UIColor redColor];
-    self.halalSwitch.inactiveColor = [UIColor greenColor];
+    self.halalSwitch.inactiveColor = [HGColor greenTintColor];
     self.halalSwitch.on = self.viewModel.showNonHalal.boolValue;
     [self addSubview:self.halalSwitch];
 
@@ -62,7 +63,7 @@
     self.alcoholSwitch.onLabel.text = NSLocalizedString(@"HGFilterSwitchView.switch.on", nil);
     self.alcoholSwitch.offLabel.text = NSLocalizedString(@"HGFilterSwitchView.switch.off", nil);
     self.alcoholSwitch.onTintColor = [UIColor redColor];
-    self.alcoholSwitch.inactiveColor = [UIColor greenColor];
+    self.alcoholSwitch.inactiveColor = [HGColor greenTintColor];
     self.alcoholSwitch.on = self.viewModel.showAlcohol.boolValue;
     [self addSubview:self.alcoholSwitch];
 
@@ -76,7 +77,7 @@
     self.porkSwitch.onLabel.text = NSLocalizedString(@"HGFilterSwitchView.switch.on", nil);
     self.porkSwitch.offLabel.text = NSLocalizedString(@"HGFilterSwitchView.switch.off", nil);
     self.porkSwitch.onTintColor = [UIColor redColor];
-    self.porkSwitch.inactiveColor = [UIColor greenColor];
+    self.porkSwitch.inactiveColor = [HGColor greenTintColor];
     self.porkSwitch.on = self.viewModel.showPork.boolValue;
     [self addSubview:self.porkSwitch];
 

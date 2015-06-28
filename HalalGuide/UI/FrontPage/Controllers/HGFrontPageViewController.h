@@ -5,10 +5,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
 #import "HGBaseEntity.h"
 #import "HGFrontPageViewModel.h"
 
-@interface HGFrontPageViewController :UIViewController
+@interface HGFrontPageViewController :GAITrackedViewController
 
 @property(strong, nonatomic, readonly) HGFrontPageViewModel *viewModel;
 

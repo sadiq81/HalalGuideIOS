@@ -26,6 +26,11 @@
 @property(nonatomic, strong) NSNumber *nonHalal;
 @property(nonatomic, strong) NSArray *images;
 
+@property(nonatomic, strong) HGLocation *existingLocation;
+
+- (instancetype)initWithExistingLocation:(HGLocation *)existingLocation;
+
++ (instancetype)modelWithExistingLocation:(HGLocation *)existingLocation;
 
 - (instancetype)initWithLocationType:(LocationType)type;
 

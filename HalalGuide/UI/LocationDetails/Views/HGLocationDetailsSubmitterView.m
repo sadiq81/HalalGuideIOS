@@ -8,6 +8,7 @@
 #import "HGLocationDetailsSubmitterView.h"
 #import "HGLabels.h"
 #import "ReactiveCocoa.h"
+#import "HGReachabilityManager.h"
 
 @interface HGLocationDetailsSubmitterView ()
 
@@ -39,6 +40,9 @@
 
 - (void)setupViews {
     self.submitterImage = [[AsyncImageView alloc] initWithFrame:CGRectZero];
+    if (![HGReachabilityManager isReachable]) {
+        self.submitterImage.showActivityIndicator = false;
+    }
     [self addSubview:self.submitterImage];
 
     self.submitterHeadLine = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:9];

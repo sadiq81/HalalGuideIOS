@@ -6,6 +6,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "HGGeoLocationService.h"
 
+
+
 @interface HGGeoLocationService () <CLLocationManagerDelegate>
 @property(nonatomic, strong) CLLocationManager *locationManager;
 @property(nonatomic, strong) CLLocation *currentLocation;
@@ -45,10 +47,9 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     // If it's a relatively recent event, turn off updates to save power.
     CLLocation *lastLocation = [locations lastObject];
-    NSDate *eventDate = lastLocation.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (fabs(howRecent) < 15.0) {
+    if (!self.currentLocation || [self.currentLocation distanceFromLocation:lastLocation] > 500) {
         self.currentLocation = lastLocation;
+        [[NSNotificationCenter defaultCenter] postNotificationName:locationManagerDidUpdateLocationsNotification object:lastLocation];
     }
 }
 @end

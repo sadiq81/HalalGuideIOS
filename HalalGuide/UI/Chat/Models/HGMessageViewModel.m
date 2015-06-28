@@ -4,7 +4,9 @@
 //
 
 #import "HGMessageViewModel.h"
-#import "PFUser+Extension.h"
+#import "HGUser.h"
+#import "ReactiveCocoa.h"
+#import "HGUserService.h"
 
 @interface HGMessageViewModel ()
 
@@ -31,8 +33,10 @@
             self.image = [[NSURL alloc] initWithString:message.image.url];
         }
 
-        [[PFUser query] getObjectInBackgroundWithId:message.userId block:^(PFObject *object, NSError *error) {
-            PFUser *user = (PFUser *) object;
+        @weakify(self)
+        [[HGUserService instance] getUserInBackGround:message.userId onCompletion:^(PFObject *object, NSError *error) {
+            @strongify(self)
+            HGUser *user = (HGUser *) object;
             self.avatar = user.facebookProfileUrlSmall;
             self.submitter = user.facebookName;
         }];

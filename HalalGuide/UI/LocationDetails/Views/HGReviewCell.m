@@ -10,6 +10,8 @@
 #import <Masonry/Masonry.h>
 #import "HGLocationPicture.h"
 #import "NSString+Extensions.h"
+#import "HGColor.h"
+#import "UIImage+Overlay.h"
 
 @interface HGReviewCell ()
 @property(strong, nonatomic) AsyncImageView *submitterImage;
@@ -77,9 +79,8 @@
 }
 
 - (void)setupRating {
-    self.rating.starImage = [UIImage imageNamed:@"HGReviewCell.star.unselected"];
-    self.rating.starHighlightedImage = [UIImage imageNamed:@"HGReviewCell.star.selected"];
-    self.rating.backgroundColor = [UIColor whiteColor];
+    self.rating.starHighlightedImage = [[UIImage imageNamed:@"HGLocationDetailsInfoView.star.selected"] imageWithColor:[HGColor greenTintColor]];
+    self.rating.backgroundColor = [UIColor clearColor];
 }
 
 - (void)setupViewModel {

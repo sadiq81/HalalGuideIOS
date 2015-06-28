@@ -50,6 +50,8 @@
 
 - (void)setupViews {
 
+    self.screenName = @"Favorites";
+
     self.title = NSLocalizedString(@"HGFavoriteViewController.title", nil);
 
     self.view.backgroundColor = [UIColor whiteColor];

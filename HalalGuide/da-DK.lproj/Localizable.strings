@@ -150,7 +150,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "HGLocationDetailsSubmitterView.label.submitterHeadLine" = "Indsendt af:";
 
-"HGLocationDetailsPictureView.button.report" = "Rapporter fejl";
+"HGLocationDetailsPictureView.button.report" = "Foreslå ændringer";
 "HGLocationDetailsPictureView.button.add.review" = "Tilføj anmeldelse";
 "HGLocationDetailsPictureView.button.add.picture" = "Tilføj billede";
 "HGLocationDetailsPictureView.label.no.pictures" = "Der findes ingen billeder for dette sted endnu. Skal du være den første?";
@@ -174,6 +174,7 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGLocationDetailViewController.hud.fetching" = "Opdaterer";
 "HGLocationDetailViewController.hud.error" = "Fejl!";
 "HGLocationDetailViewController.hud.saving" = "Gemmer";
+"HGLocationDetailViewController.alert.share" = "Del";
 
 "HGImagePickerView.button.approve" = "Tilføj 1 billed";
 "HGImagePickerView.button.approve.multiple" = "Tilføj %lu billeder";
@@ -263,6 +264,9 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 "HGCreateLocationViewController.alert.cancel.done" = "Nej tak";
 "HGCreateLocationViewController.alert.add.review" = "Jo tak";
 "HGCreateLocationViewController.button.add.picture" = "Tilføj billede";
+"HGCreateLocationViewController.alert.title.ok" = "Ok";
+"HGCreateLocationViewController.alert.message.location.change.saved" = "Dine ændringer er blevet indsendt til gennemgang";
+"HGCreateLocationViewController.alert.done" = "OK";
 
 "HGFavoriteViewController.label.no.favorites" = "Du har ikke tilføjet nogen favoritter";
 "HGFavoriteViewController.title" = "Favoritter";
@@ -287,3 +291,15 @@ Copyright (c) 2014 Eazy It. All rights reserved.
 
 "HGChatViewController.title" = "Emner";
 "HGNavigationController.new.message" = "Ny besked";
+
+"HGLocationViewController.button.categories" = "Kategorier";
+"HGLocationViewController.button.language" = "Sprog";
+"HGLocationViewController.label.no.results" = "Ingen resultater med de givne filtre";
+
+"HGCategoryViewController.label.no.results" = "Ingen lokationer med den valgte kategori";
+"HGCategoryViewController.hud.fetching" = "Henter";
+"HGCategoryViewController.hud.error" = "Ukendt fejl";
+
+"HGCreateLocationViewController.location.with.name.exists.title" = "Dublet";
+"HGCreateLocationViewController.location.with.name.exists.message" = "En ekstisterende lokation med navnet %@ eksisterer allerede, tilføj kun hvis der er tale om en anden lokation med samme navn";
+"HGCreateLocationViewController.location.with.name.exists.cancel" = "OK";

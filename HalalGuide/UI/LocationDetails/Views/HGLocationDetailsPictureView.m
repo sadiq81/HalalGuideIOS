@@ -4,6 +4,8 @@
 //
 
 #import <AsyncImageView/AsyncImageView.h>
+#import <ALActionBlocks/UIGestureRecognizer+ALActionBlocks.h>
+#import <ALActionBlocks/UIControl+ALActionBlocks.h>
 #import "HGLocationDetailsPictureView.h"
 #import "ReactiveCocoa.h"
 #import "Masonry.h"
@@ -12,13 +14,16 @@
 #import "UIView+HGBorders.h"
 #import "UIImageView+AFNetworking.h"
 #import "NSString+Extensions.h"
+#import "UIView+FrameAdditions.h"
+#import "HGReachabilityManager.h"
+#import "HGColor.h"
 
-@interface HGLocationDetailsPictureView () <iCarouselDataSource, iCarouselDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HGLocationDetailsPictureView () <iCarouselDataSource, iCarouselDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 
-@property(strong, nonatomic) UIButton *report;
-@property(strong, nonatomic) UIButton *addReview;
-@property(strong, nonatomic) UIButton *addPicture;
-@property(strong, nonatomic) iCarousel *pictures;
+@property(strong) UIButton *report;
+@property(strong) UIButton *addReview;
+@property(strong) UIButton *addPicture;
+@property(strong) iCarousel *pictures;
 
 @property(strong, nonatomic) UICollectionView *smileys;
 @property(strong, nonatomic) UICollectionViewFlowLayout *layout;
@@ -27,6 +32,10 @@
 @property(strong, nonatomic) UILabel *noPicturesLabel;
 
 @property(strong) HGLocationDetailViewModel *viewModel;
+
+@property(strong, nonatomic) UIScrollView *zoomView;
+@property(strong, nonatomic) UIImageView *fullPictureView;
+@property(strong, nonatomic) UIButton *closeButton;
 
 - (instancetype)initWithViewModel:(HGLocationDetailViewModel *)viewModel;
 
@@ -68,7 +77,7 @@
     self.pictures.dataSource = self;
     self.pictures.decelerationRate = 0.0f;
     self.pictures.scrollSpeed = 0.5f;
-    self.pictures.bounces=  false;
+    self.pictures.bounces = false;
     self.pictures.pagingEnabled = true;
     self.pictures.clipsToBounds = true;
     [self addSubview:self.pictures];
@@ -114,7 +123,7 @@
     @weakify(self)
     RACSignal *pictures = RACObserve(self.viewModel, locationPictures);
     RAC(self.noPicturesLabel, hidden) = [pictures map:^(NSArray *pictures) {
-        return @([pictures count]);
+        return @true;//@([pictures count]);
     }];
     [pictures subscribeNext:^(NSArray *locations) {
         @strongify(self)
@@ -156,10 +165,9 @@
     return [self.viewModel.smileys count];
 }
 
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HGSmileyCell *cell = [self.smileys dequeueReusableCellWithReuseIdentifier:@"HGSmileyCell" forIndexPath:indexPath];
-    [cell configureForSmiley:[self.viewModel.smileys objectAtIndex:indexPath.row]];
+    [cell configureForSmiley:self.viewModel.smileys[(NSUInteger) indexPath.row]];
     return cell;
 }
 
@@ -195,16 +203,102 @@
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
 
-    HGLocationPicture *picture = [self.viewModel.locationPictures objectAtIndex:index];
+    HGLocationPicture *picture = self.viewModel.locationPictures[index];
 
     if (view == nil) {
-        view = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 180.0f, 180.0f)];
+        view = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 101.0f, 180.0f)];
+        view.userInteractionEnabled = true;
         view.contentMode = UIViewContentModeScaleAspectFit;
     }
     //TODO Adjust frame so that portrait and landspace pictures are both max height
     [((AsyncImageView *) view) setImageWithURL:[picture.mediumPicture.url toURL] placeholderImage:[UIImage imageNamed:@"dining"]];
+    if (![HGReachabilityManager isReachable]) {
+        ((AsyncImageView *) view).showActivityIndicator = false;
+    }
+
     return view;
 }
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
+
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+
+    AsyncImageView *originalPictureView = (AsyncImageView *) [carousel itemViewAtIndex:index];
+    CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
+
+    self.zoomView = [[UIScrollView alloc] initWithFrame:frame];
+    self.zoomView.backgroundColor = [HGColor greenTintColor];
+    self.zoomView.minimumZoomScale = 1;
+    self.zoomView.maximumZoomScale = 6;
+    self.zoomView.delegate = self;
+
+    [window addSubview:self.zoomView];
+
+    self.fullPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.zoomView.frame), CGRectGetHeight(self.zoomView.frame))];
+    self.fullPictureView.backgroundColor = [HGColor greenTintColor];
+    self.fullPictureView.userInteractionEnabled = true;
+    self.fullPictureView.clipsToBounds = true;
+    self.fullPictureView.contentMode = UIViewContentModeScaleAspectFill;
+    self.fullPictureView.image = originalPictureView.image;
+
+    [self.zoomView addSubview:self.fullPictureView];
+
+    self.closeButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.closeButton setImage:[[UIImage imageNamed:@"HGLocationDetailsPictureView.button.close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.closeButton.tintColor = [UIColor whiteColor];
+
+    self.closeButton.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width - 31 - 15, 15, 31, 31);
+
+    RAC(self.closeButton, hidden) = [[RACSignal combineLatest:@[RACObserve(self.zoomView, zoomScale), RACObserve(self.zoomView, zooming)]] reduceEach:^(NSNumber *scale, NSNumber *zooming) {
+        return @(![scale isEqualToNumber:@1] || ![zooming isEqualToNumber:@0]);
+    }];
+
+    [UIView animateWithDuration:1
+                     animations:^{
+                         self.zoomView.frame = window.frame;
+                         self.fullPictureView.frame = CGRectInset(window.frame, 0, 80);
+                     }
+                     completion:^(BOOL finished) {
+                         [self.zoomView addSubview:self.closeButton];
+                     }];
+
+    @weakify(self)
+    @weakify(originalPictureView)
+    [self.closeButton handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
+        @strongify(self)
+        @strongify(originalPictureView)
+
+        [self.closeButton removeFromSuperview];
+
+        CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
+        self.fullPictureView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+        [UIView animateWithDuration:1
+                         animations:^{
+                             self.zoomView.frame = frame;
+                             self.zoomView.alpha = 0;
+                         }
+                         completion:^(BOOL finished) {
+                             [self.zoomView removeFromSuperview];
+                             self.zoomView = nil;
+                             self.fullPictureView = nil;
+                             self.closeButton = nil;
+                         }];
+    }];
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.fullPictureView;
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
+    self.closeButton.hidden = true;
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+    self.closeButton.hidden = scale != 1;
+}
+
 
 - (void)updateConstraints {
 

@@ -8,8 +8,10 @@
 #import "HGCreateReviewViewModel.h"
 #import "HGSubjectsViewController.h"
 #import "HGMessagesViewController.h"
+#import "HGUser.h"
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import <GoogleAnalytics/GAI.h>
 
 
 @implementation UIViewController (Extension)
@@ -59,12 +61,13 @@
     }
 }
 
-- (void)getPicturesWithDelegate:(id <HGImagePickerControllerDelegate>)delegate viewModel:(HGBaseViewModel *)viewModel {
+- (void)getPictures:(NSUInteger)count viewModel:(HGBaseViewModel *)viewModel WithDelegate:(id <HGImagePickerControllerDelegate>)delegate {
 
     @weakify(self)
     void (^completion)(void) = ^void(void) {
         @strongify(self)
         HGImagePickerController *imagePickerController = [HGImagePickerController controllerWithDelegate:delegate];
+        imagePickerController.maximumPictures = count;
         imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
         imagePickerController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentViewController:imagePickerController animated:true completion:nil];
@@ -90,17 +93,21 @@
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
 
+    HGUser *casted = (HGUser*)user;
+
     [self dismissViewControllerAnimated:true completion:^{
 
         //TODO Move to viewmodel
         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
         currentInstallation[@"user"] = user;
         [currentInstallation saveInBackground];
-        [[Crashlytics sharedInstance] setUserIdentifier:user.objectId];
-        [[Crashlytics sharedInstance] setUserName:user.facebookName];
+        [[Crashlytics sharedInstance] setUserIdentifier:casted.objectId];
+        [[Crashlytics sharedInstance] setUserName:casted.facebookName];
 
-        if (user.isNew) {
-            [PFUser storeProfileInfoForLoggedInUser:nil];
+        if (casted.isNew) {
+            [HGUser storeProfileInfoForLoggedInUser:nil];
+            id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+            [tracker set:@"&uid" value:user.objectId];
         }
 
         self.loginHandler();

@@ -83,7 +83,7 @@ typedef enum WeekDay : int16_t {
 
 #define kFavoritesPin @"local.data.store.favorite.pin"
 
-@interface HGLocation : HGBaseEntity
+@interface HGLocation : HGBaseEntity <PFSubclassing>
 
 @property(nonatomic, retain) NSString *addressCity;
 @property(nonatomic, retain) NSString *addressPostalCode;
@@ -107,6 +107,8 @@ typedef enum WeekDay : int16_t {
 @property(nonatomic, retain) NSDictionary *openingHours;
 
 @property(nonatomic, retain) NSArray *navneloebenummer;
+
+@property(nonatomic, retain) NSString *facebookId;
 
 - (instancetype)initWithAddressCity:(NSString *)addressCity addressPostalCode:(NSString *)addressPostalCode addressRoad:(NSString *)addressRoad addressRoadNumber:(NSString *)addressRoadNumber alcohol:(NSNumber *)alcohol creationStatus:(NSNumber *)creationStatus homePage:(NSString *)homePage language:(NSNumber *)language locationType:(NSNumber *)locationType name:(NSString *)name nonHalal:(NSNumber *)nonHalal pork:(NSNumber *)pork submitterId:(NSString *)submitterId telephone:(NSString *)telephone categories:(NSArray *)categories;
 

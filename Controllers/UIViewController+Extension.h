@@ -13,13 +13,15 @@
 #import "HGOnboarding.h"
 #import "UILabel+Extensions.h"
 #import "HGLogInViewController.h"
-#import "PFUser+Extension.h"
 #import <Parse/Parse.h>
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "HGImagePickerController.h"
+#import "HGSubject.h"
 #import <Crashlytics/Crashlytics.h>
 #import <objc/runtime.h>
 #import <ALActionBlocks/UIGestureRecognizer+ALActionBlocks.h>
+#import "HGLocation.h"
+#import "HGBaseViewModel.h"
 
 typedef enum HintPosition : int16_t {
     HintPositionAbove = 0,
@@ -34,12 +36,14 @@ typedef enum HintPosition : int16_t {
 
 - (void)createReviewForLocation:(HGLocation *)location viewModel:(HGBaseViewModel *)viewModel pushToStack:(BOOL)push;
 
-- (void)getPicturesWithDelegate:(id <HGImagePickerControllerDelegate>)delegate viewModel:(HGBaseViewModel *)viewModel;
+- (void)getPictures:(NSUInteger)count viewModel:(HGBaseViewModel *)viewModel WithDelegate:(id <HGImagePickerControllerDelegate>)delegate;
 
 - (void)authenticate:(void (^)(void))loginHandler;
 
 - (void)hintWasDismissedByUser:(NSString *)hintKey;
 
 - (void)displayHintForView:(UIView *)viewWithHint withHintKey:(NSString *)hintKey preferedPositionOfText:(HintPosition)position;
+
+//- (void) handleChatNotification:(NSNotification *) notification;
 
 @end

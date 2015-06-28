@@ -54,6 +54,6 @@ typedef enum ShopType : int16_t {
 @(ShopTypeFurniture) : @"ShopType.furniture" ,\
 @(ShopTypeButcher) : @"ShopType.butcher",} objectForKey :@(enum)]
 
-@interface HGBaseEntity : PFObject <PFSubclassing>
+@interface HGBaseEntity : PFObject
 
 @end

@@ -18,9 +18,9 @@ typedef enum LocationPresentation : int16_t {
 @interface HGLocationViewModel : HGBaseViewModel <CategoriesViewModel>
 
 @property(nonatomic) LocationType locationType;
-@property(nonatomic, readonly) NSArray *listLocations;
-@property(nonatomic, readonly) NSArray *mapLocations;
-@property(nonatomic) NSNumber * maximumDistance;
+@property(nonatomic, copy, readonly) NSArray *listLocations;
+@property(nonatomic, copy, readonly) NSArray *mapLocations;
+@property(nonatomic) NSNumber *maximumDistance;
 @property(nonatomic) NSNumber *showNonHalal;
 @property(nonatomic) NSNumber *showAlcohol;
 @property(nonatomic) NSNumber *showPork;

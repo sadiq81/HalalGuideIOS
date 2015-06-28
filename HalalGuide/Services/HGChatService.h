@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 #import "HGSubject.h"
+#import "HGMessage.h"
 
 @interface HGChatService : NSObject
 
@@ -16,4 +17,12 @@
 - (void)getSubjectsWithCompletion:(PFArrayResultBlock)completion;
 
 - (void)getMessagesForSubject:(HGSubject *)subject withCompletion:(void (^)(NSArray *, NSError *))completion;
+
+- (void)sendMessage:(NSString *)text forSubject:(HGSubject *)subject withCompletion:(void (^)(HGMessage *message, BOOL succeeded, NSError *error))completion;
+
+- (void)sendImage:(UIImage *)image forSubject:(HGSubject *)subject withCompletion:(void (^)(HGMessage *message, BOOL succeeded, NSError *error))completion;
+
+- (NSNumber *)subscribingToSubject:(HGSubject *)subject;
+
+- (void)toggleSubscription:(HGSubject *)subject;
 @end

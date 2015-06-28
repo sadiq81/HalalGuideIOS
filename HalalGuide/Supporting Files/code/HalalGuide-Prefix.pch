@@ -17,4 +17,11 @@
 
 #define kStandardOffsetToEdges 8
 
+#define BUNDLE_VERSION_EQUAL_TO(v)                  ([[[NSBundle mainBundle]     objectForInfoDictionaryKey:(NSString*) kCFBundleVersionKey] compare:v  options:NSNumericSearch] == NSOrderedSame)
+#define BUNDLE_VERSION_GREATER_THAN(v)              ([[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*) kCFBundleVersionKey] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define BUNDLE_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*) kCFBundleVersionKey] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define BUNDLE_VERSION_LESS_THAN(v)                 ([[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*) kCFBundleVersionKey]  compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define BUNDLE_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*) kCFBundleVersionKey] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+
 #endif

@@ -19,13 +19,15 @@
 #import "HGCreateSwitchView.h"
 #import "UITextField+HGTextFieldStyling.h"
 #import "KASlideShow.h"
-#import "HGCategoriesViewController.h"
+#import "HGCategoriesSelectorViewController.h"
 #import <ALActionBlocks/UIBarButtonItem+ALActionBlocks.h>
 #import <Masonry/View+MASAdditions.h>
 #import <MZFormSheetController/MZFormSheetController.h>
 #import "UIAlertController+Blocks.m"
 #import "HGReviewPictureCell.h"
 #import "HGNewLocationPictureCell.h"
+#import "HGLocationService.h"
+#import "UITextField+Blocks.h"
 
 @interface HGCreateLocationViewController () <UINavigationControllerDelegate, HTAutocompleteDataSource, UITextFieldDelegate, HGImagePickerControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -80,12 +82,17 @@
     [self setupCollectionView];
     [self setupNavigationBar];
     [self setupViewModel];
+
+    [self checkForExistingLocation];
+
     [self setupIQKeyboardReturnKeyHandler];
     [self updateViewConstraints];
 }
 
 
 - (void)setupViews {
+
+    self.screenName = @"Location";
 
     self.view.backgroundColor = [UIColor whiteColor];
 
@@ -150,6 +157,32 @@
     self.navigationItem.rightBarButtonItem = self.save;
 }
 
+- (void)checkForExistingLocation {
+
+    if (self.viewModel.existingLocation) {
+
+        self.pickImage.hidden = true;
+
+        self.name.text = self.viewModel.existingLocation.name;
+        self.road.text = self.viewModel.existingLocation.addressRoad;
+        self.roadNumber.text = self.viewModel.existingLocation.addressRoadNumber;
+        self.postalCode.text = self.viewModel.existingLocation.addressPostalCode;
+        self.city.text = self.viewModel.existingLocation.addressCity;
+        self.telephone.text = self.viewModel.existingLocation.telephone;
+        self.website.text = self.viewModel.existingLocation.homePage;
+
+        self.switchView.halalSwitch.on = [self.viewModel.existingLocation.nonHalal boolValue];
+        self.switchView.alcoholSwitch.on = [self.viewModel.existingLocation.alcohol boolValue];
+        self.switchView.porkSwitch.on = [self.viewModel.existingLocation.pork boolValue];
+        self.viewModel.categories = [[NSMutableArray alloc] initWithArray:self.viewModel.existingLocation.categories];
+        [self.categoriesView setCountLabelText];
+
+        self.save.enabled = true;
+    }
+
+}
+
+
 - (void)setupViewModel {
 
     [self.viewModel loadAddressesNearPositionOnCompletion:nil];
@@ -161,10 +194,27 @@
     RAC(self.viewModel, city) = RACObserve(self, city.text);
     RAC(self.viewModel, website) = RACObserve(self, website.text);
 
-
     @weakify(self)
+
+    [[self.name rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(UITextField *name) {
+        @strongify(self)
+        [[HGLocationService instance] findExistingLocationsWithName:name.text onCompletion:^(NSArray *objects, NSError *error) {
+            if (objects && [objects count] > 0) {
+                [UIAlertController showAlertInViewController:self
+                                                   withTitle:NSLocalizedString(@"HGCreateLocationViewController.location.with.name.exists.title", nil)
+                                                     message:[NSString stringWithFormat:NSLocalizedString(@"HGCreateLocationViewController.location.with.name.exists.message", nil),name.text]
+                                           cancelButtonTitle:NSLocalizedString(@"HGCreateLocationViewController.location.with.name.exists.cancel", nil)
+                                      destructiveButtonTitle:nil
+                                           otherButtonTitles:nil
+                                                    tapBlock:nil];
+            }
+        }];
+
+    }];
+
     [self.pickImage addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
-        [self getPicturesWithDelegate:self viewModel:self.viewModel];
+        @strongify(self)
+        [self getPictures:5 viewModel:self.viewModel WithDelegate:self];
     }]];
 
     [[self.road rac_signalForControlEvents:UIControlEventEditingDidEnd] subscribeNext:^(id x) {
@@ -193,13 +243,21 @@
             [SVProgressHUD showWithStatus:[self percentageString:progress.floatValue] maskType:SVProgressHUDMaskTypeBlack];
         } else if (progress.intValue == 100) {
             [SVProgressHUD dismiss];
-            [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.title.action", nil) message:NSLocalizedString(@"HGCreateLocationViewController.alert.message.location.saved", nil) cancelButtonTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.cancel.done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"HGCreateLocationViewController.alert.add.review", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
-                if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
+
+            if (!self.viewModel.existingLocation) {
+                [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.title.action", nil) message:NSLocalizedString(@"HGCreateLocationViewController.alert.message.location.saved", nil) cancelButtonTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.cancel.done", nil) destructiveButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"HGCreateLocationViewController.alert.add.review", nil)] tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
+                    if (UIAlertControllerBlocksCancelButtonIndex == buttonIndex) {
+                        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                    } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
+                        [self createReviewForLocation:self.viewModel.createdLocation viewModel:self.viewModel pushToStack:true];
+                    }
+                }];
+            } else {
+                [UIAlertController showAlertInViewController:self withTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.title.ok", nil) message:NSLocalizedString(@"HGCreateLocationViewController.alert.message.location.change.saved", nil) cancelButtonTitle:NSLocalizedString(@"HGCreateLocationViewController.alert.done", nil) destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:^(UIAlertController *controller, UIAlertAction *action, NSInteger buttonIndex) {
                     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-                } else if (UIAlertControllerBlocksFirstOtherButtonIndex == buttonIndex) {
-                    [self createReviewForLocation:self.viewModel.createdLocation viewModel:self.viewModel pushToStack:true];
-                }
-            }];
+                }];
+            }
+
         }
     }];
 
@@ -212,7 +270,7 @@
     [[self.categoriesView.choose rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self)
 
-        HGCategoriesViewController *viewController = [HGCategoriesViewController controllerWithViewModel:self.viewModel];
+        HGCategoriesSelectorViewController *viewController = [HGCategoriesSelectorViewController controllerWithViewModel:self.viewModel];
         MZFormSheetController *formSheet = [[MZFormSheetController alloc] initWithViewController:viewController];
         formSheet.presentedFSViewController.view.clipsToBounds = false;
 
@@ -249,7 +307,13 @@
         [self.viewModel saveLocation];
     }];
 
-    RAC(self.save, enabled) = [RACSignal combineLatest:@[self.name.rac_textSignal, self.road.rac_textSignal, self.roadNumber.rac_textSignal, self.postalCode.rac_textSignal, self.city.rac_textSignal]
+
+    RAC(self.save, enabled) = [RACSignal combineLatest:@[
+                    RACObserve(self, viewModel.name),
+                    RACObserve(self, viewModel.road),
+                    RACObserve(self, viewModel.roadNumber),
+                    RACObserve(self, viewModel.postalCode),
+                    RACObserve(self, viewModel.city)]
                                                 reduce:^(NSString *name, NSString *road, NSString *roadNumber, NSString *postalCode, NSString *city) {
                                                     return @((name.length > 0) && (road.length > 0) && (roadNumber.length > 0) && (postalCode.length > 0) && (city.length > 0));
                                                 }];

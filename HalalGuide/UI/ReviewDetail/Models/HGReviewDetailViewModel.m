@@ -6,10 +6,12 @@
 #import <UIKit/UIKit.h>
 #import "HGReviewDetailViewModel.h"
 #import "HGPictureService.h"
-#import "PFUser+Extension.h"
 #import "HGDateFormatter.h"
 #import "HGErrorReporting.h"
 #import "HGLocationPicture.h"
+#import "HGUser.h"
+#import "HGUserService.h"
+#import "ReactiveCocoa.h"
 
 @interface HGReviewDetailViewModel () {
 }
@@ -50,14 +52,18 @@
     self.reviewText = self.review.review;
     self.date = [HGDateFormatter shortDateFormat:self.review.createdAt];
 
-    [[PFUser query] getObjectInBackgroundWithId:self.review.submitterId block:^(PFObject *object, NSError *error) {
-        PFUser *user = (PFUser *) object;
+    @weakify(self)
+    [[HGUserService instance] getUserInBackGround:self.review.submitterId onCompletion:^(PFObject *object, NSError *error) {
+        @strongify(self)
+        HGUser *user = (HGUser *) object;
         self.submitterImage = [user facebookProfileUrlSmall];
         self.submitterImageLarge = [user facebookProfileUrl];
         self.submitterName = [user facebookName];
     }];
 
+
     [[HGPictureService instance] locationPicturesForReview:self.review onCompletion:^(NSArray *pictures, NSError *error) {
+        @strongify(self)
         self.reviewImages = pictures;
     }];
 

@@ -8,6 +8,7 @@
 #import "HGSubjectsViewModel.h"
 #import "HGMessagesViewModel.h"
 #import "HGMessageComposeView.h"
+#import "UIViewController+Extension.h"
 
 
 @interface HGMessagesViewController : UIViewController

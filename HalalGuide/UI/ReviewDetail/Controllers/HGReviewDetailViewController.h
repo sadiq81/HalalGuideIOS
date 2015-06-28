@@ -9,10 +9,11 @@
 #import "HGReview.h"
 #import <ParseUI/ParseUI.h>
 #import <AsyncImageView/AsyncImageView.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
 
 @class HGReviewDetailViewModel;
 
-@interface HGReviewDetailViewController : UIViewController {
+@interface HGReviewDetailViewController : GAITrackedViewController {
 }
 
 @property(strong, nonatomic, readonly) AsyncImageView *submitterImage;

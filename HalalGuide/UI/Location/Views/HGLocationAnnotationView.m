@@ -9,6 +9,7 @@
 #import "HGLocationAnnotation.h"
 #import "HGLocationPicture.h"
 #import "NSString+Extensions.h"
+#import "HGColor.h"
 
 @interface HGLocationAnnotationView ()
 
@@ -36,7 +37,8 @@
 
         self.imageView = [[AsyncImageView alloc] initWithFrame:CGRectMake(-15, -15, 30, 30)];
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        self.imageView.image = [UIImage imageNamed:((HGLocationAnnotation *) self.annotation).location.imageForType];
+        self.imageView.image = [[UIImage imageNamed:((HGLocationAnnotation *) self.annotation).location.imageForType] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.imageView.tintColor = [HGColor greenTintColor];
         [self addSubview:self.imageView];
 
 

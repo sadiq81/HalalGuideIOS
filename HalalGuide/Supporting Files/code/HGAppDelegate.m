@@ -24,6 +24,11 @@
 #import "HGSubjectsViewController.h"
 #import "HGMessagesViewController.h"
 #import "HGNavigationController.h"
+#import "HGPictureService.h"
+#import "HGReviewService.h"
+#import "HGLocationDetailViewController.h"
+#import "GAI.h"
+#import "HGColor.h"
 #import <Fabric/Fabric.h>
 
 @interface HGAppDelegate () <UIGestureRecognizerDelegate>
@@ -49,8 +54,15 @@
     [[MZFormSheetBackgroundWindow appearance] setBlurRadius:5.0];
     [[MZFormSheetBackgroundWindow appearance] setBackgroundColor:[UIColor clearColor]];
 
-    [[UIView appearance] setTintColor:[UIColor blackColor]];
+    [[UIView appearance] setTintColor:[HGColor greenTintColor]];
     [[UINavigationBar appearance] setTranslucent:false];
+
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+            NSForegroundColorAttributeName: [UIColor whiteColor]
+    }];
+
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:0.9]];
+    [SVProgressHUD setForegroundColor:[HGColor darkGreenTintColor]];
 
     //IQKeyboard
     [IQKeyboardManager sharedManager].toolbarManageBehaviour = IQAutoToolbarByTag;
@@ -107,6 +119,8 @@
     [Fabric with:@[CrashlyticsKit]];
 #endif
 
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-54901977-2"];
+
     //Defaults
     NSString *defaultPrefsFile = [[NSBundle mainBundle] pathForResource:@"dk.eazyit.halalguide.preferences" ofType:@"plist"];
     NSDictionary *defaultPreferences = [NSDictionary dictionaryWithContentsOfFile:defaultPrefsFile];
@@ -115,19 +129,21 @@
     //Setup view controller
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+
     HGFrontPageViewController *viewController = [HGFrontPageViewController controllerWithViewModel:[[HGFrontPageViewModel alloc] init]];
-    HGNavigationController *nav = [[HGNavigationController alloc] initWithRootViewController:viewController];
-    self.window.rootViewController = nav;
+    self.navigationController = [[HGNavigationController alloc] initWithRootViewController:viewController];
+
+    self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
 
     UITapGestureRecognizer *tripleTap = [[UITapGestureRecognizer alloc] initWithBlock:^(id weakSender) {
         HGSubjectsViewController *vc = [HGSubjectsViewController controllerWithViewModel:[[HGSubjectsViewModel alloc] init]];
-        UINavigationController *navChat = [[UINavigationController alloc] initWithRootViewController:vc];
-        [nav presentViewController:navChat animated:true completion:nil];
+        HGNavigationController *navChat = [[HGNavigationController alloc] initWithRootViewController:vc];
+        [self.navigationController presentViewController:navChat animated:true completion:nil];
     }];
     tripleTap.delegate = self;
     tripleTap.numberOfTapsRequired = 3;
-    [nav.navigationBar addGestureRecognizer:tripleTap];
+    [self.navigationController.navigationBar addGestureRecognizer:tripleTap];
 
 
     if (launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]) {
@@ -146,7 +162,7 @@
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    currentInstallation.channels = @[@"global"];
+    [currentInstallation addUniqueObject:@"global" forKey:@"channels"];
     [currentInstallation saveInBackground];
 
 }
@@ -187,6 +203,7 @@
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     if (currentInstallation.badge != 0) {
         currentInstallation.badge = 0;
+
         [currentInstallation saveInBackground];
     }
 }
@@ -199,7 +216,58 @@
 #pragma mark URL handling
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    @weakify(self)
+    if ([[url scheme] caseInsensitiveCompare:@"halalguide"] == NSOrderedSame) {
+
+        if ([[url host] isEqualToString:@"location"]) {
+
+            NSString *objectId = [[url path] stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@""];
+            [[HGLocationService instance] locationById:objectId onCompletion:^(HGLocation *object, NSError *error) {
+                @strongify(self)
+                HGLocationDetailViewModel *model = [HGLocationDetailViewModel modelWithLocation:object];
+                HGLocationDetailViewController *vc = [HGLocationDetailViewController controllerWithViewModel:model];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationController pushViewController:vc animated:true];
+                });
+            }];
+
+        } else if ([[url host] isEqualToString:@"review"]) {
+
+            NSString *objectId = [[url path] stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@""];
+            [[HGReviewService instance] reviewById:objectId onCompletion:^(HGReview *object, NSError *error) {
+                @strongify(self)
+                HGReviewDetailViewModel *model = [HGReviewDetailViewModel modelWithReview:object];
+                HGReviewDetailViewController *vc = [HGReviewDetailViewController controllerWithViewModel:model];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationController pushViewController:vc animated:true];
+                });
+            }];
+        }
+        return true;
+    } else {
+        return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    }
+
+}
+
+- (NSDictionary *)parseQueryString:(NSString *)query {
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:6];
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+
+    for (NSString *pair in pairs) {
+        NSArray *elements = [pair componentsSeparatedByString:@"="];
+        NSString *key = [elements[0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *val = [elements[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+        dict[key] = val;
+    }
+    return dict;
+}
+
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
+    NSString *tmpDirectory = [NSTemporaryDirectory() stringByAppendingPathComponent:identifier];
+    [[NSFileManager defaultManager] removeItemAtPath:tmpDirectory error:nil];
+    [[HGPictureService instance].responsesData removeObjectForKey:identifier];
 }
 
 

@@ -5,6 +5,9 @@
 
 #import <Masonry/View+MASAdditions.h>
 #import "HGLocationCell.h"
+#import "HGLabels.h"
+#import "HGReachabilityManager.h"
+#import "HGColor.h"
 
 
 @interface HGLocationCell ()
@@ -35,11 +38,17 @@
 
 - (void)setupViews {
     self.thumbnail = [[AsyncImageView alloc] initWithFrame:CGRectZero];
-    self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
-    self.thumbnail.showActivityIndicator = true;
+    self.thumbnail.image = [[UIImage imageNamed:[[self class] placeholderImageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.thumbnail.tintColor = [HGColor greenTintColor];
+
+    if (![HGReachabilityManager isReachable]) {
+        self.thumbnail.showActivityIndicator = false;
+    }
+
     self.thumbnail.activityIndicatorStyle = UIActivityIndicatorViewStyleGray;
     [self.contentView addSubview:self.thumbnail];
 
+    //TODO update label when current position changes, perhaps using NSNotification
     self.distance = [[HGLabel alloc] initWithFrame:CGRectZero andFontSize:13];
     self.distance.textAlignment = NSTextAlignmentRight;
     self.distance.adjustsFontSizeToFitWidth = true;
@@ -71,6 +80,10 @@
 //        [self.contentView addSubview:self.open];
 }
 
+- (void)updateLocationDistance {
+
+}
+
 - (void)setupViewModel {
 
     RAC(self.name, text) = RACObserve(self, viewModel.location.name);
@@ -86,7 +99,7 @@
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
+    self.thumbnail.image = [[UIImage imageNamed:[[self class] placeholderImageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
 - (void)updateConstraints {
@@ -141,6 +154,8 @@
 + (NSString *)placeholderImageName {
     @throw @"Should be overriden";
 }
+
+
 
 + (NSString *)reuseIdentifier {
     @throw @"Should be overriden";

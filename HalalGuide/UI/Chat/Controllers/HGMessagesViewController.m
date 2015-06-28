@@ -14,11 +14,16 @@
 #import "HGMessageComposeView.h"
 #import "IQKeyboardManager.h"
 
-@interface HGMessagesViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HGMessagesViewController () <UITableViewDelegate, UITableViewDataSource, HGImagePickerControllerDelegate>
 
 @property(strong, nonatomic) UITableView *messages;
 @property(strong, nonatomic) HGMessageComposeView *composeView;
 @property(strong, nonatomic) HGMessagesViewModel *viewModel;
+
+@property(strong, nonatomic) UIScrollView *zoomView;
+@property(strong, nonatomic) UIImageView *fullPictureView;
+@property(strong, nonatomic) UIButton *closeButton;
+
 
 @end
 
@@ -70,8 +75,8 @@
         @strongify(self)
         [self.viewModel toggleSubscription];
         [SVProgressHUD showInfoWithStatus:self.viewModel.subscribing.boolValue ? NSLocalizedString(@"HGMessagesViewController.notification.on", nil) : NSLocalizedString(@"HGMessagesViewController.notification.off", nil) maskType:SVProgressHUDMaskTypeNone];
-        UIImage *image = [UIImage imageNamed:self.viewModel.subscribing.boolValue ? @"HGMessagesViewController.notification.on" : @"HGMessagesViewController.notification.off"];
-        [self.navigationItem.rightBarButtonItem setImage:image];
+        UIImage *notificationImage = [UIImage imageNamed:self.viewModel.subscribing.boolValue ? @"HGMessagesViewController.notification.on" : @"HGMessagesViewController.notification.off"];
+        [self.navigationItem.rightBarButtonItem setImage:notificationImage];
     }];
 
     self.messages = [[UITableView alloc] initWithFrame:CGRectZero];
@@ -115,7 +120,9 @@
 
     [self.viewModel refreshSubjects];
 
+    @weakify(self)
     [[[RACObserve(self.viewModel, sentMessage) ignore:nil] deliverOnMainThread] subscribeNext:^(HGMessage *message) {
+        @strongify(self)
         NSIndexPath *newMessage = [NSIndexPath indexPathForRow:[self.viewModel.messages count] - 1 inSection:0];
         NSArray *indexArray = @[newMessage];
         [self.messages beginUpdates];
@@ -125,6 +132,7 @@
     }];
 
     [[[RACObserve(self.viewModel, receivedMessages) ignore:nil] deliverOnMainThread] subscribeNext:^(NSArray *messages) {
+        @strongify(self)
         NSMutableArray *indexPaths = [NSMutableArray new];
         for (int i = 0; i < [messages count]; i++) {
             NSIndexPath *path = [NSIndexPath indexPathForRow:([self.viewModel.messages count] - [messages count] + i) inSection:0];
@@ -136,8 +144,24 @@
         [self scrollToBottom:([self.viewModel.messages count] - [messages count] == 0) == 0 ? false : true];
     }];
 
+    [self.composeView.mediaChooser handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
+        @strongify(self)
+        [self getPictures:1 viewModel:self.viewModel WithDelegate:self];
+    }];
 
 }
+
+- (void)HGImagePickerControllerDidCancel:(HGImagePickerController *)controller {
+    [controller dismissViewControllerAnimated:true completion:nil];
+}
+
+- (void)HGImagePickerControllerDidConfirm:(HGImagePickerController *)controller pictures:(NSArray *)pictures {
+    [controller dismissViewControllerAnimated:true completion:^{
+        UIImage *image = pictures[0];
+        [self.viewModel sendImage:image];
+    }];
+}
+
 
 - (void)scrollToBottom:(BOOL)animated {
     int count = (int) [self.viewModel.messages count];
@@ -152,7 +176,7 @@ static NSString *cellIdentifier = @"сellIdentifier";
     self.messages.delegate = self;
     self.messages.dataSource = self;
 
-    self.messages.allowsSelection = false;
+    self.messages.allowsSelection = true;
     self.messages.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     [self.messages registerClass:[HGMessageCell class] forCellReuseIdentifier:cellIdentifier];
@@ -169,18 +193,98 @@ static NSString *cellIdentifier = @"сellIdentifier";
 
     HGMessageCell *cell = [self.messages dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.viewModel = [self.viewModel viewModelForMessage:indexPath.row];
+
+    HGMessage *message = (HGMessage *) self.viewModel.messages[indexPath.row];;
+    if (!message.image){
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     HGMessage *message = (HGMessage *) self.viewModel.messages[indexPath.row];;
-    CGRect rect = [message.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 60, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12]} context:nil];
-    return 35 + rect.size.height + 20;
+    if (message.image){
+        return [UIScreen mainScreen].bounds.size.width - 60;
+    } else{
+        CGRect rect = [message.text boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width - 60, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12]} context:nil];
+        return 35 + rect.size.height + 20;
+    }
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
+
+    HGMessage *message = (HGMessage *) self.viewModel.messages[indexPath.row];;
+
+    if (!message.image){
+        return;
+    }
+
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+
+    HGMessageCell *originalPictureView = (HGMessageCell*)[tableView cellForRowAtIndexPath:indexPath];
+    CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
+
+    self.zoomView = [[UIScrollView alloc] initWithFrame:frame];
+    self.zoomView.minimumZoomScale = 1;
+    self.zoomView.maximumZoomScale = 6;
+    self.zoomView.delegate = self;
+
+    [window addSubview:self.zoomView];
+
+    self.fullPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.zoomView.frame), CGRectGetHeight(self.zoomView.frame))];
+    self.fullPictureView.userInteractionEnabled = true;
+    self.fullPictureView.clipsToBounds = true;
+    self.fullPictureView.contentMode = UIViewContentModeScaleAspectFill;
+    self.fullPictureView.image = originalPictureView.chatImage.image;
+
+    [self.zoomView addSubview:self.fullPictureView];
+
+    self.closeButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.closeButton setImage:[[UIImage imageNamed:@"HGLocationDetailsPictureView.button.close"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    self.closeButton.tintColor = [UIColor whiteColor];
+
+    self.closeButton.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width - 31 - 15, 15, 31, 31);
+
+    RAC(self.closeButton, hidden) = [[RACSignal combineLatest:@[RACObserve(self.zoomView, zoomScale), RACObserve(self.zoomView, zooming)]] reduceEach:^(NSNumber *scale, NSNumber *zooming) {
+        return @(![scale isEqualToNumber:@1] || ![zooming isEqualToNumber:@0]);
+    }];
+
+    [UIView animateWithDuration:1
+                     animations:^{
+                         self.zoomView.frame = window.frame;
+                         self.fullPictureView.frame = CGRectInset(window.frame, 0, 80);
+                         self.zoomView.backgroundColor = [UIColor blackColor];
+                     }
+                     completion:^(BOOL finished) {
+                         [self.zoomView addSubview:self.closeButton];
+                     }];
+
+    @weakify(self)
+    @weakify(originalPictureView)
+    [self.closeButton handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {
+        @strongify(self)
+        @strongify(originalPictureView)
+
+        [self.closeButton removeFromSuperview];
+
+        CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
+        self.fullPictureView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+        [UIView animateWithDuration:1
+                         animations:^{
+                             self.zoomView.frame = frame;
+                             self.zoomView.alpha = 0;
+                         }
+                         completion:^(BOOL finished) {
+                             [self.zoomView removeFromSuperview];
+                             self.zoomView = nil;
+                             self.fullPictureView = nil;
+                             self.closeButton = nil;
+                         }];
+    }];
 }
 
 

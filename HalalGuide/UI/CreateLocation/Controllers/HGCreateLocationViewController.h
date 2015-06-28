@@ -11,10 +11,11 @@
 #import "SevenSwitch.h"
 #import "HGCreateReviewViewModel.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <GoogleAnalytics/GAITrackedViewController.h>
 #import "HGCreateLocationViewModel.h"
 
 
-@interface HGCreateLocationViewController :UIViewController
+@interface HGCreateLocationViewController :GAITrackedViewController
 - (instancetype)initWithViewModel:(HGCreateLocationViewModel *)viewModel;
 
 + (instancetype)controllerWithViewModel:(HGCreateLocationViewModel *)viewModel;

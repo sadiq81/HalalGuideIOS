@@ -5,6 +5,7 @@
 
 #import <Masonry/View+MASAdditions.h>
 #import "HGButtonView.h"
+#import "HGColor.h"
 
 @interface HGButtonView ()
 @property(nonatomic, retain) UIButton *button;
@@ -24,7 +25,8 @@
         self.tapHandler = tapHandler;
 
         self.button = [[UIButton alloc] initWithFrame:CGRectZero];
-        [self.button setImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
+        [self.button setTintColor:[HGColor greenTintColor]];
+        [self.button setImage:[[UIImage imageNamed:name] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
         [self.button addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.button];
 

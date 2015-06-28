@@ -10,8 +10,11 @@
 #import "HGReviewService.h"
 #import "HGAddressService.h"
 #import "HGNumberFormatter.h"
-#import "PFUser+Extension.h"
 #import "HGSmileyScraper.h"
+#import "HGUser.h"
+#import "HGUserService.h"
+#import "NSString+Extensions.h"
+#import "HGGeoLocationService.h"
 
 @interface HGLocationDetailViewModel () {
 
@@ -19,7 +22,7 @@
 @property(nonatomic, retain) HGLocation *location;
 @property(nonatomic, copy) NSArray *locationPictures;
 @property(nonatomic, copy) NSArray *reviews;
-@property(nonatomic, retain) PFUser *user;
+@property(nonatomic, retain) HGUser *user;
 
 @property(nonatomic, copy) NSURL *thumbnail;
 @property(nonatomic, copy) NSString *distance;
@@ -30,11 +33,8 @@
 @property(nonatomic, copy) NSString *category;
 
 @property(nonatomic, copy) UIImage *porkImage;
-@property(nonatomic, copy) NSAttributedString *porkString;
 @property(nonatomic, copy) UIImage *alcoholImage;
-@property(nonatomic, copy) NSAttributedString *alcoholString;
 @property(nonatomic, copy) UIImage *halalImage;
-@property(nonatomic, copy) NSAttributedString *halalString;
 
 @property(nonatomic, copy) UIImage *languageImage;
 @property(nonatomic, copy) NSString *languageString;
@@ -74,9 +74,9 @@
     self.smileys = [NSArray new];
 
     @weakify(self)
-    [[PFUser query] getObjectInBackgroundWithId:self.location.submitterId block:^(PFObject *object, NSError *error) {
+    [[HGUserService instance] getUserInBackGround:self.location.submitterId onCompletion:^(PFObject *object, NSError *error) {
         @strongify(self)
-        self.user = (PFUser *) object;
+        self.user = (HGUser *) object;
         self.submitterName = self.user.facebookName;
         self.submitterImage = self.user.facebookProfileUrlSmall;
     }];
@@ -85,31 +85,26 @@
         @strongify(self)
         if (objects != nil && [objects count] == 1) {
             HGLocationPicture *picture = [objects firstObject];
-            self.thumbnail = [[NSURL alloc] initWithString:picture.thumbnail.url];
+            self.thumbnail = [picture.thumbnail.url toURL];
         }
     }];
 
-    CLLocationDistance distanceM = [HGAddressService distanceInMetersToPoint:self.location.location];
-    self.distance = [[HGNumberFormatter instance] stringFromNumber:@(distanceM / 1000)];
+    [self updateDistance];
+
     self.address = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", self.location.addressRoad, self.location.addressRoadNumber, self.location.addressPostalCode, self.location.addressCity];
     self.postalCode = [NSString stringWithFormat:@"%@ %@", self.location.addressPostalCode, self.location.addressCity];
     self.category = [self.location categoriesString];
 
     if (self.location.locationType.intValue == LocationTypeDining) {
-        self.porkImage = [UIImage imageNamed:self.location.pork.boolValue ? @"HGLocationDetailViewModel.pork.true" : @"HGLocationDetailViewModel.pork.false"];
-        self.alcoholImage = [UIImage imageNamed:self.location.alcohol.boolValue ? @"HGLocationDetailViewModel.alcohol.true" : @"HGLocationDetailViewModel.alcohol.false"];
-        self.halalImage = [UIImage imageNamed:self.location.nonHalal.boolValue ? @"HGLocationDetailViewModel.non.halal.true" : @"HGLocationDetailViewModel.non.halal.false"];
-
-        self.porkString = [self stringForBool:self.location.pork.boolValue];
-        self.alcoholString = [self stringForBool:self.location.alcohol.boolValue];
-        self.halalString = [self stringForBool:self.location.nonHalal.boolValue];
-
+        self.porkImage = self.location.pork.boolValue ? [[UIImage imageNamed:@"HGLocationDetailViewModel.pork.true"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] : nil;
+        self.alcoholImage = self.location.alcohol.boolValue ? [[UIImage imageNamed:@"HGLocationDetailViewModel.alcohol.true"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] : nil;
+        self.halalImage = self.location.nonHalal.boolValue ? [[UIImage imageNamed:@"HGLocationDetailViewModel.non.halal.true"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] : nil;
     } else if (self.location.locationType.intValue == LocationTypeMosque) {
         self.languageImage = [UIImage imageNamed:LanguageString([self.location.language integerValue])];
         self.languageString = [self.location.language integerValue] != 0 ? NSLocalizedString(LanguageString([self.location.language integerValue]), nil) : @"";
     }
 
-        self.favorite = @([[HGSettings instance].favorites containsObject:self.location.objectId]);
+    self.favorite = @([[HGSettings instance].favorites containsObject:self.location.objectId]);
 
     self.locationPictures = [NSArray new];
     self.reviews = [NSArray new];
@@ -146,14 +141,16 @@
         self.fetchCount--;
         self.smileys = smileys;
     }];
+
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:locationManagerDidUpdateLocationsNotification object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(id x) {
+        @strongify(self)
+        [self updateDistance];
+    }];
 }
 
-//TODO Graphical elements should not be in view model
-
-- (NSMutableAttributedString *)stringForBool:(BOOL)value {
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:value ? NSLocalizedString(@"HGLocationDetailViewModel.yes", nil) : NSLocalizedString(@"HGLocationDetailViewModel.no", nil)];
-    [string addAttribute:NSForegroundColorAttributeName value:value ? [UIColor redColor] : [UIColor greenColor] range:NSMakeRange(0, [string.mutableString length])];
-    return string;
+- (void)updateDistance {
+    CLLocationDistance distanceM = [[HGGeoLocationService instance].currentLocation distanceFromLocation:self.location.location];
+    self.distance = [[HGNumberFormatter instance] stringFromNumber:@(distanceM / 1000)];
 }
 
 - (void)saveMultiplePictures:(NSArray *)images {
@@ -182,18 +179,18 @@
     }
 }
 
--(void) setFavorised:(BOOL) favorized{
+- (void)setFavorised:(BOOL)favorized {
 
-    [PFAnalytics trackEvent:@"Favorised" dimensions:@{@"favorized":@(favorized).stringValue, @"Location":self.location.objectId}];
+    [PFAnalytics trackEvent:@"Favorised" dimensions:@{@"favorized" : @(favorized).stringValue, @"Location" : self.location.objectId}];
 
-    if (favorized){
+    if (favorized) {
         NSMutableArray *favorites = [HGSettings instance].favorites;
         [favorites addObject:self.location.objectId];
         [HGSettings instance].favorites = favorites;
 
         [self.location pinInBackgroundWithName:kFavoritesPin];
 
-    } else{
+    } else {
         NSMutableArray *favorites = [HGSettings instance].favorites;
         [favorites removeObject:self.location.objectId];
         [HGSettings instance].favorites = favorites;
