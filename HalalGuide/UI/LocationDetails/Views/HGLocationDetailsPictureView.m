@@ -16,6 +16,7 @@
 #import "NSString+Extensions.h"
 #import "UIView+FrameAdditions.h"
 #import "HGReachabilityManager.h"
+#import "HGColor.h"
 
 @interface HGLocationDetailsPictureView () <iCarouselDataSource, iCarouselDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
 
@@ -226,6 +227,7 @@
     CGRect frame = [originalPictureView convertRect:originalPictureView.bounds toView:window];
 
     self.zoomView = [[UIScrollView alloc] initWithFrame:frame];
+    self.zoomView.backgroundColor = [HGColor greenTintColor];
     self.zoomView.minimumZoomScale = 1;
     self.zoomView.maximumZoomScale = 6;
     self.zoomView.delegate = self;
@@ -233,6 +235,7 @@
     [window addSubview:self.zoomView];
 
     self.fullPictureView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.zoomView.frame), CGRectGetHeight(self.zoomView.frame))];
+    self.fullPictureView.backgroundColor = [HGColor greenTintColor];
     self.fullPictureView.userInteractionEnabled = true;
     self.fullPictureView.clipsToBounds = true;
     self.fullPictureView.contentMode = UIViewContentModeScaleAspectFill;
@@ -254,7 +257,6 @@
                      animations:^{
                          self.zoomView.frame = window.frame;
                          self.fullPictureView.frame = CGRectInset(window.frame, 0, 80);
-                         self.zoomView.backgroundColor = [UIColor blackColor];
                      }
                      completion:^(BOOL finished) {
                          [self.zoomView addSubview:self.closeButton];

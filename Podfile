@@ -37,6 +37,7 @@ pod 'pop', '~> 1.0'
 pod 'MSSPopMasonry','0.0.1'
 pod "TSMessages", '0.9.12'
 pod 'HGImagePicker', :git => 'https://github.com/sadiq81/HGImagePicker.git'
+pod 'CRGradientNavigationBar'
 
 #Parse
 pod 'Facebook-iOS-SDK', '4.0.1'

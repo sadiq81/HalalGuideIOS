@@ -21,6 +21,7 @@
 #import "FBSDKLoginManagerLoginResult.h"
 #import "FBSDKShareLinkContent.h"
 #import "FBSDKShareDialog.h"
+#import "HGColor.h"
 
 @interface HGLocationDetailViewController () <HGImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate>
 //-------------------------------------------
@@ -94,8 +95,9 @@
 }
 
 - (void)setupToolBar {
-    [self.favorite setImage:[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.false"] forState:UIControlStateNormal];
-    [self.favorite setImage:[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.true"] forState:UIControlStateSelected];
+    [self.favorite setImage:[[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.false"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [self.favorite setImage:[[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.true"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]forState:UIControlStateSelected];
+    self.favorite.tintColor = [HGColor greenTintColor];
 
     @weakify(self)
     [self.favorite handleControlEvents:UIControlEventTouchUpInside withBlock:^(id weakSender) {

@@ -56,11 +56,11 @@
     [self addSubview:self.postalCode];
 
     self.rating = [[EDStarRating alloc] initWithFrame:CGRectZero];
-    self.rating.starImage = [UIImage imageNamed:@"HGLocationDetailsInfoView.star.unselected"];
+    self.rating.starImage = [[UIImage imageNamed:@"HGLocationDetailsInfoView.star.unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.rating.displayMode = EDStarRatingDisplayHalf;
     self.rating.backgroundColor = [UIColor clearColor];
     self.rating.horizontalMargin = 0;
-    self.rating.starHighlightedImage = [UIImage imageNamed:@"HGLocationDetailsInfoView.star.selected"];
+    self.rating.starHighlightedImage = [[UIImage imageNamed:@"HGLocationDetailsInfoView.star.selected"]imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.rating.rating = 0;
     [self addSubview:self.rating];
 

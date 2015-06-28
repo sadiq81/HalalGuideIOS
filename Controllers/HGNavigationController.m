@@ -10,15 +10,33 @@
 #import "BFTask.h"
 #import "TSMessage.h"
 #import "HGQuery.h"
+#import "CRGradientNavigationBar.h"
 
 
 @implementation HGNavigationController {
 
 }
 
-- (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
-    self = [super initWithRootViewController:rootViewController];
+- (instancetype)initWithNavigationBarClass:(Class)navigationBarClass toolbarClass:(Class)toolbarClass {
+    self = [super initWithNavigationBarClass:navigationBarClass toolbarClass:toolbarClass];
     if (self) {
+
+    }
+
+    return self;
+}
+
+
+- (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
+
+    self = [super initWithNavigationBarClass:[CRGradientNavigationBar class] toolbarClass:nil];
+    if (self) {
+        UIColor *firstColor = [UIColor colorWithRed:57.0f/255.0f green:101.0f/255.0f blue:96.0f/255.0f alpha:1.0f];
+        UIColor *secondColor = [UIColor colorWithRed:25.0f/255.0f green:58.0f/255.0f blue:42.0f/255.0f alpha:1.0f];
+        NSArray *colors = @[firstColor, secondColor];
+        [[CRGradientNavigationBar appearance] setBarTintGradientColors:colors];
+        [self setViewControllers:@[rootViewController] animated:NO];
+
         [self setup];
     }
 

@@ -5,6 +5,7 @@
 
 #import <Masonry/View+MASAdditions.h>
 #import "HGCreateSwitchView.h"
+#import "HGColor.h"
 
 @interface HGCreateSwitchView ()
 
@@ -42,7 +43,7 @@
 - (void)setupViews {
 
     self.halalImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.halalImage.image = [UIImage imageNamed:@"HGCreateSwitchView.non.halal.false"];
+    self.halalImage.tintColor = [UIColor redColor];
     [self addSubview:self.halalImage];
 
     self.halalLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -55,11 +56,11 @@
     self.halalSwitch.onLabel.text = NSLocalizedString(@"HGCreateSwitchView.switch.on", nil);
     self.halalSwitch.offLabel.text = NSLocalizedString(@"HGCreateSwitchView.switch.off", nil);
     self.halalSwitch.onTintColor = [UIColor redColor];
-    self.halalSwitch.inactiveColor = [UIColor greenColor];
+    self.halalSwitch.inactiveColor = [HGColor greenTintColor];
     [self addSubview:self.halalSwitch];
 
     self.alcoholImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.alcoholImage.image = [UIImage imageNamed:@"HGCreateSwitchView.alcohol.false"];
+    self.alcoholImage.tintColor = [UIColor redColor];
     [self addSubview:self.alcoholImage];
 
     self.alcoholLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -72,11 +73,11 @@
     self.alcoholSwitch.onLabel.text = NSLocalizedString(@"HGCreateSwitchView.switch.on", nil);
     self.alcoholSwitch.offLabel.text = NSLocalizedString(@"HGCreateSwitchView.switch.off", nil);
     self.alcoholSwitch.onTintColor = [UIColor redColor];
-    self.alcoholSwitch.inactiveColor = [UIColor greenColor];
+    self.alcoholSwitch.inactiveColor = [HGColor greenTintColor];
     [self addSubview:self.alcoholSwitch];
 
     self.porkImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.porkImage.image = [UIImage imageNamed:@"HGCreateSwitchView.pork.false"];
+    self.porkImage.tintColor = [UIColor redColor];
     [self addSubview:self.porkImage];
 
     self.porkLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -89,7 +90,7 @@
     self.porkSwitch.onLabel.text = NSLocalizedString(@"HGCreateSwitchView.switch.on", nil);
     self.porkSwitch.offLabel.text = NSLocalizedString(@"HGCreateSwitchView.switch.off", nil);
     self.porkSwitch.onTintColor = [UIColor redColor];
-    self.porkSwitch.inactiveColor = [UIColor greenColor];
+    self.porkSwitch.inactiveColor = [HGColor greenTintColor];
     [self addSubview:self.porkSwitch];
 }
 
@@ -102,18 +103,18 @@
     @weakify(self)
     [[self.porkSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
         @strongify(self)
-        self.porkImage.image = [UIImage imageNamed:self.porkSwitch.on ? @"HGCreateSwitchView.pork.true" : @"HGCreateSwitchView.pork.false"];
+        self.porkImage.image = self.porkSwitch.on ? [[UIImage imageNamed:@"HGCreateSwitchView.pork.true"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] : nil;
     }];
 
     [[self.alcoholSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
         @strongify(self)
-        self.alcoholImage.image = [UIImage imageNamed:self.alcoholSwitch.on ? @"HGCreateSwitchView.alcohol.true" : @"HGCreateSwitchView.alcohol.false"];
+        self.alcoholImage.image = self.alcoholSwitch.on ? [[UIImage imageNamed:@"HGCreateSwitchView.alcohol.true"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] : nil;
     }];
 
 
     [[self.halalSwitch rac_signalForControlEvents:UIControlEventValueChanged] subscribeNext:^(id x) {
         @strongify(self)
-        self.halalImage.image = [UIImage imageNamed:self.halalSwitch.on ? @"HGCreateSwitchView.non.halal.true" : @"HGCreateSwitchView.non.halal.false"];
+        self.halalImage.image = self.halalSwitch.on ? [[UIImage imageNamed:@"HGCreateSwitchView.non.halal.true"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] : nil;
     }];
 
 

@@ -32,6 +32,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.1.5)
   - ClusterPrePermissions (0.5.0)
+  - CRGradientNavigationBar (0.3.2)
   - CTAssetsPickerController (2.9.3)
   - DateTools (1.5.0)
   - DCKeyValueObjectMapping (1.4)
@@ -113,6 +114,7 @@ DEPENDENCIES:
   - ALActionBlocks (= 1.0.3)
   - AsyncImageView (= 1.5.1)
   - ClusterPrePermissions (~> 0.1)
+  - CRGradientNavigationBar
   - CTAssetsPickerController (~> 2.9.3)
   - DateTools (= 1.5.0)
   - DCKeyValueObjectMapping (= 1.4)
@@ -161,6 +163,7 @@ SPEC CHECKSUMS:
   AsyncImageView: db9433939160710b34a5c249479e03af2a2121b0
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
   ClusterPrePermissions: f7c18aed36022662a05048fffb44b24b9e796cff
+  CRGradientNavigationBar: ee6fa0398e3d64af32a792b63336e094bb55402e
   CTAssetsPickerController: 56a4a228dcb48a9375ab8d4922e82ac74af74aa1
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
   DCKeyValueObjectMapping: 04cd5a338c03ce1c02488926cab6e1d1f704a093

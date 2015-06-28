@@ -7,6 +7,7 @@
 #import "HGLocationCell.h"
 #import "HGLabels.h"
 #import "HGReachabilityManager.h"
+#import "HGColor.h"
 
 
 @interface HGLocationCell ()
@@ -37,7 +38,8 @@
 
 - (void)setupViews {
     self.thumbnail = [[AsyncImageView alloc] initWithFrame:CGRectZero];
-    self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
+    self.thumbnail.image = [[UIImage imageNamed:[[self class] placeholderImageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.thumbnail.tintColor = [HGColor greenTintColor];
 
     if (![HGReachabilityManager isReachable]) {
         self.thumbnail.showActivityIndicator = false;
@@ -97,7 +99,7 @@
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    self.thumbnail.image = [UIImage imageNamed:[[self class] placeholderImageName]];
+    self.thumbnail.image = [[UIImage imageNamed:[[self class] placeholderImageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
 - (void)updateConstraints {

@@ -27,6 +27,7 @@
 #import "HGGeoLocationService.h"
 #import "HGCategoriesFilterViewController.h"
 #import "HGCategoryViewModel.h"
+#import "HGColor.h"
 
 @interface HGLocationViewController () <UISearchBarDelegate>
 //@property(strong, nonatomic) UISegmentedControl *segmentControl;
@@ -210,6 +211,7 @@
 
     self.searchBar.showsCancelButton = true;
     self.searchBar.placeholder = NSLocalizedString(@"HGLocationViewController.searchbar.placeholder", nil);
+    self.searchBar.barTintColor = [HGColor darkGreenTintColor];
 
     RAC(self.viewModel, searchText) = [[[self rac_signalForSelector:@selector(searchBar:textDidChange:)] throttle:1.5] reduceEach:^(UISearchBar *searchBar, NSString *text) {
         return text;
@@ -274,6 +276,9 @@
     }];
     [self.tableView setDragDelegate:self refreshDatePermanentKey:@"HGLocationViewController"];
     self.tableView.headerRefreshDateFormatText = NSLocalizedString(@"Last Updated: %@", nil);
+
+    self.tableView.headerBackgroundView.backgroundColor = [HGColor greenTintColor];
+    self.tableView.footerBackgroundView.backgroundColor = [HGColor greenTintColor];
 
 }
 
