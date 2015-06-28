@@ -7,6 +7,8 @@
 #import "HGLocationDetailsInfoView.h"
 #import "HGLabels.h"
 #import "ReactiveCocoa.h"
+#import "HGColor.h"
+#import "UIImage+Overlay.h"
 
 @interface HGLocationDetailsInfoView ()
 
@@ -56,11 +58,10 @@
     [self addSubview:self.postalCode];
 
     self.rating = [[EDStarRating alloc] initWithFrame:CGRectZero];
-    self.rating.starImage = [[UIImage imageNamed:@"HGLocationDetailsInfoView.star.unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.rating.starHighlightedImage = [[UIImage imageNamed:@"HGLocationDetailsInfoView.star.selected"] imageWithColor:[HGColor greenTintColor]];
     self.rating.displayMode = EDStarRatingDisplayHalf;
     self.rating.backgroundColor = [UIColor clearColor];
     self.rating.horizontalMargin = 0;
-    self.rating.starHighlightedImage = [[UIImage imageNamed:@"HGLocationDetailsInfoView.star.selected"]imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     self.rating.rating = 0;
     [self addSubview:self.rating];
 

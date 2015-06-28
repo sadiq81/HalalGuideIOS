@@ -15,6 +15,7 @@
 		8EFBA82B9560883B7A209853 /* HGCategoriesFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA468F970166260064041 /* HGCategoriesFilterViewController.m */; };
 		8EFBA8A7373C9693E14D2029 /* HGReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA081A1A95E4AD3C73A34 /* HGReachabilityManager.m */; };
 		8EFBA8A752FDDDC9268F6D22 /* HGQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA2D86A8985BA1EDEB7A7 /* HGQuery.m */; };
+		8EFBAAB084067558A35405A1 /* UIImage+Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA7E78FD07693BBD64C20 /* UIImage+Overlay.m */; };
 		8EFBAB5752D05C586A082ABE /* HGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA662253B25372B84CF25 /* HGColor.m */; };
 		8EFBAC0E67E9B1CDAC63804B /* HGUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA5277EFFB6B6B8B294B5 /* HGUserService.m */; };
 		8EFBAE013B19FFBE71F36AB6 /* HGChangeSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBA39DB1A7B414AD3C8C59 /* HGChangeSuggestion.m */; };
@@ -182,11 +183,13 @@
 		8EFBA5BBF2B62DCDA3D0B258 /* HGCategoryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCategoryViewModel.h; sourceTree = "<group>"; };
 		8EFBA662253B25372B84CF25 /* HGColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGColor.m; sourceTree = "<group>"; };
 		8EFBA6EC36AC5A08DA3B37AB /* HGQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGQuery.h; sourceTree = "<group>"; };
+		8EFBA7E78FD07693BBD64C20 /* UIImage+Overlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Overlay.m"; sourceTree = "<group>"; };
 		8EFBA828DD3ED7BCF07AA4F9 /* HGColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGColor.h; sourceTree = "<group>"; };
 		8EFBA89918203710C3739F7C /* HGChangeSuggestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChangeSuggestion.h; sourceTree = "<group>"; };
 		8EFBAA56304C7300F16344EB /* HGUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGUserService.h; sourceTree = "<group>"; };
 		8EFBAAB32FBBA10521BFB96F /* HGCategoryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCategoryViewModel.m; sourceTree = "<group>"; };
 		8EFBAC62BA7F042B077AADF1 /* HGCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCategoryViewController.h; sourceTree = "<group>"; };
+		8EFBAF1F1A85729267799B8C /* UIImage+Overlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Overlay.h"; sourceTree = "<group>"; };
 		8EFBAF49E121B43268564521 /* HGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGUser.h; sourceTree = "<group>"; };
 		8EFBAF7852BAF24D26EE2622 /* NSObject+HGJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HGJSON.h"; sourceTree = "<group>"; };
 		A1072EB51A962E1300C3A2A3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -991,6 +994,8 @@
 				8EFBAF49E121B43268564521 /* HGUser.h */,
 				8EFBA12CBBF523B1B000A1E8 /* NSObject+HGJSON.m */,
 				8EFBAF7852BAF24D26EE2622 /* NSObject+HGJSON.h */,
+				8EFBA7E78FD07693BBD64C20 /* UIImage+Overlay.m */,
+				8EFBAF1F1A85729267799B8C /* UIImage+Overlay.h */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1611,6 +1616,7 @@
 				8EFBA5310EA3F5F121C18E7D /* HGCategoryViewController.m in Sources */,
 				8EFBA23C807CC84CB36221A7 /* HGCategoryViewModel.m in Sources */,
 				8EFBAB5752D05C586A082ABE /* HGColor.m in Sources */,
+				8EFBAAB084067558A35405A1 /* UIImage+Overlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1757,7 +1763,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
