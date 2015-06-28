@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="49181ca0-a2b0-47ef-993e-80ed78d20a8c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/HalalGuide.xcworkspace/xcuserdata/privat.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/HalalGuide.iml" afterPath="$PROJECT_DIR$/.idea/HalalGuide.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Info.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Info.plist" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <list id="faf06226-87ed-4ae1-aa7f-af2f2bd0d64d" name="Failed commit: Default" comment="Updated version number">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Info.plist" afterPath="$PROJECT_DIR$/HalalGuide/Supporting Files/plist/Info.plist" />
     </list>
     <ignored path="HalalGuide.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -693,12 +694,6 @@
       <option name="number" value="Default" />
       <updated>1415568686926</updated>
     </task>
-    <task id="LOCAL-00034" summary="On boarding can be reset from setting #68">
-      <created>1424360213126</created>
-      <option name="number" value="00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1424360213126</updated>
-    </task>
     <task id="LOCAL-00035" summary="Label if no reviews like if no pictures #51">
       <created>1424364029303</created>
       <option name="number" value="00035" />
@@ -987,7 +982,13 @@
       <option name="project" value="LOCAL" />
       <updated>1435520801051</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Change tint colors from black to icon green color #121&#10;Updated version number">
+      <created>1435520816771</created>
+      <option name="number" value="00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1435520816771</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1053,7 +1054,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="2" />
-    <MESSAGE value="Move away from storyboard #89&#10;Use autolayot with Masonry #66&#10;&#10;Enumberview corrected&#10;Renaming of files" />
     <MESSAGE value="Move away from storyboard #89&#10;Use autolayot with Masonry #66&#10;&#10;SettingsViewController" />
     <MESSAGE value="Move away from storyboard #89&#10;Use autolayot with Masonry #66&#10;Styling of app #55&#10;&#10;CategoriesViewController&#10;" />
     <MESSAGE value="Move away from storyboard #89&#10;Use autolayot with Masonry #66&#10;Styling of app #55&#10;" />
@@ -1078,7 +1078,8 @@
     <MESSAGE value="Update distance in cell when location changes #120" />
     <MESSAGE value="Change tint colors from black to icon green color #121" />
     <MESSAGE value="Change tint colors from black to icon green color #121&#10;Updated version number" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change tint colors from black to icon green color #121&#10;Updated version number" />
+    <MESSAGE value="Updated version number" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated version number" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
