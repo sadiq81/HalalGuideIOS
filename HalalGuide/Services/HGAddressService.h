@@ -11,8 +11,6 @@
 
 + (HGAddressService *)instance;
 
-+ (CLLocationDistance)distanceInMetersToPoint:(CLLocation *)location;
-
 + (void)cityNameFor:(NSString *)postalCode onCompletion:(void (^)(Postnummer *postnummer))completion;
 
 + (void)doesAddressExist:(NSString *)road roadNumber:(NSString *)roadNumber postalCode:(NSString *)postalCode onCompletion:(void (^)(HGAdgangsadresse *address))completion;

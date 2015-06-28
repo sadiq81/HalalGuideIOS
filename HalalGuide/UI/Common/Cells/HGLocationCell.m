@@ -78,6 +78,10 @@
 //        [self.contentView addSubview:self.open];
 }
 
+- (void)updateLocationDistance {
+
+}
+
 - (void)setupViewModel {
 
     RAC(self.name, text) = RACObserve(self, viewModel.location.name);
@@ -148,6 +152,8 @@
 + (NSString *)placeholderImageName {
     @throw @"Should be overriden";
 }
+
+
 
 + (NSString *)reuseIdentifier {
     @throw @"Should be overriden";

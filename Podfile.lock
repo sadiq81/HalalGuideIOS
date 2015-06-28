@@ -52,17 +52,6 @@ PODS:
   - Facebook-iOS-SDK/ShareKit (4.0.1):
     - Bolts (~> 1.0)
     - Facebook-iOS-SDK/CoreKit
-  - FBSDKCoreKit (4.2.0):
-    - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc (= 4.2.0)
-    - FBSDKCoreKit/no-arc (= 4.2.0)
-  - FBSDKCoreKit/arc (4.2.0):
-    - Bolts (~> 1.1)
-  - FBSDKCoreKit/no-arc (4.2.0):
-    - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc
-  - FBSDKShareKit (4.0.1):
-    - FBSDKCoreKit
   - GoogleAnalytics (3.12.0)
   - HexColors (2.2.1)
   - HGImagePicker (1.0.0):
@@ -76,25 +65,6 @@ PODS:
   - hpple (0.2.0)
   - HTAutocompleteTextField (1.3.1)
   - iCarousel (1.8.1)
-  - IntentKit (0.7.2):
-    - IntentKit/Core (= 0.7.2)
-    - IntentKit/Facebook (= 0.7.2)
-    - IntentKit/GPlus (= 0.7.2)
-    - IntentKit/Mail (= 0.7.2)
-    - IntentKit/Maps (= 0.7.2)
-    - IntentKit/Twitter (= 0.7.2)
-  - IntentKit/Core (0.7.2):
-    - MWLayoutHelpers
-  - IntentKit/Facebook (0.7.2):
-    - IntentKit/Core
-  - IntentKit/GPlus (0.7.2):
-    - IntentKit/Core
-  - IntentKit/Mail (0.7.2):
-    - IntentKit/Core
-  - IntentKit/Maps (0.7.2):
-    - IntentKit/Core
-  - IntentKit/Twitter (0.7.2):
-    - IntentKit/Core
   - IQKeyboardManager (3.2.3)
   - JSBadgeView (1.3.2)
   - KASlideShow (2.2)
@@ -103,7 +73,6 @@ PODS:
   - MSSPopMasonry (0.0.1):
     - Masonry
     - pop
-  - MWLayoutHelpers (1.1.0)
   - MZAppearance (1.1.3)
   - MZFormSheetController (2.3.6):
     - MZAppearance (~> 1.1.3)
@@ -149,13 +118,11 @@ DEPENDENCIES:
   - DCKeyValueObjectMapping (= 1.4)
   - EDStarRating (= 1.1)
   - Facebook-iOS-SDK (= 4.0.1)
-  - FBSDKShareKit (= 4.0.1)
-  - GoogleAnalytics
+  - GoogleAnalytics (= 3.12.0)
   - HGImagePicker (from `https://github.com/sadiq81/HGImagePicker.git`)
   - hpple (= 0.2.0)
   - HTAutocompleteTextField (= 1.3.1)
   - iCarousel (= 1.8.1)
-  - IntentKit
   - IQKeyboardManager (= 3.2.3)
   - JSBadgeView (= 1.3.2)
   - KASlideShow (= 2.2)
@@ -175,7 +142,7 @@ DEPENDENCIES:
   - SZTextView (= 1.2.0)
   - TSMessages (= 0.9.12)
   - UIAlertController+Blocks (= 0.8)
-  - UITextField+Blocks
+  - UITextField+Blocks (= 1.0.0)
   - ZLPromptUserReview (~> 1.0.0)
 
 EXTERNAL SOURCES:
@@ -199,22 +166,18 @@ SPEC CHECKSUMS:
   DCKeyValueObjectMapping: 04cd5a338c03ce1c02488926cab6e1d1f704a093
   EDStarRating: a41a6440a945020745d0e9ff8ada7d1afa952114
   Facebook-iOS-SDK: 6d05532c97e9c542f8d87f94b7f6ee217493d00b
-  FBSDKCoreKit: 84b3616a361801f190e43a9909caead7bb6087c7
-  FBSDKShareKit: 349d59da6a4d37e29d20030299089cfb0ac32a28
   GoogleAnalytics: ef2e0b800ef3c1e62688cdfc959e0d3132bc246c
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   HGImagePicker: 8c33845b1e654dae9058280a8da222ffcafe4138
   hpple: 3b765f96fc2cd56ad1a49aef6f7be5cb2aa64b57
   HTAutocompleteTextField: 40b3680e7986d8ed70e41452bce6c82ffa401f9d
   iCarousel: dace1cb858e3f4dc2614bee3201041247f82feda
-  IntentKit: aeabde60252ea7dcd590801ac59ce5988f60f8ea
   IQKeyboardManager: 6ca5c54e3776eb54af4c7caf515833f3cd761d59
   JSBadgeView: 08284afc9d0eb60069674e517cac2d37d4319208
   KASlideShow: 380f5ecee5f14370c9435ecedccee5b35fb69c5f
   LinqToObjectiveC: 768f98c62d5b57cb6bdb7ab869e33d0a7a2da29c
   Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
   MSSPopMasonry: 6700cb03db3f2e7c16ecc96f53c0bd1a2a73fc4f
-  MWLayoutHelpers: 8af2eedae30fe06b75106b7be28b9fee1298512a
   MZAppearance: c2937318234fd782e900fb178942278881ac5490
   MZFormSheetController: e3c0accfab12ed1f9ddf2c61bb8c0abfc6b3f87b
   Parse: fa8ec29de6d82035635986c11946299fb1b38316

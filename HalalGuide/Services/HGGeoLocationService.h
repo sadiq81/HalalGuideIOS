@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
+#define locationManagerDidUpdateLocationsNotification @"location.manager.did.update.locations.notification"
 
 @interface HGGeoLocationService : NSObject
 

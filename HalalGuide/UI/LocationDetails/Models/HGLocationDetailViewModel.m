@@ -14,6 +14,7 @@
 #import "HGUser.h"
 #import "HGUserService.h"
 #import "NSString+Extensions.h"
+#import "HGGeoLocationService.h"
 
 @interface HGLocationDetailViewModel () {
 
@@ -88,8 +89,8 @@
         }
     }];
 
-    CLLocationDistance distanceM = [HGAddressService distanceInMetersToPoint:self.location.location];
-    self.distance = [[HGNumberFormatter instance] stringFromNumber:@(distanceM / 1000)];
+    [self updateDistance];
+
     self.address = [[NSString alloc] initWithFormat:@"%@ %@\n%@ %@", self.location.addressRoad, self.location.addressRoadNumber, self.location.addressPostalCode, self.location.addressCity];
     self.postalCode = [NSString stringWithFormat:@"%@ %@", self.location.addressPostalCode, self.location.addressCity];
     self.category = [self.location categoriesString];
@@ -140,6 +141,16 @@
         self.fetchCount--;
         self.smileys = smileys;
     }];
+
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:locationManagerDidUpdateLocationsNotification object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(id x) {
+        @strongify(self)
+        [self updateDistance];
+    }];
+}
+
+- (void)updateDistance {
+    CLLocationDistance distanceM = [[HGGeoLocationService instance].currentLocation distanceFromLocation:self.location.location];
+    self.distance = [[HGNumberFormatter instance] stringFromNumber:@(distanceM / 1000)];
 }
 
 - (void)saveMultiplePictures:(NSArray *)images {

@@ -22,6 +22,7 @@
 #import "HGFloatingChatButton.h"
 #import "HGSubjectsViewModel.h"
 #import "HGSubjectsViewController.h"
+#import "HGGeoLocationService.h"
 
 @interface HGFrontPageViewController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) UIView *topView;

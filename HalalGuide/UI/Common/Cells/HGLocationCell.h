@@ -34,6 +34,8 @@ static const int standardCellSpacing = 8;
 
 + (NSString *)placeholderImageName;
 
+- (void)updateLocationDistance;
+
 + (NSString *)reuseIdentifier;
 
 @end

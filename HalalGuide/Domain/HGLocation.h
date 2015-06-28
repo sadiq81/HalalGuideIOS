@@ -10,7 +10,6 @@
 #import <CoreData/CoreData.h>
 #import "HGBaseEntity.h"
 #import <MapKit/MapKit.h>
-#import <FBSDKShareKit/FBSDKShareKit/FBSDKSharingContent.h>
 
 //TODO Add multinational, ethiopian, sisha
 typedef enum DiningCategory : int16_t {
@@ -84,7 +83,7 @@ typedef enum WeekDay : int16_t {
 
 #define kFavoritesPin @"local.data.store.favorite.pin"
 
-@interface HGLocation : HGBaseEntity <PFSubclassing, FBSDKSharingContent>
+@interface HGLocation : HGBaseEntity <PFSubclassing>
 
 @property(nonatomic, retain) NSString *addressCity;
 @property(nonatomic, retain) NSString *addressPostalCode;
