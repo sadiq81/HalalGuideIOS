@@ -96,7 +96,7 @@
 
 - (void)setupToolBar {
     [self.favorite setImage:[[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.false"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-    [self.favorite setImage:[[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.true"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]forState:UIControlStateSelected];
+    [self.favorite setImage:[[UIImage imageNamed:@"HGLocationDetailViewController.toolbar.favorite.true"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateSelected];
     self.favorite.tintColor = [HGColor greenTintColor];
 
     @weakify(self)
@@ -285,18 +285,28 @@
         NSMutableArray *sharingItems = [NSMutableArray new];
 
         [sharingItems addObject:self.viewModel.location.name];
+        [sharingItems addObject:[NSString stringWithFormat:@"%@ %@", self.viewModel.location.addressRoad, self.viewModel.location.addressRoadNumber]];
+        [sharingItems addObject:[NSString stringWithFormat:@"%@ %@", self.viewModel.location.addressPostalCode, self.viewModel.location.addressCity]];
 
         if (self.header.pictureView.pictures.numberOfItems > 0) {
             AsyncImageView *thumbnail = (AsyncImageView *) [self.header.pictureView.pictures itemViewAtIndex:0];
             [sharingItems addObject:thumbnail.image];
         }
 
-        if (self.viewModel.location.homePage) {
+        if (self.viewModel.location.homePage && [self.viewModel.location.homePage length] > 0) {
             [sharingItems addObject:[[NSURL alloc] initWithString:self.viewModel.location.homePage]];
+        }
+
+        if (self.viewModel.location.telephone && [self.viewModel.location.telephone length] > 0) {
+            [sharingItems addObject:self.viewModel.location.telephone];
         }
 
         NSString *appUrl = [NSString stringWithFormat:@"halalguide://location/%@", self.viewModel.location.objectId];
         [sharingItems addObject:[[NSURL alloc] initWithString:appUrl]];
+
+        [sharingItems addObject:[NSString stringWithFormat:@"Appstore: %@",@"https://appsto.re/dk/lQQP4.i"]];
+        [sharingItems addObject:[NSString stringWithFormat:@"Google Play Store: %@",@"https://appsto.re/dk/lQQP4.i"]];
+
 
         UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:sharingItems applicationActivities:nil];
         activityController.excludedActivityTypes = @[UIActivityTypePostToFacebook];
