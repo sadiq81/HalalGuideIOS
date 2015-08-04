@@ -136,6 +136,7 @@
             switch (indexPath.row) {
                 case 0:
                     [[RMStore defaultStore] addPayment:@"Support" success:nil failure:nil];
+                    break;
             }
         case 1:
             switch (indexPath.row) {
@@ -160,12 +161,14 @@
             switch (indexPath.row) {
                 case 0:
                     [HGUser logOut];
+                    break;
             }
         case 3:
             switch (indexPath.row) {
                 case 0:{
                     HGENumberViewController *controller = [[HGENumberViewController alloc] init];
                     [self.navigationController pushViewController:controller animated:true];
+                    break;
                 }
             }
     }
